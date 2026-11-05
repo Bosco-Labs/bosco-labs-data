@@ -5,15 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>EU Annual Reports API (ESEF): XBRL financial statements</title>
 <meta name="description" content="Revenue, EBIT, net income, EPS, equity and cash flows from ESEF annual reports of European listed companies in 28 countries, each linked to its XBRL fact.">
-<link rel="canonical" href="https://pb7-debug.github.io/bosco-labs-data/esef-annual-reports.html">
+<link rel="canonical" href="https://boscolabs.dev/esef-annual-reports.html">
 <link rel="icon" href="logo.svg" type="image/svg+xml">
 <link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Bosco Labs">
 <meta property="og:title" content="EU Annual Reports API (ESEF): XBRL financial statements">
 <meta property="og:description" content="Revenue, EBIT, net income, EPS, equity and cash flows from ESEF annual reports of European listed companies in 28 countries, each linked to its XBRL fact.">
-<meta property="og:url" content="https://pb7-debug.github.io/bosco-labs-data/esef-annual-reports.html">
-<meta property="og:image" content="https://pb7-debug.github.io/bosco-labs-data/logo-512.png">
+<meta property="og:url" content="https://boscolabs.dev/esef-annual-reports.html">
+<meta property="og:image" content="https://boscolabs.dev/logo-512.png">
 <meta name="twitter:card" content="summary">
 <script type="application/ld+json">
 {
@@ -21,7 +21,7 @@
  "@type": "SoftwareApplication",
  "name": "EU Annual Reports API (ESEF): XBRL financial statements",
  "description": "Key financials (revenue, EBIT, net income, EPS, assets, equity, cash flows, margins, growth) from ESEF annual reports of European listed companies in 28 countries, via filings.xbrl.org. Each value links to its XBRL fact. Filter by LEI, company name, country and fiscal year end.",
- "url": "https://pb7-debug.github.io/bosco-labs-data/esef-annual-reports.html",
+ "url": "https://boscolabs.dev/esef-annual-reports.html",
  "installUrl": "https://apify.com/bosco_labs/esef-annual-reports",
  "applicationCategory": "DeveloperApplication",
  "operatingSystem": "Web (Apify platform)",
@@ -168,9 +168,9 @@ td:first-child{white-space:nowrap}.cta{display:inline-block;background:var(--btn
 }</code></pre>
 <h2>Input fields</h2>
 <div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
-<tr><td><code>leis</code></td><td>array</td><td>Legal Entity Identifiers (20 characters), e.g. [&quot;724500Y6DUVHQD6OXN27&quot;] for ASML. Combined with <code>countries</code> (default NL), so also pass <code>countries: []</code> or the company&#x27;s country for non-Dutch companies. Empty = no LEI filter.</td></tr>
-<tr><td><code>companyName</code></td><td>string</td><td>Case-insensitive part of the registered company name, e.g. &quot;heineken&quot;. Combined with <code>countries</code> (default NL), so also pass <code>countries: []</code> or the company&#x27;s country for non-Dutch companies. Empty = no name filter.</td></tr>
-<tr><td><code>countries</code></td><td>array</td><td>Filing countries as ISO 3166 alpha-2 codes, e.g. [&quot;NL&quot;, &quot;BE&quot;, &quot;FR&quot;]; also SE, DK, FI, NO, IT, ES, GB and others. Default [&quot;NL&quot;]. Pass [] for all 28 countries in the index (Germany is not in it).</td></tr>
+<tr><td><code>leis</code></td><td>array</td><td>Legal Entity Identifiers (20 letters/digits), e.g. [&quot;724500Y6DUVHQD6OXN27&quot;] for ASML: the most precise lookup, any country. Empty = no LEI filter.</td></tr>
+<tr><td><code>companyName</code></td><td>string</td><td>Case-insensitive part of the registered company name, e.g. &quot;heineken&quot; or &quot;lvmh&quot;; can match several companies, so check <code>company_name</code> in the output. Empty = no name filter.</td></tr>
+<tr><td><code>countries</code></td><td>array</td><td>Filing countries as ISO 3166 alpha-2 codes, e.g. [&quot;NL&quot;, &quot;BE&quot;, &quot;FR&quot;]; also SE, DK, FI, NO, IT, ES, GB and others. Empty = all 28 countries in the index (Germany is not in it).</td></tr>
 <tr><td><code>periodFrom</code></td><td>string</td><td>Fiscal year ending on or after this date, YYYY-MM-DD, e.g. &quot;2024-01-01&quot;. Empty = no lower limit.</td></tr>
 <tr><td><code>periodTo</code></td><td>string</td><td>Fiscal year ending on or before this date, YYYY-MM-DD, e.g. &quot;2024-12-31&quot;. Empty = no upper limit.</td></tr>
 <tr><td><code>maxFilings</code></td><td>integer</td><td>Maximum annual reports, newest fiscal period first, e.g. 1 for a company&#x27;s latest report. Default 10. One report per company per fiscal year, with the prior year nested in each row.</td></tr>
@@ -182,11 +182,11 @@ td:first-child{white-space:nowrap}.cta{display:inline-block;background:var(--btn
 <pre><code>https://mcp.apify.com?tools=bosco_labs/esef-annual-reports</code></pre>
 <p>Example prompt: <em>&ldquo;&quot;Get Heineken&#x27;s latest revenue growth and operating margin from its annual report.&quot;&rdquo;</em> The agent passes:</p>
 <pre><code>{&quot;companyName&quot;: &quot;heineken&quot;, &quot;maxFilings&quot;: 1}</code></pre>
-<p>stable, typed JSON, one row per annual report. Every row has <code>schema_version</code> and a <code>source_url</code> pointing to the report&#x27;s xBRL-JSON on filings.xbrl.org (plus <code>viewer_url</code> and a <code>sources</code> entry per value), so the agent can cite its source. <code>countries</code> defaults to <code>[&quot;NL&quot;]</code>: for a company outside the Netherlands, pass its country or <code>[]</code>.</p>
+<p>stable, typed JSON, one row per annual report. Every row has <code>schema_version</code> and a <code>source_url</code> pointing to the report&#x27;s xBRL-JSON on filings.xbrl.org (plus <code>viewer_url</code> and a <code>sources</code> entry per value), so the agent can cite its source. An LEI or name search covers every country; if nothing matches, the run&#x27;s status message says so.</p>
 <p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~esef-annual-reports/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.01 per run plus $0.05 per annual report; raw XBRL fact rows, if switched on, $0.0005 each.</p>
 <p><a class="cta" href="https://apify.com/bosco_labs/esef-annual-reports">Open EU Annual Reports API (ESEF) on Apify Store &rarr;</a></p>
 </article>
 </main>
-<footer><p><a href="index.html">All Actors</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a></p></footer>
+<footer><p><a href="index.html">All Actors</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p></footer>
 </body>
 </html>

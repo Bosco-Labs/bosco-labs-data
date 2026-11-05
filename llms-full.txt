@@ -6,35 +6,36 @@ Apify Store profile: https://apify.com/bosco_labs
 
 ## Finance & filings
 
-- [SEC Insider Trading API (Form 4): live + history since 2006](https://pb7-debug.github.io/bosco-labs-data/sec-insider-trades.html): Every insider purchase and sale reported on SEC Form 4 (directors, officers, 10% owners), from official EDGAR filings, 2006 to today, with cluster-buy and cluster-sell signals; filter by ticker, CIK, transaction code, role, value and date. Price: $0.0018 per transaction row and $0.02 per cluster signal. ([Apify Store](https://apify.com/bosco_labs/sec-insider-trades))
-- [SEC EDGAR Filings API: 8-K, 10-K, 10-Q feed since 1994](https://pb7-debug.github.io/bosco-labs-data/sec-filings-feed.html): SEC EDGAR filings (8-K, 10-K, 10-Q, S-1, 13D, 13G, Form 4 and every other form) for any company or the whole market, live or back to 1994, from the SEC's own feeds; 8-K item codes and earnings releases (Item 2.02); links to each filing, not its text. Price: $0.001 per filing. ([Apify Store](https://apify.com/bosco_labs/sec-filings-feed))
-- [Congress Stock Trades API: US House STOCK Act since 2014](https://pb7-debug.github.io/bosco-labs-data/us-house-trades.html): Congress stock trades: stock, option, fund and bond trades that US House members disclose in STOCK Act Periodic Transaction Reports, from the Clerk of the House's official filings since January 2014 (no Senate); ticker, amount range, owner, days to disclose. Price: $0.0018 per trade. ([Apify Store](https://apify.com/bosco_labs/us-house-trades))
+- [SEC Insider Trading API (Form 4): live + history since 2006](https://boscolabs.dev/sec-insider-trades.html): Every insider purchase and sale reported on SEC Form 4 (directors, officers, 10% owners), from official EDGAR filings, 2006 to today, with cluster-buy and cluster-sell signals; filter by ticker, CIK, transaction code, role, value and date. Price: $0.0018 per transaction row and $0.02 per cluster signal. ([Apify Store](https://apify.com/bosco_labs/sec-insider-trades))
+- [SEC EDGAR Filings API: 8-K, 10-K, 10-Q feed since 1994](https://boscolabs.dev/sec-filings-feed.html): SEC EDGAR filings (8-K, 10-K, 10-Q, S-1, 13D, 13G, Form 4 and every other form) for any company or the whole market, live or back to 1994, from the SEC's own feeds; 8-K item codes and earnings releases (Item 2.02); links to each filing, not its text. Price: $0.001 per filing. ([Apify Store](https://apify.com/bosco_labs/sec-filings-feed))
+- [Congress Stock Trades API: US House STOCK Act since 2014](https://boscolabs.dev/us-house-trades.html): Congress stock trades: stock, option, fund and bond trades that US House members disclose in STOCK Act Periodic Transaction Reports, from the Clerk of the House's official filings since January 2014 (no Senate); ticker, amount range, owner, days to disclose. Price: $0.0018 per trade. ([Apify Store](https://apify.com/bosco_labs/us-house-trades))
 
 ## Company data
 
-- [EU Annual Reports API (ESEF): XBRL financial statements](https://pb7-debug.github.io/bosco-labs-data/esef-annual-reports.html): Normalized key financials (revenue, EBIT, EBITDA, net income, EPS, assets, equity, cash flows, margins, growth) of European listed companies from official ESEF annual reports via filings.xbrl.org; 28 countries; every value linked to its XBRL fact. Price: $0.01 per run plus $0.05 per annual report; raw XBRL fact rows, if switched on, $0.0005 each. ([Apify Store](https://apify.com/bosco_labs/esef-annual-reports))
-- [Company Financials API: UK, Denmark & Norway accounts + LEI](https://pb7-debug.github.io/bosco-labs-data/company-accounts.html): Financials (revenue, profit, equity, assets, cash, employees) of private and public companies from official accounts: UK Companies House, Denmark Erhvervsstyrelsen, Norway Brønnøysund; adds the LEI from GLEIF and a source per value. Price: $0.04 per company-year. ([Apify Store](https://apify.com/bosco_labs/company-accounts))
+- [EU Annual Reports API (ESEF): XBRL financial statements](https://boscolabs.dev/esef-annual-reports.html): Normalized key financials (revenue, EBIT, EBITDA, net income, EPS, assets, equity, cash flows, margins, growth) of European listed companies from official ESEF annual reports via filings.xbrl.org; 28 countries; every value linked to its XBRL fact. Price: $0.01 per run plus $0.05 per annual report; raw XBRL fact rows, if switched on, $0.0005 each. ([Apify Store](https://apify.com/bosco_labs/esef-annual-reports))
+- [Company Financials API: UK, Denmark & Norway accounts + LEI](https://boscolabs.dev/company-accounts.html): Financials (revenue, profit, equity, assets, cash, employees) of private and public companies from official accounts: UK Companies House, Denmark Erhvervsstyrelsen, Norway Brønnøysund; adds the LEI from GLEIF and a source per value. Price: $0.04 per company-year. ([Apify Store](https://apify.com/bosco_labs/company-accounts))
 
 ## Government & procurement
 
-- [EU Public Tenders & Contract Awards API (TED procurement)](https://pb7-debug.github.io/bosco-labs-data/eu-tenders.html): EU public procurement notices from TED (Tenders Electronic Daily), the EU's official tenders journal: open calls with deadlines, contract awards with winners and values, prior information; EU, EEA and more, since 2016; filter by keyword, country, CPV code, notice type, date, EUR value. Price: $0.002 per notice. ([Apify Store](https://apify.com/bosco_labs/eu-tenders))
-- [Pentagon / DoD Contract Awards API: winners, amounts, tickers](https://pb7-debug.github.io/bosco-labs-data/dod-contract-awards.html): US Department of Defense contract awards of $7.5M or more the same evening they are announced, plus USAspending.gov history since FY2008 (any federal agency); winner, amount, service, NAICS/PSC, matched to a US stock ticker with SEC shares outstanding. Price: $0.005 per award row. ([Apify Store](https://apify.com/bosco_labs/dod-contract-awards))
+- [EU Public Tenders & Contract Awards API (TED procurement)](https://boscolabs.dev/eu-tenders.html): EU public procurement notices from TED (Tenders Electronic Daily), the EU's official tenders journal: open calls with deadlines, contract awards with winners and values, prior information; EU, EEA and more, since 2016; filter by keyword, country, CPV code, notice type, date, EUR value. Price: $0.002 per notice. ([Apify Store](https://apify.com/bosco_labs/eu-tenders))
+- [Pentagon / DoD Contract Awards API: winners, amounts, tickers](https://boscolabs.dev/dod-contract-awards.html): US Department of Defense contract awards of $7.5M or more the same evening they are announced, plus USAspending.gov history since FY2008 (any federal agency); winner, amount, service, NAICS/PSC, matched to a US stock ticker with SEC shares outstanding. Price: $0.005 per award row. ([Apify Store](https://apify.com/bosco_labs/dod-contract-awards))
 
 ## Data tools
 
-- [Deduplicate & Merge Apify Datasets: remove duplicate items](https://pb7-debug.github.io/bosco-labs-data/dataset-dedup.html): Deduplicate and merge one or more Apify datasets (or a pasted JSON array): removes duplicate items by any fields (dot paths allowed) or by the whole item, keeping the first or last occurrence; streams millions of items with constant memory. Price: $0.00015 per unique item written (duplicates are free). ([Apify Store](https://apify.com/bosco_labs/dataset-dedup))
-- [Google Sheets Export: send any Apify dataset to a spreadsheet](https://pb7-debug.github.io/bosco-labs-data/sheets-export.html): Export any Apify dataset to Google Sheets: replace a tab or append rows, with nested fields as columns and your header kept; writes with your own Google service account key and retries Google rate limits. Price: $0.00015 per row exported. ([Apify Store](https://apify.com/bosco_labs/sheets-export))
+- [Deduplicate & Merge Apify Datasets: remove duplicate items](https://boscolabs.dev/dataset-dedup.html): Deduplicate and merge one or more Apify datasets (or a pasted JSON array): removes duplicate items by any fields (dot paths allowed) or by the whole item, keeping the first or last occurrence; streams millions of items with constant memory. Price: $0.00015 per unique item written (duplicates are free). ([Apify Store](https://apify.com/bosco_labs/dataset-dedup))
+- [Google Sheets Export: send any Apify dataset to a spreadsheet](https://boscolabs.dev/sheets-export.html): Export any Apify dataset to Google Sheets: replace a tab or append rows, with nested fields as columns and your header kept; writes with your own Google service account key and retries Google rate limits. Price: $0.00015 per row exported. ([Apify Store](https://apify.com/bosco_labs/sheets-export))
 
 ## How to call
 
 - Apify API (synchronous): POST `https://api.apify.com/v2/acts/bosco_labs~<actor>/run-sync-get-dataset-items` with header `Authorization: Bearer <APIFY_TOKEN>` and the Actor input as the JSON body; the response is the dataset items.
 - Apify hosted MCP server: add `https://mcp.apify.com?tools=bosco_labs/<actor>` to your MCP client (Claude, Cursor, VS Code, ...). It loads the Actor as a tool plus `get-actor-run` and `get-dataset-items`, and signs you in with OAuth or `Authorization: Bearer <APIFY_TOKEN>`. On the default server (`https://mcp.apify.com`) agents can also find the Actors with `search-actors` and run them with `call-actor`.
 - Pricing: pay per event, billed to your own Apify account: you pay for rows delivered at the prices listed per Actor, and runs stop at your max charge limit.
+- Contact: support@boscolabs.dev (questions, data issues, custom data requests).
 - Bosco Labs MCP server: `bosco-labs-data-mcp` on PyPI (https://pypi.org/project/bosco-labs-data-mcp/) and the official MCP Registry (`io.github.PB7-debug/bosco-labs-data`): one MCP server for all data Actors. Run it with `uvx bosco-labs-data-mcp` and set `APIFY_TOKEN`; source in https://github.com/PB7-debug/bosco-labs-data/tree/main/mcp.
 
 ## SEC Insider Trading API (Form 4): live + history since 2006
 
-Docs: https://pb7-debug.github.io/bosco-labs-data/sec-insider-trades.html
+Docs: https://boscolabs.dev/sec-insider-trades.html
 Apify Store: https://apify.com/bosco_labs/sec-insider-trades
 MCP: https://mcp.apify.com?tools=bosco_labs/sec-insider-trades
 Price: $0.0018 per transaction row and $0.02 per cluster signal
@@ -50,9 +51,9 @@ Coverage: Today's filings from the EDGAR live feed, minutes after the SEC accept
 - `transactionCodes` (array): Form 4 transaction codes to return, e.g. ["P"] for open-market purchases only. Default ["P", "S"] (open-market purchases and sales). Pass [] for all codes, including awards (A), tax withholding (F) and option exercises (M).
 - `insiderRoles` (array): Only insiders with one of these roles: director, officer, ten_percent_owner, other, e.g. ["director", "officer"]. Empty = all roles.
 - `minValueUsd` (integer): Minimum transaction value in USD (shares x price), e.g. 100000. Default 0 = no minimum. Transactions without a price count as 0.
-- `dateFrom` (string): Earliest filing date, YYYY-MM-DD, e.g. "2024-01-01". Data starts 2006-01-01. Empty = `lookbackDays` days before today.
+- `dateFrom` (string): Earliest filing date, YYYY-MM-DD, e.g. "2024-01-01". Data starts 2006-01-01. Empty = `lookbackDays` days before today (90 for tickers/CIKs, 7 for the whole market).
 - `dateTo` (string): Latest filing date, YYYY-MM-DD, e.g. "2024-12-31". Empty = today, including today's filings from the live EDGAR feed.
-- `lookbackDays` (integer): Used only when `dateFrom` is empty: read filings from this many days back until today, e.g. 90. Default 7. Handy for schedules.
+- `lookbackDays` (integer): Used only when `dateFrom` is empty: read filings from this many days back until today, e.g. 30. Empty = 90 days when `tickers` or `ciks` are set, 7 days for the whole market. Handy for schedules.
 - `clusterBuysOnly` (boolean): true = only open-market purchases that are part of a cluster: at least 2 different directors or officers of the same company buying, filed within `clusterWindowDays`, together worth at least $100,000. Default false. Also reads the window before the date range.
 - `clusterSellsOnly` (boolean): true = only open-market sales that are part of a cluster (same rule as cluster buys, for sales). Pre-planned 10b5-1 plan sales are left out (filings flag them since April 2023). Default false. Can be combined with `clusterBuysOnly`.
 - `clusterWindowDays` (integer): How many days of filings count as one cluster of insider buying or selling, e.g. 14. Default 30.
@@ -110,7 +111,7 @@ Coverage: Today's filings from the EDGAR live feed, minutes after the SEC accept
 
 ## SEC EDGAR Filings API: 8-K, 10-K, 10-Q feed since 1994
 
-Docs: https://pb7-debug.github.io/bosco-labs-data/sec-filings-feed.html
+Docs: https://boscolabs.dev/sec-filings-feed.html
 Apify Store: https://apify.com/bosco_labs/sec-filings-feed
 MCP: https://mcp.apify.com?tools=bosco_labs/sec-filings-feed
 Price: $0.001 per filing
@@ -126,10 +127,10 @@ Coverage: All EDGAR forms. Companies: the SEC submissions API, complete history 
 - `ciks` (array): SEC Central Index Keys as digits, leading zeros optional, e.g. ["320193"] for Apple. Use for delisted companies, funds and filers without a ticker. Empty = no CIK filter.
 - `earningsReleasesOnly` (boolean): true = only 8-Ks with Item 2.02 (Results of Operations and Financial Condition): the dates and exact times companies released earnings. Overrides `formTypes` and `itemCodes`. Default false.
 - `itemCodes` (array): Only 8-Ks reporting at least one of these items, as strings, e.g. ["5.02"] (director/officer change), "1.01" (material agreement), "2.01" (acquisition), "1.05" (cybersecurity incident). Without `formTypes`, reads 8-K and 8-K/A. Empty = no item filter.
-- `dateFrom` (string): Earliest filing date, YYYY-MM-DD, e.g. "2020-01-01". EDGAR's index goes back to 1993. Empty = `lookbackDays` days before today, so set this (or `lookbackDays`) to get older filings.
+- `dateFrom` (string): Earliest filing date, YYYY-MM-DD, e.g. "2020-01-01". EDGAR's index goes back to 1993. Empty = `lookbackDays` days before today (or, for tickers/CIKs without `lookbackDays`, the company's newest filings).
 - `dateTo` (string): Latest filing date, YYYY-MM-DD. Empty = today, including filings accepted minutes ago (live EDGAR feed).
-- `lookbackDays` (integer): Used only when `dateFrom` is empty: read filings from this many days back until today, e.g. 365. Default 7, so a company's older filings need a larger value or `dateFrom`.
-- `maxResults` (integer): Maximum filings, newest first, e.g. 20. Default 100. The run stops once it has this many.
+- `lookbackDays` (integer): Used only when `dateFrom` is empty: read filings from this many days back until today, e.g. 365. Empty = 7 days for the whole market; for `tickers`/`ciks`, empty = each company's newest filings (its last 1,000), so "latest 10-K of AAPL" needs no dates.
+- `maxResults` (integer): Maximum filings, newest first, e.g. 10 for a company's latest 10 filings. Default 100. The run stops once it has this many; you pay per filing returned.
 - `onlyNewSinceLastRun` (boolean): true = skip (and don't charge for) filings an earlier run with the same filters already delivered. For scheduled runs. Default false. Remembered in a named key-value store in your account.
 
 ### Output fields
@@ -161,7 +162,7 @@ Coverage: All EDGAR forms. Companies: the SEC submissions API, complete history 
 
 ## Congress Stock Trades API: US House STOCK Act since 2014
 
-Docs: https://pb7-debug.github.io/bosco-labs-data/us-house-trades.html
+Docs: https://boscolabs.dev/us-house-trades.html
 Apify Store: https://apify.com/bosco_labs/us-house-trades
 MCP: https://mcp.apify.com?tools=bosco_labs/us-house-trades
 Price: $0.0018 per trade
@@ -175,7 +176,7 @@ Coverage: Periodic Transaction Reports of House members filed online, from Janua
 - `members` (array): Case-insensitive part of the member's name as listed by the Clerk, e.g. ["Pelosi"] or ["Josh Gottheimer"]. Empty = all House members.
 - `tickers` (array): Only trades whose filing names one of these tickers, e.g. ["NVDA", "MSFT", "BRK.B"]. Trades without a ticker in the filing are left out when this is set. Empty = all.
 - `transactionTypes` (array): Any of purchase, sale (full or partial), exchange, e.g. ["purchase"]. Default all three.
-- `filedFrom` (string): Earliest filing date (when the trade became public), YYYY-MM-DD, e.g. "2025-01-01". Empty = 30 days ago, unless `years` is set.
+- `filedFrom` (string): Earliest filing date (when the trade became public), YYYY-MM-DD, e.g. "2025-01-01". Empty = 365 days ago when `members` is set, else 30 days ago; ignored when `years` is set without dates.
 - `filedTo` (string): Latest filing date, YYYY-MM-DD, e.g. "2025-12-31". Empty = today.
 - `years` (array): Whole filing years to load, as strings, e.g. ["2024", "2025"] (one Clerk index per year; online PTRs start in 2014). Without dates, returns those whole years. Use this or `filedFrom` for history.
 - `minAmountUsd` (integer): Only trades whose reported range starts at or above this USD amount, e.g. 15001 leaves out the smallest $1,001 - $15,000 range, 1000001 keeps trades over $1 million. Empty = no minimum.
@@ -220,7 +221,7 @@ Coverage: Periodic Transaction Reports of House members filed online, from Janua
 
 ## EU Annual Reports API (ESEF): XBRL financial statements
 
-Docs: https://pb7-debug.github.io/bosco-labs-data/esef-annual-reports.html
+Docs: https://boscolabs.dev/esef-annual-reports.html
 Apify Store: https://apify.com/bosco_labs/esef-annual-reports
 MCP: https://mcp.apify.com?tools=bosco_labs/esef-annual-reports
 Price: $0.01 per run plus $0.05 per annual report; raw XBRL fact rows, if switched on, $0.0005 each
@@ -231,9 +232,9 @@ Coverage: ESEF annual reports collected by filings.xbrl.org: 27,626 reports from
 
 ### Input fields
 
-- `leis` (array): Legal Entity Identifiers (20 characters), e.g. ["724500Y6DUVHQD6OXN27"] for ASML. Combined with `countries` (default NL), so also pass `countries: []` or the company's country for non-Dutch companies. Empty = no LEI filter.
-- `companyName` (string): Case-insensitive part of the registered company name, e.g. "heineken". Combined with `countries` (default NL), so also pass `countries: []` or the company's country for non-Dutch companies. Empty = no name filter.
-- `countries` (array): Filing countries as ISO 3166 alpha-2 codes, e.g. ["NL", "BE", "FR"]; also SE, DK, FI, NO, IT, ES, GB and others. Default ["NL"]. Pass [] for all 28 countries in the index (Germany is not in it).
+- `leis` (array): Legal Entity Identifiers (20 letters/digits), e.g. ["724500Y6DUVHQD6OXN27"] for ASML: the most precise lookup, any country. Empty = no LEI filter.
+- `companyName` (string): Case-insensitive part of the registered company name, e.g. "heineken" or "lvmh"; can match several companies, so check `company_name` in the output. Empty = no name filter.
+- `countries` (array): Filing countries as ISO 3166 alpha-2 codes, e.g. ["NL", "BE", "FR"]; also SE, DK, FI, NO, IT, ES, GB and others. Empty = all 28 countries in the index (Germany is not in it).
 - `periodFrom` (string): Fiscal year ending on or after this date, YYYY-MM-DD, e.g. "2024-01-01". Empty = no lower limit.
 - `periodTo` (string): Fiscal year ending on or before this date, YYYY-MM-DD, e.g. "2024-12-31". Empty = no upper limit.
 - `maxFilings` (integer): Maximum annual reports, newest fiscal period first, e.g. 1 for a company's latest report. Default 10. One report per company per fiscal year, with the prior year nested in each row.
@@ -306,21 +307,21 @@ Coverage: ESEF annual reports collected by filings.xbrl.org: 27,626 reports from
 
 ## Company Financials API: UK, Denmark & Norway accounts + LEI
 
-Docs: https://pb7-debug.github.io/bosco-labs-data/company-accounts.html
+Docs: https://boscolabs.dev/company-accounts.html
 Apify Store: https://apify.com/bosco_labs/company-accounts
 MCP: https://mcp.apify.com?tools=bosco_labs/company-accounts
 Price: $0.04 per company-year
 
-Company financials (revenue, profit, equity, assets, cash, employees) of private and public companies from official accounts: UK Companies House (last ~60 days), Denmark (all years), Norway Brønnøysund (last 3 years). Look up by company number, CVR or org number; adds LEI and a source per value.
+Company financials (revenue, profit, equity, assets, cash, employees) of private and public companies from official accounts: UK Companies House (all digital years), Denmark (all years), Norway Brønnøysund (last 3 years). Look up by company number, CVR or org number; adds LEI and a source per value.
 
 Coverage: UK: accounts filed electronically with Companies House in the last ~60 days. Denmark: every annual report filed digitally with Erhvervsstyrelsen, all years. Norway: the last 3 fiscal years of every company that files accounts with the Brønnøysund Register (company accounts, not group accounts). Belgium only when the Actor owner has configured access. LEI looked up at GLEIF.
 
 ### Input fields
 
-- `countries` (array): Registers to read, as codes: GB (Companies House), DK (Erhvervsstyrelsen), NO (Brønnøysund Regnskapsregisteret), BE (National Bank of Belgium; needs enterprise numbers and NBB access set up by the Actor owner). Default ["GB", "DK", "NO"]. A listed country without numbers returns its newest filings, so pass only your numbers' countries, e.g. ["DK"].
-- `companyNumbers` (array): UK Companies House numbers, e.g. ["03117531", "SC123456"] (shorter numbers are zero-padded to 8). Needs GB in `countries`. Only accounts filed in the last ~60 days are covered. Empty = the newest UK filings.
-- `cvrNumbers` (array): Danish CVR numbers, 8 digits, e.g. ["24256790"]. Needs DK in `countries`. All years are available, newest first. Empty = the newest Danish filings.
-- `orgNumbers` (array): Norwegian organisation numbers, 9 digits, e.g. ["923609016"]. Needs NO in `countries`. The last 3 fiscal years are available, newest first. Empty = companies whose accounts were registered in the last 2 days.
+- `countries` (array): Registers to read, as codes: GB (Companies House), DK (Erhvervsstyrelsen), NO (Brønnøysund Regnskapsregisteret), BE (National Bank of Belgium; needs enterprise numbers and NBB access set up by the Actor owner). Default ["GB", "DK", "NO"]. Used only when no numbers are given (it then returns each country's newest filings); with numbers, the countries of those numbers are read and this is ignored.
+- `companyNumbers` (array): UK Companies House numbers, e.g. ["03117531", "SC123456"] (shorter numbers are zero-padded to 8). Accounts of any year filed digitally (iXBRL), newest first; paper/PDF-only filings are skipped. Empty = the newest UK filings (last ~60 days).
+- `cvrNumbers` (array): Danish CVR numbers, 8 digits, e.g. ["24256790"]. All years are available, newest first. Empty = the newest Danish filings.
+- `orgNumbers` (array): Norwegian organisation numbers, 9 digits, e.g. ["923609016"]. The last 3 fiscal years are available, newest first. Empty = companies whose accounts were registered in the last 2 days.
 - `enterpriseNumbers` (array): Belgian KBO/BCE enterprise numbers, 10 digits with or without dots, e.g. ["0403.170.701"]. Required for BE (there is no "newest filings" mode for Belgium), which works only when the Actor owner has set up NBB access.
 - `enrichLei` (boolean): true (default) = look up each company's Legal Entity Identifier at GLEIF by its registration number and add `lei` and `lei_status` (null when the company has no LEI). false = skip the lookup.
 - `maxResults` (integer): Maximum company-years per country, newest filings first, e.g. 1 for a company's latest accounts. Default 5. One row per company per fiscal year.
@@ -357,11 +358,11 @@ Coverage: UK: accounts filed electronically with Companies House in the last ~60
 - `employees` (number | null): Average number of employees during the year (BE: full-time equivalents). Not in the Norwegian data.
 - `metrics_found` (integer): How many of the normalized metrics were found.
 - `sources` (object): Per metric: concept, fact_id, context_ref, period, unit, decimals of the source fact, or {derived: formula}. NO: concept is the JSON path in the record at source_url; BE: the NBB rubric code.
-- `published` (string | null): GB: date of the Companies House daily file; DK: publication timestamp; BE: filing date; NO: null.
-- `report_url` (string | null): DK: the human-readable annual report (XHTML or PDF); NO: PDF copy of the filed accounts at Brønnøysund.
+- `published` (string | null): GB: filing date (by company number) or date of the Companies House daily file (newest filings); DK: publication timestamp; BE: filing date; NO: null.
+- `report_url` (string | null): GB (by company number): the accounts on the Companies House website; DK: the human-readable annual report (XHTML or PDF); NO: PDF copy of the filed accounts at Brønnøysund.
 - `registry_url` (string | null): Company page in the official register (filing history / CVR).
-- `source_document` (string | null): GB: file name of the accounts inside the daily bulk ZIP.
-- `source_url` (string): GB: the Companies House bulk ZIP; DK: the XBRL file; NO: the Regnskapsregisteret JSON record; BE: the NBB accounting-data URL (needs a key).
+- `source_document` (string | null): GB: Companies House filing transaction id (by company number) or file name of the accounts inside the daily bulk ZIP (newest filings).
+- `source_url` (string): GB: the Companies House document (by company number, needs a key) or bulk ZIP (newest filings); DK: the XBRL file; NO: the Regnskapsregisteret JSON record; BE: the NBB accounting-data URL (needs a key).
 - `retrieved_at` (string): UTC time the source was fetched.
 
 ### Example input
@@ -372,7 +373,7 @@ Coverage: UK: accounts filed electronically with Companies House in the last ~60
 
 ## EU Public Tenders & Contract Awards API (TED procurement)
 
-Docs: https://pb7-debug.github.io/bosco-labs-data/eu-tenders.html
+Docs: https://boscolabs.dev/eu-tenders.html
 Apify Store: https://apify.com/bosco_labs/eu-tenders
 MCP: https://mcp.apify.com?tools=bosco_labs/eu-tenders
 Price: $0.002 per notice
@@ -436,7 +437,7 @@ Coverage: Every country that publishes on TED: the 27 EU member states, Norway, 
 
 ## Pentagon / DoD Contract Awards API: winners, amounts, tickers
 
-Docs: https://pb7-debug.github.io/bosco-labs-data/dod-contract-awards.html
+Docs: https://boscolabs.dev/dod-contract-awards.html
 Apify Store: https://apify.com/bosco_labs/dod-contract-awards
 MCP: https://mcp.apify.com?tools=bosco_labs/dod-contract-awards
 Price: $0.005 per award row
@@ -457,7 +458,7 @@ Coverage: Same evening: the Pentagon's daily contract list (weekdays, rows in by
 - `naicsCodes` (array): NAICS industry codes, 2 to 6 digits, e.g. ["336414"] (guided missiles and space vehicles) or ["3364"]. Empty = all.
 - `pscCodes` (array): Product and Service Codes, e.g. ["1410"] (guided missiles), ["R425"] (engineering support). Empty = all.
 - `matchTickers` (boolean): true (default) = match the recipient or its parent company to a US-listed ticker by exact cleaned name (SEC company list) and add the SEC-reported shares outstanding. Unmatched awards are still returned, with ticker = null.
-- `maxResults` (integer): Maximum award rows, newest signing dates first, then largest amounts, e.g. 100. Default 500. Each row is one charged event.
+- `maxResults` (integer): Maximum award rows, newest signing dates first, then largest amounts, e.g. 20. Default 100. Each row is one charged event.
 - `onlyNewSinceLastRun` (boolean): true = skip (and don't charge for) award-days (including old-dated actions the DoD publishes late) an earlier run with the same filters already delivered. For scheduled runs. Default false. Remembered in a named key-value store in your account.
 
 ### Output fields
@@ -515,7 +516,7 @@ Coverage: Same evening: the Pentagon's daily contract list (weekdays, rows in by
 
 ## Deduplicate & Merge Apify Datasets: remove duplicate items
 
-Docs: https://pb7-debug.github.io/bosco-labs-data/dataset-dedup.html
+Docs: https://boscolabs.dev/dataset-dedup.html
 Apify Store: https://apify.com/bosco_labs/dataset-dedup
 MCP: https://mcp.apify.com?tools=bosco_labs/dataset-dedup
 Price: $0.00015 per unique item written (duplicates are free)
@@ -549,19 +550,19 @@ Items are copied unchanged from the input datasets (or reduced to outputFields).
 
 ## Google Sheets Export: send any Apify dataset to a spreadsheet
 
-Docs: https://pb7-debug.github.io/bosco-labs-data/sheets-export.html
+Docs: https://boscolabs.dev/sheets-export.html
 Apify Store: https://apify.com/bosco_labs/sheets-export
 MCP: https://mcp.apify.com?tools=bosco_labs/sheets-export
 Price: $0.00015 per row exported
 
-Export any Apify dataset to Google Sheets: replace a tab or append rows, with nested fields as columns and your header kept. Writes with your own Google service account key (the sheet shared with it as Editor) and retries Google rate limits. Use to send scraper results to a spreadsheet.
+Export any Apify dataset to Google Sheets: replace a tab or append rows, with nested fields as columns and your header kept. Uses a Google service account key that never expires, so scheduled runs keep working; retries Google rate limits. Use to send scraper results to a spreadsheet.
 
 Coverage: Any Apify dataset, written with your own Google service account (the sheet shared with it as Editor). Google allows 10 million cells per spreadsheet; rows are sent in batches of up to 5,000 rows or 2 MB.
 
 ### Input fields
 
 - `datasetId` (string, required): Apify dataset ID to export, e.g. "aBcD1234efGH5678i": usually the defaultDatasetId of a scraper run (Storage tab).
-- `spreadsheetId` (string, required): Google spreadsheet ID: the part between /d/ and /edit in the sheet URL docs.google.com/spreadsheets/d/<ID>/edit, e.g. "1AbCdEfGhIjKlMnOpQrStUvWxYz0123456789".
+- `spreadsheetId` (string, required): Google spreadsheet ID: the part between /d/ and /edit in the sheet URL docs.google.com/spreadsheets/d/<ID>/edit, e.g. "1AbCdEfGhIjKlMnOpQrStUvWxYz0123456789". The full sheet URL also works.
 - `sheetName` (string): Name of the tab to write to, e.g. "Leads". Created if it doesn't exist. Leave empty to use the first tab (whatever it is called, e.g. "Sheet1" or "Blad1").
 - `mode` (string): "replace" (default) clears the tab's values and writes the dataset; "append" adds rows below the existing data, keeps your header and adds any new columns on the right.
 - `serviceAccountJson` (string, required): Full contents of a Google service account JSON key file (secret input, stored encrypted). Share the spreadsheet with that account's client_email as Editor first. See the README for the 2-minute setup.

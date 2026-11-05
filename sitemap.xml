@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://pb7-debug.github.io/bosco-labs-data/</loc></url>
-  <url><loc>https://pb7-debug.github.io/bosco-labs-data/sec-insider-trades.html</loc></url>
-  <url><loc>https://pb7-debug.github.io/bosco-labs-data/sec-filings-feed.html</loc></url>
-  <url><loc>https://pb7-debug.github.io/bosco-labs-data/us-house-trades.html</loc></url>
-  <url><loc>https://pb7-debug.github.io/bosco-labs-data/esef-annual-reports.html</loc></url>
-  <url><loc>https://pb7-debug.github.io/bosco-labs-data/company-accounts.html</loc></url>
-  <url><loc>https://pb7-debug.github.io/bosco-labs-data/eu-tenders.html</loc></url>
-  <url><loc>https://pb7-debug.github.io/bosco-labs-data/dod-contract-awards.html</loc></url>
-  <url><loc>https://pb7-debug.github.io/bosco-labs-data/dataset-dedup.html</loc></url>
-  <url><loc>https://pb7-debug.github.io/bosco-labs-data/sheets-export.html</loc></url>
+  <url><loc>https://boscolabs.dev/</loc></url>
+  <url><loc>https://boscolabs.dev/sec-insider-trades.html</loc></url>
+  <url><loc>https://boscolabs.dev/sec-filings-feed.html</loc></url>
+  <url><loc>https://boscolabs.dev/us-house-trades.html</loc></url>
+  <url><loc>https://boscolabs.dev/esef-annual-reports.html</loc></url>
+  <url><loc>https://boscolabs.dev/company-accounts.html</loc></url>
+  <url><loc>https://boscolabs.dev/eu-tenders.html</loc></url>
+  <url><loc>https://boscolabs.dev/dod-contract-awards.html</loc></url>
+  <url><loc>https://boscolabs.dev/dataset-dedup.html</loc></url>
+  <url><loc>https://boscolabs.dev/sheets-export.html</loc></url>
 </urlset>

@@ -13,4 +13,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://pb7-debug.github.io/bosco-labs-data/sitemap.xml
+Sitemap: https://boscolabs.dev/sitemap.xml

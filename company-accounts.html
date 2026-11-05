@@ -5,23 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Company Financials API: UK, Denmark &amp; Norway accounts + LEI</title>
 <meta name="description" content="Financials of UK, Danish and Norwegian companies, including private ones, from official filed accounts, with the LEI and a source for every value.">
-<link rel="canonical" href="https://pb7-debug.github.io/bosco-labs-data/company-accounts.html">
+<link rel="canonical" href="https://boscolabs.dev/company-accounts.html">
 <link rel="icon" href="logo.svg" type="image/svg+xml">
 <link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Bosco Labs">
 <meta property="og:title" content="Company Financials API: UK, Denmark &amp; Norway accounts + LEI">
 <meta property="og:description" content="Financials of UK, Danish and Norwegian companies, including private ones, from official filed accounts, with the LEI and a source for every value.">
-<meta property="og:url" content="https://pb7-debug.github.io/bosco-labs-data/company-accounts.html">
-<meta property="og:image" content="https://pb7-debug.github.io/bosco-labs-data/logo-512.png">
+<meta property="og:url" content="https://boscolabs.dev/company-accounts.html">
+<meta property="og:image" content="https://boscolabs.dev/logo-512.png">
 <meta name="twitter:card" content="summary">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
  "@type": "SoftwareApplication",
  "name": "Company Financials API: UK, Denmark & Norway accounts + LEI",
- "description": "Company financials (revenue, profit, equity, assets, cash, employees) of private and public companies from official accounts: UK Companies House (last ~60 days), Denmark (all years), Norway Brønnøysund (last 3 years). Look up by company number, CVR or org number; adds LEI and a source per value.",
- "url": "https://pb7-debug.github.io/bosco-labs-data/company-accounts.html",
+ "description": "Company financials (revenue, profit, equity, assets, cash, employees) of private and public companies from official accounts: UK Companies House (all digital years), Denmark (all years), Norway Brønnøysund (last 3 years). Look up by company number, CVR or org number; adds LEI and a source per value.",
+ "url": "https://boscolabs.dev/company-accounts.html",
  "installUrl": "https://apify.com/bosco_labs/company-accounts",
  "applicationCategory": "DeveloperApplication",
  "operatingSystem": "Web (Apify platform)",
@@ -56,7 +56,7 @@ td:first-child{white-space:nowrap}.cta{display:inline-block;background:var(--btn
 <main>
 <article>
 <h1>Company Financials API: UK, Denmark &amp; Norway accounts + LEI</h1>
-<p class="lead">Company financials (revenue, profit, equity, assets, cash, employees) of private and public companies from official accounts: UK Companies House (last ~60 days), Denmark (all years), Norway Brønnøysund (last 3 years).</p>
+<p class="lead">Company financials (revenue, profit, equity, assets, cash, employees) of private and public companies from official accounts: UK Companies House (all digital years), Denmark (all years), Norway Brønnøysund (last 3 years).</p>
 <p>Look up by company number, CVR or org number; adds LEI and a source per value.</p>
 <p><a class="cta" href="https://apify.com/bosco_labs/company-accounts">Run it on Apify Store &rarr;</a></p>
 <h2>What you get</h2>
@@ -91,11 +91,11 @@ td:first-child{white-space:nowrap}.cta{display:inline-block;background:var(--btn
 <tr><td><code>employees</code></td><td>number | null</td><td>Average number of employees during the year (BE: full-time equivalents). Not in the Norwegian data.</td></tr>
 <tr><td><code>metrics_found</code></td><td>integer</td><td>How many of the normalized metrics were found.</td></tr>
 <tr><td><code>sources</code></td><td>object</td><td>Per metric: concept, fact_id, context_ref, period, unit, decimals of the source fact, or {derived: formula}. NO: concept is the JSON path in the record at source_url; BE: the NBB rubric code.</td></tr>
-<tr><td><code>published</code></td><td>string | null</td><td>GB: date of the Companies House daily file; DK: publication timestamp; BE: filing date; NO: null.</td></tr>
-<tr><td><code>report_url</code></td><td>string | null</td><td>DK: the human-readable annual report (XHTML or PDF); NO: PDF copy of the filed accounts at Brønnøysund.</td></tr>
+<tr><td><code>published</code></td><td>string | null</td><td>GB: filing date (by company number) or date of the Companies House daily file (newest filings); DK: publication timestamp; BE: filing date; NO: null.</td></tr>
+<tr><td><code>report_url</code></td><td>string | null</td><td>GB (by company number): the accounts on the Companies House website; DK: the human-readable annual report (XHTML or PDF); NO: PDF copy of the filed accounts at Brønnøysund.</td></tr>
 <tr><td><code>registry_url</code></td><td>string | null</td><td>Company page in the official register (filing history / CVR).</td></tr>
-<tr><td><code>source_document</code></td><td>string | null</td><td>GB: file name of the accounts inside the daily bulk ZIP.</td></tr>
-<tr><td><code>source_url</code></td><td>string</td><td>GB: the Companies House bulk ZIP; DK: the XBRL file; NO: the Regnskapsregisteret JSON record; BE: the NBB accounting-data URL (needs a key).</td></tr>
+<tr><td><code>source_document</code></td><td>string | null</td><td>GB: Companies House filing transaction id (by company number) or file name of the accounts inside the daily bulk ZIP (newest filings).</td></tr>
+<tr><td><code>source_url</code></td><td>string</td><td>GB: the Companies House document (by company number, needs a key) or bulk ZIP (newest filings); DK: the XBRL file; NO: the Regnskapsregisteret JSON record; BE: the NBB accounting-data URL (needs a key).</td></tr>
 <tr><td><code>retrieved_at</code></td><td>string</td><td>UTC time the source was fetched.</td></tr>
 </tbody></table></div>
 <h2>Coverage</h2>
@@ -141,10 +141,10 @@ td:first-child{white-space:nowrap}.cta{display:inline-block;background:var(--btn
 }</code></pre>
 <h2>Input fields</h2>
 <div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
-<tr><td><code>countries</code></td><td>array</td><td>Registers to read, as codes: GB (Companies House), DK (Erhvervsstyrelsen), NO (Brønnøysund Regnskapsregisteret), BE (National Bank of Belgium; needs enterprise numbers and NBB access set up by the Actor owner). Default [&quot;GB&quot;, &quot;DK&quot;, &quot;NO&quot;]. A listed country without numbers returns its newest filings, so pass only your numbers&#x27; countries, e.g. [&quot;DK&quot;].</td></tr>
-<tr><td><code>companyNumbers</code></td><td>array</td><td>UK Companies House numbers, e.g. [&quot;03117531&quot;, &quot;SC123456&quot;] (shorter numbers are zero-padded to 8). Needs GB in <code>countries</code>. Only accounts filed in the last ~60 days are covered. Empty = the newest UK filings.</td></tr>
-<tr><td><code>cvrNumbers</code></td><td>array</td><td>Danish CVR numbers, 8 digits, e.g. [&quot;24256790&quot;]. Needs DK in <code>countries</code>. All years are available, newest first. Empty = the newest Danish filings.</td></tr>
-<tr><td><code>orgNumbers</code></td><td>array</td><td>Norwegian organisation numbers, 9 digits, e.g. [&quot;923609016&quot;]. Needs NO in <code>countries</code>. The last 3 fiscal years are available, newest first. Empty = companies whose accounts were registered in the last 2 days.</td></tr>
+<tr><td><code>countries</code></td><td>array</td><td>Registers to read, as codes: GB (Companies House), DK (Erhvervsstyrelsen), NO (Brønnøysund Regnskapsregisteret), BE (National Bank of Belgium; needs enterprise numbers and NBB access set up by the Actor owner). Default [&quot;GB&quot;, &quot;DK&quot;, &quot;NO&quot;]. Used only when no numbers are given (it then returns each country&#x27;s newest filings); with numbers, the countries of those numbers are read and this is ignored.</td></tr>
+<tr><td><code>companyNumbers</code></td><td>array</td><td>UK Companies House numbers, e.g. [&quot;03117531&quot;, &quot;SC123456&quot;] (shorter numbers are zero-padded to 8). Accounts of any year filed digitally (iXBRL), newest first; paper/PDF-only filings are skipped. Empty = the newest UK filings (last ~60 days).</td></tr>
+<tr><td><code>cvrNumbers</code></td><td>array</td><td>Danish CVR numbers, 8 digits, e.g. [&quot;24256790&quot;]. All years are available, newest first. Empty = the newest Danish filings.</td></tr>
+<tr><td><code>orgNumbers</code></td><td>array</td><td>Norwegian organisation numbers, 9 digits, e.g. [&quot;923609016&quot;]. The last 3 fiscal years are available, newest first. Empty = companies whose accounts were registered in the last 2 days.</td></tr>
 <tr><td><code>enterpriseNumbers</code></td><td>array</td><td>Belgian KBO/BCE enterprise numbers, 10 digits with or without dots, e.g. [&quot;0403.170.701&quot;]. Required for BE (there is no &quot;newest filings&quot; mode for Belgium), which works only when the Actor owner has set up NBB access.</td></tr>
 <tr><td><code>enrichLei</code></td><td>boolean</td><td>true (default) = look up each company&#x27;s Legal Entity Identifier at GLEIF by its registration number and add <code>lei</code> and <code>lei_status</code> (null when the company has no LEI). false = skip the lookup.</td></tr>
 <tr><td><code>maxResults</code></td><td>integer</td><td>Maximum company-years per country, newest filings first, e.g. 1 for a company&#x27;s latest accounts. Default 5. One row per company per fiscal year.</td></tr>
@@ -153,12 +153,12 @@ td:first-child{white-space:nowrap}.cta{display:inline-block;background:var(--btn
 <p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>.</p>
 <pre><code>https://mcp.apify.com?tools=bosco_labs/company-accounts</code></pre>
 <p>Example prompt: <em>&ldquo;&quot;What were Novo Nordisk&#x27;s revenue and equity in its latest Danish annual report?&quot;&rdquo;</em> The agent passes:</p>
-<pre><code>{&quot;countries&quot;: [&quot;DK&quot;], &quot;cvrNumbers&quot;: [&quot;24256790&quot;], &quot;maxResults&quot;: 1}</code></pre>
-<p>stable, typed JSON, one row per company per fiscal year. Every row has <code>schema_version</code> and a <code>source_url</code> pointing to the official filing or register record (plus <code>registry_url</code> and a <code>sources</code> entry per value), so the agent can cite its source. Pass only the countries of the numbers you look up: every listed country without numbers returns (and charges) its newest filings.</p>
+<pre><code>{&quot;cvrNumbers&quot;: [&quot;24256790&quot;], &quot;maxResults&quot;: 1}</code></pre>
+<p>stable, typed JSON, one row per company per fiscal year. Every row has <code>schema_version</code> and a <code>source_url</code> pointing to the official filing or register record (plus <code>registry_url</code> and a <code>sources</code> entry per value), so the agent can cite its source. With registration numbers, only their countries are read, so a lookup never returns other companies; bad numbers fail at once with a valid example.</p>
 <p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~company-accounts/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.04 per company-year.</p>
 <p><a class="cta" href="https://apify.com/bosco_labs/company-accounts">Open Company Financials API on Apify Store &rarr;</a></p>
 </article>
 </main>
-<footer><p><a href="index.html">All Actors</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a></p></footer>
+<footer><p><a href="index.html">All Actors</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p></footer>
 </body>
 </html>

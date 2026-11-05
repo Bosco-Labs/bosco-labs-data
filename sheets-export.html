@@ -5,23 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Google Sheets Export: send Apify datasets to a spreadsheet</title>
 <meta name="description" content="Export any Apify dataset to Google Sheets: replace a tab or append rows, nested fields as columns, your header kept and Google rate limits retried.">
-<link rel="canonical" href="https://pb7-debug.github.io/bosco-labs-data/sheets-export.html">
+<link rel="canonical" href="https://boscolabs.dev/sheets-export.html">
 <link rel="icon" href="logo.svg" type="image/svg+xml">
 <link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Bosco Labs">
 <meta property="og:title" content="Google Sheets Export: send Apify datasets to a spreadsheet">
 <meta property="og:description" content="Export any Apify dataset to Google Sheets: replace a tab or append rows, nested fields as columns, your header kept and Google rate limits retried.">
-<meta property="og:url" content="https://pb7-debug.github.io/bosco-labs-data/sheets-export.html">
-<meta property="og:image" content="https://pb7-debug.github.io/bosco-labs-data/logo-512.png">
+<meta property="og:url" content="https://boscolabs.dev/sheets-export.html">
+<meta property="og:image" content="https://boscolabs.dev/logo-512.png">
 <meta name="twitter:card" content="summary">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
  "@type": "SoftwareApplication",
  "name": "Google Sheets Export: send any Apify dataset to a spreadsheet",
- "description": "Export any Apify dataset to Google Sheets: replace a tab or append rows, with nested fields as columns and your header kept. Writes with your own Google service account key (the sheet shared with it as Editor) and retries Google rate limits. Use to send scraper results to a spreadsheet.",
- "url": "https://pb7-debug.github.io/bosco-labs-data/sheets-export.html",
+ "description": "Export any Apify dataset to Google Sheets: replace a tab or append rows, with nested fields as columns and your header kept. Uses a Google service account key that never expires, so scheduled runs keep working; retries Google rate limits. Use to send scraper results to a spreadsheet.",
+ "url": "https://boscolabs.dev/sheets-export.html",
  "installUrl": "https://apify.com/bosco_labs/sheets-export",
  "applicationCategory": "DeveloperApplication",
  "operatingSystem": "Web (Apify platform)",
@@ -57,7 +57,7 @@ td:first-child{white-space:nowrap}.cta{display:inline-block;background:var(--btn
 <article>
 <h1>Google Sheets Export: send any Apify dataset to a spreadsheet</h1>
 <p class="lead">Export any Apify dataset to Google Sheets: replace a tab or append rows, with nested fields as columns and your header kept.</p>
-<p>Writes with your own Google service account key (the sheet shared with it as Editor) and retries Google rate limits. Use to send scraper results to a spreadsheet.</p>
+<p>Uses a Google service account key that never expires, so scheduled runs keep working; retries Google rate limits. Use to send scraper results to a spreadsheet.</p>
 <p><a class="cta" href="https://apify.com/bosco_labs/sheets-export">Run it on Apify Store &rarr;</a></p>
 <h2>What you get</h2>
 <p>The run writes no dataset rows. Its key-value store gets an OUTPUT record with spreadsheetUrl, sheetName, rowsWritten and columns. Nested objects become parent.child columns, arrays are written as JSON text, and values are never written as formulas.</p>
@@ -79,7 +79,7 @@ td:first-child{white-space:nowrap}.cta{display:inline-block;background:var(--btn
 <h2>Input fields</h2>
 <div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
 <tr><td><code>datasetId</code></td><td>string (required)</td><td>Apify dataset ID to export, e.g. &quot;aBcD1234efGH5678i&quot;: usually the defaultDatasetId of a scraper run (Storage tab).</td></tr>
-<tr><td><code>spreadsheetId</code></td><td>string (required)</td><td>Google spreadsheet ID: the part between /d/ and /edit in the sheet URL docs.google.com/spreadsheets/d/&lt;ID&gt;/edit, e.g. &quot;1AbCdEfGhIjKlMnOpQrStUvWxYz0123456789&quot;.</td></tr>
+<tr><td><code>spreadsheetId</code></td><td>string (required)</td><td>Google spreadsheet ID: the part between /d/ and /edit in the sheet URL docs.google.com/spreadsheets/d/&lt;ID&gt;/edit, e.g. &quot;1AbCdEfGhIjKlMnOpQrStUvWxYz0123456789&quot;. The full sheet URL also works.</td></tr>
 <tr><td><code>sheetName</code></td><td>string</td><td>Name of the tab to write to, e.g. &quot;Leads&quot;. Created if it doesn&#x27;t exist. Leave empty to use the first tab (whatever it is called, e.g. &quot;Sheet1&quot; or &quot;Blad1&quot;).</td></tr>
 <tr><td><code>mode</code></td><td>string</td><td>&quot;replace&quot; (default) clears the tab&#x27;s values and writes the dataset; &quot;append&quot; adds rows below the existing data, keeps your header and adds any new columns on the right.</td></tr>
 <tr><td><code>serviceAccountJson</code></td><td>string (required)</td><td>Full contents of a Google service account JSON key file (secret input, stored encrypted). Share the spreadsheet with that account&#x27;s client_email as Editor first. See the README for the 2-minute setup.</td></tr>
@@ -95,6 +95,6 @@ td:first-child{white-space:nowrap}.cta{display:inline-block;background:var(--btn
 <p><a class="cta" href="https://apify.com/bosco_labs/sheets-export">Open Google Sheets Export on Apify Store &rarr;</a></p>
 </article>
 </main>
-<footer><p><a href="index.html">All Actors</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a></p></footer>
+<footer><p><a href="index.html">All Actors</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p></footer>
 </body>
 </html>

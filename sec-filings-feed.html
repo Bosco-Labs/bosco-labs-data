@@ -5,15 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SEC EDGAR Filings API: 8-K, 10-K, 10-Q feed since 1994</title>
 <meta name="description" content="SEC EDGAR filings (8-K, 10-K, 10-Q, 13D, S-1 and every other form) as JSON, live or back to 1994, with 8-K item codes and exact earnings release times.">
-<link rel="canonical" href="https://pb7-debug.github.io/bosco-labs-data/sec-filings-feed.html">
+<link rel="canonical" href="https://boscolabs.dev/sec-filings-feed.html">
 <link rel="icon" href="logo.svg" type="image/svg+xml">
 <link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Bosco Labs">
 <meta property="og:title" content="SEC EDGAR Filings API: 8-K, 10-K, 10-Q feed since 1994">
 <meta property="og:description" content="SEC EDGAR filings (8-K, 10-K, 10-Q, 13D, S-1 and every other form) as JSON, live or back to 1994, with 8-K item codes and exact earnings release times.">
-<meta property="og:url" content="https://pb7-debug.github.io/bosco-labs-data/sec-filings-feed.html">
-<meta property="og:image" content="https://pb7-debug.github.io/bosco-labs-data/logo-512.png">
+<meta property="og:url" content="https://boscolabs.dev/sec-filings-feed.html">
+<meta property="og:image" content="https://boscolabs.dev/logo-512.png">
 <meta name="twitter:card" content="summary">
 <script type="application/ld+json">
 {
@@ -21,7 +21,7 @@
  "@type": "SoftwareApplication",
  "name": "SEC EDGAR Filings API: 8-K, 10-K, 10-Q feed since 1994",
  "description": "SEC EDGAR filings (8-K, 10-K, 10-Q, S-1, 13D, 13G, Form 4 and every other form) for any company or the whole market, live or back to 1994, from the SEC's own feeds. Filter by ticker, CIK, form, 8-K item and date; flags earnings releases (Item 2.02). Returns links to each filing, not its text.",
- "url": "https://pb7-debug.github.io/bosco-labs-data/sec-filings-feed.html",
+ "url": "https://boscolabs.dev/sec-filings-feed.html",
  "installUrl": "https://apify.com/bosco_labs/sec-filings-feed",
  "applicationCategory": "DeveloperApplication",
  "operatingSystem": "Web (Apify platform)",
@@ -113,22 +113,22 @@ td:first-child{white-space:nowrap}.cta{display:inline-block;background:var(--btn
 <tr><td><code>ciks</code></td><td>array</td><td>SEC Central Index Keys as digits, leading zeros optional, e.g. [&quot;320193&quot;] for Apple. Use for delisted companies, funds and filers without a ticker. Empty = no CIK filter.</td></tr>
 <tr><td><code>earningsReleasesOnly</code></td><td>boolean</td><td>true = only 8-Ks with Item 2.02 (Results of Operations and Financial Condition): the dates and exact times companies released earnings. Overrides <code>formTypes</code> and <code>itemCodes</code>. Default false.</td></tr>
 <tr><td><code>itemCodes</code></td><td>array</td><td>Only 8-Ks reporting at least one of these items, as strings, e.g. [&quot;5.02&quot;] (director/officer change), &quot;1.01&quot; (material agreement), &quot;2.01&quot; (acquisition), &quot;1.05&quot; (cybersecurity incident). Without <code>formTypes</code>, reads 8-K and 8-K/A. Empty = no item filter.</td></tr>
-<tr><td><code>dateFrom</code></td><td>string</td><td>Earliest filing date, YYYY-MM-DD, e.g. &quot;2020-01-01&quot;. EDGAR&#x27;s index goes back to 1993. Empty = <code>lookbackDays</code> days before today, so set this (or <code>lookbackDays</code>) to get older filings.</td></tr>
+<tr><td><code>dateFrom</code></td><td>string</td><td>Earliest filing date, YYYY-MM-DD, e.g. &quot;2020-01-01&quot;. EDGAR&#x27;s index goes back to 1993. Empty = <code>lookbackDays</code> days before today (or, for tickers/CIKs without <code>lookbackDays</code>, the company&#x27;s newest filings).</td></tr>
 <tr><td><code>dateTo</code></td><td>string</td><td>Latest filing date, YYYY-MM-DD. Empty = today, including filings accepted minutes ago (live EDGAR feed).</td></tr>
-<tr><td><code>lookbackDays</code></td><td>integer</td><td>Used only when <code>dateFrom</code> is empty: read filings from this many days back until today, e.g. 365. Default 7, so a company&#x27;s older filings need a larger value or <code>dateFrom</code>.</td></tr>
-<tr><td><code>maxResults</code></td><td>integer</td><td>Maximum filings, newest first, e.g. 20. Default 100. The run stops once it has this many.</td></tr>
+<tr><td><code>lookbackDays</code></td><td>integer</td><td>Used only when <code>dateFrom</code> is empty: read filings from this many days back until today, e.g. 365. Empty = 7 days for the whole market; for <code>tickers</code>/<code>ciks</code>, empty = each company&#x27;s newest filings (its last 1,000), so &quot;latest 10-K of AAPL&quot; needs no dates.</td></tr>
+<tr><td><code>maxResults</code></td><td>integer</td><td>Maximum filings, newest first, e.g. 10 for a company&#x27;s latest 10 filings. Default 100. The run stops once it has this many; you pay per filing returned.</td></tr>
 <tr><td><code>onlyNewSinceLastRun</code></td><td>boolean</td><td>true = skip (and don&#x27;t charge for) filings an earlier run with the same filters already delivered. For scheduled runs. Default false. Remembered in a named key-value store in your account.</td></tr>
 </tbody></table></div>
 <h2>Use with AI agents</h2>
 <p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>.</p>
 <pre><code>https://mcp.apify.com?tools=bosco_labs/sec-filings-feed</code></pre>
 <p>Example prompt: <em>&ldquo;&quot;When did Nvidia release its last four quarterly results, and was it before or after the market closed?&quot;&rdquo;</em> The agent passes:</p>
-<pre><code>{&quot;tickers&quot;: [&quot;NVDA&quot;], &quot;earningsReleasesOnly&quot;: true, &quot;lookbackDays&quot;: 400, &quot;maxResults&quot;: 4}</code></pre>
-<p>stable, typed JSON, one row per filing. Every row has <code>schema_version</code> and a <code>source_url</code> pointing to the SEC data it came from, plus <code>filing_index_url</code> and <code>primary_document_url</code> for the filing itself, so the agent can cite its source. Without <code>dateFrom</code>, a run reads only the last <code>lookbackDays</code> days (default 7), so set one of them for history.</p>
+<pre><code>{&quot;tickers&quot;: [&quot;NVDA&quot;], &quot;earningsReleasesOnly&quot;: true, &quot;maxResults&quot;: 4}</code></pre>
+<p>stable, typed JSON, one row per filing. Every row has <code>schema_version</code> and a <code>source_url</code> pointing to the SEC data it came from, plus <code>filing_index_url</code> and <code>primary_document_url</code> for the filing itself, so the agent can cite its source. For tickers or CIKs without dates, a run returns each company&#x27;s newest filings (no date needed for &quot;the latest 10-K&quot;); a whole-market run without dates reads the last 7 days. If nothing matches, the run&#x27;s status message says so and why.</p>
 <p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~sec-filings-feed/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.001 per filing.</p>
 <p><a class="cta" href="https://apify.com/bosco_labs/sec-filings-feed">Open SEC EDGAR Filings API on Apify Store &rarr;</a></p>
 </article>
 </main>
-<footer><p><a href="index.html">All Actors</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a></p></footer>
+<footer><p><a href="index.html">All Actors</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p></footer>
 </body>
 </html>

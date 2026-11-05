@@ -5,15 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SEC Insider Trading API (Form 4): live + history since 2006</title>
 <meta name="description" content="Every SEC Form 4 insider purchase and sale since 2006 as JSON, with cluster-buy and cluster-sell signals. Filter by ticker, role, value and date.">
-<link rel="canonical" href="https://pb7-debug.github.io/bosco-labs-data/sec-insider-trades.html">
+<link rel="canonical" href="https://boscolabs.dev/sec-insider-trades.html">
 <link rel="icon" href="logo.svg" type="image/svg+xml">
 <link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Bosco Labs">
 <meta property="og:title" content="SEC Insider Trading API (Form 4): live + history since 2006">
 <meta property="og:description" content="Every SEC Form 4 insider purchase and sale since 2006 as JSON, with cluster-buy and cluster-sell signals. Filter by ticker, role, value and date.">
-<meta property="og:url" content="https://pb7-debug.github.io/bosco-labs-data/sec-insider-trades.html">
-<meta property="og:image" content="https://pb7-debug.github.io/bosco-labs-data/logo-512.png">
+<meta property="og:url" content="https://boscolabs.dev/sec-insider-trades.html">
+<meta property="og:image" content="https://boscolabs.dev/logo-512.png">
 <meta name="twitter:card" content="summary">
 <script type="application/ld+json">
 {
@@ -21,7 +21,7 @@
  "@type": "SoftwareApplication",
  "name": "SEC Insider Trading API (Form 4): live + history since 2006",
  "description": "Insider trading data from SEC Form 4: every insider purchase and sale by directors, officers and 10% owners, from official EDGAR filings, 2006 to today. Filter by ticker, CIK, transaction code, role, value and date; adds cluster-buy and cluster-sell signals. Use for insider screens and alerts.",
- "url": "https://pb7-debug.github.io/bosco-labs-data/sec-insider-trades.html",
+ "url": "https://boscolabs.dev/sec-insider-trades.html",
  "installUrl": "https://apify.com/bosco_labs/sec-insider-trades",
  "applicationCategory": "DeveloperApplication",
  "operatingSystem": "Web (Apify platform)",
@@ -147,9 +147,9 @@ td:first-child{white-space:nowrap}.cta{display:inline-block;background:var(--btn
 <tr><td><code>transactionCodes</code></td><td>array</td><td>Form 4 transaction codes to return, e.g. [&quot;P&quot;] for open-market purchases only. Default [&quot;P&quot;, &quot;S&quot;] (open-market purchases and sales). Pass [] for all codes, including awards (A), tax withholding (F) and option exercises (M).</td></tr>
 <tr><td><code>insiderRoles</code></td><td>array</td><td>Only insiders with one of these roles: director, officer, ten_percent_owner, other, e.g. [&quot;director&quot;, &quot;officer&quot;]. Empty = all roles.</td></tr>
 <tr><td><code>minValueUsd</code></td><td>integer</td><td>Minimum transaction value in USD (shares x price), e.g. 100000. Default 0 = no minimum. Transactions without a price count as 0.</td></tr>
-<tr><td><code>dateFrom</code></td><td>string</td><td>Earliest filing date, YYYY-MM-DD, e.g. &quot;2024-01-01&quot;. Data starts 2006-01-01. Empty = <code>lookbackDays</code> days before today.</td></tr>
+<tr><td><code>dateFrom</code></td><td>string</td><td>Earliest filing date, YYYY-MM-DD, e.g. &quot;2024-01-01&quot;. Data starts 2006-01-01. Empty = <code>lookbackDays</code> days before today (90 for tickers/CIKs, 7 for the whole market).</td></tr>
 <tr><td><code>dateTo</code></td><td>string</td><td>Latest filing date, YYYY-MM-DD, e.g. &quot;2024-12-31&quot;. Empty = today, including today&#x27;s filings from the live EDGAR feed.</td></tr>
-<tr><td><code>lookbackDays</code></td><td>integer</td><td>Used only when <code>dateFrom</code> is empty: read filings from this many days back until today, e.g. 90. Default 7. Handy for schedules.</td></tr>
+<tr><td><code>lookbackDays</code></td><td>integer</td><td>Used only when <code>dateFrom</code> is empty: read filings from this many days back until today, e.g. 30. Empty = 90 days when <code>tickers</code> or <code>ciks</code> are set, 7 days for the whole market. Handy for schedules.</td></tr>
 <tr><td><code>clusterBuysOnly</code></td><td>boolean</td><td>true = only open-market purchases that are part of a cluster: at least 2 different directors or officers of the same company buying, filed within <code>clusterWindowDays</code>, together worth at least $100,000. Default false. Also reads the window before the date range.</td></tr>
 <tr><td><code>clusterSellsOnly</code></td><td>boolean</td><td>true = only open-market sales that are part of a cluster (same rule as cluster buys, for sales). Pre-planned 10b5-1 plan sales are left out (filings flag them since April 2023). Default false. Can be combined with <code>clusterBuysOnly</code>.</td></tr>
 <tr><td><code>clusterWindowDays</code></td><td>integer</td><td>How many days of filings count as one cluster of insider buying or selling, e.g. 14. Default 30.</td></tr>
@@ -161,12 +161,12 @@ td:first-child{white-space:nowrap}.cta{display:inline-block;background:var(--btn
 <p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>.</p>
 <pre><code>https://mcp.apify.com?tools=bosco_labs/sec-insider-trades</code></pre>
 <p>Example prompt: <em>&ldquo;&quot;Did any Tesla insiders buy shares in the last 90 days?&quot;&rdquo;</em> The agent passes:</p>
-<pre><code>{&quot;tickers&quot;: [&quot;TSLA&quot;], &quot;transactionCodes&quot;: [&quot;P&quot;], &quot;lookbackDays&quot;: 90}</code></pre>
+<pre><code>{&quot;tickers&quot;: [&quot;TSLA&quot;], &quot;transactionCodes&quot;: [&quot;P&quot;]}</code></pre>
 <p>stable, typed JSON, one row per Form 4 transaction (and one per cluster signal). Every row has <code>schema_version</code> and a <code>source_url</code> pointing to the exact SEC file the row came from (plus <code>filing_url</code> for the Form 4 itself), so the agent can cite its source.</p>
 <p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~sec-insider-trades/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.0018 per transaction row and $0.02 per cluster signal.</p>
 <p><a class="cta" href="https://apify.com/bosco_labs/sec-insider-trades">Open SEC Insider Trading API (Form 4) on Apify Store &rarr;</a></p>
 </article>
 </main>
-<footer><p><a href="index.html">All Actors</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a></p></footer>
+<footer><p><a href="index.html">All Actors</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p></footer>
 </body>
 </html>

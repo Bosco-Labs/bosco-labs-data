@@ -5,15 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Congress Stock Trades API: US House STOCK Act since 2014</title>
 <meta name="description" content="Stock, option, fund and bond trades disclosed by US House members in STOCK Act Periodic Transaction Reports since 2014, from the Clerk&#x27;s official filings.">
-<link rel="canonical" href="https://pb7-debug.github.io/bosco-labs-data/us-house-trades.html">
+<link rel="canonical" href="https://boscolabs.dev/us-house-trades.html">
 <link rel="icon" href="logo.svg" type="image/svg+xml">
 <link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Bosco Labs">
 <meta property="og:title" content="Congress Stock Trades API: US House STOCK Act since 2014">
 <meta property="og:description" content="Stock, option, fund and bond trades disclosed by US House members in STOCK Act Periodic Transaction Reports since 2014, from the Clerk&#x27;s official filings.">
-<meta property="og:url" content="https://pb7-debug.github.io/bosco-labs-data/us-house-trades.html">
-<meta property="og:image" content="https://pb7-debug.github.io/bosco-labs-data/logo-512.png">
+<meta property="og:url" content="https://boscolabs.dev/us-house-trades.html">
+<meta property="og:image" content="https://boscolabs.dev/logo-512.png">
 <meta name="twitter:card" content="summary">
 <script type="application/ld+json">
 {
@@ -21,7 +21,7 @@
  "@type": "SoftwareApplication",
  "name": "Congress Stock Trades API: US House STOCK Act since 2014",
  "description": "Congress stock trades: stock, option, fund and bond trades that US House members disclose in STOCK Act Periodic Transaction Reports, from the Clerk's official filings since 2014 (no Senate). Each row: ticker, amount range, owner, disclosure delay. Filter by member, ticker, type, amount, date.",
- "url": "https://pb7-debug.github.io/bosco-labs-data/us-house-trades.html",
+ "url": "https://boscolabs.dev/us-house-trades.html",
  "installUrl": "https://apify.com/bosco_labs/us-house-trades",
  "applicationCategory": "DeveloperApplication",
  "operatingSystem": "Web (Apify platform)",
@@ -130,7 +130,7 @@ td:first-child{white-space:nowrap}.cta{display:inline-block;background:var(--btn
 <tr><td><code>members</code></td><td>array</td><td>Case-insensitive part of the member&#x27;s name as listed by the Clerk, e.g. [&quot;Pelosi&quot;] or [&quot;Josh Gottheimer&quot;]. Empty = all House members.</td></tr>
 <tr><td><code>tickers</code></td><td>array</td><td>Only trades whose filing names one of these tickers, e.g. [&quot;NVDA&quot;, &quot;MSFT&quot;, &quot;BRK.B&quot;]. Trades without a ticker in the filing are left out when this is set. Empty = all.</td></tr>
 <tr><td><code>transactionTypes</code></td><td>array</td><td>Any of purchase, sale (full or partial), exchange, e.g. [&quot;purchase&quot;]. Default all three.</td></tr>
-<tr><td><code>filedFrom</code></td><td>string</td><td>Earliest filing date (when the trade became public), YYYY-MM-DD, e.g. &quot;2025-01-01&quot;. Empty = 30 days ago, unless <code>years</code> is set.</td></tr>
+<tr><td><code>filedFrom</code></td><td>string</td><td>Earliest filing date (when the trade became public), YYYY-MM-DD, e.g. &quot;2025-01-01&quot;. Empty = 365 days ago when <code>members</code> is set, else 30 days ago; ignored when <code>years</code> is set without dates.</td></tr>
 <tr><td><code>filedTo</code></td><td>string</td><td>Latest filing date, YYYY-MM-DD, e.g. &quot;2025-12-31&quot;. Empty = today.</td></tr>
 <tr><td><code>years</code></td><td>array</td><td>Whole filing years to load, as strings, e.g. [&quot;2024&quot;, &quot;2025&quot;] (one Clerk index per year; online PTRs start in 2014). Without dates, returns those whole years. Use this or <code>filedFrom</code> for history.</td></tr>
 <tr><td><code>minAmountUsd</code></td><td>integer</td><td>Only trades whose reported range starts at or above this USD amount, e.g. 15001 leaves out the smallest $1,001 - $15,000 range, 1000001 keeps trades over $1 million. Empty = no minimum.</td></tr>
@@ -147,6 +147,6 @@ td:first-child{white-space:nowrap}.cta{display:inline-block;background:var(--btn
 <p><a class="cta" href="https://apify.com/bosco_labs/us-house-trades">Open Congress Stock Trades API on Apify Store &rarr;</a></p>
 </article>
 </main>
-<footer><p><a href="index.html">All Actors</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a></p></footer>
+<footer><p><a href="index.html">All Actors</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p></footer>
 </body>
 </html>
