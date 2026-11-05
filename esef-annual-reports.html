@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EU Annual Reports API (ESEF): XBRL financial statements</title>
+<meta name="description" content="Revenue, EBIT, net income, EPS, equity and cash flows from ESEF annual reports of European listed companies in 28 countries, each linked to its XBRL fact.">
+<link rel="canonical" href="https://pb7-debug.github.io/bosco-labs-data/esef-annual-reports.html">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bosco Labs">
+<meta property="og:title" content="EU Annual Reports API (ESEF): XBRL financial statements">
+<meta property="og:description" content="Revenue, EBIT, net income, EPS, equity and cash flows from ESEF annual reports of European listed companies in 28 countries, each linked to its XBRL fact.">
+<meta property="og:url" content="https://pb7-debug.github.io/bosco-labs-data/esef-annual-reports.html">
+<meta property="og:image" content="https://pb7-debug.github.io/bosco-labs-data/logo-512.png">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "SoftwareApplication",
+ "name": "EU Annual Reports API (ESEF): XBRL financial statements",
+ "description": "Key financials (revenue, EBIT, net income, EPS, assets, equity, cash flows, margins, growth) from ESEF annual reports of European listed companies in 28 countries, via filings.xbrl.org. Each value links to its XBRL fact. Filter by LEI, company name, country and fiscal year end.",
+ "url": "https://pb7-debug.github.io/bosco-labs-data/esef-annual-reports.html",
+ "installUrl": "https://apify.com/bosco_labs/esef-annual-reports",
+ "applicationCategory": "DeveloperApplication",
+ "operatingSystem": "Web (Apify platform)",
+ "offers": {
+  "@type": "Offer",
+  "url": "https://apify.com/bosco_labs/esef-annual-reports",
+  "priceCurrency": "USD",
+  "description": "$0.01 per run plus $0.05 per annual report; raw XBRL fact rows, if switched on, $0.0005 each"
+ },
+ "provider": {
+  "@type": "Organization",
+  "name": "Bosco Labs",
+  "url": "https://apify.com/bosco_labs"
+ }
+}
+</script>
+<style>:root{--bg:#fff;--fg:#1a2230;--muted:#5a6575;--line:#dfe3ea;--card:#f5f7fa;--accent:#0f766e;--btn:#0f766e;--btnfg:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#0d1520;--fg:#e6ebf2;--muted:#9aa6b6;--line:#26323f;--card:#15202d;--accent:#5eead4;--btn:#2dd4bf;--btnfg:#04201d}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header,main,footer{max-width:860px;margin:0 auto;padding:0 16px}header{display:flex;align-items:center;gap:10px;padding-top:18px}
+header a{display:flex;align-items:center;gap:10px;color:var(--fg);text-decoration:none;font-weight:600}header img{width:32px;height:32px}
+a{color:var(--accent)}h1{font-size:1.9rem;line-height:1.25;margin:1.2rem 0 .6rem}h2{margin-top:2.2rem;font-size:1.3rem}
+.lead{font-size:1.15rem}.muted{color:var(--muted)}code{font:.9em ui-monospace,SFMono-Regular,Consolas,monospace}
+pre{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px;overflow-x:auto;font-size:.85rem;line-height:1.45}
+.table{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{text-align:left;vertical-align:top;padding:6px 8px;border-bottom:1px solid var(--line)}
+td:first-child{white-space:nowrap}.cta{display:inline-block;background:var(--btn);color:var(--btnfg);font-weight:700;font-size:1.1rem;padding:14px 22px;border-radius:10px;text-decoration:none;margin:1.2rem 0}
+.cards{list-style:none;padding:0;display:grid;gap:12px}.cards li{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}
+.cards h3{margin:0 0 .3rem;font-size:1.05rem}.cards p{margin:.2rem 0}footer{border-top:1px solid var(--line);margin-top:3rem;padding-top:12px;padding-bottom:24px;font-size:.9rem}</style>
+</head>
+<body>
+<header><a href="index.html"><img src="logo.svg" alt="" width="32" height="32">Bosco Labs data APIs</a></header>
+<main>
+<article>
+<h1>EU Annual Reports API (ESEF): XBRL financial statements</h1>
+<p class="lead">Key financials (revenue, EBIT, net income, EPS, assets, equity, cash flows, margins, growth) from ESEF annual reports of European listed companies in 28 countries, via filings.xbrl.org.</p>
+<p>Each value links to its XBRL fact. Filter by LEI, company name, country and fiscal year end.</p>
+<p><a class="cta" href="https://apify.com/bosco_labs/esef-annual-reports">Run it on Apify Store &rarr;</a></p>
+<h2>What you get</h2>
+<div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>schema_version</code></td><td>string</td><td>Output schema version.</td></tr>
+<tr><td><code>record_type</code></td><td>string</td><td>summary = one row per annual report; fact = one raw XBRL fact (only with includeRawFacts).</td></tr>
+<tr><td><code>lei</code></td><td>string</td><td>Legal Entity Identifier of the filer.</td></tr>
+<tr><td><code>company_name</code></td><td>string</td><td>Registered name.</td></tr>
+<tr><td><code>country</code></td><td>string</td><td>Filing country (ISO 3166 alpha-2).</td></tr>
+<tr><td><code>period_end</code></td><td>string</td><td>Fiscal year end (YYYY-MM-DD), taken from the report facts.</td></tr>
+<tr><td><code>fiscal_year_start</code></td><td>string | null</td><td>Fiscal year start (YYYY-MM-DD).</td></tr>
+<tr><td><code>currency</code></td><td>string | null</td><td>ISO 4217 currency of the monetary values.</td></tr>
+<tr><td><code>revenue</code></td><td>number | null</td><td>revenue for the fiscal year; source concept: ifrs-full:Revenue or ifrs-full:RevenueFromContractsWithCustomers</td></tr>
+<tr><td><code>gross_profit</code></td><td>number | null</td><td>gross_profit for the fiscal year; source concept: ifrs-full:GrossProfit</td></tr>
+<tr><td><code>operating_profit</code></td><td>number | null</td><td>operating_profit for the fiscal year; source concept: ifrs-full:ProfitLossFromOperatingActivities</td></tr>
+<tr><td><code>profit_before_tax</code></td><td>number | null</td><td>profit_before_tax for the fiscal year; source concept: ifrs-full:ProfitLossBeforeTax</td></tr>
+<tr><td><code>net_income</code></td><td>number | null</td><td>net_income for the fiscal year; source concept: ifrs-full:ProfitLoss</td></tr>
+<tr><td><code>net_income_attributable_to_parent</code></td><td>number | null</td><td>net_income_attributable_to_parent for the fiscal year; source concept: ifrs-full:ProfitLossAttributableToOwnersOfParent</td></tr>
+<tr><td><code>eps_basic</code></td><td>number | null</td><td>eps_basic for the fiscal year; source concept: ifrs-full:BasicEarningsLossPerShare</td></tr>
+<tr><td><code>eps_diluted</code></td><td>number | null</td><td>eps_diluted for the fiscal year; source concept: ifrs-full:DilutedEarningsLossPerShare</td></tr>
+<tr><td><code>total_assets</code></td><td>number | null</td><td>total_assets for the fiscal year; source concept: ifrs-full:Assets</td></tr>
+<tr><td><code>current_assets</code></td><td>number | null</td><td>current_assets for the fiscal year; source concept: ifrs-full:CurrentAssets</td></tr>
+<tr><td><code>cash_and_equivalents</code></td><td>number | null</td><td>cash_and_equivalents for the fiscal year; source concept: ifrs-full:CashAndCashEquivalents</td></tr>
+<tr><td><code>total_equity</code></td><td>number | null</td><td>total_equity for the fiscal year; source concept: ifrs-full:Equity</td></tr>
+<tr><td><code>equity_attributable_to_parent</code></td><td>number | null</td><td>equity_attributable_to_parent for the fiscal year; source concept: ifrs-full:EquityAttributableToOwnersOfParent</td></tr>
+<tr><td><code>total_liabilities</code></td><td>number | null</td><td>total_liabilities for the fiscal year; source concept: ifrs-full:Liabilities</td></tr>
+<tr><td><code>current_liabilities</code></td><td>number | null</td><td>current_liabilities for the fiscal year; source concept: ifrs-full:CurrentLiabilities</td></tr>
+<tr><td><code>noncurrent_liabilities</code></td><td>number | null</td><td>noncurrent_liabilities for the fiscal year; source concept: ifrs-full:NoncurrentLiabilities</td></tr>
+<tr><td><code>operating_cash_flow</code></td><td>number | null</td><td>operating_cash_flow for the fiscal year; source concept: ifrs-full:CashFlowsFromUsedInOperatingActivities</td></tr>
+<tr><td><code>investing_cash_flow</code></td><td>number | null</td><td>investing_cash_flow for the fiscal year; source concept: ifrs-full:CashFlowsFromUsedInInvestingActivities</td></tr>
+<tr><td><code>financing_cash_flow</code></td><td>number | null</td><td>financing_cash_flow for the fiscal year; source concept: ifrs-full:CashFlowsFromUsedInFinancingActivities</td></tr>
+<tr><td><code>depreciation_amortisation</code></td><td>number | null</td><td>depreciation_amortisation for the fiscal year; source concept: ifrs-full:DepreciationAndAmortisationExpense or ifrs-full:AdjustmentsForDepreciationAndAmortisationExpense or ifrs-full:DepreciationAmortisationAndImpairmentLossReversalOfImpairmentLossRecognisedInProfitOrLoss or ifrs-full:AdjustmentsForDepreciationAndAmortisationExpenseAndImpairmentLossReversalOfImpairmentLossRecognisedInProfitOrLoss</td></tr>
+<tr><td><code>employee_benefits_expense</code></td><td>number | null</td><td>employee_benefits_expense for the fiscal year; source concept: ifrs-full:EmployeeBenefitsExpense</td></tr>
+<tr><td><code>dividends_paid</code></td><td>number | null</td><td>dividends_paid for the fiscal year; source concept: ifrs-full:DividendsPaidClassifiedAsFinancingActivities or ifrs-full:DividendsPaid</td></tr>
+<tr><td><code>dividend_per_share</code></td><td>number | null</td><td>dividend_per_share for the fiscal year; source concept: ifrs-full:DividendsRecognisedAsDistributionsToOwnersPerShare</td></tr>
+<tr><td><code>dividend_proposed_per_share</code></td><td>number | null</td><td>dividend_proposed_per_share for the fiscal year; source concept: ifrs-full:DividendsProposedOrDeclaredBeforeFinancialStatementsAuthorisedForIssueButNotRecognisedAsDistributionToOwnersPerShare</td></tr>
+<tr><td><code>shares_outstanding</code></td><td>number | null</td><td>shares_outstanding for the fiscal year; source concept: ifrs-full:NumberOfSharesOutstanding</td></tr>
+<tr><td><code>metrics_found</code></td><td>integer</td><td>How many of the reported metrics were found.</td></tr>
+<tr><td><code>ebitda</code></td><td>number | null</td><td>Derived: operating_profit + depreciation_amortisation.</td></tr>
+<tr><td><code>operating_margin</code></td><td>number | null</td><td>Derived: operating_profit / revenue.</td></tr>
+<tr><td><code>net_margin</code></td><td>number | null</td><td>Derived: net_income / revenue.</td></tr>
+<tr><td><code>return_on_equity</code></td><td>number | null</td><td>Derived: net_income / total_equity.</td></tr>
+<tr><td><code>equity_ratio</code></td><td>number | null</td><td>Derived: total_equity / total_assets.</td></tr>
+<tr><td><code>revenue_growth</code></td><td>number | null</td><td>Derived: revenue / prior_year.revenue - 1.</td></tr>
+<tr><td><code>sources</code></td><td>object</td><td>Per field: concept, fact_id, period, unit, decimals of the source fact, or {derived: formula}.</td></tr>
+<tr><td><code>prior_year</code></td><td>object | null</td><td>Comparative fiscal year from the same report: period_end, fiscal_year_start, currency, the same metrics and derived fields, metrics_found and sources.</td></tr>
+<tr><td><code>fact_id</code></td><td>string</td><td>XBRL fact id inside the report.</td></tr>
+<tr><td><code>concept</code></td><td>string</td><td>XBRL concept, e.g. ifrs-full:Revenue.</td></tr>
+<tr><td><code>value</code></td><td>string | null</td><td>Raw fact value as reported (canonical form).</td></tr>
+<tr><td><code>unit</code></td><td>string | null</td><td>XBRL unit, e.g. iso4217:EUR.</td></tr>
+<tr><td><code>period</code></td><td>string | null</td><td>XBRL period (instant or start/end).</td></tr>
+<tr><td><code>decimals</code></td><td>integer | null</td><td>XBRL decimals (precision).</td></tr>
+<tr><td><code>dimensions</code></td><td>object</td><td>Extra XBRL dimensions (axes/members) of the fact.</td></tr>
+<tr><td><code>filing_id</code></td><td>string</td><td>filings.xbrl.org filing id.</td></tr>
+<tr><td><code>published</code></td><td>string | null</td><td>Publication timestamp of the filing.</td></tr>
+<tr><td><code>viewer_url</code></td><td>string | null</td><td>Inline XBRL viewer of the annual report.</td></tr>
+<tr><td><code>report_url</code></td><td>string | null</td><td>The iXBRL (XHTML) annual report.</td></tr>
+<tr><td><code>source_url</code></td><td>string</td><td>xBRL-JSON the row was extracted from.</td></tr>
+<tr><td><code>retrieved_at</code></td><td>string</td><td>UTC time the source was fetched.</td></tr>
+</tbody></table></div>
+<h2>Coverage</h2>
+<p>ESEF annual reports collected by filings.xbrl.org: 27,626 reports from 28 countries (counted 2026-11-05; largest: UA, GB, DK, SE, NO, FR, FI). Germany is not in the index. Reports appear a few days to a few weeks after publication, once filings.xbrl.org has processed them. All values are in full currency units.</p>
+<h2>Price</h2>
+<p><strong>Pricing (pay per event):</strong> $0.01 per run plus $0.05 per annual report ($50 per 1,000 reports). Each report includes the comparative prior year at no extra cost. Raw XBRL fact rows, if you switch them on, cost $0.0005 each. You only pay for reports delivered, the same fiscal year is never charged twice, and the Actor stops at your max charge limit.</p>
+<h2>Example input</h2>
+<pre><code>{ &quot;countries&quot;: [&quot;NL&quot;, &quot;BE&quot;, &quot;FR&quot;], &quot;periodFrom&quot;: &quot;2025-01-01&quot;, &quot;maxFilings&quot;: 50 }</code></pre>
+<h2>Example output</h2>
+<pre><code>{
+  &quot;lei&quot;: &quot;724500Y6DUVHQD6OXN27&quot;,
+  &quot;company_name&quot;: &quot;ASML Holding N.V.&quot;,
+  &quot;country&quot;: &quot;NL&quot;,
+  &quot;period_end&quot;: &quot;2025-12-31&quot;,
+  &quot;fiscal_year_start&quot;: &quot;2025-01-01&quot;,
+  &quot;currency&quot;: &quot;EUR&quot;,
+  &quot;revenue&quot;: 32667300000,
+  &quot;revenue_growth&quot;: 0.1558,
+  &quot;operating_profit&quot;: 12054000000,
+  &quot;ebitda&quot;: 13486800000,
+  &quot;net_income&quot;: 10213000000,
+  &quot;operating_margin&quot;: 0.369,
+  &quot;return_on_equity&quot;: 0.4223,
+  &quot;eps_basic&quot;: 26.29,
+  &quot;dividend_proposed_per_share&quot;: 7.5,
+  &quot;total_assets&quot;: 55576800000,
+  &quot;total_equity&quot;: 24185000000,
+  &quot;operating_cash_flow&quot;: 13826500000,
+  &quot;metrics_found&quot;: 22,
+  &quot;sources&quot;: {
+    &quot;revenue&quot;: {
+      &quot;concept&quot;: &quot;ifrs-full:RevenueFromContractsWithCustomers&quot;,
+      &quot;fact_id&quot;: &quot;f-9&quot;,
+      &quot;period&quot;: &quot;2025-01-01T00:00:00/2026-01-01T00:00:00&quot;,
+      &quot;unit&quot;: &quot;iso4217:EUR&quot;,
+      &quot;decimals&quot;: -5
+    },
+    &quot;ebitda&quot;: {
+      &quot;derived&quot;: &quot;operating_profit + depreciation_amortisation&quot;
+    }
+  },
+  &quot;prior_year&quot;: {
+    &quot;period_end&quot;: &quot;2024-12-31&quot;,
+    &quot;revenue&quot;: 28262900000,
+    &quot;net_income&quot;: 8349000000,
+    &quot;...&quot;: &quot;same fields as above&quot;
+  },
+  &quot;viewer_url&quot;: &quot;https://filings.xbrl.org/724500Y6DUVHQD6OXN27/2025-12-31/ESEF/NL/0/asml-2025-12-31-1-en/reports/ixbrlviewer.html&quot;,
+  &quot;source_url&quot;: &quot;https://filings.xbrl.org/724500Y6DUVHQD6OXN27/2025-12-31/ESEF/NL/0/asml-2025-12-31-1-en.json&quot;,
+  &quot;retrieved_at&quot;: &quot;2026-11-05T15:00:00+00:00&quot;
+}</code></pre>
+<h2>Input fields</h2>
+<div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>leis</code></td><td>array</td><td>Legal Entity Identifiers (20 characters), e.g. [&quot;724500Y6DUVHQD6OXN27&quot;] for ASML. Combined with <code>countries</code> (default NL), so also pass <code>countries: []</code> or the company&#x27;s country for non-Dutch companies. Empty = no LEI filter.</td></tr>
+<tr><td><code>companyName</code></td><td>string</td><td>Case-insensitive part of the registered company name, e.g. &quot;heineken&quot;. Combined with <code>countries</code> (default NL), so also pass <code>countries: []</code> or the company&#x27;s country for non-Dutch companies. Empty = no name filter.</td></tr>
+<tr><td><code>countries</code></td><td>array</td><td>Filing countries as ISO 3166 alpha-2 codes, e.g. [&quot;NL&quot;, &quot;BE&quot;, &quot;FR&quot;]; also SE, DK, FI, NO, IT, ES, GB and others. Default [&quot;NL&quot;]. Pass [] for all 28 countries in the index (Germany is not in it).</td></tr>
+<tr><td><code>periodFrom</code></td><td>string</td><td>Fiscal year ending on or after this date, YYYY-MM-DD, e.g. &quot;2024-01-01&quot;. Empty = no lower limit.</td></tr>
+<tr><td><code>periodTo</code></td><td>string</td><td>Fiscal year ending on or before this date, YYYY-MM-DD, e.g. &quot;2024-12-31&quot;. Empty = no upper limit.</td></tr>
+<tr><td><code>maxFilings</code></td><td>integer</td><td>Maximum annual reports, newest fiscal period first, e.g. 1 for a company&#x27;s latest report. Default 10. One report per company per fiscal year, with the prior year nested in each row.</td></tr>
+<tr><td><code>includeRawFacts</code></td><td>boolean</td><td>true = also output every tagged XBRL fact of each report as its own row (record_type = &quot;fact&quot;), charged per fact row. Default false (one summary row per report).</td></tr>
+<tr><td><code>onlyNewSinceLastRun</code></td><td>boolean</td><td>true = skip (and don&#x27;t charge for) reports an earlier run with the same filters already delivered. For scheduled runs. Default false. Remembered in a named key-value store in your account.</td></tr>
+</tbody></table></div>
+<h2>Use with AI agents</h2>
+<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>.</p>
+<pre><code>https://mcp.apify.com?tools=bosco_labs/esef-annual-reports</code></pre>
+<p>Example prompt: <em>&ldquo;&quot;Get Heineken&#x27;s latest revenue growth and operating margin from its annual report.&quot;&rdquo;</em> The agent passes:</p>
+<pre><code>{&quot;companyName&quot;: &quot;heineken&quot;, &quot;maxFilings&quot;: 1}</code></pre>
+<p>stable, typed JSON, one row per annual report. Every row has <code>schema_version</code> and a <code>source_url</code> pointing to the report&#x27;s xBRL-JSON on filings.xbrl.org (plus <code>viewer_url</code> and a <code>sources</code> entry per value), so the agent can cite its source. <code>countries</code> defaults to <code>[&quot;NL&quot;]</code>: for a company outside the Netherlands, pass its country or <code>[]</code>.</p>
+<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~esef-annual-reports/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.01 per run plus $0.05 per annual report; raw XBRL fact rows, if switched on, $0.0005 each.</p>
+<p><a class="cta" href="https://apify.com/bosco_labs/esef-annual-reports">Open EU Annual Reports API (ESEF) on Apify Store &rarr;</a></p>
+</article>
+</main>
+<footer><p><a href="index.html">All Actors</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a></p></footer>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEC EDGAR Filings API: 8-K, 10-K, 10-Q feed since 1994</title>
+<meta name="description" content="SEC EDGAR filings (8-K, 10-K, 10-Q, 13D, S-1 and every other form) as JSON, live or back to 1994, with 8-K item codes and exact earnings release times.">
+<link rel="canonical" href="https://pb7-debug.github.io/bosco-labs-data/sec-filings-feed.html">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bosco Labs">
+<meta property="og:title" content="SEC EDGAR Filings API: 8-K, 10-K, 10-Q feed since 1994">
+<meta property="og:description" content="SEC EDGAR filings (8-K, 10-K, 10-Q, 13D, S-1 and every other form) as JSON, live or back to 1994, with 8-K item codes and exact earnings release times.">
+<meta property="og:url" content="https://pb7-debug.github.io/bosco-labs-data/sec-filings-feed.html">
+<meta property="og:image" content="https://pb7-debug.github.io/bosco-labs-data/logo-512.png">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "SoftwareApplication",
+ "name": "SEC EDGAR Filings API: 8-K, 10-K, 10-Q feed since 1994",
+ "description": "SEC EDGAR filings (8-K, 10-K, 10-Q, S-1, 13D, 13G, Form 4 and every other form) for any company or the whole market, live or back to 1994, from the SEC's own feeds. Filter by ticker, CIK, form, 8-K item and date; flags earnings releases (Item 2.02). Returns links to each filing, not its text.",
+ "url": "https://pb7-debug.github.io/bosco-labs-data/sec-filings-feed.html",
+ "installUrl": "https://apify.com/bosco_labs/sec-filings-feed",
+ "applicationCategory": "DeveloperApplication",
+ "operatingSystem": "Web (Apify platform)",
+ "offers": {
+  "@type": "Offer",
+  "url": "https://apify.com/bosco_labs/sec-filings-feed",
+  "priceCurrency": "USD",
+  "description": "$0.001 per filing"
+ },
+ "provider": {
+  "@type": "Organization",
+  "name": "Bosco Labs",
+  "url": "https://apify.com/bosco_labs"
+ }
+}
+</script>
+<style>:root{--bg:#fff;--fg:#1a2230;--muted:#5a6575;--line:#dfe3ea;--card:#f5f7fa;--accent:#0f766e;--btn:#0f766e;--btnfg:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#0d1520;--fg:#e6ebf2;--muted:#9aa6b6;--line:#26323f;--card:#15202d;--accent:#5eead4;--btn:#2dd4bf;--btnfg:#04201d}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header,main,footer{max-width:860px;margin:0 auto;padding:0 16px}header{display:flex;align-items:center;gap:10px;padding-top:18px}
+header a{display:flex;align-items:center;gap:10px;color:var(--fg);text-decoration:none;font-weight:600}header img{width:32px;height:32px}
+a{color:var(--accent)}h1{font-size:1.9rem;line-height:1.25;margin:1.2rem 0 .6rem}h2{margin-top:2.2rem;font-size:1.3rem}
+.lead{font-size:1.15rem}.muted{color:var(--muted)}code{font:.9em ui-monospace,SFMono-Regular,Consolas,monospace}
+pre{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px;overflow-x:auto;font-size:.85rem;line-height:1.45}
+.table{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{text-align:left;vertical-align:top;padding:6px 8px;border-bottom:1px solid var(--line)}
+td:first-child{white-space:nowrap}.cta{display:inline-block;background:var(--btn);color:var(--btnfg);font-weight:700;font-size:1.1rem;padding:14px 22px;border-radius:10px;text-decoration:none;margin:1.2rem 0}
+.cards{list-style:none;padding:0;display:grid;gap:12px}.cards li{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}
+.cards h3{margin:0 0 .3rem;font-size:1.05rem}.cards p{margin:.2rem 0}footer{border-top:1px solid var(--line);margin-top:3rem;padding-top:12px;padding-bottom:24px;font-size:.9rem}</style>
+</head>
+<body>
+<header><a href="index.html"><img src="logo.svg" alt="" width="32" height="32">Bosco Labs data APIs</a></header>
+<main>
+<article>
+<h1>SEC EDGAR Filings API: 8-K, 10-K, 10-Q feed since 1994</h1>
+<p class="lead">SEC EDGAR filings (8-K, 10-K, 10-Q, S-1, 13D, 13G, Form 4 and every other form) for any company or the whole market, live or back to 1994, from the SEC&#x27;s own feeds.</p>
+<p>Filter by ticker, CIK, form, 8-K item and date; flags earnings releases (Item 2.02). Returns links to each filing, not its text.</p>
+<p><a class="cta" href="https://apify.com/bosco_labs/sec-filings-feed">Run it on Apify Store &rarr;</a></p>
+<h2>What you get</h2>
+<div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>schema_version</code></td><td>string</td><td>Output schema version.</td></tr>
+<tr><td><code>accession_number</code></td><td>string</td><td>SEC accession number (unique per filing).</td></tr>
+<tr><td><code>form</code></td><td>string</td><td>EDGAR form type as filed, e.g. 8-K, 10-K, SC 13D.</td></tr>
+<tr><td><code>company_name</code></td><td>string</td><td>Company the filing is about (issuer or subject; the filer otherwise).</td></tr>
+<tr><td><code>cik</code></td><td>string</td><td>SEC CIK of that company (10 digits).</td></tr>
+<tr><td><code>ticker</code></td><td>string | null</td><td>Its main ticker in the SEC&#x27;s current ticker list (null if none).</td></tr>
+<tr><td><code>filing_date</code></td><td>string</td><td>Filing date (YYYY-MM-DD).</td></tr>
+<tr><td><code>accepted_at</code></td><td>string | null</td><td>EDGAR acceptance time, New York time with offset.</td></tr>
+<tr><td><code>market_timing</code></td><td>string | null</td><td>before_open, market_hours or after_close (New York regular session), closed on weekends.</td></tr>
+<tr><td><code>report_date</code></td><td>string | null</td><td>Period of report (YYYY-MM-DD), e.g. the quarter end of a 10-Q or the event date of an 8-K.</td></tr>
+<tr><td><code>items</code></td><td>array</td><td>8-K item codes, e.g. [&quot;2.02&quot;, &quot;9.01&quot;]. Empty for other forms.</td></tr>
+<tr><td><code>item_descriptions</code></td><td>array</td><td>Names of those items, same order.</td></tr>
+<tr><td><code>parties</code></td><td>array | null</td><td>All companies and people on the filing with their role (Filer, Issuer, Subject, Filed by, Reporting). Null for company searches.</td></tr>
+<tr><td><code>filing_index_url</code></td><td>string</td><td>EDGAR filing index page (all documents and exhibits).</td></tr>
+<tr><td><code>primary_document_url</code></td><td>string | null</td><td>The main document (HTML/iXBRL, text or XML).</td></tr>
+<tr><td><code>source</code></td><td>string</td><td>submissions-api, full-index, daily-index or live-feed.</td></tr>
+<tr><td><code>source_url</code></td><td>string</td><td>The SEC page or file the row was read from.</td></tr>
+<tr><td><code>retrieved_at</code></td><td>string</td><td>UTC time the row was produced.</td></tr>
+</tbody></table></div>
+<h2>Coverage</h2>
+<p>All EDGAR forms. Companies: the SEC submissions API, complete history back to 1994. Whole market: the live feed, then the EDGAR daily and quarterly indexes back to 1993. 8-K item codes exist since August 2004. Rows hold links to the filing and its main document, not the document text.</p>
+<h2>Price</h2>
+<p><strong>Pricing (pay per event):</strong> $0.001 per filing ($1 per 1,000). No start fee. You only pay for filings delivered, a scheduled feed never charges the same filing twice, and the Actor stops at your max charge limit.</p>
+<h2>Example input</h2>
+<pre><code>{ &quot;tickers&quot;: [&quot;AAPL&quot;, &quot;MSFT&quot;, &quot;NVDA&quot;], &quot;formTypes&quot;: [&quot;8-K&quot;, &quot;10-Q&quot;, &quot;10-K&quot;], &quot;dateFrom&quot;: &quot;2020-01-01&quot;, &quot;maxResults&quot;: 1000 }</code></pre>
+<h2>Example output</h2>
+<pre><code>{
+  &quot;accession_number&quot;: &quot;0000320193-26-000024&quot;,
+  &quot;form&quot;: &quot;8-K&quot;,
+  &quot;company_name&quot;: &quot;Apple Inc.&quot;,
+  &quot;cik&quot;: &quot;0000320193&quot;,
+  &quot;ticker&quot;: &quot;AAPL&quot;,
+  &quot;filing_date&quot;: &quot;2026-11-02&quot;,
+  &quot;accepted_at&quot;: &quot;2026-11-02T16:30:23-05:00&quot;,
+  &quot;market_timing&quot;: &quot;after_close&quot;,
+  &quot;report_date&quot;: &quot;2026-11-02&quot;,
+  &quot;items&quot;: [&quot;2.02&quot;, &quot;9.01&quot;],
+  &quot;item_descriptions&quot;: [&quot;Results of Operations and Financial Condition&quot;, &quot;Financial Statements and Exhibits&quot;],
+  &quot;parties&quot;: null,
+  &quot;filing_index_url&quot;: &quot;https://www.sec.gov/Archives/edgar/data/320193/000032019326000024/0000320193-26-000024-index.htm&quot;,
+  &quot;primary_document_url&quot;: &quot;https://www.sec.gov/Archives/edgar/data/320193/000032019326000024/aapl-20261102.htm&quot;,
+  &quot;source&quot;: &quot;submissions-api&quot;,
+  &quot;source_url&quot;: &quot;https://data.sec.gov/submissions/CIK0000320193.json&quot;,
+  &quot;retrieved_at&quot;: &quot;2026-11-05T16:23:00+00:00&quot;
+}</code></pre>
+<h2>Input fields</h2>
+<div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>formTypes</code></td><td>array</td><td>EDGAR form types, exact match, e.g. [&quot;8-K&quot;, &quot;10-K&quot;, &quot;10-Q&quot;]; also S-1, 13D, 13G, 4, DEF 14A, 20-F, 6-K and any other form. Add &quot;10-K/A&quot; etc. for amendments. 13D and 13G also match the SC 13D and SCHEDULE 13D names. Empty = every form.</td></tr>
+<tr><td><code>tickers</code></td><td>array</td><td>Company tickers, e.g. [&quot;AAPL&quot;, &quot;MSFT&quot;]. Mapped to the CIK with the SEC&#x27;s own company_tickers.json. Empty (and <code>ciks</code> empty) = the whole market.</td></tr>
+<tr><td><code>ciks</code></td><td>array</td><td>SEC Central Index Keys as digits, leading zeros optional, e.g. [&quot;320193&quot;] for Apple. Use for delisted companies, funds and filers without a ticker. Empty = no CIK filter.</td></tr>
+<tr><td><code>earningsReleasesOnly</code></td><td>boolean</td><td>true = only 8-Ks with Item 2.02 (Results of Operations and Financial Condition): the dates and exact times companies released earnings. Overrides <code>formTypes</code> and <code>itemCodes</code>. Default false.</td></tr>
+<tr><td><code>itemCodes</code></td><td>array</td><td>Only 8-Ks reporting at least one of these items, as strings, e.g. [&quot;5.02&quot;] (director/officer change), &quot;1.01&quot; (material agreement), &quot;2.01&quot; (acquisition), &quot;1.05&quot; (cybersecurity incident). Without <code>formTypes</code>, reads 8-K and 8-K/A. Empty = no item filter.</td></tr>
+<tr><td><code>dateFrom</code></td><td>string</td><td>Earliest filing date, YYYY-MM-DD, e.g. &quot;2020-01-01&quot;. EDGAR&#x27;s index goes back to 1993. Empty = <code>lookbackDays</code> days before today, so set this (or <code>lookbackDays</code>) to get older filings.</td></tr>
+<tr><td><code>dateTo</code></td><td>string</td><td>Latest filing date, YYYY-MM-DD. Empty = today, including filings accepted minutes ago (live EDGAR feed).</td></tr>
+<tr><td><code>lookbackDays</code></td><td>integer</td><td>Used only when <code>dateFrom</code> is empty: read filings from this many days back until today, e.g. 365. Default 7, so a company&#x27;s older filings need a larger value or <code>dateFrom</code>.</td></tr>
+<tr><td><code>maxResults</code></td><td>integer</td><td>Maximum filings, newest first, e.g. 20. Default 100. The run stops once it has this many.</td></tr>
+<tr><td><code>onlyNewSinceLastRun</code></td><td>boolean</td><td>true = skip (and don&#x27;t charge for) filings an earlier run with the same filters already delivered. For scheduled runs. Default false. Remembered in a named key-value store in your account.</td></tr>
+</tbody></table></div>
+<h2>Use with AI agents</h2>
+<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>.</p>
+<pre><code>https://mcp.apify.com?tools=bosco_labs/sec-filings-feed</code></pre>
+<p>Example prompt: <em>&ldquo;&quot;When did Nvidia release its last four quarterly results, and was it before or after the market closed?&quot;&rdquo;</em> The agent passes:</p>
+<pre><code>{&quot;tickers&quot;: [&quot;NVDA&quot;], &quot;earningsReleasesOnly&quot;: true, &quot;lookbackDays&quot;: 400, &quot;maxResults&quot;: 4}</code></pre>
+<p>stable, typed JSON, one row per filing. Every row has <code>schema_version</code> and a <code>source_url</code> pointing to the SEC data it came from, plus <code>filing_index_url</code> and <code>primary_document_url</code> for the filing itself, so the agent can cite its source. Without <code>dateFrom</code>, a run reads only the last <code>lookbackDays</code> days (default 7), so set one of them for history.</p>
+<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~sec-filings-feed/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.001 per filing.</p>
+<p><a class="cta" href="https://apify.com/bosco_labs/sec-filings-feed">Open SEC EDGAR Filings API on Apify Store &rarr;</a></p>
+</article>
+</main>
+<footer><p><a href="index.html">All Actors</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a></p></footer>
+</body>
+</html>

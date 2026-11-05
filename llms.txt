@@ -1,0 +1,37 @@
+# Bosco Labs data APIs
+
+> Bosco Labs publishes data APIs as Apify Actors that return clean, typed JSON from official sources: SEC Form 4 insider trades and EDGAR filings, US House STOCK Act trades, European ESEF annual reports, UK/Danish/Norwegian company accounts, EU public tenders (TED) and Pentagon contract awards, plus tools to deduplicate Apify datasets and export them to Google Sheets. Each Actor runs on the Apify platform via API or MCP and is priced per row delivered (pay per event). Data rows carry a source link.
+
+Apify Store profile: https://apify.com/bosco_labs
+
+## Finance & filings
+
+- [SEC Insider Trading API (Form 4): live + history since 2006](https://pb7-debug.github.io/bosco-labs-data/sec-insider-trades.html): Every insider purchase and sale reported on SEC Form 4 (directors, officers, 10% owners), from official EDGAR filings, 2006 to today, with cluster-buy and cluster-sell signals; filter by ticker, CIK, transaction code, role, value and date. Price: $0.0018 per transaction row and $0.02 per cluster signal. ([Apify Store](https://apify.com/bosco_labs/sec-insider-trades))
+- [SEC EDGAR Filings API: 8-K, 10-K, 10-Q feed since 1994](https://pb7-debug.github.io/bosco-labs-data/sec-filings-feed.html): SEC EDGAR filings (8-K, 10-K, 10-Q, S-1, 13D, 13G, Form 4 and every other form) for any company or the whole market, live or back to 1994, from the SEC's own feeds; 8-K item codes and earnings releases (Item 2.02); links to each filing, not its text. Price: $0.001 per filing. ([Apify Store](https://apify.com/bosco_labs/sec-filings-feed))
+- [Congress Stock Trades API: US House STOCK Act since 2014](https://pb7-debug.github.io/bosco-labs-data/us-house-trades.html): Congress stock trades: stock, option, fund and bond trades that US House members disclose in STOCK Act Periodic Transaction Reports, from the Clerk of the House's official filings since January 2014 (no Senate); ticker, amount range, owner, days to disclose. Price: $0.0018 per trade. ([Apify Store](https://apify.com/bosco_labs/us-house-trades))
+
+## Company data
+
+- [EU Annual Reports API (ESEF): XBRL financial statements](https://pb7-debug.github.io/bosco-labs-data/esef-annual-reports.html): Normalized key financials (revenue, EBIT, EBITDA, net income, EPS, assets, equity, cash flows, margins, growth) of European listed companies from official ESEF annual reports via filings.xbrl.org; 28 countries; every value linked to its XBRL fact. Price: $0.01 per run plus $0.05 per annual report; raw XBRL fact rows, if switched on, $0.0005 each. ([Apify Store](https://apify.com/bosco_labs/esef-annual-reports))
+- [Company Financials API: UK, Denmark & Norway accounts + LEI](https://pb7-debug.github.io/bosco-labs-data/company-accounts.html): Financials (revenue, profit, equity, assets, cash, employees) of private and public companies from official accounts: UK Companies House, Denmark Erhvervsstyrelsen, Norway Brønnøysund; adds the LEI from GLEIF and a source per value. Price: $0.04 per company-year. ([Apify Store](https://apify.com/bosco_labs/company-accounts))
+
+## Government & procurement
+
+- [EU Public Tenders & Contract Awards API (TED procurement)](https://pb7-debug.github.io/bosco-labs-data/eu-tenders.html): EU public procurement notices from TED (Tenders Electronic Daily), the EU's official tenders journal: open calls with deadlines, contract awards with winners and values, prior information; EU, EEA and more, since 2016; filter by keyword, country, CPV code, notice type, date, EUR value. Price: $0.002 per notice. ([Apify Store](https://apify.com/bosco_labs/eu-tenders))
+- [Pentagon / DoD Contract Awards API: winners, amounts, tickers](https://pb7-debug.github.io/bosco-labs-data/dod-contract-awards.html): US Department of Defense contract awards of $7.5M or more the same evening they are announced, plus USAspending.gov history since FY2008 (any federal agency); winner, amount, service, NAICS/PSC, matched to a US stock ticker with SEC shares outstanding. Price: $0.005 per award row. ([Apify Store](https://apify.com/bosco_labs/dod-contract-awards))
+
+## Data tools
+
+- [Deduplicate & Merge Apify Datasets: remove duplicate items](https://pb7-debug.github.io/bosco-labs-data/dataset-dedup.html): Deduplicate and merge one or more Apify datasets (or a pasted JSON array): removes duplicate items by any fields (dot paths allowed) or by the whole item, keeping the first or last occurrence; streams millions of items with constant memory. Price: $0.00015 per unique item written (duplicates are free). ([Apify Store](https://apify.com/bosco_labs/dataset-dedup))
+- [Google Sheets Export: send any Apify dataset to a spreadsheet](https://pb7-debug.github.io/bosco-labs-data/sheets-export.html): Export any Apify dataset to Google Sheets: replace a tab or append rows, with nested fields as columns and your header kept; writes with your own Google service account key and retries Google rate limits. Price: $0.00015 per row exported. ([Apify Store](https://apify.com/bosco_labs/sheets-export))
+
+## How to call
+
+- Apify API (synchronous): POST `https://api.apify.com/v2/acts/bosco_labs~<actor>/run-sync-get-dataset-items` with header `Authorization: Bearer <APIFY_TOKEN>` and the Actor input as the JSON body; the response is the dataset items.
+- Apify hosted MCP server: add `https://mcp.apify.com?tools=bosco_labs/<actor>` to your MCP client (Claude, Cursor, VS Code, ...). It loads the Actor as a tool plus `get-actor-run` and `get-dataset-items`, and signs you in with OAuth or `Authorization: Bearer <APIFY_TOKEN>`. On the default server (`https://mcp.apify.com`) agents can also find the Actors with `search-actors` and run them with `call-actor`.
+- Pricing: pay per event, billed to your own Apify account: you pay for rows delivered at the prices listed per Actor, and runs stop at your max charge limit.
+- Bosco Labs MCP server: `bosco-labs-data-mcp`, one MCP server for all data Actors: coming soon.
+
+## Optional
+
+- [llms-full.txt](https://pb7-debug.github.io/bosco-labs-data/llms-full.txt): input fields, output fields and an example input for every Actor

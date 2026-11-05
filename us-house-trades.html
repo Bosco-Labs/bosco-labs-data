@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Congress Stock Trades API: US House STOCK Act since 2014</title>
+<meta name="description" content="Stock, option, fund and bond trades disclosed by US House members in STOCK Act Periodic Transaction Reports since 2014, from the Clerk&#x27;s official filings.">
+<link rel="canonical" href="https://pb7-debug.github.io/bosco-labs-data/us-house-trades.html">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bosco Labs">
+<meta property="og:title" content="Congress Stock Trades API: US House STOCK Act since 2014">
+<meta property="og:description" content="Stock, option, fund and bond trades disclosed by US House members in STOCK Act Periodic Transaction Reports since 2014, from the Clerk&#x27;s official filings.">
+<meta property="og:url" content="https://pb7-debug.github.io/bosco-labs-data/us-house-trades.html">
+<meta property="og:image" content="https://pb7-debug.github.io/bosco-labs-data/logo-512.png">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "SoftwareApplication",
+ "name": "Congress Stock Trades API: US House STOCK Act since 2014",
+ "description": "Congress stock trades: stock, option, fund and bond trades that US House members disclose in STOCK Act Periodic Transaction Reports, from the Clerk's official filings since 2014 (no Senate). Each row: ticker, amount range, owner, disclosure delay. Filter by member, ticker, type, amount, date.",
+ "url": "https://pb7-debug.github.io/bosco-labs-data/us-house-trades.html",
+ "installUrl": "https://apify.com/bosco_labs/us-house-trades",
+ "applicationCategory": "DeveloperApplication",
+ "operatingSystem": "Web (Apify platform)",
+ "offers": {
+  "@type": "Offer",
+  "url": "https://apify.com/bosco_labs/us-house-trades",
+  "priceCurrency": "USD",
+  "description": "$0.0018 per trade"
+ },
+ "provider": {
+  "@type": "Organization",
+  "name": "Bosco Labs",
+  "url": "https://apify.com/bosco_labs"
+ }
+}
+</script>
+<style>:root{--bg:#fff;--fg:#1a2230;--muted:#5a6575;--line:#dfe3ea;--card:#f5f7fa;--accent:#0f766e;--btn:#0f766e;--btnfg:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#0d1520;--fg:#e6ebf2;--muted:#9aa6b6;--line:#26323f;--card:#15202d;--accent:#5eead4;--btn:#2dd4bf;--btnfg:#04201d}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header,main,footer{max-width:860px;margin:0 auto;padding:0 16px}header{display:flex;align-items:center;gap:10px;padding-top:18px}
+header a{display:flex;align-items:center;gap:10px;color:var(--fg);text-decoration:none;font-weight:600}header img{width:32px;height:32px}
+a{color:var(--accent)}h1{font-size:1.9rem;line-height:1.25;margin:1.2rem 0 .6rem}h2{margin-top:2.2rem;font-size:1.3rem}
+.lead{font-size:1.15rem}.muted{color:var(--muted)}code{font:.9em ui-monospace,SFMono-Regular,Consolas,monospace}
+pre{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px;overflow-x:auto;font-size:.85rem;line-height:1.45}
+.table{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{text-align:left;vertical-align:top;padding:6px 8px;border-bottom:1px solid var(--line)}
+td:first-child{white-space:nowrap}.cta{display:inline-block;background:var(--btn);color:var(--btnfg);font-weight:700;font-size:1.1rem;padding:14px 22px;border-radius:10px;text-decoration:none;margin:1.2rem 0}
+.cards{list-style:none;padding:0;display:grid;gap:12px}.cards li{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}
+.cards h3{margin:0 0 .3rem;font-size:1.05rem}.cards p{margin:.2rem 0}footer{border-top:1px solid var(--line);margin-top:3rem;padding-top:12px;padding-bottom:24px;font-size:.9rem}</style>
+</head>
+<body>
+<header><a href="index.html"><img src="logo.svg" alt="" width="32" height="32">Bosco Labs data APIs</a></header>
+<main>
+<article>
+<h1>Congress Stock Trades API: US House STOCK Act since 2014</h1>
+<p class="lead">Congress stock trades: stock, option, fund and bond trades that US House members disclose in STOCK Act Periodic Transaction Reports, from the Clerk&#x27;s official filings since 2014 (no Senate).</p>
+<p>Each row: ticker, amount range, owner, disclosure delay. Filter by member, ticker, type, amount, date.</p>
+<p><a class="cta" href="https://apify.com/bosco_labs/us-house-trades">Run it on Apify Store &rarr;</a></p>
+<h2>What you get</h2>
+<div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>schema_version</code></td><td>string</td><td>Output schema version.</td></tr>
+<tr><td><code>transaction_id</code></td><td>string</td><td>doc_id + position of the transaction in the PTR, e.g. 20035553-1. Stable across runs.</td></tr>
+<tr><td><code>member_name</code></td><td>string</td><td>First name, last name and suffix as listed in the Clerk&#x27;s index.</td></tr>
+<tr><td><code>first_name</code></td><td>string</td><td>First name as listed in the Clerk&#x27;s index.</td></tr>
+<tr><td><code>last_name</code></td><td>string</td><td>Last name as listed in the Clerk&#x27;s index.</td></tr>
+<tr><td><code>state_district</code></td><td>string | null</td><td>State and district as listed in the index, e.g. CA11.</td></tr>
+<tr><td><code>state</code></td><td>string | null</td><td>Two-letter state code, the first two characters of state_district.</td></tr>
+<tr><td><code>filing_date</code></td><td>string</td><td>Date the PTR was filed (YYYY-MM-DD): when the trade became public.</td></tr>
+<tr><td><code>transaction_date</code></td><td>string</td><td>Trade date as reported (YYYY-MM-DD).</td></tr>
+<tr><td><code>notification_date</code></td><td>string</td><td>Date the member was notified of the trade, as reported (YYYY-MM-DD).</td></tr>
+<tr><td><code>days_to_disclose</code></td><td>integer</td><td>filing_date - transaction_date in days. For amendments this counts to the amendment, not the first filing.</td></tr>
+<tr><td><code>owner</code></td><td>string | null</td><td>Owner code as filed: SP = spouse, JT = joint, DC = dependent child, null = the member.</td></tr>
+<tr><td><code>ticker</code></td><td>string | null</td><td>Ticker as filed in parentheses in the asset text, upper-cased; null when the filing gives none.</td></tr>
+<tr><td><code>asset_description</code></td><td>string</td><td>Asset text as filed (older PDFs garble upper/lower case).</td></tr>
+<tr><td><code>asset_type</code></td><td>string | null</td><td>From asset_type_code: ST = stock, OP = option, EF/MF = fund, GS/CS = bond, other codes = other. Filings before ~2018 have no code: option if the description says so, else null.</td></tr>
+<tr><td><code>asset_type_code</code></td><td>string | null</td><td>The Clerk&#x27;s asset type code in square brackets, e.g. ST, OP, EF, GS (see fd.house.gov/reference/asset-type-codes.aspx).</td></tr>
+<tr><td><code>option_type</code></td><td>string | null</td><td>call or put, from the transaction description, for options only.</td></tr>
+<tr><td><code>transaction_type</code></td><td>string</td><td>P = purchase, S / S (partial) = sale, E = exchange.</td></tr>
+<tr><td><code>is_partial</code></td><td>boolean</td><td>True for a partial sale (S (partial)).</td></tr>
+<tr><td><code>amount_min</code></td><td>number | null</td><td>Lower bound of the reported value range in USD, e.g. 15001; the value itself when the filer reported an exact amount (e.g. 318.74).</td></tr>
+<tr><td><code>amount_max</code></td><td>number | null</td><td>Upper bound of the reported value range in USD; null for &#x27;Over $50,000,000&#x27; and &#x27;Spouse/DC Over $1,000,000&#x27;.</td></tr>
+<tr><td><code>amount_text</code></td><td>string</td><td>The value range (or exact value) as filed, e.g. $15,001 - $50,000.</td></tr>
+<tr><td><code>is_amendment</code></td><td>boolean</td><td>True when the transaction&#x27;s filing status is Amended: the filing date is then not when the trade first became public.</td></tr>
+<tr><td><code>doc_id</code></td><td>string</td><td>The Clerk&#x27;s document (filing) ID.</td></tr>
+<tr><td><code>pdf_url</code></td><td>string</td><td>The PTR PDF on disclosures-clerk.house.gov.</td></tr>
+<tr><td><code>source_url</code></td><td>string</td><td>Where the row was extracted from (the PTR PDF).</td></tr>
+<tr><td><code>retrieved_at</code></td><td>string</td><td>UTC time the PDF was fetched and parsed.</td></tr>
+</tbody></table></div>
+<h2>Coverage</h2>
+<p>Periodic Transaction Reports of House members filed online, from January 2014 to the latest update of the Clerk&#x27;s index. Scanned paper PTRs are skipped (their PDF links are listed in the run&#x27;s SUMMARY record). The Senate and annual financial disclosure reports are not included.</p>
+<h2>Price</h2>
+<p><strong>Pricing: $1.80 per 1,000 trades ($0.0018 per trade), no start fee.</strong> You only pay for trades delivered, and the Actor stops at your max charge limit.</p>
+<h2>Example input</h2>
+<pre><code>{ &quot;members&quot;: [&quot;Pelosi&quot;], &quot;years&quot;: [&quot;2024&quot;, &quot;2025&quot;], &quot;transactionTypes&quot;: [&quot;purchase&quot;], &quot;maxResults&quot;: 500 }</code></pre>
+<h2>Example output</h2>
+<pre><code>{
+  &quot;schema_version&quot;: &quot;1&quot;,
+  &quot;transaction_id&quot;: &quot;20033337-1&quot;,
+  &quot;member_name&quot;: &quot;Nancy Pelosi&quot;,
+  &quot;first_name&quot;: &quot;Nancy&quot;,
+  &quot;last_name&quot;: &quot;Pelosi&quot;,
+  &quot;state_district&quot;: &quot;CA11&quot;,
+  &quot;state&quot;: &quot;CA&quot;,
+  &quot;filing_date&quot;: &quot;2025-10-24&quot;,
+  &quot;transaction_date&quot;: &quot;2025-10-22&quot;,
+  &quot;notification_date&quot;: &quot;2025-10-22&quot;,
+  &quot;days_to_disclose&quot;: 2,
+  &quot;owner&quot;: &quot;SP&quot;,
+  &quot;ticker&quot;: &quot;AAPL&quot;,
+  &quot;asset_description&quot;: &quot;Apple Inc. - Common Stock (AAPL) [ST]&quot;,
+  &quot;asset_type&quot;: &quot;stock&quot;,
+  &quot;asset_type_code&quot;: &quot;ST&quot;,
+  &quot;option_type&quot;: null,
+  &quot;transaction_type&quot;: &quot;sale&quot;,
+  &quot;is_partial&quot;: true,
+  &quot;amount_min&quot;: 100001,
+  &quot;amount_max&quot;: 250000,
+  &quot;amount_text&quot;: &quot;$100,001 - $250,000&quot;,
+  &quot;is_amendment&quot;: false,
+  &quot;doc_id&quot;: &quot;20033337&quot;,
+  &quot;pdf_url&quot;: &quot;https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2025/20033337.pdf&quot;,
+  &quot;source_url&quot;: &quot;https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2025/20033337.pdf&quot;,
+  &quot;retrieved_at&quot;: &quot;2026-11-05T16:38:21+00:00&quot;
+}</code></pre>
+<h2>Input fields</h2>
+<div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>members</code></td><td>array</td><td>Case-insensitive part of the member&#x27;s name as listed by the Clerk, e.g. [&quot;Pelosi&quot;] or [&quot;Josh Gottheimer&quot;]. Empty = all House members.</td></tr>
+<tr><td><code>tickers</code></td><td>array</td><td>Only trades whose filing names one of these tickers, e.g. [&quot;NVDA&quot;, &quot;MSFT&quot;, &quot;BRK.B&quot;]. Trades without a ticker in the filing are left out when this is set. Empty = all.</td></tr>
+<tr><td><code>transactionTypes</code></td><td>array</td><td>Any of purchase, sale (full or partial), exchange, e.g. [&quot;purchase&quot;]. Default all three.</td></tr>
+<tr><td><code>filedFrom</code></td><td>string</td><td>Earliest filing date (when the trade became public), YYYY-MM-DD, e.g. &quot;2025-01-01&quot;. Empty = 30 days ago, unless <code>years</code> is set.</td></tr>
+<tr><td><code>filedTo</code></td><td>string</td><td>Latest filing date, YYYY-MM-DD, e.g. &quot;2025-12-31&quot;. Empty = today.</td></tr>
+<tr><td><code>years</code></td><td>array</td><td>Whole filing years to load, as strings, e.g. [&quot;2024&quot;, &quot;2025&quot;] (one Clerk index per year; online PTRs start in 2014). Without dates, returns those whole years. Use this or <code>filedFrom</code> for history.</td></tr>
+<tr><td><code>minAmountUsd</code></td><td>integer</td><td>Only trades whose reported range starts at or above this USD amount, e.g. 15001 leaves out the smallest $1,001 - $15,000 range, 1000001 keeps trades over $1 million. Empty = no minimum.</td></tr>
+<tr><td><code>maxResults</code></td><td>integer</td><td>Maximum trades, newest filings first, e.g. 500. Default 100. You pay per trade returned.</td></tr>
+<tr><td><code>onlyNewSinceLastRun</code></td><td>boolean</td><td>true = skip (and don&#x27;t charge for) trades an earlier run with the same filters already delivered. For scheduled runs. Default false. Remembered in a named key-value store in your account.</td></tr>
+</tbody></table></div>
+<h2>Use with AI agents</h2>
+<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>.</p>
+<pre><code>https://mcp.apify.com?tools=bosco_labs/us-house-trades</code></pre>
+<p>Example prompt: <em>&ldquo;&quot;Which options did Nancy Pelosi&#x27;s household trade in 2025, and how many days after the trade were they disclosed?&quot;&rdquo;</em> The agent passes:</p>
+<pre><code>{&quot;members&quot;: [&quot;Pelosi&quot;], &quot;years&quot;: [&quot;2025&quot;]}</code></pre>
+<p>stable, typed JSON, one row per transaction. Every row has <code>schema_version</code> and a <code>source_url</code> pointing to the PTR PDF on the Clerk&#x27;s site, so the agent can cite its source. House only: Senate trades are not included.</p>
+<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~us-house-trades/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.0018 per trade.</p>
+<p><a class="cta" href="https://apify.com/bosco_labs/us-house-trades">Open Congress Stock Trades API on Apify Store &rarr;</a></p>
+</article>
+</main>
+<footer><p><a href="index.html">All Actors</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a></p></footer>
+</body>
+</html>

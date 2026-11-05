@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EU Public Tenders &amp; Contract Awards API (TED procurement)</title>
+<meta name="description" content="EU public tenders and contract awards from TED as JSON: deadlines, winners, awarded values and CPV codes from EU and EEA buyers since 2016.">
+<link rel="canonical" href="https://pb7-debug.github.io/bosco-labs-data/eu-tenders.html">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bosco Labs">
+<meta property="og:title" content="EU Public Tenders &amp; Contract Awards API (TED procurement)">
+<meta property="og:description" content="EU public tenders and contract awards from TED as JSON: deadlines, winners, awarded values and CPV codes from EU and EEA buyers since 2016.">
+<meta property="og:url" content="https://pb7-debug.github.io/bosco-labs-data/eu-tenders.html">
+<meta property="og:image" content="https://pb7-debug.github.io/bosco-labs-data/logo-512.png">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "SoftwareApplication",
+ "name": "EU Public Tenders & Contract Awards API (TED procurement)",
+ "description": "EU public procurement notices from TED, the EU's official tenders journal (EU, EEA and more, since 2016): open calls with deadlines, contract awards with winners and values, prior information. Filter by keyword, buyer country, CPV code, notice type, date and EUR value. Use for tender alerts.",
+ "url": "https://pb7-debug.github.io/bosco-labs-data/eu-tenders.html",
+ "installUrl": "https://apify.com/bosco_labs/eu-tenders",
+ "applicationCategory": "DeveloperApplication",
+ "operatingSystem": "Web (Apify platform)",
+ "offers": {
+  "@type": "Offer",
+  "url": "https://apify.com/bosco_labs/eu-tenders",
+  "priceCurrency": "USD",
+  "description": "$0.002 per notice"
+ },
+ "provider": {
+  "@type": "Organization",
+  "name": "Bosco Labs",
+  "url": "https://apify.com/bosco_labs"
+ }
+}
+</script>
+<style>:root{--bg:#fff;--fg:#1a2230;--muted:#5a6575;--line:#dfe3ea;--card:#f5f7fa;--accent:#0f766e;--btn:#0f766e;--btnfg:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#0d1520;--fg:#e6ebf2;--muted:#9aa6b6;--line:#26323f;--card:#15202d;--accent:#5eead4;--btn:#2dd4bf;--btnfg:#04201d}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header,main,footer{max-width:860px;margin:0 auto;padding:0 16px}header{display:flex;align-items:center;gap:10px;padding-top:18px}
+header a{display:flex;align-items:center;gap:10px;color:var(--fg);text-decoration:none;font-weight:600}header img{width:32px;height:32px}
+a{color:var(--accent)}h1{font-size:1.9rem;line-height:1.25;margin:1.2rem 0 .6rem}h2{margin-top:2.2rem;font-size:1.3rem}
+.lead{font-size:1.15rem}.muted{color:var(--muted)}code{font:.9em ui-monospace,SFMono-Regular,Consolas,monospace}
+pre{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px;overflow-x:auto;font-size:.85rem;line-height:1.45}
+.table{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{text-align:left;vertical-align:top;padding:6px 8px;border-bottom:1px solid var(--line)}
+td:first-child{white-space:nowrap}.cta{display:inline-block;background:var(--btn);color:var(--btnfg);font-weight:700;font-size:1.1rem;padding:14px 22px;border-radius:10px;text-decoration:none;margin:1.2rem 0}
+.cards{list-style:none;padding:0;display:grid;gap:12px}.cards li{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}
+.cards h3{margin:0 0 .3rem;font-size:1.05rem}.cards p{margin:.2rem 0}footer{border-top:1px solid var(--line);margin-top:3rem;padding-top:12px;padding-bottom:24px;font-size:.9rem}</style>
+</head>
+<body>
+<header><a href="index.html"><img src="logo.svg" alt="" width="32" height="32">Bosco Labs data APIs</a></header>
+<main>
+<article>
+<h1>EU Public Tenders &amp; Contract Awards API (TED procurement)</h1>
+<p class="lead">EU public procurement notices from TED, the EU&#x27;s official tenders journal (EU, EEA and more, since 2016): open calls with deadlines, contract awards with winners and values, prior information.</p>
+<p>Filter by keyword, buyer country, CPV code, notice type, date and EUR value. Use for tender alerts.</p>
+<p><a class="cta" href="https://apify.com/bosco_labs/eu-tenders">Run it on Apify Store &rarr;</a></p>
+<h2>What you get</h2>
+<div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>schema_version</code></td><td>string</td><td>Output schema version.</td></tr>
+<tr><td><code>notice_id</code></td><td>string</td><td>TED publication number, e.g. 760925-2026. Unique per notice.</td></tr>
+<tr><td><code>notice_type</code></td><td>string | null</td><td>contract_notice, contract_award, prior_information, direct_award_preannouncement, contract_modification or market_consultation (from TED&#x27;s form type).</td></tr>
+<tr><td><code>ted_notice_type</code></td><td>string | null</td><td>TED&#x27;s detailed notice type code, e.g. cn-standard, can-standard, pin-only, can-modif.</td></tr>
+<tr><td><code>published</code></td><td>string | null</td><td>Publication date in the Official Journal S (YYYY-MM-DD).</td></tr>
+<tr><td><code>deadline</code></td><td>string | null</td><td>Deadline for receipt of tenders (earliest over all lots), ISO date or date-time with UTC offset. Null when the notice has none (e.g. award notices).</td></tr>
+<tr><td><code>title</code></td><td>string | null</td><td>Notice title, English when TED provides it (TED&#x27;s &#x27;Country – CPV – title&#x27; form), else the original language.</td></tr>
+<tr><td><code>title_language</code></td><td>string | null</td><td>ISO 639 language code of title, e.g. eng.</td></tr>
+<tr><td><code>description</code></td><td>string | null</td><td>Short description of the procurement (max. 500 characters), English if available, else the original language. E-mail addresses and phone numbers are removed. Null for legacy (pre-eForms) notices.</td></tr>
+<tr><td><code>description_language</code></td><td>string | null</td><td>ISO 639 language code of description, e.g. deu.</td></tr>
+<tr><td><code>buyer_name</code></td><td>string | null</td><td>Name of the (first) buyer: the contracting authority or entity.</td></tr>
+<tr><td><code>buyer_country</code></td><td>string | null</td><td>Country of the buyer, ISO 3166 alpha-3 (e.g. DEU), as published by TED.</td></tr>
+<tr><td><code>buyer_city</code></td><td>string | null</td><td>City of the buyer.</td></tr>
+<tr><td><code>cpv_codes</code></td><td>array</td><td>All CPV codes of the notice (8 digits, no check digit), duplicates removed.</td></tr>
+<tr><td><code>main_cpv</code></td><td>string | null</td><td>Main CPV code of the procedure (eForms notices only).</td></tr>
+<tr><td><code>estimated_value</code></td><td>number | null</td><td>Estimated value of the procedure, excl. VAT, in currency. Not converted.</td></tr>
+<tr><td><code>awarded_value</code></td><td>number | null</td><td>Total value of the contracts awarded in this notice, excl. VAT, in currency (award notices).</td></tr>
+<tr><td><code>currency</code></td><td>string | null</td><td>ISO 4217 currency of awarded_value, or of estimated_value when there is no awarded value.</td></tr>
+<tr><td><code>winner_names</code></td><td>array | null</td><td>Names of the winning tenderers (award notices; usually companies).</td></tr>
+<tr><td><code>procedure_type</code></td><td>string | null</td><td>Procedure type as coded by TED, e.g. open, restricted. Null when not given.</td></tr>
+<tr><td><code>lots_count</code></td><td>integer | null</td><td>Number of lots (eForms notices only).</td></tr>
+<tr><td><code>ted_url</code></td><td>string</td><td>Notice page on ted.europa.eu.</td></tr>
+<tr><td><code>source_url</code></td><td>string</td><td>Official XML of the notice on ted.europa.eu.</td></tr>
+<tr><td><code>retrieved_at</code></td><td>string</td><td>UTC time the notice was fetched from the TED API.</td></tr>
+</tbody></table></div>
+<h2>Coverage</h2>
+<p>Every country that publishes on TED: the 27 EU member states, Norway, Iceland, Liechtenstein, Switzerland, candidate countries and EU-funded procurement abroad; about 22,000 notices a week. History from November 2016 (complete from 2017). New notices are available the day they are published.</p>
+<h2>Price</h2>
+<p><strong>Pricing (pay per event):</strong> $0.002 per notice ($2 per 1,000 notices), no start fee. You only pay for notices delivered, a notice is never charged twice in the same run, and the Actor stops at your max charge limit. With <code>onlyNewSinceLastRun</code>, scheduled runs only pay for notices you haven&#x27;t received yet.</p>
+<h2>Example input</h2>
+<pre><code>{
+  &quot;keywords&quot;: &quot;software&quot;,
+  &quot;countries&quot;: [&quot;DE&quot;, &quot;NL&quot;, &quot;FR&quot;],
+  &quot;cpvCodes&quot;: [&quot;72&quot;, &quot;48&quot;],
+  &quot;noticeTypes&quot;: [&quot;contract_notice&quot;, &quot;contract_award&quot;],
+  &quot;publishedFrom&quot;: &quot;2026-10-01&quot;,
+  &quot;minValueEur&quot;: 100000,
+  &quot;maxResults&quot;: 200
+}</code></pre>
+<h2>Example output</h2>
+<pre><code>{
+  &quot;schema_version&quot;: &quot;1&quot;,
+  &quot;notice_id&quot;: &quot;768694-2026&quot;,
+  &quot;notice_type&quot;: &quot;contract_award&quot;,
+  &quot;ted_notice_type&quot;: &quot;can-standard&quot;,
+  &quot;published&quot;: &quot;2026-11-05&quot;,
+  &quot;deadline&quot;: null,
+  &quot;title&quot;: &quot;Netherlands – Software package and information systems – Software Schuldhulpverlening&quot;,
+  &quot;title_language&quot;: &quot;eng&quot;,
+  &quot;description&quot;: &quot;De gemeente heeft als doel om op basis van deze Europese openbare aanbestedingsprocedure volgens de Aanbestedingswet 2012 te komen tot een overeenkomst met één partij voor het leveren van software als een dienst ten aanzien van Schuldhulpverlening. zie leidraad&quot;,
+  &quot;description_language&quot;: &quot;nld&quot;,
+  &quot;buyer_name&quot;: &quot;Gemeente Apeldoorn, team Inkoop&quot;,
+  &quot;buyer_country&quot;: &quot;NLD&quot;,
+  &quot;buyer_city&quot;: &quot;Apeldoorn&quot;,
+  &quot;cpv_codes&quot;: [&quot;48000000&quot;],
+  &quot;main_cpv&quot;: &quot;48000000&quot;,
+  &quot;estimated_value&quot;: 3000000,
+  &quot;awarded_value&quot;: 3600000,
+  &quot;currency&quot;: &quot;EUR&quot;,
+  &quot;winner_names&quot;: [&quot;Innovadis B.V.&quot;],
+  &quot;procedure_type&quot;: &quot;open&quot;,
+  &quot;lots_count&quot;: 1,
+  &quot;ted_url&quot;: &quot;https://ted.europa.eu/en/notice/-/detail/768694-2026&quot;,
+  &quot;source_url&quot;: &quot;https://ted.europa.eu/en/notice/768694-2026/xml&quot;,
+  &quot;retrieved_at&quot;: &quot;2026-11-05T16:05:27+00:00&quot;
+}</code></pre>
+<h2>Input fields</h2>
+<div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>keywords</code></td><td>string</td><td>Full-text search over the whole notice, in any language; a notice matches when it contains all words, e.g. &quot;cloud hosting&quot;. Empty = no keyword filter.</td></tr>
+<tr><td><code>countries</code></td><td>array</td><td>Buyer countries as ISO 3166 alpha-2 (DE, FR, NL, PL, ...) or alpha-3 (DEU) codes, e.g. [&quot;DE&quot;, &quot;NL&quot;]. Alpha-3 works for any country, e.g. UKR. Empty = all countries.</td></tr>
+<tr><td><code>cpvCodes</code></td><td>array</td><td>Common Procurement Vocabulary (CPV) code prefixes as digit strings; a prefix matches every code below it, e.g. [&quot;72&quot;] = IT services, &quot;45&quot; = construction work, &quot;3312&quot; = medical equipment, &quot;72212000&quot; = one specific code. Empty = all sectors.</td></tr>
+<tr><td><code>noticeTypes</code></td><td>array</td><td>Kinds of notices: contract_notice (open call for tenders), contract_award (who won, for how much), prior_information, direct_award_preannouncement, contract_modification, market_consultation. Default [&quot;contract_notice&quot;]. Pass [] for all kinds.</td></tr>
+<tr><td><code>publishedFrom</code></td><td>string</td><td>Earliest publication date, YYYY-MM-DD, e.g. &quot;2026-10-01&quot;. The TED API covers notices from November 2016. Empty = 7 days before <code>publishedTo</code>.</td></tr>
+<tr><td><code>publishedTo</code></td><td>string</td><td>Latest publication date, YYYY-MM-DD. Empty = today.</td></tr>
+<tr><td><code>minValueEur</code></td><td>integer</td><td>Minimum total notice value in EUR, e.g. 1000000 (estimated value for calls, awarded value for awards). When set, notices stated in other currencies (e.g. PLN, SEK) and notices without a value are left out, as TED does not convert currencies. Empty = no minimum.</td></tr>
+<tr><td><code>maxResults</code></td><td>integer</td><td>Maximum notices, newest first, e.g. 100. Default 50. You pay per notice delivered.</td></tr>
+<tr><td><code>onlyNewSinceLastRun</code></td><td>boolean</td><td>true = skip (and don&#x27;t charge for) notices an earlier run with the same filters already delivered. For scheduled runs. Default false. Remembered in a named key-value store in your account.</td></tr>
+</tbody></table></div>
+<h2>Use with AI agents</h2>
+<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>.</p>
+<pre><code>https://mcp.apify.com?tools=bosco_labs/eu-tenders</code></pre>
+<p>Example prompt: <em>&ldquo;&quot;Find open IT tenders above 1 million euros in Germany and the Netherlands from the last two weeks and list their deadlines.&quot;&rdquo;</em> The agent passes:</p>
+<pre><code>{&quot;countries&quot;: [&quot;DE&quot;, &quot;NL&quot;], &quot;cpvCodes&quot;: [&quot;72&quot;], &quot;minValueEur&quot;: 1000000, &quot;publishedFrom&quot;: &quot;2026-10-22&quot;}</code></pre>
+<p>stable, typed JSON, one row per notice. Every row has <code>schema_version</code> and a <code>source_url</code> pointing to the official notice XML on ted.europa.eu (plus <code>ted_url</code>, the notice page), so the agent can cite its source.</p>
+<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~eu-tenders/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.002 per notice.</p>
+<p><a class="cta" href="https://apify.com/bosco_labs/eu-tenders">Open EU Public Tenders &amp; Contract Awards API (TED procurement) on Apify Store &rarr;</a></p>
+</article>
+</main>
+<footer><p><a href="index.html">All Actors</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a></p></footer>
+</body>
+</html>

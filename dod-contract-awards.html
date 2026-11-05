@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pentagon DoD Contract Awards API: winners, amounts, tickers</title>
+<meta name="description" content="Pentagon contract awards of $7.5M+ the same evening, plus USAspending.gov history since FY2008, with the winner&#x27;s stock ticker and SEC shares outstanding.">
+<link rel="canonical" href="https://pb7-debug.github.io/bosco-labs-data/dod-contract-awards.html">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bosco Labs">
+<meta property="og:title" content="Pentagon DoD Contract Awards API: winners, amounts, tickers">
+<meta property="og:description" content="Pentagon contract awards of $7.5M+ the same evening, plus USAspending.gov history since FY2008, with the winner&#x27;s stock ticker and SEC shares outstanding.">
+<meta property="og:url" content="https://pb7-debug.github.io/bosco-labs-data/dod-contract-awards.html">
+<meta property="og:image" content="https://pb7-debug.github.io/bosco-labs-data/logo-512.png">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "SoftwareApplication",
+ "name": "Pentagon / DoD Contract Awards API: winners, amounts, tickers",
+ "description": "Pentagon/DoD contract awards of $7.5M+ the same evening they are announced, plus USAspending.gov history since FY2008 (any federal agency). Winner, amount, service, NAICS/PSC, matched to a US stock ticker with SEC shares outstanding. Filter by date, agency, amount, company, ticker.",
+ "url": "https://pb7-debug.github.io/bosco-labs-data/dod-contract-awards.html",
+ "installUrl": "https://apify.com/bosco_labs/dod-contract-awards",
+ "applicationCategory": "DeveloperApplication",
+ "operatingSystem": "Web (Apify platform)",
+ "offers": {
+  "@type": "Offer",
+  "url": "https://apify.com/bosco_labs/dod-contract-awards",
+  "priceCurrency": "USD",
+  "description": "$0.005 per award row"
+ },
+ "provider": {
+  "@type": "Organization",
+  "name": "Bosco Labs",
+  "url": "https://apify.com/bosco_labs"
+ }
+}
+</script>
+<style>:root{--bg:#fff;--fg:#1a2230;--muted:#5a6575;--line:#dfe3ea;--card:#f5f7fa;--accent:#0f766e;--btn:#0f766e;--btnfg:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#0d1520;--fg:#e6ebf2;--muted:#9aa6b6;--line:#26323f;--card:#15202d;--accent:#5eead4;--btn:#2dd4bf;--btnfg:#04201d}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header,main,footer{max-width:860px;margin:0 auto;padding:0 16px}header{display:flex;align-items:center;gap:10px;padding-top:18px}
+header a{display:flex;align-items:center;gap:10px;color:var(--fg);text-decoration:none;font-weight:600}header img{width:32px;height:32px}
+a{color:var(--accent)}h1{font-size:1.9rem;line-height:1.25;margin:1.2rem 0 .6rem}h2{margin-top:2.2rem;font-size:1.3rem}
+.lead{font-size:1.15rem}.muted{color:var(--muted)}code{font:.9em ui-monospace,SFMono-Regular,Consolas,monospace}
+pre{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px;overflow-x:auto;font-size:.85rem;line-height:1.45}
+.table{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{text-align:left;vertical-align:top;padding:6px 8px;border-bottom:1px solid var(--line)}
+td:first-child{white-space:nowrap}.cta{display:inline-block;background:var(--btn);color:var(--btnfg);font-weight:700;font-size:1.1rem;padding:14px 22px;border-radius:10px;text-decoration:none;margin:1.2rem 0}
+.cards{list-style:none;padding:0;display:grid;gap:12px}.cards li{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}
+.cards h3{margin:0 0 .3rem;font-size:1.05rem}.cards p{margin:.2rem 0}footer{border-top:1px solid var(--line);margin-top:3rem;padding-top:12px;padding-bottom:24px;font-size:.9rem}</style>
+</head>
+<body>
+<header><a href="index.html"><img src="logo.svg" alt="" width="32" height="32">Bosco Labs data APIs</a></header>
+<main>
+<article>
+<h1>Pentagon / DoD Contract Awards API: winners, amounts, tickers</h1>
+<p class="lead">Pentagon/DoD contract awards of $7.5M+ the same evening they are announced, plus USAspending.gov history since FY2008 (any federal agency).</p>
+<p>Winner, amount, service, NAICS/PSC, matched to a US stock ticker with SEC shares outstanding. Filter by date, agency, amount, company, ticker.</p>
+<p><a class="cta" href="https://apify.com/bosco_labs/dod-contract-awards">Run it on Apify Store &rarr;</a></p>
+<h2>What you get</h2>
+<div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>schema_version</code></td><td>string</td><td>Output schema version.</td></tr>
+<tr><td><code>source</code></td><td>string</td><td>Where the row comes from: &quot;usaspending&quot; (obligation records, ~3 months late for DoD) or &quot;dod_daily_list&quot; (the Pentagon&#x27;s same-evening contract list, parsed by AI with checks). The two are separate records of an award and are never summed or deduped.</td></tr>
+<tr><td><code>award_id</code></td><td>string | null</td><td>Contract PIID (USAspending &#x27;Award ID&#x27;); for daily-list rows the contract number in the text, null when none is stated.</td></tr>
+<tr><td><code>parent_award_id</code></td><td>string | null</td><td>PIID of the parent IDV (IDIQ, BPA, GSA schedule) for task and delivery orders; null for standalone contracts.</td></tr>
+<tr><td><code>award_key</code></td><td>string</td><td>USAspending generated_internal_id: unique award key (PIID + agency + parent IDV).</td></tr>
+<tr><td><code>action_date</code></td><td>string</td><td>Signing (action) date, YYYY-MM-DD; for daily-list rows the announcement date.</td></tr>
+<tr><td><code>amount_usd</code></td><td>number</td><td>USAspending rows: obligated amount in USD, that day&#x27;s actions on this award summed (modifications can be negative). Daily-list rows: the face value as stated (often with options, or a ceiling: see is_ceiling).</td></tr>
+<tr><td><code>is_ceiling</code></td><td>boolean</td><td>True when amount_usd is a ceiling, not money committed: a multiple-award contract (shared by several awardees) or an IDIQ maximum. Only daily-list rows can be true.</td></tr>
+<tr><td><code>action_count</code></td><td>integer</td><td>Number of contract actions summed into this row.</td></tr>
+<tr><td><code>modification_numbers</code></td><td>array</td><td>Modification numbers of those actions (&#x27;0&#x27; = the base award).</td></tr>
+<tr><td><code>new_award</code></td><td>boolean</td><td>True when the day includes the base award (modification 0), false for modifications only.</td></tr>
+<tr><td><code>award_type</code></td><td>string | null</td><td>DEFINITIVE CONTRACT, DELIVERY ORDER, PURCHASE ORDER or BPA CALL.</td></tr>
+<tr><td><code>awarding_agency</code></td><td>string | null</td><td>Top-tier awarding agency, e.g. Department of Defense.</td></tr>
+<tr><td><code>awarding_sub_agency</code></td><td>string | null</td><td>Awarding sub-agency, e.g. Department of the Navy, Department of the Army, Department of the Air Force, Defense Logistics Agency, Missile Defense Agency.</td></tr>
+<tr><td><code>recipient_name</code></td><td>string | null</td><td>Contractor (recipient) name as reported.</td></tr>
+<tr><td><code>recipient_uei</code></td><td>string | null</td><td>Recipient Unique Entity ID (SAM.gov).</td></tr>
+<tr><td><code>parent_name</code></td><td>string | null</td><td>Parent company name from the USAspending award record.</td></tr>
+<tr><td><code>parent_uei</code></td><td>string | null</td><td>Parent company UEI.</td></tr>
+<tr><td><code>recipient_city</code></td><td>string | null</td><td>Recipient city.</td></tr>
+<tr><td><code>recipient_state</code></td><td>string | null</td><td>Recipient state code (daily-list rows: the state as written, e.g. Virginia).</td></tr>
+<tr><td><code>recipient_country</code></td><td>string | null</td><td>Recipient country.</td></tr>
+<tr><td><code>performance_state</code></td><td>string | null</td><td>Place of performance state code.</td></tr>
+<tr><td><code>performance_country</code></td><td>string | null</td><td>Place of performance country.</td></tr>
+<tr><td><code>naics_code</code></td><td>string | null</td><td>NAICS industry code.</td></tr>
+<tr><td><code>naics_description</code></td><td>string | null</td><td>NAICS description.</td></tr>
+<tr><td><code>psc_code</code></td><td>string | null</td><td>Product and Service Code.</td></tr>
+<tr><td><code>psc_description</code></td><td>string | null</td><td>PSC description.</td></tr>
+<tr><td><code>description</code></td><td>string | null</td><td>Description of the day&#x27;s largest action (max 300 characters).</td></tr>
+<tr><td><code>ticker</code></td><td>string | null</td><td>US-listed ticker (NYSE, Nasdaq, CBOE) of the recipient or its parent, by exact cleaned-name match; null when not matched.</td></tr>
+<tr><td><code>matched_on</code></td><td>string | null</td><td>Which name matched the ticker: the recipient itself or its parent company.</td></tr>
+<tr><td><code>sec_cik</code></td><td>integer | null</td><td>SEC Central Index Key of the matched company.</td></tr>
+<tr><td><code>sec_company_name</code></td><td>string | null</td><td>Company name in SEC&#x27;s ticker list.</td></tr>
+<tr><td><code>exchange</code></td><td>string | null</td><td>Exchange of the ticker in SEC&#x27;s list.</td></tr>
+<tr><td><code>shares_outstanding</code></td><td>integer | null</td><td>Shares outstanding from the SEC cover page (dei:EntityCommonStockSharesOutstanding), the count of the action date (latest on or before it, else the earliest). Multiply by your own price for a market cap.</td></tr>
+<tr><td><code>shares_as_of</code></td><td>string | null</td><td>Date of that share count, YYYY-MM-DD.</td></tr>
+<tr><td><code>usaspending_url</code></td><td>string</td><td>Award page on USAspending.gov.</td></tr>
+<tr><td><code>source_url</code></td><td>string | null</td><td>USAspending API record of the award; for daily-list rows the war.gov article, null when the e-mail did not link it.</td></tr>
+<tr><td><code>data_lag_note</code></td><td>string</td><td>Reporting lag of the source: DoD actions appear up to 90 days after signing.</td></tr>
+<tr><td><code>retrieved_at</code></td><td>string</td><td>UTC time the row was built.</td></tr>
+</tbody></table></div>
+<h2>Coverage</h2>
+<p>Same evening: the Pentagon&#x27;s daily contract list (weekdays, rows in by about 7 p.m. New York). History: the USAspending.gov API from 2007-10-01, for the Department of Defense or any other federal agency. DoD contract actions reach USAspending up to 90 days after signing, so the default window is the last 135 days.</p>
+<h2>Price</h2>
+<p><strong>Pricing (pay per event):</strong> $0.005 per award row ($5 per 1,000 awards). No start fee. You only pay for rows delivered, a row is never charged twice in one run, scheduled runs can skip awards you already received, and the Actor stops at your max charge limit.</p>
+<h2>Example input</h2>
+<pre><code>{
+  &quot;dateFrom&quot;: &quot;2019-01-01&quot;,
+  &quot;dateTo&quot;: &quot;2019-12-31&quot;,
+  &quot;tickers&quot;: [&quot;KTOS&quot;],
+  &quot;maxResults&quot;: 1000
+}</code></pre>
+<h2>Example output</h2>
+<pre><code>{
+  &quot;award_id&quot;: &quot;N0018923F3020&quot;,
+  &quot;parent_award_id&quot;: &quot;N0017819D7295&quot;,
+  &quot;action_date&quot;: &quot;2026-06-24&quot;,
+  &quot;amount_usd&quot;: 37046089.24,
+  &quot;action_count&quot;: 1,
+  &quot;new_award&quot;: false,
+  &quot;award_type&quot;: &quot;DELIVERY ORDER&quot;,
+  &quot;awarding_agency&quot;: &quot;Department of Defense&quot;,
+  &quot;awarding_sub_agency&quot;: &quot;Department of the Navy&quot;,
+  &quot;recipient_name&quot;: &quot;CACI, INC. - FEDERAL&quot;,
+  &quot;recipient_uei&quot;: &quot;N3PBJAVNKF61&quot;,
+  &quot;parent_name&quot;: &quot;CACI INTERNATIONAL INC&quot;,
+  &quot;recipient_city&quot;: &quot;CHANTILLY&quot;,
+  &quot;recipient_state&quot;: &quot;VA&quot;,
+  &quot;naics_code&quot;: &quot;541330&quot;,
+  &quot;naics_description&quot;: &quot;ENGINEERING SERVICES&quot;,
+  &quot;psc_code&quot;: &quot;R706&quot;,
+  &quot;psc_description&quot;: &quot;SUPPORT- MANAGEMENT: LOGISTICS SUPPORT&quot;,
+  &quot;description&quot;: &quot;NAVAL FORCES LOGISTICS SUPPORT SERVICES-NFL&quot;,
+  &quot;ticker&quot;: &quot;CACI&quot;,
+  &quot;matched_on&quot;: &quot;parent&quot;,
+  &quot;sec_cik&quot;: 16058,
+  &quot;exchange&quot;: &quot;NYSE&quot;,
+  &quot;shares_outstanding&quot;: 22091305,
+  &quot;shares_as_of&quot;: &quot;2026-04-17&quot;,
+  &quot;usaspending_url&quot;: &quot;https://www.usaspending.gov/award/CONT_AWD_N0018923F3020_9700_N0017819D7295_9700&quot;,
+  &quot;source&quot;: &quot;usaspending&quot;,
+  &quot;is_ceiling&quot;: false,
+  &quot;data_lag_note&quot;: &quot;DoD contract actions reach FPDS/USAspending up to 90 days after signing ...&quot;,
+  &quot;retrieved_at&quot;: &quot;2026-11-05T16:00:00+00:00&quot;
+}</code></pre>
+<h2>Input fields</h2>
+<div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>source</code></td><td>string</td><td>&quot;both&quot; (default) = the Pentagon&#x27;s same-evening contract list (published around 5 p.m. New York on the signing day, face values, DoD only) plus the USAspending history (obligations, ~3 months behind for DoD). &quot;dailyList&quot; = only the same-evening list rows. &quot;history&quot; = only USAspending. The list has no NAICS/PSC codes, so it is skipped when naicsCodes or pscCodes are set, and when agencies excludes the Department of Defense.</td></tr>
+<tr><td><code>dateFrom</code></td><td>string</td><td>Earliest action (signing) date, or announcement date for same-evening list rows, YYYY-MM-DD, e.g. &quot;2019-01-01&quot;. History from 2007-10-01 (FY2008). Empty = 135 days before <code>dateTo</code>, because DoD data is published up to 90 days late (about 105 days observed).</td></tr>
+<tr><td><code>dateTo</code></td><td>string</td><td>Latest action (signing) date, YYYY-MM-DD, e.g. &quot;2019-12-31&quot;. Empty = today. The last ~3 months of DoD data are incomplete.</td></tr>
+<tr><td><code>agencies</code></td><td>array</td><td>Top-tier awarding agency names as USAspending spells them, e.g. [&quot;Department of Defense&quot;], [&quot;Department of Homeland Security&quot;], [&quot;National Aeronautics and Space Administration&quot;]. Default [&quot;Department of Defense&quot;]. Pass [] for ALL federal agencies.</td></tr>
+<tr><td><code>minAmountUsd</code></td><td>integer</td><td>Minimum summed obligations per award and day, in USD, e.g. 1000000. Default 7500000, the DoD&#x27;s public announcement threshold (the daily 5 p.m. contracts list). 0 = every award-day except net de-obligations (negative sums).</td></tr>
+<tr><td><code>recipients</code></td><td>array</td><td>Winning company search terms, matched by USAspending against recipient and parent names, e.g. [&quot;kratos&quot;, &quot;huntington ingalls&quot;]. Empty = all recipients.</td></tr>
+<tr><td><code>tickers</code></td><td>array</td><td>Only awards matched to these US-listed tickers (NYSE, Nasdaq, CBOE), e.g. [&quot;LMT&quot;, &quot;KTOS&quot;, &quot;AVAV&quot;]. Turns ticker matching on. Empty = no ticker filter.</td></tr>
+<tr><td><code>naicsCodes</code></td><td>array</td><td>NAICS industry codes, 2 to 6 digits, e.g. [&quot;336414&quot;] (guided missiles and space vehicles) or [&quot;3364&quot;]. Empty = all.</td></tr>
+<tr><td><code>pscCodes</code></td><td>array</td><td>Product and Service Codes, e.g. [&quot;1410&quot;] (guided missiles), [&quot;R425&quot;] (engineering support). Empty = all.</td></tr>
+<tr><td><code>matchTickers</code></td><td>boolean</td><td>true (default) = match the recipient or its parent company to a US-listed ticker by exact cleaned name (SEC company list) and add the SEC-reported shares outstanding. Unmatched awards are still returned, with ticker = null.</td></tr>
+<tr><td><code>maxResults</code></td><td>integer</td><td>Maximum award rows, newest signing dates first, then largest amounts, e.g. 100. Default 500. Each row is one charged event.</td></tr>
+<tr><td><code>onlyNewSinceLastRun</code></td><td>boolean</td><td>true = skip (and don&#x27;t charge for) award-days (including old-dated actions the DoD publishes late) an earlier run with the same filters already delivered. For scheduled runs. Default false. Remembered in a named key-value store in your account.</td></tr>
+</tbody></table></div>
+<h2>Use with AI agents</h2>
+<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>.</p>
+<pre><code>https://mcp.apify.com?tools=bosco_labs/dod-contract-awards</code></pre>
+<p>Example prompt: <em>&ldquo;&quot;Which Kratos contracts did the Pentagon award in 2019, and how large were they?&quot;&rdquo;</em> The agent passes:</p>
+<pre><code>{&quot;tickers&quot;: [&quot;KTOS&quot;], &quot;dateFrom&quot;: &quot;2019-01-01&quot;, &quot;dateTo&quot;: &quot;2019-12-31&quot;}</code></pre>
+<p>stable, typed JSON, one row per award per signing day, newest first. Every row has <code>schema_version</code>, <code>source</code> (<code>dod_daily_list</code>: the same-evening announcement; <code>usaspending</code>: the history, up to 90 days late for DoD) and a <code>source_url</code> (the war.gov article or the USAspending API record), so the agent can cite its source. Rows with <code>is_ceiling: true</code> are contract ceilings, not money committed.</p>
+<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~dod-contract-awards/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.005 per award row.</p>
+<p><a class="cta" href="https://apify.com/bosco_labs/dod-contract-awards">Open Pentagon / DoD Contract Awards API on Apify Store &rarr;</a></p>
+</article>
+</main>
+<footer><p><a href="index.html">All Actors</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a></p></footer>
+</body>
+</html>

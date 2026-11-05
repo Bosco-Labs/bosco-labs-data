@@ -1,0 +1,585 @@
+# Bosco Labs data APIs
+
+> Bosco Labs publishes data APIs as Apify Actors that return clean, typed JSON from official sources: SEC Form 4 insider trades and EDGAR filings, US House STOCK Act trades, European ESEF annual reports, UK/Danish/Norwegian company accounts, EU public tenders (TED) and Pentagon contract awards, plus tools to deduplicate Apify datasets and export them to Google Sheets. Each Actor runs on the Apify platform via API or MCP and is priced per row delivered (pay per event). Data rows carry a source link.
+
+Apify Store profile: https://apify.com/bosco_labs
+
+## Finance & filings
+
+- [SEC Insider Trading API (Form 4): live + history since 2006](https://pb7-debug.github.io/bosco-labs-data/sec-insider-trades.html): Every insider purchase and sale reported on SEC Form 4 (directors, officers, 10% owners), from official EDGAR filings, 2006 to today, with cluster-buy and cluster-sell signals; filter by ticker, CIK, transaction code, role, value and date. Price: $0.0018 per transaction row and $0.02 per cluster signal. ([Apify Store](https://apify.com/bosco_labs/sec-insider-trades))
+- [SEC EDGAR Filings API: 8-K, 10-K, 10-Q feed since 1994](https://pb7-debug.github.io/bosco-labs-data/sec-filings-feed.html): SEC EDGAR filings (8-K, 10-K, 10-Q, S-1, 13D, 13G, Form 4 and every other form) for any company or the whole market, live or back to 1994, from the SEC's own feeds; 8-K item codes and earnings releases (Item 2.02); links to each filing, not its text. Price: $0.001 per filing. ([Apify Store](https://apify.com/bosco_labs/sec-filings-feed))
+- [Congress Stock Trades API: US House STOCK Act since 2014](https://pb7-debug.github.io/bosco-labs-data/us-house-trades.html): Congress stock trades: stock, option, fund and bond trades that US House members disclose in STOCK Act Periodic Transaction Reports, from the Clerk of the House's official filings since January 2014 (no Senate); ticker, amount range, owner, days to disclose. Price: $0.0018 per trade. ([Apify Store](https://apify.com/bosco_labs/us-house-trades))
+
+## Company data
+
+- [EU Annual Reports API (ESEF): XBRL financial statements](https://pb7-debug.github.io/bosco-labs-data/esef-annual-reports.html): Normalized key financials (revenue, EBIT, EBITDA, net income, EPS, assets, equity, cash flows, margins, growth) of European listed companies from official ESEF annual reports via filings.xbrl.org; 28 countries; every value linked to its XBRL fact. Price: $0.01 per run plus $0.05 per annual report; raw XBRL fact rows, if switched on, $0.0005 each. ([Apify Store](https://apify.com/bosco_labs/esef-annual-reports))
+- [Company Financials API: UK, Denmark & Norway accounts + LEI](https://pb7-debug.github.io/bosco-labs-data/company-accounts.html): Financials (revenue, profit, equity, assets, cash, employees) of private and public companies from official accounts: UK Companies House, Denmark Erhvervsstyrelsen, Norway Brønnøysund; adds the LEI from GLEIF and a source per value. Price: $0.04 per company-year. ([Apify Store](https://apify.com/bosco_labs/company-accounts))
+
+## Government & procurement
+
+- [EU Public Tenders & Contract Awards API (TED procurement)](https://pb7-debug.github.io/bosco-labs-data/eu-tenders.html): EU public procurement notices from TED (Tenders Electronic Daily), the EU's official tenders journal: open calls with deadlines, contract awards with winners and values, prior information; EU, EEA and more, since 2016; filter by keyword, country, CPV code, notice type, date, EUR value. Price: $0.002 per notice. ([Apify Store](https://apify.com/bosco_labs/eu-tenders))
+- [Pentagon / DoD Contract Awards API: winners, amounts, tickers](https://pb7-debug.github.io/bosco-labs-data/dod-contract-awards.html): US Department of Defense contract awards of $7.5M or more the same evening they are announced, plus USAspending.gov history since FY2008 (any federal agency); winner, amount, service, NAICS/PSC, matched to a US stock ticker with SEC shares outstanding. Price: $0.005 per award row. ([Apify Store](https://apify.com/bosco_labs/dod-contract-awards))
+
+## Data tools
+
+- [Deduplicate & Merge Apify Datasets: remove duplicate items](https://pb7-debug.github.io/bosco-labs-data/dataset-dedup.html): Deduplicate and merge one or more Apify datasets (or a pasted JSON array): removes duplicate items by any fields (dot paths allowed) or by the whole item, keeping the first or last occurrence; streams millions of items with constant memory. Price: $0.00015 per unique item written (duplicates are free). ([Apify Store](https://apify.com/bosco_labs/dataset-dedup))
+- [Google Sheets Export: send any Apify dataset to a spreadsheet](https://pb7-debug.github.io/bosco-labs-data/sheets-export.html): Export any Apify dataset to Google Sheets: replace a tab or append rows, with nested fields as columns and your header kept; writes with your own Google service account key and retries Google rate limits. Price: $0.00015 per row exported. ([Apify Store](https://apify.com/bosco_labs/sheets-export))
+
+## How to call
+
+- Apify API (synchronous): POST `https://api.apify.com/v2/acts/bosco_labs~<actor>/run-sync-get-dataset-items` with header `Authorization: Bearer <APIFY_TOKEN>` and the Actor input as the JSON body; the response is the dataset items.
+- Apify hosted MCP server: add `https://mcp.apify.com?tools=bosco_labs/<actor>` to your MCP client (Claude, Cursor, VS Code, ...). It loads the Actor as a tool plus `get-actor-run` and `get-dataset-items`, and signs you in with OAuth or `Authorization: Bearer <APIFY_TOKEN>`. On the default server (`https://mcp.apify.com`) agents can also find the Actors with `search-actors` and run them with `call-actor`.
+- Pricing: pay per event, billed to your own Apify account: you pay for rows delivered at the prices listed per Actor, and runs stop at your max charge limit.
+- Bosco Labs MCP server: `bosco-labs-data-mcp`, one MCP server for all data Actors: coming soon.
+
+## SEC Insider Trading API (Form 4): live + history since 2006
+
+Docs: https://pb7-debug.github.io/bosco-labs-data/sec-insider-trades.html
+Apify Store: https://apify.com/bosco_labs/sec-insider-trades
+MCP: https://mcp.apify.com?tools=bosco_labs/sec-insider-trades
+Price: $0.0018 per transaction row and $0.02 per cluster signal
+
+Insider trading data from SEC Form 4: every insider purchase and sale by directors, officers and 10% owners, from official EDGAR filings, 2006 to today. Filter by ticker, CIK, transaction code, role, value and date; adds cluster-buy and cluster-sell signals. Use for insider screens and alerts.
+
+Coverage: Today's filings from the EDGAR live feed, minutes after the SEC accepts them; recent quarters from the EDGAR indexes and Form 4 XML; history from 2006 from the SEC's quarterly Insider Transactions Data Sets. Non-derivative table only: options and other derivatives are not included.
+
+### Input fields
+
+- `tickers` (array): Issuer stock tickers, e.g. ["AAPL", "TSLA"]. Mapped to the company's CIK with the SEC's own ticker list; history is also matched on the ticker as written in the filing. Empty (and `ciks` empty) = the whole market.
+- `ciks` (array): Issuer SEC Central Index Keys as digits, leading zeros optional, e.g. ["320193"] for Apple. Use for delisted or renamed companies the SEC's ticker list no longer has. Empty = no CIK filter.
+- `transactionCodes` (array): Form 4 transaction codes to return, e.g. ["P"] for open-market purchases only. Default ["P", "S"] (open-market purchases and sales). Pass [] for all codes, including awards (A), tax withholding (F) and option exercises (M).
+- `insiderRoles` (array): Only insiders with one of these roles: director, officer, ten_percent_owner, other, e.g. ["director", "officer"]. Empty = all roles.
+- `minValueUsd` (integer): Minimum transaction value in USD (shares x price), e.g. 100000. Default 0 = no minimum. Transactions without a price count as 0.
+- `dateFrom` (string): Earliest filing date, YYYY-MM-DD, e.g. "2024-01-01". Data starts 2006-01-01. Empty = `lookbackDays` days before today.
+- `dateTo` (string): Latest filing date, YYYY-MM-DD, e.g. "2024-12-31". Empty = today, including today's filings from the live EDGAR feed.
+- `lookbackDays` (integer): Used only when `dateFrom` is empty: read filings from this many days back until today, e.g. 90. Default 7. Handy for schedules.
+- `clusterBuysOnly` (boolean): true = only open-market purchases that are part of a cluster: at least 2 different directors or officers of the same company buying, filed within `clusterWindowDays`, together worth at least $100,000. Default false. Also reads the window before the date range.
+- `clusterSellsOnly` (boolean): true = only open-market sales that are part of a cluster (same rule as cluster buys, for sales). Pre-planned 10b5-1 plan sales are left out (filings flag them since April 2023). Default false. Can be combined with `clusterBuysOnly`.
+- `clusterWindowDays` (integer): How many days of filings count as one cluster of insider buying or selling, e.g. 14. Default 30.
+- `includeClusterSignals` (boolean): true (default) = also output one row per cluster signal (record_type = "cluster"): the day a company's insider buying or selling first met the cluster rule, with the insiders and total value. Charged as a separate, higher-priced event. false = transaction rows only.
+- `maxResults` (integer): Maximum transaction rows, newest first, e.g. 500. Default 100, up to 200,000 per run (split bigger exports by date range). The run stops reading once it has this many, and returns at most this many cluster signals.
+- `onlyNewSinceLastRun` (boolean): true = skip (and don't charge for) transactions and signals an earlier run with the same filters already delivered. For scheduled runs. Default false. Remembered in a named key-value store in your account.
+
+### Output fields
+
+- `schema_version` (string): Output schema version.
+- `record_type` (string): transaction = one Form 4 transaction; cluster = one cluster-buy signal.
+- `cluster_side` (string | null): Cluster rows only: buy = insiders buying together, sell = insiders selling together (10b5-1 plan sales excluded).
+- `accession_number` (string): SEC accession number of the Form 4 filing.
+- `form` (string): 4, or 4/A for an amendment.
+- `issuer_name` (string): Company whose shares were traded, as filed.
+- `issuer_cik` (string): SEC CIK of the issuer (10 digits).
+- `ticker` (string | null): Issuer trading symbol as written in the filing.
+- `insider_name` (string): Reporting person (the first one in a joint filing).
+- `insider_cik` (string | null): SEC CIK of the reporting person.
+- `insider_roles` (array): director, officer, ten_percent_owner, other (combined over all joint filers).
+- `officer_title` (string | null): Officer title, e.g. Chief Executive Officer.
+- `owner_count` (integer): Number of reporting persons on the filing (joint filings > 1).
+- `transaction_date` (string | null): Date of the transaction (YYYY-MM-DD).
+- `filing_date` (string): Date the SEC received the filing (YYYY-MM-DD). For cluster rows: the day the cluster rule was first met.
+- `accepted_at` (string | null): EDGAR acceptance time with New York offset (live EDGAR rows only).
+- `transaction_code` (string): Form 4 code: P purchase, S sale, A award, M option exercise, F tax withholding, G gift, ...
+- `transaction_type` (string | null): Plain-English meaning of the transaction code.
+- `acquired_disposed` (string | null): A = acquired, D = disposed.
+- `shares` (number | null): Number of shares.
+- `price` (number | null): Price per share in USD (null when the filing gives none).
+- `value_usd` (number | null): shares x price.
+- `shares_owned_after` (number | null): Shares owned after the transaction.
+- `ownership` (string | null): direct or indirect (e.g. through a trust or fund).
+- `plan_10b5_1` (boolean): Made under a Rule 10b5-1 trading plan (checkbox since 2023, or a footnote saying so).
+- `security_title` (string | null): Security, e.g. Common Stock.
+- `cluster_insiders` (integer | null): Transactions: distinct directors/officers buying this issuer in the cluster window up to this filing date (null for non-buys or when the window reaches before the data read). Clusters: insiders in the cluster.
+- `cluster_value_usd` (number | null): Total open-market purchase value of those insiders in the window.
+- `in_cluster` (boolean | null): Purchases only: part of a cluster signal.
+- `cluster_date` (string | null): Purchases in a cluster: the date of that cluster signal.
+- `first_filing_date` (string | null): Cluster rows: filing date of the first buy in the cluster.
+- `cluster_window_days` (integer | null): Cluster rows: the window used.
+- `insider_names` (array | null): Cluster rows: the buying insiders.
+- `accession_numbers` (array | null): Cluster rows: the Form 4 filings in the cluster.
+- `filing_url` (string): EDGAR filing index page.
+- `source` (string): edgar-xml (parsed Form 4 XML), dera (SEC Insider Transactions Data Sets) or derived (cluster).
+- `source_url` (string | null): The exact SEC file the row was read from.
+- `retrieved_at` (string): UTC time the row was produced.
+
+### Example input
+
+```json
+{ "tickers": ["NVDA", "AAPL"], "transactionCodes": ["P", "S"], "minValueUsd": 100000,
+  "dateFrom": "2024-01-01", "maxResults": 1000 }
+```
+
+## SEC EDGAR Filings API: 8-K, 10-K, 10-Q feed since 1994
+
+Docs: https://pb7-debug.github.io/bosco-labs-data/sec-filings-feed.html
+Apify Store: https://apify.com/bosco_labs/sec-filings-feed
+MCP: https://mcp.apify.com?tools=bosco_labs/sec-filings-feed
+Price: $0.001 per filing
+
+SEC EDGAR filings (8-K, 10-K, 10-Q, S-1, 13D, 13G, Form 4 and every other form) for any company or the whole market, live or back to 1994, from the SEC's own feeds. Filter by ticker, CIK, form, 8-K item and date; flags earnings releases (Item 2.02). Returns links to each filing, not its text.
+
+Coverage: All EDGAR forms. Companies: the SEC submissions API, complete history back to 1994. Whole market: the live feed, then the EDGAR daily and quarterly indexes back to 1993. 8-K item codes exist since August 2004. Rows hold links to the filing and its main document, not the document text.
+
+### Input fields
+
+- `formTypes` (array): EDGAR form types, exact match, e.g. ["8-K", "10-K", "10-Q"]; also S-1, 13D, 13G, 4, DEF 14A, 20-F, 6-K and any other form. Add "10-K/A" etc. for amendments. 13D and 13G also match the SC 13D and SCHEDULE 13D names. Empty = every form.
+- `tickers` (array): Company tickers, e.g. ["AAPL", "MSFT"]. Mapped to the CIK with the SEC's own company_tickers.json. Empty (and `ciks` empty) = the whole market.
+- `ciks` (array): SEC Central Index Keys as digits, leading zeros optional, e.g. ["320193"] for Apple. Use for delisted companies, funds and filers without a ticker. Empty = no CIK filter.
+- `earningsReleasesOnly` (boolean): true = only 8-Ks with Item 2.02 (Results of Operations and Financial Condition): the dates and exact times companies released earnings. Overrides `formTypes` and `itemCodes`. Default false.
+- `itemCodes` (array): Only 8-Ks reporting at least one of these items, as strings, e.g. ["5.02"] (director/officer change), "1.01" (material agreement), "2.01" (acquisition), "1.05" (cybersecurity incident). Without `formTypes`, reads 8-K and 8-K/A. Empty = no item filter.
+- `dateFrom` (string): Earliest filing date, YYYY-MM-DD, e.g. "2020-01-01". EDGAR's index goes back to 1993. Empty = `lookbackDays` days before today, so set this (or `lookbackDays`) to get older filings.
+- `dateTo` (string): Latest filing date, YYYY-MM-DD. Empty = today, including filings accepted minutes ago (live EDGAR feed).
+- `lookbackDays` (integer): Used only when `dateFrom` is empty: read filings from this many days back until today, e.g. 365. Default 7, so a company's older filings need a larger value or `dateFrom`.
+- `maxResults` (integer): Maximum filings, newest first, e.g. 20. Default 100. The run stops once it has this many.
+- `onlyNewSinceLastRun` (boolean): true = skip (and don't charge for) filings an earlier run with the same filters already delivered. For scheduled runs. Default false. Remembered in a named key-value store in your account.
+
+### Output fields
+
+- `schema_version` (string): Output schema version.
+- `accession_number` (string): SEC accession number (unique per filing).
+- `form` (string): EDGAR form type as filed, e.g. 8-K, 10-K, SC 13D.
+- `company_name` (string): Company the filing is about (issuer or subject; the filer otherwise).
+- `cik` (string): SEC CIK of that company (10 digits).
+- `ticker` (string | null): Its main ticker in the SEC's current ticker list (null if none).
+- `filing_date` (string): Filing date (YYYY-MM-DD).
+- `accepted_at` (string | null): EDGAR acceptance time, New York time with offset.
+- `market_timing` (string | null): before_open, market_hours or after_close (New York regular session), closed on weekends.
+- `report_date` (string | null): Period of report (YYYY-MM-DD), e.g. the quarter end of a 10-Q or the event date of an 8-K.
+- `items` (array): 8-K item codes, e.g. ["2.02", "9.01"]. Empty for other forms.
+- `item_descriptions` (array): Names of those items, same order.
+- `parties` (array | null): All companies and people on the filing with their role (Filer, Issuer, Subject, Filed by, Reporting). Null for company searches.
+- `filing_index_url` (string): EDGAR filing index page (all documents and exhibits).
+- `primary_document_url` (string | null): The main document (HTML/iXBRL, text or XML).
+- `source` (string): submissions-api, full-index, daily-index or live-feed.
+- `source_url` (string): The SEC page or file the row was read from.
+- `retrieved_at` (string): UTC time the row was produced.
+
+### Example input
+
+```json
+{ "tickers": ["AAPL", "MSFT", "NVDA"], "formTypes": ["8-K", "10-Q", "10-K"], "dateFrom": "2020-01-01", "maxResults": 1000 }
+```
+
+## Congress Stock Trades API: US House STOCK Act since 2014
+
+Docs: https://pb7-debug.github.io/bosco-labs-data/us-house-trades.html
+Apify Store: https://apify.com/bosco_labs/us-house-trades
+MCP: https://mcp.apify.com?tools=bosco_labs/us-house-trades
+Price: $0.0018 per trade
+
+Congress stock trades: stock, option, fund and bond trades that US House members disclose in STOCK Act Periodic Transaction Reports, from the Clerk's official filings since 2014 (no Senate). Each row: ticker, amount range, owner, disclosure delay. Filter by member, ticker, type, amount, date.
+
+Coverage: Periodic Transaction Reports of House members filed online, from January 2014 to the latest update of the Clerk's index. Scanned paper PTRs are skipped (their PDF links are listed in the run's SUMMARY record). The Senate and annual financial disclosure reports are not included.
+
+### Input fields
+
+- `members` (array): Case-insensitive part of the member's name as listed by the Clerk, e.g. ["Pelosi"] or ["Josh Gottheimer"]. Empty = all House members.
+- `tickers` (array): Only trades whose filing names one of these tickers, e.g. ["NVDA", "MSFT", "BRK.B"]. Trades without a ticker in the filing are left out when this is set. Empty = all.
+- `transactionTypes` (array): Any of purchase, sale (full or partial), exchange, e.g. ["purchase"]. Default all three.
+- `filedFrom` (string): Earliest filing date (when the trade became public), YYYY-MM-DD, e.g. "2025-01-01". Empty = 30 days ago, unless `years` is set.
+- `filedTo` (string): Latest filing date, YYYY-MM-DD, e.g. "2025-12-31". Empty = today.
+- `years` (array): Whole filing years to load, as strings, e.g. ["2024", "2025"] (one Clerk index per year; online PTRs start in 2014). Without dates, returns those whole years. Use this or `filedFrom` for history.
+- `minAmountUsd` (integer): Only trades whose reported range starts at or above this USD amount, e.g. 15001 leaves out the smallest $1,001 - $15,000 range, 1000001 keeps trades over $1 million. Empty = no minimum.
+- `maxResults` (integer): Maximum trades, newest filings first, e.g. 500. Default 100. You pay per trade returned.
+- `onlyNewSinceLastRun` (boolean): true = skip (and don't charge for) trades an earlier run with the same filters already delivered. For scheduled runs. Default false. Remembered in a named key-value store in your account.
+
+### Output fields
+
+- `schema_version` (string): Output schema version.
+- `transaction_id` (string): doc_id + position of the transaction in the PTR, e.g. 20035553-1. Stable across runs.
+- `member_name` (string): First name, last name and suffix as listed in the Clerk's index.
+- `first_name` (string): First name as listed in the Clerk's index.
+- `last_name` (string): Last name as listed in the Clerk's index.
+- `state_district` (string | null): State and district as listed in the index, e.g. CA11.
+- `state` (string | null): Two-letter state code, the first two characters of state_district.
+- `filing_date` (string): Date the PTR was filed (YYYY-MM-DD): when the trade became public.
+- `transaction_date` (string): Trade date as reported (YYYY-MM-DD).
+- `notification_date` (string): Date the member was notified of the trade, as reported (YYYY-MM-DD).
+- `days_to_disclose` (integer): filing_date - transaction_date in days. For amendments this counts to the amendment, not the first filing.
+- `owner` (string | null): Owner code as filed: SP = spouse, JT = joint, DC = dependent child, null = the member.
+- `ticker` (string | null): Ticker as filed in parentheses in the asset text, upper-cased; null when the filing gives none.
+- `asset_description` (string): Asset text as filed (older PDFs garble upper/lower case).
+- `asset_type` (string | null): From asset_type_code: ST = stock, OP = option, EF/MF = fund, GS/CS = bond, other codes = other. Filings before ~2018 have no code: option if the description says so, else null.
+- `asset_type_code` (string | null): The Clerk's asset type code in square brackets, e.g. ST, OP, EF, GS (see fd.house.gov/reference/asset-type-codes.aspx).
+- `option_type` (string | null): call or put, from the transaction description, for options only.
+- `transaction_type` (string): P = purchase, S / S (partial) = sale, E = exchange.
+- `is_partial` (boolean): True for a partial sale (S (partial)).
+- `amount_min` (number | null): Lower bound of the reported value range in USD, e.g. 15001; the value itself when the filer reported an exact amount (e.g. 318.74).
+- `amount_max` (number | null): Upper bound of the reported value range in USD; null for 'Over $50,000,000' and 'Spouse/DC Over $1,000,000'.
+- `amount_text` (string): The value range (or exact value) as filed, e.g. $15,001 - $50,000.
+- `is_amendment` (boolean): True when the transaction's filing status is Amended: the filing date is then not when the trade first became public.
+- `doc_id` (string): The Clerk's document (filing) ID.
+- `pdf_url` (string): The PTR PDF on disclosures-clerk.house.gov.
+- `source_url` (string): Where the row was extracted from (the PTR PDF).
+- `retrieved_at` (string): UTC time the PDF was fetched and parsed.
+
+### Example input
+
+```json
+{ "members": ["Pelosi"], "years": ["2024", "2025"], "transactionTypes": ["purchase"], "maxResults": 500 }
+```
+
+## EU Annual Reports API (ESEF): XBRL financial statements
+
+Docs: https://pb7-debug.github.io/bosco-labs-data/esef-annual-reports.html
+Apify Store: https://apify.com/bosco_labs/esef-annual-reports
+MCP: https://mcp.apify.com?tools=bosco_labs/esef-annual-reports
+Price: $0.01 per run plus $0.05 per annual report; raw XBRL fact rows, if switched on, $0.0005 each
+
+Key financials (revenue, EBIT, net income, EPS, assets, equity, cash flows, margins, growth) from ESEF annual reports of European listed companies in 28 countries, via filings.xbrl.org. Each value links to its XBRL fact. Filter by LEI, company name, country and fiscal year end.
+
+Coverage: ESEF annual reports collected by filings.xbrl.org: 27,626 reports from 28 countries (counted 2026-11-05; largest: UA, GB, DK, SE, NO, FR, FI). Germany is not in the index. Reports appear a few days to a few weeks after publication, once filings.xbrl.org has processed them. All values are in full currency units.
+
+### Input fields
+
+- `leis` (array): Legal Entity Identifiers (20 characters), e.g. ["724500Y6DUVHQD6OXN27"] for ASML. Combined with `countries` (default NL), so also pass `countries: []` or the company's country for non-Dutch companies. Empty = no LEI filter.
+- `companyName` (string): Case-insensitive part of the registered company name, e.g. "heineken". Combined with `countries` (default NL), so also pass `countries: []` or the company's country for non-Dutch companies. Empty = no name filter.
+- `countries` (array): Filing countries as ISO 3166 alpha-2 codes, e.g. ["NL", "BE", "FR"]; also SE, DK, FI, NO, IT, ES, GB and others. Default ["NL"]. Pass [] for all 28 countries in the index (Germany is not in it).
+- `periodFrom` (string): Fiscal year ending on or after this date, YYYY-MM-DD, e.g. "2024-01-01". Empty = no lower limit.
+- `periodTo` (string): Fiscal year ending on or before this date, YYYY-MM-DD, e.g. "2024-12-31". Empty = no upper limit.
+- `maxFilings` (integer): Maximum annual reports, newest fiscal period first, e.g. 1 for a company's latest report. Default 10. One report per company per fiscal year, with the prior year nested in each row.
+- `includeRawFacts` (boolean): true = also output every tagged XBRL fact of each report as its own row (record_type = "fact"), charged per fact row. Default false (one summary row per report).
+- `onlyNewSinceLastRun` (boolean): true = skip (and don't charge for) reports an earlier run with the same filters already delivered. For scheduled runs. Default false. Remembered in a named key-value store in your account.
+
+### Output fields
+
+- `schema_version` (string): Output schema version.
+- `record_type` (string): summary = one row per annual report; fact = one raw XBRL fact (only with includeRawFacts).
+- `lei` (string): Legal Entity Identifier of the filer.
+- `company_name` (string): Registered name.
+- `country` (string): Filing country (ISO 3166 alpha-2).
+- `period_end` (string): Fiscal year end (YYYY-MM-DD), taken from the report facts.
+- `fiscal_year_start` (string | null): Fiscal year start (YYYY-MM-DD).
+- `currency` (string | null): ISO 4217 currency of the monetary values.
+- `revenue` (number | null): revenue for the fiscal year; source concept: ifrs-full:Revenue or ifrs-full:RevenueFromContractsWithCustomers
+- `gross_profit` (number | null): gross_profit for the fiscal year; source concept: ifrs-full:GrossProfit
+- `operating_profit` (number | null): operating_profit for the fiscal year; source concept: ifrs-full:ProfitLossFromOperatingActivities
+- `profit_before_tax` (number | null): profit_before_tax for the fiscal year; source concept: ifrs-full:ProfitLossBeforeTax
+- `net_income` (number | null): net_income for the fiscal year; source concept: ifrs-full:ProfitLoss
+- `net_income_attributable_to_parent` (number | null): net_income_attributable_to_parent for the fiscal year; source concept: ifrs-full:ProfitLossAttributableToOwnersOfParent
+- `eps_basic` (number | null): eps_basic for the fiscal year; source concept: ifrs-full:BasicEarningsLossPerShare
+- `eps_diluted` (number | null): eps_diluted for the fiscal year; source concept: ifrs-full:DilutedEarningsLossPerShare
+- `total_assets` (number | null): total_assets for the fiscal year; source concept: ifrs-full:Assets
+- `current_assets` (number | null): current_assets for the fiscal year; source concept: ifrs-full:CurrentAssets
+- `cash_and_equivalents` (number | null): cash_and_equivalents for the fiscal year; source concept: ifrs-full:CashAndCashEquivalents
+- `total_equity` (number | null): total_equity for the fiscal year; source concept: ifrs-full:Equity
+- `equity_attributable_to_parent` (number | null): equity_attributable_to_parent for the fiscal year; source concept: ifrs-full:EquityAttributableToOwnersOfParent
+- `total_liabilities` (number | null): total_liabilities for the fiscal year; source concept: ifrs-full:Liabilities
+- `current_liabilities` (number | null): current_liabilities for the fiscal year; source concept: ifrs-full:CurrentLiabilities
+- `noncurrent_liabilities` (number | null): noncurrent_liabilities for the fiscal year; source concept: ifrs-full:NoncurrentLiabilities
+- `operating_cash_flow` (number | null): operating_cash_flow for the fiscal year; source concept: ifrs-full:CashFlowsFromUsedInOperatingActivities
+- `investing_cash_flow` (number | null): investing_cash_flow for the fiscal year; source concept: ifrs-full:CashFlowsFromUsedInInvestingActivities
+- `financing_cash_flow` (number | null): financing_cash_flow for the fiscal year; source concept: ifrs-full:CashFlowsFromUsedInFinancingActivities
+- `depreciation_amortisation` (number | null): depreciation_amortisation for the fiscal year; source concept: ifrs-full:DepreciationAndAmortisationExpense or ifrs-full:AdjustmentsForDepreciationAndAmortisationExpense or ifrs-full:DepreciationAmortisationAndImpairmentLossReversalOfImpairmentLossRecognisedInProfitOrLoss or ifrs-full:AdjustmentsForDepreciationAndAmortisationExpenseAndImpairmentLossReversalOfImpairmentLossRecognisedInProfitOrLoss
+- `employee_benefits_expense` (number | null): employee_benefits_expense for the fiscal year; source concept: ifrs-full:EmployeeBenefitsExpense
+- `dividends_paid` (number | null): dividends_paid for the fiscal year; source concept: ifrs-full:DividendsPaidClassifiedAsFinancingActivities or ifrs-full:DividendsPaid
+- `dividend_per_share` (number | null): dividend_per_share for the fiscal year; source concept: ifrs-full:DividendsRecognisedAsDistributionsToOwnersPerShare
+- `dividend_proposed_per_share` (number | null): dividend_proposed_per_share for the fiscal year; source concept: ifrs-full:DividendsProposedOrDeclaredBeforeFinancialStatementsAuthorisedForIssueButNotRecognisedAsDistributionToOwnersPerShare
+- `shares_outstanding` (number | null): shares_outstanding for the fiscal year; source concept: ifrs-full:NumberOfSharesOutstanding
+- `metrics_found` (integer): How many of the reported metrics were found.
+- `ebitda` (number | null): Derived: operating_profit + depreciation_amortisation.
+- `operating_margin` (number | null): Derived: operating_profit / revenue.
+- `net_margin` (number | null): Derived: net_income / revenue.
+- `return_on_equity` (number | null): Derived: net_income / total_equity.
+- `equity_ratio` (number | null): Derived: total_equity / total_assets.
+- `revenue_growth` (number | null): Derived: revenue / prior_year.revenue - 1.
+- `sources` (object): Per field: concept, fact_id, period, unit, decimals of the source fact, or {derived: formula}.
+- `prior_year` (object | null): Comparative fiscal year from the same report: period_end, fiscal_year_start, currency, the same metrics and derived fields, metrics_found and sources.
+- `fact_id` (string): XBRL fact id inside the report.
+- `concept` (string): XBRL concept, e.g. ifrs-full:Revenue.
+- `value` (string | null): Raw fact value as reported (canonical form).
+- `unit` (string | null): XBRL unit, e.g. iso4217:EUR.
+- `period` (string | null): XBRL period (instant or start/end).
+- `decimals` (integer | null): XBRL decimals (precision).
+- `dimensions` (object): Extra XBRL dimensions (axes/members) of the fact.
+- `filing_id` (string): filings.xbrl.org filing id.
+- `published` (string | null): Publication timestamp of the filing.
+- `viewer_url` (string | null): Inline XBRL viewer of the annual report.
+- `report_url` (string | null): The iXBRL (XHTML) annual report.
+- `source_url` (string): xBRL-JSON the row was extracted from.
+- `retrieved_at` (string): UTC time the source was fetched.
+
+### Example input
+
+```json
+{ "countries": ["NL", "BE", "FR"], "periodFrom": "2025-01-01", "maxFilings": 50 }
+```
+
+## Company Financials API: UK, Denmark & Norway accounts + LEI
+
+Docs: https://pb7-debug.github.io/bosco-labs-data/company-accounts.html
+Apify Store: https://apify.com/bosco_labs/company-accounts
+MCP: https://mcp.apify.com?tools=bosco_labs/company-accounts
+Price: $0.04 per company-year
+
+Company financials (revenue, profit, equity, assets, cash, employees) of private and public companies from official accounts: UK Companies House (last ~60 days), Denmark (all years), Norway Brønnøysund (last 3 years). Look up by company number, CVR or org number; adds LEI and a source per value.
+
+Coverage: UK: accounts filed electronically with Companies House in the last ~60 days. Denmark: every annual report filed digitally with Erhvervsstyrelsen, all years. Norway: the last 3 fiscal years of every company that files accounts with the Brønnøysund Register (company accounts, not group accounts). Belgium only when the Actor owner has configured access. LEI looked up at GLEIF.
+
+### Input fields
+
+- `countries` (array): Registers to read, as codes: GB (Companies House), DK (Erhvervsstyrelsen), NO (Brønnøysund Regnskapsregisteret), BE (National Bank of Belgium; needs enterprise numbers and NBB access set up by the Actor owner). Default ["GB", "DK", "NO"]. A listed country without numbers returns its newest filings, so pass only your numbers' countries, e.g. ["DK"].
+- `companyNumbers` (array): UK Companies House numbers, e.g. ["03117531", "SC123456"] (shorter numbers are zero-padded to 8). Needs GB in `countries`. Only accounts filed in the last ~60 days are covered. Empty = the newest UK filings.
+- `cvrNumbers` (array): Danish CVR numbers, 8 digits, e.g. ["24256790"]. Needs DK in `countries`. All years are available, newest first. Empty = the newest Danish filings.
+- `orgNumbers` (array): Norwegian organisation numbers, 9 digits, e.g. ["923609016"]. Needs NO in `countries`. The last 3 fiscal years are available, newest first. Empty = companies whose accounts were registered in the last 2 days.
+- `enterpriseNumbers` (array): Belgian KBO/BCE enterprise numbers, 10 digits with or without dots, e.g. ["0403.170.701"]. Required for BE (there is no "newest filings" mode for Belgium), which works only when the Actor owner has set up NBB access.
+- `enrichLei` (boolean): true (default) = look up each company's Legal Entity Identifier at GLEIF by its registration number and add `lei` and `lei_status` (null when the company has no LEI). false = skip the lookup.
+- `maxResults` (integer): Maximum company-years per country, newest filings first, e.g. 1 for a company's latest accounts. Default 5. One row per company per fiscal year.
+
+### Output fields
+
+- `schema_version` (string): Output schema version.
+- `country` (string): Country of the register (ISO 3166 alpha-2).
+- `company_number` (string | null): UK Companies House company number (GB rows).
+- `cvr` (string | null): Danish CVR number (DK rows).
+- `org_number` (string | null): Norwegian organisation number (NO rows).
+- `enterprise_number` (string | null): Belgian enterprise (KBO/BCE) number, 10 digits (BE rows).
+- `company_name` (string | null): Registered name as tagged in the accounts (NO: from Enhetsregisteret; BE: from the filing reference).
+- `lei` (string | null): Legal Entity Identifier found at GLEIF for this registration number; null when none is found or enrichLei is off.
+- `lei_status` (string | null): GLEIF registration status of the LEI, e.g. ISSUED or LAPSED.
+- `period_end` (string | null): Fiscal year end (YYYY-MM-DD), taken from the facts.
+- `fiscal_year_start` (string | null): Fiscal year start (YYYY-MM-DD); null for balance-sheet-only accounts.
+- `currency` (string | null): ISO 4217 currency of the monetary values.
+- `revenue` (number | null): Turnover / revenue for the fiscal year. Small UK companies (filleted accounts) and Danish class B companies often don't publish it. NO: sales revenue (salgsinntekter), else total operating income.
+- `gross_profit` (number | null): Gross profit (DK: bruttofortjeneste, often reported instead of revenue).
+- `operating_profit` (number | null): Operating profit (EBIT).
+- `profit_before_tax` (number | null): Profit before tax.
+- `net_income` (number | null): Profit or loss for the year.
+- `total_assets` (number | null): Total assets (DK; UK small-company balance sheets usually don't tag a total).
+- `fixed_assets` (number | null): Fixed / non-current assets.
+- `current_assets` (number | null): Current assets.
+- `cash_and_equivalents` (number | null): Cash at bank and in hand / cash and cash equivalents.
+- `total_equity` (number | null): Total equity (capital and reserves).
+- `net_assets` (number | null): Net assets (UK balance sheet total).
+- `net_current_assets` (number | null): Net current assets or liabilities (UK).
+- `total_liabilities` (number | null): Total liabilities; when not tagged, total_assets - total_equity (sources says derived).
+- `current_liabilities` (number | null): UK: creditors falling due within one year. DK: short-term liabilities other than provisions. NO: short-term debt. BE: amounts payable within one year.
+- `noncurrent_liabilities` (number | null): UK: creditors falling due after more than one year. DK: long-term liabilities other than provisions. NO: long-term debt. BE: amounts payable after more than one year.
+- `employees` (number | null): Average number of employees during the year (BE: full-time equivalents). Not in the Norwegian data.
+- `metrics_found` (integer): How many of the normalized metrics were found.
+- `sources` (object): Per metric: concept, fact_id, context_ref, period, unit, decimals of the source fact, or {derived: formula}. NO: concept is the JSON path in the record at source_url; BE: the NBB rubric code.
+- `published` (string | null): GB: date of the Companies House daily file; DK: publication timestamp; BE: filing date; NO: null.
+- `report_url` (string | null): DK: the human-readable annual report (XHTML or PDF); NO: PDF copy of the filed accounts at Brønnøysund.
+- `registry_url` (string | null): Company page in the official register (filing history / CVR).
+- `source_document` (string | null): GB: file name of the accounts inside the daily bulk ZIP.
+- `source_url` (string): GB: the Companies House bulk ZIP; DK: the XBRL file; NO: the Regnskapsregisteret JSON record; BE: the NBB accounting-data URL (needs a key).
+- `retrieved_at` (string): UTC time the source was fetched.
+
+### Example input
+
+```json
+{ "countries": ["GB", "DK", "NO"], "companyNumbers": ["03117531"], "cvrNumbers": ["24256790"], "orgNumbers": ["923609016"], "maxResults": 10 }
+```
+
+## EU Public Tenders & Contract Awards API (TED procurement)
+
+Docs: https://pb7-debug.github.io/bosco-labs-data/eu-tenders.html
+Apify Store: https://apify.com/bosco_labs/eu-tenders
+MCP: https://mcp.apify.com?tools=bosco_labs/eu-tenders
+Price: $0.002 per notice
+
+EU public procurement notices from TED, the EU's official tenders journal (EU, EEA and more, since 2016): open calls with deadlines, contract awards with winners and values, prior information. Filter by keyword, buyer country, CPV code, notice type, date and EUR value. Use for tender alerts.
+
+Coverage: Every country that publishes on TED: the 27 EU member states, Norway, Iceland, Liechtenstein, Switzerland, candidate countries and EU-funded procurement abroad; about 22,000 notices a week. History from November 2016 (complete from 2017). New notices are available the day they are published.
+
+### Input fields
+
+- `keywords` (string): Full-text search over the whole notice, in any language; a notice matches when it contains all words, e.g. "cloud hosting". Empty = no keyword filter.
+- `countries` (array): Buyer countries as ISO 3166 alpha-2 (DE, FR, NL, PL, ...) or alpha-3 (DEU) codes, e.g. ["DE", "NL"]. Alpha-3 works for any country, e.g. UKR. Empty = all countries.
+- `cpvCodes` (array): Common Procurement Vocabulary (CPV) code prefixes as digit strings; a prefix matches every code below it, e.g. ["72"] = IT services, "45" = construction work, "3312" = medical equipment, "72212000" = one specific code. Empty = all sectors.
+- `noticeTypes` (array): Kinds of notices: contract_notice (open call for tenders), contract_award (who won, for how much), prior_information, direct_award_preannouncement, contract_modification, market_consultation. Default ["contract_notice"]. Pass [] for all kinds.
+- `publishedFrom` (string): Earliest publication date, YYYY-MM-DD, e.g. "2026-10-01". The TED API covers notices from November 2016. Empty = 7 days before `publishedTo`.
+- `publishedTo` (string): Latest publication date, YYYY-MM-DD. Empty = today.
+- `minValueEur` (integer): Minimum total notice value in EUR, e.g. 1000000 (estimated value for calls, awarded value for awards). When set, notices stated in other currencies (e.g. PLN, SEK) and notices without a value are left out, as TED does not convert currencies. Empty = no minimum.
+- `maxResults` (integer): Maximum notices, newest first, e.g. 100. Default 50. You pay per notice delivered.
+- `onlyNewSinceLastRun` (boolean): true = skip (and don't charge for) notices an earlier run with the same filters already delivered. For scheduled runs. Default false. Remembered in a named key-value store in your account.
+
+### Output fields
+
+- `schema_version` (string): Output schema version.
+- `notice_id` (string): TED publication number, e.g. 760925-2026. Unique per notice.
+- `notice_type` (string | null): contract_notice, contract_award, prior_information, direct_award_preannouncement, contract_modification or market_consultation (from TED's form type).
+- `ted_notice_type` (string | null): TED's detailed notice type code, e.g. cn-standard, can-standard, pin-only, can-modif.
+- `published` (string | null): Publication date in the Official Journal S (YYYY-MM-DD).
+- `deadline` (string | null): Deadline for receipt of tenders (earliest over all lots), ISO date or date-time with UTC offset. Null when the notice has none (e.g. award notices).
+- `title` (string | null): Notice title, English when TED provides it (TED's 'Country – CPV – title' form), else the original language.
+- `title_language` (string | null): ISO 639 language code of title, e.g. eng.
+- `description` (string | null): Short description of the procurement (max. 500 characters), English if available, else the original language. E-mail addresses and phone numbers are removed. Null for legacy (pre-eForms) notices.
+- `description_language` (string | null): ISO 639 language code of description, e.g. deu.
+- `buyer_name` (string | null): Name of the (first) buyer: the contracting authority or entity.
+- `buyer_country` (string | null): Country of the buyer, ISO 3166 alpha-3 (e.g. DEU), as published by TED.
+- `buyer_city` (string | null): City of the buyer.
+- `cpv_codes` (array): All CPV codes of the notice (8 digits, no check digit), duplicates removed.
+- `main_cpv` (string | null): Main CPV code of the procedure (eForms notices only).
+- `estimated_value` (number | null): Estimated value of the procedure, excl. VAT, in currency. Not converted.
+- `awarded_value` (number | null): Total value of the contracts awarded in this notice, excl. VAT, in currency (award notices).
+- `currency` (string | null): ISO 4217 currency of awarded_value, or of estimated_value when there is no awarded value.
+- `winner_names` (array | null): Names of the winning tenderers (award notices; usually companies).
+- `procedure_type` (string | null): Procedure type as coded by TED, e.g. open, restricted. Null when not given.
+- `lots_count` (integer | null): Number of lots (eForms notices only).
+- `ted_url` (string): Notice page on ted.europa.eu.
+- `source_url` (string): Official XML of the notice on ted.europa.eu.
+- `retrieved_at` (string): UTC time the notice was fetched from the TED API.
+
+### Example input
+
+```json
+{
+  "keywords": "software",
+  "countries": ["DE", "NL", "FR"],
+  "cpvCodes": ["72", "48"],
+  "noticeTypes": ["contract_notice", "contract_award"],
+  "publishedFrom": "2026-10-01",
+  "minValueEur": 100000,
+  "maxResults": 200
+}
+```
+
+## Pentagon / DoD Contract Awards API: winners, amounts, tickers
+
+Docs: https://pb7-debug.github.io/bosco-labs-data/dod-contract-awards.html
+Apify Store: https://apify.com/bosco_labs/dod-contract-awards
+MCP: https://mcp.apify.com?tools=bosco_labs/dod-contract-awards
+Price: $0.005 per award row
+
+Pentagon/DoD contract awards of $7.5M+ the same evening they are announced, plus USAspending.gov history since FY2008 (any federal agency). Winner, amount, service, NAICS/PSC, matched to a US stock ticker with SEC shares outstanding. Filter by date, agency, amount, company, ticker.
+
+Coverage: Same evening: the Pentagon's daily contract list (weekdays, rows in by about 7 p.m. New York). History: the USAspending.gov API from 2007-10-01, for the Department of Defense or any other federal agency. DoD contract actions reach USAspending up to 90 days after signing, so the default window is the last 135 days.
+
+### Input fields
+
+- `source` (string): "both" (default) = the Pentagon's same-evening contract list (published around 5 p.m. New York on the signing day, face values, DoD only) plus the USAspending history (obligations, ~3 months behind for DoD). "dailyList" = only the same-evening list rows. "history" = only USAspending. The list has no NAICS/PSC codes, so it is skipped when naicsCodes or pscCodes are set, and when agencies excludes the Department of Defense.
+- `dateFrom` (string): Earliest action (signing) date, or announcement date for same-evening list rows, YYYY-MM-DD, e.g. "2019-01-01". History from 2007-10-01 (FY2008). Empty = 135 days before `dateTo`, because DoD data is published up to 90 days late (about 105 days observed).
+- `dateTo` (string): Latest action (signing) date, YYYY-MM-DD, e.g. "2019-12-31". Empty = today. The last ~3 months of DoD data are incomplete.
+- `agencies` (array): Top-tier awarding agency names as USAspending spells them, e.g. ["Department of Defense"], ["Department of Homeland Security"], ["National Aeronautics and Space Administration"]. Default ["Department of Defense"]. Pass [] for ALL federal agencies.
+- `minAmountUsd` (integer): Minimum summed obligations per award and day, in USD, e.g. 1000000. Default 7500000, the DoD's public announcement threshold (the daily 5 p.m. contracts list). 0 = every award-day except net de-obligations (negative sums).
+- `recipients` (array): Winning company search terms, matched by USAspending against recipient and parent names, e.g. ["kratos", "huntington ingalls"]. Empty = all recipients.
+- `tickers` (array): Only awards matched to these US-listed tickers (NYSE, Nasdaq, CBOE), e.g. ["LMT", "KTOS", "AVAV"]. Turns ticker matching on. Empty = no ticker filter.
+- `naicsCodes` (array): NAICS industry codes, 2 to 6 digits, e.g. ["336414"] (guided missiles and space vehicles) or ["3364"]. Empty = all.
+- `pscCodes` (array): Product and Service Codes, e.g. ["1410"] (guided missiles), ["R425"] (engineering support). Empty = all.
+- `matchTickers` (boolean): true (default) = match the recipient or its parent company to a US-listed ticker by exact cleaned name (SEC company list) and add the SEC-reported shares outstanding. Unmatched awards are still returned, with ticker = null.
+- `maxResults` (integer): Maximum award rows, newest signing dates first, then largest amounts, e.g. 100. Default 500. Each row is one charged event.
+- `onlyNewSinceLastRun` (boolean): true = skip (and don't charge for) award-days (including old-dated actions the DoD publishes late) an earlier run with the same filters already delivered. For scheduled runs. Default false. Remembered in a named key-value store in your account.
+
+### Output fields
+
+- `schema_version` (string): Output schema version.
+- `source` (string): Where the row comes from: "usaspending" (obligation records, ~3 months late for DoD) or "dod_daily_list" (the Pentagon's same-evening contract list, parsed by AI with checks). The two are separate records of an award and are never summed or deduped.
+- `award_id` (string | null): Contract PIID (USAspending 'Award ID'); for daily-list rows the contract number in the text, null when none is stated.
+- `parent_award_id` (string | null): PIID of the parent IDV (IDIQ, BPA, GSA schedule) for task and delivery orders; null for standalone contracts.
+- `award_key` (string): USAspending generated_internal_id: unique award key (PIID + agency + parent IDV).
+- `action_date` (string): Signing (action) date, YYYY-MM-DD; for daily-list rows the announcement date.
+- `amount_usd` (number): USAspending rows: obligated amount in USD, that day's actions on this award summed (modifications can be negative). Daily-list rows: the face value as stated (often with options, or a ceiling: see is_ceiling).
+- `is_ceiling` (boolean): True when amount_usd is a ceiling, not money committed: a multiple-award contract (shared by several awardees) or an IDIQ maximum. Only daily-list rows can be true.
+- `action_count` (integer): Number of contract actions summed into this row.
+- `modification_numbers` (array): Modification numbers of those actions ('0' = the base award).
+- `new_award` (boolean): True when the day includes the base award (modification 0), false for modifications only.
+- `award_type` (string | null): DEFINITIVE CONTRACT, DELIVERY ORDER, PURCHASE ORDER or BPA CALL.
+- `awarding_agency` (string | null): Top-tier awarding agency, e.g. Department of Defense.
+- `awarding_sub_agency` (string | null): Awarding sub-agency, e.g. Department of the Navy, Department of the Army, Department of the Air Force, Defense Logistics Agency, Missile Defense Agency.
+- `recipient_name` (string | null): Contractor (recipient) name as reported.
+- `recipient_uei` (string | null): Recipient Unique Entity ID (SAM.gov).
+- `parent_name` (string | null): Parent company name from the USAspending award record.
+- `parent_uei` (string | null): Parent company UEI.
+- `recipient_city` (string | null): Recipient city.
+- `recipient_state` (string | null): Recipient state code (daily-list rows: the state as written, e.g. Virginia).
+- `recipient_country` (string | null): Recipient country.
+- `performance_state` (string | null): Place of performance state code.
+- `performance_country` (string | null): Place of performance country.
+- `naics_code` (string | null): NAICS industry code.
+- `naics_description` (string | null): NAICS description.
+- `psc_code` (string | null): Product and Service Code.
+- `psc_description` (string | null): PSC description.
+- `description` (string | null): Description of the day's largest action (max 300 characters).
+- `ticker` (string | null): US-listed ticker (NYSE, Nasdaq, CBOE) of the recipient or its parent, by exact cleaned-name match; null when not matched.
+- `matched_on` (string | null): Which name matched the ticker: the recipient itself or its parent company.
+- `sec_cik` (integer | null): SEC Central Index Key of the matched company.
+- `sec_company_name` (string | null): Company name in SEC's ticker list.
+- `exchange` (string | null): Exchange of the ticker in SEC's list.
+- `shares_outstanding` (integer | null): Shares outstanding from the SEC cover page (dei:EntityCommonStockSharesOutstanding), the count of the action date (latest on or before it, else the earliest). Multiply by your own price for a market cap.
+- `shares_as_of` (string | null): Date of that share count, YYYY-MM-DD.
+- `usaspending_url` (string): Award page on USAspending.gov.
+- `source_url` (string | null): USAspending API record of the award; for daily-list rows the war.gov article, null when the e-mail did not link it.
+- `data_lag_note` (string): Reporting lag of the source: DoD actions appear up to 90 days after signing.
+- `retrieved_at` (string): UTC time the row was built.
+
+### Example input
+
+```json
+{
+  "dateFrom": "2019-01-01",
+  "dateTo": "2019-12-31",
+  "tickers": ["KTOS"],
+  "maxResults": 1000
+}
+```
+
+## Deduplicate & Merge Apify Datasets: remove duplicate items
+
+Docs: https://pb7-debug.github.io/bosco-labs-data/dataset-dedup.html
+Apify Store: https://apify.com/bosco_labs/dataset-dedup
+MCP: https://mcp.apify.com?tools=bosco_labs/dataset-dedup
+Price: $0.00015 per unique item written (duplicates are free)
+
+Deduplicate and merge one or more Apify datasets (or a pasted JSON array): removes duplicate items by any fields (dot paths allowed) or by the whole item, keeping the first or last occurrence. Streams millions of items with constant memory. Use to clean repeated scraper runs before export.
+
+Coverage: Works on the Apify datasets you pick in the input, or a pasted JSON array. For every distinct key the Actor keeps a 16-byte hash in memory, never the items: 10 million distinct keys need roughly 1-2 GB.
+
+### Input fields
+
+- `datasetIds` (array): Apify dataset IDs to merge, in this order, e.g. ["aBcD1234efGH5678i"]: a run's defaultDatasetId (Storage tab). Optional if you pass `items`.
+- `items` (array): Items to deduplicate directly, as a JSON array of objects, e.g. [{"url": "https://example.com/a"}]. Processed before the datasets. Handy for small lists and quick tests.
+- `fields` (array): Fields that form the duplicate key: items with equal values in all of them are duplicates. Dot paths work, e.g. ["url"] or ["address.city", "emails.0"]. Default [] = compare whole items. Items that have none of these fields are always kept.
+- `keep` (string): "first" (default) keeps the first occurrence of each key; "last" keeps the last one and reads the datasets twice.
+- `outputFields` (array): Top-level fields to keep in the output, e.g. ["url", "title"]. Empty = keep every field.
+
+### Output fields
+
+Items are copied unchanged from the input datasets (or reduced to outputFields).
+
+### Example input
+
+```json
+{
+  "datasetIds": ["aBcD1234efGH5678i", "jKlM9012noPQ3456r"],
+  "fields": ["url"],
+  "keep": "first",
+  "outputFields": ["url", "title", "price"]
+}
+```
+
+## Google Sheets Export: send any Apify dataset to a spreadsheet
+
+Docs: https://pb7-debug.github.io/bosco-labs-data/sheets-export.html
+Apify Store: https://apify.com/bosco_labs/sheets-export
+MCP: https://mcp.apify.com?tools=bosco_labs/sheets-export
+Price: $0.00015 per row exported
+
+Export any Apify dataset to Google Sheets: replace a tab or append rows, with nested fields as columns and your header kept. Writes with your own Google service account key (the sheet shared with it as Editor) and retries Google rate limits. Use to send scraper results to a spreadsheet.
+
+Coverage: Any Apify dataset, written with your own Google service account (the sheet shared with it as Editor). Google allows 10 million cells per spreadsheet; rows are sent in batches of up to 5,000 rows or 2 MB.
+
+### Input fields
+
+- `datasetId` (string, required): Apify dataset ID to export, e.g. "aBcD1234efGH5678i": usually the defaultDatasetId of a scraper run (Storage tab).
+- `spreadsheetId` (string, required): Google spreadsheet ID: the part between /d/ and /edit in the sheet URL docs.google.com/spreadsheets/d/<ID>/edit, e.g. "1AbCdEfGhIjKlMnOpQrStUvWxYz0123456789".
+- `sheetName` (string): Name of the tab to write to, e.g. "Leads". Created if it doesn't exist. Leave empty to use the first tab (whatever it is called, e.g. "Sheet1" or "Blad1").
+- `mode` (string): "replace" (default) clears the tab's values and writes the dataset; "append" adds rows below the existing data, keeps your header and adds any new columns on the right.
+- `serviceAccountJson` (string, required): Full contents of a Google service account JSON key file (secret input, stored encrypted). Share the spreadsheet with that account's client_email as Editor first. See the README for the 2-minute setup.
+- `fields` (array): Columns to export, in this order; nested fields use dots, e.g. ["name", "address.city", "phone"]. Empty = all fields.
+
+### Output fields
+
+The run writes no dataset rows. Its key-value store gets an OUTPUT record with spreadsheetUrl, sheetName, rowsWritten and columns. Nested objects become parent.child columns, arrays are written as JSON text, and values are never written as formulas.
+
+### Example input
+
+```json
+{
+  "datasetId": "aBcD1234efGH5678i",
+  "spreadsheetId": "1AbCdEfGhIjKlMnOpQrStUvWxYz0123456789",
+  "sheetName": "Leads",
+  "mode": "append",
+  "serviceAccountJson": "{ \"type\": \"service_account\", ... }",
+  "fields": ["name", "address.city", "phone", "website"]
+}
+```

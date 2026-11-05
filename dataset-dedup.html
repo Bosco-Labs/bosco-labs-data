@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deduplicate &amp; Merge Apify Datasets: remove duplicate items</title>
+<meta name="description" content="Deduplicate and merge Apify datasets by any fields or by the whole item, keeping the first or last occurrence. Streams millions of items, constant memory.">
+<link rel="canonical" href="https://pb7-debug.github.io/bosco-labs-data/dataset-dedup.html">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bosco Labs">
+<meta property="og:title" content="Deduplicate &amp; Merge Apify Datasets: remove duplicate items">
+<meta property="og:description" content="Deduplicate and merge Apify datasets by any fields or by the whole item, keeping the first or last occurrence. Streams millions of items, constant memory.">
+<meta property="og:url" content="https://pb7-debug.github.io/bosco-labs-data/dataset-dedup.html">
+<meta property="og:image" content="https://pb7-debug.github.io/bosco-labs-data/logo-512.png">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "SoftwareApplication",
+ "name": "Deduplicate & Merge Apify Datasets: remove duplicate items",
+ "description": "Deduplicate and merge one or more Apify datasets (or a pasted JSON array): removes duplicate items by any fields (dot paths allowed) or by the whole item, keeping the first or last occurrence. Streams millions of items with constant memory. Use to clean repeated scraper runs before export.",
+ "url": "https://pb7-debug.github.io/bosco-labs-data/dataset-dedup.html",
+ "installUrl": "https://apify.com/bosco_labs/dataset-dedup",
+ "applicationCategory": "DeveloperApplication",
+ "operatingSystem": "Web (Apify platform)",
+ "offers": {
+  "@type": "Offer",
+  "url": "https://apify.com/bosco_labs/dataset-dedup",
+  "priceCurrency": "USD",
+  "description": "$0.00015 per unique item written (duplicates are free)"
+ },
+ "provider": {
+  "@type": "Organization",
+  "name": "Bosco Labs",
+  "url": "https://apify.com/bosco_labs"
+ }
+}
+</script>
+<style>:root{--bg:#fff;--fg:#1a2230;--muted:#5a6575;--line:#dfe3ea;--card:#f5f7fa;--accent:#0f766e;--btn:#0f766e;--btnfg:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#0d1520;--fg:#e6ebf2;--muted:#9aa6b6;--line:#26323f;--card:#15202d;--accent:#5eead4;--btn:#2dd4bf;--btnfg:#04201d}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header,main,footer{max-width:860px;margin:0 auto;padding:0 16px}header{display:flex;align-items:center;gap:10px;padding-top:18px}
+header a{display:flex;align-items:center;gap:10px;color:var(--fg);text-decoration:none;font-weight:600}header img{width:32px;height:32px}
+a{color:var(--accent)}h1{font-size:1.9rem;line-height:1.25;margin:1.2rem 0 .6rem}h2{margin-top:2.2rem;font-size:1.3rem}
+.lead{font-size:1.15rem}.muted{color:var(--muted)}code{font:.9em ui-monospace,SFMono-Regular,Consolas,monospace}
+pre{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px;overflow-x:auto;font-size:.85rem;line-height:1.45}
+.table{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{text-align:left;vertical-align:top;padding:6px 8px;border-bottom:1px solid var(--line)}
+td:first-child{white-space:nowrap}.cta{display:inline-block;background:var(--btn);color:var(--btnfg);font-weight:700;font-size:1.1rem;padding:14px 22px;border-radius:10px;text-decoration:none;margin:1.2rem 0}
+.cards{list-style:none;padding:0;display:grid;gap:12px}.cards li{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}
+.cards h3{margin:0 0 .3rem;font-size:1.05rem}.cards p{margin:.2rem 0}footer{border-top:1px solid var(--line);margin-top:3rem;padding-top:12px;padding-bottom:24px;font-size:.9rem}</style>
+</head>
+<body>
+<header><a href="index.html"><img src="logo.svg" alt="" width="32" height="32">Bosco Labs data APIs</a></header>
+<main>
+<article>
+<h1>Deduplicate &amp; Merge Apify Datasets: remove duplicate items</h1>
+<p class="lead">Deduplicate and merge one or more Apify datasets (or a pasted JSON array): removes duplicate items by any fields (dot paths allowed) or by the whole item, keeping the first or last occurrence.</p>
+<p>Streams millions of items with constant memory. Use to clean repeated scraper runs before export.</p>
+<p><a class="cta" href="https://apify.com/bosco_labs/dataset-dedup">Run it on Apify Store &rarr;</a></p>
+<h2>What you get</h2>
+<p>Items are copied unchanged from the input datasets (or reduced to outputFields).</p>
+<h2>Coverage</h2>
+<p>Works on the Apify datasets you pick in the input, or a pasted JSON array. For every distinct key the Actor keeps a 16-byte hash in memory, never the items: 10 million distinct keys need roughly 1-2 GB.</p>
+<h2>Price</h2>
+<p><strong>Pricing (pay per event):</strong> $0.00015 per unique item written ($0.15 per 1,000). Duplicates are free, reading is free, there is no start fee, and the run stops at your max charge limit.</p>
+<h2>Example input</h2>
+<pre><code>{
+  &quot;datasetIds&quot;: [&quot;aBcD1234efGH5678i&quot;, &quot;jKlM9012noPQ3456r&quot;],
+  &quot;fields&quot;: [&quot;url&quot;],
+  &quot;keep&quot;: &quot;first&quot;,
+  &quot;outputFields&quot;: [&quot;url&quot;, &quot;title&quot;, &quot;price&quot;]
+}</code></pre>
+<h2>Example output</h2>
+<pre><code>[{&quot;url&quot;: &quot;https://a.com/1&quot;, &quot;title&quot;: &quot;A&quot;, &quot;price&quot;: 10},
+ {&quot;url&quot;: &quot;https://a.com/2&quot;, &quot;title&quot;: &quot;B&quot;, &quot;price&quot;: 12},
+ {&quot;url&quot;: &quot;https://a.com/3&quot;, &quot;title&quot;: &quot;C&quot;, &quot;price&quot;: 7}]</code></pre>
+<h2>Input fields</h2>
+<div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>datasetIds</code></td><td>array</td><td>Apify dataset IDs to merge, in this order, e.g. [&quot;aBcD1234efGH5678i&quot;]: a run&#x27;s defaultDatasetId (Storage tab). Optional if you pass <code>items</code>.</td></tr>
+<tr><td><code>items</code></td><td>array</td><td>Items to deduplicate directly, as a JSON array of objects, e.g. [{&quot;url&quot;: &quot;https://example.com/a&quot;}]. Processed before the datasets. Handy for small lists and quick tests.</td></tr>
+<tr><td><code>fields</code></td><td>array</td><td>Fields that form the duplicate key: items with equal values in all of them are duplicates. Dot paths work, e.g. [&quot;url&quot;] or [&quot;address.city&quot;, &quot;emails.0&quot;]. Default [] = compare whole items. Items that have none of these fields are always kept.</td></tr>
+<tr><td><code>keep</code></td><td>string</td><td>&quot;first&quot; (default) keeps the first occurrence of each key; &quot;last&quot; keeps the last one and reads the datasets twice.</td></tr>
+<tr><td><code>outputFields</code></td><td>array</td><td>Top-level fields to keep in the output, e.g. [&quot;url&quot;, &quot;title&quot;]. Empty = keep every field.</td></tr>
+</tbody></table></div>
+<h2>Use with AI agents</h2>
+<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>.</p>
+<pre><code>https://mcp.apify.com?tools=bosco_labs/dataset-dedup</code></pre>
+<p>Example prompt: <em>&ldquo;&quot;Merge the results of my last three Google Maps runs and remove duplicate places by placeId.&quot;&rdquo;</em> The agent passes:</p>
+<pre><code>{&quot;datasetIds&quot;: [&quot;&lt;dataset ID 1&gt;&quot;, &quot;&lt;dataset ID 2&gt;&quot;, &quot;&lt;dataset ID 3&gt;&quot;], &quot;fields&quot;: [&quot;placeId&quot;]}</code></pre>
+<p>the unique items, unchanged and in input order, in the run&#x27;s default dataset. The Actor adds no fields of its own (no <code>schema_version</code> or source link), since the items are your data; the run log ends with <code>read</code>, <code>duplicates</code> and <code>written</code> counts.</p>
+<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~dataset-dedup/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.00015 per unique item written (duplicates are free).</p>
+<p><a class="cta" href="https://apify.com/bosco_labs/dataset-dedup">Open Deduplicate &amp; Merge Apify Datasets on Apify Store &rarr;</a></p>
+</article>
+</main>
+<footer><p><a href="index.html">All Actors</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a></p></footer>
+</body>
+</html>
