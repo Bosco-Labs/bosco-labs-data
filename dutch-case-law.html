@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dutch Case Law API: Rechtspraak decisions by ECLI</title>
+<meta name="description" content="Dutch court decisions (uitspraken) by ECLI or search: court, dates, case numbers, legal area, summary, appeal relations, full text. Rechtspraak Open Data.">
+<link rel="canonical" href="https://boscolabs.dev/dutch-case-law.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bosco Labs">
+<meta property="og:title" content="Dutch Case Law API: Rechtspraak decisions by ECLI">
+<meta property="og:description" content="Dutch court decisions (uitspraken) by ECLI or search: court, dates, case numbers, legal area, summary, appeal relations, full text. Rechtspraak Open Data.">
+<meta property="og:url" content="https://boscolabs.dev/dutch-case-law.html">
+<meta property="og:image" content="https://boscolabs.dev/icons/dutch-case-law.png">
+<meta name="twitter:card" content="summary">
+<script defer src="/_vercel/insights/script.js"></script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "SoftwareApplication",
+ "name": "Dutch Case Law API (Rechtspraak): ECLI lookup, uitspraken",
+ "description": "Dutch court decisions (uitspraken) by ECLI or search: court, dates, case numbers, legal area, summary (inhoudsindicatie), appeal/cassation relations, law references and optional text. Hoge Raad, Raad van State, gerechtshoven, rechtbanken. Official Rechtspraak Open Data, source link per row.",
+ "url": "https://boscolabs.dev/dutch-case-law.html",
+ "image": "https://boscolabs.dev/icons/dutch-case-law.png",
+ "applicationCategory": "DeveloperApplication",
+ "operatingSystem": "Web (Apify platform)",
+ "offers": {
+  "@type": "Offer",
+  "priceCurrency": "USD",
+  "description": "$0.005 per decision returned",
+  "availability": "https://schema.org/PreOrder"
+ },
+ "provider": {
+  "@type": "Organization",
+  "name": "Bosco Labs",
+  "url": "https://boscolabs.dev/"
+ }
+}
+</script>
+<style>:root{color-scheme:light dark;--head:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--body:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;--ink:#1D2721;--muted:#545F58;--bg:#F5F3EA;--surface:#EAE8DC;--line:#D6D3C3;--accent:#2E5A47;--accent-fg:#F5F3EA;--accent2:#8DA889;--accent2-text:#4A6646;--success:#36694A;--warn:#8E5D1C}
+@media (prefers-color-scheme:dark){:root{--ink:#E5E8DE;--muted:#A3ADA4;--bg:#121914;--surface:#1B241E;--line:#2B372F;--accent:#9EC7B1;--accent-fg:#121914;--accent2:#B5C9A4;--accent2-text:#B5C9A4;--success:#93C7A0;--warn:#DDB070}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--body)}h1,h2,h3,.brand{font-family:var(--head)}
+a{color:var(--accent);text-underline-offset:2px}.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+.site{border-bottom:1px solid var(--line)}.site .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;padding-top:12px;padding-bottom:12px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-weight:650;letter-spacing:-.01em}.brand img{width:30px;height:30px}
+nav{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:.95rem}nav a{color:var(--muted);text-decoration:none}nav a:hover{color:var(--ink)}
+h1{font-size:clamp(1.65rem,4vw,2.4rem);line-height:1.2;letter-spacing:-.02em;margin:0 0 12px}
+h2{font-size:1.3rem;line-height:1.3;letter-spacing:-.01em;margin:44px 0 12px}h3{font-size:1.02rem;margin:20px 0 6px}
+.hero{padding:52px 0 8px;max-width:780px}.lead{font-size:1.13rem;color:var(--muted)}.muted{color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}.chips a{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:.9rem;color:var(--ink);text-decoration:none}.chips a:hover{border-color:var(--accent)}
+.grid{list-style:none;padding:0;margin:0;display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.card-top{display:flex;gap:12px;align-items:center}.card img{width:48px;height:48px;flex:none}
+.card h3{margin:0;font-size:1rem;line-height:1.3}.card h3 a{color:var(--ink);text-decoration:none}.card h3 a:hover{text-decoration:underline}
+.card p{margin:0;font-size:.92rem;color:var(--muted)}.card .row{margin-top:auto;padding-top:6px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-size:.88rem}
+.price{font-weight:600;color:var(--ink)}.badge{display:inline-block;font-size:.78rem;font-weight:600;line-height:1.5;padding:1px 9px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.badge.live{color:var(--success)}.badge.soon{color:var(--warn)}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-fg);font-weight:650;padding:11px 18px;border-radius:10px;text-decoration:none}
+.btn.ghost{background:none;color:var(--accent);border:1px solid var(--line)}.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0}
+.crumbs{font-size:.9rem;color:var(--muted);margin:22px 0 0}.crumbs a{color:var(--muted)}
+.head{display:flex;gap:20px;align-items:flex-start;margin:18px 0 0}.head img{width:84px;height:84px;flex:none}
+.prose{max-width:800px}.facts{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));margin:22px 0}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:.95rem}.fact b{display:block;font-size:.75rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.qs{padding-left:20px}.qs li{margin:4px 0}.two{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}.two h3{margin-top:0}.two>div,.prose,main{min-width:0}
+code{font:.86em var(--mono)}:not(pre)>code{overflow-wrap:anywhere}
+pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px;overflow:auto;max-height:520px;font-size:.84rem;line-height:1.45;margin:0}
+.table{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{text-align:left;vertical-align:top;padding:7px 8px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-weight:600}td:first-child{white-space:nowrap}
+details{border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:10px 0}summary{cursor:pointer;font-weight:600}
+footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font-size:.9rem;color:var(--muted)}footer a{color:var(--muted)}
+@media (max-width:560px){.head{flex-direction:column;gap:12px}.head img{width:64px;height:64px}.hero{padding-top:32px}}</style>
+</head>
+<body>
+<header class="site"><div class="wrap"><a class="brand" href="index.html"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav><a href="index.html#tools">Tools</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
+<main class="wrap">
+<p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#compliance-law">Compliance &amp; law</a></p>
+<article>
+<div class="head"><img src="icons/dutch-case-law.svg" alt="" width="84" height="84"><div><h1>Dutch Case Law API (Rechtspraak): ECLI lookup, uitspraken</h1><span class="badge soon">Coming soon to the Store</span></div></div>
+<div class="prose">
+<p class="lead"><strong>Look up Dutch court decisions (uitspraken) by ECLI, or search them by court, legal area, date and keywords</strong>: court, decision and publication dates, case numbers, legal areas, procedure, the court&#x27;s own summary (inhoudsindicatie), appeal / cassation / Advocate-General relations, referenced laws, and optionally the full text. Built for <strong>AI agents</strong> doing legal and compliance research, and for people who want Rechtspraak data as clean JSON.</p>
+<div class="facts"><div class="fact"><b>Price</b>$0.005 per decision returned</div><div class="fact"><b>Domain</b>Compliance &amp; law</div><div class="fact"><b>Call it</b>Apify API or MCP</div></div>
+<p><strong>Pricing (pay per event):</strong> $0.005 per decision returned (<code>decision</code>). An unknown ECLI, bad input or an empty search costs nothing.</p>
+<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=Dutch Case Law API (Rechtspraak)">Ask for early access</a></div>
+<h2>Questions agents ask</h2>
+<ul class="qs"><li>&ldquo;Find Hoge Raad rulings on tenancy law (huurrecht) since 2024 and summarise what each one decided, with links.&rdquo;</li></ul>
+</div>
+<h2>Example</h2>
+<div class="two"><div><h3>Input</h3><pre><code>{ &quot;query&quot;: &quot;huurrecht&quot;, &quot;courts&quot;: [&quot;HR&quot;], &quot;dateFrom&quot;: &quot;2024-01-01&quot;, &quot;maxResults&quot;: 20 }</code></pre></div>
+<div><h3>Output</h3><pre><code>{
+  &quot;schema_version&quot;: &quot;1&quot;,
+  &quot;ecli&quot;: &quot;ECLI:NL:HR:2014:952&quot;,
+  &quot;title&quot;: &quot;ECLI:NL:HR:2014:952 Hoge Raad , 22-04-2014 / 12/05369&quot;,
+  &quot;court&quot;: &quot;Hoge Raad&quot;,
+  &quot;court_code&quot;: &quot;HR&quot;,
+  &quot;court_id&quot;: &quot;http://standaarden.overheid.nl/owms/terms/Hoge_Raad_der_Nederlanden&quot;,
+  &quot;document_type&quot;: &quot;uitspraak&quot;,
+  &quot;decision_date&quot;: &quot;2014-04-22&quot;,
+  &quot;publication_date&quot;: &quot;2014-04-22&quot;,
+  &quot;modified&quot;: &quot;2025-03-22T08:54:18&quot;,
+  &quot;case_numbers&quot;: [&quot;12/05369&quot;],
+  &quot;seat&quot;: null,
+  &quot;legal_areas&quot;: [&quot;Strafrecht&quot;],
+  &quot;procedures&quot;: [&quot;Cassatie&quot;],
+  &quot;language&quot;: &quot;nl&quot;,
+  &quot;summary&quot;: &quot;Belediging. Art. 137c Sr. Onder “zich in het openbaar uitlaten” a.b.i. art. 137c, Sr, welke bepaling beoogt de openbare orde te beschermen, dient te worden verstaan “het ter kennis van het publiek brengen”. ...&quot;,
+  &quot;relations&quot;: [
+    {
+      &quot;ecli&quot;: &quot;ECLI:NL:PHR:2013:2630&quot;,
+      &quot;relation&quot;: &quot;conclusie&quot;,
+      &quot;direction&quot;: &quot;earlier&quot;,
+      &quot;outcome&quot;: &quot;gevolgd&quot;,
+      &quot;label&quot;: &quot;Conclusie: ECLI:NL:PHR:2013:2630, Gevolgd&quot;,
+      &quot;url&quot;: &quot;https://uitspraken.rechtspraak.nl/details?id=ECLI:NL:PHR:2013:2630&quot;
+    },
+    {
+      &quot;ecli&quot;: &quot;ECLI:NL:GHAMS:2012:BY1475&quot;,
+      &quot;relation&quot;: &quot;cassatie&quot;,
+      &quot;direction&quot;: &quot;earlier&quot;,
+      &quot;outcome&quot;: &quot;bekrachtiging/bevestiging&quot;,
+      &quot;label&quot;: &quot;In cassatie op : ECLI:NL:GHAMS:2012:BY1475, Bekrachtiging/bevestiging&quot;,
+      &quot;url&quot;: &quot;https://uitspraken.rechtspraak.nl/details?id=ECLI:NL:GHAMS:2012:BY1475&quot;
+    }
+  ],
+  &quot;references&quot;: [
+    {
+      &quot;type&quot;: &quot;law&quot;,
+      &quot;label&quot;: &quot;Wetboek van Strafrecht 137c&quot;,
+      &quot;identifier&quot;: &quot;jci1.31:c:BWBR0001854&amp;artikel=137c&quot;,
+      &quot;bwb_id&quot;: &quot;BWBR0001854&quot;,
+      &quot;article&quot;: &quot;137c&quot;,
+      &quot;url&quot;: &quot;https://wetten.overheid.nl/jci1.31:c:BWBR0001854&amp;artikel=137c&quot;
+    }
+  ],
+  &quot;published_in&quot;: [&quot;Rechtspraak.nl&quot;, &quot;NJB 2014/985&quot;, &quot;RvdW 2014/698&quot;, &quot;NJ 2014/336 met annotatie van N. Keijzer&quot;, &quot;SR-Updates.nl 2014-0195&quot;, &quot;NbSr 2014/185&quot;],
+  &quot;replaces&quot;: [],
+  &quot;replaced_by&quot;: null,
+  &quot;has_text&quot;: true,
+  &quot;text_chars&quot;: 24215,
+  &quot;text&quot;: null,
+  &quot;text_truncated&quot;: null,
+  &quot;source_url&quot;: &quot;https://uitspraken.rechtspraak.nl/details?id=ECLI:NL:HR:2014:952&quot;,
+  &quot;data_url&quot;: &quot;https://data.rechtspraak.nl/uitspraken/content?id=ECLI:NL:HR:2014:952&quot;,
+  &quot;warnings&quot;: [],
+  &quot;retrieved_at&quot;: &quot;2026-11-05T22:45:19+00:00&quot;,
+  &quot;duration_seconds&quot;: 0.11
+}</code></pre></div></div>
+<div class="prose">
+<h2>What you get</h2>
+<div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>schema_version</code></td><td>string</td><td>Output schema version.</td></tr>
+<tr><td><code>ecli</code></td><td>string</td><td>European Case Law Identifier of the decision, e.g. ECLI:NL:HR:2024:123.</td></tr>
+<tr><td><code>title</code></td><td>string | null</td><td>Rechtspraak&#x27;s display title: ECLI, court, decision date and case numbers.</td></tr>
+<tr><td><code>court</code></td><td>string | null</td><td>Court (instantie) name, e.g. Hoge Raad, Raad van State, Rechtbank Amsterdam.</td></tr>
+<tr><td><code>court_code</code></td><td>string | null</td><td>Court code from the ECLI, e.g. HR, RVS, CRVB, GHAMS, RBAMS.</td></tr>
+<tr><td><code>court_id</code></td><td>string | null</td><td>The court&#x27;s identifier URI in the Rechtspraak value list.</td></tr>
+<tr><td><code>document_type</code></td><td>string | null</td><td>&quot;uitspraak&quot; (decision) or &quot;conclusie&quot; (Advocate-General&#x27;s opinion).</td></tr>
+<tr><td><code>decision_date</code></td><td>string | null</td><td>Date of the decision or opinion (uitspraakdatum), YYYY-MM-DD.</td></tr>
+<tr><td><code>publication_date</code></td><td>string | null</td><td>Date the text was published on rechtspraak.nl, YYYY-MM-DD.</td></tr>
+<tr><td><code>modified</code></td><td>string | null</td><td>Last change to the metadata or text, ISO 8601 (Rechtspraak local time).</td></tr>
+<tr><td><code>case_numbers</code></td><td>array</td><td>Case numbers (zaaknummers) as published, e.g. [&quot;22/01066&quot;].</td></tr>
+<tr><td><code>seat</code></td><td>string | null</td><td>Place of session (zittingsplaats), when given.</td></tr>
+<tr><td><code>legal_areas</code></td><td>array</td><td>Legal areas (rechtsgebieden), e.g. [&quot;Strafrecht&quot;].</td></tr>
+<tr><td><code>procedures</code></td><td>array</td><td>Procedure types, e.g. [&quot;Cassatie&quot;], [&quot;Hoger beroep&quot;].</td></tr>
+<tr><td><code>language</code></td><td>string | null</td><td>Language code of the metadata record (nl); English translations say so in the summary.</td></tr>
+<tr><td><code>summary</code></td><td>string | null</td><td>The court&#x27;s own summary (inhoudsindicatie) as plain text; null when none.</td></tr>
+<tr><td><code>relations</code></td><td>array</td><td>Formal relations to other decisions: {ecli, relation (hogerBeroep, cassatie, conclusie, ...), direction (earlier = the other decision is from an earlier instance, later = a later one), outcome (e.g. bekrachtiging/bevestiging, vernietiging, contrair), label, url}.</td></tr>
+<tr><td><code>references</code></td><td>array</td><td>References to legislation and case law: {type (law, case_law, eu_law, local_regulation), label, identifier (BWB jci or ECLI), bwb_id, article, url}.</td></tr>
+<tr><td><code>published_in</code></td><td>array</td><td>Where the decision is published (vindplaatsen), e.g. [&quot;Rechtspraak.nl&quot;, &quot;NJ 2014/336&quot;].</td></tr>
+<tr><td><code>replaces</code></td><td>array</td><td>Old identifiers (LJN) this ECLI replaces.</td></tr>
+<tr><td><code>replaced_by</code></td><td>string | null</td><td>ECLI that replaces this one, if it was withdrawn.</td></tr>
+<tr><td><code>has_text</code></td><td>boolean</td><td>Whether rechtspraak.nl publishes the decision text (false = metadata only).</td></tr>
+<tr><td><code>text_chars</code></td><td>integer | null</td><td>Length of the full plain text in characters (null without text).</td></tr>
+<tr><td><code>text</code></td><td>string | null</td><td>The decision as plain text (includeText only): &#x27;## &#x27; section headings, numbering kept, footnotes at the end; cut at maxTextChars.</td></tr>
+<tr><td><code>text_truncated</code></td><td>boolean | null</td><td>True when text was cut at maxTextChars; null without includeText.</td></tr>
+<tr><td><code>source_url</code></td><td>string</td><td>The decision on uitspraken.rechtspraak.nl.</td></tr>
+<tr><td><code>data_url</code></td><td>string</td><td>The official Open Data XML this row was read from.</td></tr>
+<tr><td><code>warnings</code></td><td>array</td><td>Caveats in plain words: text cut, metadata only, replaced ECLI, keyword scan limit.</td></tr>
+<tr><td><code>retrieved_at</code></td><td>string</td><td>When the row was made (ISO 8601, UTC).</td></tr>
+<tr><td><code>duration_seconds</code></td><td>number</td><td>How long fetching this decision took.</td></tr>
+</tbody></table></div>
+
+<h2>Use with AI agents (MCP)</h2>
+<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is live on the Apify Store.</p>
+<pre><code>https://mcp.apify.com?tools=bosco_labs/dutch-case-law</code></pre>
+<p>For &ldquo;Find Hoge Raad rulings on tenancy law (huurrecht) since 2024 and summarise what each one decided, with links.&rdquo; the agent passes:</p>
+<pre><code>{ &quot;query&quot;: &quot;huurrecht&quot;, &quot;courts&quot;: [&quot;HR&quot;], &quot;dateFrom&quot;: &quot;2024-01-01&quot;, &quot;maxResults&quot;: 20 }</code></pre>
+<p>stable <code>snake_case</code> fields, ISO dates, <code>null</code> for unknown, a rechtspraak.nl link per decision and per related decision. <code>warnings</code> says in plain words when text was cut, an ECLI has metadata only or was replaced, or a keyword scan hit its limit. An empty search ends with a status message saying why and what to try.</p>
+<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~dutch-case-law/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.005 per decision returned.</p>
+<h2>Input fields</h2>
+<div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>ecli</code></td><td>string</td><td>One or more Dutch ECLIs, separated by commas or spaces, e.g. &quot;ECLI:NL:HR:2024:123&quot; or &quot;ECLI:NL:HR:2024:123, ECLI:NL:RVS:2024:1000&quot; (max 100). Lower case and uitspraken.rechtspraak.nl links also work. One row per ECLI; an unknown ECLI fails at no charge. Empty = search with the fields below (both can be combined: ECLI rows come first).</td></tr>
+<tr><td><code>query</code></td><td>string</td><td>Words to find in the decision&#x27;s title and summary (inhoudsindicatie), case-insensitive. Commas separate alternatives, words within one alternative must all appear: &quot;huur, pacht&quot; = huur OR pacht; &quot;ontslag op staande voet&quot; = all four words. Summaries are in Dutch, so use Dutch words. The official API has no full-text search: this filters the newest-updated decisions that match the other filters (up to 10,000 scanned). Empty = no keyword filter.</td></tr>
+<tr><td><code>courts</code></td><td>array</td><td>Court codes as used in the ECLI, e.g. [&quot;HR&quot;] for the Hoge Raad (Supreme Court); others: PHR (Procureur-Generaal/AG opinions), RVS (Raad van State), CRVB, CBB, GHAMS, GHARL, GHDHA, GHSHE (courts of appeal), RBAMS, RBDHA, RBROT, RBMNE ... (district courts). Full Dutch names also work. Empty = all courts.</td></tr>
+<tr><td><code>legalAreas</code></td><td>array</td><td>Rechtsgebied names, e.g. [&quot;Strafrecht&quot;], [&quot;Belastingrecht&quot;, &quot;Arbeidsrecht&quot;]; English also works: criminal, civil, administrative, tax, employment, immigration, insolvency, family, competition, environmental. A main area includes its sub-areas. Empty = all areas.</td></tr>
+<tr><td><code>dateFrom</code></td><td>string</td><td>Earliest decision date (uitspraakdatum), YYYY-MM-DD, e.g. &quot;2024-01-01&quot;. Empty = no lower limit (to today if dateTo is empty).</td></tr>
+<tr><td><code>dateTo</code></td><td>string</td><td>Latest decision date, inclusive, YYYY-MM-DD, e.g. &quot;2024-12-31&quot;. Empty = today when dateFrom is set, else no limit.</td></tr>
+<tr><td><code>documentType</code></td><td>string</td><td>&quot;uitspraak&quot; = court decisions only, &quot;conclusie&quot; = opinions of the Advocate-General at the Hoge Raad only. Empty = both.</td></tr>
+<tr><td><code>maxResults</code></td><td>integer</td><td>Most decisions to return from a search, most recently published or updated first, e.g. 20 (default). One charge per decision returned.</td></tr>
+<tr><td><code>includeText</code></td><td>boolean</td><td>true = add the full decision as plain text (section headings as &#x27;## &#x27;, numbered paragraphs kept), cut at maxTextChars. Default false: metadata and summary only (small rows). Same price.</td></tr>
+<tr><td><code>maxTextChars</code></td><td>integer</td><td>With includeText: cap on the text per decision in characters, e.g. 20000 (default). Longer text is cut and flagged (text_truncated, text_chars gives the full length).</td></tr>
+</tbody></table></div>
+<h2>Sources, licence and limits</h2>
+<p><strong>Where does the data come from?</strong> Only from the Open Data service of the Dutch judiciary (Rechtspraak, <code>data.rechtspraak.nl</code>): the ECLI index and the decision XML. Nothing is added, rewritten or summarised; the summary is the court&#x27;s own inhoudsindicatie.</p>
+<p><strong>Which courts?</strong> Everything Rechtspraak publishes: Hoge Raad and its Procureur-Generaal (PHR), Raad van State, Centrale Raad van Beroep, College van Beroep voor het bedrijfsleven, the four courts of appeal, the eleven district courts, the Caribbean courts and several disciplinary tribunals, from the 1990s on. Courts publish only a selection of their decisions, so absence from Rechtspraak does not mean a case does not exist.</p>
+<p><strong>Personal data?</strong> Courts pseudonymise decisions before publishing them: parties and other private persons appear as <code>[eiser]</code>, <code>[verdachte]</code>, <code>[adres]</code> and so on. This Actor returns the published text as is, adds nothing, links nothing to other sources and offers no search by person. Do not use it to try to re-identify anyone.</p>
+<p><strong>How current is it?</strong> Live: every run reads data.rechtspraak.nl. New decisions appear the day Rechtspraak publishes them, usually days to weeks after the decision date.</p>
+<p><strong>Is this legal advice?</strong> No. It returns published decisions and their metadata; it does not interpret them. English translations of some landmark decisions are unofficial (the courts say so in the summary); the Dutch text is authentic.</p>
+<p><strong>Limits:</strong> 100 ECLIs or 200 search results per run; no full-text search (see above); no filter by procedure type (the API has none; <code>procedures</code> is in every row); text cut at <code>maxTextChars</code>. Rechtspraak asks users to stay under 10 requests per second, so this Actor reads one decision at a time.</p>
+<p>Content: decisions of the Dutch courts via Rechtspraak Open Data, https://www.rechtspraak.nl/uitspraken/open-data (court decisions carry no copyright, art. 11 Auteurswet). Text is converted from XML to plain text and long texts are cut where <code>maxTextChars</code> says; nothing else is changed.</p>
+<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=Dutch Case Law API (Rechtspraak)">Ask for early access</a></div>
+</div>
+</article>
+</main>
+<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
+</body>
+</html>

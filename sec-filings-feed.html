@@ -3,18 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SEC EDGAR Filings API: 8-K, 10-K, 10-Q feed since 1994</title>
-<meta name="description" content="SEC EDGAR filings (8-K, 10-K, 10-Q, 13D, S-1 and every other form) as JSON, live or back to 1994, with 8-K item codes and exact earnings release times.">
+<title>SEC EDGAR Filings API: 8-K, 10-K, 10-Q live feed</title>
+<meta name="description" content="SEC EDGAR filings as JSON for one company or the whole market, live or back to 1994: 8-K item codes, earnings release times, filing links. $1 per 1,000.">
 <link rel="canonical" href="https://boscolabs.dev/sec-filings-feed.html">
+<link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="logo.svg" type="image/svg+xml">
 <link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Bosco Labs">
-<meta property="og:title" content="SEC EDGAR Filings API: 8-K, 10-K, 10-Q feed since 1994">
-<meta property="og:description" content="SEC EDGAR filings (8-K, 10-K, 10-Q, 13D, S-1 and every other form) as JSON, live or back to 1994, with 8-K item codes and exact earnings release times.">
+<meta property="og:title" content="SEC EDGAR Filings API: 8-K, 10-K, 10-Q live feed">
+<meta property="og:description" content="SEC EDGAR filings as JSON for one company or the whole market, live or back to 1994: 8-K item codes, earnings release times, filing links. $1 per 1,000.">
 <meta property="og:url" content="https://boscolabs.dev/sec-filings-feed.html">
-<meta property="og:image" content="https://boscolabs.dev/logo-512.png">
+<meta property="og:image" content="https://boscolabs.dev/icons/sec-filings-feed.png">
 <meta name="twitter:card" content="summary">
+<script defer src="/_vercel/insights/script.js"></script>
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -22,43 +24,93 @@
  "name": "SEC EDGAR Filings API: 8-K, 10-K, 10-Q feed since 1994",
  "description": "SEC EDGAR filings (8-K, 10-K, 10-Q, S-1, 13D, 13G, Form 4 and every other form) for any company or the whole market, live or back to 1994, from the SEC's own feeds. Filter by ticker, CIK, form, 8-K item and date; flags earnings releases (Item 2.02). Returns links to each filing, not its text.",
  "url": "https://boscolabs.dev/sec-filings-feed.html",
- "installUrl": "https://apify.com/bosco_labs/sec-filings-feed",
+ "image": "https://boscolabs.dev/icons/sec-filings-feed.png",
  "applicationCategory": "DeveloperApplication",
  "operatingSystem": "Web (Apify platform)",
  "offers": {
   "@type": "Offer",
-  "url": "https://apify.com/bosco_labs/sec-filings-feed",
   "priceCurrency": "USD",
-  "description": "$0.001 per filing"
+  "description": "$0.001 per filing",
+  "url": "https://apify.com/bosco_labs/sec-filings-feed"
  },
  "provider": {
   "@type": "Organization",
   "name": "Bosco Labs",
-  "url": "https://apify.com/bosco_labs"
- }
+  "url": "https://boscolabs.dev/"
+ },
+ "installUrl": "https://apify.com/bosco_labs/sec-filings-feed"
 }
 </script>
-<style>:root{--bg:#fff;--fg:#1a2230;--muted:#5a6575;--line:#dfe3ea;--card:#f5f7fa;--accent:#0f766e;--btn:#0f766e;--btnfg:#fff}
-@media (prefers-color-scheme:dark){:root{--bg:#0d1520;--fg:#e6ebf2;--muted:#9aa6b6;--line:#26323f;--card:#15202d;--accent:#5eead4;--btn:#2dd4bf;--btnfg:#04201d}}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-header,main,footer{max-width:860px;margin:0 auto;padding:0 16px}header{display:flex;align-items:center;gap:10px;padding-top:18px}
-header a{display:flex;align-items:center;gap:10px;color:var(--fg);text-decoration:none;font-weight:600}header img{width:32px;height:32px}
-a{color:var(--accent)}h1{font-size:1.9rem;line-height:1.25;margin:1.2rem 0 .6rem}h2{margin-top:2.2rem;font-size:1.3rem}
-.lead{font-size:1.15rem}.muted{color:var(--muted)}code{font:.9em ui-monospace,SFMono-Regular,Consolas,monospace}
-pre{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px;overflow-x:auto;font-size:.85rem;line-height:1.45}
-.table{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{text-align:left;vertical-align:top;padding:6px 8px;border-bottom:1px solid var(--line)}
-td:first-child{white-space:nowrap}.cta{display:inline-block;background:var(--btn);color:var(--btnfg);font-weight:700;font-size:1.1rem;padding:14px 22px;border-radius:10px;text-decoration:none;margin:1.2rem 0}
-.cards{list-style:none;padding:0;display:grid;gap:12px}.cards li{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}
-.cards h3{margin:0 0 .3rem;font-size:1.05rem}.cards p{margin:.2rem 0}footer{border-top:1px solid var(--line);margin-top:3rem;padding-top:12px;padding-bottom:24px;font-size:.9rem}</style>
+<style>:root{color-scheme:light dark;--head:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--body:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;--ink:#1D2721;--muted:#545F58;--bg:#F5F3EA;--surface:#EAE8DC;--line:#D6D3C3;--accent:#2E5A47;--accent-fg:#F5F3EA;--accent2:#8DA889;--accent2-text:#4A6646;--success:#36694A;--warn:#8E5D1C}
+@media (prefers-color-scheme:dark){:root{--ink:#E5E8DE;--muted:#A3ADA4;--bg:#121914;--surface:#1B241E;--line:#2B372F;--accent:#9EC7B1;--accent-fg:#121914;--accent2:#B5C9A4;--accent2-text:#B5C9A4;--success:#93C7A0;--warn:#DDB070}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--body)}h1,h2,h3,.brand{font-family:var(--head)}
+a{color:var(--accent);text-underline-offset:2px}.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+.site{border-bottom:1px solid var(--line)}.site .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;padding-top:12px;padding-bottom:12px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-weight:650;letter-spacing:-.01em}.brand img{width:30px;height:30px}
+nav{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:.95rem}nav a{color:var(--muted);text-decoration:none}nav a:hover{color:var(--ink)}
+h1{font-size:clamp(1.65rem,4vw,2.4rem);line-height:1.2;letter-spacing:-.02em;margin:0 0 12px}
+h2{font-size:1.3rem;line-height:1.3;letter-spacing:-.01em;margin:44px 0 12px}h3{font-size:1.02rem;margin:20px 0 6px}
+.hero{padding:52px 0 8px;max-width:780px}.lead{font-size:1.13rem;color:var(--muted)}.muted{color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}.chips a{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:.9rem;color:var(--ink);text-decoration:none}.chips a:hover{border-color:var(--accent)}
+.grid{list-style:none;padding:0;margin:0;display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.card-top{display:flex;gap:12px;align-items:center}.card img{width:48px;height:48px;flex:none}
+.card h3{margin:0;font-size:1rem;line-height:1.3}.card h3 a{color:var(--ink);text-decoration:none}.card h3 a:hover{text-decoration:underline}
+.card p{margin:0;font-size:.92rem;color:var(--muted)}.card .row{margin-top:auto;padding-top:6px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-size:.88rem}
+.price{font-weight:600;color:var(--ink)}.badge{display:inline-block;font-size:.78rem;font-weight:600;line-height:1.5;padding:1px 9px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.badge.live{color:var(--success)}.badge.soon{color:var(--warn)}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-fg);font-weight:650;padding:11px 18px;border-radius:10px;text-decoration:none}
+.btn.ghost{background:none;color:var(--accent);border:1px solid var(--line)}.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0}
+.crumbs{font-size:.9rem;color:var(--muted);margin:22px 0 0}.crumbs a{color:var(--muted)}
+.head{display:flex;gap:20px;align-items:flex-start;margin:18px 0 0}.head img{width:84px;height:84px;flex:none}
+.prose{max-width:800px}.facts{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));margin:22px 0}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:.95rem}.fact b{display:block;font-size:.75rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.qs{padding-left:20px}.qs li{margin:4px 0}.two{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}.two h3{margin-top:0}.two>div,.prose,main{min-width:0}
+code{font:.86em var(--mono)}:not(pre)>code{overflow-wrap:anywhere}
+pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px;overflow:auto;max-height:520px;font-size:.84rem;line-height:1.45;margin:0}
+.table{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{text-align:left;vertical-align:top;padding:7px 8px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-weight:600}td:first-child{white-space:nowrap}
+details{border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:10px 0}summary{cursor:pointer;font-weight:600}
+footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font-size:.9rem;color:var(--muted)}footer a{color:var(--muted)}
+@media (max-width:560px){.head{flex-direction:column;gap:12px}.head img{width:64px;height:64px}.hero{padding-top:32px}}</style>
 </head>
 <body>
-<header><a href="index.html"><img src="logo.svg" alt="" width="32" height="32">Bosco Labs data APIs</a></header>
-<main>
+<header class="site"><div class="wrap"><a class="brand" href="index.html"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav><a href="index.html#tools">Tools</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
+<main class="wrap">
+<p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#finance-sec">Finance &amp; SEC</a></p>
 <article>
-<h1>SEC EDGAR Filings API: 8-K, 10-K, 10-Q feed since 1994</h1>
-<p class="lead">SEC EDGAR filings (8-K, 10-K, 10-Q, S-1, 13D, 13G, Form 4 and every other form) for any company or the whole market, live or back to 1994, from the SEC&#x27;s own feeds.</p>
-<p>Filter by ticker, CIK, form, 8-K item and date; flags earnings releases (Item 2.02). Returns links to each filing, not its text.</p>
-<p><a class="cta" href="https://apify.com/bosco_labs/sec-filings-feed">Run it on Apify Store &rarr;</a></p>
+<div class="head"><img src="icons/sec-filings-feed.svg" alt="" width="84" height="84"><div><h1>SEC EDGAR Filings API: 8-K, 10-K, 10-Q feed since 1994</h1><span class="badge live">On Apify Store</span></div></div>
+<div class="prose">
+<p class="lead">Get <strong>SEC EDGAR filings as clean JSON</strong>: 8-K current reports, 10-K annual reports, 10-Q, S-1, 13D, 13G, Form 4, DEF 14A, 20-F and every other form, for one company, a watchlist or the whole market, from filings accepted minutes ago back to 1994. Each row has the company, CIK, ticker, form, filing date and exact acceptance time, the <strong>8-K item codes</strong> (2.02 earnings, 5.02 officer changes, 1.01 material agreements, ...) and direct links to the filing and its main document. For investors, news and alert services, compliance teams and AI agents.</p>
+<div class="facts"><div class="fact"><b>Price</b>$0.001 per filing</div><div class="fact"><b>Domain</b>Finance &amp; SEC</div><div class="fact"><b>Call it</b>Apify API or MCP</div></div>
+<p><strong>Pricing (pay per event):</strong> $0.001 per filing ($1 per 1,000). No start fee. You only pay for filings delivered, a scheduled feed never charges the same filing twice, and the Actor stops at your max charge limit.</p>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/sec-filings-feed">Run it on Apify Store &rarr;</a></div>
+<h2>Questions agents ask</h2>
+<ul class="qs"><li>&ldquo;When did Nvidia release its last four quarterly results, and was it before or after the market closed?&rdquo;</li><li>&ldquo;Which companies filed a 13D in the last 7 days, and who filed it?&rdquo;</li><li>&ldquo;Give me links to Apple&#x27;s 10-K annual reports since 2015.&rdquo;</li></ul>
+</div>
+<h2>Example</h2>
+<div class="two"><div><h3>Input</h3><pre><code>{ &quot;tickers&quot;: [&quot;AAPL&quot;, &quot;MSFT&quot;, &quot;NVDA&quot;], &quot;formTypes&quot;: [&quot;8-K&quot;, &quot;10-Q&quot;, &quot;10-K&quot;], &quot;dateFrom&quot;: &quot;2020-01-01&quot;, &quot;maxResults&quot;: 1000 }</code></pre></div>
+<div><h3>Output</h3><pre><code>{
+  &quot;accession_number&quot;: &quot;0000320193-26-000024&quot;,
+  &quot;form&quot;: &quot;8-K&quot;,
+  &quot;company_name&quot;: &quot;Apple Inc.&quot;,
+  &quot;cik&quot;: &quot;0000320193&quot;,
+  &quot;ticker&quot;: &quot;AAPL&quot;,
+  &quot;filing_date&quot;: &quot;2026-11-02&quot;,
+  &quot;accepted_at&quot;: &quot;2026-11-02T16:30:23-05:00&quot;,
+  &quot;market_timing&quot;: &quot;after_close&quot;,
+  &quot;report_date&quot;: &quot;2026-11-02&quot;,
+  &quot;items&quot;: [&quot;2.02&quot;, &quot;9.01&quot;],
+  &quot;item_descriptions&quot;: [&quot;Results of Operations and Financial Condition&quot;, &quot;Financial Statements and Exhibits&quot;],
+  &quot;parties&quot;: null,
+  &quot;filing_index_url&quot;: &quot;https://www.sec.gov/Archives/edgar/data/320193/000032019326000024/0000320193-26-000024-index.htm&quot;,
+  &quot;primary_document_url&quot;: &quot;https://www.sec.gov/Archives/edgar/data/320193/000032019326000024/aapl-20261102.htm&quot;,
+  &quot;source&quot;: &quot;submissions-api&quot;,
+  &quot;source_url&quot;: &quot;https://data.sec.gov/submissions/CIK0000320193.json&quot;,
+  &quot;retrieved_at&quot;: &quot;2026-11-05T16:23:00+00:00&quot;
+}</code></pre></div></div>
+<div class="prose">
 <h2>What you get</h2>
 <div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
 <tr><td><code>schema_version</code></td><td>string</td><td>Output schema version.</td></tr>
@@ -80,32 +132,14 @@ td:first-child{white-space:nowrap}.cta{display:inline-block;background:var(--btn
 <tr><td><code>source_url</code></td><td>string</td><td>The SEC page or file the row was read from.</td></tr>
 <tr><td><code>retrieved_at</code></td><td>string</td><td>UTC time the row was produced.</td></tr>
 </tbody></table></div>
-<h2>Coverage</h2>
-<p>All EDGAR forms. Companies: the SEC submissions API, complete history back to 1994. Whole market: the live feed, then the EDGAR daily and quarterly indexes back to 1993. 8-K item codes exist since August 2004. Rows hold links to the filing and its main document, not the document text.</p>
-<h2>Price</h2>
-<p><strong>Pricing (pay per event):</strong> $0.001 per filing ($1 per 1,000). No start fee. You only pay for filings delivered, a scheduled feed never charges the same filing twice, and the Actor stops at your max charge limit.</p>
-<h2>Example input</h2>
-<pre><code>{ &quot;tickers&quot;: [&quot;AAPL&quot;, &quot;MSFT&quot;, &quot;NVDA&quot;], &quot;formTypes&quot;: [&quot;8-K&quot;, &quot;10-Q&quot;, &quot;10-K&quot;], &quot;dateFrom&quot;: &quot;2020-01-01&quot;, &quot;maxResults&quot;: 1000 }</code></pre>
-<h2>Example output</h2>
-<pre><code>{
-  &quot;accession_number&quot;: &quot;0000320193-26-000024&quot;,
-  &quot;form&quot;: &quot;8-K&quot;,
-  &quot;company_name&quot;: &quot;Apple Inc.&quot;,
-  &quot;cik&quot;: &quot;0000320193&quot;,
-  &quot;ticker&quot;: &quot;AAPL&quot;,
-  &quot;filing_date&quot;: &quot;2026-11-02&quot;,
-  &quot;accepted_at&quot;: &quot;2026-11-02T16:30:23-05:00&quot;,
-  &quot;market_timing&quot;: &quot;after_close&quot;,
-  &quot;report_date&quot;: &quot;2026-11-02&quot;,
-  &quot;items&quot;: [&quot;2.02&quot;, &quot;9.01&quot;],
-  &quot;item_descriptions&quot;: [&quot;Results of Operations and Financial Condition&quot;, &quot;Financial Statements and Exhibits&quot;],
-  &quot;parties&quot;: null,
-  &quot;filing_index_url&quot;: &quot;https://www.sec.gov/Archives/edgar/data/320193/000032019326000024/0000320193-26-000024-index.htm&quot;,
-  &quot;primary_document_url&quot;: &quot;https://www.sec.gov/Archives/edgar/data/320193/000032019326000024/aapl-20261102.htm&quot;,
-  &quot;source&quot;: &quot;submissions-api&quot;,
-  &quot;source_url&quot;: &quot;https://data.sec.gov/submissions/CIK0000320193.json&quot;,
-  &quot;retrieved_at&quot;: &quot;2026-11-05T16:23:00+00:00&quot;
-}</code></pre>
+<h2>Coverage</h2><p>All EDGAR forms. Companies: the SEC submissions API, complete history back to 1994. Whole market: the live feed, then the EDGAR daily and quarterly indexes back to 1993. 8-K item codes exist since August 2004. Rows hold links to the filing and its main document, not the document text.</p>
+<h2>Use with AI agents (MCP)</h2>
+<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>.</p>
+<pre><code>https://mcp.apify.com?tools=bosco_labs/sec-filings-feed</code></pre>
+<p>For &ldquo;When did Nvidia release its last four quarterly results, and was it before or after the market closed?&rdquo; the agent passes:</p>
+<pre><code>{&quot;tickers&quot;: [&quot;NVDA&quot;], &quot;earningsReleasesOnly&quot;: true, &quot;maxResults&quot;: 4}</code></pre>
+<p>stable, typed JSON, one row per filing. Every row has <code>schema_version</code> and a <code>source_url</code> pointing to the SEC data it came from, plus <code>filing_index_url</code> and <code>primary_document_url</code> for the filing itself, so the agent can cite its source. For tickers or CIKs without dates, a run returns each company&#x27;s newest filings (no date needed for &quot;the latest 10-K&quot;); a whole-market run without dates reads the last 7 days. If nothing matches, the run&#x27;s status message says so and why.</p>
+<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~sec-filings-feed/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.001 per filing.</p>
 <h2>Input fields</h2>
 <div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
 <tr><td><code>formTypes</code></td><td>array</td><td>EDGAR form types, exact match, e.g. [&quot;8-K&quot;, &quot;10-K&quot;, &quot;10-Q&quot;]; also S-1, 13D, 13G, 4, DEF 14A, 20-F, 6-K and any other form. Add &quot;10-K/A&quot; etc. for amendments. 13D and 13G also match the SC 13D and SCHEDULE 13D names. Empty = every form.</td></tr>
@@ -119,16 +153,18 @@ td:first-child{white-space:nowrap}.cta{display:inline-block;background:var(--btn
 <tr><td><code>maxResults</code></td><td>integer</td><td>Maximum filings, newest first, e.g. 10 for a company&#x27;s latest 10 filings. Default 100. The run stops once it has this many; you pay per filing returned.</td></tr>
 <tr><td><code>onlyNewSinceLastRun</code></td><td>boolean</td><td>true = skip (and don&#x27;t charge for) filings an earlier run with the same filters already delivered. For scheduled runs. Default false. Remembered in a named key-value store in your account.</td></tr>
 </tbody></table></div>
-<h2>Use with AI agents</h2>
-<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>.</p>
-<pre><code>https://mcp.apify.com?tools=bosco_labs/sec-filings-feed</code></pre>
-<p>Example prompt: <em>&ldquo;&quot;When did Nvidia release its last four quarterly results, and was it before or after the market closed?&quot;&rdquo;</em> The agent passes:</p>
-<pre><code>{&quot;tickers&quot;: [&quot;NVDA&quot;], &quot;earningsReleasesOnly&quot;: true, &quot;maxResults&quot;: 4}</code></pre>
-<p>stable, typed JSON, one row per filing. Every row has <code>schema_version</code> and a <code>source_url</code> pointing to the SEC data it came from, plus <code>filing_index_url</code> and <code>primary_document_url</code> for the filing itself, so the agent can cite its source. For tickers or CIKs without dates, a run returns each company&#x27;s newest filings (no date needed for &quot;the latest 10-K&quot;); a whole-market run without dates reads the last 7 days. If nothing matches, the run&#x27;s status message says so and why.</p>
-<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~sec-filings-feed/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.001 per filing.</p>
-<p><a class="cta" href="https://apify.com/bosco_labs/sec-filings-feed">Open SEC EDGAR Filings API on Apify Store &rarr;</a></p>
+<h2>Sources, licence and limits</h2>
+<p><strong>Which forms?</strong> All of them: whatever EDGAR accepts, from 10-K to N-PORT. Use the exact form type as EDGAR names it.</p>
+<p><strong>Since when do 8-Ks have items?</strong> The numbered items (2.02 etc.) exist since August 2004; older 8-Ks have an empty <code>items</code> list. Filings from the 1990s have a date but no acceptance time, so <code>market_timing</code> is <code>null</code> there.</p>
+<p><strong>Why is the ticker empty sometimes?</strong> Tickers come from the SEC&#x27;s current ticker list. Delisted companies, funds and private filers have none; their CIK always works.</p>
+<p><strong>Company names?</strong> For company searches, the current name in the SEC&#x27;s records (Apple Inc. for 1994 filings too); for whole-market searches, the name on the filing.</p>
+<p><strong>Do I get the documents&#x27; text?</strong> No, links only (<code>primary_document_url</code>, <code>filing_index_url</code>). That keeps rows small and cheap; fetch the documents you need.</p>
+<p><strong>Legal basis?</strong> SEC filings are US government public records. See LEGAL.md.</p>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/sec-filings-feed">Run it on Apify Store &rarr;</a></div>
+</div>
 </article>
 </main>
-<footer><p><a href="index.html">All Actors</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p></footer>
+<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
 </body>
 </html>

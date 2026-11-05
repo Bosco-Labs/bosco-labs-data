@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>USAspending API: federal contracts and grants by company</title>
+<meta name="description" content="US federal contract, grant and loan awards from every agency via USAspending.gov: winner, parent company, stock ticker, agency, amount, NAICS/PSC, dates.">
+<link rel="canonical" href="https://boscolabs.dev/us-federal-awards.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bosco Labs">
+<meta property="og:title" content="USAspending API: federal contracts and grants by company">
+<meta property="og:description" content="US federal contract, grant and loan awards from every agency via USAspending.gov: winner, parent company, stock ticker, agency, amount, NAICS/PSC, dates.">
+<meta property="og:url" content="https://boscolabs.dev/us-federal-awards.html">
+<meta property="og:image" content="https://boscolabs.dev/icons/us-federal-awards.png">
+<meta name="twitter:card" content="summary">
+<script defer src="/_vercel/insights/script.js"></script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "SoftwareApplication",
+ "name": "US Federal Awards API: contracts & grants, all agencies",
+ "description": "US federal contract, grant and loan awards from every agency (USAspending.gov): winner, UEI, parent company, stock ticker, agency, amounts, dates, NAICS/PSC/assistance listing, place of performance and a source link. Filter by company, ticker, agency, keyword, state, date.",
+ "url": "https://boscolabs.dev/us-federal-awards.html",
+ "image": "https://boscolabs.dev/icons/us-federal-awards.png",
+ "applicationCategory": "DeveloperApplication",
+ "operatingSystem": "Web (Apify platform)",
+ "offers": {
+  "@type": "Offer",
+  "priceCurrency": "USD",
+  "description": "$0.004 per award row",
+  "availability": "https://schema.org/PreOrder"
+ },
+ "provider": {
+  "@type": "Organization",
+  "name": "Bosco Labs",
+  "url": "https://boscolabs.dev/"
+ }
+}
+</script>
+<style>:root{color-scheme:light dark;--head:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--body:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;--ink:#1D2721;--muted:#545F58;--bg:#F5F3EA;--surface:#EAE8DC;--line:#D6D3C3;--accent:#2E5A47;--accent-fg:#F5F3EA;--accent2:#8DA889;--accent2-text:#4A6646;--success:#36694A;--warn:#8E5D1C}
+@media (prefers-color-scheme:dark){:root{--ink:#E5E8DE;--muted:#A3ADA4;--bg:#121914;--surface:#1B241E;--line:#2B372F;--accent:#9EC7B1;--accent-fg:#121914;--accent2:#B5C9A4;--accent2-text:#B5C9A4;--success:#93C7A0;--warn:#DDB070}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--body)}h1,h2,h3,.brand{font-family:var(--head)}
+a{color:var(--accent);text-underline-offset:2px}.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+.site{border-bottom:1px solid var(--line)}.site .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;padding-top:12px;padding-bottom:12px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-weight:650;letter-spacing:-.01em}.brand img{width:30px;height:30px}
+nav{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:.95rem}nav a{color:var(--muted);text-decoration:none}nav a:hover{color:var(--ink)}
+h1{font-size:clamp(1.65rem,4vw,2.4rem);line-height:1.2;letter-spacing:-.02em;margin:0 0 12px}
+h2{font-size:1.3rem;line-height:1.3;letter-spacing:-.01em;margin:44px 0 12px}h3{font-size:1.02rem;margin:20px 0 6px}
+.hero{padding:52px 0 8px;max-width:780px}.lead{font-size:1.13rem;color:var(--muted)}.muted{color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}.chips a{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:.9rem;color:var(--ink);text-decoration:none}.chips a:hover{border-color:var(--accent)}
+.grid{list-style:none;padding:0;margin:0;display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.card-top{display:flex;gap:12px;align-items:center}.card img{width:48px;height:48px;flex:none}
+.card h3{margin:0;font-size:1rem;line-height:1.3}.card h3 a{color:var(--ink);text-decoration:none}.card h3 a:hover{text-decoration:underline}
+.card p{margin:0;font-size:.92rem;color:var(--muted)}.card .row{margin-top:auto;padding-top:6px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-size:.88rem}
+.price{font-weight:600;color:var(--ink)}.badge{display:inline-block;font-size:.78rem;font-weight:600;line-height:1.5;padding:1px 9px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.badge.live{color:var(--success)}.badge.soon{color:var(--warn)}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-fg);font-weight:650;padding:11px 18px;border-radius:10px;text-decoration:none}
+.btn.ghost{background:none;color:var(--accent);border:1px solid var(--line)}.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0}
+.crumbs{font-size:.9rem;color:var(--muted);margin:22px 0 0}.crumbs a{color:var(--muted)}
+.head{display:flex;gap:20px;align-items:flex-start;margin:18px 0 0}.head img{width:84px;height:84px;flex:none}
+.prose{max-width:800px}.facts{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));margin:22px 0}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:.95rem}.fact b{display:block;font-size:.75rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.qs{padding-left:20px}.qs li{margin:4px 0}.two{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}.two h3{margin-top:0}.two>div,.prose,main{min-width:0}
+code{font:.86em var(--mono)}:not(pre)>code{overflow-wrap:anywhere}
+pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px;overflow:auto;max-height:520px;font-size:.84rem;line-height:1.45;margin:0}
+.table{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{text-align:left;vertical-align:top;padding:7px 8px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-weight:600}td:first-child{white-space:nowrap}
+details{border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:10px 0}summary{cursor:pointer;font-weight:600}
+footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font-size:.9rem;color:var(--muted)}footer a{color:var(--muted)}
+@media (max-width:560px){.head{flex-direction:column;gap:12px}.head img{width:64px;height:64px}.hero{padding-top:32px}}</style>
+</head>
+<body>
+<header class="site"><div class="wrap"><a class="brand" href="index.html"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav><a href="index.html#tools">Tools</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
+<main class="wrap">
+<p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#government-procurement">Government &amp; procurement</a></p>
+<article>
+<div class="head"><img src="icons/us-federal-awards.svg" alt="" width="84" height="84"><div><h1>US Federal Awards API: contracts &amp; grants, all agencies</h1><span class="badge soon">Coming soon to the Store</span></div></div>
+<div class="prose">
+<p class="lead">Get <strong>US federal contracts, grants and loans from every agency</strong> (USAspending.gov): who won, which agency paid, how much, when, for what (NAICS, PSC, assistance listing), where, plus the winner&#x27;s <strong>parent company and US stock ticker</strong>. For sales intelligence, investors measuring government revenue exposure, and procurement or policy research.</p>
+<div class="facts"><div class="fact"><b>Price</b>$0.004 per award row</div><div class="fact"><b>Domain</b>Government &amp; procurement</div><div class="fact"><b>Call it</b>Apify API or MCP</div></div>
+<p><strong>Pricing (pay per event):</strong> $0.004 per award row ($4 per 1,000). Nothing is charged for an empty or failed run, and the Actor stops at your max charge limit.</p>
+<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=US Federal Awards API">Ask for early access</a></div>
+<h2>Questions agents ask</h2>
+<ul class="qs"><li>&ldquo;Which federal contracts did Palantir win this quarter?&rdquo;</li><li>&ldquo;Largest NASA contracts last month&rdquo;</li><li>&ldquo;Grants to universities in Texas for AI this year&rdquo;</li></ul>
+</div>
+<h2>Example</h2>
+<div class="two"><div><h3>Input</h3><pre><code>{
+  &quot;agencies&quot;: [&quot;NASA&quot;],
+  &quot;awardTypes&quot;: [&quot;contracts&quot;],
+  &quot;dateFrom&quot;: &quot;2026-10-01&quot;,
+  &quot;dateTo&quot;: &quot;2026-10-31&quot;,
+  &quot;maxResults&quot;: 20
+}</code></pre></div>
+<div><h3>Output</h3><pre><code>{
+  &quot;award_id&quot;: &quot;NNM16AA02C&quot;,
+  &quot;award_type_group&quot;: &quot;contracts&quot;,
+  &quot;award_type&quot;: &quot;DEFINITIVE CONTRACT&quot;,
+  &quot;recipient_name&quot;: &quot;AEROJET ROCKETDYNE OF DE, INC&quot;,
+  &quot;recipient_uei&quot;: &quot;JCZYYYQ7JGF5&quot;,
+  &quot;parent_name&quot;: &quot;L3HARRIS TECHNOLOGIES, INC&quot;,
+  &quot;ticker&quot;: &quot;LHX&quot;,
+  &quot;matched_on&quot;: &quot;parent&quot;,
+  &quot;awarding_agency&quot;: &quot;National Aeronautics and Space Administration&quot;,
+  &quot;action_date&quot;: &quot;2026-10-29&quot;,
+  &quot;action_amount_usd&quot;: 53422103.0,
+  &quot;modification_number&quot;: &quot;174&quot;,
+  &quot;total_obligated_usd&quot;: 3438289825.36,
+  &quot;total_value_usd&quot;: 4143466817.0,
+  &quot;award_date_signed&quot;: &quot;2015-11-19&quot;,
+  &quot;end_date&quot;: &quot;2029-09-30&quot;,
+  &quot;description&quot;: &quot;IGF::CT::IGF  RS-25 PRODUCTION RESTART TO BE UNDERTAKEN BY THE CONTRACTOR IN SUPPORT OF PROVIDING SIX RS-25 ENGINES ...&quot;,
+  &quot;naics_code&quot;: &quot;541712&quot;,
+  &quot;psc_code&quot;: &quot;1675&quot;,
+  &quot;psc_description&quot;: &quot;SPACE VEHICLE COMPONENTS&quot;,
+  &quot;performance_state&quot;: &quot;CA&quot;,
+  &quot;source_url&quot;: &quot;https://www.usaspending.gov/award/CONT_AWD_NNM16AA02C_8000_-NONE-_-NONE-&quot;,
+  &quot;schema_version&quot;: &quot;1&quot;
+}</code></pre></div></div>
+<div class="prose">
+<h2>What you get</h2>
+<div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>schema_version</code></td><td>string</td><td>Output schema version.</td></tr>
+<tr><td><code>award_id</code></td><td>string | null</td><td>Award identifier as USAspending shows it: contract PIID, or FAIN/URI for financial assistance.</td></tr>
+<tr><td><code>award_key</code></td><td>string</td><td>USAspending generated_internal_id: the unique award key, also used in source_url.</td></tr>
+<tr><td><code>award_type_group</code></td><td>string | null</td><td>contracts, grants, loans, direct_payments or other (from the USAspending award type code).</td></tr>
+<tr><td><code>award_type</code></td><td>string | null</td><td>Award type as USAspending describes it, e.g. DEFINITIVE CONTRACT, DELIVERY ORDER, PROJECT GRANT (B), COOPERATIVE AGREEMENT (B).</td></tr>
+<tr><td><code>award_type_code</code></td><td>string | null</td><td>USAspending award type code, e.g. D (definitive contract), C (delivery order), 04 (project grant), 05 (cooperative agreement), 07 (direct loan).</td></tr>
+<tr><td><code>parent_award_id</code></td><td>string | null</td><td>PIID of the parent IDV (IDIQ, BPA, GSA schedule) for task and delivery orders; null otherwise.</td></tr>
+<tr><td><code>recipient_name</code></td><td>string | null</td><td>Recipient (winner) name as published by USAspending.</td></tr>
+<tr><td><code>recipient_uei</code></td><td>string | null</td><td>Recipient&#x27;s SAM.gov Unique Entity ID (12 characters).</td></tr>
+<tr><td><code>parent_name</code></td><td>string | null</td><td>Parent company of the recipient, from the USAspending award record.</td></tr>
+<tr><td><code>parent_uei</code></td><td>string | null</td><td>Parent company&#x27;s UEI.</td></tr>
+<tr><td><code>recipient_city</code></td><td>string | null</td><td>Recipient&#x27;s city.</td></tr>
+<tr><td><code>recipient_state</code></td><td>string | null</td><td>Recipient&#x27;s US state code.</td></tr>
+<tr><td><code>recipient_country</code></td><td>string | null</td><td>Recipient&#x27;s country.</td></tr>
+<tr><td><code>ticker</code></td><td>string | null</td><td>US stock ticker (NYSE/Nasdaq/CBOE) when the recipient or parent name exactly matches an SEC-listed company after cleaning; null otherwise. Derived by Bosco Labs, not by USAspending.</td></tr>
+<tr><td><code>matched_on</code></td><td>string | null</td><td>&quot;recipient&quot; or &quot;parent&quot;: which name matched the ticker; null when no ticker.</td></tr>
+<tr><td><code>awarding_agency</code></td><td>string | null</td><td>Top-tier awarding agency, e.g. National Aeronautics and Space Administration.</td></tr>
+<tr><td><code>awarding_sub_agency</code></td><td>string | null</td><td>Awarding sub-agency, e.g. Department of the Navy, National Institutes of Health.</td></tr>
+<tr><td><code>funding_agency</code></td><td>string | null</td><td>Top-tier funding agency (can differ from the awarding agency).</td></tr>
+<tr><td><code>action_date</code></td><td>string | null</td><td>Date (YYYY-MM-DD) of the award&#x27;s action shown in this row: its largest action in the date window (sortBy amount) or its latest (sortBy date).</td></tr>
+<tr><td><code>action_amount_usd</code></td><td>number | null</td><td>Federal obligation of that action in USD (negative = de-obligation; 0 for administrative modifications and loans).</td></tr>
+<tr><td><code>modification_number</code></td><td>string | null</td><td>Modification number of that action (&quot;0&quot; or empty = the base award).</td></tr>
+<tr><td><code>total_obligated_usd</code></td><td>number | null</td><td>Total obligated on the award so far, all actions since signing, in USD.</td></tr>
+<tr><td><code>total_value_usd</code></td><td>number | null</td><td>Contracts: potential total value including all options (base_and_all_options), USD. Loans: loan face value. Null for other assistance.</td></tr>
+<tr><td><code>award_date_signed</code></td><td>string | null</td><td>Date the award was first signed (base award), YYYY-MM-DD. Earlier than dateFrom = the row is a modification of an older award.</td></tr>
+<tr><td><code>start_date</code></td><td>string | null</td><td>Period of performance start, YYYY-MM-DD.</td></tr>
+<tr><td><code>end_date</code></td><td>string | null</td><td>Period of performance current end, YYYY-MM-DD.</td></tr>
+<tr><td><code>description</code></td><td>string | null</td><td>Award description, cut at 300 characters.</td></tr>
+<tr><td><code>naics_code</code></td><td>string | null</td><td>NAICS industry code (contracts).</td></tr>
+<tr><td><code>naics_description</code></td><td>string | null</td><td>NAICS industry title.</td></tr>
+<tr><td><code>psc_code</code></td><td>string | null</td><td>Product and Service Code (contracts).</td></tr>
+<tr><td><code>psc_description</code></td><td>string | null</td><td>Product and Service Code title.</td></tr>
+<tr><td><code>cfda_number</code></td><td>string | null</td><td>Assistance listing (CFDA) number (financial assistance), e.g. 47.070.</td></tr>
+<tr><td><code>cfda_title</code></td><td>string | null</td><td>Assistance listing title.</td></tr>
+<tr><td><code>performance_city</code></td><td>string | null</td><td>Place of performance city.</td></tr>
+<tr><td><code>performance_state</code></td><td>string | null</td><td>Place of performance US state code.</td></tr>
+<tr><td><code>performance_country</code></td><td>string | null</td><td>Place of performance country.</td></tr>
+<tr><td><code>source_url</code></td><td>string</td><td>The award&#x27;s page on usaspending.gov (the source to cite).</td></tr>
+<tr><td><code>api_url</code></td><td>string</td><td>The award record in the USAspending API (JSON).</td></tr>
+<tr><td><code>retrieved_at</code></td><td>string</td><td>When this row was retrieved, ISO-8601 UTC.</td></tr>
+</tbody></table></div>
+
+<h2>Use with AI agents (MCP)</h2>
+<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is live on the Apify Store.</p>
+<pre><code>https://mcp.apify.com?tools=bosco_labs/us-federal-awards</code></pre>
+<p>For &ldquo;Which federal contracts did Palantir win this quarter?&rdquo; the agent passes:</p>
+<pre><code>{&quot;tickers&quot;: [&quot;PLTR&quot;], &quot;dateFrom&quot;: &quot;2026-10-01&quot;}</code></pre>
+
+<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~us-federal-awards/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.004 per award row.</p>
+<h2>Input fields</h2>
+<div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>recipients</code></td><td>array</td><td>Winning organisations, as name text or 12-character SAM UEI, e.g. [&quot;palantir&quot;], [&quot;university of texas&quot;] or [&quot;FSY4LVSBGWB7&quot;]. USAspending matches the text against recipient and parent company names and UEIs. Empty (default) = all recipients.</td></tr>
+<tr><td><code>tickers</code></td><td>array</td><td>Only awards whose recipient or its parent company matches these US-listed tickers (NYSE, Nasdaq, CBOE; exact cleaned SEC company name), e.g. [&quot;PLTR&quot;] or [&quot;LMT&quot;, &quot;BAH&quot;]. Subsidiaries are found through their parent company. Empty (default) = no ticker filter; every row still gets a ticker when its name matches.</td></tr>
+<tr><td><code>agencies</code></td><td>array</td><td>Awarding agencies by abbreviation, name or toptier code, e.g. [&quot;NASA&quot;], [&quot;Department of Energy&quot;], [&quot;097&quot;] (DoD). A name that is not a top-tier agency is searched as a sub-agency, e.g. [&quot;Defense Logistics Agency&quot;]. Empty (default) = all federal agencies.</td></tr>
+<tr><td><code>awardTypes</code></td><td>array</td><td>Which awards: &quot;contracts&quot; (USAspending codes A-D: BPA calls, purchase orders, delivery orders, definitive contracts), &quot;grants&quot; (02-05: block, formula, project grants, cooperative agreements), &quot;loans&quot; (07, 08), &quot;direct_payments&quot; (06, 10), &quot;other&quot; (09, 11: insurance, other assistance). E.g. [&quot;grants&quot;]. Default [&quot;contracts&quot;].</td></tr>
+<tr><td><code>keywords</code></td><td>array</td><td>Full-text search over award descriptions and other text fields, e.g. [&quot;artificial intelligence&quot;] or [&quot;cybersecurity&quot;]. Several keywords = any of them. Empty (default) = no keyword filter.</td></tr>
+<tr><td><code>naicsCodes</code></td><td>array</td><td>NAICS industry codes, 2 to 6 digits, e.g. [&quot;541512&quot;] (computer systems design) or [&quot;3364&quot;]. Contracts only. Empty (default) = all.</td></tr>
+<tr><td><code>pscCodes</code></td><td>array</td><td>Product and Service Codes, e.g. [&quot;DA01&quot;] (IT software development) or [&quot;AR&quot;] (space R&amp;D). Contracts only. Empty (default) = all.</td></tr>
+<tr><td><code>cfdaNumbers</code></td><td>array</td><td>Assistance listing (CFDA) numbers as NN.NNN, e.g. [&quot;47.070&quot;] (NSF computer and information science) or [&quot;93.855&quot;] (NIH allergy and infectious diseases). Financial assistance only. Empty (default) = all.</td></tr>
+<tr><td><code>placeOfPerformanceStates</code></td><td>array</td><td>Two-letter US state or territory codes where the work is done, e.g. [&quot;TX&quot;] or [&quot;VA&quot;, &quot;MD&quot;, &quot;DC&quot;]. Empty (default) = anywhere, including abroad.</td></tr>
+<tr><td><code>dateFrom</code></td><td>string</td><td>Earliest action date (signing date of the award or of a modification), YYYY-MM-DD, e.g. &quot;2026-07-01&quot;. Searchable from 2007-10-01. Empty (default) = 30 days before dateTo. DoD contracts appear up to 90 days late.</td></tr>
+<tr><td><code>dateTo</code></td><td>string</td><td>Latest action date, YYYY-MM-DD, e.g. &quot;2026-09-30&quot;. Empty (default) = today.</td></tr>
+<tr><td><code>minAmount</code></td><td>integer</td><td>Only awards whose total obligated amount (all actions since signing) is at least this many US dollars, e.g. 1000000. Empty or 0 (default) = no minimum.</td></tr>
+<tr><td><code>sortBy</code></td><td>string</td><td>&quot;amount&quot; (default) = awards ordered by their largest action (obligation) in the date window, largest first; that action is the one shown. &quot;date&quot; = ordered by their latest action in the window, newest first. Loans-only searches rank by loan face value.</td></tr>
+<tr><td><code>maxResults</code></td><td>integer</td><td>Maximum award rows, one per award, e.g. 20. Default 20, maximum 1000. Each row is one charged event.</td></tr>
+</tbody></table></div>
+<h2>Sources, licence and limits</h2>
+<p><strong>One row per award or per transaction?</strong> Per award. An award (contract, grant, loan) gets many actions over its life: the base award and its modifications. A row shows the award&#x27;s largest action in your window (<code>action_amount_usd</code>, <code>action_date</code>, <code>modification_number</code>) next to its lifetime totals. If <code>award_date_signed</code> is before your window, the row is a modification of an older award, not a new win.</p>
+<p><strong>How fresh is the data?</strong> Civilian agencies report within days. <strong>Department of Defense contract actions are published up to 90 days after signing</strong> (a DoD rule), so recent DoD windows are nearly empty; for same-evening DoD awards use our <a href="dod-contract-awards.html">Pentagon / DoD Contract Awards</a> Actor.</p>
+<p><strong>What does <code>minAmount</code> filter on?</strong> The award&#x27;s total obligated amount, not the single action.</p>
+<p><strong>Why is an amount 0 or negative?</strong> Administrative modifications obligate $0, de-obligations are negative, and loan actions obligate $0 (the face value is in <code>total_value_usd</code>).</p>
+<p><strong>How does ticker matching work?</strong> The recipient name and its parent company (from the award record) are cleaned (lower case, no Inc/Corp/LLC/Holdings) and must exactly equal the cleaned name of a NYSE, Nasdaq or CBOE company in the SEC&#x27;s ticker list. We would rather miss a match than give a wrong ticker: joint ventures, foreign parents, renamed subsidiaries and private companies stay <code>null</code>. It is not investment advice.</p>
+<p><strong>Are individuals included?</strong> No. USAspending redacts financial assistance to individuals (&quot;REDACTED DUE TO PII&quot;) and groups small payments into county-level &quot;MULTIPLE RECIPIENTS&quot; records; we leave both out. Some contracts go to sole proprietors whose business name is a person&#x27;s name; those are shown exactly as USAspending publishes them, with nothing added.</p>
+<p><strong>Why does a keyword match an award whose description lacks it?</strong> USAspending&#x27;s keyword search covers more text fields than the description shown.</p>
+<p><strong>What is not included?</strong> Sub-awards, IDV vehicles themselves (their task orders are included), DUNS numbers, recipient street addresses and executive pay. Search history starts at 2007-10-01. A run scans at most 2,000 actions; narrow the filters for rare matches.</p>
+<p><strong>Legal basis?</strong> USAspending.gov data may be copied, redistributed and used commercially (see LEGAL.md in the source). Source: USAspending.gov, U.S. Department of the Treasury, Bureau of the Fiscal Service. Company names and locations may include data supplied by Dun &amp; Bradstreet, Inc. (D&amp;B); they are served per query, never as a bulk extract.</p>
+<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=US Federal Awards API">Ask for early access</a></div>
+</div>
+</article>
+</main>
+<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
+</body>
+</html>

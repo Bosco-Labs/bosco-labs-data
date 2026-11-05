@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ClinicalTrials.gov API: trial search and NCT lookup</title>
+<meta name="description" content="Clinical trials as compact JSON: status, phase, sponsor, conditions, interventions, enrollment, dates, countries, results. Search or look up NCT numbers.">
+<link rel="canonical" href="https://boscolabs.dev/clinical-trials.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bosco Labs">
+<meta property="og:title" content="ClinicalTrials.gov API: trial search and NCT lookup">
+<meta property="og:description" content="Clinical trials as compact JSON: status, phase, sponsor, conditions, interventions, enrollment, dates, countries, results. Search or look up NCT numbers.">
+<meta property="og:url" content="https://boscolabs.dev/clinical-trials.html">
+<meta property="og:image" content="https://boscolabs.dev/icons/clinical-trials.png">
+<meta name="twitter:card" content="summary">
+<script defer src="/_vercel/insights/script.js"></script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "SoftwareApplication",
+ "name": "ClinicalTrials.gov API: trial search & NCT dossier",
+ "description": "Clinical trials as compact JSON rows: status, phase, sponsor, conditions, interventions, enrollment, start and primary completion dates, countries, outcomes and results. Look up NCT numbers or search by condition, drug, sponsor, phase, status, country and dates. Sourced, no contact data.",
+ "url": "https://boscolabs.dev/clinical-trials.html",
+ "image": "https://boscolabs.dev/icons/clinical-trials.png",
+ "applicationCategory": "DeveloperApplication",
+ "operatingSystem": "Web (Apify platform)",
+ "offers": {
+  "@type": "Offer",
+  "priceCurrency": "USD",
+  "description": "$0.004 per trial",
+  "availability": "https://schema.org/PreOrder"
+ },
+ "provider": {
+  "@type": "Organization",
+  "name": "Bosco Labs",
+  "url": "https://boscolabs.dev/"
+ }
+}
+</script>
+<style>:root{color-scheme:light dark;--head:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--body:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;--ink:#1D2721;--muted:#545F58;--bg:#F5F3EA;--surface:#EAE8DC;--line:#D6D3C3;--accent:#2E5A47;--accent-fg:#F5F3EA;--accent2:#8DA889;--accent2-text:#4A6646;--success:#36694A;--warn:#8E5D1C}
+@media (prefers-color-scheme:dark){:root{--ink:#E5E8DE;--muted:#A3ADA4;--bg:#121914;--surface:#1B241E;--line:#2B372F;--accent:#9EC7B1;--accent-fg:#121914;--accent2:#B5C9A4;--accent2-text:#B5C9A4;--success:#93C7A0;--warn:#DDB070}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--body)}h1,h2,h3,.brand{font-family:var(--head)}
+a{color:var(--accent);text-underline-offset:2px}.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+.site{border-bottom:1px solid var(--line)}.site .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;padding-top:12px;padding-bottom:12px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-weight:650;letter-spacing:-.01em}.brand img{width:30px;height:30px}
+nav{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:.95rem}nav a{color:var(--muted);text-decoration:none}nav a:hover{color:var(--ink)}
+h1{font-size:clamp(1.65rem,4vw,2.4rem);line-height:1.2;letter-spacing:-.02em;margin:0 0 12px}
+h2{font-size:1.3rem;line-height:1.3;letter-spacing:-.01em;margin:44px 0 12px}h3{font-size:1.02rem;margin:20px 0 6px}
+.hero{padding:52px 0 8px;max-width:780px}.lead{font-size:1.13rem;color:var(--muted)}.muted{color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}.chips a{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:.9rem;color:var(--ink);text-decoration:none}.chips a:hover{border-color:var(--accent)}
+.grid{list-style:none;padding:0;margin:0;display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.card-top{display:flex;gap:12px;align-items:center}.card img{width:48px;height:48px;flex:none}
+.card h3{margin:0;font-size:1rem;line-height:1.3}.card h3 a{color:var(--ink);text-decoration:none}.card h3 a:hover{text-decoration:underline}
+.card p{margin:0;font-size:.92rem;color:var(--muted)}.card .row{margin-top:auto;padding-top:6px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-size:.88rem}
+.price{font-weight:600;color:var(--ink)}.badge{display:inline-block;font-size:.78rem;font-weight:600;line-height:1.5;padding:1px 9px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.badge.live{color:var(--success)}.badge.soon{color:var(--warn)}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-fg);font-weight:650;padding:11px 18px;border-radius:10px;text-decoration:none}
+.btn.ghost{background:none;color:var(--accent);border:1px solid var(--line)}.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0}
+.crumbs{font-size:.9rem;color:var(--muted);margin:22px 0 0}.crumbs a{color:var(--muted)}
+.head{display:flex;gap:20px;align-items:flex-start;margin:18px 0 0}.head img{width:84px;height:84px;flex:none}
+.prose{max-width:800px}.facts{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));margin:22px 0}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:.95rem}.fact b{display:block;font-size:.75rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.qs{padding-left:20px}.qs li{margin:4px 0}.two{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}.two h3{margin-top:0}.two>div,.prose,main{min-width:0}
+code{font:.86em var(--mono)}:not(pre)>code{overflow-wrap:anywhere}
+pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px;overflow:auto;max-height:520px;font-size:.84rem;line-height:1.45;margin:0}
+.table{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{text-align:left;vertical-align:top;padding:7px 8px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-weight:600}td:first-child{white-space:nowrap}
+details{border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:10px 0}summary{cursor:pointer;font-weight:600}
+footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font-size:.9rem;color:var(--muted)}footer a{color:var(--muted)}
+@media (max-width:560px){.head{flex-direction:column;gap:12px}.head img{width:64px;height:64px}.hero{padding-top:32px}}</style>
+</head>
+<body>
+<header class="site"><div class="wrap"><a class="brand" href="index.html"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav><a href="index.html#tools">Tools</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
+<main class="wrap">
+<p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#macro-health-places">Macro, health &amp; places</a></p>
+<article>
+<div class="head"><img src="icons/clinical-trials.svg" alt="" width="84" height="84"><div><h1>ClinicalTrials.gov API: trial search &amp; NCT dossier</h1><span class="badge soon">Coming soon to the Store</span></div></div>
+<div class="prose">
+<p class="lead"><strong>Answers &quot;which trials?&quot; and &quot;where does this trial stand?&quot; in one call</strong>: status, phase, sponsor, conditions, drugs, enrollment, start and primary completion dates, site countries, primary outcomes and whether results are posted, as one compact JSON row per trial with a link to its ClinicalTrials.gov record. Built for <strong>AI agents</strong> and people in pharma, biotech, health research and investing.</p>
+<div class="facts"><div class="fact"><b>Price</b>$0.004 per trial</div><div class="fact"><b>Domain</b>Macro, health &amp; places</div><div class="fact"><b>Call it</b>Apify API or MCP</div></div>
+<p><strong>Pricing (pay per event):</strong> $0.004 per trial returned. Invalid input, unknown NCT numbers and empty searches cost nothing.</p>
+<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=ClinicalTrials.gov API">Ask for early access</a></div>
+<h2>Questions agents ask</h2>
+<ul class="qs"><li>&ldquo;What is the status and primary completion date of NCT05813925? Cite the ClinicalTrials.gov record.&rdquo;</li></ul>
+</div>
+<h2>Example</h2>
+<div class="two"><div><h3>Input</h3><pre><code>{ &quot;nctIds&quot;: [&quot;NCT05813925&quot;, &quot;NCT04368728&quot;] }</code></pre></div>
+<div><h3>Output</h3><pre><code>{
+  &quot;nct_id&quot;: &quot;NCT05813925&quot;,
+  &quot;title&quot;: &quot;A Research Study to See How Well CagriSema Helps People in East Asia With Excess Body Weight Lose Weight&quot;,
+  &quot;acronym&quot;: null,
+  &quot;status&quot;: &quot;COMPLETED&quot;,
+  &quot;phases&quot;: [&quot;PHASE3&quot;],
+  &quot;study_type&quot;: &quot;INTERVENTIONAL&quot;,
+  &quot;conditions&quot;: [&quot;Obesity or Overweight&quot;],
+  &quot;interventions&quot;: [
+    { &quot;type&quot;: &quot;DRUG&quot;, &quot;name&quot;: &quot;Cagrilintide&quot; },
+    { &quot;type&quot;: &quot;DRUG&quot;, &quot;name&quot;: &quot;Semaglutide&quot; },
+    { &quot;type&quot;: &quot;DRUG&quot;, &quot;name&quot;: &quot;Placebo Semaglutide&quot; }
+  ],
+  &quot;sponsor&quot;: &quot;Novo Nordisk A/S&quot;,
+  &quot;sponsor_class&quot;: &quot;INDUSTRY&quot;,
+  &quot;collaborators&quot;: [],
+  &quot;enrollment_count&quot;: 331,
+  &quot;enrollment_type&quot;: &quot;ACTUAL&quot;,
+  &quot;start_date&quot;: &quot;2023-04-03&quot;,
+  &quot;start_date_type&quot;: &quot;ACTUAL&quot;,
+  &quot;primary_completion_date&quot;: &quot;2025-01-17&quot;,
+  &quot;primary_completion_date_type&quot;: &quot;ACTUAL&quot;,
+  &quot;completion_date&quot;: &quot;2025-03-07&quot;,
+  &quot;completion_date_type&quot;: &quot;ACTUAL&quot;,
+  &quot;last_update_posted&quot;: &quot;2026-01-22&quot;,
+  &quot;countries&quot;: [&quot;Japan&quot;, &quot;Taiwan&quot;],
+  &quot;site_count&quot;: 28,
+  &quot;primary_outcomes&quot;: [
+    {
+      &quot;measure&quot;: &quot;Relative Change in Body Weight&quot;,
+      &quot;time_frame&quot;: &quot;From baseline (week 0) to end of treatment (week 68)&quot;
+    }
+  ],
+  &quot;primary_outcomes_total&quot;: 1,
+  &quot;has_results&quot;: false,
+  &quot;results_first_posted&quot;: null,
+  &quot;brief_summary&quot;: &quot;This study will look at how well the new medicine CagriSema helps people with excess body weight lose weight compared to another medicine, semaglutide. The participants will receive one injection once a week. The study medicine will be injected with a thin needle, typically in the stomach, thighs or upper arms. The study will last for about 1½ years.&quot;,
+  &quot;eligibility&quot;: null,
+  &quot;arms&quot;: null,
+  &quot;secondary_outcomes&quot;: null,
+  &quot;sites&quot;: null,
+  &quot;source_url&quot;: &quot;https://clinicaltrials.gov/study/NCT05813925&quot;,
+  &quot;data_processed_at&quot;: &quot;2026-11-05T10:00:06&quot;,
+  &quot;retrieved_at&quot;: &quot;2026-11-05T22:38:47+00:00&quot;,
+  &quot;attribution&quot;: &quot;Source: ClinicalTrials.gov, a U.S. Government database of the National Library of Medicine (https://clinicaltrials.gov). Data processed by ClinicalTrials.gov on 2026-11-05; data retrieved on 2026-11-05. Modified by Bosco Labs: selected fields only, personal contact details removed, long texts and lists shortened (cut texts end with [truncated]).&quot;,
+  &quot;schema_version&quot;: &quot;1&quot;
+}</code></pre></div></div>
+<div class="prose">
+<h2>What you get</h2>
+<div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>nct_id</code></td><td>string | null</td><td>ClinicalTrials.gov identifier, e.g. NCT05813925.</td></tr>
+<tr><td><code>title</code></td><td>string | null</td><td>Brief title.</td></tr>
+<tr><td><code>acronym</code></td><td>string | null</td><td>Study acronym, e.g. REDEFINE 5.</td></tr>
+<tr><td><code>status</code></td><td>string | null</td><td>Overall recruitment status, e.g. RECRUITING, ACTIVE_NOT_RECRUITING, COMPLETED, TERMINATED, UNKNOWN.</td></tr>
+<tr><td><code>phases</code></td><td>array | null</td><td>Phases, e.g. [&quot;PHASE3&quot;] or [&quot;PHASE2&quot;, &quot;PHASE3&quot;] for a phase 2/3 trial; empty for observational studies.</td></tr>
+<tr><td><code>study_type</code></td><td>string | null</td><td>INTERVENTIONAL, OBSERVATIONAL or EXPANDED_ACCESS.</td></tr>
+<tr><td><code>conditions</code></td><td>array | null</td><td>Conditions or diseases studied, as registered.</td></tr>
+<tr><td><code>interventions</code></td><td>array | null</td><td>Interventions: type (DRUG, BIOLOGICAL, DEVICE, PROCEDURE, BEHAVIORAL, ...) and name.</td></tr>
+<tr><td><code>sponsor</code></td><td>string | null</td><td>Lead sponsor organisation; null when the record lists a private individual as sponsor (class INDIV).</td></tr>
+<tr><td><code>sponsor_class</code></td><td>string | null</td><td>Lead sponsor class: INDUSTRY, NIH, FED, OTHER_GOV, NETWORK, OTHER (e.g. universities), ...</td></tr>
+<tr><td><code>collaborators</code></td><td>array | null</td><td>Collaborating organisations (individuals, class INDIV, left out).</td></tr>
+<tr><td><code>enrollment_count</code></td><td>integer | null</td><td>Number of participants (actual or planned, see enrollment_type).</td></tr>
+<tr><td><code>enrollment_type</code></td><td>string | null</td><td>ACTUAL or ESTIMATED.</td></tr>
+<tr><td><code>start_date</code></td><td>string | null</td><td>Study start date, ISO 8601 (YYYY-MM-DD, or YYYY-MM when only the month is registered).</td></tr>
+<tr><td><code>start_date_type</code></td><td>string | null</td><td>ACTUAL or ESTIMATED; null when not stated.</td></tr>
+<tr><td><code>primary_completion_date</code></td><td>string | null</td><td>Primary completion date (last participant&#x27;s primary endpoint data collected), ISO 8601, may be YYYY-MM.</td></tr>
+<tr><td><code>primary_completion_date_type</code></td><td>string | null</td><td>ACTUAL or ESTIMATED.</td></tr>
+<tr><td><code>completion_date</code></td><td>string | null</td><td>Study completion date, ISO 8601, may be YYYY-MM.</td></tr>
+<tr><td><code>completion_date_type</code></td><td>string | null</td><td>ACTUAL or ESTIMATED.</td></tr>
+<tr><td><code>last_update_posted</code></td><td>string | null</td><td>Date the record was last updated on ClinicalTrials.gov (YYYY-MM-DD).</td></tr>
+<tr><td><code>countries</code></td><td>array | null</td><td>Countries with at least one listed site, sorted.</td></tr>
+<tr><td><code>site_count</code></td><td>integer | null</td><td>Number of sites (locations) listed in the record.</td></tr>
+<tr><td><code>primary_outcomes</code></td><td>array | null</td><td>Primary outcome measures (up to 5; see primary_outcomes_total).</td></tr>
+<tr><td><code>primary_outcomes_total</code></td><td>integer | null</td><td>Number of primary outcomes registered.</td></tr>
+<tr><td><code>has_results</code></td><td>boolean | null</td><td>true if results are posted on ClinicalTrials.gov.</td></tr>
+<tr><td><code>results_first_posted</code></td><td>string | null</td><td>Date results were first posted (YYYY-MM-DD), null if none.</td></tr>
+<tr><td><code>brief_summary</code></td><td>string | null</td><td>Brief summary, up to 1,000 characters (cut texts end with [truncated]); contact details removed.</td></tr>
+<tr><td><code>eligibility</code></td><td>object | null</td><td>detail=full only (null in summary): eligibility criteria.</td></tr>
+<tr><td><code>arms</code></td><td>array | null</td><td>detail=full only (null in summary): arms/groups, up to 20.</td></tr>
+<tr><td><code>secondary_outcomes</code></td><td>array | null</td><td>detail=full only (null in summary): secondary outcome measures, up to 15.</td></tr>
+<tr><td><code>sites</code></td><td>array | null</td><td>detail=full only (null in summary): study sites, up to 100. Organisation-level only: no contact persons, emails or phones.</td></tr>
+<tr><td><code>source_url</code></td><td>string | null</td><td>The trial&#x27;s page on ClinicalTrials.gov.</td></tr>
+<tr><td><code>data_processed_at</code></td><td>string | null</td><td>When ClinicalTrials.gov last processed (posted) its dataset, from its /api/v2/version endpoint (dataTimestamp, no time zone given); null if that endpoint was unavailable.</td></tr>
+<tr><td><code>retrieved_at</code></td><td>string</td><td>When this Actor retrieved the record (ISO 8601, UTC).</td></tr>
+<tr><td><code>attribution</code></td><td>string</td><td>Required credit: source ClinicalTrials.gov, processing and retrieval dates, and the modifications made.</td></tr>
+<tr><td><code>schema_version</code></td><td>string</td><td>Output schema version.</td></tr>
+</tbody></table></div>
+
+<h2>Use with AI agents (MCP)</h2>
+<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is live on the Apify Store.</p>
+<pre><code>https://mcp.apify.com?tools=bosco_labs/clinical-trials</code></pre>
+<p>For &ldquo;What is the status and primary completion date of NCT05813925? Cite the ClinicalTrials.gov record.&rdquo; the agent passes:</p>
+<pre><code>{ &quot;nctIds&quot;: [&quot;NCT05813925&quot;] }</code></pre>
+<p>one row per trial (about 2-3 KB in summary mode), stable <code>snake_case</code> fields, ISO dates, numbers as numbers, <code>null</code> for unknown, a <code>source_url</code> per row. The run&#x27;s status message says how many trials matched in total (e.g. &quot;20 of 131 matching trials&quot;), which NCT numbers were not found, or why a search was empty. Typical run: under 5 seconds including start-up.</p>
+<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~clinical-trials/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.004 per trial.</p>
+<h2>Input fields</h2>
+<div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>nctIds</code></td><td>array</td><td>ClinicalTrials.gov identifiers to look up, NCT + 8 digits, e.g. [&quot;NCT05813925&quot;]. Up to 100, in one API call; one row per trial found, in the order given. When set, all search filters below are ignored. Empty = search mode.</td></tr>
+<tr><td><code>condition</code></td><td>string</td><td>Condition or disease to search for, e.g. &quot;obesity&quot; or &quot;non-small cell lung cancer&quot;. Matches ClinicalTrials.gov&#x27;s condition field including its synonyms; supports OR/AND, e.g. &quot;obesity OR overweight&quot;. Empty = any condition.</td></tr>
+<tr><td><code>intervention</code></td><td>string</td><td>Drug, biologic, device or procedure name, e.g. &quot;semaglutide&quot; or &quot;semaglutide OR tirzepatide&quot;. Use molecule or brand names; a drug class like &quot;GLP-1&quot; only matches trials that write it. Empty = any intervention.</td></tr>
+<tr><td><code>sponsor</code></td><td>string</td><td>Lead sponsor organisation, e.g. &quot;Novo Nordisk&quot; (matches &quot;Novo Nordisk A/S&quot;). Searches the lead sponsor only, not collaborators. Empty = any sponsor.</td></tr>
+<tr><td><code>phase</code></td><td>array</td><td>Trial phases to include, any of EARLY_PHASE1, PHASE1, PHASE2, PHASE3, PHASE4, NA, e.g. [&quot;PHASE3&quot;]. A phase 2/3 trial matches both PHASE2 and PHASE3. Empty = all phases (observational studies have none).</td></tr>
+<tr><td><code>status</code></td><td>array</td><td>Overall recruitment status of the trial, e.g. [&quot;RECRUITING&quot;, &quot;NOT_YET_RECRUITING&quot;]. UNKNOWN = status not verified for over 2 years. Empty = any status.</td></tr>
+<tr><td><code>locationCountries</code></td><td>array</td><td>Trials with at least one site in any of these countries, e.g. [&quot;Germany&quot;, &quot;DK&quot;] or [&quot;Europe&quot;]. Accepts country names as ClinicalTrials.gov writes them (&quot;United States&quot;, &quot;South Korea&quot;, &quot;Czechia&quot;), common ISO alpha-2 codes, and the regions &quot;Europe&quot; (45 European countries incl. UK, Switzerland, Norway, Ukraine) and &quot;EU&quot; (27 member states). Empty = anywhere.</td></tr>
+<tr><td><code>startDateFrom</code></td><td>string</td><td>Earliest trial start date (actual or planned), YYYY-MM-DD, YYYY-MM or YYYY, e.g. &quot;2025-01-01&quot;. Inclusive. Empty = no lower bound.</td></tr>
+<tr><td><code>startDateTo</code></td><td>string</td><td>Latest trial start date, YYYY-MM-DD, e.g. &quot;2025-12-31&quot;. Inclusive. Empty = no upper bound (includes planned future starts).</td></tr>
+<tr><td><code>primaryCompletionFrom</code></td><td>string</td><td>Earliest primary completion date (actual or estimated: when the primary endpoint data are complete, the usual read-out catalyst), YYYY-MM-DD, e.g. &quot;2026-01-01&quot;. Empty = no lower bound.</td></tr>
+<tr><td><code>primaryCompletionTo</code></td><td>string</td><td>Latest primary completion date, YYYY-MM-DD, e.g. &quot;2026-12-31&quot;. Empty = no upper bound.</td></tr>
+<tr><td><code>hasResults</code></td><td>boolean</td><td>true = only trials with results posted on ClinicalTrials.gov; false = only trials without. Leave empty (omit) for both.</td></tr>
+<tr><td><code>maxResults</code></td><td>integer</td><td>Maximum number of trials (rows) to return in search mode, e.g. 20. Default 20, maximum 500. Each row is one charged <code>trial</code> event, so this also caps the cost. Ranked by relevance when a condition or intervention is given, else newest start date first.</td></tr>
+<tr><td><code>detail</code></td><td>string</td><td>&quot;summary&quot; (default): the compact dossier. &quot;full&quot; also fills eligibility (criteria up to 4,000 characters, sex, ages), arms (up to 20), secondary outcomes (up to 15) and sites (facility, city, country, status; up to 100). Same price.</td></tr>
+</tbody></table></div>
+<h2>Sources, licence and limits</h2>
+<p><strong>How fresh is it?</strong> Live: every run queries ClinicalTrials.gov, which updates its data daily (<code>data_processed_at</code> is its latest processing time). Sponsors update their own records, so a status can lag reality; <code>last_update_posted</code> shows when the record last changed.</p>
+<p><strong>Does &quot;recruiting in Europe&quot; mean the European sites are recruiting?</strong> It means the trial&#x27;s overall status is recruiting and at least one site is in Europe. Per-site status is in <code>sites[].status</code> with <code>detail: &quot;full&quot;</code>.</p>
+<p><strong>Why does a drug class like &quot;GLP-1&quot; find few trials?</strong> The intervention search matches what registrants wrote. Name the molecules (<code>semaglutide OR tirzepatide ...</code>) for full coverage.</p>
+<p><strong>Are results (outcome data) included?</strong> <code>has_results</code> and <code>results_first_posted</code> say whether and when results were posted; the result tables themselves are not included (open <code>source_url</code>).</p>
+<p><strong>What is left out?</strong> Contact persons, investigators and officials (names, emails, phones); the responsible-party investigator; detailed descriptions, references, IPD-sharing and oversight details. When the record lists a private individual as lead sponsor (class <code>INDIV</code>), <code>sponsor</code> is <code>null</code>; some sponsor-investigators are registered under class <code>OTHER</code> and do appear by name, as on ClinicalTrials.gov.</p>
+<p><strong>Coverage?</strong> Everything on ClinicalTrials.gov (over 500,000 studies worldwide, US and non-US). Trials registered only elsewhere (EU CTIS, ISRCTN, jRCT, ...) are not included.</p>
+<p><strong>Not medical advice.</strong> This is registry data for research; patients should talk to their doctor and the study team listed on ClinicalTrials.gov.</p>
+<p>Data from ClinicalTrials.gov, a database of the U.S. National Library of Medicine (U.S. Government); not endorsed by NLM or NIH. Following the <a href="https://clinicaltrials.gov/about-site/terms-conditions">ClinicalTrials.gov Terms and Conditions</a>, every row credits ClinicalTrials.gov, shows the date ClinicalTrials.gov processed the data (<code>data_processed_at</code>) and the retrieval date, and states the modifications: only the fields above are kept, personal contact details are removed, and long texts and lists are shortened (cut texts end with <code>[truncated]</code>; the caps are listed above). No proprietary rights are claimed. Don&#x27;t use any contact information from ClinicalTrials.gov for marketing. Some data may be subject to third-party copyright; keep data you store current.</p>
+<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=ClinicalTrials.gov API">Ask for early access</a></div>
+</div>
+</article>
+</main>
+<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
+</body>
+</html>

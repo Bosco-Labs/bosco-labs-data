@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EUR-Lex API: EU law article text and in-force status</title>
+<meta name="description" content="The text of an EU law article as in force today or on a date, in-force status and amending acts. Ask by name (GDPR, AI Act), CELEX or ELI. From EUR-Lex.">
+<link rel="canonical" href="https://boscolabs.dev/eu-law-lookup.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bosco Labs">
+<meta property="og:title" content="EUR-Lex API: EU law article text and in-force status">
+<meta property="og:description" content="The text of an EU law article as in force today or on a date, in-force status and amending acts. Ask by name (GDPR, AI Act), CELEX or ELI. From EUR-Lex.">
+<meta property="og:url" content="https://boscolabs.dev/eu-law-lookup.html">
+<meta property="og:image" content="https://boscolabs.dev/icons/eu-law-lookup.png">
+<meta name="twitter:card" content="summary">
+<script defer src="/_vercel/insights/script.js"></script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "SoftwareApplication",
+ "name": "EU Law Lookup API (EUR-Lex): article text, in force, amendments",
+ "description": "The text of an EU law article as in force today (or on a date), whether the act is in force, what amended it, plus new Official Journal acts. Ask by name (GDPR, AI Act), citation, CELEX or ELI; 24 languages. Official EUR-Lex/Cellar data with a source link per row.",
+ "url": "https://boscolabs.dev/eu-law-lookup.html",
+ "image": "https://boscolabs.dev/icons/eu-law-lookup.png",
+ "applicationCategory": "DeveloperApplication",
+ "operatingSystem": "Web (Apify platform)",
+ "offers": {
+  "@type": "Offer",
+  "priceCurrency": "USD",
+  "description": "$0.01 per act or article returned",
+  "availability": "https://schema.org/PreOrder"
+ },
+ "provider": {
+  "@type": "Organization",
+  "name": "Bosco Labs",
+  "url": "https://boscolabs.dev/"
+ }
+}
+</script>
+<style>:root{color-scheme:light dark;--head:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--body:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;--ink:#1D2721;--muted:#545F58;--bg:#F5F3EA;--surface:#EAE8DC;--line:#D6D3C3;--accent:#2E5A47;--accent-fg:#F5F3EA;--accent2:#8DA889;--accent2-text:#4A6646;--success:#36694A;--warn:#8E5D1C}
+@media (prefers-color-scheme:dark){:root{--ink:#E5E8DE;--muted:#A3ADA4;--bg:#121914;--surface:#1B241E;--line:#2B372F;--accent:#9EC7B1;--accent-fg:#121914;--accent2:#B5C9A4;--accent2-text:#B5C9A4;--success:#93C7A0;--warn:#DDB070}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--body)}h1,h2,h3,.brand{font-family:var(--head)}
+a{color:var(--accent);text-underline-offset:2px}.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+.site{border-bottom:1px solid var(--line)}.site .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;padding-top:12px;padding-bottom:12px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-weight:650;letter-spacing:-.01em}.brand img{width:30px;height:30px}
+nav{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:.95rem}nav a{color:var(--muted);text-decoration:none}nav a:hover{color:var(--ink)}
+h1{font-size:clamp(1.65rem,4vw,2.4rem);line-height:1.2;letter-spacing:-.02em;margin:0 0 12px}
+h2{font-size:1.3rem;line-height:1.3;letter-spacing:-.01em;margin:44px 0 12px}h3{font-size:1.02rem;margin:20px 0 6px}
+.hero{padding:52px 0 8px;max-width:780px}.lead{font-size:1.13rem;color:var(--muted)}.muted{color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}.chips a{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:.9rem;color:var(--ink);text-decoration:none}.chips a:hover{border-color:var(--accent)}
+.grid{list-style:none;padding:0;margin:0;display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.card-top{display:flex;gap:12px;align-items:center}.card img{width:48px;height:48px;flex:none}
+.card h3{margin:0;font-size:1rem;line-height:1.3}.card h3 a{color:var(--ink);text-decoration:none}.card h3 a:hover{text-decoration:underline}
+.card p{margin:0;font-size:.92rem;color:var(--muted)}.card .row{margin-top:auto;padding-top:6px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-size:.88rem}
+.price{font-weight:600;color:var(--ink)}.badge{display:inline-block;font-size:.78rem;font-weight:600;line-height:1.5;padding:1px 9px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.badge.live{color:var(--success)}.badge.soon{color:var(--warn)}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-fg);font-weight:650;padding:11px 18px;border-radius:10px;text-decoration:none}
+.btn.ghost{background:none;color:var(--accent);border:1px solid var(--line)}.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0}
+.crumbs{font-size:.9rem;color:var(--muted);margin:22px 0 0}.crumbs a{color:var(--muted)}
+.head{display:flex;gap:20px;align-items:flex-start;margin:18px 0 0}.head img{width:84px;height:84px;flex:none}
+.prose{max-width:800px}.facts{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));margin:22px 0}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:.95rem}.fact b{display:block;font-size:.75rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.qs{padding-left:20px}.qs li{margin:4px 0}.two{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}.two h3{margin-top:0}.two>div,.prose,main{min-width:0}
+code{font:.86em var(--mono)}:not(pre)>code{overflow-wrap:anywhere}
+pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px;overflow:auto;max-height:520px;font-size:.84rem;line-height:1.45;margin:0}
+.table{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{text-align:left;vertical-align:top;padding:7px 8px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-weight:600}td:first-child{white-space:nowrap}
+details{border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:10px 0}summary{cursor:pointer;font-weight:600}
+footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font-size:.9rem;color:var(--muted)}footer a{color:var(--muted)}
+@media (max-width:560px){.head{flex-direction:column;gap:12px}.head img{width:64px;height:64px}.hero{padding-top:32px}}</style>
+</head>
+<body>
+<header class="site"><div class="wrap"><a class="brand" href="index.html"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav><a href="index.html#tools">Tools</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
+<main class="wrap">
+<p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#compliance-law">Compliance &amp; law</a></p>
+<article>
+<div class="head"><img src="icons/eu-law-lookup.svg" alt="" width="84" height="84"><div><h1>EU Law Lookup API (EUR-Lex): article text, in force, amendments</h1><span class="badge soon">Coming soon to the Store</span></div></div>
+<div class="prose">
+<p class="lead"><strong>One call answers &quot;what does Article 50 of the AI Act say today, is it in force, and what amended it?&quot;</strong>: the article as plain text from the current consolidated version (or the one in force on any date), the act&#x27;s in-force status and dates, and the acts that amend, correct or repeal it. A second mode lists new acts in the Official Journal L series. Built for <strong>AI agents</strong> doing legal and compliance work, and for people who want a sourced answer without SPARQL.</p>
+<div class="facts"><div class="fact"><b>Price</b>$0.01 per act or article returned</div><div class="fact"><b>Domain</b>Compliance &amp; law</div><div class="fact"><b>Call it</b>Apify API or MCP</div></div>
+<p><strong>Pricing (pay per event):</strong> $0.01 per act or article returned (<code>act-lookup</code>). A citation that can&#x27;t be read, or an article that doesn&#x27;t exist, fails in seconds and costs nothing.</p>
+<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=EU Law Lookup API (EUR-Lex)">Ask for early access</a></div>
+<h2>Questions agents ask</h2>
+<ul class="qs"><li>&ldquo;What does Article 50 of the AI Act require today, and has it been amended? Quote the text and link the source.&rdquo;</li></ul>
+</div>
+<h2>Example</h2>
+<div class="two"><div><h3>Input</h3><pre><code>{ &quot;query&quot;: &quot;AI Act&quot;, &quot;article&quot;: &quot;50&quot;, &quot;language&quot;: &quot;EN&quot;, &quot;asOf&quot;: &quot;2026-11-05&quot; }</code></pre></div>
+<div><h3>Output</h3><pre><code>{
+  &quot;schema_version&quot;: &quot;1&quot;,
+  &quot;query&quot;: &quot;AI Act&quot;,
+  &quot;celex&quot;: &quot;32024R1689&quot;,
+  &quot;eli&quot;: &quot;http://data.europa.eu/eli/reg/2024/1689/oj&quot;,
+  &quot;title&quot;: &quot;Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence and amending Regulations (EC) No 300/2008, ... (Artificial Intelligence Act) (Text with EEA relevance)&quot;,
+  &quot;act_type&quot;: &quot;Regulation&quot;,
+  &quot;act_type_code&quot;: &quot;REG&quot;,
+  &quot;date_document&quot;: &quot;2024-06-13&quot;,
+  &quot;date_publication&quot;: &quot;2024-07-12&quot;,
+  &quot;oj_reference&quot;: &quot;OJ L, 2024/1689&quot;,
+  &quot;date_entry_into_force&quot;: &quot;2024-08-01&quot;,
+  &quot;entry_into_force_dates&quot;: [&quot;2024-08-01&quot;, &quot;2025-02-02&quot;, &quot;2025-08-02&quot;, &quot;2026-08-02&quot;, &quot;2027-08-02&quot;],
+  &quot;date_end_of_validity&quot;: null,
+  &quot;in_force&quot;: true,
+  &quot;eur_lex_url&quot;: &quot;https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689&quot;,
+  &quot;summary_url&quot;: &quot;https://eur-lex.europa.eu/legal-content/EN/LSU/?uri=CELEX:32024R1689&quot;,
+  &quot;language&quot;: &quot;EN&quot;,
+  &quot;as_of&quot;: null,
+  &quot;latest_consolidated_version_date&quot;: &quot;2026-07-27&quot;,
+  &quot;text_version&quot;: &quot;consolidated&quot;,
+  &quot;text_celex&quot;: &quot;02024R1689-20260727&quot;,
+  &quot;consolidated_version_date&quot;: &quot;2026-07-27&quot;,
+  &quot;text_notice&quot;: &quot;This text is meant purely as a documentation tool and has no legal effect. The Union&#x27;s institutions do not assume any liability for its contents. The authentic versions of the relevant acts, including their preambles, are those published in the Official Journal of the European Union and available in EUR-Lex. ...&quot;,
+  &quot;source_url&quot;: &quot;https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02024R1689-20260727&quot;,
+  &quot;cellar_url&quot;: &quot;http://publications.europa.eu/resource/cellar/b1730fb2-8f1c-11f1-9262-01aa75ed71a1.0001.03/DOC_1&quot;,
+  &quot;amended_by&quot;: [
+    {
+      &quot;celex&quot;: &quot;32026R1744&quot;,
+      &quot;title&quot;: &quot;Regulation (EU) 2026/1744 of the European Parliament and of the Council of 8 July 2026 amending Regulations (EU) 2024/1689, (EU) 2018/1139 and (EU) 2023/1230 as regards the simplification of the implementation of harmonised rules on artificial intelligence (Digital Omnibus on AI) (Text with EEA relevance)&quot;,
+      &quot;date&quot;: &quot;2026-07-08&quot;,
+      &quot;url&quot;: &quot;https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32026R1744&quot;
+    }
+  ],
+  &quot;corrected_by&quot;: [
+    { &quot;celex&quot;: &quot;32024R1689R(04)&quot;, &quot;title&quot;: null, &quot;date&quot;: &quot;2026-05-04&quot;, &quot;url&quot;: &quot;https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689R(04)&quot; }
+  ],
+  &quot;repealed_by&quot;: [],
+  &quot;implicitly_repealed_by&quot;: [],
+  &quot;amends&quot;: [
+    { &quot;celex&quot;: &quot;32020L1828&quot;, &quot;title&quot;: &quot;Directive (EU) 2020/1828 of the European Parliament and of the Council of 25 November 2020 on representative actions ...&quot;, &quot;date&quot;: &quot;2020-11-25&quot;, &quot;url&quot;: &quot;https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32020L1828&quot; }
+  ],
+  &quot;repeals&quot;: [],
+  &quot;implicitly_repeals&quot;: [],
+  &quot;article&quot;: &quot;50&quot;,
+  &quot;paragraph&quot;: null,
+  &quot;article_title&quot;: &quot;Transparency obligations for providers and deployers of certain AI systems&quot;,
+  &quot;article_text&quot;: &quot;1. Providers shall ensure that AI systems intended to interact directly with natural persons are designed and developed in such a way that the natural persons concerned are informed that they are interacting with an AI system, ...\n2. Providers of AI systems, including general-purpose AI systems, generating synthetic audio, image, video or text content, shall ensure that the outputs of the AI system are marked in a machine-readable format ...\n...\n7. The Commission shall encourage and facilitate the drawing up of codes of practice at Union level ...&quot;,
+  &quot;article_text_truncated&quot;: false,
+  &quot;article_amended_by&quot;: [{ &quot;celex&quot;: &quot;32026R1744&quot;, &quot;change&quot;: &quot;replaced&quot; }],
+  &quot;warnings&quot;: [],
+  &quot;retrieved_at&quot;: &quot;2026-11-05T21:50:10+00:00&quot;,
+  &quot;duration_seconds&quot;: 0.7
+}</code></pre></div></div>
+<div class="prose">
+<h2>What you get</h2>
+<div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>schema_version</code></td><td>string</td><td>Output schema version.</td></tr>
+<tr><td><code>query</code></td><td>string | null</td><td>The query as given (null in OJ mode).</td></tr>
+<tr><td><code>celex</code></td><td>string</td><td>CELEX number of the act, e.g. 32016R0679.</td></tr>
+<tr><td><code>eli</code></td><td>string | null</td><td>European Legislation Identifier URI of the act, e.g. http://data.europa.eu/eli/reg/2016/679/oj.</td></tr>
+<tr><td><code>title</code></td><td>string | null</td><td>Official title in the chosen language (null if Cellar has none in that language).</td></tr>
+<tr><td><code>act_type</code></td><td>string | null</td><td>Type of act, e.g. Regulation, Directive, Implementing regulation, Corrigendum.</td></tr>
+<tr><td><code>act_type_code</code></td><td>string | null</td><td>Publications Office resource-type code, e.g. REG, DIR, DEC_IMPL, CORRIGENDUM.</td></tr>
+<tr><td><code>date_document</code></td><td>string | null</td><td>Date of the document (signature/adoption), YYYY-MM-DD.</td></tr>
+<tr><td><code>date_publication</code></td><td>string | null</td><td>Date of publication in the Official Journal, YYYY-MM-DD.</td></tr>
+<tr><td><code>oj_reference</code></td><td>string | null</td><td>Official Journal reference for acts published act by act (since Oct 2023), e.g. &quot;OJ L, 2024/1689&quot;.</td></tr>
+<tr><td><code>date_entry_into_force</code></td><td>string | null</td><td>Earliest date of entry into force, YYYY-MM-DD.</td></tr>
+<tr><td><code>entry_into_force_dates</code></td><td>array</td><td>All entry-into-force / effect dates EUR-Lex records (staged application), sorted.</td></tr>
+<tr><td><code>date_end_of_validity</code></td><td>string | null</td><td>End of validity, YYYY-MM-DD; null when open-ended.</td></tr>
+<tr><td><code>in_force</code></td><td>boolean | null</td><td>Whether EUR-Lex marks the act as in force today.</td></tr>
+<tr><td><code>eur_lex_url</code></td><td>string</td><td>EUR-Lex page of the original act.</td></tr>
+<tr><td><code>summary_url</code></td><td>string | null</td><td>EUR-Lex plain-language summary of the act, when one exists.</td></tr>
+<tr><td><code>language</code></td><td>string</td><td>Language of the text and titles returned (EN when the requested one was unavailable).</td></tr>
+<tr><td><code>as_of</code></td><td>string | null</td><td>The asOf date used (null = today).</td></tr>
+<tr><td><code>latest_consolidated_version_date</code></td><td>string | null</td><td>Date of the newest consolidated version EUR-Lex holds (may be later than asOf).</td></tr>
+<tr><td><code>text_version</code></td><td>string | null</td><td>&quot;consolidated&quot; (EUR-Lex consolidated version, documentation only) or &quot;original&quot; (OJ text); null if no text.</td></tr>
+<tr><td><code>text_celex</code></td><td>string | null</td><td>CELEX of the text the article was read from, e.g. 02024R1689-20260727 for a consolidated version.</td></tr>
+<tr><td><code>consolidated_version_date</code></td><td>string | null</td><td>Date of the consolidated version used, YYYY-MM-DD.</td></tr>
+<tr><td><code>text_notice</code></td><td>string | null</td><td>For consolidated texts: EUR-Lex&#x27;s own disclaimer (no legal effect; the OJ text is authentic).</td></tr>
+<tr><td><code>source_url</code></td><td>string</td><td>EUR-Lex page of the exact text version used (consolidated version or OJ act).</td></tr>
+<tr><td><code>cellar_url</code></td><td>string | null</td><td>The Cellar document the text was read from.</td></tr>
+<tr><td><code>amended_by</code></td><td>array</td><td>Acts that amend this act: {celex, title, date, url}, newest first (include amendments).</td></tr>
+<tr><td><code>corrected_by</code></td><td>array</td><td>Corrigenda to this act: {celex, title, date, url}.</td></tr>
+<tr><td><code>repealed_by</code></td><td>array</td><td>Acts that repeal this act: {celex, title, date, url}.</td></tr>
+<tr><td><code>implicitly_repealed_by</code></td><td>array</td><td>Acts that implicitly repeal this act.</td></tr>
+<tr><td><code>amends</code></td><td>array</td><td>Acts this act amends: {celex, title, date, url}.</td></tr>
+<tr><td><code>repeals</code></td><td>array</td><td>Acts this act repeals.</td></tr>
+<tr><td><code>implicitly_repeals</code></td><td>array</td><td>Acts this act implicitly repeals.</td></tr>
+<tr><td><code>citing_acts</code></td><td>array | null</td><td>Legislation and case-law citing this act, newest first, up to maxCiting: {celex, title, date, url} (include citing).</td></tr>
+<tr><td><code>citing_acts_total</code></td><td>integer | null</td><td>How many legislative acts and judgments cite this act.</td></tr>
+<tr><td><code>article</code></td><td>string | null</td><td>The article returned, e.g. &quot;50&quot;; null for an act-level row.</td></tr>
+<tr><td><code>paragraph</code></td><td>string | null</td><td>The paragraph returned, e.g. &quot;1&quot;; null = whole article.</td></tr>
+<tr><td><code>article_title</code></td><td>string | null</td><td>Heading of the article, e.g. &quot;Principles relating to processing of personal data&quot;.</td></tr>
+<tr><td><code>article_text</code></td><td>string | null</td><td>Plain text of the article (or paragraph), one line per paragraph or point, numbering kept (&quot;1.&quot;, &quot;(a)&quot;).</td></tr>
+<tr><td><code>article_text_truncated</code></td><td>boolean | null</td><td>True when article_text was cut at maxTextChars.</td></tr>
+<tr><td><code>article_amended_by</code></td><td>array</td><td>In a consolidated text: acts that changed this article (from EUR-Lex&#x27;s change markers), {celex, change}.</td></tr>
+<tr><td><code>recitals_count</code></td><td>integer | null</td><td>Act-level row: number of recitals in the OJ text.</td></tr>
+<tr><td><code>articles_count</code></td><td>integer | null</td><td>Act-level row: number of articles in the text used.</td></tr>
+<tr><td><code>table_of_contents</code></td><td>array</td><td>Act-level row: [{article, title}] for every article, to pick one for a follow-up call.</td></tr>
+<tr><td><code>text</code></td><td>string | null</td><td>Whole act as plain text, cut at maxTextChars (include text only).</td></tr>
+<tr><td><code>text_truncated</code></td><td>boolean | null</td><td>True when text was cut at maxTextChars.</td></tr>
+<tr><td><code>warnings</code></td><td>array</td><td>Caveats in plain words: fallbacks, not in force on asOf, truncation, partial data.</td></tr>
+<tr><td><code>retrieved_at</code></td><td>string</td><td>When the row was made (ISO 8601, UTC).</td></tr>
+<tr><td><code>duration_seconds</code></td><td>number</td><td>How long the lookup took.</td></tr>
+</tbody></table></div>
+
+<h2>Use with AI agents (MCP)</h2>
+<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is live on the Apify Store.</p>
+<pre><code>https://mcp.apify.com?tools=bosco_labs/eu-law-lookup</code></pre>
+<p>For &ldquo;What does Article 50 of the AI Act require today, and has it been amended? Quote the text and link the source.&rdquo; the agent passes:</p>
+<pre><code>{ &quot;query&quot;: &quot;AI Act&quot;, &quot;article&quot;: &quot;50&quot; }</code></pre>
+<p>small JSON rows (typically 5-20 KB), stable <code>snake_case</code> fields, ISO dates, <code>null</code> for unknown, a EUR-Lex link for the act, the text version and every related act. <code>warnings</code> says in plain words when a fallback was used (another language, the OJ text instead of a consolidated version) or the act was not in force on <code>asOf</code>. A lookup takes about 1 second after start-up (measured 0.6-0.7 s for GDPR Art. 5 and AI Act Art. 50).</p>
+<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~eu-law-lookup/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.01 per act or article returned.</p>
+<h2>Input fields</h2>
+<div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>query</code></td><td>string</td><td>The EU act to look up: a short name (&quot;GDPR&quot;, &quot;AI Act&quot;, &quot;DSA&quot;, &quot;NIS2&quot;, &quot;DORA&quot;, &quot;MiCA&quot;, &quot;CSRD&quot;...), a citation (&quot;Regulation (EU) 2024/1689&quot;, &quot;Directive 95/46/EC&quot;, &quot;Regulation (EC) No 1907/2006&quot;), a bare number (&quot;2016/679&quot;), a CELEX number (&quot;32016R0679&quot;) or an ELI URI (&quot;http://data.europa.eu/eli/reg/2016/679/oj&quot;). &quot;AI Act Article 50&quot; also works. Leave empty only when using ojSince (new Official Journal acts). An unreadable citation fails in seconds, with examples, at no charge.</td></tr>
+<tr><td><code>article</code></td><td>string</td><td>Article number, optionally with a paragraph: &quot;5&quot;, &quot;6(1)&quot;, &quot;4a&quot;; several separated by commas (&quot;5, 6(1)&quot;, up to 10). One row per article. Empty = one row for the whole act with its table of contents and recital count (no full text unless include has &quot;text&quot;).</td></tr>
+<tr><td><code>language</code></td><td>string</td><td>EU language code of the text and titles: BG, CS, DA, DE, EL, EN, ES, ET, FI, FR, GA, HR, HU, IT, LT, LV, MT, NL, PL, PT, RO, SK, SL, SV. Default EN. If the text is missing in that language, English is returned with a warning.</td></tr>
+<tr><td><code>asOf</code></td><td>string</td><td>YYYY-MM-DD, e.g. &quot;2025-01-01&quot;: return the consolidated version that applied on that date. Empty = today (the newest consolidated version in force now). Acts without consolidated versions return the Official Journal text.</td></tr>
+<tr><td><code>include</code></td><td>array</td><td>Any of &quot;metadata&quot; (always on), &quot;amendments&quot; (amended_by, corrected_by, repealed_by, amends, repeals), &quot;citing&quot; (acts and judgments that cite this act, newest first) and &quot;text&quot; (the whole act as plain text, cut at maxTextChars). Default [&quot;metadata&quot;, &quot;amendments&quot;]. The price is the same.</td></tr>
+<tr><td><code>maxTextChars</code></td><td>integer</td><td>Cap on article_text and text, in characters, e.g. 30000 (default). Longer text is cut and flagged (article_text_truncated / text_truncated) with a warning.</td></tr>
+<tr><td><code>maxCiting</code></td><td>integer</td><td>With include &quot;citing&quot;: how many citing acts to list, newest first, e.g. 20 (default). citing_acts_total always gives the full count.</td></tr>
+<tr><td><code>ojSince</code></td><td>string</td><td>Switches to Official Journal mode: list acts published in the OJ L series from this date (YYYY-MM-DD, e.g. &quot;2026-11-03&quot;) until today, newest first, at most 31 days back. Leave query empty when you use this. Empty = normal lookup.</td></tr>
+<tr><td><code>keywords</code></td><td>string</td><td>OJ mode only: comma-separated words or phrases; an act is kept when its title (in the chosen language) contains any of them, case-insensitive, e.g. &quot;artificial intelligence, data&quot;. Empty = all acts.</td></tr>
+<tr><td><code>maxResults</code></td><td>integer</td><td>OJ mode only: the most acts to return, newest first, e.g. 50 (default). One charge per act returned.</td></tr>
+</tbody></table></div>
+<h2>Sources, licence and limits</h2>
+<p><strong>Where does the data come from?</strong> Only from the Publications Office of the EU, the publisher of EUR-Lex: its Cellar repository (SPARQL endpoint for metadata and relations, REST content negotiation for texts). Nothing else is added, and the text is not rewritten or summarised.</p>
+<p><strong>Is the consolidated text the law?</strong> No. Consolidated versions are, in EUR-Lex&#x27;s own words, &quot;a documentation tool&quot; with no legal effect; only the texts published in the Official Journal are authentic. Every row with a consolidated text carries EUR-Lex&#x27;s disclaimer in <code>text_notice</code> and links the authentic act in <code>eur_lex_url</code>. Ask with an <code>asOf</code> before the first consolidated version to get the OJ text itself.</p>
+<p><strong>Is this legal advice?</strong> No. It returns official texts and metadata as published; it does not interpret them. EUR-Lex itself states its information is not professional or legal advice.</p>
+<p><strong>Which acts work?</strong> Any act with a CELEX number in EUR-Lex: regulations, directives and decisions, corrigenda and consolidated versions. Article extraction works on all current texts; for some old acts (before about 2000) only an HTML text without article markup exists, and the last article may then include trailing headings. Annexes are not split out (use <code>include: [&quot;text&quot;]</code>).</p>
+<p><strong>How current is it?</strong> Live: every call reads Cellar directly. New OJ acts appear the day they are published; consolidated versions follow when the Publications Office produces them (days to weeks), so <code>latest_consolidated_version_date</code> can lag behind <code>amended_by</code>. <code>in_force</code> can be <code>null</code> for acts published in the last few days, before EUR-Lex has set it.</p>
+<p><strong>Why is a title null?</strong> Some corrigenda have no title in Cellar, and very new acts may not yet have one in every language.</p>
+<p><strong>Points like 6(1)(a)?</strong> The paragraph is returned whole; points are lines inside it.</p>
+<p><strong>Personal data?</strong> None is requested or returned beyond what the published legal acts contain. Signatory names in the metadata are not output.</p>
+<p>Content: © European Union, https://eur-lex.europa.eu (reuse under Commission Decision 2011/833/EU; consolidated texts and editorial content under CC BY 4.0; metadata CC0). Text is converted from XHTML to plain text and long texts are cut where <code>maxTextChars</code> says; nothing else is changed.</p>
+<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=EU Law Lookup API (EUR-Lex)">Ask for early access</a></div>
+</div>
+</article>
+</main>
+<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
+</body>
+</html>

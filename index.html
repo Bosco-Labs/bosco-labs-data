@@ -3,18 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bosco Labs data APIs: SEC, EU filings, tenders, contracts</title>
-<meta name="description" content="Official-source data APIs on Apify: SEC insider trades and filings, US House trades, EU annual reports, company accounts, EU tenders, DoD contracts.">
+<title>Bosco Labs: official-source data APIs for AI agents</title>
+<meta name="description" content="Data tools for AI agents and analysts: SEC filings, insider trades, company accounts, sanctions, EU law, tenders, contracts. Sourced JSON, pay per result.">
 <link rel="canonical" href="https://boscolabs.dev/">
+<link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="logo.svg" type="image/svg+xml">
 <link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Bosco Labs">
-<meta property="og:title" content="Bosco Labs data APIs: SEC, EU filings, tenders, contracts">
-<meta property="og:description" content="Official-source data APIs on Apify: SEC insider trades and filings, US House trades, EU annual reports, company accounts, EU tenders, DoD contracts.">
+<meta property="og:title" content="Bosco Labs: official-source data APIs for AI agents">
+<meta property="og:description" content="Data tools for AI agents and analysts: SEC filings, insider trades, company accounts, sanctions, EU law, tenders, contracts. Sourced JSON, pay per result.">
 <meta property="og:url" content="https://boscolabs.dev/">
 <meta property="og:image" content="https://boscolabs.dev/logo-512.png">
 <meta name="twitter:card" content="summary">
+<script defer src="/_vercel/insights/script.js"></script>
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -24,6 +26,7 @@
    "name": "Bosco Labs",
    "url": "https://boscolabs.dev/",
    "logo": "https://boscolabs.dev/logo-512.png",
+   "email": "support@boscolabs.dev",
    "sameAs": [
     "https://apify.com/bosco_labs"
    ]
@@ -53,36 +56,132 @@
     {
      "@type": "ListItem",
      "position": 4,
+     "url": "https://boscolabs.dev/sec-ownership.html",
+     "name": "SEC Ownership API: 13F Holdings, 13D/13G Stakes, Form 144"
+    },
+    {
+     "@type": "ListItem",
+     "position": 5,
+     "url": "https://boscolabs.dev/sec-company-financials.html",
+     "name": "SEC Company Financials API: income, balance sheet, cash flow"
+    },
+    {
+     "@type": "ListItem",
+     "position": 6,
+     "url": "https://boscolabs.dev/sec-company-screen.html",
+     "name": "SEC Company Screener API: filter all US filers by financials"
+    },
+    {
+     "@type": "ListItem",
+     "position": 7,
      "url": "https://boscolabs.dev/esef-annual-reports.html",
      "name": "EU Annual Reports API (ESEF): XBRL financial statements"
     },
     {
      "@type": "ListItem",
-     "position": 5,
+     "position": 8,
+     "url": "https://boscolabs.dev/company-check.html",
+     "name": "Company Check API: identity, financials & SEC filings in 1 call"
+    },
+    {
+     "@type": "ListItem",
+     "position": 9,
      "url": "https://boscolabs.dev/company-accounts.html",
      "name": "Company Financials API: UK, Denmark & Norway accounts + LEI"
     },
     {
      "@type": "ListItem",
-     "position": 6,
+     "position": 10,
+     "url": "https://boscolabs.dev/uk-new-companies.html",
+     "name": "UK New Companies API: daily Companies House incorporations"
+    },
+    {
+     "@type": "ListItem",
+     "position": 11,
+     "url": "https://boscolabs.dev/company-hiring-signals.html",
+     "name": "Company Hiring Signals API: open roles, departments, locations"
+    },
+    {
+     "@type": "ListItem",
+     "position": 12,
+     "url": "https://boscolabs.dev/sanctions-screening.html",
+     "name": "Sanctions Screening API: OFAC, UK, EU & US export lists"
+    },
+    {
+     "@type": "ListItem",
+     "position": 13,
+     "url": "https://boscolabs.dev/eu-law-lookup.html",
+     "name": "EU Law Lookup API (EUR-Lex): article text, in force, amendments"
+    },
+    {
+     "@type": "ListItem",
+     "position": 14,
+     "url": "https://boscolabs.dev/national-law-lookup.html",
+     "name": "UK & Dutch Law Lookup API: article text by date, in force"
+    },
+    {
+     "@type": "ListItem",
+     "position": 15,
+     "url": "https://boscolabs.dev/dutch-case-law.html",
+     "name": "Dutch Case Law API (Rechtspraak): ECLI lookup, uitspraken"
+    },
+    {
+     "@type": "ListItem",
+     "position": 16,
      "url": "https://boscolabs.dev/eu-tenders.html",
      "name": "EU Public Tenders & Contract Awards API (TED procurement)"
     },
     {
      "@type": "ListItem",
-     "position": 7,
+     "position": 17,
      "url": "https://boscolabs.dev/dod-contract-awards.html",
      "name": "Pentagon / DoD Contract Awards API: winners, amounts, tickers"
     },
     {
      "@type": "ListItem",
-     "position": 8,
+     "position": 18,
+     "url": "https://boscolabs.dev/us-federal-awards.html",
+     "name": "US Federal Awards API: contracts & grants, all agencies"
+    },
+    {
+     "@type": "ListItem",
+     "position": 19,
+     "url": "https://boscolabs.dev/eu-rates-inflation.html",
+     "name": "ECB Rates & Euro Inflation API: policy rates, FX, €STR, HICP"
+    },
+    {
+     "@type": "ListItem",
+     "position": 20,
+     "url": "https://boscolabs.dev/clinical-trials.html",
+     "name": "ClinicalTrials.gov API: trial search & NCT dossier"
+    },
+    {
+     "@type": "ListItem",
+     "position": 21,
+     "url": "https://boscolabs.dev/dutch-address-lookup.html",
+     "name": "Dutch Address Lookup API: BAG postcode, geocode & building data"
+    },
+    {
+     "@type": "ListItem",
+     "position": 22,
+     "url": "https://boscolabs.dev/pdf-to-data.html",
+     "name": "PDF to JSON API: text, tables and metadata from a PDF URL"
+    },
+    {
+     "@type": "ListItem",
+     "position": 23,
      "url": "https://boscolabs.dev/dataset-dedup.html",
      "name": "Deduplicate & Merge Apify Datasets: remove duplicate items"
     },
     {
      "@type": "ListItem",
-     "position": 9,
+     "position": 24,
+     "url": "https://boscolabs.dev/dataset-change-monitor.html",
+     "name": "Change Monitor: new, changed & removed items + Slack alerts"
+    },
+    {
+     "@type": "ListItem",
+     "position": 25,
      "url": "https://boscolabs.dev/sheets-export.html",
      "name": "Google Sheets Export: send any Apify dataset to a spreadsheet"
     }
@@ -91,55 +190,107 @@
  ]
 }
 </script>
-<style>:root{--bg:#fff;--fg:#1a2230;--muted:#5a6575;--line:#dfe3ea;--card:#f5f7fa;--accent:#0f766e;--btn:#0f766e;--btnfg:#fff}
-@media (prefers-color-scheme:dark){:root{--bg:#0d1520;--fg:#e6ebf2;--muted:#9aa6b6;--line:#26323f;--card:#15202d;--accent:#5eead4;--btn:#2dd4bf;--btnfg:#04201d}}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-header,main,footer{max-width:860px;margin:0 auto;padding:0 16px}header{display:flex;align-items:center;gap:10px;padding-top:18px}
-header a{display:flex;align-items:center;gap:10px;color:var(--fg);text-decoration:none;font-weight:600}header img{width:32px;height:32px}
-a{color:var(--accent)}h1{font-size:1.9rem;line-height:1.25;margin:1.2rem 0 .6rem}h2{margin-top:2.2rem;font-size:1.3rem}
-.lead{font-size:1.15rem}.muted{color:var(--muted)}code{font:.9em ui-monospace,SFMono-Regular,Consolas,monospace}
-pre{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px;overflow-x:auto;font-size:.85rem;line-height:1.45}
-.table{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{text-align:left;vertical-align:top;padding:6px 8px;border-bottom:1px solid var(--line)}
-td:first-child{white-space:nowrap}.cta{display:inline-block;background:var(--btn);color:var(--btnfg);font-weight:700;font-size:1.1rem;padding:14px 22px;border-radius:10px;text-decoration:none;margin:1.2rem 0}
-.cards{list-style:none;padding:0;display:grid;gap:12px}.cards li{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}
-.cards h3{margin:0 0 .3rem;font-size:1.05rem}.cards p{margin:.2rem 0}footer{border-top:1px solid var(--line);margin-top:3rem;padding-top:12px;padding-bottom:24px;font-size:.9rem}</style>
+<style>:root{color-scheme:light dark;--head:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--body:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;--ink:#1D2721;--muted:#545F58;--bg:#F5F3EA;--surface:#EAE8DC;--line:#D6D3C3;--accent:#2E5A47;--accent-fg:#F5F3EA;--accent2:#8DA889;--accent2-text:#4A6646;--success:#36694A;--warn:#8E5D1C}
+@media (prefers-color-scheme:dark){:root{--ink:#E5E8DE;--muted:#A3ADA4;--bg:#121914;--surface:#1B241E;--line:#2B372F;--accent:#9EC7B1;--accent-fg:#121914;--accent2:#B5C9A4;--accent2-text:#B5C9A4;--success:#93C7A0;--warn:#DDB070}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--body)}h1,h2,h3,.brand{font-family:var(--head)}
+a{color:var(--accent);text-underline-offset:2px}.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+.site{border-bottom:1px solid var(--line)}.site .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;padding-top:12px;padding-bottom:12px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-weight:650;letter-spacing:-.01em}.brand img{width:30px;height:30px}
+nav{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:.95rem}nav a{color:var(--muted);text-decoration:none}nav a:hover{color:var(--ink)}
+h1{font-size:clamp(1.65rem,4vw,2.4rem);line-height:1.2;letter-spacing:-.02em;margin:0 0 12px}
+h2{font-size:1.3rem;line-height:1.3;letter-spacing:-.01em;margin:44px 0 12px}h3{font-size:1.02rem;margin:20px 0 6px}
+.hero{padding:52px 0 8px;max-width:780px}.lead{font-size:1.13rem;color:var(--muted)}.muted{color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}.chips a{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:.9rem;color:var(--ink);text-decoration:none}.chips a:hover{border-color:var(--accent)}
+.grid{list-style:none;padding:0;margin:0;display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.card-top{display:flex;gap:12px;align-items:center}.card img{width:48px;height:48px;flex:none}
+.card h3{margin:0;font-size:1rem;line-height:1.3}.card h3 a{color:var(--ink);text-decoration:none}.card h3 a:hover{text-decoration:underline}
+.card p{margin:0;font-size:.92rem;color:var(--muted)}.card .row{margin-top:auto;padding-top:6px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-size:.88rem}
+.price{font-weight:600;color:var(--ink)}.badge{display:inline-block;font-size:.78rem;font-weight:600;line-height:1.5;padding:1px 9px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.badge.live{color:var(--success)}.badge.soon{color:var(--warn)}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-fg);font-weight:650;padding:11px 18px;border-radius:10px;text-decoration:none}
+.btn.ghost{background:none;color:var(--accent);border:1px solid var(--line)}.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0}
+.crumbs{font-size:.9rem;color:var(--muted);margin:22px 0 0}.crumbs a{color:var(--muted)}
+.head{display:flex;gap:20px;align-items:flex-start;margin:18px 0 0}.head img{width:84px;height:84px;flex:none}
+.prose{max-width:800px}.facts{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));margin:22px 0}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:.95rem}.fact b{display:block;font-size:.75rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.qs{padding-left:20px}.qs li{margin:4px 0}.two{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}.two h3{margin-top:0}.two>div,.prose,main{min-width:0}
+code{font:.86em var(--mono)}:not(pre)>code{overflow-wrap:anywhere}
+pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px;overflow:auto;max-height:520px;font-size:.84rem;line-height:1.45;margin:0}
+.table{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{text-align:left;vertical-align:top;padding:7px 8px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-weight:600}td:first-child{white-space:nowrap}
+details{border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:10px 0}summary{cursor:pointer;font-weight:600}
+footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font-size:.9rem;color:var(--muted)}footer a{color:var(--muted)}
+@media (max-width:560px){.head{flex-direction:column;gap:12px}.head img{width:64px;height:64px}.hero{padding-top:32px}}</style>
 </head>
 <body>
-<header><a href="index.html"><img src="logo.svg" alt="" width="32" height="32">Bosco Labs data APIs</a></header>
-<main>
-<h1>Bosco Labs data APIs</h1>
-<p class="lead">Clean, typed JSON from official sources, as Apify Actors you can call by API or from an AI agent over MCP. Priced per row delivered.</p>
-<p>Machine-readable index: <a href="llms.txt">llms.txt</a> (summary) and <a href="llms-full.txt">llms-full.txt</a> (all input and output fields). All Actors on the <a href="https://apify.com/bosco_labs">Bosco Labs Apify Store profile</a>.</p>
-<section>
-<h2>Finance &amp; filings</h2>
-<ul class="cards">
-<li><h3><a href="sec-insider-trades.html">SEC Insider Trading API (Form 4): live + history since 2006</a></h3><p>Every insider purchase and sale reported on SEC Form 4 (directors, officers, 10% owners), from official EDGAR filings, 2006 to today, with cluster-buy and cluster-sell signals; filter by ticker, CIK, transaction code, role, value and date.</p><p class="muted">$0.0018 per transaction row and $0.02 per cluster signal · <a href="https://apify.com/bosco_labs/sec-insider-trades">Apify Store</a></p></li>
-<li><h3><a href="sec-filings-feed.html">SEC EDGAR Filings API: 8-K, 10-K, 10-Q feed since 1994</a></h3><p>SEC EDGAR filings (8-K, 10-K, 10-Q, S-1, 13D, 13G, Form 4 and every other form) for any company or the whole market, live or back to 1994, from the SEC&#x27;s own feeds; 8-K item codes and earnings releases (Item 2.02); links to each filing, not its text.</p><p class="muted">$0.001 per filing · <a href="https://apify.com/bosco_labs/sec-filings-feed">Apify Store</a></p></li>
-<li><h3><a href="us-house-trades.html">Congress Stock Trades API: US House STOCK Act since 2014</a></h3><p>Congress stock trades: stock, option, fund and bond trades that US House members disclose in STOCK Act Periodic Transaction Reports, from the Clerk of the House&#x27;s official filings since January 2014 (no Senate); ticker, amount range, owner, days to disclose.</p><p class="muted">$0.0018 per trade · <a href="https://apify.com/bosco_labs/us-house-trades">Apify Store</a></p></li>
+<header class="site"><div class="wrap"><a class="brand" href="index.html"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav><a href="index.html#tools">Tools</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
+<main class="wrap">
+<section class="hero">
+<h1>Official-source data for AI agents and analysts</h1>
+<p class="lead">Clean, typed JSON from SEC EDGAR, Companies House, EUR-Lex, TED, USAspending, ClinicalTrials.gov and other official registers. Call each tool by API or from an AI agent over MCP, and pay per result. Every row links to its source.</p>
+<p class="muted">25 tools &middot; 5 live on the Apify Store &middot; the others coming soon</p>
+<div class="actions"><a class="btn" href="#tools">Browse the tools</a><a class="btn ghost" href="llms.txt">For agents: llms.txt</a></div>
+<ul class="chips"><li><a href="#finance-sec">Finance &amp; SEC</a></li><li><a href="#companies">Companies</a></li><li><a href="#compliance-law">Compliance &amp; law</a></li><li><a href="#government-procurement">Government &amp; procurement</a></li><li><a href="#macro-health-places">Macro, health &amp; places</a></li><li><a href="#data-tools">Data tools</a></li></ul>
+</section>
+<span id="tools"></span>
+<section id="finance-sec">
+<h2>Finance &amp; SEC</h2>
+<ul class="grid">
+<li class="card"><div class="card-top"><img src="icons/sec-insider-trades.svg" alt="" width="48" height="48"><h3><a href="sec-insider-trades.html">SEC Insider Trading API (Form 4)</a></h3></div><p>Every SEC Form 4 insider purchase and sale since 2006 as JSON, with cluster-buy and cluster-sell signals. Filter by ticker, role, value and date.</p><div class="row"><span class="price">$0.0018 per transaction row and $0.02 per cluster signal</span><a href="https://apify.com/bosco_labs/sec-insider-trades">On Apify Store</a></div></li>
+<li class="card"><div class="card-top"><img src="icons/sec-filings-feed.svg" alt="" width="48" height="48"><h3><a href="sec-filings-feed.html">SEC EDGAR Filings API</a></h3></div><p>SEC EDGAR filings as JSON for one company or the whole market, live or back to 1994: 8-K item codes, earnings release times, filing links. $1 per 1,000.</p><div class="row"><span class="price">$0.001 per filing</span><a href="https://apify.com/bosco_labs/sec-filings-feed">On Apify Store</a></div></li>
+<li class="card"><div class="card-top"><img src="icons/us-house-trades.svg" alt="" width="48" height="48"><h3><a href="us-house-trades.html">Congress Stock Trades API</a></h3></div><p>Stock, option, fund and bond trades disclosed by US House members in STOCK Act reports since 2014, from the Clerk&#x27;s filings. Ticker, amount, owner, delay.</p><div class="row"><span class="price">$0.0018 per trade</span><a href="https://apify.com/bosco_labs/us-house-trades">On Apify Store</a></div></li>
+<li class="card"><div class="card-top"><img src="icons/sec-ownership.svg" alt="" width="48" height="48"><h3><a href="sec-ownership.html">SEC Ownership API</a></h3></div><p>Who owns a stock and who is selling: a fund&#x27;s 13F holdings with quarterly changes, funds holding a ticker, 13D/13G stakes and Form 144 sales.</p><div class="row"><span class="price">$0.0018 per row</span><span class="badge soon">Coming soon to the Store</span></div></li>
+<li class="card"><div class="card-top"><img src="icons/sec-company-financials.svg" alt="" width="48" height="48"><h3><a href="sec-company-financials.html">SEC Company Financials API</a></h3></div><p>Income statement, balance sheet and cash flow of US-listed companies from SEC XBRL, per year or quarter since 2009, by ticker or CIK, each value sourced.</p><div class="row"><span class="price">$0.005 per company-period row</span><span class="badge soon">Coming soon to the Store</span></div></li>
+<li class="card"><div class="card-top"><img src="icons/sec-company-screen.svg" alt="" width="48" height="48"><h3><a href="sec-company-screen.html">SEC Company Screener API</a></h3></div><p>Screen all US SEC filers by revenue, net income, margins, cash flow and 30 more metrics for one year or quarter. Each value cites its SEC filing.</p><div class="row"><span class="price">$0.002 per company returned</span><span class="badge soon">Coming soon to the Store</span></div></li>
+<li class="card"><div class="card-top"><img src="icons/esef-annual-reports.svg" alt="" width="48" height="48"><h3><a href="esef-annual-reports.html">EU Annual Reports API (ESEF)</a></h3></div><p>Revenue, EBIT, net income, EPS, equity and cash flow from ESEF annual reports of EU listed companies in 28 countries, each value linked to its XBRL fact.</p><div class="row"><span class="price">$0.01 per run plus $0.05 per annual report; raw XBRL fact rows, if switched on, $0.0005 each</span><a href="https://apify.com/bosco_labs/esef-annual-reports">On Apify Store</a></div></li>
 </ul>
 </section>
-<section>
-<h2>Company data</h2>
-<ul class="cards">
-<li><h3><a href="esef-annual-reports.html">EU Annual Reports API (ESEF): XBRL financial statements</a></h3><p>Normalized key financials (revenue, EBIT, EBITDA, net income, EPS, assets, equity, cash flows, margins, growth) of European listed companies from official ESEF annual reports via filings.xbrl.org; 28 countries; every value linked to its XBRL fact.</p><p class="muted">$0.01 per run plus $0.05 per annual report; raw XBRL fact rows, if switched on, $0.0005 each · <a href="https://apify.com/bosco_labs/esef-annual-reports">Apify Store</a></p></li>
-<li><h3><a href="company-accounts.html">Company Financials API: UK, Denmark &amp; Norway accounts + LEI</a></h3><p>Financials (revenue, profit, equity, assets, cash, employees) of private and public companies from official accounts: UK Companies House, Denmark Erhvervsstyrelsen, Norway Brønnøysund; adds the LEI from GLEIF and a source per value.</p><p class="muted">$0.04 per company-year · <a href="https://apify.com/bosco_labs/company-accounts">Apify Store</a></p></li>
+<section id="companies">
+<h2>Companies</h2>
+<ul class="grid">
+<li class="card"><div class="card-top"><img src="icons/company-check.svg" alt="" width="48" height="48"><h3><a href="company-check.html">Company Check API</a></h3></div><p>One sourced company report per call: legal name, LEI, registration number, status, address, years of financials and SEC filings. For KYB and due diligence.</p><div class="row"><span class="price">$0.03 per report</span><span class="badge soon">Coming soon to the Store</span></div></li>
+<li class="card"><div class="card-top"><img src="icons/company-accounts.svg" alt="" width="48" height="48"><h3><a href="company-accounts.html">Company Financials API</a></h3></div><p>Financials of UK, Danish and Norwegian companies, private ones included, from official filed accounts: revenue, profit, equity, cash, employees, LEI.</p><div class="row"><span class="price">$0.04 per company-year</span><a href="https://apify.com/bosco_labs/company-accounts">On Apify Store</a></div></li>
+<li class="card"><div class="card-top"><img src="icons/uk-new-companies.svg" alt="" width="48" height="48"><h3><a href="uk-new-companies.html">UK New Companies API</a></h3></div><p>Every new UK company incorporated yesterday or on any date, from the Companies House API: name, number, SIC codes, registered address. No director data.</p><div class="row"><span class="price">$0.002 per company</span><span class="badge soon">Coming soon to the Store</span></div></li>
+<li class="card"><div class="card-top"><img src="icons/company-hiring-signals.svg" alt="" width="48" height="48"><h3><a href="company-hiring-signals.html">Company Hiring Signals API</a></h3></div><p>Is a company hiring? Open roles by department, location and remote share, plus job rows with links, from public Greenhouse, Lever and Ashby job boards.</p><div class="row"><span class="price">$0.005 per company found plus $0.001 per job row</span><span class="badge soon">Coming soon to the Store</span></div></li>
 </ul>
 </section>
-<section>
+<section id="compliance-law">
+<h2>Compliance &amp; law</h2>
+<ul class="grid">
+<li class="card"><div class="card-top"><img src="icons/sanctions-screening.svg" alt="" width="48" height="48"><h3><a href="sanctions-screening.html">Sanctions Screening API</a></h3></div><p>Is this company, vessel or person sanctioned? Screen names against OFAC SDN, the US Consolidated Screening List, UK and EU sanctions lists.</p><div class="row"><span class="price">$0.01 per name screened</span><span class="badge soon">Coming soon to the Store</span></div></li>
+<li class="card"><div class="card-top"><img src="icons/eu-law-lookup.svg" alt="" width="48" height="48"><h3><a href="eu-law-lookup.html">EU Law Lookup API (EUR-Lex)</a></h3></div><p>The text of an EU law article as in force today or on a date, in-force status and amending acts. Ask by name (GDPR, AI Act), CELEX or ELI. From EUR-Lex.</p><div class="row"><span class="price">$0.01 per act or article returned</span><span class="badge soon">Coming soon to the Store</span></div></li>
+<li class="card"><div class="card-top"><img src="icons/national-law-lookup.svg" alt="" width="48" height="48"><h3><a href="national-law-lookup.html">UK &amp; Dutch Law Lookup API</a></h3></div><p>Text of a UK section or Dutch article as in force today or on a date, whether it is in force and what changed it. From legislation.gov.uk and Dutch BWB.</p><div class="row"><span class="price">$0.01 per article or act returned</span><span class="badge soon">Coming soon to the Store</span></div></li>
+<li class="card"><div class="card-top"><img src="icons/dutch-case-law.svg" alt="" width="48" height="48"><h3><a href="dutch-case-law.html">Dutch Case Law API (Rechtspraak)</a></h3></div><p>Dutch court decisions (uitspraken) by ECLI or search: court, dates, case numbers, legal area, summary, appeal relations, full text. Rechtspraak Open Data.</p><div class="row"><span class="price">$0.005 per decision returned</span><span class="badge soon">Coming soon to the Store</span></div></li>
+</ul>
+</section>
+<section id="government-procurement">
 <h2>Government &amp; procurement</h2>
-<ul class="cards">
-<li><h3><a href="eu-tenders.html">EU Public Tenders &amp; Contract Awards API (TED procurement)</a></h3><p>EU public procurement notices from TED (Tenders Electronic Daily), the EU&#x27;s official tenders journal: open calls with deadlines, contract awards with winners and values, prior information; EU, EEA and more, since 2016; filter by keyword, country, CPV code, notice type, date, EUR value.</p><p class="muted">$0.002 per notice · <a href="https://apify.com/bosco_labs/eu-tenders">Apify Store</a></p></li>
-<li><h3><a href="dod-contract-awards.html">Pentagon / DoD Contract Awards API: winners, amounts, tickers</a></h3><p>US Department of Defense contract awards of $7.5M or more the same evening they are announced, plus USAspending.gov history since FY2008 (any federal agency); winner, amount, service, NAICS/PSC, matched to a US stock ticker with SEC shares outstanding.</p><p class="muted">$0.005 per award row · <a href="https://apify.com/bosco_labs/dod-contract-awards">Apify Store</a></p></li>
+<ul class="grid">
+<li class="card"><div class="card-top"><img src="icons/eu-tenders.svg" alt="" width="48" height="48"><h3><a href="eu-tenders.html">EU Public Tenders &amp; Contract Awards API (TED procurement)</a></h3></div><p>EU public tenders and contract awards from TED as JSON: deadlines, winners, awarded values and CPV codes, EU and EEA buyers since 2016. $2 per 1,000.</p><div class="row"><span class="price">$0.002 per notice</span><span class="badge soon">Coming soon to the Store</span></div></li>
+<li class="card"><div class="card-top"><img src="icons/dod-contract-awards.svg" alt="" width="48" height="48"><h3><a href="dod-contract-awards.html">Pentagon / DoD Contract Awards API</a></h3></div><p>Pentagon contract awards of $7.5M+ the same evening, plus USAspending.gov history since FY2008, with the winner&#x27;s stock ticker and SEC shares outstanding.</p><div class="row"><span class="price">$0.005 per award row</span><span class="badge soon">Coming soon to the Store</span></div></li>
+<li class="card"><div class="card-top"><img src="icons/us-federal-awards.svg" alt="" width="48" height="48"><h3><a href="us-federal-awards.html">US Federal Awards API</a></h3></div><p>US federal contract, grant and loan awards from every agency via USAspending.gov: winner, parent company, stock ticker, agency, amount, NAICS/PSC, dates.</p><div class="row"><span class="price">$0.004 per award row</span><span class="badge soon">Coming soon to the Store</span></div></li>
 </ul>
 </section>
-<section>
+<section id="macro-health-places">
+<h2>Macro, health &amp; places</h2>
+<ul class="grid">
+<li class="card"><div class="card-top"><img src="icons/eu-rates-inflation.svg" alt="" width="48" height="48"><h3><a href="eu-rates-inflation.html">ECB Rates &amp; Euro Inflation API</a></h3></div><p>Latest value, change and history of ECB policy rates, euro FX reference rates, €STR, bond yields and Eurostat HICP inflation, by plain name.</p><div class="row"><span class="price">$0.002 per series returned</span><span class="badge soon">Coming soon to the Store</span></div></li>
+<li class="card"><div class="card-top"><img src="icons/clinical-trials.svg" alt="" width="48" height="48"><h3><a href="clinical-trials.html">ClinicalTrials.gov API</a></h3></div><p>Clinical trials as compact JSON: status, phase, sponsor, conditions, interventions, enrollment, dates, countries, results. Search or look up NCT numbers.</p><div class="row"><span class="price">$0.004 per trial</span><span class="badge soon">Coming soon to the Store</span></div></li>
+<li class="card"><div class="card-top"><img src="icons/dutch-address-lookup.svg" alt="" width="48" height="48"><h3><a href="dutch-address-lookup.html">Dutch Address Lookup API</a></h3></div><p>Validate and geocode Dutch addresses against the official BAG register: postcode, BAG ids, WGS84 and RD coordinates, construction year, use and floor area.</p><div class="row"><span class="price">$0.002 per resolved address</span><span class="badge soon">Coming soon to the Store</span></div></li>
+</ul>
+</section>
+<section id="data-tools">
 <h2>Data tools</h2>
-<ul class="cards">
-<li><h3><a href="dataset-dedup.html">Deduplicate &amp; Merge Apify Datasets: remove duplicate items</a></h3><p>Deduplicate and merge one or more Apify datasets (or a pasted JSON array): removes duplicate items by any fields (dot paths allowed) or by the whole item, keeping the first or last occurrence; streams millions of items with constant memory.</p><p class="muted">$0.00015 per unique item written (duplicates are free) · <a href="https://apify.com/bosco_labs/dataset-dedup">Apify Store</a></p></li>
-<li><h3><a href="sheets-export.html">Google Sheets Export: send any Apify dataset to a spreadsheet</a></h3><p>Export any Apify dataset to Google Sheets: replace a tab or append rows, with nested fields as columns and your header kept; writes with your own Google service account key and retries Google rate limits.</p><p class="muted">$0.00015 per row exported · <a href="https://apify.com/bosco_labs/sheets-export">Apify Store</a></p></li>
+<ul class="grid">
+<li class="card"><div class="card-top"><img src="icons/pdf-to-data.svg" alt="" width="48" height="48"><h3><a href="pdf-to-data.html">PDF to JSON API</a></h3></div><p>Turn public PDF links into JSON: text per page in reading order, tables as rows, title, author and dates. Never stored. $0.50 per 1,000 pages.</p><div class="row"><span class="price">$0.0005 per page with text</span><span class="badge soon">Coming soon to the Store</span></div></li>
+<li class="card"><div class="card-top"><img src="icons/dataset-dedup.svg" alt="" width="48" height="48"><h3><a href="dataset-dedup.html">Deduplicate &amp; Merge Apify Datasets</a></h3></div><p>Remove duplicate items from one or more Apify datasets by any fields or the whole item, keep first or last. Streams millions of items, constant memory.</p><div class="row"><span class="price">$0.00015 per unique item written (duplicates are free)</span><span class="badge soon">Coming soon to the Store</span></div></li>
+<li class="card"><div class="card-top"><img src="icons/dataset-change-monitor.svg" alt="" width="48" height="48"><h3><a href="dataset-change-monitor.html">Change Monitor</a></h3></div><p>Compare each scraper run with the previous one and get only new, changed and removed items, matched by your key fields. Slack, email or webhook alerts.</p><div class="row"><span class="price">$0.001 per change reported</span><span class="badge soon">Coming soon to the Store</span></div></li>
+<li class="card"><div class="card-top"><img src="icons/sheets-export.svg" alt="" width="48" height="48"><h3><a href="sheets-export.html">Google Sheets Export</a></h3></div><p>Export any Apify dataset to Google Sheets: replace a tab or append rows, nested fields as columns, header kept, rate limits retried. Works on schedules.</p><div class="row"><span class="price">$0.00015 per row exported</span><span class="badge soon">Coming soon to the Store</span></div></li>
 </ul>
 </section>
-<section>
+<section id="how-to-call" class="prose">
 <h2>How to call</h2>
 <ul>
 <li><strong>Apify API (synchronous):</strong> POST <code>https://api.apify.com/v2/acts/bosco_labs~&lt;actor&gt;/run-sync-get-dataset-items</code> with header <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code> and the Actor input as the JSON body; the response is the dataset items.</li>
@@ -148,8 +299,10 @@ td:first-child{white-space:nowrap}.cta{display:inline-block;background:var(--btn
 <li><strong>Contact:</strong> support@boscolabs.dev (questions, data issues, custom data requests).</li>
 <li><strong>Bosco Labs MCP server:</strong> <code>bosco-labs-data-mcp</code> on PyPI (https://pypi.org/project/bosco-labs-data-mcp/) and the official MCP Registry (<code>io.github.PB7-debug/bosco-labs-data</code>): one MCP server for all data Actors. Run it with <code>uvx bosco-labs-data-mcp</code> and set <code>APIFY_TOKEN</code>; source in https://github.com/PB7-debug/bosco-labs-data/tree/main/mcp.</li>
 </ul>
+<p>Machine-readable index: <a href="llms.txt">llms.txt</a> (summary) and <a href="llms-full.txt">llms-full.txt</a> (all input and output fields). Live tools on the <a href="https://apify.com/bosco_labs">Bosco Labs Apify Store profile</a>.</p>
 </section>
 </main>
-<footer><p><a href="index.html">All Actors</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p></footer>
+<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
 </body>
 </html>

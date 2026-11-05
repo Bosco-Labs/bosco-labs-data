@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEC Financial Statements API: 10-K, 10-Q XBRL data</title>
+<meta name="description" content="Income statement, balance sheet and cash flow of US-listed companies from SEC XBRL, per year or quarter since 2009, by ticker or CIK, each value sourced.">
+<link rel="canonical" href="https://boscolabs.dev/sec-company-financials.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bosco Labs">
+<meta property="og:title" content="SEC Financial Statements API: 10-K, 10-Q XBRL data">
+<meta property="og:description" content="Income statement, balance sheet and cash flow of US-listed companies from SEC XBRL, per year or quarter since 2009, by ticker or CIK, each value sourced.">
+<meta property="og:url" content="https://boscolabs.dev/sec-company-financials.html">
+<meta property="og:image" content="https://boscolabs.dev/icons/sec-company-financials.png">
+<meta name="twitter:card" content="summary">
+<script defer src="/_vercel/insights/script.js"></script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "SoftwareApplication",
+ "name": "SEC Company Financials API: income, balance sheet, cash flow",
+ "description": "US company financials from SEC XBRL: revenue, profit, EPS, balance sheet, cash flow, free cash flow and margins per fiscal year or quarter, 2009 to today. By ticker or CIK, 10-K/10-Q and 20-F filers. Each value cites its XBRL tag and SEC filing. Q4 derived where not reported.",
+ "url": "https://boscolabs.dev/sec-company-financials.html",
+ "image": "https://boscolabs.dev/icons/sec-company-financials.png",
+ "applicationCategory": "DeveloperApplication",
+ "operatingSystem": "Web (Apify platform)",
+ "offers": {
+  "@type": "Offer",
+  "priceCurrency": "USD",
+  "description": "$0.005 per company-period row",
+  "availability": "https://schema.org/PreOrder"
+ },
+ "provider": {
+  "@type": "Organization",
+  "name": "Bosco Labs",
+  "url": "https://boscolabs.dev/"
+ }
+}
+</script>
+<style>:root{color-scheme:light dark;--head:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--body:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;--ink:#1D2721;--muted:#545F58;--bg:#F5F3EA;--surface:#EAE8DC;--line:#D6D3C3;--accent:#2E5A47;--accent-fg:#F5F3EA;--accent2:#8DA889;--accent2-text:#4A6646;--success:#36694A;--warn:#8E5D1C}
+@media (prefers-color-scheme:dark){:root{--ink:#E5E8DE;--muted:#A3ADA4;--bg:#121914;--surface:#1B241E;--line:#2B372F;--accent:#9EC7B1;--accent-fg:#121914;--accent2:#B5C9A4;--accent2-text:#B5C9A4;--success:#93C7A0;--warn:#DDB070}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--body)}h1,h2,h3,.brand{font-family:var(--head)}
+a{color:var(--accent);text-underline-offset:2px}.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+.site{border-bottom:1px solid var(--line)}.site .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;padding-top:12px;padding-bottom:12px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-weight:650;letter-spacing:-.01em}.brand img{width:30px;height:30px}
+nav{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:.95rem}nav a{color:var(--muted);text-decoration:none}nav a:hover{color:var(--ink)}
+h1{font-size:clamp(1.65rem,4vw,2.4rem);line-height:1.2;letter-spacing:-.02em;margin:0 0 12px}
+h2{font-size:1.3rem;line-height:1.3;letter-spacing:-.01em;margin:44px 0 12px}h3{font-size:1.02rem;margin:20px 0 6px}
+.hero{padding:52px 0 8px;max-width:780px}.lead{font-size:1.13rem;color:var(--muted)}.muted{color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}.chips a{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:.9rem;color:var(--ink);text-decoration:none}.chips a:hover{border-color:var(--accent)}
+.grid{list-style:none;padding:0;margin:0;display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.card-top{display:flex;gap:12px;align-items:center}.card img{width:48px;height:48px;flex:none}
+.card h3{margin:0;font-size:1rem;line-height:1.3}.card h3 a{color:var(--ink);text-decoration:none}.card h3 a:hover{text-decoration:underline}
+.card p{margin:0;font-size:.92rem;color:var(--muted)}.card .row{margin-top:auto;padding-top:6px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-size:.88rem}
+.price{font-weight:600;color:var(--ink)}.badge{display:inline-block;font-size:.78rem;font-weight:600;line-height:1.5;padding:1px 9px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.badge.live{color:var(--success)}.badge.soon{color:var(--warn)}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-fg);font-weight:650;padding:11px 18px;border-radius:10px;text-decoration:none}
+.btn.ghost{background:none;color:var(--accent);border:1px solid var(--line)}.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0}
+.crumbs{font-size:.9rem;color:var(--muted);margin:22px 0 0}.crumbs a{color:var(--muted)}
+.head{display:flex;gap:20px;align-items:flex-start;margin:18px 0 0}.head img{width:84px;height:84px;flex:none}
+.prose{max-width:800px}.facts{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));margin:22px 0}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:.95rem}.fact b{display:block;font-size:.75rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.qs{padding-left:20px}.qs li{margin:4px 0}.two{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}.two h3{margin-top:0}.two>div,.prose,main{min-width:0}
+code{font:.86em var(--mono)}:not(pre)>code{overflow-wrap:anywhere}
+pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px;overflow:auto;max-height:520px;font-size:.84rem;line-height:1.45;margin:0}
+.table{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{text-align:left;vertical-align:top;padding:7px 8px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-weight:600}td:first-child{white-space:nowrap}
+details{border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:10px 0}summary{cursor:pointer;font-weight:600}
+footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font-size:.9rem;color:var(--muted)}footer a{color:var(--muted)}
+@media (max-width:560px){.head{flex-direction:column;gap:12px}.head img{width:64px;height:64px}.hero{padding-top:32px}}</style>
+</head>
+<body>
+<header class="site"><div class="wrap"><a class="brand" href="index.html"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav><a href="index.html#tools">Tools</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
+<main class="wrap">
+<p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#finance-sec">Finance &amp; SEC</a></p>
+<article>
+<div class="head"><img src="icons/sec-company-financials.svg" alt="" width="84" height="84"><div><h1>SEC Company Financials API: income, balance sheet, cash flow</h1><span class="badge soon">Coming soon to the Store</span></div></div>
+<div class="prose">
+<p class="lead">Get <strong>clean financial statements of any US-listed company from the SEC&#x27;s own XBRL data</strong>: revenue, profit, EPS, balance sheet, cash flow, free cash flow and margins, per fiscal year or per quarter, by ticker or CIK. For analysts, finance apps and AI agents that need a company&#x27;s numbers over 5-20 years without parsing filings. Every value cites <strong>the XBRL tag and the SEC filing it came from</strong>.</p>
+<div class="facts"><div class="fact"><b>Price</b>$0.005 per company-period row</div><div class="fact"><b>Domain</b>Finance &amp; SEC</div><div class="fact"><b>Call it</b>Apify API or MCP</div></div>
+<p><strong>Pricing (pay per event):</strong> $0.005 per company-period row ($5 per 1,000). Five years of Apple&#x27;s annual figures cost $0.025; eight quarters $0.04. Empty or failed lookups are free, and the Actor stops at your max charge limit.</p>
+<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=SEC Company Financials API">Ask for early access</a></div>
+<h2>Questions agents ask</h2>
+<ul class="qs"><li>&ldquo;How did Microsoft&#x27;s revenue, net income and free cash flow develop over the last 8 quarters?&rdquo;</li><li>&ldquo;Compare Nvidia, AMD and Intel on operating margin for the last 5 fiscal years.&rdquo;</li><li>&ldquo;What was JPMorgan&#x27;s net income in 2024, and which filing is it from?&rdquo;</li></ul>
+</div>
+<h2>Example</h2>
+<div class="two"><div><h3>Input</h3><pre><code>{ &quot;tickers&quot;: [&quot;AAPL&quot;, &quot;MSFT&quot;], &quot;period&quot;: &quot;quarterly&quot;, &quot;years&quot;: 2, &quot;metrics&quot;: [&quot;revenue&quot;, &quot;net_income&quot;, &quot;free_cash_flow&quot;] }</code></pre></div>
+<div><h3>Output</h3><pre><code>{
+  &quot;ticker&quot;: &quot;AAPL&quot;,
+  &quot;cik&quot;: &quot;0000320193&quot;,
+  &quot;company_name&quot;: &quot;Apple Inc.&quot;,
+  &quot;fiscal_year&quot;: 2025,
+  &quot;fiscal_period&quot;: &quot;FY&quot;,
+  &quot;period_start&quot;: &quot;2024-09-29&quot;,
+  &quot;period_end&quot;: &quot;2025-09-27&quot;,
+  &quot;form&quot;: &quot;10-K&quot;,
+  &quot;filed&quot;: &quot;2025-10-31&quot;,
+  &quot;accession_number&quot;: &quot;0000320193-25-000079&quot;,
+  &quot;source_url&quot;: &quot;https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/0000320193-25-000079-index.htm&quot;,
+  &quot;currency&quot;: &quot;USD&quot;,
+  &quot;revenue&quot;: 416161000000,
+  &quot;gross_profit&quot;: 195201000000,
+  &quot;operating_profit&quot;: 133050000000,
+  &quot;net_income&quot;: 112010000000,
+  &quot;eps_diluted&quot;: 7.46,
+  &quot;total_assets&quot;: 359241000000,
+  &quot;cash_and_equivalents&quot;: 35934000000,
+  &quot;long_term_debt&quot;: 78328000000,
+  &quot;total_equity&quot;: 73733000000,
+  &quot;operating_cash_flow&quot;: 111482000000,
+  &quot;capex&quot;: 12715000000,
+  &quot;free_cash_flow&quot;: 98767000000,
+  &quot;gross_margin&quot;: 0.4691,
+  &quot;operating_margin&quot;: 0.3197,
+  &quot;net_margin&quot;: 0.2692,
+  &quot;revenue_growth&quot;: 0.0643,
+  &quot;metrics_found&quot;: 29,
+  &quot;sources&quot;: {
+    &quot;revenue&quot;: {
+      &quot;tag&quot;: &quot;us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax&quot;,
+      &quot;accession&quot;: &quot;0000320193-25-000079&quot;
+    },
+    &quot;...&quot;: &quot;one entry per reported metric&quot;
+  },
+  &quot;filings&quot;: {
+    &quot;0000320193-25-000079&quot;: {
+      &quot;form&quot;: &quot;10-K&quot;,
+      &quot;filed&quot;: &quot;2025-10-31&quot;,
+      &quot;url&quot;: &quot;https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/0000320193-25-000079-index.htm&quot;
+    }
+  },
+  &quot;warnings&quot;: [],
+  &quot;schema_version&quot;: &quot;1&quot;,
+  &quot;retrieved_at&quot;: &quot;2026-11-05T21:38:54+00:00&quot;
+}</code></pre></div></div>
+<div class="prose">
+<h2>What you get</h2>
+<div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>schema_version</code></td><td>string</td><td>Output schema version.</td></tr>
+<tr><td><code>ticker</code></td><td>string | null</td><td>Main ticker in the SEC&#x27;s current ticker list (null if none).</td></tr>
+<tr><td><code>cik</code></td><td>string</td><td>SEC CIK, 10 digits.</td></tr>
+<tr><td><code>company_name</code></td><td>string</td><td>Company name as in SEC companyfacts.</td></tr>
+<tr><td><code>fiscal_year</code></td><td>integer</td><td>Fiscal year as the company names it (Apple&#x27;s year ending September 2025 = 2025).</td></tr>
+<tr><td><code>fiscal_period</code></td><td>string</td><td>FY for a fiscal year, Q1-Q4 for a discrete 3-month fiscal quarter.</td></tr>
+<tr><td><code>period_start</code></td><td>string | null</td><td>First day of the period (YYYY-MM-DD).</td></tr>
+<tr><td><code>period_end</code></td><td>string</td><td>Last day of the period = balance-sheet date (YYYY-MM-DD).</td></tr>
+<tr><td><code>form</code></td><td>string | null</td><td>Form of the main filing for this period: 10-K, 10-Q, 20-F, 40-F, 6-K or an /A amendment.</td></tr>
+<tr><td><code>filed</code></td><td>string | null</td><td>Filing date of that filing (YYYY-MM-DD).</td></tr>
+<tr><td><code>accession_number</code></td><td>string | null</td><td>SEC accession number of the filing most values come from.</td></tr>
+<tr><td><code>source_url</code></td><td>string | null</td><td>EDGAR index page of that filing.</td></tr>
+<tr><td><code>currency</code></td><td>string</td><td>Reporting currency of all money values (ISO 4217, e.g. USD, EUR, DKK). Values are in full units, not thousands.</td></tr>
+<tr><td><code>revenue</code></td><td>number | null</td><td>Total revenue / net sales (for banks: total net revenue). In <code>currency</code>.</td></tr>
+<tr><td><code>cost_of_revenue</code></td><td>number | null</td><td>Cost of revenue / cost of goods and services sold. In <code>currency</code>.</td></tr>
+<tr><td><code>gross_profit</code></td><td>number | null</td><td>Gross profit; when not tagged, revenue - cost_of_revenue (sources says derived). In <code>currency</code>.</td></tr>
+<tr><td><code>research_and_development</code></td><td>number | null</td><td>Research and development expense. In <code>currency</code>.</td></tr>
+<tr><td><code>selling_general_and_administrative</code></td><td>number | null</td><td>Selling, general and administrative expense (null when the company reports sales/marketing and G&amp;A separately). In <code>currency</code>.</td></tr>
+<tr><td><code>operating_profit</code></td><td>number | null</td><td>Operating income (loss). Null for most banks and insurers. In <code>currency</code>.</td></tr>
+<tr><td><code>profit_before_tax</code></td><td>number | null</td><td>Income from continuing operations before income taxes. In <code>currency</code>.</td></tr>
+<tr><td><code>net_income</code></td><td>number | null</td><td>Net income including noncontrolling interests (ProfitLoss), else net income attributable to the parent; as in the esef-annual-reports Actor. In <code>currency</code>.</td></tr>
+<tr><td><code>net_income_attributable_to_parent</code></td><td>number | null</td><td>Net income attributable to the parent&#x27;s shareholders (the US &#x27;net income&#x27; headline). In <code>currency</code>.</td></tr>
+<tr><td><code>eps_basic</code></td><td>number | null</td><td>Basic earnings per share, in currency per share. Never derived (null for Q4 unless reported).</td></tr>
+<tr><td><code>eps_diluted</code></td><td>number | null</td><td>Diluted earnings per share, in currency per share. Never derived.</td></tr>
+<tr><td><code>weighted_average_shares_basic</code></td><td>number | null</td><td>Weighted average shares outstanding, basic. Never derived.</td></tr>
+<tr><td><code>weighted_average_shares_diluted</code></td><td>number | null</td><td>Weighted average shares outstanding, diluted. Never derived.</td></tr>
+<tr><td><code>depreciation_amortisation</code></td><td>number | null</td><td>Depreciation, depletion and amortization (cash flow statement). In <code>currency</code>.</td></tr>
+<tr><td><code>total_assets</code></td><td>number | null</td><td>Total assets at period end. In <code>currency</code>.</td></tr>
+<tr><td><code>current_assets</code></td><td>number | null</td><td>Total current assets at period end. Null for banks and insurers (unclassified balance sheet). In <code>currency</code>.</td></tr>
+<tr><td><code>cash_and_equivalents</code></td><td>number | null</td><td>Cash and cash equivalents at period end (banks: cash and due from banks). In <code>currency</code>.</td></tr>
+<tr><td><code>total_liabilities</code></td><td>number | null</td><td>Total liabilities; when not tagged, total_assets - total_equity (sources says derived). In <code>currency</code>.</td></tr>
+<tr><td><code>current_liabilities</code></td><td>number | null</td><td>Total current liabilities. Null for banks and insurers. In <code>currency</code>.</td></tr>
+<tr><td><code>noncurrent_liabilities</code></td><td>number | null</td><td>Total non-current liabilities, when tagged. In <code>currency</code>.</td></tr>
+<tr><td><code>long_term_debt</code></td><td>number | null</td><td>Long-term debt, non-current portion where tagged, else total long-term debt; sources shows the tag. In <code>currency</code>.</td></tr>
+<tr><td><code>total_equity</code></td><td>number | null</td><td>Total equity including noncontrolling interests, else stockholders&#x27; equity. In <code>currency</code>.</td></tr>
+<tr><td><code>equity_attributable_to_parent</code></td><td>number | null</td><td>Stockholders&#x27; equity attributable to the parent. In <code>currency</code>.</td></tr>
+<tr><td><code>shares_outstanding</code></td><td>number | null</td><td>Common shares outstanding at the balance-sheet date.</td></tr>
+<tr><td><code>operating_cash_flow</code></td><td>number | null</td><td>Net cash from operating activities. In <code>currency</code>.</td></tr>
+<tr><td><code>investing_cash_flow</code></td><td>number | null</td><td>Net cash from investing activities. In <code>currency</code>.</td></tr>
+<tr><td><code>financing_cash_flow</code></td><td>number | null</td><td>Net cash from financing activities. In <code>currency</code>.</td></tr>
+<tr><td><code>capex</code></td><td>number | null</td><td>Capital expenditure: payments for property, plant and equipment, as a positive number. Null for most banks. In <code>currency</code>.</td></tr>
+<tr><td><code>dividends_paid</code></td><td>number | null</td><td>Dividends paid in cash, as a positive number. In <code>currency</code>.</td></tr>
+<tr><td><code>free_cash_flow</code></td><td>number | null</td><td>Derived: operating_cash_flow - capex.</td></tr>
+<tr><td><code>ebitda</code></td><td>number | null</td><td>Derived: operating_profit + depreciation_amortisation.</td></tr>
+<tr><td><code>gross_margin</code></td><td>number | null</td><td>Derived: gross_profit / revenue (0.25 = 25%).</td></tr>
+<tr><td><code>operating_margin</code></td><td>number | null</td><td>Derived: operating_profit / revenue.</td></tr>
+<tr><td><code>net_margin</code></td><td>number | null</td><td>Derived: net_income / revenue.</td></tr>
+<tr><td><code>return_on_equity</code></td><td>number | null</td><td>Derived: net_income / total_equity, fiscal-year rows only.</td></tr>
+<tr><td><code>equity_ratio</code></td><td>number | null</td><td>Derived: total_equity / total_assets.</td></tr>
+<tr><td><code>revenue_growth</code></td><td>number | null</td><td>Derived: revenue / revenue of the same fiscal period one year earlier - 1 (year over year, also for quarters).</td></tr>
+<tr><td><code>metrics_found</code></td><td>integer</td><td>How many of the reported metrics (not the derived ones) have a value.</td></tr>
+<tr><td><code>sources</code></td><td>object</td><td>Only with includeSources: per metric {tag: XBRL concept used, accession: filing it came from, derived: how a quarter value was computed (e.g. &#x27;fiscal year - 9-month YTD&#x27;) or the formula for gross_profit/total_liabilities fallbacks}.</td></tr>
+<tr><td><code>filings</code></td><td>object</td><td>Only with includeSources: per accession number cited in sources, its form, filing date and EDGAR URL.</td></tr>
+<tr><td><code>warnings</code></td><td>array</td><td>Notes on this row: quarter values derived from year-to-date figures, restated values (latest filing used), quarterly data missing.</td></tr>
+<tr><td><code>retrieved_at</code></td><td>string</td><td>UTC time the row was produced.</td></tr>
+</tbody></table></div>
+
+<h2>Use with AI agents (MCP)</h2>
+<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is live on the Apify Store.</p>
+<pre><code>https://mcp.apify.com?tools=bosco_labs/sec-company-financials</code></pre>
+<p>For &ldquo;How did Microsoft&#x27;s revenue, net income and free cash flow develop over the last 8 quarters?&rdquo; the agent passes:</p>
+<pre><code>{&quot;tickers&quot;: [&quot;MSFT&quot;], &quot;period&quot;: &quot;quarterly&quot;, &quot;years&quot;: 2, &quot;metrics&quot;: [&quot;revenue&quot;, &quot;net_income&quot;, &quot;free_cash_flow&quot;]}</code></pre>
+<p>stable, typed JSON, one row per company and period, newest first. Every row has <code>schema_version</code>, a <code>source_url</code> (the EDGAR filing most values come from), and with <code>includeSources</code> the tag and accession number of each value, so the agent can cite its source. Derived quarter values and restatements are explained in <code>warnings</code>. A typical answer is 20-40 KB with sources, 2-6 KB without. An unknown ticker fails in seconds with suggestions (&quot;APPLE (did you mean AAPL?)&quot;); a company without XBRL data gets a status message saying so.</p>
+<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~sec-company-financials/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.005 per company-period row.</p>
+<h2>Input fields</h2>
+<div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>tickers</code></td><td>array</td><td>US tickers as listed by the SEC, e.g. [&quot;AAPL&quot;, &quot;MSFT&quot;]; share classes with a dash or dot, e.g. &quot;BRK-B&quot;. Foreign companies filing 20-F/40-F work too, e.g. &quot;NVO&quot;. Mapped to the CIK with the SEC&#x27;s company_tickers.json; an unknown ticker is skipped with suggestions in the status message. Empty = use <code>ciks</code>.</td></tr>
+<tr><td><code>ciks</code></td><td>array</td><td>SEC Central Index Keys as digits, leading zeros optional, e.g. [&quot;320193&quot;] for Apple. Use for delisted companies and filers without a ticker. Empty = use <code>tickers</code>; at least one of the two is required.</td></tr>
+<tr><td><code>period</code></td><td>string</td><td>&quot;annual&quot; = one row per fiscal year (FY). &quot;quarterly&quot; = one row per fiscal quarter, Q1-Q4, each a discrete 3-month period (Q4 and year-to-date-only cash flows are derived, see <code>warnings</code>). Companies without quarterly XBRL data (most 20-F filers) return fiscal years instead. Default &quot;annual&quot;.</td></tr>
+<tr><td><code>years</code></td><td>integer</td><td>How many of the latest fiscal years to return per company, e.g. 5 (5 rows annual, up to 20 rows quarterly; 2 with quarterly = the last 8 quarters). XBRL data starts in 2009-2011. Default 5, max 20.</td></tr>
+<tr><td><code>metrics</code></td><td>array</td><td>Only these output fields, e.g. [&quot;revenue&quot;, &quot;net_income&quot;, &quot;free_cash_flow&quot;, &quot;operating_margin&quot;]. Valid: revenue, cost_of_revenue, gross_profit, research_and_development, selling_general_and_administrative, operating_profit, profit_before_tax, net_income, net_income_attributable_to_parent, eps_basic, eps_diluted, weighted_average_shares_basic, weighted_average_shares_diluted, depreciation_amortisation, total_assets, current_assets, cash_and_equivalents, total_liabilities, current_liabilities, noncurrent_liabilities, long_term_debt, total_equity, equity_attributable_to_parent, shares_outstanding, operating_cash_flow, investing_cash_flow, financing_cash_flow, capex, dividends_paid, free_cash_flow, ebitda, gross_margin, operating_margin, net_margin, return_on_equity, equity_ratio, revenue_growth. Empty = all of them.</td></tr>
+<tr><td><code>includeSources</code></td><td>boolean</td><td>true = each row has <code>sources</code> (per value: the XBRL tag and the SEC accession number it came from, plus how it was derived) and <code>filings</code> (form, filing date and URL of each filing cited). false = values only, about 3x smaller rows. Default true.</td></tr>
+</tbody></table></div>
+<h2>Sources, licence and limits</h2>
+<p><strong>Which companies?</strong> Every SEC filer with XBRL financial statements: US companies filing 10-K and 10-Q (large companies since 2009, all since 2011) and foreign companies filing 20-F or 40-F (IFRS, mostly since 2018). Foreign filers report in their own currency (e.g. Novo Nordisk in DKK, see <code>currency</code>), and most of them report annually only: asking them for quarters returns fiscal years with a warning.</p>
+<p><strong>How fresh?</strong> The SEC updates companyfacts within minutes of a filing, so a 10-Q is in the next run after it is filed.</p>
+<p><strong>Are the values as reported?</strong> Yes: as tagged in the filings (latest restated value), not adjusted, not normalized for one-offs, not converted between currencies. No forecasts.</p>
+<p><strong>Banks and insurers?</strong> Their statements have no gross profit, operating income, current assets, current liabilities or (usually) capex, so those fields, and the margins and free cash flow built on them, are <code>null</code>. Revenue for banks is total net revenue (JPMorgan: 177,556m for 2024); <code>profit_before_tax</code>, <code>net_income</code>, EPS, assets, liabilities and equity are there. <code>cash_and_equivalents</code> for banks is usually cash and due from banks.</p>
+<p><strong>Why is a field empty for some companies?</strong> Companies tag differently. Some use their own company-specific tags instead of the standard ones (Microsoft reports sales &amp; marketing and G&amp;A separately, so <code>selling_general_and_administrative</code> is <code>null</code>); those stay <code>null</code> rather than being guessed. <code>metrics_found</code> tells you how complete a row is.</p>
+<p><strong>What is not included?</strong> Market data (share prices, market cap, valuation multiples), segment and geographic breakdowns, guidance, non-GAAP figures, and anything before a company&#x27;s first XBRL filing (2009-2011).</p>
+<p><strong>Legal basis?</strong> SEC filings are US government public records. See LEGAL.md.</p>
+<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=SEC Company Financials API">Ask for early access</a></div>
+</div>
+</article>
+</main>
+<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
+</body>
+</html>

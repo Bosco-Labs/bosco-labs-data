@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Company Check API: LEI, registry data and financials</title>
+<meta name="description" content="One sourced company report per call: legal name, LEI, registration number, status, address, years of financials and SEC filings. For KYB and due diligence.">
+<link rel="canonical" href="https://boscolabs.dev/company-check.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bosco Labs">
+<meta property="og:title" content="Company Check API: LEI, registry data and financials">
+<meta property="og:description" content="One sourced company report per call: legal name, LEI, registration number, status, address, years of financials and SEC filings. For KYB and due diligence.">
+<meta property="og:url" content="https://boscolabs.dev/company-check.html">
+<meta property="og:image" content="https://boscolabs.dev/icons/company-check.png">
+<meta name="twitter:card" content="summary">
+<script defer src="/_vercel/insights/script.js"></script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "SoftwareApplication",
+ "name": "Company Check API: identity, financials & SEC filings in 1 call",
+ "description": "One company report per call: legal name, LEI, registration number, status, address and industry, plus years of revenue, profit, equity, assets and cash, and SEC filings for US issuers. Look up by name, LEI, UK, Danish, Norwegian, French or Finnish number, ticker or CIK. Sourced values.",
+ "url": "https://boscolabs.dev/company-check.html",
+ "image": "https://boscolabs.dev/icons/company-check.png",
+ "applicationCategory": "DeveloperApplication",
+ "operatingSystem": "Web (Apify platform)",
+ "offers": {
+  "@type": "Offer",
+  "priceCurrency": "USD",
+  "description": "$0.03 per report",
+  "availability": "https://schema.org/PreOrder"
+ },
+ "provider": {
+  "@type": "Organization",
+  "name": "Bosco Labs",
+  "url": "https://boscolabs.dev/"
+ }
+}
+</script>
+<style>:root{color-scheme:light dark;--head:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--body:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;--ink:#1D2721;--muted:#545F58;--bg:#F5F3EA;--surface:#EAE8DC;--line:#D6D3C3;--accent:#2E5A47;--accent-fg:#F5F3EA;--accent2:#8DA889;--accent2-text:#4A6646;--success:#36694A;--warn:#8E5D1C}
+@media (prefers-color-scheme:dark){:root{--ink:#E5E8DE;--muted:#A3ADA4;--bg:#121914;--surface:#1B241E;--line:#2B372F;--accent:#9EC7B1;--accent-fg:#121914;--accent2:#B5C9A4;--accent2-text:#B5C9A4;--success:#93C7A0;--warn:#DDB070}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--body)}h1,h2,h3,.brand{font-family:var(--head)}
+a{color:var(--accent);text-underline-offset:2px}.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+.site{border-bottom:1px solid var(--line)}.site .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;padding-top:12px;padding-bottom:12px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-weight:650;letter-spacing:-.01em}.brand img{width:30px;height:30px}
+nav{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:.95rem}nav a{color:var(--muted);text-decoration:none}nav a:hover{color:var(--ink)}
+h1{font-size:clamp(1.65rem,4vw,2.4rem);line-height:1.2;letter-spacing:-.02em;margin:0 0 12px}
+h2{font-size:1.3rem;line-height:1.3;letter-spacing:-.01em;margin:44px 0 12px}h3{font-size:1.02rem;margin:20px 0 6px}
+.hero{padding:52px 0 8px;max-width:780px}.lead{font-size:1.13rem;color:var(--muted)}.muted{color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}.chips a{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:.9rem;color:var(--ink);text-decoration:none}.chips a:hover{border-color:var(--accent)}
+.grid{list-style:none;padding:0;margin:0;display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.card-top{display:flex;gap:12px;align-items:center}.card img{width:48px;height:48px;flex:none}
+.card h3{margin:0;font-size:1rem;line-height:1.3}.card h3 a{color:var(--ink);text-decoration:none}.card h3 a:hover{text-decoration:underline}
+.card p{margin:0;font-size:.92rem;color:var(--muted)}.card .row{margin-top:auto;padding-top:6px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-size:.88rem}
+.price{font-weight:600;color:var(--ink)}.badge{display:inline-block;font-size:.78rem;font-weight:600;line-height:1.5;padding:1px 9px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.badge.live{color:var(--success)}.badge.soon{color:var(--warn)}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-fg);font-weight:650;padding:11px 18px;border-radius:10px;text-decoration:none}
+.btn.ghost{background:none;color:var(--accent);border:1px solid var(--line)}.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0}
+.crumbs{font-size:.9rem;color:var(--muted);margin:22px 0 0}.crumbs a{color:var(--muted)}
+.head{display:flex;gap:20px;align-items:flex-start;margin:18px 0 0}.head img{width:84px;height:84px;flex:none}
+.prose{max-width:800px}.facts{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));margin:22px 0}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:.95rem}.fact b{display:block;font-size:.75rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.qs{padding-left:20px}.qs li{margin:4px 0}.two{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}.two h3{margin-top:0}.two>div,.prose,main{min-width:0}
+code{font:.86em var(--mono)}:not(pre)>code{overflow-wrap:anywhere}
+pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px;overflow:auto;max-height:520px;font-size:.84rem;line-height:1.45;margin:0}
+.table{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{text-align:left;vertical-align:top;padding:7px 8px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-weight:600}td:first-child{white-space:nowrap}
+details{border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:10px 0}summary{cursor:pointer;font-weight:600}
+footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font-size:.9rem;color:var(--muted)}footer a{color:var(--muted)}
+@media (max-width:560px){.head{flex-direction:column;gap:12px}.head img{width:64px;height:64px}.hero{padding-top:32px}}</style>
+</head>
+<body>
+<header class="site"><div class="wrap"><a class="brand" href="index.html"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav><a href="index.html#tools">Tools</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
+<main class="wrap">
+<p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#companies">Companies</a></p>
+<article>
+<div class="head"><img src="icons/company-check.svg" alt="" width="84" height="84"><div><h1>Company Check API: identity, financials &amp; SEC filings in 1 call</h1><span class="badge soon">Coming soon to the Store</span></div></div>
+<div class="prose">
+<p class="lead"><strong>One call answers &quot;who is this company and what are its numbers?&quot;</strong>: legal name, LEI, registration number, status, legal form, registered address and (France, Finland) industry and registration date, the key figures of its last fiscal years (revenue, operating profit, net income, equity, assets, cash, employees) and, for US issuers, the latest SEC filings. Every value links to the official record it came from. Built for <strong>AI agents</strong> doing research, KYB or due diligence, and for people who want a quick, sourced company profile.</p>
+<div class="facts"><div class="fact"><b>Price</b>$0.03 per report</div><div class="fact"><b>Domain</b>Companies</div><div class="fact"><b>Call it</b>Apify API or MCP</div></div>
+<p><strong>Pricing (pay per event):</strong> $0.03 per company report. A lookup that finds nothing fails in seconds and costs nothing.</p>
+<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=Company Check API">Ask for early access</a></div>
+<h2>Questions agents ask</h2>
+<ul class="qs"><li>&ldquo;Who is Novo Nordisk legally, and what were its revenue and net income in the last three years? Cite your sources.&rdquo;</li></ul>
+</div>
+<h2>Example</h2>
+<div class="two"><div><h3>Input</h3><pre><code>{ &quot;query&quot;: &quot;Novo Nordisk&quot;, &quot;country&quot;: &quot;DK&quot;, &quot;maxYears&quot;: 3 }</code></pre></div>
+<div><h3>Output</h3><pre><code>{
+  &quot;schema_version&quot;: &quot;1&quot;,
+  &quot;query&quot;: &quot;24256790&quot;,
+  &quot;query_type&quot;: &quot;cvr&quot;,
+  &quot;country&quot;: &quot;DK&quot;,
+  &quot;identity&quot;: {
+    &quot;legal_name&quot;: &quot;NOVO NORDISK A/S&quot;,
+    &quot;country&quot;: &quot;DK&quot;,
+    &quot;registration_number&quot;: &quot;24256790&quot;,
+    &quot;register&quot;: &quot;Erhvervsstyrelsen (CVR)&quot;,
+    &quot;lei&quot;: &quot;549300DAQ1CVT6CXN342&quot;,
+    &quot;lei_status&quot;: &quot;ISSUED&quot;,
+    &quot;status&quot;: &quot;active&quot;,
+    &quot;legal_form&quot;: &quot;Aktieselskab&quot;,
+    &quot;registered_address&quot;: &quot;Novo Alle 1, 2880 Bagsværd, DK&quot;,
+    &quot;website&quot;: null,
+    &quot;source_urls&quot;: {
+      &quot;legal_name&quot;: &quot;https://api.gleif.org/api/v1/lei-records/549300DAQ1CVT6CXN342&quot;,
+      &quot;registered_address&quot;: &quot;https://api.gleif.org/api/v1/lei-records/549300DAQ1CVT6CXN342&quot;
+    }
+  },
+  &quot;financials&quot;: {
+    &quot;basis&quot;: &quot;Consolidated annual report of a listed company (ESEF, IFRS figures).&quot;,
+    &quot;source&quot;: &quot;filings.xbrl.org&quot;,
+    &quot;years&quot;: [
+      {
+        &quot;period_end&quot;: &quot;2025-12-31&quot;,
+        &quot;fiscal_year_start&quot;: &quot;2025-01-01&quot;,
+        &quot;currency&quot;: &quot;DKK&quot;,
+        &quot;revenue&quot;: 309064000000,
+        &quot;operating_profit&quot;: 127658000000,
+        &quot;net_income&quot;: 102434000000,
+        &quot;total_equity&quot;: 194047000000,
+        &quot;total_assets&quot;: 542902000000,
+        &quot;cash_and_equivalents&quot;: 26464000000,
+        &quot;employees&quot;: null,
+        &quot;concepts&quot;: { &quot;revenue&quot;: &quot;ifrs-full:Revenue&quot;, &quot;net_income&quot;: &quot;ifrs-full:ProfitLoss&quot; },
+        &quot;source_url&quot;: &quot;https://filings.xbrl.org/549300DAQ1CVT6CXN342/2025-12-31/ESEF/DK/0/NOVO-2025-12-31-1-en.json&quot;,
+        &quot;report_url&quot;: &quot;https://filings.xbrl.org/549300DAQ1CVT6CXN342/2025-12-31/ESEF/DK/0/NOVO-2025-12-31-1-en/reports/NOVO-2025-12-31-1-en.xhtml&quot;
+      }
+    ]
+  },
+  &quot;us&quot;: null,
+  &quot;candidates&quot;: [],
+  &quot;not_found&quot;: [
+    {
+      &quot;section&quot;: &quot;us&quot;,
+      &quot;reason&quot;: &quot;Not a US SEC registrant (no US ticker or CIK, and GLEIF does not list it as a US company).&quot;
+    }
+  ],
+  &quot;warnings&quot;: [],
+  &quot;sources&quot;: [
+    { &quot;section&quot;: &quot;financials&quot;, &quot;name&quot;: &quot;filings.xbrl.org&quot;, &quot;url&quot;: &quot;https://filings.xbrl.org/549300DAQ1CVT6CXN342/2025-12-31/ESEF/DK/0/NOVO-2025-12-31-1-en.json&quot; },
+    { &quot;section&quot;: &quot;identity&quot;, &quot;name&quot;: &quot;GLEIF&quot;, &quot;url&quot;: &quot;https://api.gleif.org/api/v1/lei-records/549300DAQ1CVT6CXN342&quot; }
+  ],
+  &quot;retrieved_at&quot;: &quot;2026-11-05T20:50:37+00:00&quot;,
+  &quot;duration_seconds&quot;: 2.0
+}</code></pre></div></div>
+<div class="prose">
+<h2>What you get</h2>
+<div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>schema_version</code></td><td>string</td><td>Output schema version.</td></tr>
+<tr><td><code>query</code></td><td>string</td><td>The query as given.</td></tr>
+<tr><td><code>query_type</code></td><td>string</td><td>How the query was read: lei, uk (UK company number), cvr, orgnr (Norwegian org number), siren (French SIREN, also for a SIRET), ytunnus (Finnish Business ID), cik, ticker or name.</td></tr>
+<tr><td><code>country</code></td><td>string | null</td><td>ISO 3166 alpha-2 country of the company.</td></tr>
+<tr><td><code>identity</code></td><td>object | null</td><td>Who the company is: from the national register, GLEIF and the SEC (first source that has a value wins). null if no source had a record or the section was not requested.</td></tr>
+<tr><td><code>financials</code></td><td>object | null</td><td>Key figures of the last <code>maxYears</code> fiscal years, each with its source filing. null when none were found (see not_found).</td></tr>
+<tr><td><code>us</code></td><td>object | null</td><td>SEC EDGAR data for US issuers (by ticker, CIK, or a US company in GLEIF that the SEC lists). null otherwise.</td></tr>
+<tr><td><code>candidates</code></td><td>array</td><td>When a name (or a number valid in two registers) matches several companies: the top 3 (legal_name, country, lei, lei_status, registration_number, score 0-1). The report is for the first; re-run with its LEI or registration number (and country) to pick another. Empty when the match was clear.</td></tr>
+<tr><td><code>not_found</code></td><td>array</td><td>Requested sections without data, each {section, reason} in plain words an agent can relay.</td></tr>
+<tr><td><code>warnings</code></td><td>array</td><td>Sources that failed or timed out, and other caveats, in plain words. The rest of the report is still valid.</td></tr>
+<tr><td><code>sources</code></td><td>array</td><td>Every source used, each {section, name, url}.</td></tr>
+<tr><td><code>retrieved_at</code></td><td>string</td><td>When the report was made (ISO 8601, UTC).</td></tr>
+<tr><td><code>duration_seconds</code></td><td>number</td><td>How long the lookup took.</td></tr>
+</tbody></table></div>
+
+<h2>Use with AI agents (MCP)</h2>
+<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is live on the Apify Store.</p>
+<pre><code>https://mcp.apify.com?tools=bosco_labs/company-check</code></pre>
+<p>For &ldquo;Who is Novo Nordisk legally, and what were its revenue and net income in the last three years? Cite your sources.&rdquo; the agent passes:</p>
+<pre><code>{ &quot;query&quot;: &quot;Novo Nordisk&quot;, &quot;country&quot;: &quot;DK&quot;, &quot;maxYears&quot;: 3 }</code></pre>
+<p>one small JSON item (typically 3-8 KB), stable <code>snake_case</code> fields, ISO dates, numbers as numbers, <code>null</code> for unknown, a source URL per value. <code>not_found</code> and <code>warnings</code> say in plain words what is missing and why, so the agent never has to guess. Typical lookup time is 1-5 seconds after start-up; each source has a 20-second limit.</p>
+<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~company-check/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.03 per report.</p>
+<h2>Input fields</h2>
+<div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>query</code></td><td>string (required)</td><td>The company to check: a name (e.g. &quot;Novo Nordisk&quot;) or an identifier: LEI (20 characters, e.g. &quot;724500Y6DUVHQD6OXN27&quot;), UK company number (&quot;00445790&quot;, &quot;SC123456&quot;), Danish CVR (&quot;24256790&quot;), Norwegian org number (&quot;923609016&quot;), French SIREN (9 digits, &quot;552032534&quot;) or SIRET (14 digits, &quot;55203253400703&quot;), Finnish Business ID with its dash (&quot;0112038-9&quot;), US ticker in capitals or with $ (&quot;AAPL&quot;, &quot;$brk.b&quot;) or SEC CIK (&quot;320193&quot;). The type is detected from format and check digits; a number valid in two registers is settled by asking them, and <code>country</code> decides when given. Required.</td></tr>
+<tr><td><code>country</code></td><td>string</td><td>ISO 3166 alpha-2 country code to disambiguate, e.g. &quot;DK&quot;, &quot;GB&quot;, &quot;NO&quot;, &quot;FR&quot;, &quot;FI&quot;, &quot;NL&quot;, &quot;US&quot;. With a name it limits the search to that country and, for NO, FR and FI, also searches the national register (most companies there have no LEI); with a number it says which register the number belongs to (e.g. &quot;GB&quot; for a UK number without a leading zero, &quot;FI&quot; for a Business ID typed without its dash). Empty = detect from the query.</td></tr>
+<tr><td><code>maxYears</code></td><td>integer</td><td>How many fiscal years of key figures to return, newest first, e.g. 3. Default 3, maximum 10. Norway&#x27;s open register holds the last 3 years only. The price is the same for any number of years.</td></tr>
+<tr><td><code>include</code></td><td>array</td><td>Which sections to fill: any of &quot;identity&quot;, &quot;financials&quot;, &quot;us&quot; (SEC filings of US issuers), e.g. [&quot;identity&quot;, &quot;financials&quot;]. Default (or empty) = all three. Fewer sections = fewer sources called, slightly faster; the price is the same.</td></tr>
+</tbody></table></div>
+<h2>Sources, licence and limits</h2>
+<p><strong>Which countries are covered?</strong></p>
+<div class="table"><table><thead><tr><th>Country</th><th>Identity</th><th>Financials</th></tr></thead><tbody>
+<tr><td>UK</td><td>Companies House profile + GLEIF</td><td>Companies House accounts (digital iXBRL filings, any year); listed companies also via ESEF</td></tr>
+<tr><td>Denmark</td><td>GLEIF, or the name in the filed accounts</td><td>Erhvervsstyrelsen annual reports (all years); listed companies&#x27; consolidated ESEF reports first</td></tr>
+<tr><td>Norway</td><td>Brønnøysund register + GLEIF</td><td>Regnskapsregisteret, the company&#x27;s own accounts (last 3 years); listed companies&#x27; consolidated ESEF reports first</td></tr>
+<tr><td>France</td><td>Sirene/RNE via the government&#x27;s Recherche d&#x27;entreprises API (legal name, legal form, status, creation date, head-office address, NAF code, employee band) + GLEIF; sole traders are refused</td><td>Listed companies&#x27; consolidated ESEF reports only (see below)</td></tr>
+<tr><td>Finland</td><td>PRH Trade Register (YTJ open data: name, form, status, registration date, address, TOL code, website) + GLEIF</td><td>PRH digital (XBRL) statements, the company&#x27;s own accounts (about 5% of filers); listed companies&#x27; consolidated ESEF reports first</td></tr>
+<tr><td>Other EU/EEA (NL, BE, SE, IT, ES, ...)</td><td>GLEIF</td><td>Listed companies&#x27; ESEF annual reports from filings.xbrl.org (Germany is not in that index)</td></tr>
+<tr><td>US</td><td>GLEIF + SEC EDGAR</td><td>Not in this version: the latest 10-K/10-Q are linked in <code>us.latest_filings</code></td></tr>
+<tr><td>Anywhere else</td><td>GLEIF (companies with an LEI)</td><td>None</td></tr>
+</tbody></table></div>
+<p><strong>Why is <code>financials</code> empty?</strong> See <code>not_found</code>: the company may file no machine-readable accounts (paper/PDF filings, very small companies, countries without an open accounts register), or it is a US company (not covered yet). Unlisted French companies are not covered: INPI&#x27;s annual-accounts API needs an account, and the open INPI-derived &quot;Ratios financiers&quot; dataset files figures under the wrong fiscal year (checked against Danone&#x27;s ESEF reports), so it is not used. Most Finnish companies file paper or PDF accounts, which are not open data.</p>
+<p><strong>Why is <code>revenue</code> null?</strong> The company didn&#x27;t tag it: small UK and Danish companies often publish no profit and loss account or only gross profit. <code>employees</code> is usually null for ESEF reports, which rarely tag it.</p>
+<p><strong>A name gave the wrong company.</strong> Names are matched against GLEIF&#x27;s register of legal entities (companies with an LEI; with <code>country</code> NO, FR or FI also the national register). When several entities share the name, a listed company (one filing ESEF reports) goes first, and <code>candidates</code> and a warning say there was a choice; without <code>country</code> that happens for any name shared by several entities. Check <code>candidates</code>, add <code>country</code>, or pass the LEI or registration number, which always resolve exactly. Write a US ticker in capitals (<code>COKE</code>) or with <code>$</code>; <code>Coke</code> is searched as a name.</p>
+<p><strong>Are figures consolidated?</strong> ESEF reports (listed companies) are consolidated group figures. National register accounts are the company&#x27;s own statutory accounts; for Norway they are explicitly the company&#x27;s own accounts, not the group&#x27;s. <code>financials.basis</code> says which.</p>
+<p><strong>Insider buys and sells?</strong> This version counts Form 4 filings in the last 90 days (buys and sells together). For each transaction, use <a href="sec-insider-trades.html">SEC Insider Trades</a>.</p>
+<p><strong>Need more?</strong> Full statements with 16-25 metrics per year: <a href="company-accounts.html">Company Financials API (UK, DK, NO)</a> and <a href="esef-annual-reports.html">EU Annual Reports API (ESEF)</a>. Every SEC filing: <a href="sec-filings-feed.html">SEC Filings Feed</a>.</p>
+<p><strong>Personal data?</strong> Company-level data only. Names of directors, officers, board members, auditors or shareholders are never requested or output (the French register&#x27;s <code>dirigeants</code> are never requested; Finland&#x27;s open data has no persons, and the address&#x27;s c/o line is dropped). Sole traders are natural persons: Norwegian ones are excluded from name search, French ones (entrepreneurs individuels) from name search and from lookups by SIREN, which fail without a charge; Finland&#x27;s open data holds none. Sole proprietors with an LEI (GLEIF category <code>SOLE_PROPRIETOR</code>, any country) are never candidates and are refused without a charge.</p>
+<p><strong>How fresh is it?</strong> Live: every call reads the sources directly (GLEIF is updated several times a day, registers when companies file).</p>
+<p><strong>Licences and attribution?</strong> French data: Sirene (INSEE) and RNE (INPI) via the government&#x27;s API Recherche d&#x27;entreprises, under the <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence/">Licence Ouverte 2.0</a>; each report&#x27;s <code>sources</code> names the source and the date of its last update. Finnish data: PRH (Finnish Patent and Registration Office) open data under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>; not endorsed by PRH, and figures are re-labelled into the fields above, otherwise unchanged. GLEIF data is CC0.</p>
+<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=Company Check API">Ask for early access</a></div>
+</div>
+</article>
+</main>
+<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Company Hiring API: open jobs by department, location</title>
+<meta name="description" content="Is a company hiring? Open roles by department, location and remote share, plus job rows with links, from public Greenhouse, Lever and Ashby job boards.">
+<link rel="canonical" href="https://boscolabs.dev/company-hiring-signals.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bosco Labs">
+<meta property="og:title" content="Company Hiring API: open jobs by department, location">
+<meta property="og:description" content="Is a company hiring? Open roles by department, location and remote share, plus job rows with links, from public Greenhouse, Lever and Ashby job boards.">
+<meta property="og:url" content="https://boscolabs.dev/company-hiring-signals.html">
+<meta property="og:image" content="https://boscolabs.dev/icons/company-hiring-signals.png">
+<meta name="twitter:card" content="summary">
+<script defer src="/_vercel/insights/script.js"></script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "SoftwareApplication",
+ "name": "Company Hiring Signals API: open roles, departments, locations",
+ "description": "Is a company hiring? Open roles by department, location and remote share, newest and oldest posting dates and top titles, plus job rows with a link each. Read from the company's public Greenhouse, Lever or Ashby job board. Look up by name, domain or board URL.",
+ "url": "https://boscolabs.dev/company-hiring-signals.html",
+ "image": "https://boscolabs.dev/icons/company-hiring-signals.png",
+ "applicationCategory": "DeveloperApplication",
+ "operatingSystem": "Web (Apify platform)",
+ "offers": {
+  "@type": "Offer",
+  "priceCurrency": "USD",
+  "description": "$0.005 per company found plus $0.001 per job row",
+  "availability": "https://schema.org/PreOrder"
+ },
+ "provider": {
+  "@type": "Organization",
+  "name": "Bosco Labs",
+  "url": "https://boscolabs.dev/"
+ }
+}
+</script>
+<style>:root{color-scheme:light dark;--head:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--body:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;--ink:#1D2721;--muted:#545F58;--bg:#F5F3EA;--surface:#EAE8DC;--line:#D6D3C3;--accent:#2E5A47;--accent-fg:#F5F3EA;--accent2:#8DA889;--accent2-text:#4A6646;--success:#36694A;--warn:#8E5D1C}
+@media (prefers-color-scheme:dark){:root{--ink:#E5E8DE;--muted:#A3ADA4;--bg:#121914;--surface:#1B241E;--line:#2B372F;--accent:#9EC7B1;--accent-fg:#121914;--accent2:#B5C9A4;--accent2-text:#B5C9A4;--success:#93C7A0;--warn:#DDB070}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--body)}h1,h2,h3,.brand{font-family:var(--head)}
+a{color:var(--accent);text-underline-offset:2px}.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+.site{border-bottom:1px solid var(--line)}.site .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;padding-top:12px;padding-bottom:12px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-weight:650;letter-spacing:-.01em}.brand img{width:30px;height:30px}
+nav{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:.95rem}nav a{color:var(--muted);text-decoration:none}nav a:hover{color:var(--ink)}
+h1{font-size:clamp(1.65rem,4vw,2.4rem);line-height:1.2;letter-spacing:-.02em;margin:0 0 12px}
+h2{font-size:1.3rem;line-height:1.3;letter-spacing:-.01em;margin:44px 0 12px}h3{font-size:1.02rem;margin:20px 0 6px}
+.hero{padding:52px 0 8px;max-width:780px}.lead{font-size:1.13rem;color:var(--muted)}.muted{color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}.chips a{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:.9rem;color:var(--ink);text-decoration:none}.chips a:hover{border-color:var(--accent)}
+.grid{list-style:none;padding:0;margin:0;display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.card-top{display:flex;gap:12px;align-items:center}.card img{width:48px;height:48px;flex:none}
+.card h3{margin:0;font-size:1rem;line-height:1.3}.card h3 a{color:var(--ink);text-decoration:none}.card h3 a:hover{text-decoration:underline}
+.card p{margin:0;font-size:.92rem;color:var(--muted)}.card .row{margin-top:auto;padding-top:6px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-size:.88rem}
+.price{font-weight:600;color:var(--ink)}.badge{display:inline-block;font-size:.78rem;font-weight:600;line-height:1.5;padding:1px 9px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.badge.live{color:var(--success)}.badge.soon{color:var(--warn)}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-fg);font-weight:650;padding:11px 18px;border-radius:10px;text-decoration:none}
+.btn.ghost{background:none;color:var(--accent);border:1px solid var(--line)}.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0}
+.crumbs{font-size:.9rem;color:var(--muted);margin:22px 0 0}.crumbs a{color:var(--muted)}
+.head{display:flex;gap:20px;align-items:flex-start;margin:18px 0 0}.head img{width:84px;height:84px;flex:none}
+.prose{max-width:800px}.facts{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));margin:22px 0}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:.95rem}.fact b{display:block;font-size:.75rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.qs{padding-left:20px}.qs li{margin:4px 0}.two{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}.two h3{margin-top:0}.two>div,.prose,main{min-width:0}
+code{font:.86em var(--mono)}:not(pre)>code{overflow-wrap:anywhere}
+pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px;overflow:auto;max-height:520px;font-size:.84rem;line-height:1.45;margin:0}
+.table{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{text-align:left;vertical-align:top;padding:7px 8px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-weight:600}td:first-child{white-space:nowrap}
+details{border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:10px 0}summary{cursor:pointer;font-weight:600}
+footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font-size:.9rem;color:var(--muted)}footer a{color:var(--muted)}
+@media (max-width:560px){.head{flex-direction:column;gap:12px}.head img{width:64px;height:64px}.hero{padding-top:32px}}</style>
+</head>
+<body>
+<header class="site"><div class="wrap"><a class="brand" href="index.html"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav><a href="index.html#tools">Tools</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
+<main class="wrap">
+<p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#companies">Companies</a></p>
+<article>
+<div class="head"><img src="icons/company-hiring-signals.svg" alt="" width="84" height="84"><div><h1>Company Hiring Signals API: open roles, departments, locations</h1><span class="badge soon">Coming soon to the Store</span></div></div>
+<div class="prose">
+<p class="lead"><strong>Is a company hiring, for what, where and since when?</strong> Give company names, domains or job board URLs; get one summary per company (open roles by department, location and country, remote share, newest and oldest posting dates, top titles) plus the open jobs, each with a link to the posting. Built for <strong>AI agents</strong> doing sales prospecting, recruiting or market research, and for people who want hiring data without scraping LinkedIn or Indeed.</p>
+<div class="facts"><div class="fact"><b>Price</b>$0.005 per company found plus $0.001 per job row</div><div class="fact"><b>Domain</b>Companies</div><div class="fact"><b>Call it</b>Apify API or MCP</div></div>
+<p><strong>Pricing (pay per event):</strong> $0.005 per company summary and $0.001 per job row. Companies without a public board on a supported provider cost nothing.</p>
+<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=Company Hiring Signals API">Ask for early access</a></div>
+<h2>Questions agents ask</h2>
+<ul class="qs"><li>&ldquo;Is Notion hiring engineers? How many roles, where, and since when? Link the postings.&rdquo;</li></ul>
+</div>
+<h2>Example</h2>
+<div class="two"><div><h3>Input</h3><pre><code>{
+  &quot;companies&quot;: [&quot;stripe.com&quot;, &quot;Notion&quot;, &quot;https://jobs.lever.co/spotify&quot;],
+  &quot;departments&quot;: [&quot;engineering&quot;],
+  &quot;postedSince&quot;: &quot;30d&quot;,
+  &quot;maxJobsPerCompany&quot;: 20
+}</code></pre></div>
+<div><h3>Output</h3><pre><code>{
+  &quot;schema_version&quot;: &quot;1&quot;,
+  &quot;row_type&quot;: &quot;company_summary&quot;,
+  &quot;company&quot;: &quot;notion.so&quot;,
+  &quot;found&quot;: true,
+  &quot;provider&quot;: &quot;ashby&quot;,
+  &quot;board_token&quot;: &quot;notion&quot;,
+  &quot;board_url&quot;: &quot;https://jobs.ashbyhq.com/notion&quot;,
+  &quot;source_url&quot;: &quot;https://api.ashbyhq.com/posting-api/job-board/notion&quot;,
+  &quot;total_open_roles&quot;: 150,
+  &quot;matching_roles&quot;: 16,
+  &quot;filters&quot;: { &quot;keywords&quot;: [&quot;engineer&quot;], &quot;posted_since&quot;: &quot;2026-09-06T00:00:00Z&quot; },
+  &quot;by_department&quot;: [
+    { &quot;name&quot;: &quot;Engineering&quot;, &quot;count&quot;: 8 },
+    { &quot;name&quot;: &quot;Security&quot;, &quot;count&quot;: 3 },
+    { &quot;name&quot;: &quot;Sales&quot;, &quot;count&quot;: 2 }
+  ],
+  &quot;by_location&quot;: [
+    { &quot;name&quot;: &quot;San Francisco, California&quot;, &quot;count&quot;: 11 },
+    { &quot;name&quot;: &quot;Dublin, Ireland&quot;, &quot;count&quot;: 2 },
+    { &quot;name&quot;: &quot;Hyderabad, India&quot;, &quot;count&quot;: 1 }
+  ],
+  &quot;by_country&quot;: [
+    { &quot;name&quot;: &quot;United States&quot;, &quot;count&quot;: 12 },
+    { &quot;name&quot;: &quot;Ireland&quot;, &quot;count&quot;: 2 },
+    { &quot;name&quot;: &quot;India&quot;, &quot;count&quot;: 1 }
+  ],
+  &quot;remote_share&quot;: 0.0,
+  &quot;posted_last_30_days&quot;: 6,
+  &quot;newest_posted_at&quot;: &quot;2026-11-04T23:19:02Z&quot;,
+  &quot;oldest_posted_at&quot;: &quot;2026-09-08T20:54:37Z&quot;,
+  &quot;top_titles&quot;: [
+    { &quot;title&quot;: &quot;Security Engineer, Detection and Response&quot;, &quot;count&quot;: 2 },
+    { &quot;title&quot;: &quot;Forward Deployed Engineer, India&quot;, &quot;count&quot;: 1 },
+    { &quot;title&quot;: &quot;Security Engineer, Corporate Security&quot;, &quot;count&quot;: 1 }
+  ],
+  &quot;trend&quot;: null,
+  &quot;jobs_returned&quot;: 3,
+  &quot;other_boards&quot;: [],
+  &quot;not_found_reason&quot;: null,
+  &quot;warnings&quot;: [],
+  &quot;retrieved_at&quot;: &quot;2026-11-05T21:42:10Z&quot;
+}</code></pre></div></div>
+<div class="prose">
+<h2>What you get</h2>
+<div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>schema_version</code></td><td>string</td><td>Output schema version.</td></tr>
+<tr><td><code>row_type</code></td><td>string</td><td>company_summary (one per input company, found or not) or job (one per open role).</td></tr>
+<tr><td><code>company</code></td><td>string</td><td>The company as given in the input.</td></tr>
+<tr><td><code>found</code></td><td>boolean | null</td><td>Summary rows: true if a public job board was found. Not-found rows are free of charge.</td></tr>
+<tr><td><code>provider</code></td><td>string | null</td><td>Job board provider: greenhouse, lever, lever-eu (Lever&#x27;s EU instance) or ashby.</td></tr>
+<tr><td><code>board_token</code></td><td>string | null</td><td>The company&#x27;s board name at the provider, e.g. stripe. Pass it as provider:token for an exact lookup.</td></tr>
+<tr><td><code>board_url</code></td><td>string | null</td><td>Summary rows: the company&#x27;s public job board page.</td></tr>
+<tr><td><code>source_url</code></td><td>string | null</td><td>Summary rows: the public API URL all counts were computed from. Job rows: the job&#x27;s public posting page.</td></tr>
+<tr><td><code>total_open_roles</code></td><td>integer | null</td><td>Summary rows: all open roles on the board, before filters.</td></tr>
+<tr><td><code>matching_roles</code></td><td>integer | null</td><td>Summary rows: open roles matching departments, locations, keywords and postedSince. All counts below are over these.</td></tr>
+<tr><td><code>filters</code></td><td>object | null</td><td>Summary rows: the filters applied (lower-cased), null if none.</td></tr>
+<tr><td><code>by_department</code></td><td>array</td><td>Summary rows: top 15 departments as {name, count}, largest first. Roles without a department are not listed.</td></tr>
+<tr><td><code>by_location</code></td><td>array</td><td>Summary rows: top 15 primary locations as written by the company, as {name, count}.</td></tr>
+<tr><td><code>by_country</code></td><td>array</td><td>Summary rows: top 15 countries as {name, count}: ISO codes for Lever, country names for Ashby, empty for Greenhouse (no country field).</td></tr>
+<tr><td><code>remote_share</code></td><td>number | null</td><td>Summary rows: share of matching roles marked remote, 0-1. Greenhouse: roles whose location text says remote. null when no roles match.</td></tr>
+<tr><td><code>posted_last_30_days</code></td><td>integer | null</td><td>Summary rows: matching roles posted in the 30 days before retrieved_at.</td></tr>
+<tr><td><code>newest_posted_at</code></td><td>string | null</td><td>Summary rows: newest posting date among matching roles (ISO 8601 UTC).</td></tr>
+<tr><td><code>oldest_posted_at</code></td><td>string | null</td><td>Summary rows: oldest posting date among matching roles: how long the company has been hiring for its open roles.</td></tr>
+<tr><td><code>top_titles</code></td><td>array</td><td>Summary rows: the 10 most common job titles as {title, count}.</td></tr>
+<tr><td><code>trend</code></td><td>object | null</td><td>Summary rows with compareWithPrevious: {previous_retrieved_at, previous_total_open_roles, change, new_jobs, closed_jobs} versus the last such run. null on the first run or when off.</td></tr>
+<tr><td><code>jobs_returned</code></td><td>integer | null</td><td>Summary rows: job rows returned for this company (at most maxJobsPerCompany, newest first).</td></tr>
+<tr><td><code>other_boards</code></td><td>array</td><td>Summary rows: other boards found for the same name (usually old, smaller ones). The board with most open roles is used.</td></tr>
+<tr><td><code>not_found_reason</code></td><td>string | null</td><td>Summary rows: why no board was found, and how to fix it. null when found.</td></tr>
+<tr><td><code>warnings</code></td><td>array</td><td>Summary rows: caveats in plain words, e.g. a provider that could not be read or several providers with a board under the same name.</td></tr>
+<tr><td><code>job_id</code></td><td>string | null</td><td>Job rows: the provider&#x27;s job posting ID.</td></tr>
+<tr><td><code>title</code></td><td>string | null</td><td>Job rows: job title as published.</td></tr>
+<tr><td><code>department</code></td><td>string | null</td><td>Job rows: department (Greenhouse: top-level department).</td></tr>
+<tr><td><code>team</code></td><td>string | null</td><td>Job rows: team or sub-department, null if none or the same as department.</td></tr>
+<tr><td><code>location</code></td><td>string | null</td><td>Job rows: primary location as written by the company.</td></tr>
+<tr><td><code>other_locations</code></td><td>array</td><td>Job rows: further locations of the same posting (Lever, Ashby).</td></tr>
+<tr><td><code>country</code></td><td>string | null</td><td>Job rows: country: ISO 3166 alpha-2 for Lever, country name for Ashby, null for Greenhouse.</td></tr>
+<tr><td><code>workplace_type</code></td><td>string | null</td><td>Job rows: remote, hybrid or on-site (Lever, Ashby); null when not stated or on Greenhouse.</td></tr>
+<tr><td><code>remote</code></td><td>boolean | null</td><td>Job rows: true if remote; false if hybrid or on-site; null when unknown. Greenhouse: true when the location text says remote, else null.</td></tr>
+<tr><td><code>employment_type</code></td><td>string | null</td><td>Job rows: as the provider gives it, e.g. FullTime, Intern (Ashby) or Permanent (Lever commitment). null on Greenhouse.</td></tr>
+<tr><td><code>posted_at</code></td><td>string | null</td><td>Job rows: ISO 8601 UTC. Greenhouse: first published; Lever: created; Ashby: last published.</td></tr>
+<tr><td><code>updated_at</code></td><td>string | null</td><td>Job rows: last update (Greenhouse only), ISO 8601 UTC.</td></tr>
+<tr><td><code>retrieved_at</code></td><td>string</td><td>When the board was read (ISO 8601 UTC).</td></tr>
+</tbody></table></div>
+
+<h2>Use with AI agents (MCP)</h2>
+<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is live on the Apify Store.</p>
+<pre><code>https://mcp.apify.com?tools=bosco_labs/company-hiring-signals</code></pre>
+<p>For &ldquo;Is Notion hiring engineers? How many roles, where, and since when? Link the postings.&rdquo; the agent passes:</p>
+<pre><code>{ &quot;companies&quot;: [&quot;notion.so&quot;], &quot;keywords&quot;: [&quot;engineer&quot;], &quot;maxJobsPerCompany&quot;: 10 }</code></pre>
+<p>stable <code>snake_case</code> fields, ISO 8601 UTC dates, counts as numbers, <code>null</code> for unknown, a source URL per row. One summary is about 2-4 KB; a 5-company summary-only run is under 20 KB. Typical time: 5-15 seconds for 5 companies (Lever asks for one request per second, so many Lever lookups take a little longer).</p>
+<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~company-hiring-signals/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.005 per company found plus $0.001 per job row.</p>
+<h2>Input fields</h2>
+<div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>companies</code></td><td>array (required)</td><td>Companies to check, 1-50: a name (&quot;Notion&quot;), a website domain (&quot;stripe.com&quot;), a job board URL (&quot;https://jobs.lever.co/spotify&quot;, &quot;https://job-boards.greenhouse.io/airbnb&quot;, &quot;https://jobs.ashbyhq.com/ramp&quot;) or provider:token (&quot;greenhouse:stripe&quot;, &quot;lever:spotify&quot;, &quot;lever-eu:&lt;token&gt;&quot;, &quot;ashby:notion&quot;). Names and domains are matched to likely board names on Greenhouse, Lever and Ashby; a board URL is exact. Required.</td></tr>
+<tr><td><code>departments</code></td><td>array</td><td>Only count and return roles whose department or team has a word starting with one of these, case-insensitive, e.g. [&quot;engineering&quot;, &quot;data&quot;]. Department names are each company&#x27;s own (Stripe uses &quot;Tech&quot; and team codes), so <code>keywords</code> on the title is often more reliable. Empty = all departments.</td></tr>
+<tr><td><code>locations</code></td><td>array</td><td>Only roles whose location text, other locations or country contains one of these as whole words, case-insensitive (&quot;US&quot; does not match &quot;Australia&quot;), e.g. [&quot;London&quot;, &quot;Germany&quot;, &quot;remote&quot;]. Lever gives ISO country codes (&quot;GB&quot;), Ashby country names; Greenhouse has the location text only. Empty = all locations.</td></tr>
+<tr><td><code>keywords</code></td><td>array</td><td>Only roles whose job title has a word starting with one of these, case-insensitive (&quot;engineer&quot; matches &quot;Engineering&quot;, &quot;ai&quot; not &quot;Retail&quot;), e.g. [&quot;engineer&quot;, &quot;data scientist&quot;]. Empty = all titles.</td></tr>
+<tr><td><code>postedSince</code></td><td>string</td><td>Only roles first published on or after this date: an ISO date (&quot;2026-10-01&quot;) or a number of days back (&quot;30d&quot;). Greenhouse: first published; Lever: created; Ashby: last published. Empty = any date.</td></tr>
+<tr><td><code>maxJobsPerCompany</code></td><td>integer</td><td>Most job rows to return per company, newest first, e.g. 20. Default 50, maximum 1000; 0 = summary only. The summary always counts all matching roles, whatever this limit. Each job row is charged.</td></tr>
+<tr><td><code>summaryOnly</code></td><td>boolean</td><td>true = one summary row per company and no job rows (cheapest; answers &quot;is X hiring and where?&quot;). Default false.</td></tr>
+<tr><td><code>compareWithPrevious</code></td><td>boolean</td><td>true = add a <code>trend</code> (change in open roles, new and closed jobs) versus the last run that also had this on, and save this run&#x27;s job IDs for next time in the key-value store &quot;company-hiring-signals-history&quot; in your account. The first run has no trend. Default false.</td></tr>
+</tbody></table></div>
+<h2>Sources, licence and limits</h2>
+<p><strong>Which companies are covered?</strong> Companies whose public job board runs on Greenhouse, Lever or Ashby: many tech and venture-backed companies (Stripe, Airbnb, Figma, Spotify, Palantir, Notion, Ramp, ...). Companies on Workday, SmartRecruiters, Workable, iCIMS, SuccessFactors or their own careers site are not covered and come back as <code>found: false</code> at no charge.</p>
+<p><strong>A name gave no board or the wrong one.</strong> Board names don&#x27;t always match the company name. Open the company&#x27;s careers page, follow a job link, and pass that URL (e.g. <code>https://job-boards.greenhouse.io/airbnb</code>) or <code>greenhouse:airbnb</code>.</p>
+<p><strong>Why is <code>by_country</code> empty, or <code>remote</code> null?</strong> Greenhouse has no country or workplace field: <code>remote</code> is true only when the location text says &quot;remote&quot;, and country counts are empty. Lever gives ISO country codes (<code>GB</code>), Ashby country names (<code>United Kingdom</code>).</p>
+<p><strong>What do departments look like?</strong> Each company names its own. Some use broad names (&quot;Engineering&quot;), some internal codes (Stripe: &quot;Tech&quot; with teams like &quot;8217 Risk Engineering&quot;). For Greenhouse, <code>department</code> is the top-level department and <code>team</code> the one the job sits in. Filtering on title <code>keywords</code> is often more reliable across companies.</p>
+<p><strong>What does <code>posted_at</code> mean?</strong> Greenhouse: first published; Lever: when the posting was created; Ashby: when it was last published. Postings are as the company publishes them; the Actor doesn&#x27;t check whether a role is really still open.</p>
+<p><strong>Are job descriptions or salaries included?</strong> No. Rows hold titles, departments, locations, dates and links; descriptions stay on the linked posting page.</p>
+<p><strong>Personal data?</strong> Company-level data only. No recruiter or hiring-manager names or emails are collected or output.</p>
+<p><strong>How fresh is it?</strong> Live: every run reads the job boards directly.</p>
+<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=Company Hiring Signals API">Ask for early access</a></div>
+</div>
+</article>
+</main>
+<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
+</body>
+</html>

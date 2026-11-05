@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ECB Rates and Euro Inflation API: HICP, FX, €STR</title>
+<meta name="description" content="Latest value, change and history of ECB policy rates, euro FX reference rates, €STR, bond yields and Eurostat HICP inflation, by plain name.">
+<link rel="canonical" href="https://boscolabs.dev/eu-rates-inflation.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bosco Labs">
+<meta property="og:title" content="ECB Rates and Euro Inflation API: HICP, FX, €STR">
+<meta property="og:description" content="Latest value, change and history of ECB policy rates, euro FX reference rates, €STR, bond yields and Eurostat HICP inflation, by plain name.">
+<meta property="og:url" content="https://boscolabs.dev/eu-rates-inflation.html">
+<meta property="og:image" content="https://boscolabs.dev/icons/eu-rates-inflation.png">
+<meta name="twitter:card" content="summary">
+<script defer src="/_vercel/insights/script.js"></script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "SoftwareApplication",
+ "name": "ECB Rates & Euro Inflation API: policy rates, FX, €STR, HICP",
+ "description": "Latest value, previous value, change and recent history of ECB policy rates, euro reference FX rates, €STR, euro-area and national bond yields, and Eurostat HICP inflation. Ask by plain name (ecb_deposit_rate, eur_fx:USD, hicp:NL), no SDMX keys. Official data, a source link per series.",
+ "url": "https://boscolabs.dev/eu-rates-inflation.html",
+ "image": "https://boscolabs.dev/icons/eu-rates-inflation.png",
+ "applicationCategory": "DeveloperApplication",
+ "operatingSystem": "Web (Apify platform)",
+ "offers": {
+  "@type": "Offer",
+  "priceCurrency": "USD",
+  "description": "$0.002 per series returned",
+  "availability": "https://schema.org/PreOrder"
+ },
+ "provider": {
+  "@type": "Organization",
+  "name": "Bosco Labs",
+  "url": "https://boscolabs.dev/"
+ }
+}
+</script>
+<style>:root{color-scheme:light dark;--head:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--body:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;--ink:#1D2721;--muted:#545F58;--bg:#F5F3EA;--surface:#EAE8DC;--line:#D6D3C3;--accent:#2E5A47;--accent-fg:#F5F3EA;--accent2:#8DA889;--accent2-text:#4A6646;--success:#36694A;--warn:#8E5D1C}
+@media (prefers-color-scheme:dark){:root{--ink:#E5E8DE;--muted:#A3ADA4;--bg:#121914;--surface:#1B241E;--line:#2B372F;--accent:#9EC7B1;--accent-fg:#121914;--accent2:#B5C9A4;--accent2-text:#B5C9A4;--success:#93C7A0;--warn:#DDB070}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--body)}h1,h2,h3,.brand{font-family:var(--head)}
+a{color:var(--accent);text-underline-offset:2px}.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+.site{border-bottom:1px solid var(--line)}.site .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;padding-top:12px;padding-bottom:12px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-weight:650;letter-spacing:-.01em}.brand img{width:30px;height:30px}
+nav{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:.95rem}nav a{color:var(--muted);text-decoration:none}nav a:hover{color:var(--ink)}
+h1{font-size:clamp(1.65rem,4vw,2.4rem);line-height:1.2;letter-spacing:-.02em;margin:0 0 12px}
+h2{font-size:1.3rem;line-height:1.3;letter-spacing:-.01em;margin:44px 0 12px}h3{font-size:1.02rem;margin:20px 0 6px}
+.hero{padding:52px 0 8px;max-width:780px}.lead{font-size:1.13rem;color:var(--muted)}.muted{color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}.chips a{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:.9rem;color:var(--ink);text-decoration:none}.chips a:hover{border-color:var(--accent)}
+.grid{list-style:none;padding:0;margin:0;display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.card-top{display:flex;gap:12px;align-items:center}.card img{width:48px;height:48px;flex:none}
+.card h3{margin:0;font-size:1rem;line-height:1.3}.card h3 a{color:var(--ink);text-decoration:none}.card h3 a:hover{text-decoration:underline}
+.card p{margin:0;font-size:.92rem;color:var(--muted)}.card .row{margin-top:auto;padding-top:6px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-size:.88rem}
+.price{font-weight:600;color:var(--ink)}.badge{display:inline-block;font-size:.78rem;font-weight:600;line-height:1.5;padding:1px 9px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.badge.live{color:var(--success)}.badge.soon{color:var(--warn)}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-fg);font-weight:650;padding:11px 18px;border-radius:10px;text-decoration:none}
+.btn.ghost{background:none;color:var(--accent);border:1px solid var(--line)}.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0}
+.crumbs{font-size:.9rem;color:var(--muted);margin:22px 0 0}.crumbs a{color:var(--muted)}
+.head{display:flex;gap:20px;align-items:flex-start;margin:18px 0 0}.head img{width:84px;height:84px;flex:none}
+.prose{max-width:800px}.facts{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));margin:22px 0}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:.95rem}.fact b{display:block;font-size:.75rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.qs{padding-left:20px}.qs li{margin:4px 0}.two{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}.two h3{margin-top:0}.two>div,.prose,main{min-width:0}
+code{font:.86em var(--mono)}:not(pre)>code{overflow-wrap:anywhere}
+pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px;overflow:auto;max-height:520px;font-size:.84rem;line-height:1.45;margin:0}
+.table{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{text-align:left;vertical-align:top;padding:7px 8px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-weight:600}td:first-child{white-space:nowrap}
+details{border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:10px 0}summary{cursor:pointer;font-weight:600}
+footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font-size:.9rem;color:var(--muted)}footer a{color:var(--muted)}
+@media (max-width:560px){.head{flex-direction:column;gap:12px}.head img{width:64px;height:64px}.hero{padding-top:32px}}</style>
+</head>
+<body>
+<header class="site"><div class="wrap"><a class="brand" href="index.html"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav><a href="index.html#tools">Tools</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
+<main class="wrap">
+<p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#macro-health-places">Macro, health &amp; places</a></p>
+<article>
+<div class="head"><img src="icons/eu-rates-inflation.svg" alt="" width="84" height="84"><div><h1>ECB Rates &amp; Euro Inflation API: policy rates, FX, €STR, HICP</h1><span class="badge soon">Coming soon to the Store</span></div></div>
+<div class="prose">
+<p class="lead"><strong>Ask for euro-area rates by plain name and get the latest value, when it last changed, the change and the recent history.</strong> ECB policy rates, euro reference exchange rates, €STR, euro-area and national government bond yields, and Eurostat HICP inflation for every EU country, with no SDMX series keys to work out. Built for <strong>AI agents</strong> and for anyone who needs a quick, sourced number.</p>
+<div class="facts"><div class="fact"><b>Price</b>$0.002 per series returned</div><div class="fact"><b>Domain</b>Macro, health &amp; places</div><div class="fact"><b>Call it</b>Apify API or MCP</div></div>
+<p><strong>Pricing (pay per event):</strong> $0.002 per series returned ($2 per 1,000). A series with no data and the catalogue are free; an unknown name fails in a second and costs nothing. The same data is available free of charge from the ECB (data.ecb.europa.eu) and Eurostat; you pay for the plain-name lookup, the latest/previous/change summary and the hosted API.</p>
+<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=ECB Rates &amp; Euro Inflation API">Ask for early access</a></div>
+<h2>Questions agents ask</h2>
+<ul class="qs"><li>&ldquo;What&#x27;s the ECB deposit rate now, when did it last change, and how does euro-area inflation compare? Cite the source.&rdquo;</li></ul>
+</div>
+<h2>Example</h2>
+<div class="two"><div><h3>Input</h3><pre><code>{ &quot;series&quot;: [&quot;ecb_deposit_rate&quot;, &quot;eur_fx:USD&quot;, &quot;hicp:EA&quot;] }</code></pre></div>
+<div><h3>Output</h3><pre><code>{
+  &quot;schema_version&quot;: &quot;1&quot;,
+  &quot;series&quot;: &quot;ecb_deposit_rate&quot;,
+  &quot;title&quot;: &quot;Deposit facility - date of changes (raw data) - Level&quot;,
+  &quot;description&quot;: &quot;One observation per rate change; latest_date = when the current rate took effect.&quot;,
+  &quot;source&quot;: &quot;ECB&quot;,
+  &quot;dataset&quot;: &quot;FM&quot;,
+  &quot;series_key&quot;: &quot;FM.B.U2.EUR.4F.KR.DFR.LEV&quot;,
+  &quot;frequency&quot;: &quot;changes&quot;,
+  &quot;unit&quot;: &quot;percent per annum&quot;,
+  &quot;latest_date&quot;: &quot;2026-09-16&quot;,
+  &quot;latest_value&quot;: 2.5,
+  &quot;previous_date&quot;: &quot;2026-06-17&quot;,
+  &quot;previous_value&quot;: 2.25,
+  &quot;change&quot;: 0.25,
+  &quot;observations&quot;: [
+    { &quot;date&quot;: &quot;2025-06-11&quot;, &quot;value&quot;: 2.0, &quot;status&quot;: null },
+    { &quot;date&quot;: &quot;2026-06-17&quot;, &quot;value&quot;: 2.25, &quot;status&quot;: null },
+    { &quot;date&quot;: &quot;2026-09-16&quot;, &quot;value&quot;: 2.5, &quot;status&quot;: null }
+  ],
+  &quot;observation_count&quot;: 12,
+  &quot;source_url&quot;: &quot;https://data.ecb.europa.eu/data/datasets/FM/FM.B.U2.EUR.4F.KR.DFR.LEV&quot;,
+  &quot;api_url&quot;: &quot;https://data-api.ecb.europa.eu/service/data/FM/B.U2.EUR.4F.KR.DFR.LEV?format=csvdata&amp;lastNObservations=13&quot;,
+  &quot;attribution&quot;: &quot;Source: ECB statistics (ECB Data Portal, data.ecb.europa.eu). Values and metadata are reproduced unmodified and are available free of charge from the ECB. The `change` field is computed by Bosco Labs (latest_value - previous_value) and is not an ECB figure.&quot;,
+  &quot;warnings&quot;: [],
+  &quot;error&quot;: null,
+  &quot;retrieved_at&quot;: &quot;2026-11-05T22:01:42+00:00&quot;,
+  &quot;duration_seconds&quot;: 0.16
+}</code></pre></div></div>
+<div class="prose">
+<h2>What you get</h2>
+<div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>schema_version</code></td><td>string</td><td>Output schema version, &quot;1&quot;.</td></tr>
+<tr><td><code>series</code></td><td>string</td><td>The series as requested, normalised (e.g. eur_fx:USD, hicp:NL:core), or the raw ECB key.</td></tr>
+<tr><td><code>title</code></td><td>string | null</td><td>The series title exactly as the source states it (ECB TITLE; Eurostat dataset, category, area and unit labels). null on error rows.</td></tr>
+<tr><td><code>description</code></td><td>string</td><td>What the series is and how to read it, in plain words (written by Bosco Labs).</td></tr>
+<tr><td><code>source</code></td><td>string</td><td>Publisher of the values.</td></tr>
+<tr><td><code>dataset</code></td><td>string</td><td>Source dataset: ECB dataflow (FM, EST, EXR, YC, IRS, ...) or Eurostat dataset code (prc_hicp_minr).</td></tr>
+<tr><td><code>series_key</code></td><td>string</td><td>Exact series identifier at the source: ECB dataflow.key (e.g. EXR.D.USD.EUR.SP00.A) or Eurostat dataset/freq.unit.coicop18.geo.</td></tr>
+<tr><td><code>frequency</code></td><td>string | null</td><td>changes (one observation per policy-rate change), daily, monthly, quarterly or annual.</td></tr>
+<tr><td><code>unit</code></td><td>string | null</td><td>Unit of the values, e.g. percent per annum, USD per 1 EUR, annual rate of change, %.</td></tr>
+<tr><td><code>latest_date</code></td><td>string | null</td><td>Date of the newest observation: YYYY-MM-DD (daily, change dates), YYYY-MM (monthly), YYYY (annual). For policy rates: the day the current rate took effect.</td></tr>
+<tr><td><code>latest_value</code></td><td>number | null</td><td>Newest value, unmodified from the source.</td></tr>
+<tr><td><code>previous_date</code></td><td>string | null</td><td>Date of the observation before the newest one (for policy rates: the previous change).</td></tr>
+<tr><td><code>previous_value</code></td><td>number | null</td><td>Value of that previous observation, unmodified.</td></tr>
+<tr><td><code>change</code></td><td>number | null</td><td>latest_value - previous_value, computed by Bosco Labs (exact decimal difference); not an official ECB or Eurostat figure.</td></tr>
+<tr><td><code>observations</code></td><td>array</td><td>The newest <code>last</code> observations, oldest first, each {date, value, status}. status is the source&#x27;s observation flag, null when normal (ECB: P provisional, E estimated; Eurostat: e estimated, p provisional, b break in series).</td></tr>
+<tr><td><code>observation_count</code></td><td>integer</td><td>Number of entries in observations.</td></tr>
+<tr><td><code>source_url</code></td><td>string | null</td><td>Human-readable page of the series: ECB Data Portal series page or Eurostat data browser table.</td></tr>
+<tr><td><code>api_url</code></td><td>string | null</td><td>The exact API request the values came from (re-run it to verify).</td></tr>
+<tr><td><code>attribution</code></td><td>string</td><td>Required source credit: names the source, says the values are unmodified and available free of charge from it, and marks <code>change</code> as computed by Bosco Labs. Keep it when you republish the values.</td></tr>
+<tr><td><code>warnings</code></td><td>array</td><td>Caveats in plain words, e.g. a requested frequency the series doesn&#x27;t have, or a window cut to the newest 1000 observations.</td></tr>
+<tr><td><code>error</code></td><td>string | null</td><td>Why this series has no data (unknown currency, area or category, empty date window, source down), with valid examples. Rows with an error are not charged.</td></tr>
+<tr><td><code>retrieved_at</code></td><td>string</td><td>When the data was fetched (ISO 8601, UTC).</td></tr>
+<tr><td><code>duration_seconds</code></td><td>number</td><td>How long fetching all series took.</td></tr>
+</tbody></table></div>
+
+<h2>Use with AI agents (MCP)</h2>
+<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is live on the Apify Store.</p>
+<pre><code>https://mcp.apify.com?tools=bosco_labs/eu-rates-inflation</code></pre>
+<p>For &ldquo;What&#x27;s the ECB deposit rate now, when did it last change, and how does euro-area inflation compare? Cite the source.&rdquo; the agent passes:</p>
+<pre><code>{ &quot;series&quot;: [&quot;ecb_deposit_rate&quot;, &quot;hicp:EA&quot;], &quot;last&quot;: 3 }</code></pre>
+<p>one small JSON item per series (1-2 KB with the default 12 observations), stable <code>snake_case</code> fields, numbers as numbers, ISO dates, <code>null</code> for unknown, a source link and the exact API call per series. Unknown names fail at once with &quot;did you mean&quot; suggestions. Fetching takes well under a second; each source has a 15-second limit with two retries.</p>
+<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~eu-rates-inflation/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.002 per series returned.</p>
+<h2>Input fields</h2>
+<div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>series</code></td><td>array</td><td>Which series to fetch, by plain name (case-insensitive), up to 20 per run, e.g. [&quot;ecb_deposit_rate&quot;, &quot;eur_fx:USD&quot;, &quot;hicp:EA&quot;]. Names: ecb_deposit_rate, ecb_main_refi_rate, ecb_marginal_lending_rate (one observation per rate change), estr (€STR), eur_fx:&lt;CUR&gt; (ECB reference rate, CUR per 1 EUR, e.g. eur_fx:GBP), euro_area_yield_curve:&lt;maturity&gt; (AAA spot yield, e.g. 10Y, 3M, 1Y6M; add :all for all government bonds), gov_bond_10y:&lt;country&gt; (monthly 10-year yield, e.g. gov_bond_10y:IT), hicp:&lt;geo&gt;[:&lt;variant&gt;] (Eurostat inflation; geo EA, EU or NL, DE, ...; variant annual (default), monthly, index, core, energy, food, services, goods, or an ECOICOP 2 code like CP01). An unknown name fails at once with suggestions and costs nothing. Empty (with no rawSeriesKey) = list the catalogue for free.</td></tr>
+<tr><td><code>last</code></td><td>integer</td><td>How many of the newest observations to return per series, e.g. 12 (the last 12 months of a monthly series). Empty = 12, or with dateFrom every observation in the window (up to 1000). latest_value, previous_value and change are always filled. The price is the same for any number.</td></tr>
+<tr><td><code>dateFrom</code></td><td>string</td><td>First date of the window, YYYY-MM-DD, e.g. &quot;2026-01-01&quot;. For monthly series the month holding the date counts. Empty = no lower bound (only <code>last</code> limits).</td></tr>
+<tr><td><code>dateTo</code></td><td>string</td><td>Last date of the window, YYYY-MM-DD, e.g. &quot;2026-03-15&quot;. With last = 1 you get the value on that date or the last one before it (weekends and holidays have no FX value). Empty = up to the latest published value.</td></tr>
+<tr><td><code>frequency</code></td><td>string</td><td>Only where the source has it: eur_fx daily (default), monthly or annual averages; policy rates daily (rate on every day) instead of the default one-row-per-change. Other series keep their own frequency and say so in <code>warnings</code>. Empty = each series&#x27; default.</td></tr>
+<tr><td><code>rawSeriesKey</code></td><td>array</td><td>Optional full ECB Data Portal series keys (dataflow + key, every dimension filled, no wildcards), e.g. [&quot;EXR.M.CHF.EUR.SP00.E&quot;]. Same output and price as named series. Empty = none.</td></tr>
+<tr><td><code>mode</code></td><td>string</td><td>&quot;series&quot; (default) fetches the series above. &quot;catalogue&quot; returns one row per supported name pattern with its source dataset, key template, frequencies, unit and an example, free of charge.</td></tr>
+</tbody></table></div>
+<h2>Sources, licence and limits</h2>
+<p><strong>How fresh is it?</strong> Live: every call reads the ECB Data Portal and Eurostat directly. ECB reference rates appear around 16:00 CET on TARGET business days, €STR at 08:00 CET for the previous business day, yield curves daily, policy rates the day a change takes effect. Eurostat publishes the euro-area HICP flash estimate around the start of the month (status <code>e</code>) and full country data mid-month, so a country&#x27;s newest month can lag the euro area&#x27;s.</p>
+<p><strong>Why is there no FX rate for a weekend date?</strong> The ECB sets reference rates on TARGET business days only. Use <code>dateTo</code> with <code>last: 1</code> to get the last rate on or before a date.</p>
+<p><strong>Which HICP version?</strong> Since early 2026 Eurostat publishes HICP under ECOICOP version 2 (dataset <code>prc_hicp_minr</code>, history back to 1996). The old <code>prc_hicp_manr</code> stopped at December 2025 and is not used.</p>
+<p><strong>Is there a daily Bund or BTP yield?</strong> Not as open ECB data. <code>gov_bond_10y:&lt;country&gt;</code> is the monthly average 10-year yield (the EU convergence-criterion series). For a daily benchmark use <code>euro_area_yield_curve:10Y</code> (AAA bonds) or <code>euro_area_yield_curve:10Y:all</code>.</p>
+<p><strong>Euribor? Mortgage rates?</strong> Euribor is published by EMMI, not the ECB, and is not included. Bank lending rates (MIR) and any other ECB series can be fetched with <code>rawSeriesKey</code>.</p>
+<p><strong>Can I republish the values?</strong> Yes, with the attribution in each row: the ECB allows reuse if the ECB is quoted as the source, the statistics are not modified, and buyers are told the data is free from the ECB; Eurostat allows reuse with acknowledgement of the source. Our <code>change</code> field is marked as computed by Bosco Labs.</p>
+<p><strong>Personal data?</strong> None. These are aggregate statistics.</p>
+<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=ECB Rates &amp; Euro Inflation API">Ask for early access</a></div>
+</div>
+</article>
+</main>
+<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
+</body>
+</html>

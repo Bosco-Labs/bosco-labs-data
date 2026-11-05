@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dutch Address Validation API: BAG postcode lookup</title>
+<meta name="description" content="Validate and geocode Dutch addresses against the official BAG register: postcode, BAG ids, WGS84 and RD coordinates, construction year, use and floor area.">
+<link rel="canonical" href="https://boscolabs.dev/dutch-address-lookup.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bosco Labs">
+<meta property="og:title" content="Dutch Address Validation API: BAG postcode lookup">
+<meta property="og:description" content="Validate and geocode Dutch addresses against the official BAG register: postcode, BAG ids, WGS84 and RD coordinates, construction year, use and floor area.">
+<meta property="og:url" content="https://boscolabs.dev/dutch-address-lookup.html">
+<meta property="og:image" content="https://boscolabs.dev/icons/dutch-address-lookup.png">
+<meta name="twitter:card" content="summary">
+<script defer src="/_vercel/insights/script.js"></script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "SoftwareApplication",
+ "name": "Dutch Address Lookup API: BAG postcode, geocode & building data",
+ "description": "Validates and geocodes Dutch addresses against the official BAG register (via PDOK): postcode, BAG ids, WGS84 + RD coordinates, construction year, use, floor area and building status. Free text, postcode + house number (or range) or BAG ids; up to 100 per run. Unmatched inputs are free.",
+ "url": "https://boscolabs.dev/dutch-address-lookup.html",
+ "image": "https://boscolabs.dev/icons/dutch-address-lookup.png",
+ "applicationCategory": "DeveloperApplication",
+ "operatingSystem": "Web (Apify platform)",
+ "offers": {
+  "@type": "Offer",
+  "priceCurrency": "USD",
+  "description": "$0.002 per resolved address",
+  "availability": "https://schema.org/PreOrder"
+ },
+ "provider": {
+  "@type": "Organization",
+  "name": "Bosco Labs",
+  "url": "https://boscolabs.dev/"
+ }
+}
+</script>
+<style>:root{color-scheme:light dark;--head:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--body:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;--ink:#1D2721;--muted:#545F58;--bg:#F5F3EA;--surface:#EAE8DC;--line:#D6D3C3;--accent:#2E5A47;--accent-fg:#F5F3EA;--accent2:#8DA889;--accent2-text:#4A6646;--success:#36694A;--warn:#8E5D1C}
+@media (prefers-color-scheme:dark){:root{--ink:#E5E8DE;--muted:#A3ADA4;--bg:#121914;--surface:#1B241E;--line:#2B372F;--accent:#9EC7B1;--accent-fg:#121914;--accent2:#B5C9A4;--accent2-text:#B5C9A4;--success:#93C7A0;--warn:#DDB070}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--body)}h1,h2,h3,.brand{font-family:var(--head)}
+a{color:var(--accent);text-underline-offset:2px}.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+.site{border-bottom:1px solid var(--line)}.site .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;padding-top:12px;padding-bottom:12px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-weight:650;letter-spacing:-.01em}.brand img{width:30px;height:30px}
+nav{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:.95rem}nav a{color:var(--muted);text-decoration:none}nav a:hover{color:var(--ink)}
+h1{font-size:clamp(1.65rem,4vw,2.4rem);line-height:1.2;letter-spacing:-.02em;margin:0 0 12px}
+h2{font-size:1.3rem;line-height:1.3;letter-spacing:-.01em;margin:44px 0 12px}h3{font-size:1.02rem;margin:20px 0 6px}
+.hero{padding:52px 0 8px;max-width:780px}.lead{font-size:1.13rem;color:var(--muted)}.muted{color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}.chips a{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:.9rem;color:var(--ink);text-decoration:none}.chips a:hover{border-color:var(--accent)}
+.grid{list-style:none;padding:0;margin:0;display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.card-top{display:flex;gap:12px;align-items:center}.card img{width:48px;height:48px;flex:none}
+.card h3{margin:0;font-size:1rem;line-height:1.3}.card h3 a{color:var(--ink);text-decoration:none}.card h3 a:hover{text-decoration:underline}
+.card p{margin:0;font-size:.92rem;color:var(--muted)}.card .row{margin-top:auto;padding-top:6px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-size:.88rem}
+.price{font-weight:600;color:var(--ink)}.badge{display:inline-block;font-size:.78rem;font-weight:600;line-height:1.5;padding:1px 9px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.badge.live{color:var(--success)}.badge.soon{color:var(--warn)}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-fg);font-weight:650;padding:11px 18px;border-radius:10px;text-decoration:none}
+.btn.ghost{background:none;color:var(--accent);border:1px solid var(--line)}.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0}
+.crumbs{font-size:.9rem;color:var(--muted);margin:22px 0 0}.crumbs a{color:var(--muted)}
+.head{display:flex;gap:20px;align-items:flex-start;margin:18px 0 0}.head img{width:84px;height:84px;flex:none}
+.prose{max-width:800px}.facts{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));margin:22px 0}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:.95rem}.fact b{display:block;font-size:.75rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.qs{padding-left:20px}.qs li{margin:4px 0}.two{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}.two h3{margin-top:0}.two>div,.prose,main{min-width:0}
+code{font:.86em var(--mono)}:not(pre)>code{overflow-wrap:anywhere}
+pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px;overflow:auto;max-height:520px;font-size:.84rem;line-height:1.45;margin:0}
+.table{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{text-align:left;vertical-align:top;padding:7px 8px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-weight:600}td:first-child{white-space:nowrap}
+details{border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:10px 0}summary{cursor:pointer;font-weight:600}
+footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font-size:.9rem;color:var(--muted)}footer a{color:var(--muted)}
+@media (max-width:560px){.head{flex-direction:column;gap:12px}.head img{width:64px;height:64px}.hero{padding-top:32px}}</style>
+</head>
+<body>
+<header class="site"><div class="wrap"><a class="brand" href="index.html"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav><a href="index.html#tools">Tools</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
+<main class="wrap">
+<p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#macro-health-places">Macro, health &amp; places</a></p>
+<article>
+<div class="head"><img src="icons/dutch-address-lookup.svg" alt="" width="84" height="84"><div><h1>Dutch Address Lookup API: BAG postcode, geocode &amp; building data</h1><span class="badge soon">Coming soon to the Store</span></div></div>
+<div class="prose">
+<p class="lead"><strong>Checks and geocodes Dutch addresses against the BAG</strong>, the official Dutch register of addresses and buildings (Kadaster, served by PDOK). Each address comes back normalised with its postcode, BAG ids, WGS84 and RD coordinates, and building details: construction year, use, floor area, status and number of units. Built for <strong>AI agents</strong> doing real estate, logistics, KYC/KYB, insurance or local-business tasks, and for people cleaning address lists.</p>
+<div class="facts"><div class="fact"><b>Price</b>$0.002 per resolved address</div><div class="fact"><b>Domain</b>Macro, health &amp; places</div><div class="fact"><b>Call it</b>Apify API or MCP</div></div>
+<p><strong>Pricing (pay per event):</strong> $0.002 per resolved address. Inputs that don&#x27;t resolve to one address (ambiguous, not found, invalid) are returned too, free of charge.</p>
+<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=Dutch Address Lookup API">Ask for early access</a></div>
+<h2>Questions agents ask</h2>
+<ul class="qs"><li>&ldquo;Is &#x27;Damrak 1 Amsterdam&#x27; a valid address? Give me its postcode, building year, use and floor area, with the source.&rdquo;</li></ul>
+</div>
+<h2>Example</h2>
+<div class="two"><div><h3>Input</h3><pre><code>{ &quot;addresses&quot;: [&quot;Damrak 1 Amsterdam&quot;, &quot;Coolsingel 40, 3011AD Rotterdam&quot;, &quot;1012LG 1&quot;, &quot;Damrak 18-1 Amsterdam&quot;] }</code></pre></div>
+<div><h3>Output</h3><pre><code>{
+  &quot;schema_version&quot;: &quot;1&quot;,
+  &quot;input&quot;: &quot;Damrak 1 Amsterdam&quot;,
+  &quot;input_type&quot;: &quot;address&quot;,
+  &quot;resolved&quot;: true,
+  &quot;match_quality&quot;: &quot;exact&quot;,
+  &quot;match_score&quot;: 11.179252,
+  &quot;address&quot;: {
+    &quot;display_name&quot;: &quot;Damrak 1, 1012LG Amsterdam&quot;,
+    &quot;street&quot;: &quot;Damrak&quot;,
+    &quot;house_number&quot;: 1,
+    &quot;house_letter&quot;: null,
+    &quot;house_number_addition&quot;: null,
+    &quot;postcode&quot;: &quot;1012LG&quot;,
+    &quot;city&quot;: &quot;Amsterdam&quot;,
+    &quot;municipality&quot;: &quot;Amsterdam&quot;,
+    &quot;municipality_code&quot;: &quot;0363&quot;,
+    &quot;province&quot;: &quot;Noord-Holland&quot;
+  },
+  &quot;bag_ids&quot;: {
+    &quot;nummeraanduiding_id&quot;: &quot;0363200012113669&quot;,
+    &quot;verblijfsobject_id&quot;: &quot;0363010012111931&quot;,
+    &quot;object_type&quot;: &quot;verblijfsobject&quot;,
+    &quot;pand_ids&quot;: [&quot;0363100012185508&quot;]
+  },
+  &quot;coordinates&quot;: {&quot;lat&quot;: 52.37714446, &quot;lon&quot;: 4.89803846, &quot;rd_x&quot;: 121691.143, &quot;rd_y&quot;: 487809.576},
+  &quot;building&quot;: {
+    &quot;object_type&quot;: &quot;verblijfsobject&quot;,
+    &quot;object_id&quot;: &quot;0363010012111931&quot;,
+    &quot;object_status&quot;: &quot;Verblijfsobject in gebruik&quot;,
+    &quot;use_purposes&quot;: [&quot;bijeenkomstfunctie&quot;, &quot;logiesfunctie&quot;],
+    &quot;floor_area_m2&quot;: 16100,
+    &quot;construction_year&quot;: 1890,
+    &quot;building_status&quot;: &quot;Pand in gebruik&quot;,
+    &quot;units_in_building&quot;: 5,
+    &quot;pands&quot;: [
+      {
+        &quot;pand_id&quot;: &quot;0363100012185508&quot;,
+        &quot;construction_year&quot;: 1890,
+        &quot;status&quot;: &quot;Pand in gebruik&quot;,
+        &quot;units_in_building&quot;: 5,
+        &quot;use_purposes&quot;: [&quot;bijeenkomstfunctie&quot;, &quot;logiesfunctie&quot;, &quot;winkelfunctie&quot;],
+        &quot;source_url&quot;: &quot;https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?f=json&amp;identificatie=0363100012185508&quot;
+      }
+    ],
+    &quot;source_url&quot;: &quot;https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items?f=json&amp;identificatie=0363010012111931&quot;
+  },
+  &quot;candidates&quot;: [],
+  &quot;warnings&quot;: [],
+  &quot;source_url&quot;: &quot;https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=*:*&amp;fq=nummeraanduiding_id:0363200012113669&amp;fl=*&quot;,
+  &quot;retrieved_at&quot;: &quot;2026-11-05T22:43:17+00:00&quot;
+}</code></pre></div></div>
+<div class="prose">
+<h2>What you get</h2>
+<div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>schema_version</code></td><td>string</td><td>Output schema version.</td></tr>
+<tr><td><code>input</code></td><td>string</td><td>The input as given: a free-text address, &#x27;POSTCODE number(-to) addition&#x27; for postcode queries, or a BAG id.</td></tr>
+<tr><td><code>input_type</code></td><td>string</td><td>Which input this row answers: address (free text), postcode, or bag_id.</td></tr>
+<tr><td><code>resolved</code></td><td>boolean</td><td>true = one BAG address (or, for a pand id, one building) was found; only these rows are charged.</td></tr>
+<tr><td><code>match_quality</code></td><td>string</td><td>exact: every part of the input agrees with the BAG; probable: one address fits but part of the input differs or is missing (see warnings); ambiguous: several addresses fit (see candidates); not_found: no BAG address fits; invalid_input: not a valid BAG id; source_error: PDOK did not answer.</td></tr>
+<tr><td><code>match_score</code></td><td>number | null</td><td>PDOK Locatieserver relevance score for free-text matches (relative within one query, higher is better); null for postcode and BAG id lookups.</td></tr>
+<tr><td><code>address</code></td><td>object | null</td><td>The normalised BAG address. null when not resolved or &#x27;address&#x27; is not in include.</td></tr>
+<tr><td><code>bag_ids</code></td><td>object</td><td>BAG identifiers of the address. Always present; values null when not resolved.</td></tr>
+<tr><td><code>coordinates</code></td><td>object | null</td><td>Point of the address (centroid of the unit). null when not resolved or &#x27;coordinates&#x27; not in include.</td></tr>
+<tr><td><code>building</code></td><td>object | null</td><td>The BAG object and the building(s) it lies in. null when not resolved, &#x27;building&#x27; not in include, or the BAG OGC API failed (see warnings).</td></tr>
+<tr><td><code>candidates</code></td><td>array</td><td>For ambiguous or not_found rows: up to 3 nearest BAG addresses (display_name, postcode, nummeraanduiding_id, score). Re-run with one of them, or its id in bagIds. Empty when resolved.</td></tr>
+<tr><td><code>warnings</code></td><td>array</td><td>Caveats and failures in plain words an agent can relay; the rest of the row is still valid.</td></tr>
+<tr><td><code>source_url</code></td><td>string | null</td><td>PDOK record the address (or, for a pand id, the building) was read from; null when not resolved.</td></tr>
+<tr><td><code>retrieved_at</code></td><td>string</td><td>When the row was made (ISO 8601, UTC).</td></tr>
+</tbody></table></div>
+
+<h2>Use with AI agents (MCP)</h2>
+<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is live on the Apify Store.</p>
+<pre><code>https://mcp.apify.com?tools=bosco_labs/dutch-address-lookup</code></pre>
+<p>For &ldquo;Is &#x27;Damrak 1 Amsterdam&#x27; a valid address? Give me its postcode, building year, use and floor area, with the source.&rdquo; the agent passes:</p>
+<pre><code>{ &quot;addresses&quot;: [&quot;Damrak 1 Amsterdam&quot;] }</code></pre>
+
+<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~dutch-address-lookup/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.002 per resolved address.</p>
+<h2>Input fields</h2>
+<div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>addresses</code></td><td>array</td><td>Dutch addresses to check and geocode, one per line, as people write them: street + house number (+ letter or addition) + city, and/or postcode + house number, e.g. &quot;Damrak 1 Amsterdam&quot;, &quot;Dam 5B Amsterdam&quot;, &quot;Damrak 18-1 Amsterdam&quot;, &quot;Coolsingel 40, 3011AD Rotterdam&quot;, &quot;1012LG 1&quot;. Up to 100 (together with bagIds); repeats are looked up once. One output row per address. Empty = use postcode or bagIds.</td></tr>
+<tr><td><code>postcode</code></td><td>string</td><td>A Dutch postcode, 4 digits + 2 letters, e.g. &quot;1012JS&quot; or &quot;1012 JS&quot;. Alone it lists every address in that postcode (one row each, up to 100); with houseNumber it returns that address, with houseNumber + houseNumberTo every address in that range. Empty = not used.</td></tr>
+<tr><td><code>houseNumber</code></td><td>integer</td><td>House number within <code>postcode</code>, e.g. 1. Only used with postcode. Empty = all numbers in the postcode.</td></tr>
+<tr><td><code>houseNumberTo</code></td><td>integer</td><td>Last house number of a range starting at houseNumber, inclusive, e.g. 20 for 1-20. Needs postcode and houseNumber. Empty = only houseNumber.</td></tr>
+<tr><td><code>houseNumberAddition</code></td><td>string</td><td>House letter and/or addition for a single houseNumber, e.g. &quot;B&quot; (5B), &quot;1&quot; (18-1), &quot;H&quot; (8-H), &quot;A2&quot; (1A-2). Empty = all units at that number (one row each).</td></tr>
+<tr><td><code>bagIds</code></td><td>array</td><td>16-digit BAG identifiers: nummeraanduiding (address, e.g. &quot;0363200012113669&quot;), verblijfsobject (unit, &quot;0363010012111931&quot;), ligplaats/standplaats (berth/pitch) or pand (building, &quot;0363100012185508&quot;: building details only, no address). Up to 100 together with addresses. Empty = not used.</td></tr>
+<tr><td><code>include</code></td><td>array</td><td>Which sections to fill: any of &quot;address&quot; (street, postcode, city, municipality, province), &quot;building&quot; (construction year, use purposes, floor area, status, units in the building), &quot;coordinates&quot; (WGS84 + RD New), e.g. [&quot;address&quot;, &quot;coordinates&quot;]. BAG ids are always returned. Default (or empty) = all three. Without &quot;building&quot; the run is faster; the price is the same.</td></tr>
+</tbody></table></div>
+<h2>Sources, licence and limits</h2>
+<p><strong>Where does the data come from?</strong> From the BAG (Basisregistratie Adressen en Gebouwen), kept by the municipalities and published by Kadaster. Addresses come from the PDOK Locatieserver and buildings from the PDOK BAG OGC API. Both are updated daily. Each row&#x27;s <code>source_url</code> points to the PDOK record it was read from.</p>
+<p><strong>What is not included?</strong> This lookup does not include:</p>
+<ul><li>WOZ (tax) values, energy labels, prices or rents.</li><li>Owners, residents or any other personal data.</li><li>Cadastral parcels, building footprints/polygons, neighbourhood statistics.</li><li>Addresses outside the Netherlands.</li></ul>
+<p><code>floor_area_m2</code> is the BAG gebruiksoppervlakte of one unit. It is not the plot size and not the full building.</p>
+<p><strong>Why is a valid-looking address <code>ambiguous</code>?</strong> Usually the number has several units (5A, 5B, 18-1, 18-H) and no letter or addition was given, or the same street and number exist in several places and no city or postcode was given. Add it, or use a candidate&#x27;s <code>nummeraanduiding_id</code> in <code>bagIds</code>.</p>
+<p><strong>Why is <code>construction_year</code> odd sometimes?</strong> Construction years are as registered by the municipality. Very old buildings often carry an estimated year (e.g. 1600, 1850).</p>
+<p><strong>Are demolished buildings or withdrawn addresses returned?</strong> Address search covers current BAG addresses. A pand id of a demolished building still returns its record, with <code>building_status</code> &quot;Pand gesloopt&quot;.</p>
+<p><strong>Limits?</strong></p>
+<ul><li>100 addresses + BAG ids per run, and up to 100 addresses per postcode query. A larger postcode result says so in <code>warnings</code>; narrow the house number range.</li><li>PDOK is a free best-effort service. If it does not answer, rows are marked <code>source_error</code> and not charged.</li></ul>
+<p><strong>Licence and attribution.</strong> BAG data: Kadaster, Public Domain Mark 1.0, served by PDOK. No endorsement by Kadaster or PDOK is implied. See <code>LEGAL.md</code>.</p>
+<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=Dutch Address Lookup API">Ask for early access</a></div>
+</div>
+</article>
+</main>
+<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
+</body>
+</html>

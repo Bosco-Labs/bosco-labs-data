@@ -1,29 +1,52 @@
 # Bosco Labs data APIs
 
-> Bosco Labs publishes data APIs as Apify Actors that return clean, typed JSON from official sources: SEC Form 4 insider trades and EDGAR filings, US House STOCK Act trades, European ESEF annual reports, UK/Danish/Norwegian company accounts, EU public tenders (TED) and Pentagon contract awards, plus tools to deduplicate Apify datasets and export them to Google Sheets. Each Actor runs on the Apify platform via API or MCP and is priced per row delivered (pay per event). Data rows carry a source link.
+> Bosco Labs publishes data tools for AI agents and analysts as Apify Actors that return clean, typed JSON from official sources: SEC filings, insider trades, 13F holdings and XBRL financials, US House STOCK Act trades, European ESEF annual reports, UK/Danish/Norwegian company accounts and registries, sanctions lists, EU, UK and Dutch law and case law, EU tenders, US federal and Pentagon contract awards, ECB rates and euro inflation, clinical trials, Dutch addresses, plus PDF-to-JSON and Apify dataset tools. Each Actor runs on the Apify platform via API or MCP and is priced per result (pay per event). Data rows carry a source link. Tools marked 'coming soon' are built but not yet public on the Store.
 
 Apify Store profile: https://apify.com/bosco_labs
+Contact: support@boscolabs.dev
 
-## Finance & filings
+## Finance & SEC
 
 - [SEC Insider Trading API (Form 4): live + history since 2006](https://boscolabs.dev/sec-insider-trades.html): Every insider purchase and sale reported on SEC Form 4 (directors, officers, 10% owners), from official EDGAR filings, 2006 to today, with cluster-buy and cluster-sell signals; filter by ticker, CIK, transaction code, role, value and date. Price: $0.0018 per transaction row and $0.02 per cluster signal. ([Apify Store](https://apify.com/bosco_labs/sec-insider-trades))
 - [SEC EDGAR Filings API: 8-K, 10-K, 10-Q feed since 1994](https://boscolabs.dev/sec-filings-feed.html): SEC EDGAR filings (8-K, 10-K, 10-Q, S-1, 13D, 13G, Form 4 and every other form) for any company or the whole market, live or back to 1994, from the SEC's own feeds; 8-K item codes and earnings releases (Item 2.02); links to each filing, not its text. Price: $0.001 per filing. ([Apify Store](https://apify.com/bosco_labs/sec-filings-feed))
 - [Congress Stock Trades API: US House STOCK Act since 2014](https://boscolabs.dev/us-house-trades.html): Congress stock trades: stock, option, fund and bond trades that US House members disclose in STOCK Act Periodic Transaction Reports, from the Clerk of the House's official filings since January 2014 (no Senate); ticker, amount range, owner, days to disclose. Price: $0.0018 per trade. ([Apify Store](https://apify.com/bosco_labs/us-house-trades))
-
-## Company data
-
+- [SEC Ownership API: 13F Holdings, 13D/13G Stakes, Form 144](https://boscolabs.dev/sec-ownership.html): Who owns a stock and who is selling, from official SEC filings: a fund's 13F holdings with quarter-over-quarter changes, the funds holding a ticker, 5%+ stakes (13D activist, 13G passive) and Form 144 planned insider sales. One ticker or fund in, small JSON out, a source link per row. Price: $0.0018 per row. (coming soon to the Apify Store)
+- [SEC Company Financials API: income, balance sheet, cash flow](https://boscolabs.dev/sec-company-financials.html): US company financials from SEC XBRL: revenue, profit, EPS, balance sheet, cash flow, free cash flow and margins per fiscal year or quarter, 2009 to today. By ticker or CIK, 10-K/10-Q and 20-F filers. Each value cites its XBRL tag and SEC filing. Q4 derived where not reported. Price: $0.005 per company-period row. (coming soon to the Apify Store)
+- [SEC Company Screener API: filter all US filers by financials](https://boscolabs.dev/sec-company-screen.html): US companies matching your filters for one calendar year or quarter: revenue, net income, margins, cash flow, assets and 30 more metrics from SEC XBRL frames, sorted and capped. Each value cites its XBRL tag and SEC filing. Same metrics as SEC Company Financials. Price: $0.002 per company returned. (coming soon to the Apify Store)
 - [EU Annual Reports API (ESEF): XBRL financial statements](https://boscolabs.dev/esef-annual-reports.html): Normalized key financials (revenue, EBIT, EBITDA, net income, EPS, assets, equity, cash flows, margins, growth) of European listed companies from official ESEF annual reports via filings.xbrl.org; 28 countries; every value linked to its XBRL fact. Price: $0.01 per run plus $0.05 per annual report; raw XBRL fact rows, if switched on, $0.0005 each. ([Apify Store](https://apify.com/bosco_labs/esef-annual-reports))
+
+## Companies
+
+- [Company Check API: identity, financials & SEC filings in 1 call](https://boscolabs.dev/company-check.html): One company report per call: legal name, LEI, registration number, status, address and industry, plus years of revenue, profit, equity, assets and cash, and SEC filings for US issuers. Look up by name, LEI, UK, Danish, Norwegian, French or Finnish number, ticker or CIK. Sourced values. Price: $0.03 per report. (coming soon to the Apify Store)
 - [Company Financials API: UK, Denmark & Norway accounts + LEI](https://boscolabs.dev/company-accounts.html): Financials (revenue, profit, equity, assets, cash, employees) of private and public companies from official accounts: UK Companies House, Denmark Erhvervsstyrelsen, Norway Brønnøysund; adds the LEI from GLEIF and a source per value. Price: $0.04 per company-year. ([Apify Store](https://apify.com/bosco_labs/company-accounts))
+- [UK New Companies API: daily Companies House incorporations](https://boscolabs.dev/uk-new-companies.html): New UK companies incorporated on any day (default: yesterday) from the official Companies House API: number, name, type, status, SIC codes with descriptions, registered office address and a register link. Filter by SIC prefix, location and type. No director data. Price: $0.002 per company. (coming soon to the Apify Store)
+- [Company Hiring Signals API: open roles, departments, locations](https://boscolabs.dev/company-hiring-signals.html): Is a company hiring? Open roles by department, location and remote share, newest and oldest posting dates and top titles, plus job rows with a link each. Read from the company's public Greenhouse, Lever or Ashby job board. Look up by name, domain or board URL. Price: $0.005 per company found plus $0.001 per job row. (coming soon to the Apify Store)
+
+## Compliance & law
+
+- [Sanctions Screening API: OFAC, UK, EU & US export lists](https://boscolabs.dev/sanctions-screening.html): Is this company, vessel or person sanctioned? Returns per name: match yes/no, the listed entry, aliases, programs, listing date, identifiers and a source link, from the official OFAC SDN and non-SDN, US Consolidated Screening List, UK Sanctions List and EU lists, with each list's date. Price: $0.01 per name screened. (coming soon to the Apify Store)
+- [EU Law Lookup API (EUR-Lex): article text, in force, amendments](https://boscolabs.dev/eu-law-lookup.html): The text of an EU law article as in force today (or on a date), whether the act is in force, what amended it, plus new Official Journal acts. Ask by name (GDPR, AI Act), citation, CELEX or ELI; 24 languages. Official EUR-Lex/Cellar data with a source link per row. Price: $0.01 per act or article returned. (coming soon to the Apify Store)
+- [UK & Dutch Law Lookup API: article text by date, in force](https://boscolabs.dev/national-law-lookup.html): The text of a UK section or Dutch article as in force today (or on a date), whether it is in force and what changed it. Ask by citation: "Companies Act 2006 s 172", "BW 7:658", "artikel 13 Wet Vpb 1969". Official legislation.gov.uk and Dutch BWB data with a source link per row. Price: $0.01 per article or act returned. (coming soon to the Apify Store)
+- [Dutch Case Law API (Rechtspraak): ECLI lookup, uitspraken](https://boscolabs.dev/dutch-case-law.html): Dutch court decisions (uitspraken) by ECLI or search: court, dates, case numbers, legal area, summary (inhoudsindicatie), appeal/cassation relations, law references and optional text. Hoge Raad, Raad van State, gerechtshoven, rechtbanken. Official Rechtspraak Open Data, source link per row. Price: $0.005 per decision returned. (coming soon to the Apify Store)
 
 ## Government & procurement
 
-- [EU Public Tenders & Contract Awards API (TED procurement)](https://boscolabs.dev/eu-tenders.html): EU public procurement notices from TED (Tenders Electronic Daily), the EU's official tenders journal: open calls with deadlines, contract awards with winners and values, prior information; EU, EEA and more, since 2016; filter by keyword, country, CPV code, notice type, date, EUR value. Price: $0.002 per notice. ([Apify Store](https://apify.com/bosco_labs/eu-tenders))
-- [Pentagon / DoD Contract Awards API: winners, amounts, tickers](https://boscolabs.dev/dod-contract-awards.html): US Department of Defense contract awards of $7.5M or more the same evening they are announced, plus USAspending.gov history since FY2008 (any federal agency); winner, amount, service, NAICS/PSC, matched to a US stock ticker with SEC shares outstanding. Price: $0.005 per award row. ([Apify Store](https://apify.com/bosco_labs/dod-contract-awards))
+- [EU Public Tenders & Contract Awards API (TED procurement)](https://boscolabs.dev/eu-tenders.html): EU public procurement notices from TED (Tenders Electronic Daily), the EU's official tenders journal: open calls with deadlines, contract awards with winners and values, prior information; EU, EEA and more, since 2016; filter by keyword, country, CPV code, notice type, date, EUR value. Price: $0.002 per notice. (coming soon to the Apify Store)
+- [Pentagon / DoD Contract Awards API: winners, amounts, tickers](https://boscolabs.dev/dod-contract-awards.html): US Department of Defense contract awards of $7.5M or more the same evening they are announced, plus USAspending.gov history since FY2008 (any federal agency); winner, amount, service, NAICS/PSC, matched to a US stock ticker with SEC shares outstanding. Price: $0.005 per award row. (coming soon to the Apify Store)
+- [US Federal Awards API: contracts & grants, all agencies](https://boscolabs.dev/us-federal-awards.html): US federal contract, grant and loan awards from every agency (USAspending.gov): winner, UEI, parent company, stock ticker, agency, amounts, dates, NAICS/PSC/assistance listing, place of performance and a source link. Filter by company, ticker, agency, keyword, state, date. Price: $0.004 per award row. (coming soon to the Apify Store)
+
+## Macro, health & places
+
+- [ECB Rates & Euro Inflation API: policy rates, FX, €STR, HICP](https://boscolabs.dev/eu-rates-inflation.html): Latest value, previous value, change and recent history of ECB policy rates, euro reference FX rates, €STR, euro-area and national bond yields, and Eurostat HICP inflation. Ask by plain name (ecb_deposit_rate, eur_fx:USD, hicp:NL), no SDMX keys. Official data, a source link per series. Price: $0.002 per series returned. (coming soon to the Apify Store)
+- [ClinicalTrials.gov API: trial search & NCT dossier](https://boscolabs.dev/clinical-trials.html): Clinical trials as compact JSON rows: status, phase, sponsor, conditions, interventions, enrollment, start and primary completion dates, countries, outcomes and results. Look up NCT numbers or search by condition, drug, sponsor, phase, status, country and dates. Sourced, no contact data. Price: $0.004 per trial. (coming soon to the Apify Store)
+- [Dutch Address Lookup API: BAG postcode, geocode & building data](https://boscolabs.dev/dutch-address-lookup.html): Validates and geocodes Dutch addresses against the official BAG register (via PDOK): postcode, BAG ids, WGS84 + RD coordinates, construction year, use, floor area and building status. Free text, postcode + house number (or range) or BAG ids; up to 100 per run. Unmatched inputs are free. Price: $0.002 per resolved address. (coming soon to the Apify Store)
 
 ## Data tools
 
-- [Deduplicate & Merge Apify Datasets: remove duplicate items](https://boscolabs.dev/dataset-dedup.html): Deduplicate and merge one or more Apify datasets (or a pasted JSON array): removes duplicate items by any fields (dot paths allowed) or by the whole item, keeping the first or last occurrence; streams millions of items with constant memory. Price: $0.00015 per unique item written (duplicates are free). ([Apify Store](https://apify.com/bosco_labs/dataset-dedup))
-- [Google Sheets Export: send any Apify dataset to a spreadsheet](https://boscolabs.dev/sheets-export.html): Export any Apify dataset to Google Sheets: replace a tab or append rows, with nested fields as columns and your header kept; writes with your own Google service account key and retries Google rate limits. Price: $0.00015 per row exported. ([Apify Store](https://apify.com/bosco_labs/sheets-export))
+- [PDF to JSON API: text, tables and metadata from a PDF URL](https://boscolabs.dev/pdf-to-data.html): PDF text, tables and metadata as clean JSON from 1-20 public PDF URLs or a base64 file: per-page markdown text in reading order, tables as rows with a header guess, title, author and dates. Processed in memory, never stored. Pay per page with text; scanned pages are flagged and free. Price: $0.0005 per page with text. (coming soon to the Apify Store)
+- [Deduplicate & Merge Apify Datasets: remove duplicate items](https://boscolabs.dev/dataset-dedup.html): Deduplicate and merge one or more Apify datasets (or a pasted JSON array): removes duplicate items by any fields (dot paths allowed) or by the whole item, keeping the first or last occurrence; streams millions of items with constant memory. Price: $0.00015 per unique item written (duplicates are free). (coming soon to the Apify Store)
+- [Change Monitor: new, changed & removed items + Slack alerts](https://boscolabs.dev/dataset-change-monitor.html): Run any scraper on a schedule and get only what changed: new, changed and removed items compared with the previous run, matched by your key fields (e.g. url). Optional Slack, Discord, Telegram, email or webhook alert per run. Add it as an integration to your scraper. Price: $0.001 per change reported. (coming soon to the Apify Store)
+- [Google Sheets Export: send any Apify dataset to a spreadsheet](https://boscolabs.dev/sheets-export.html): Export any Apify dataset to Google Sheets: replace a tab or append rows, with nested fields as columns and your header kept; writes with your own Google service account key and retries Google rate limits. Price: $0.00015 per row exported. (coming soon to the Apify Store)
 
 ## How to call
 
@@ -44,22 +67,28 @@ Insider trading data from SEC Form 4: every insider purchase and sale by directo
 
 Coverage: Today's filings from the EDGAR live feed, minutes after the SEC accepts them; recent quarters from the EDGAR indexes and Form 4 XML; history from 2006 from the SEC's quarterly Insider Transactions Data Sets. Non-derivative table only: options and other derivatives are not included.
 
+Example questions:
+
+- Did any Tesla insiders buy shares in the last 90 days?
+- Show insider cluster buys across the US market this month.
+- List Nvidia insider sales over $1 million filed in 2024, with links to the Form 4s.
+
 ### Input fields
 
-- `tickers` (array): Optional: issuer stock tickers, e.g. ["AAPL", "TSLA"]. Leave empty to scan the whole market (the usual use: insider buying anywhere). Mapped to the company's CIK with the SEC's ticker list; history is also matched on the ticker as written in the filing.
-- `ciks` (array): Issuer SEC Central Index Keys as digits, leading zeros optional, e.g. ["320193"] for Apple. Use for delisted or renamed companies the SEC's ticker list no longer has. Empty = no CIK filter.
+- `lookbackDays` (integer): Used only when `dateFrom` is empty: read filings from this many days back until today, e.g. 30. Empty = 90 days when `tickers` or `ciks` are set, 7 days for the whole market. Handy for schedules.
+- `dateFrom` (string): Earliest filing date, YYYY-MM-DD, e.g. "2024-01-01". Data starts 2006-01-01. Empty = `lookbackDays` days before today (90 for tickers/CIKs, 7 for the whole market).
+- `dateTo` (string): Latest filing date, YYYY-MM-DD, e.g. "2024-12-31". Empty = today, including today's filings from the live EDGAR feed.
+- `clusterBuysOnly` (boolean): true = only open-market purchases that are part of a cluster: at least 2 different directors or officers of the same company buying, filed within `clusterWindowDays`, together worth at least $100,000. Default false. Also reads the window before the date range.
+- `clusterSellsOnly` (boolean): true = only open-market sales that are part of a cluster (same rule as cluster buys, for sales). Pre-planned 10b5-1 plan sales are left out (filings flag them since April 2023). Default false. Can be combined with `clusterBuysOnly`.
+- `includeClusterSignals` (boolean): true (default) = also output one row per cluster signal (record_type = "cluster"): the day a company's insider buying or selling first met the cluster rule, with the insiders and total value. Charged as a separate, higher-priced event. false = transaction rows only.
+- `clusterWindowDays` (integer): How many days of filings count as one cluster of insider buying or selling, e.g. 14. Default 30.
 - `transactionCodes` (array): Form 4 transaction codes to return, e.g. ["P"] for open-market purchases only. Default ["P", "S"] (open-market purchases and sales). Pass [] for all codes, including awards (A), tax withholding (F) and option exercises (M).
 - `insiderRoles` (array): Only insiders with one of these roles: director, officer, ten_percent_owner, other, e.g. ["director", "officer"]. Empty = all roles.
 - `minValueUsd` (integer): Minimum transaction value in USD (shares x price), e.g. 100000. Default 0 = no minimum. Transactions without a price count as 0.
-- `dateFrom` (string): Earliest filing date, YYYY-MM-DD, e.g. "2024-01-01". Data starts 2006-01-01. Empty = `lookbackDays` days before today (90 for tickers/CIKs, 7 for the whole market).
-- `dateTo` (string): Latest filing date, YYYY-MM-DD, e.g. "2024-12-31". Empty = today, including today's filings from the live EDGAR feed.
-- `lookbackDays` (integer): Used only when `dateFrom` is empty: read filings from this many days back until today, e.g. 30. Empty = 90 days when `tickers` or `ciks` are set, 7 days for the whole market. Handy for schedules.
-- `clusterBuysOnly` (boolean): true = only open-market purchases that are part of a cluster: at least 2 different directors or officers of the same company buying, filed within `clusterWindowDays`, together worth at least $100,000. Default false. Also reads the window before the date range.
-- `clusterSellsOnly` (boolean): true = only open-market sales that are part of a cluster (same rule as cluster buys, for sales). Pre-planned 10b5-1 plan sales are left out (filings flag them since April 2023). Default false. Can be combined with `clusterBuysOnly`.
-- `clusterWindowDays` (integer): How many days of filings count as one cluster of insider buying or selling, e.g. 14. Default 30.
-- `includeClusterSignals` (boolean): true (default) = also output one row per cluster signal (record_type = "cluster"): the day a company's insider buying or selling first met the cluster rule, with the insiders and total value. Charged as a separate, higher-priced event. false = transaction rows only.
 - `maxResults` (integer): Maximum transaction rows, newest first, e.g. 500. Default 100, up to 200,000 per run (split bigger exports by date range). The run stops reading once it has this many, and returns at most this many cluster signals.
 - `onlyNewSinceLastRun` (boolean): true = skip (and don't charge for) transactions and signals an earlier run with the same filters already delivered. For scheduled runs. Default false. Remembered in a named key-value store in your account.
+- `tickers` (array): Optional: issuer stock tickers, e.g. ["AAPL", "TSLA"]. Leave empty to scan the whole market (the usual use: insider buying anywhere). Mapped to the company's CIK with the SEC's ticker list; history is also matched on the ticker as written in the filing.
+- `ciks` (array): Issuer SEC Central Index Keys as digits, leading zeros optional, e.g. ["320193"] for Apple. Use for delisted or renamed companies the SEC's ticker list no longer has. Empty = no CIK filter.
 
 ### Output fields
 
@@ -120,6 +149,12 @@ SEC EDGAR filings (8-K, 10-K, 10-Q, S-1, 13D, 13G, Form 4 and every other form) 
 
 Coverage: All EDGAR forms. Companies: the SEC submissions API, complete history back to 1994. Whole market: the live feed, then the EDGAR daily and quarterly indexes back to 1993. 8-K item codes exist since August 2004. Rows hold links to the filing and its main document, not the document text.
 
+Example questions:
+
+- When did Nvidia release its last four quarterly results, and was it before or after the market closed?
+- Which companies filed a 13D in the last 7 days, and who filed it?
+- Give me links to Apple's 10-K annual reports since 2015.
+
 ### Input fields
 
 - `formTypes` (array): EDGAR form types, exact match, e.g. ["8-K", "10-K", "10-Q"]; also S-1, 13D, 13G, 4, DEF 14A, 20-F, 6-K and any other form. Add "10-K/A" etc. for amendments. 13D and 13G also match the SC 13D and SCHEDULE 13D names. Empty = every form.
@@ -171,6 +206,12 @@ Congress stock trades: stock, option, fund and bond trades that US House members
 
 Coverage: Periodic Transaction Reports of House members filed online, from January 2014 to the latest update of the Clerk's index. Scanned paper PTRs are skipped (their PDF links are listed in the run's SUMMARY record). The Senate and annual financial disclosure reports are not included.
 
+Example questions:
+
+- Which options did Nancy Pelosi's household trade in 2025, and how many days after the trade were they disclosed?
+- Which House members disclosed NVDA trades in the last 30 days?
+- List House trades over $1 million filed in 2024.
+
 ### Input fields
 
 - `members` (array): Case-insensitive part of the member's name as listed by the Clerk, e.g. ["Pelosi"] or ["Josh Gottheimer"]. Empty = all House members.
@@ -219,6 +260,269 @@ Coverage: Periodic Transaction Reports of House members filed online, from Janua
 { "members": ["Pelosi"], "years": ["2024", "2025"], "transactionTypes": ["purchase"], "maxResults": 500 }
 ```
 
+## SEC Ownership API: 13F Holdings, 13D/13G Stakes, Form 144
+
+Docs: https://boscolabs.dev/sec-ownership.html
+Apify Store: coming soon
+MCP: https://mcp.apify.com?tools=bosco_labs/sec-ownership
+Price: $0.0018 per row
+
+Who owns a stock and who is selling, from official SEC filings: a fund's 13F holdings with quarter-over-quarter changes, the funds holding a ticker, 5%+ stakes (13D activist, 13G passive) and Form 144 planned insider sales. One ticker or fund in, small JSON out, a source link per row.
+
+Example questions:
+
+- What did Berkshire Hathaway buy and sell last quarter?
+- Which funds hold the most Nvidia stock?
+- Has anyone filed an activist 13D on Peraso?
+- Which insiders filed to sell more than $1 million of stock this week?
+
+### Input fields
+
+- `mode` (string): holdings13f = Form 13F: pass `filer` for a fund manager's holdings (with changes vs the previous quarter), or `ticker`/`cusip` for the funds holding a stock. stakes13dg = Schedule 13D/13G filings about `ticker`, or new 13D filings market-wide. planned144 = Form 144 notices of planned insider sales for `ticker`, or market-wide. Default holdings13f.
+- `filer` (string): holdings13f only: the fund manager's name or SEC CIK, e.g. "Berkshire Hathaway" or "1067983". A name is matched with EDGAR's company search (the first match that files 13F reports); a CIK is exact. Empty = look up the holders of `ticker`/`cusip` instead.
+- `ticker` (string): The company the shares are in, as a current US ticker, e.g. "AAPL". holdings13f: the funds holding it (or, with `filer`, only that position). stakes13dg / planned144: filings about it. Empty = whole market (stakes13dg, planned144).
+- `issuerCik` (string): Instead of `ticker`: the company's SEC CIK as digits, e.g. "320193" for Apple. Use for delisted or renamed companies. Empty = use `ticker`.
+- `cusip` (string): holdings13f only: the 9-character CUSIP of one share class, e.g. "037833100" (Apple common stock). Most precise way to ask which funds hold a security. Empty = CUSIPs found in the company's recent Schedule 13D/13G filings (all its share classes).
+- `quarter` (string): holdings13f only: the quarter of the holdings, as "2026Q2" or the quarter end "2026-06-30". Empty = the newest: the filer's latest 13F, or for holders of a stock the newest quarter in the SEC's Form 13F data sets (13F reports are due 45 days after quarter end).
+- `stakeForms` (array): stakes13dg only: which forms, e.g. ["13D"] for new activist stakes only. Empty = all four for a ticker; 13D and 13D/A for the whole market (activist alerts).
+- `minValueUsd` (integer): Minimum value in US dollars, e.g. 1000000. planned144: the notice's aggregate market value; holdings13f: the position value. Default 0 = no minimum. Not used by stakes13dg.
+- `dateFrom` (string): stakes13dg / planned144: earliest filing date, YYYY-MM-DD, e.g. "2026-10-01". Structured 13D/13G start 2024-12-18. Empty = `lookbackDays` before today.
+- `dateTo` (string): stakes13dg / planned144: latest filing date, YYYY-MM-DD, e.g. "2026-10-31". Empty = today, including today's filings from the EDGAR live feed.
+- `lookbackDays` (integer): stakes13dg / planned144, used when `dateFrom` is empty: filings from this many days back until today, e.g. 30. Empty = 365 days for a ticker's 13D/13G, 90 for a ticker's Form 144, 7 for the whole market.
+- `maxResults` (integer): Maximum rows (one charged event each), e.g. 200. Default 50: a fund's largest positions, a stock's largest holders, or the newest filings.
+
+### Output fields
+
+- `schema_version` (string): Output schema version.
+- `record_type` (string): holding = a position in one 13F filer's portfolio; holder = one 13F filer holding the asked stock (SEC Form 13F data set); stake = one Schedule 13D/13G filing; form144 = one Form 144 notice.
+- `form` (string): Form as filed: 13F-HR or 13F-HR/A; 13D, 13D/A, 13G or 13G/A (Schedule); 144 or 144/A.
+- `filer_name` (string | null): holding/holder: the 13F manager. stake: the first reporting person on the filing.
+- `filer_cik` (string | null): SEC CIK (10 digits) of the 13F manager, of the 13D/13G filer, or of the person filing the Form 144.
+- `period_of_report` (string): 13F rows: the quarter end the holdings are reported for (YYYY-MM-DD).
+- `accession_number` (string): SEC accession number of the filing the row comes from.
+- `filing_date` (string): Date the SEC received the filing (YYYY-MM-DD).
+- `issuer_name` (string | null): Company whose securities are held, owned or to be sold, as written in the filing (13F names are often abbreviated).
+- `issuer_cik` (string | null): stake/form144: SEC CIK (10 digits) of the issuer.
+- `title_of_class` (string | null): 13F rows: class of the security as filed, e.g. COM, CL A, CAP STK CL C.
+- `cusip` (string): 13F rows: 9-character CUSIP of the security.
+- `cusips` (array): stake: the issuer CUSIP(s) on the cover page.
+- `ticker` (string | null): Issuer ticker from the SEC's ticker list. 13F holding rows: matched on the issuer name, so it can be null or the company's main ticker for another share class; use cusip to tell classes apart.
+- `put_call` (string | null): 13F rows: PUT or CALL for option positions (value = the underlying), null for shares and bonds.
+- `shares` (number | null): 13F rows: shares (or principal amount when share_type is PRN) held at quarter end, summed over the filing's lines; 0 for a closed position. stake: shares beneficially owned by the reporting person with the highest percent.
+- `share_type` (string | null): 13F rows: SH (shares) or PRN (principal amount).
+- `value_usd` (number | null): 13F rows: market value in US dollars at quarter end as reported (filings before 2023-01-03 reported $1,000s and are multiplied by 1,000).
+- `portfolio_pct` (number | null): holding: value as a percentage of the filing's total reported value.
+- `previous_period` (string | null): holding: the previous quarter end the change is measured against.
+- `previous_shares` (number | null): holding: shares at the previous quarter end (0 = not held then, null = no 13F for that quarter).
+- `previous_value_usd` (number | null): holding: value at the previous quarter end, in US dollars.
+- `shares_change` (number | null): holding: shares minus previous_shares.
+- `shares_change_pct` (number | null): holding: shares_change as a percentage of previous_shares (null when not held before).
+- `change` (string | null): holding: new, increased, decreased, unchanged or closed (sold out) vs the previous quarter; null when unknown.
+- `stake_type` (string | null): stake: activist (Schedule 13D: may seek to influence control) or passive (Schedule 13G).
+- `amendment_no` (integer | null): stake: amendment number on the cover page (null for an original filing).
+- `security_class` (string | null): stake/form144: class of securities as filed, e.g. Common Stock.
+- `percent_of_class` (number | null): stake: percent of the class beneficially owned, the highest among the reporting persons (group members usually report the same aggregate).
+- `reporting_persons` (array): stake: every reporting person on the cover pages: name, cik (null if none), percent_of_class, shares, person_type (SEC codes like IA, IN, PN, CO).
+- `event_date` (string | null): stake: date of the event that required the filing (YYYY-MM-DD).
+- `seller_name` (string | null): form144: the person for whose account the securities are to be sold, as filed.
+- `relationships` (array): form144: relationship to the issuer as filed, e.g. Director, Officer, 10% Securityholder.
+- `shares_to_be_sold` (number | null): form144: number of shares (units) to be sold, summed over the notice's lines.
+- `aggregate_market_value_usd` (number | null): form144: aggregate market value of the shares to be sold, in US dollars, as filed.
+- `shares_outstanding` (number | null): form144: shares of the class outstanding, as filed.
+- `approx_sale_date` (string | null): form144: approximate date of sale (YYYY-MM-DD; the earliest if several).
+- `exchanges` (array): form144: exchange(s) where the shares are to be sold.
+- `broker_names` (array): form144: broker(s) or market maker(s) handling the sale.
+- `plan_adoption_dates` (array): form144: adoption dates of the Rule 10b5-1 trading plan, if the sale is under one (YYYY-MM-DD).
+- `notice_date` (string | null): form144: date of the notice (YYYY-MM-DD).
+- `filing_url` (string): EDGAR index page of the filing.
+- `source` (string): edgar-13f (the filing's information table), sec-13f-data-set (SEC Form 13F data set) or edgar-xml (the filing's XML).
+- `source_url` (string): The exact SEC file the row was read from.
+- `retrieved_at` (string): UTC time the row was produced.
+
+### Example input
+
+```json
+{"mode": "holdings13f", "filer": "Berkshire Hathaway"}
+```
+
+## SEC Company Financials API: income, balance sheet, cash flow
+
+Docs: https://boscolabs.dev/sec-company-financials.html
+Apify Store: coming soon
+MCP: https://mcp.apify.com?tools=bosco_labs/sec-company-financials
+Price: $0.005 per company-period row
+
+US company financials from SEC XBRL: revenue, profit, EPS, balance sheet, cash flow, free cash flow and margins per fiscal year or quarter, 2009 to today. By ticker or CIK, 10-K/10-Q and 20-F filers. Each value cites its XBRL tag and SEC filing. Q4 derived where not reported.
+
+Example questions:
+
+- How did Microsoft's revenue, net income and free cash flow develop over the last 8 quarters?
+- Compare Nvidia, AMD and Intel on operating margin for the last 5 fiscal years.
+- What was JPMorgan's net income in 2024, and which filing is it from?
+
+### Input fields
+
+- `tickers` (array): US tickers as listed by the SEC, e.g. ["AAPL", "MSFT"]; share classes with a dash or dot, e.g. "BRK-B". Foreign companies filing 20-F/40-F work too, e.g. "NVO". Mapped to the CIK with the SEC's company_tickers.json; an unknown ticker is skipped with suggestions in the status message. Empty = use `ciks`.
+- `ciks` (array): SEC Central Index Keys as digits, leading zeros optional, e.g. ["320193"] for Apple. Use for delisted companies and filers without a ticker. Empty = use `tickers`; at least one of the two is required.
+- `period` (string): "annual" = one row per fiscal year (FY). "quarterly" = one row per fiscal quarter, Q1-Q4, each a discrete 3-month period (Q4 and year-to-date-only cash flows are derived, see `warnings`). Companies without quarterly XBRL data (most 20-F filers) return fiscal years instead. Default "annual".
+- `years` (integer): How many of the latest fiscal years to return per company, e.g. 5 (5 rows annual, up to 20 rows quarterly; 2 with quarterly = the last 8 quarters). XBRL data starts in 2009-2011. Default 5, max 20.
+- `metrics` (array): Only these output fields, e.g. ["revenue", "net_income", "free_cash_flow", "operating_margin"]. Valid: revenue, cost_of_revenue, gross_profit, research_and_development, selling_general_and_administrative, operating_profit, profit_before_tax, net_income, net_income_attributable_to_parent, eps_basic, eps_diluted, weighted_average_shares_basic, weighted_average_shares_diluted, depreciation_amortisation, total_assets, current_assets, cash_and_equivalents, total_liabilities, current_liabilities, noncurrent_liabilities, long_term_debt, total_equity, equity_attributable_to_parent, shares_outstanding, operating_cash_flow, investing_cash_flow, financing_cash_flow, capex, dividends_paid, free_cash_flow, ebitda, gross_margin, operating_margin, net_margin, return_on_equity, equity_ratio, revenue_growth. Empty = all of them.
+- `includeSources` (boolean): true = each row has `sources` (per value: the XBRL tag and the SEC accession number it came from, plus how it was derived) and `filings` (form, filing date and URL of each filing cited). false = values only, about 3x smaller rows. Default true.
+
+### Output fields
+
+- `schema_version` (string): Output schema version.
+- `ticker` (string | null): Main ticker in the SEC's current ticker list (null if none).
+- `cik` (string): SEC CIK, 10 digits.
+- `company_name` (string): Company name as in SEC companyfacts.
+- `fiscal_year` (integer): Fiscal year as the company names it (Apple's year ending September 2025 = 2025).
+- `fiscal_period` (string): FY for a fiscal year, Q1-Q4 for a discrete 3-month fiscal quarter.
+- `period_start` (string | null): First day of the period (YYYY-MM-DD).
+- `period_end` (string): Last day of the period = balance-sheet date (YYYY-MM-DD).
+- `form` (string | null): Form of the main filing for this period: 10-K, 10-Q, 20-F, 40-F, 6-K or an /A amendment.
+- `filed` (string | null): Filing date of that filing (YYYY-MM-DD).
+- `accession_number` (string | null): SEC accession number of the filing most values come from.
+- `source_url` (string | null): EDGAR index page of that filing.
+- `currency` (string): Reporting currency of all money values (ISO 4217, e.g. USD, EUR, DKK). Values are in full units, not thousands.
+- `revenue` (number | null): Total revenue / net sales (for banks: total net revenue). In `currency`.
+- `cost_of_revenue` (number | null): Cost of revenue / cost of goods and services sold. In `currency`.
+- `gross_profit` (number | null): Gross profit; when not tagged, revenue - cost_of_revenue (sources says derived). In `currency`.
+- `research_and_development` (number | null): Research and development expense. In `currency`.
+- `selling_general_and_administrative` (number | null): Selling, general and administrative expense (null when the company reports sales/marketing and G&A separately). In `currency`.
+- `operating_profit` (number | null): Operating income (loss). Null for most banks and insurers. In `currency`.
+- `profit_before_tax` (number | null): Income from continuing operations before income taxes. In `currency`.
+- `net_income` (number | null): Net income including noncontrolling interests (ProfitLoss), else net income attributable to the parent; as in the esef-annual-reports Actor. In `currency`.
+- `net_income_attributable_to_parent` (number | null): Net income attributable to the parent's shareholders (the US 'net income' headline). In `currency`.
+- `eps_basic` (number | null): Basic earnings per share, in currency per share. Never derived (null for Q4 unless reported).
+- `eps_diluted` (number | null): Diluted earnings per share, in currency per share. Never derived.
+- `weighted_average_shares_basic` (number | null): Weighted average shares outstanding, basic. Never derived.
+- `weighted_average_shares_diluted` (number | null): Weighted average shares outstanding, diluted. Never derived.
+- `depreciation_amortisation` (number | null): Depreciation, depletion and amortization (cash flow statement). In `currency`.
+- `total_assets` (number | null): Total assets at period end. In `currency`.
+- `current_assets` (number | null): Total current assets at period end. Null for banks and insurers (unclassified balance sheet). In `currency`.
+- `cash_and_equivalents` (number | null): Cash and cash equivalents at period end (banks: cash and due from banks). In `currency`.
+- `total_liabilities` (number | null): Total liabilities; when not tagged, total_assets - total_equity (sources says derived). In `currency`.
+- `current_liabilities` (number | null): Total current liabilities. Null for banks and insurers. In `currency`.
+- `noncurrent_liabilities` (number | null): Total non-current liabilities, when tagged. In `currency`.
+- `long_term_debt` (number | null): Long-term debt, non-current portion where tagged, else total long-term debt; sources shows the tag. In `currency`.
+- `total_equity` (number | null): Total equity including noncontrolling interests, else stockholders' equity. In `currency`.
+- `equity_attributable_to_parent` (number | null): Stockholders' equity attributable to the parent. In `currency`.
+- `shares_outstanding` (number | null): Common shares outstanding at the balance-sheet date.
+- `operating_cash_flow` (number | null): Net cash from operating activities. In `currency`.
+- `investing_cash_flow` (number | null): Net cash from investing activities. In `currency`.
+- `financing_cash_flow` (number | null): Net cash from financing activities. In `currency`.
+- `capex` (number | null): Capital expenditure: payments for property, plant and equipment, as a positive number. Null for most banks. In `currency`.
+- `dividends_paid` (number | null): Dividends paid in cash, as a positive number. In `currency`.
+- `free_cash_flow` (number | null): Derived: operating_cash_flow - capex.
+- `ebitda` (number | null): Derived: operating_profit + depreciation_amortisation.
+- `gross_margin` (number | null): Derived: gross_profit / revenue (0.25 = 25%).
+- `operating_margin` (number | null): Derived: operating_profit / revenue.
+- `net_margin` (number | null): Derived: net_income / revenue.
+- `return_on_equity` (number | null): Derived: net_income / total_equity, fiscal-year rows only.
+- `equity_ratio` (number | null): Derived: total_equity / total_assets.
+- `revenue_growth` (number | null): Derived: revenue / revenue of the same fiscal period one year earlier - 1 (year over year, also for quarters).
+- `metrics_found` (integer): How many of the reported metrics (not the derived ones) have a value.
+- `sources` (object): Only with includeSources: per metric {tag: XBRL concept used, accession: filing it came from, derived: how a quarter value was computed (e.g. 'fiscal year - 9-month YTD') or the formula for gross_profit/total_liabilities fallbacks}.
+- `filings` (object): Only with includeSources: per accession number cited in sources, its form, filing date and EDGAR URL.
+- `warnings` (array): Notes on this row: quarter values derived from year-to-date figures, restated values (latest filing used), quarterly data missing.
+- `retrieved_at` (string): UTC time the row was produced.
+
+### Example input
+
+```json
+{ "tickers": ["AAPL", "MSFT"], "period": "quarterly", "years": 2, "metrics": ["revenue", "net_income", "free_cash_flow"] }
+```
+
+## SEC Company Screener API: filter all US filers by financials
+
+Docs: https://boscolabs.dev/sec-company-screen.html
+Apify Store: coming soon
+MCP: https://mcp.apify.com?tools=bosco_labs/sec-company-screen
+Price: $0.002 per company returned
+
+US companies matching your filters for one calendar year or quarter: revenue, net income, margins, cash flow, assets and 30 more metrics from SEC XBRL frames, sorted and capped. Each value cites its XBRL tag and SEC filing. Same metrics as SEC Company Financials.
+
+Example questions:
+
+- Which US companies had revenue over $10B and net margin above 20% in fiscal 2025?
+- Top 20 US companies by operating cash flow in 2025.
+- Which companies with a ticker had an operating margin above 30% in Q3 2025?
+
+### Input fields
+
+- `period` (string, required): Calendar period in SEC frames format: "CY2025" = annual figures, "CY2025Q3" = 3-month quarter figures. Required, 2009 to the current year. Calendar-aligned: each company comes with its own fiscal period that best fits it (e.g. CY2025 holds Apple's fiscal year to Sep 2025, Microsoft's to Jun 2025, Walmart's to Jan 2026), shown in period_start/period_end. Balance-sheet metrics are taken at each company's period end.
+- `filters` (array): Conditions every company must meet, as a list of {metric, min, max} (either bound optional, both inclusive), e.g. [{"metric": "revenue", "min": 10000000000}, {"metric": "net_margin", "min": 0.2}] = revenue of at least $10B and net margin of at least 20%. Money in full USD (10000000000 = $10B), ratios as fractions (0.2 = 20%), EPS in USD per share. A company without a value for a filter metric is left out. Metrics: see sortBy. Empty = no filter (all companies with a sortBy value).
+- `sortBy` (string): Metric to rank by, e.g. "operating_cash_flow". Same names as the SEC Company Financials Actor; the last seven (free_cash_flow to equity_ratio) are derived from two reported metrics. Companies without a value for it are left out. Empty = the first filter's metric, else revenue.
+- `sortOrder` (string): "desc" = largest first (top N), "asc" = smallest first (e.g. the lowest net margin). Default "desc".
+- `maxResults` (integer): Most companies to return (and charge for), e.g. 20 for a top 20. The status message says how many matched in total. Default 50, max 1000.
+- `metrics` (array): More fields to show per company besides the sortBy and filter metrics, e.g. ["operating_cash_flow", "total_assets"]. Same names as sortBy. Each adds a few SEC requests. Empty = only the sortBy and filter metrics (plus the inputs of derived ones).
+- `tickersOnly` (boolean): true = skip companies without a ticker in the SEC's company_tickers.json (delisted companies, private issuers of public debt, subsidiaries). Default false.
+- `includeSources` (boolean): true = each row has `sources`: per value the XBRL tag, the SEC accession number and the filing URL (or the formula for derived values). false = values only, about 3x smaller rows. Default true.
+
+### Output fields
+
+- `schema_version` (string): Output schema version.
+- `ticker` (string | null): Main ticker in the SEC's current ticker list (null if the company has none, e.g. delisted or private debt issuers).
+- `cik` (string): SEC CIK, 10 digits.
+- `company_name` (string | null): Company name as in the SEC frame.
+- `period` (string): The calendar period screened, e.g. CY2025 or CY2025Q3. SEC frames are calendar-aligned: each company appears with its own fiscal period that best fits this calendar period (Apple's year to 27 Sep 2025, Microsoft's to 30 Jun 2025 and Walmart's to 31 Jan 2026 are all in CY2025). See period_start/period_end.
+- `period_start` (string | null): First day of the company's own fiscal period that SEC assigned to this calendar period (YYYY-MM-DD); null when the company reported no duration value (income, cash flow or EPS) for it.
+- `period_end` (string | null): Last day of that fiscal period (YYYY-MM-DD); balance-sheet values are as of this date (when period_start is null: the balance-sheet date nearest the calendar period's end).
+- `currency` (string): Always USD: frames are screened in USD (companies reporting in other currencies are not included). Values are in full dollars, not thousands.
+- `revenue` (number | null): Total revenue / net sales (for banks: total net revenue). In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `cost_of_revenue` (number | null): Cost of revenue / cost of goods and services sold. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `gross_profit` (number | null): Gross profit; when not tagged, revenue - cost_of_revenue (sources says derived). In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `research_and_development` (number | null): Research and development expense. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `selling_general_and_administrative` (number | null): Selling, general and administrative expense (null when the company reports sales/marketing and G&A separately). In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `operating_profit` (number | null): Operating income (loss). Null for most banks and insurers. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `profit_before_tax` (number | null): Income from continuing operations before income taxes. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `net_income` (number | null): Net income including noncontrolling interests (ProfitLoss), else net income attributable to the parent; as in the esef-annual-reports Actor. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `net_income_attributable_to_parent` (number | null): Net income attributable to the parent's shareholders (the US 'net income' headline). In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `eps_basic` (number | null): Basic earnings per share, in USD per share. Never derived (null for Q4 unless reported). Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `eps_diluted` (number | null): Diluted earnings per share, in USD per share. Never derived. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `weighted_average_shares_basic` (number | null): Weighted average shares outstanding, basic. Never derived. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `weighted_average_shares_diluted` (number | null): Weighted average shares outstanding, diluted. Never derived. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `depreciation_amortisation` (number | null): Depreciation, depletion and amortization (cash flow statement). In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `total_assets` (number | null): Total assets at period end. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `current_assets` (number | null): Total current assets at period end. Null for banks and insurers (unclassified balance sheet). In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `cash_and_equivalents` (number | null): Cash and cash equivalents at period end (banks: cash and due from banks). In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `total_liabilities` (number | null): Total liabilities; when not tagged, total_assets - total_equity (sources says derived). In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `current_liabilities` (number | null): Total current liabilities. Null for banks and insurers. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `noncurrent_liabilities` (number | null): Total non-current liabilities, when tagged. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `long_term_debt` (number | null): Long-term debt, non-current portion where tagged, else total long-term debt; sources shows the tag. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `total_equity` (number | null): Total equity including noncontrolling interests, else stockholders' equity. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `equity_attributable_to_parent` (number | null): Stockholders' equity attributable to the parent. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `shares_outstanding` (number | null): Common shares outstanding at the balance-sheet date. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `operating_cash_flow` (number | null): Net cash from operating activities. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `investing_cash_flow` (number | null): Net cash from investing activities. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `financing_cash_flow` (number | null): Net cash from financing activities. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `capex` (number | null): Capital expenditure: payments for property, plant and equipment, as a positive number. Null for most banks. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `dividends_paid` (number | null): Dividends paid in cash, as a positive number. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `free_cash_flow` (number | null): Derived: operating_cash_flow - capex. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `ebitda` (number | null): Derived: operating_profit + depreciation_amortisation. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `gross_margin` (number | null): Derived: gross_profit / revenue (0.25 = 25%). Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `operating_margin` (number | null): Derived: operating_profit / revenue (0.25 = 25%). Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `net_margin` (number | null): Derived: net_income / revenue (0.25 = 25%). Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `return_on_equity` (number | null): Derived: net_income / total_equity (0.25 = 25%). Calendar-year periods only. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `equity_ratio` (number | null): Derived: total_equity / total_assets (0.25 = 25%). Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `sources` (object): Only with includeSources: per metric {tag: XBRL concept used, accession: SEC filing the value comes from (the latest filing that reported it, or for re-checked values the first 10-K/10-Q that did), url: its EDGAR index page}, or {derived: formula} for derived values.
+- `warnings` (array): Notes on this row: a value from a proxy statement replaced by the 10-K/10-Q figure, a value that could not be checked, or a metric left out because it was reported for a different period than the row's.
+- `retrieved_at` (string): UTC time the row was produced.
+
+### Example input
+
+```json
+{
+  "period": "CY2025",
+  "filters": [
+    { "metric": "revenue", "min": 10000000000 },
+    { "metric": "net_margin", "min": 0.2 }
+  ],
+  "sortBy": "revenue",
+  "maxResults": 50
+}
+```
+
 ## EU Annual Reports API (ESEF): XBRL financial statements
 
 Docs: https://boscolabs.dev/esef-annual-reports.html
@@ -229,6 +533,12 @@ Price: $0.01 per run plus $0.05 per annual report; raw XBRL fact rows, if switch
 Key financials (revenue, EBIT, net income, EPS, assets, equity, cash flows, margins, growth) from ESEF annual reports of European listed companies in 28 countries, via filings.xbrl.org. Each value links to its XBRL fact. Filter by LEI, company name, country and fiscal year end.
 
 Coverage: ESEF annual reports collected by filings.xbrl.org: 27,626 reports from 28 countries (counted 2026-11-05; largest: UA, GB, DK, SE, NO, FR, FI). Germany is not in the index. Reports appear a few days to a few weeks after publication, once filings.xbrl.org has processed them. All values are in full currency units.
+
+Example questions:
+
+- Get Heineken's latest revenue growth and operating margin from its annual report.
+- Compare net income and equity of Belgian listed companies for fiscal years ending in 2024.
+- Which XBRL fact does ASML's reported revenue come from?
 
 ### Input fields
 
@@ -305,6 +615,48 @@ Coverage: ESEF annual reports collected by filings.xbrl.org: 27,626 reports from
 { "countries": ["NL", "BE", "FR"], "periodFrom": "2025-01-01", "maxFilings": 50 }
 ```
 
+## Company Check API: identity, financials & SEC filings in 1 call
+
+Docs: https://boscolabs.dev/company-check.html
+Apify Store: coming soon
+MCP: https://mcp.apify.com?tools=bosco_labs/company-check
+Price: $0.03 per report
+
+One company report per call: legal name, LEI, registration number, status, address and industry, plus years of revenue, profit, equity, assets and cash, and SEC filings for US issuers. Look up by name, LEI, UK, Danish, Norwegian, French or Finnish number, ticker or CIK. Sourced values.
+
+Example questions:
+
+- Who is Novo Nordisk legally, and what were its revenue and net income in the last three years? Cite your sources.
+
+### Input fields
+
+- `query` (string, required): The company to check: a name (e.g. "Novo Nordisk") or an identifier: LEI (20 characters, e.g. "724500Y6DUVHQD6OXN27"), UK company number ("00445790", "SC123456"), Danish CVR ("24256790"), Norwegian org number ("923609016"), French SIREN (9 digits, "552032534") or SIRET (14 digits, "55203253400703"), Finnish Business ID with its dash ("0112038-9"), US ticker in capitals or with $ ("AAPL", "$brk.b") or SEC CIK ("320193"). The type is detected from format and check digits; a number valid in two registers is settled by asking them, and `country` decides when given. Required.
+- `country` (string): ISO 3166 alpha-2 country code to disambiguate, e.g. "DK", "GB", "NO", "FR", "FI", "NL", "US". With a name it limits the search to that country and, for NO, FR and FI, also searches the national register (most companies there have no LEI); with a number it says which register the number belongs to (e.g. "GB" for a UK number without a leading zero, "FI" for a Business ID typed without its dash). Empty = detect from the query.
+- `maxYears` (integer): How many fiscal years of key figures to return, newest first, e.g. 3. Default 3, maximum 10. Norway's open register holds the last 3 years only. The price is the same for any number of years.
+- `include` (array): Which sections to fill: any of "identity", "financials", "us" (SEC filings of US issuers), e.g. ["identity", "financials"]. Default (or empty) = all three. Fewer sections = fewer sources called, slightly faster; the price is the same.
+
+### Output fields
+
+- `schema_version` (string): Output schema version.
+- `query` (string): The query as given.
+- `query_type` (string): How the query was read: lei, uk (UK company number), cvr, orgnr (Norwegian org number), siren (French SIREN, also for a SIRET), ytunnus (Finnish Business ID), cik, ticker or name.
+- `country` (string | null): ISO 3166 alpha-2 country of the company.
+- `identity` (object | null): Who the company is: from the national register, GLEIF and the SEC (first source that has a value wins). null if no source had a record or the section was not requested.
+- `financials` (object | null): Key figures of the last `maxYears` fiscal years, each with its source filing. null when none were found (see not_found).
+- `us` (object | null): SEC EDGAR data for US issuers (by ticker, CIK, or a US company in GLEIF that the SEC lists). null otherwise.
+- `candidates` (array): When a name (or a number valid in two registers) matches several companies: the top 3 (legal_name, country, lei, lei_status, registration_number, score 0-1). The report is for the first; re-run with its LEI or registration number (and country) to pick another. Empty when the match was clear.
+- `not_found` (array): Requested sections without data, each {section, reason} in plain words an agent can relay.
+- `warnings` (array): Sources that failed or timed out, and other caveats, in plain words. The rest of the report is still valid.
+- `sources` (array): Every source used, each {section, name, url}.
+- `retrieved_at` (string): When the report was made (ISO 8601, UTC).
+- `duration_seconds` (number): How long the lookup took.
+
+### Example input
+
+```json
+{ "query": "Novo Nordisk", "country": "DK", "maxYears": 3 }
+```
+
 ## Company Financials API: UK, Denmark & Norway accounts + LEI
 
 Docs: https://boscolabs.dev/company-accounts.html
@@ -315,6 +667,12 @@ Price: $0.04 per company-year
 Company financials (revenue, profit, equity, assets, cash, employees) of private and public companies from official accounts: UK Companies House (all digital years), Denmark (all years), Norway Brønnøysund (last 3 years). Look up by company number, CVR or org number; adds LEI and a source per value.
 
 Coverage: UK: accounts filed electronically with Companies House in the last ~60 days. Denmark: every annual report filed digitally with Erhvervsstyrelsen, all years. Norway: the last 3 fiscal years of every company that files accounts with the Brønnøysund Register (company accounts, not group accounts). Belgium only when the Actor owner has configured access. LEI looked up at GLEIF.
+
+Example questions:
+
+- What were Novo Nordisk's revenue and equity in its latest Danish annual report?
+- Get the last three years of Equinor ASA's own accounts from the Norwegian register.
+- What is the LEI and the latest net assets of UK company 03117531?
 
 ### Input fields
 
@@ -371,16 +729,415 @@ Coverage: UK: accounts filed electronically with Companies House in the last ~60
 { "countries": ["GB", "DK", "NO"], "companyNumbers": ["03117531"], "cvrNumbers": ["24256790"], "orgNumbers": ["923609016"], "maxResults": 10 }
 ```
 
+## UK New Companies API: daily Companies House incorporations
+
+Docs: https://boscolabs.dev/uk-new-companies.html
+Apify Store: coming soon
+MCP: https://mcp.apify.com?tools=bosco_labs/uk-new-companies
+Price: $0.002 per company
+
+New UK companies incorporated on any day (default: yesterday) from the official Companies House API: number, name, type, status, SIC codes with descriptions, registered office address and a register link. Filter by SIC prefix, location and type. No director data.
+
+Example questions:
+
+- New UK companies incorporated yesterday in London with SIC 62 (IT).
+
+### Input fields
+
+- `incorporatedFrom` (string): Earliest incorporation date, YYYY-MM-DD, e.g. "2026-11-01". Empty = the same day as `incorporatedTo` (so both empty = yesterday, UTC).
+- `incorporatedTo` (string): Latest incorporation date (inclusive), YYYY-MM-DD, e.g. "2026-11-04". Empty = yesterday (UTC), or `incorporatedFrom` if that is later.
+- `sicCodes` (array): UK SIC 2007 code prefixes (Companies House condensed list); a prefix matches every code below it, e.g. ["62"] = IT / software, "6201" = software development, "56101" = licensed restaurants, "68" = real estate. A company matches if any of its SIC codes matches. Empty = all sectors.
+- `location` (string): Registered office location as free text, passed to Companies House's location filter: a town, county or postcode (area), e.g. "London", "Manchester" or "EC1". Empty = all of the UK.
+- `companyTypes` (array): Companies House company types, e.g. ["ltd"] (private limited), "plc", "llp", "private-limited-guarant-nsc" (company limited by guarantee), "limited-partnership". Default ["ltd", "plc", "llp"]. Pass [] for all types.
+- `maxResults` (integer): Maximum companies to return, e.g. 500. Default 100. You pay per company delivered.
+- `onlyNewSinceLastRun` (boolean): true = skip (and don't charge for) companies an earlier run with the same filters already delivered. For scheduled runs. Default false. Remembered in a named key-value store in your account.
+
+### Output fields
+
+- `schema_version` (string): Output schema version.
+- `company_number` (string): Companies House company number, 8 characters, e.g. 16812345 or SC812345.
+- `company_name` (string): Registered company name.
+- `company_type` (string): Companies House company type code, e.g. ltd, plc, llp.
+- `company_subtype` (string | null): Subtype when set: community-interest-company or private-fund-limited-partnership.
+- `company_status` (string): Company status code, e.g. active.
+- `incorporation_date` (string): Date of incorporation (YYYY-MM-DD).
+- `sic_codes` (array): SIC 2007 codes the company declared (up to four, 5 digits).
+- `sic_descriptions` (array): Description of each SIC code from the Companies House condensed SIC list, in the same order as sic_codes; null for a code not on that list.
+- `registered_office_address` (string | null): Registered office address as one line.
+- `address_line_1` (string | null): Registered office: first address line.
+- `address_line_2` (string | null): Registered office: second address line.
+- `locality` (string | null): Registered office: town or city.
+- `region` (string | null): Registered office: region or county, as filed (often empty).
+- `postal_code` (string | null): Registered office: postcode.
+- `postcode_area` (string | null): Postcode area (leading letters of the postcode), e.g. EC, M, SW.
+- `country` (string | null): Registered office: country, e.g. England, Wales, Scotland, Northern Ireland.
+- `source_url` (string): The company's page on the Companies House register (find-and-update.company-information.service.gov.uk).
+- `api_url` (string): The company profile in the Companies House API (needs an API key).
+- `retrieved_at` (string): UTC time the data was fetched.
+
+### Example input
+
+```json
+{
+  "incorporatedFrom": "2026-11-04",
+  "incorporatedTo": "2026-11-04",
+  "sicCodes": ["62"],
+  "location": "London",
+  "companyTypes": ["ltd", "plc", "llp"],
+  "maxResults": 100,
+  "onlyNewSinceLastRun": false
+}
+```
+
+## Company Hiring Signals API: open roles, departments, locations
+
+Docs: https://boscolabs.dev/company-hiring-signals.html
+Apify Store: coming soon
+MCP: https://mcp.apify.com?tools=bosco_labs/company-hiring-signals
+Price: $0.005 per company found plus $0.001 per job row
+
+Is a company hiring? Open roles by department, location and remote share, newest and oldest posting dates and top titles, plus job rows with a link each. Read from the company's public Greenhouse, Lever or Ashby job board. Look up by name, domain or board URL.
+
+Example questions:
+
+- Is Notion hiring engineers? How many roles, where, and since when? Link the postings.
+
+### Input fields
+
+- `companies` (array, required): Companies to check, 1-50: a name ("Notion"), a website domain ("stripe.com"), a job board URL ("https://jobs.lever.co/spotify", "https://job-boards.greenhouse.io/airbnb", "https://jobs.ashbyhq.com/ramp") or provider:token ("greenhouse:stripe", "lever:spotify", "lever-eu:<token>", "ashby:notion"). Names and domains are matched to likely board names on Greenhouse, Lever and Ashby; a board URL is exact. Required.
+- `departments` (array): Only count and return roles whose department or team has a word starting with one of these, case-insensitive, e.g. ["engineering", "data"]. Department names are each company's own (Stripe uses "Tech" and team codes), so `keywords` on the title is often more reliable. Empty = all departments.
+- `locations` (array): Only roles whose location text, other locations or country contains one of these as whole words, case-insensitive ("US" does not match "Australia"), e.g. ["London", "Germany", "remote"]. Lever gives ISO country codes ("GB"), Ashby country names; Greenhouse has the location text only. Empty = all locations.
+- `keywords` (array): Only roles whose job title has a word starting with one of these, case-insensitive ("engineer" matches "Engineering", "ai" not "Retail"), e.g. ["engineer", "data scientist"]. Empty = all titles.
+- `postedSince` (string): Only roles first published on or after this date: an ISO date ("2026-10-01") or a number of days back ("30d"). Greenhouse: first published; Lever: created; Ashby: last published. Empty = any date.
+- `maxJobsPerCompany` (integer): Most job rows to return per company, newest first, e.g. 20. Default 50, maximum 1000; 0 = summary only. The summary always counts all matching roles, whatever this limit. Each job row is charged.
+- `summaryOnly` (boolean): true = one summary row per company and no job rows (cheapest; answers "is X hiring and where?"). Default false.
+- `compareWithPrevious` (boolean): true = add a `trend` (change in open roles, new and closed jobs) versus the last run that also had this on, and save this run's job IDs for next time in the key-value store "company-hiring-signals-history" in your account. The first run has no trend. Default false.
+
+### Output fields
+
+- `schema_version` (string): Output schema version.
+- `row_type` (string): company_summary (one per input company, found or not) or job (one per open role).
+- `company` (string): The company as given in the input.
+- `found` (boolean | null): Summary rows: true if a public job board was found. Not-found rows are free of charge.
+- `provider` (string | null): Job board provider: greenhouse, lever, lever-eu (Lever's EU instance) or ashby.
+- `board_token` (string | null): The company's board name at the provider, e.g. stripe. Pass it as provider:token for an exact lookup.
+- `board_url` (string | null): Summary rows: the company's public job board page.
+- `source_url` (string | null): Summary rows: the public API URL all counts were computed from. Job rows: the job's public posting page.
+- `total_open_roles` (integer | null): Summary rows: all open roles on the board, before filters.
+- `matching_roles` (integer | null): Summary rows: open roles matching departments, locations, keywords and postedSince. All counts below are over these.
+- `filters` (object | null): Summary rows: the filters applied (lower-cased), null if none.
+- `by_department` (array): Summary rows: top 15 departments as {name, count}, largest first. Roles without a department are not listed.
+- `by_location` (array): Summary rows: top 15 primary locations as written by the company, as {name, count}.
+- `by_country` (array): Summary rows: top 15 countries as {name, count}: ISO codes for Lever, country names for Ashby, empty for Greenhouse (no country field).
+- `remote_share` (number | null): Summary rows: share of matching roles marked remote, 0-1. Greenhouse: roles whose location text says remote. null when no roles match.
+- `posted_last_30_days` (integer | null): Summary rows: matching roles posted in the 30 days before retrieved_at.
+- `newest_posted_at` (string | null): Summary rows: newest posting date among matching roles (ISO 8601 UTC).
+- `oldest_posted_at` (string | null): Summary rows: oldest posting date among matching roles: how long the company has been hiring for its open roles.
+- `top_titles` (array): Summary rows: the 10 most common job titles as {title, count}.
+- `trend` (object | null): Summary rows with compareWithPrevious: {previous_retrieved_at, previous_total_open_roles, change, new_jobs, closed_jobs} versus the last such run. null on the first run or when off.
+- `jobs_returned` (integer | null): Summary rows: job rows returned for this company (at most maxJobsPerCompany, newest first).
+- `other_boards` (array): Summary rows: other boards found for the same name (usually old, smaller ones). The board with most open roles is used.
+- `not_found_reason` (string | null): Summary rows: why no board was found, and how to fix it. null when found.
+- `warnings` (array): Summary rows: caveats in plain words, e.g. a provider that could not be read or several providers with a board under the same name.
+- `job_id` (string | null): Job rows: the provider's job posting ID.
+- `title` (string | null): Job rows: job title as published.
+- `department` (string | null): Job rows: department (Greenhouse: top-level department).
+- `team` (string | null): Job rows: team or sub-department, null if none or the same as department.
+- `location` (string | null): Job rows: primary location as written by the company.
+- `other_locations` (array): Job rows: further locations of the same posting (Lever, Ashby).
+- `country` (string | null): Job rows: country: ISO 3166 alpha-2 for Lever, country name for Ashby, null for Greenhouse.
+- `workplace_type` (string | null): Job rows: remote, hybrid or on-site (Lever, Ashby); null when not stated or on Greenhouse.
+- `remote` (boolean | null): Job rows: true if remote; false if hybrid or on-site; null when unknown. Greenhouse: true when the location text says remote, else null.
+- `employment_type` (string | null): Job rows: as the provider gives it, e.g. FullTime, Intern (Ashby) or Permanent (Lever commitment). null on Greenhouse.
+- `posted_at` (string | null): Job rows: ISO 8601 UTC. Greenhouse: first published; Lever: created; Ashby: last published.
+- `updated_at` (string | null): Job rows: last update (Greenhouse only), ISO 8601 UTC.
+- `retrieved_at` (string): When the board was read (ISO 8601 UTC).
+
+### Example input
+
+```json
+{
+  "companies": ["stripe.com", "Notion", "https://jobs.lever.co/spotify"],
+  "departments": ["engineering"],
+  "postedSince": "30d",
+  "maxJobsPerCompany": 20
+}
+```
+
+## Sanctions Screening API: OFAC, UK, EU & US export lists
+
+Docs: https://boscolabs.dev/sanctions-screening.html
+Apify Store: coming soon
+MCP: https://mcp.apify.com?tools=bosco_labs/sanctions-screening
+Price: $0.01 per name screened
+
+Is this company, vessel or person sanctioned? Returns per name: match yes/no, the listed entry, aliases, programs, listing date, identifiers and a source link, from the official OFAC SDN and non-SDN, US Consolidated Screening List, UK Sanctions List and EU lists, with each list's date.
+
+Example questions:
+
+- Before we sign with these suppliers, check whether Sovcomflot or Novo Nordisk A/S are on any sanctions list, and cite the lists you checked.
+
+### Input fields
+
+- `names` (array, required): Company, vessel or person names to check, one per entry, as plain text, e.g. ["Sovcomflot", "Novo Nordisk A/S", "Vladimir Putin"]. Legal forms (Ltd, LLC, GmbH, PJSC), accents, punctuation and word order are ignored. 1-200 names; each name gives one result row and one charge; repeats are screened once. Required.
+- `country` (string): Country of the party you are screening, as an ISO 3166 alpha-2 code or English name, e.g. "RU" or "Russia". It never hides a match: listings that name other countries move to the end and get country_match false. Empty = no country ranking.
+- `entityType` (string): Only return listings of this type, e.g. "organization". Default "any". Listings whose type the list does not state (the US Commerce and State lists) are always kept.
+- `minScore` (integer): Lowest similarity score (0-100) that counts as a match, e.g. 85 (default). 100 = same name after normalisation; 90-99 = small spelling differences or the name inside a longer listed name; lower values find more variants and more false positives. Range 50-100.
+- `lists` (array): Which lists to check, any of "ofac_sdn", "ofac_consolidated", "us_csl", "uk", "eu", e.g. ["ofac_sdn", "uk"]. Default (or empty) = all five. The price is the same for any number of lists.
+
+### Output fields
+
+- `schema_version` (string): Output schema version.
+- `query` (string): The name as given.
+- `match_found` (boolean): True when at least one listing scored >= min_score.
+- `match_count` (integer): Number of listings at or above min_score (only the top 5 are in matches).
+- `best_score` (integer | null): Highest score, null when nothing matched.
+- `summary` (string): One sentence an agent can pass on: the best match, or 'No match >= N' with every list checked and its date.
+- `matches` (array): Top 5 listings, best first (listings in other countries than `country` last).
+- `lists_checked` (array): Every list this answer covers, with its publish date (version_date), when it was downloaded (fetched_at), its number of entries and the official file URL.
+- `warnings` (array): Lists that could not be downloaded (not checked, or checked from an older cached copy), in plain words.
+- `min_score` (integer): Threshold used.
+- `entity_type` (string): Entity type filter used.
+- `country` (string | null): Country used for ranking (ISO-2), or null.
+- `checked_at` (string): When the screening ran (ISO 8601, UTC).
+
+### Example input
+
+```json
+{ "names": ["Sovcomflot", "Huawei Technologies", "Petrel 8"], "entityType": "any", "minScore": 85 }
+```
+
+## EU Law Lookup API (EUR-Lex): article text, in force, amendments
+
+Docs: https://boscolabs.dev/eu-law-lookup.html
+Apify Store: coming soon
+MCP: https://mcp.apify.com?tools=bosco_labs/eu-law-lookup
+Price: $0.01 per act or article returned
+
+The text of an EU law article as in force today (or on a date), whether the act is in force, what amended it, plus new Official Journal acts. Ask by name (GDPR, AI Act), citation, CELEX or ELI; 24 languages. Official EUR-Lex/Cellar data with a source link per row.
+
+Example questions:
+
+- What does Article 50 of the AI Act require today, and has it been amended? Quote the text and link the source.
+
+### Input fields
+
+- `query` (string): The EU act to look up: a short name ("GDPR", "AI Act", "DSA", "NIS2", "DORA", "MiCA", "CSRD"...), a citation ("Regulation (EU) 2024/1689", "Directive 95/46/EC", "Regulation (EC) No 1907/2006"), a bare number ("2016/679"), a CELEX number ("32016R0679") or an ELI URI ("http://data.europa.eu/eli/reg/2016/679/oj"). "AI Act Article 50" also works. Leave empty only when using ojSince (new Official Journal acts). An unreadable citation fails in seconds, with examples, at no charge.
+- `article` (string): Article number, optionally with a paragraph: "5", "6(1)", "4a"; several separated by commas ("5, 6(1)", up to 10). One row per article. Empty = one row for the whole act with its table of contents and recital count (no full text unless include has "text").
+- `language` (string): EU language code of the text and titles: BG, CS, DA, DE, EL, EN, ES, ET, FI, FR, GA, HR, HU, IT, LT, LV, MT, NL, PL, PT, RO, SK, SL, SV. Default EN. If the text is missing in that language, English is returned with a warning.
+- `asOf` (string): YYYY-MM-DD, e.g. "2025-01-01": return the consolidated version that applied on that date. Empty = today (the newest consolidated version in force now). Acts without consolidated versions return the Official Journal text.
+- `include` (array): Any of "metadata" (always on), "amendments" (amended_by, corrected_by, repealed_by, amends, repeals), "citing" (acts and judgments that cite this act, newest first) and "text" (the whole act as plain text, cut at maxTextChars). Default ["metadata", "amendments"]. The price is the same.
+- `maxTextChars` (integer): Cap on article_text and text, in characters, e.g. 30000 (default). Longer text is cut and flagged (article_text_truncated / text_truncated) with a warning.
+- `maxCiting` (integer): With include "citing": how many citing acts to list, newest first, e.g. 20 (default). citing_acts_total always gives the full count.
+- `ojSince` (string): Switches to Official Journal mode: list acts published in the OJ L series from this date (YYYY-MM-DD, e.g. "2026-11-03") until today, newest first, at most 31 days back. Leave query empty when you use this. Empty = normal lookup.
+- `keywords` (string): OJ mode only: comma-separated words or phrases; an act is kept when its title (in the chosen language) contains any of them, case-insensitive, e.g. "artificial intelligence, data". Empty = all acts.
+- `maxResults` (integer): OJ mode only: the most acts to return, newest first, e.g. 50 (default). One charge per act returned.
+
+### Output fields
+
+- `schema_version` (string): Output schema version.
+- `query` (string | null): The query as given (null in OJ mode).
+- `celex` (string): CELEX number of the act, e.g. 32016R0679.
+- `eli` (string | null): European Legislation Identifier URI of the act, e.g. http://data.europa.eu/eli/reg/2016/679/oj.
+- `title` (string | null): Official title in the chosen language (null if Cellar has none in that language).
+- `act_type` (string | null): Type of act, e.g. Regulation, Directive, Implementing regulation, Corrigendum.
+- `act_type_code` (string | null): Publications Office resource-type code, e.g. REG, DIR, DEC_IMPL, CORRIGENDUM.
+- `date_document` (string | null): Date of the document (signature/adoption), YYYY-MM-DD.
+- `date_publication` (string | null): Date of publication in the Official Journal, YYYY-MM-DD.
+- `oj_reference` (string | null): Official Journal reference for acts published act by act (since Oct 2023), e.g. "OJ L, 2024/1689".
+- `date_entry_into_force` (string | null): Earliest date of entry into force, YYYY-MM-DD.
+- `entry_into_force_dates` (array): All entry-into-force / effect dates EUR-Lex records (staged application), sorted.
+- `date_end_of_validity` (string | null): End of validity, YYYY-MM-DD; null when open-ended.
+- `in_force` (boolean | null): Whether EUR-Lex marks the act as in force today.
+- `eur_lex_url` (string): EUR-Lex page of the original act.
+- `summary_url` (string | null): EUR-Lex plain-language summary of the act, when one exists.
+- `language` (string): Language of the text and titles returned (EN when the requested one was unavailable).
+- `as_of` (string | null): The asOf date used (null = today).
+- `latest_consolidated_version_date` (string | null): Date of the newest consolidated version EUR-Lex holds (may be later than asOf).
+- `text_version` (string | null): "consolidated" (EUR-Lex consolidated version, documentation only) or "original" (OJ text); null if no text.
+- `text_celex` (string | null): CELEX of the text the article was read from, e.g. 02024R1689-20260727 for a consolidated version.
+- `consolidated_version_date` (string | null): Date of the consolidated version used, YYYY-MM-DD.
+- `text_notice` (string | null): For consolidated texts: EUR-Lex's own disclaimer (no legal effect; the OJ text is authentic).
+- `source_url` (string): EUR-Lex page of the exact text version used (consolidated version or OJ act).
+- `cellar_url` (string | null): The Cellar document the text was read from.
+- `amended_by` (array): Acts that amend this act: {celex, title, date, url}, newest first (include amendments).
+- `corrected_by` (array): Corrigenda to this act: {celex, title, date, url}.
+- `repealed_by` (array): Acts that repeal this act: {celex, title, date, url}.
+- `implicitly_repealed_by` (array): Acts that implicitly repeal this act.
+- `amends` (array): Acts this act amends: {celex, title, date, url}.
+- `repeals` (array): Acts this act repeals.
+- `implicitly_repeals` (array): Acts this act implicitly repeals.
+- `citing_acts` (array | null): Legislation and case-law citing this act, newest first, up to maxCiting: {celex, title, date, url} (include citing).
+- `citing_acts_total` (integer | null): How many legislative acts and judgments cite this act.
+- `article` (string | null): The article returned, e.g. "50"; null for an act-level row.
+- `paragraph` (string | null): The paragraph returned, e.g. "1"; null = whole article.
+- `article_title` (string | null): Heading of the article, e.g. "Principles relating to processing of personal data".
+- `article_text` (string | null): Plain text of the article (or paragraph), one line per paragraph or point, numbering kept ("1.", "(a)").
+- `article_text_truncated` (boolean | null): True when article_text was cut at maxTextChars.
+- `article_amended_by` (array): In a consolidated text: acts that changed this article (from EUR-Lex's change markers), {celex, change}.
+- `recitals_count` (integer | null): Act-level row: number of recitals in the OJ text.
+- `articles_count` (integer | null): Act-level row: number of articles in the text used.
+- `table_of_contents` (array): Act-level row: [{article, title}] for every article, to pick one for a follow-up call.
+- `text` (string | null): Whole act as plain text, cut at maxTextChars (include text only).
+- `text_truncated` (boolean | null): True when text was cut at maxTextChars.
+- `warnings` (array): Caveats in plain words: fallbacks, not in force on asOf, truncation, partial data.
+- `retrieved_at` (string): When the row was made (ISO 8601, UTC).
+- `duration_seconds` (number): How long the lookup took.
+
+### Example input
+
+```json
+{ "query": "AI Act", "article": "50", "language": "EN", "asOf": "2026-11-05" }
+```
+
+## UK & Dutch Law Lookup API: article text by date, in force
+
+Docs: https://boscolabs.dev/national-law-lookup.html
+Apify Store: coming soon
+MCP: https://mcp.apify.com?tools=bosco_labs/national-law-lookup
+Price: $0.01 per article or act returned
+
+The text of a UK section or Dutch article as in force today (or on a date), whether it is in force and what changed it. Ask by citation: "Companies Act 2006 s 172", "BW 7:658", "artikel 13 Wet Vpb 1969". Official legislation.gov.uk and Dutch BWB data with a source link per row.
+
+Example questions:
+
+- What does article 13 of the Dutch Wet op de vennootschapsbelasting 1969 say as of 1 January 2025? Quote it and link the source.
+
+### Input fields
+
+- `query` (string, required): The act, optionally with the article. UK: a short title with a section ("Companies Act 2006 s 172", "section 172 of the Companies Act 2006"), a short name ("CA 2006", "DPA 2018", "UK GDPR", "PECR"; 35 common acts), a legislation.gov.uk path or URL ("ukpga/2006/46/section/172"), a chapter ("2006 c. 46") or an SI ("S.I. 2003/2426 reg 6"). NL: "BW 7:658", "artikel 13 Wet Vpb 1969", "Awb 8:1", "art. 310 Sr", an abbreviation (BW1-10, Sr, Sv, Rv, Awb, UAVG, Wft, Wwft, Woo ...), a citeertitel, a BWB id ("BWBR0002672"), a jci reference or a wetten.overheid.nl URL. Required. An unreadable citation fails in seconds, with examples, at no charge.
+- `jurisdiction` (string): "UK" or "NL". Default empty = detected from the citation (paths, BWB ids, known names, Dutch or English words); set it when a bare name is ambiguous.
+- `article` (string): Section, regulation or article number, optionally with a subsection or lid: "172", "172(1)", "7:658", "13 lid 2", "8:1"; several separated by commas (up to 5, e.g. "171, 172"). One row per article. Overrides an article in the query. Empty = the article in the query, or else one row for the whole act with its table of contents.
+- `asOf` (string): YYYY-MM-DD, e.g. "2025-01-01": return the text as in force on that date (UK point-in-time version; NL consolidated version, newest correction). Empty = today.
+- `language` (string): Optional, "EN" or "NL". UK texts are English and Dutch texts are Dutch: there is no official English translation of Dutch legislation, so EN for a Dutch act returns the Dutch text with a warning. Default empty = the source language.
+- `maxTextChars` (integer): Cap on article_text, in characters, e.g. 30000 (default). Longer text is cut and flagged (article_text_truncated) with a warning.
+
+### Output fields
+
+- `schema_version` (string): Output schema version.
+- `query` (string | null): The query as given.
+- `jurisdiction` (string): "UK" or "NL".
+- `act_id` (string): Identifier of the act: legislation.gov.uk path ("ukpga/2006/46") or BWB id ("BWBR0005290"). Same role as celex in eu-law-lookup.
+- `eli` (string | null): European Legislation Identifier URI (UK, e.g. http://www.legislation.gov.uk/id/ukpga/2006/46); null for NL.
+- `title` (string | null): Short title or citeertitel, e.g. "Companies Act 2006", "Burgerlijk Wetboek Boek 7".
+- `long_title` (string | null): Long title (UK) or intitule (NL).
+- `act_type` (string | null): Type of act, e.g. "UK Public General Act", "UK Statutory Instrument", "Wet", "Algemene maatregel van bestuur".
+- `act_type_code` (string | null): Source code for the type: legislation.gov.uk type (ukpga, uksi, asp...) or BWB soort (wet, AMvB, ministeriele-regeling...).
+- `date_document` (string | null): UK: date of Royal Assent or making; NL: date of signature. YYYY-MM-DD.
+- `date_publication` (string | null): NL: issue date of the original Staatsblad/Staatscourant; null when unknown and for UK.
+- `official_publication` (string | null): Official reference: UK chapter or SI number ("2006 c. 46", "S.I. 2003/2426"), NL publication ("Stb. 1991, 600"). Same role as oj_reference in eu-law-lookup.
+- `date_entry_into_force` (string | null): UK article rows: when the section came into force (from its commencement note); NL: when the regulation first entered into force. YYYY-MM-DD.
+- `date_end_of_validity` (string | null): NL: last day of the last consolidated version when the regulation has lapsed (vervallen); null when open-ended and for UK.
+- `in_force` (boolean | null): Whether the returned article (for NL act rows: the act) is in force on as_of (default today). UK act rows: null.
+- `act_url` (string): Official page of the act (legislation.gov.uk id URI or wetten.overheid.nl).
+- `language` (string): Language of the text: EN (UK) or NL (NL).
+- `as_of` (string | null): The asOf date used (null = today).
+- `latest_consolidated_version_date` (string | null): Date of the newest consolidated (revised) version the source holds; may be later than as_of.
+- `text_version` (string | null): "consolidated" (revised / geconsolideerde tekst) or "original" (as enacted or made, UK only).
+- `consolidated_version_date` (string | null): Date from which the version used applies, YYYY-MM-DD.
+- `text_notice` (string | null): Licence attribution and the source's status note: revised texts are editorial consolidations; for NL the authentic text is the Staatsblad/Staatscourant publication.
+- `source_url` (string): Page of the exact text version used (article-level when available).
+- `data_url` (string | null): The XML the text was read from. Same role as cellar_url in eu-law-lookup.
+- `article` (string | null): The section, regulation or article returned, e.g. "172", "658", "8:1"; null for an act-level row.
+- `paragraph` (string | null): The subsection (UK) or lid (NL) returned; null = whole article.
+- `article_title` (string | null): Heading of the section or article (UK sections have one; most Dutch articles do not).
+- `article_text` (string | null): Plain text, one line per subsection, paragraph or list item, numbering kept (UK "(1)", "(a)"; NL "1.", "a.").
+- `article_text_truncated` (boolean | null): True when article_text was cut at maxTextChars.
+- `article_amended_by` (array): Changes to this article: UK textual amendments shown with it (F-notes), NL the publication that last changed it. Items {source, date, change, url}.
+- `pending_changes` (array): UK: changes legislation.gov.uk lists as not yet applied to this provision, {type, affected, source, url, in_force_date}. Always [] for NL.
+- `articles_count` (integer | null): Act-level row: number of sections or articles (NL: not repealed).
+- `table_of_contents` (array): Act-level row: [{article, title}] for up to 500 sections or articles, to pick one for a follow-up call.
+- `warnings` (array): Caveats in plain words: not in force on asOf, repealed, newer version coming, fallbacks, truncation.
+- `retrieved_at` (string): When the row was made (ISO 8601, UTC).
+- `duration_seconds` (number): How long the lookup took.
+
+### Example input
+
+```json
+{ "query": "Wet op de vennootschapsbelasting 1969 artikel 13", "asOf": "2025-01-01" }
+```
+
+## Dutch Case Law API (Rechtspraak): ECLI lookup, uitspraken
+
+Docs: https://boscolabs.dev/dutch-case-law.html
+Apify Store: coming soon
+MCP: https://mcp.apify.com?tools=bosco_labs/dutch-case-law
+Price: $0.005 per decision returned
+
+Dutch court decisions (uitspraken) by ECLI or search: court, dates, case numbers, legal area, summary (inhoudsindicatie), appeal/cassation relations, law references and optional text. Hoge Raad, Raad van State, gerechtshoven, rechtbanken. Official Rechtspraak Open Data, source link per row.
+
+Example questions:
+
+- Find Hoge Raad rulings on tenancy law (huurrecht) since 2024 and summarise what each one decided, with links.
+
+### Input fields
+
+- `ecli` (string): One or more Dutch ECLIs, separated by commas or spaces, e.g. "ECLI:NL:HR:2024:123" or "ECLI:NL:HR:2024:123, ECLI:NL:RVS:2024:1000" (max 100). Lower case and uitspraken.rechtspraak.nl links also work. One row per ECLI; an unknown ECLI fails at no charge. Empty = search with the fields below (both can be combined: ECLI rows come first).
+- `query` (string): Words to find in the decision's title and summary (inhoudsindicatie), case-insensitive. Commas separate alternatives, words within one alternative must all appear: "huur, pacht" = huur OR pacht; "ontslag op staande voet" = all four words. Summaries are in Dutch, so use Dutch words. The official API has no full-text search: this filters the newest-updated decisions that match the other filters (up to 10,000 scanned). Empty = no keyword filter.
+- `courts` (array): Court codes as used in the ECLI, e.g. ["HR"] for the Hoge Raad (Supreme Court); others: PHR (Procureur-Generaal/AG opinions), RVS (Raad van State), CRVB, CBB, GHAMS, GHARL, GHDHA, GHSHE (courts of appeal), RBAMS, RBDHA, RBROT, RBMNE ... (district courts). Full Dutch names also work. Empty = all courts.
+- `legalAreas` (array): Rechtsgebied names, e.g. ["Strafrecht"], ["Belastingrecht", "Arbeidsrecht"]; English also works: criminal, civil, administrative, tax, employment, immigration, insolvency, family, competition, environmental. A main area includes its sub-areas. Empty = all areas.
+- `dateFrom` (string): Earliest decision date (uitspraakdatum), YYYY-MM-DD, e.g. "2024-01-01". Empty = no lower limit (to today if dateTo is empty).
+- `dateTo` (string): Latest decision date, inclusive, YYYY-MM-DD, e.g. "2024-12-31". Empty = today when dateFrom is set, else no limit.
+- `documentType` (string): "uitspraak" = court decisions only, "conclusie" = opinions of the Advocate-General at the Hoge Raad only. Empty = both.
+- `maxResults` (integer): Most decisions to return from a search, most recently published or updated first, e.g. 20 (default). One charge per decision returned.
+- `includeText` (boolean): true = add the full decision as plain text (section headings as '## ', numbered paragraphs kept), cut at maxTextChars. Default false: metadata and summary only (small rows). Same price.
+- `maxTextChars` (integer): With includeText: cap on the text per decision in characters, e.g. 20000 (default). Longer text is cut and flagged (text_truncated, text_chars gives the full length).
+
+### Output fields
+
+- `schema_version` (string): Output schema version.
+- `ecli` (string): European Case Law Identifier of the decision, e.g. ECLI:NL:HR:2024:123.
+- `title` (string | null): Rechtspraak's display title: ECLI, court, decision date and case numbers.
+- `court` (string | null): Court (instantie) name, e.g. Hoge Raad, Raad van State, Rechtbank Amsterdam.
+- `court_code` (string | null): Court code from the ECLI, e.g. HR, RVS, CRVB, GHAMS, RBAMS.
+- `court_id` (string | null): The court's identifier URI in the Rechtspraak value list.
+- `document_type` (string | null): "uitspraak" (decision) or "conclusie" (Advocate-General's opinion).
+- `decision_date` (string | null): Date of the decision or opinion (uitspraakdatum), YYYY-MM-DD.
+- `publication_date` (string | null): Date the text was published on rechtspraak.nl, YYYY-MM-DD.
+- `modified` (string | null): Last change to the metadata or text, ISO 8601 (Rechtspraak local time).
+- `case_numbers` (array): Case numbers (zaaknummers) as published, e.g. ["22/01066"].
+- `seat` (string | null): Place of session (zittingsplaats), when given.
+- `legal_areas` (array): Legal areas (rechtsgebieden), e.g. ["Strafrecht"].
+- `procedures` (array): Procedure types, e.g. ["Cassatie"], ["Hoger beroep"].
+- `language` (string | null): Language code of the metadata record (nl); English translations say so in the summary.
+- `summary` (string | null): The court's own summary (inhoudsindicatie) as plain text; null when none.
+- `relations` (array): Formal relations to other decisions: {ecli, relation (hogerBeroep, cassatie, conclusie, ...), direction (earlier = the other decision is from an earlier instance, later = a later one), outcome (e.g. bekrachtiging/bevestiging, vernietiging, contrair), label, url}.
+- `references` (array): References to legislation and case law: {type (law, case_law, eu_law, local_regulation), label, identifier (BWB jci or ECLI), bwb_id, article, url}.
+- `published_in` (array): Where the decision is published (vindplaatsen), e.g. ["Rechtspraak.nl", "NJ 2014/336"].
+- `replaces` (array): Old identifiers (LJN) this ECLI replaces.
+- `replaced_by` (string | null): ECLI that replaces this one, if it was withdrawn.
+- `has_text` (boolean): Whether rechtspraak.nl publishes the decision text (false = metadata only).
+- `text_chars` (integer | null): Length of the full plain text in characters (null without text).
+- `text` (string | null): The decision as plain text (includeText only): '## ' section headings, numbering kept, footnotes at the end; cut at maxTextChars.
+- `text_truncated` (boolean | null): True when text was cut at maxTextChars; null without includeText.
+- `source_url` (string): The decision on uitspraken.rechtspraak.nl.
+- `data_url` (string): The official Open Data XML this row was read from.
+- `warnings` (array): Caveats in plain words: text cut, metadata only, replaced ECLI, keyword scan limit.
+- `retrieved_at` (string): When the row was made (ISO 8601, UTC).
+- `duration_seconds` (number): How long fetching this decision took.
+
+### Example input
+
+```json
+{ "query": "huurrecht", "courts": ["HR"], "dateFrom": "2024-01-01", "maxResults": 20 }
+```
+
 ## EU Public Tenders & Contract Awards API (TED procurement)
 
 Docs: https://boscolabs.dev/eu-tenders.html
-Apify Store: https://apify.com/bosco_labs/eu-tenders
+Apify Store: coming soon
 MCP: https://mcp.apify.com?tools=bosco_labs/eu-tenders
 Price: $0.002 per notice
 
 EU public procurement notices from TED, the EU's official tenders journal (EU, EEA and more, since 2016): open calls with deadlines, contract awards with winners and values, prior information. Filter by keyword, buyer country, CPV code, notice type, date and EUR value. Use for tender alerts.
 
 Coverage: Every country that publishes on TED: the 27 EU member states, Norway, Iceland, Liechtenstein, Switzerland, candidate countries and EU-funded procurement abroad; about 22,000 notices a week. History from November 2016 (complete from 2017). New notices are available the day they are published.
+
+Example questions:
+
+- Find open IT tenders above 1 million euros in Germany and the Netherlands from the last two weeks and list their deadlines.
+- Which companies won construction contracts from Polish buyers last month, and for how much?
+- Alert me to new cloud hosting tenders in the Nordics every morning.
 
 ### Input fields
 
@@ -438,13 +1195,19 @@ Coverage: Every country that publishes on TED: the 27 EU member states, Norway, 
 ## Pentagon / DoD Contract Awards API: winners, amounts, tickers
 
 Docs: https://boscolabs.dev/dod-contract-awards.html
-Apify Store: https://apify.com/bosco_labs/dod-contract-awards
+Apify Store: coming soon
 MCP: https://mcp.apify.com?tools=bosco_labs/dod-contract-awards
 Price: $0.005 per award row
 
 Pentagon/DoD contract awards of $7.5M+ the same evening they are announced, plus USAspending.gov history since FY2008 (any federal agency). Winner, amount, service, NAICS/PSC, matched to a US stock ticker with SEC shares outstanding. Filter by date, agency, amount, company, ticker.
 
 Coverage: Same evening: the Pentagon's daily contract list (weekdays, rows in by about 7 p.m. New York). History: the USAspending.gov API from 2007-10-01, for the Department of Defense or any other federal agency. DoD contract actions reach USAspending up to 90 days after signing, so the default window is the last 135 days.
+
+Example questions:
+
+- Which Kratos contracts did the Pentagon award in 2019, and how large were they?
+- Who won the largest Navy shipbuilding contracts (NAICS 336611) in 2025?
+- Show Department of Homeland Security contracts over $10 million signed in the first half of 2026.
 
 ### Input fields
 
@@ -514,16 +1277,336 @@ Coverage: Same evening: the Pentagon's daily contract list (weekdays, rows in by
 }
 ```
 
+## US Federal Awards API: contracts & grants, all agencies
+
+Docs: https://boscolabs.dev/us-federal-awards.html
+Apify Store: coming soon
+MCP: https://mcp.apify.com?tools=bosco_labs/us-federal-awards
+Price: $0.004 per award row
+
+US federal contract, grant and loan awards from every agency (USAspending.gov): winner, UEI, parent company, stock ticker, agency, amounts, dates, NAICS/PSC/assistance listing, place of performance and a source link. Filter by company, ticker, agency, keyword, state, date.
+
+Example questions:
+
+- Which federal contracts did Palantir win this quarter?
+- Largest NASA contracts last month
+- Grants to universities in Texas for AI this year
+
+### Input fields
+
+- `recipients` (array): Winning organisations, as name text or 12-character SAM UEI, e.g. ["palantir"], ["university of texas"] or ["FSY4LVSBGWB7"]. USAspending matches the text against recipient and parent company names and UEIs. Empty (default) = all recipients.
+- `tickers` (array): Only awards whose recipient or its parent company matches these US-listed tickers (NYSE, Nasdaq, CBOE; exact cleaned SEC company name), e.g. ["PLTR"] or ["LMT", "BAH"]. Subsidiaries are found through their parent company. Empty (default) = no ticker filter; every row still gets a ticker when its name matches.
+- `agencies` (array): Awarding agencies by abbreviation, name or toptier code, e.g. ["NASA"], ["Department of Energy"], ["097"] (DoD). A name that is not a top-tier agency is searched as a sub-agency, e.g. ["Defense Logistics Agency"]. Empty (default) = all federal agencies.
+- `awardTypes` (array): Which awards: "contracts" (USAspending codes A-D: BPA calls, purchase orders, delivery orders, definitive contracts), "grants" (02-05: block, formula, project grants, cooperative agreements), "loans" (07, 08), "direct_payments" (06, 10), "other" (09, 11: insurance, other assistance). E.g. ["grants"]. Default ["contracts"].
+- `keywords` (array): Full-text search over award descriptions and other text fields, e.g. ["artificial intelligence"] or ["cybersecurity"]. Several keywords = any of them. Empty (default) = no keyword filter.
+- `naicsCodes` (array): NAICS industry codes, 2 to 6 digits, e.g. ["541512"] (computer systems design) or ["3364"]. Contracts only. Empty (default) = all.
+- `pscCodes` (array): Product and Service Codes, e.g. ["DA01"] (IT software development) or ["AR"] (space R&D). Contracts only. Empty (default) = all.
+- `cfdaNumbers` (array): Assistance listing (CFDA) numbers as NN.NNN, e.g. ["47.070"] (NSF computer and information science) or ["93.855"] (NIH allergy and infectious diseases). Financial assistance only. Empty (default) = all.
+- `placeOfPerformanceStates` (array): Two-letter US state or territory codes where the work is done, e.g. ["TX"] or ["VA", "MD", "DC"]. Empty (default) = anywhere, including abroad.
+- `dateFrom` (string): Earliest action date (signing date of the award or of a modification), YYYY-MM-DD, e.g. "2026-07-01". Searchable from 2007-10-01. Empty (default) = 30 days before dateTo. DoD contracts appear up to 90 days late.
+- `dateTo` (string): Latest action date, YYYY-MM-DD, e.g. "2026-09-30". Empty (default) = today.
+- `minAmount` (integer): Only awards whose total obligated amount (all actions since signing) is at least this many US dollars, e.g. 1000000. Empty or 0 (default) = no minimum.
+- `sortBy` (string): "amount" (default) = awards ordered by their largest action (obligation) in the date window, largest first; that action is the one shown. "date" = ordered by their latest action in the window, newest first. Loans-only searches rank by loan face value.
+- `maxResults` (integer): Maximum award rows, one per award, e.g. 20. Default 20, maximum 1000. Each row is one charged event.
+
+### Output fields
+
+- `schema_version` (string): Output schema version.
+- `award_id` (string | null): Award identifier as USAspending shows it: contract PIID, or FAIN/URI for financial assistance.
+- `award_key` (string): USAspending generated_internal_id: the unique award key, also used in source_url.
+- `award_type_group` (string | null): contracts, grants, loans, direct_payments or other (from the USAspending award type code).
+- `award_type` (string | null): Award type as USAspending describes it, e.g. DEFINITIVE CONTRACT, DELIVERY ORDER, PROJECT GRANT (B), COOPERATIVE AGREEMENT (B).
+- `award_type_code` (string | null): USAspending award type code, e.g. D (definitive contract), C (delivery order), 04 (project grant), 05 (cooperative agreement), 07 (direct loan).
+- `parent_award_id` (string | null): PIID of the parent IDV (IDIQ, BPA, GSA schedule) for task and delivery orders; null otherwise.
+- `recipient_name` (string | null): Recipient (winner) name as published by USAspending.
+- `recipient_uei` (string | null): Recipient's SAM.gov Unique Entity ID (12 characters).
+- `parent_name` (string | null): Parent company of the recipient, from the USAspending award record.
+- `parent_uei` (string | null): Parent company's UEI.
+- `recipient_city` (string | null): Recipient's city.
+- `recipient_state` (string | null): Recipient's US state code.
+- `recipient_country` (string | null): Recipient's country.
+- `ticker` (string | null): US stock ticker (NYSE/Nasdaq/CBOE) when the recipient or parent name exactly matches an SEC-listed company after cleaning; null otherwise. Derived by Bosco Labs, not by USAspending.
+- `matched_on` (string | null): "recipient" or "parent": which name matched the ticker; null when no ticker.
+- `awarding_agency` (string | null): Top-tier awarding agency, e.g. National Aeronautics and Space Administration.
+- `awarding_sub_agency` (string | null): Awarding sub-agency, e.g. Department of the Navy, National Institutes of Health.
+- `funding_agency` (string | null): Top-tier funding agency (can differ from the awarding agency).
+- `action_date` (string | null): Date (YYYY-MM-DD) of the award's action shown in this row: its largest action in the date window (sortBy amount) or its latest (sortBy date).
+- `action_amount_usd` (number | null): Federal obligation of that action in USD (negative = de-obligation; 0 for administrative modifications and loans).
+- `modification_number` (string | null): Modification number of that action ("0" or empty = the base award).
+- `total_obligated_usd` (number | null): Total obligated on the award so far, all actions since signing, in USD.
+- `total_value_usd` (number | null): Contracts: potential total value including all options (base_and_all_options), USD. Loans: loan face value. Null for other assistance.
+- `award_date_signed` (string | null): Date the award was first signed (base award), YYYY-MM-DD. Earlier than dateFrom = the row is a modification of an older award.
+- `start_date` (string | null): Period of performance start, YYYY-MM-DD.
+- `end_date` (string | null): Period of performance current end, YYYY-MM-DD.
+- `description` (string | null): Award description, cut at 300 characters.
+- `naics_code` (string | null): NAICS industry code (contracts).
+- `naics_description` (string | null): NAICS industry title.
+- `psc_code` (string | null): Product and Service Code (contracts).
+- `psc_description` (string | null): Product and Service Code title.
+- `cfda_number` (string | null): Assistance listing (CFDA) number (financial assistance), e.g. 47.070.
+- `cfda_title` (string | null): Assistance listing title.
+- `performance_city` (string | null): Place of performance city.
+- `performance_state` (string | null): Place of performance US state code.
+- `performance_country` (string | null): Place of performance country.
+- `source_url` (string): The award's page on usaspending.gov (the source to cite).
+- `api_url` (string): The award record in the USAspending API (JSON).
+- `retrieved_at` (string): When this row was retrieved, ISO-8601 UTC.
+
+### Example input
+
+```json
+{
+  "agencies": ["NASA"],
+  "awardTypes": ["contracts"],
+  "dateFrom": "2026-10-01",
+  "dateTo": "2026-10-31",
+  "maxResults": 20
+}
+```
+
+## ECB Rates & Euro Inflation API: policy rates, FX, €STR, HICP
+
+Docs: https://boscolabs.dev/eu-rates-inflation.html
+Apify Store: coming soon
+MCP: https://mcp.apify.com?tools=bosco_labs/eu-rates-inflation
+Price: $0.002 per series returned
+
+Latest value, previous value, change and recent history of ECB policy rates, euro reference FX rates, €STR, euro-area and national bond yields, and Eurostat HICP inflation. Ask by plain name (ecb_deposit_rate, eur_fx:USD, hicp:NL), no SDMX keys. Official data, a source link per series.
+
+Example questions:
+
+- What's the ECB deposit rate now, when did it last change, and how does euro-area inflation compare? Cite the source.
+
+### Input fields
+
+- `series` (array): Which series to fetch, by plain name (case-insensitive), up to 20 per run, e.g. ["ecb_deposit_rate", "eur_fx:USD", "hicp:EA"]. Names: ecb_deposit_rate, ecb_main_refi_rate, ecb_marginal_lending_rate (one observation per rate change), estr (€STR), eur_fx:<CUR> (ECB reference rate, CUR per 1 EUR, e.g. eur_fx:GBP), euro_area_yield_curve:<maturity> (AAA spot yield, e.g. 10Y, 3M, 1Y6M; add :all for all government bonds), gov_bond_10y:<country> (monthly 10-year yield, e.g. gov_bond_10y:IT), hicp:<geo>[:<variant>] (Eurostat inflation; geo EA, EU or NL, DE, ...; variant annual (default), monthly, index, core, energy, food, services, goods, or an ECOICOP 2 code like CP01). An unknown name fails at once with suggestions and costs nothing. Empty (with no rawSeriesKey) = list the catalogue for free.
+- `last` (integer): How many of the newest observations to return per series, e.g. 12 (the last 12 months of a monthly series). Empty = 12, or with dateFrom every observation in the window (up to 1000). latest_value, previous_value and change are always filled. The price is the same for any number.
+- `dateFrom` (string): First date of the window, YYYY-MM-DD, e.g. "2026-01-01". For monthly series the month holding the date counts. Empty = no lower bound (only `last` limits).
+- `dateTo` (string): Last date of the window, YYYY-MM-DD, e.g. "2026-03-15". With last = 1 you get the value on that date or the last one before it (weekends and holidays have no FX value). Empty = up to the latest published value.
+- `frequency` (string): Only where the source has it: eur_fx daily (default), monthly or annual averages; policy rates daily (rate on every day) instead of the default one-row-per-change. Other series keep their own frequency and say so in `warnings`. Empty = each series' default.
+- `rawSeriesKey` (array): Optional full ECB Data Portal series keys (dataflow + key, every dimension filled, no wildcards), e.g. ["EXR.M.CHF.EUR.SP00.E"]. Same output and price as named series. Empty = none.
+- `mode` (string): "series" (default) fetches the series above. "catalogue" returns one row per supported name pattern with its source dataset, key template, frequencies, unit and an example, free of charge.
+
+### Output fields
+
+- `schema_version` (string): Output schema version, "1".
+- `series` (string): The series as requested, normalised (e.g. eur_fx:USD, hicp:NL:core), or the raw ECB key.
+- `title` (string | null): The series title exactly as the source states it (ECB TITLE; Eurostat dataset, category, area and unit labels). null on error rows.
+- `description` (string): What the series is and how to read it, in plain words (written by Bosco Labs).
+- `source` (string): Publisher of the values.
+- `dataset` (string): Source dataset: ECB dataflow (FM, EST, EXR, YC, IRS, ...) or Eurostat dataset code (prc_hicp_minr).
+- `series_key` (string): Exact series identifier at the source: ECB dataflow.key (e.g. EXR.D.USD.EUR.SP00.A) or Eurostat dataset/freq.unit.coicop18.geo.
+- `frequency` (string | null): changes (one observation per policy-rate change), daily, monthly, quarterly or annual.
+- `unit` (string | null): Unit of the values, e.g. percent per annum, USD per 1 EUR, annual rate of change, %.
+- `latest_date` (string | null): Date of the newest observation: YYYY-MM-DD (daily, change dates), YYYY-MM (monthly), YYYY (annual). For policy rates: the day the current rate took effect.
+- `latest_value` (number | null): Newest value, unmodified from the source.
+- `previous_date` (string | null): Date of the observation before the newest one (for policy rates: the previous change).
+- `previous_value` (number | null): Value of that previous observation, unmodified.
+- `change` (number | null): latest_value - previous_value, computed by Bosco Labs (exact decimal difference); not an official ECB or Eurostat figure.
+- `observations` (array): The newest `last` observations, oldest first, each {date, value, status}. status is the source's observation flag, null when normal (ECB: P provisional, E estimated; Eurostat: e estimated, p provisional, b break in series).
+- `observation_count` (integer): Number of entries in observations.
+- `source_url` (string | null): Human-readable page of the series: ECB Data Portal series page or Eurostat data browser table.
+- `api_url` (string | null): The exact API request the values came from (re-run it to verify).
+- `attribution` (string): Required source credit: names the source, says the values are unmodified and available free of charge from it, and marks `change` as computed by Bosco Labs. Keep it when you republish the values.
+- `warnings` (array): Caveats in plain words, e.g. a requested frequency the series doesn't have, or a window cut to the newest 1000 observations.
+- `error` (string | null): Why this series has no data (unknown currency, area or category, empty date window, source down), with valid examples. Rows with an error are not charged.
+- `retrieved_at` (string): When the data was fetched (ISO 8601, UTC).
+- `duration_seconds` (number): How long fetching all series took.
+
+### Example input
+
+```json
+{ "series": ["ecb_deposit_rate", "eur_fx:USD", "hicp:EA"] }
+```
+
+## ClinicalTrials.gov API: trial search & NCT dossier
+
+Docs: https://boscolabs.dev/clinical-trials.html
+Apify Store: coming soon
+MCP: https://mcp.apify.com?tools=bosco_labs/clinical-trials
+Price: $0.004 per trial
+
+Clinical trials as compact JSON rows: status, phase, sponsor, conditions, interventions, enrollment, start and primary completion dates, countries, outcomes and results. Look up NCT numbers or search by condition, drug, sponsor, phase, status, country and dates. Sourced, no contact data.
+
+Example questions:
+
+- What is the status and primary completion date of NCT05813925? Cite the ClinicalTrials.gov record.
+
+### Input fields
+
+- `nctIds` (array): ClinicalTrials.gov identifiers to look up, NCT + 8 digits, e.g. ["NCT05813925"]. Up to 100, in one API call; one row per trial found, in the order given. When set, all search filters below are ignored. Empty = search mode.
+- `condition` (string): Condition or disease to search for, e.g. "obesity" or "non-small cell lung cancer". Matches ClinicalTrials.gov's condition field including its synonyms; supports OR/AND, e.g. "obesity OR overweight". Empty = any condition.
+- `intervention` (string): Drug, biologic, device or procedure name, e.g. "semaglutide" or "semaglutide OR tirzepatide". Use molecule or brand names; a drug class like "GLP-1" only matches trials that write it. Empty = any intervention.
+- `sponsor` (string): Lead sponsor organisation, e.g. "Novo Nordisk" (matches "Novo Nordisk A/S"). Searches the lead sponsor only, not collaborators. Empty = any sponsor.
+- `phase` (array): Trial phases to include, any of EARLY_PHASE1, PHASE1, PHASE2, PHASE3, PHASE4, NA, e.g. ["PHASE3"]. A phase 2/3 trial matches both PHASE2 and PHASE3. Empty = all phases (observational studies have none).
+- `status` (array): Overall recruitment status of the trial, e.g. ["RECRUITING", "NOT_YET_RECRUITING"]. UNKNOWN = status not verified for over 2 years. Empty = any status.
+- `locationCountries` (array): Trials with at least one site in any of these countries, e.g. ["Germany", "DK"] or ["Europe"]. Accepts country names as ClinicalTrials.gov writes them ("United States", "South Korea", "Czechia"), common ISO alpha-2 codes, and the regions "Europe" (45 European countries incl. UK, Switzerland, Norway, Ukraine) and "EU" (27 member states). Empty = anywhere.
+- `startDateFrom` (string): Earliest trial start date (actual or planned), YYYY-MM-DD, YYYY-MM or YYYY, e.g. "2025-01-01". Inclusive. Empty = no lower bound.
+- `startDateTo` (string): Latest trial start date, YYYY-MM-DD, e.g. "2025-12-31". Inclusive. Empty = no upper bound (includes planned future starts).
+- `primaryCompletionFrom` (string): Earliest primary completion date (actual or estimated: when the primary endpoint data are complete, the usual read-out catalyst), YYYY-MM-DD, e.g. "2026-01-01". Empty = no lower bound.
+- `primaryCompletionTo` (string): Latest primary completion date, YYYY-MM-DD, e.g. "2026-12-31". Empty = no upper bound.
+- `hasResults` (boolean): true = only trials with results posted on ClinicalTrials.gov; false = only trials without. Leave empty (omit) for both.
+- `maxResults` (integer): Maximum number of trials (rows) to return in search mode, e.g. 20. Default 20, maximum 500. Each row is one charged `trial` event, so this also caps the cost. Ranked by relevance when a condition or intervention is given, else newest start date first.
+- `detail` (string): "summary" (default): the compact dossier. "full" also fills eligibility (criteria up to 4,000 characters, sex, ages), arms (up to 20), secondary outcomes (up to 15) and sites (facility, city, country, status; up to 100). Same price.
+
+### Output fields
+
+- `nct_id` (string | null): ClinicalTrials.gov identifier, e.g. NCT05813925.
+- `title` (string | null): Brief title.
+- `acronym` (string | null): Study acronym, e.g. REDEFINE 5.
+- `status` (string | null): Overall recruitment status, e.g. RECRUITING, ACTIVE_NOT_RECRUITING, COMPLETED, TERMINATED, UNKNOWN.
+- `phases` (array | null): Phases, e.g. ["PHASE3"] or ["PHASE2", "PHASE3"] for a phase 2/3 trial; empty for observational studies.
+- `study_type` (string | null): INTERVENTIONAL, OBSERVATIONAL or EXPANDED_ACCESS.
+- `conditions` (array | null): Conditions or diseases studied, as registered.
+- `interventions` (array | null): Interventions: type (DRUG, BIOLOGICAL, DEVICE, PROCEDURE, BEHAVIORAL, ...) and name.
+- `sponsor` (string | null): Lead sponsor organisation; null when the record lists a private individual as sponsor (class INDIV).
+- `sponsor_class` (string | null): Lead sponsor class: INDUSTRY, NIH, FED, OTHER_GOV, NETWORK, OTHER (e.g. universities), ...
+- `collaborators` (array | null): Collaborating organisations (individuals, class INDIV, left out).
+- `enrollment_count` (integer | null): Number of participants (actual or planned, see enrollment_type).
+- `enrollment_type` (string | null): ACTUAL or ESTIMATED.
+- `start_date` (string | null): Study start date, ISO 8601 (YYYY-MM-DD, or YYYY-MM when only the month is registered).
+- `start_date_type` (string | null): ACTUAL or ESTIMATED; null when not stated.
+- `primary_completion_date` (string | null): Primary completion date (last participant's primary endpoint data collected), ISO 8601, may be YYYY-MM.
+- `primary_completion_date_type` (string | null): ACTUAL or ESTIMATED.
+- `completion_date` (string | null): Study completion date, ISO 8601, may be YYYY-MM.
+- `completion_date_type` (string | null): ACTUAL or ESTIMATED.
+- `last_update_posted` (string | null): Date the record was last updated on ClinicalTrials.gov (YYYY-MM-DD).
+- `countries` (array | null): Countries with at least one listed site, sorted.
+- `site_count` (integer | null): Number of sites (locations) listed in the record.
+- `primary_outcomes` (array | null): Primary outcome measures (up to 5; see primary_outcomes_total).
+- `primary_outcomes_total` (integer | null): Number of primary outcomes registered.
+- `has_results` (boolean | null): true if results are posted on ClinicalTrials.gov.
+- `results_first_posted` (string | null): Date results were first posted (YYYY-MM-DD), null if none.
+- `brief_summary` (string | null): Brief summary, up to 1,000 characters (cut texts end with [truncated]); contact details removed.
+- `eligibility` (object | null): detail=full only (null in summary): eligibility criteria.
+- `arms` (array | null): detail=full only (null in summary): arms/groups, up to 20.
+- `secondary_outcomes` (array | null): detail=full only (null in summary): secondary outcome measures, up to 15.
+- `sites` (array | null): detail=full only (null in summary): study sites, up to 100. Organisation-level only: no contact persons, emails or phones.
+- `source_url` (string | null): The trial's page on ClinicalTrials.gov.
+- `data_processed_at` (string | null): When ClinicalTrials.gov last processed (posted) its dataset, from its /api/v2/version endpoint (dataTimestamp, no time zone given); null if that endpoint was unavailable.
+- `retrieved_at` (string): When this Actor retrieved the record (ISO 8601, UTC).
+- `attribution` (string): Required credit: source ClinicalTrials.gov, processing and retrieval dates, and the modifications made.
+- `schema_version` (string): Output schema version.
+
+### Example input
+
+```json
+{ "nctIds": ["NCT05813925", "NCT04368728"] }
+```
+
+## Dutch Address Lookup API: BAG postcode, geocode & building data
+
+Docs: https://boscolabs.dev/dutch-address-lookup.html
+Apify Store: coming soon
+MCP: https://mcp.apify.com?tools=bosco_labs/dutch-address-lookup
+Price: $0.002 per resolved address
+
+Validates and geocodes Dutch addresses against the official BAG register (via PDOK): postcode, BAG ids, WGS84 + RD coordinates, construction year, use, floor area and building status. Free text, postcode + house number (or range) or BAG ids; up to 100 per run. Unmatched inputs are free.
+
+Example questions:
+
+- Is 'Damrak 1 Amsterdam' a valid address? Give me its postcode, building year, use and floor area, with the source.
+
+### Input fields
+
+- `addresses` (array): Dutch addresses to check and geocode, one per line, as people write them: street + house number (+ letter or addition) + city, and/or postcode + house number, e.g. "Damrak 1 Amsterdam", "Dam 5B Amsterdam", "Damrak 18-1 Amsterdam", "Coolsingel 40, 3011AD Rotterdam", "1012LG 1". Up to 100 (together with bagIds); repeats are looked up once. One output row per address. Empty = use postcode or bagIds.
+- `postcode` (string): A Dutch postcode, 4 digits + 2 letters, e.g. "1012JS" or "1012 JS". Alone it lists every address in that postcode (one row each, up to 100); with houseNumber it returns that address, with houseNumber + houseNumberTo every address in that range. Empty = not used.
+- `houseNumber` (integer): House number within `postcode`, e.g. 1. Only used with postcode. Empty = all numbers in the postcode.
+- `houseNumberTo` (integer): Last house number of a range starting at houseNumber, inclusive, e.g. 20 for 1-20. Needs postcode and houseNumber. Empty = only houseNumber.
+- `houseNumberAddition` (string): House letter and/or addition for a single houseNumber, e.g. "B" (5B), "1" (18-1), "H" (8-H), "A2" (1A-2). Empty = all units at that number (one row each).
+- `bagIds` (array): 16-digit BAG identifiers: nummeraanduiding (address, e.g. "0363200012113669"), verblijfsobject (unit, "0363010012111931"), ligplaats/standplaats (berth/pitch) or pand (building, "0363100012185508": building details only, no address). Up to 100 together with addresses. Empty = not used.
+- `include` (array): Which sections to fill: any of "address" (street, postcode, city, municipality, province), "building" (construction year, use purposes, floor area, status, units in the building), "coordinates" (WGS84 + RD New), e.g. ["address", "coordinates"]. BAG ids are always returned. Default (or empty) = all three. Without "building" the run is faster; the price is the same.
+
+### Output fields
+
+- `schema_version` (string): Output schema version.
+- `input` (string): The input as given: a free-text address, 'POSTCODE number(-to) addition' for postcode queries, or a BAG id.
+- `input_type` (string): Which input this row answers: address (free text), postcode, or bag_id.
+- `resolved` (boolean): true = one BAG address (or, for a pand id, one building) was found; only these rows are charged.
+- `match_quality` (string): exact: every part of the input agrees with the BAG; probable: one address fits but part of the input differs or is missing (see warnings); ambiguous: several addresses fit (see candidates); not_found: no BAG address fits; invalid_input: not a valid BAG id; source_error: PDOK did not answer.
+- `match_score` (number | null): PDOK Locatieserver relevance score for free-text matches (relative within one query, higher is better); null for postcode and BAG id lookups.
+- `address` (object | null): The normalised BAG address. null when not resolved or 'address' is not in include.
+- `bag_ids` (object): BAG identifiers of the address. Always present; values null when not resolved.
+- `coordinates` (object | null): Point of the address (centroid of the unit). null when not resolved or 'coordinates' not in include.
+- `building` (object | null): The BAG object and the building(s) it lies in. null when not resolved, 'building' not in include, or the BAG OGC API failed (see warnings).
+- `candidates` (array): For ambiguous or not_found rows: up to 3 nearest BAG addresses (display_name, postcode, nummeraanduiding_id, score). Re-run with one of them, or its id in bagIds. Empty when resolved.
+- `warnings` (array): Caveats and failures in plain words an agent can relay; the rest of the row is still valid.
+- `source_url` (string | null): PDOK record the address (or, for a pand id, the building) was read from; null when not resolved.
+- `retrieved_at` (string): When the row was made (ISO 8601, UTC).
+
+### Example input
+
+```json
+{ "addresses": ["Damrak 1 Amsterdam", "Coolsingel 40, 3011AD Rotterdam", "1012LG 1", "Damrak 18-1 Amsterdam"] }
+```
+
+## PDF to JSON API: text, tables and metadata from a PDF URL
+
+Docs: https://boscolabs.dev/pdf-to-data.html
+Apify Store: coming soon
+MCP: https://mcp.apify.com?tools=bosco_labs/pdf-to-data
+Price: $0.0005 per page with text
+
+PDF text, tables and metadata as clean JSON from 1-20 public PDF URLs or a base64 file: per-page markdown text in reading order, tables as rows with a header guess, title, author and dates. Processed in memory, never stored. Pay per page with text; scanned pages are flagged and free.
+
+Example questions:
+
+- Get the wage bracket table on page 14 of https://www.irs.gov/pub/irs-pdf/p15t.pdf as rows.
+
+### Input fields
+
+- `urls` (array): 1 to 20 public http(s) links to PDF files, e.g. ["https://www.sec.gov/files/form10-k.pdf"]. Each PDF gives one output row. Files up to 50 MB; links to private or local addresses are refused. Empty = use pdfBase64 instead.
+- `pdfBase64` (string): Instead of (or besides) URLs: the PDF file itself, base64-encoded, optionally as a data: URI, e.g. "JVBERi0xLjQK...". Up to 50 MB decoded (Apify limits the whole input to a few MB, so use URLs for big files). Empty = none.
+- `pages` (string): Which pages to read, 1-based, as ranges and single pages separated by commas, e.g. "1-5,10". Applies to every PDF; pages past the end are skipped with a warning. Empty = all pages (up to maxPages).
+- `extract` (array): Any of text, tables, metadata, e.g. ["tables"]. Default (empty) = all three. Metadata alone costs one page per PDF.
+- `maxPages` (integer): Most pages read per PDF, counted from the first selected page, e.g. 10. Default 50. You pay per page with text, so this caps the cost per PDF; a warning tells you how to request the rest.
+- `outputFormat` (string): How page text is written: "markdown" marks headings with ## and writes detected tables as markdown tables; "text" gives plain paragraphs and tab-separated table rows. Default markdown. The tables field is the same in both.
+
+### Output fields
+
+- `schema_version` (string): Output schema version.
+- `url` (string | null): The PDF URL as given in the input; null for pdfBase64.
+- `final_url` (string | null): URL the PDF was finally downloaded from, after redirects; null for pdfBase64 or on error.
+- `file_size_bytes` (integer | null): Size of the PDF file in bytes; null when it could not be downloaded.
+- `page_count` (integer | null): Number of pages in the PDF; null on error.
+- `pages_processed` (integer): Pages read in this run (after pages, maxPages and size limits).
+- `pages_charged` (integer): Page events charged for this PDF: pages that had text (1 for a metadata-only request, 0 on error).
+- `title` (string | null): Title from the PDF's document info; null if not set or metadata not requested.
+- `author` (string | null): Author from the document info.
+- `subject` (string | null): Subject from the document info.
+- `creator` (string | null): Application that created the original document, e.g. Microsoft Word.
+- `producer` (string | null): Application that wrote the PDF.
+- `creation_date` (string | null): Creation date, ISO 8601 with the PDF's UTC offset when given, e.g. 2024-05-12T10:49:53-04:00.
+- `modification_date` (string | null): Last modification date, ISO 8601.
+- `pages` (array | null): One entry per processed page: {page (1-based), text}. text is markdown-ish (## headings, | tables |) or plain, in reading order; null for pages without a text layer. null when text was not requested.
+- `tables` (array | null): Tables detected from aligned text: {page, header (first row when it looks like a header, else null), rows (arrays of cell strings, null = empty cell), n_cols}. null when tables were not requested.
+- `warnings` (array): Things to know, e.g. scanned pages without text (OCR not supported, not charged) or pages left out by maxPages.
+- `error` (string | null): Why this PDF failed (refused URL, download error, not a PDF, password-protected, unreadable); null on success. Failed PDFs are not charged.
+- `source_url` (string | null): Where the data came from (the input URL); null for pdfBase64.
+- `retrieved_at` (string): UTC time the PDF was processed.
+
+### Example input
+
+```json
+{ "urls": ["https://www.sec.gov/files/form10-k.pdf"], "pages": "1-5,10", "extract": ["text", "tables"] }
+```
+
 ## Deduplicate & Merge Apify Datasets: remove duplicate items
 
 Docs: https://boscolabs.dev/dataset-dedup.html
-Apify Store: https://apify.com/bosco_labs/dataset-dedup
+Apify Store: coming soon
 MCP: https://mcp.apify.com?tools=bosco_labs/dataset-dedup
 Price: $0.00015 per unique item written (duplicates are free)
 
 Deduplicate and merge one or more Apify datasets (or a pasted JSON array): removes duplicate items by any fields (dot paths allowed) or by the whole item, keeping the first or last occurrence. Streams millions of items with constant memory. Use to clean repeated scraper runs before export.
 
 Coverage: Works on the Apify datasets you pick in the input, or a pasted JSON array. For every distinct key the Actor keeps a 16-byte hash in memory, never the items: 10 million distinct keys need roughly 1-2 GB.
+
+Example questions:
+
+- Merge the results of my last three Google Maps runs and remove duplicate places by placeId.
+- Deduplicate this list of leads by email and keep only name, email and website.
+- Keep only the latest price per SKU from these two product datasets.
 
 ### Input fields
 
@@ -548,16 +1631,72 @@ Items are copied unchanged from the input datasets (or reduced to outputFields).
 }
 ```
 
+## Change Monitor: new, changed & removed items + Slack alerts
+
+Docs: https://boscolabs.dev/dataset-change-monitor.html
+Apify Store: coming soon
+MCP: https://mcp.apify.com?tools=bosco_labs/dataset-change-monitor
+Price: $0.001 per change reported
+
+Run any scraper on a schedule and get only what changed: new, changed and removed items compared with the previous run, matched by your key fields (e.g. url). Optional Slack, Discord, Telegram, email or webhook alert per run. Add it as an integration to your scraper.
+
+Example questions:
+
+- Compare today's run of my shop scraper with the previous one by url and tell me which prices changed.
+
+### Input fields
+
+- `datasetId` (string): Apify dataset to compare with the previous run, e.g. "aBcD1234efGH5678i": usually your scraper run's default dataset. As an integration on your scraper, set it to "{{resource.defaultDatasetId}}" (see the README). Optional if you paste items.
+- `items` (array): Items to check directly, as a JSON array of objects, e.g. [{"url": "https://jobs.example.com/1042", "salary_eur": 65000}]. Checked before the dataset. Pasted items are all reported as new on a monitor's first run (no silent baseline). Without a monitorName nothing is saved, so every run is a fresh try-out; give a monitorName and paste again with an edit to see a change.
+- `monitorName` (string): Name of the saved state: one name = one watched list, e.g. "shop-prices". Runs with the same name are compared with each other; use a different name per scraper or task. Letters, digits, - and _. Empty = "default" with a datasetId; with only pasted items, empty = a try-out that saves nothing.
+- `keyFields` (array): Fields that identify the same item in every run, e.g. ["url"] or ["placeId"]. Dot paths work: ["product.sku"]. Required unless you use whole-item comparison. Items without any key field are skipped.
+- `compareWholeItem` (boolean): For datasets without an ID field: an item is identified by all its fields (minus ignored ones), so items are only reported as new or removed, never as changed. Default false.
+- `ignoreFields` (array): Fields that change on every run and are never compared, as dot paths. Default: scrapedAt, scraped_at, crawledAt, retrieved_at, timestamp and #debug. Set [] to compare everything.
+- `watchFields` (array): Only changes in these fields count, e.g. ["price", "stock", "offer.status"]. The output then also shows the old values (previous). Empty = every field except the ignored ones.
+- `report` (array): Which changes become output rows (and are charged): new, changed and/or removed items. Removed is off by default, because a scraper run that stopped early would make many items look removed.
+- `reportOnFirstRun` (boolean): The first run of a monitor only saves the baseline and reports nothing (free). Turn on to report every item as new on that first run (charged per item).
+- `slackWebhookUrl` (string): Slack incoming webhook URL (https://hooks.slack.com/services/...). Secret input, stored encrypted.
+- `discordWebhookUrl` (string): Discord channel webhook URL (https://discord.com/api/webhooks/...). Secret input, stored encrypted.
+- `webhookUrl` (string): Any URL that receives a JSON POST with the counts, example rows and the link (Zapier, Make, n8n, your own API). Secret input, stored encrypted.
+- `telegramBotToken` (string): Token of your Telegram bot from @BotFather. Needs the chat ID too. Secret input, stored encrypted.
+- `telegramChatId` (string): Chat, group or channel ID the bot posts to, e.g. "123456789" or "@mychannel".
+- `email` (string): Address(es) for an email alert, comma-separated. Sent by the public Actor apify/send-mail, which runs in your account (a few seconds of compute).
+- `alertMaxItems` (integer): How many changes to list in the alert as examples (key values and what changed). Default 10.
+- `alertWhenNoChanges` (boolean): Send the alert even when a run found no changes (a daily "all quiet"). Default false.
+
+### Output fields
+
+- `change_type` (string): new = key not seen in the previous run; changed = a compared field differs; removed = key missing from this run.
+- `key` (object | null): The item's key field values, e.g. {"url": "https://..."}. null with whole-item comparison.
+- `changed_fields` (array): changed rows: the fields that differ (top-level field names, or your watchFields paths). Empty for new and removed.
+- `previous` (object | null): changed rows with watchFields: the old values of the changed fields. null otherwise (only hashes of other fields are kept).
+- `item` (object | null): The current item, unchanged. For removed rows: the key values (the last known identity; with whole-item comparison, the removed item minus ignored fields).
+- `monitor_name` (string): The monitorName of this run.
+- `checked_at` (string): When this run started the comparison (UTC, ISO 8601).
+- `schema_version` (string): Output schema version, "1".
+
+### Example input
+
+```json
+{"datasetId": "<the run's dataset ID>", "monitorName": "shop", "keyFields": ["url"], "watchFields": ["price"]}
+```
+
 ## Google Sheets Export: send any Apify dataset to a spreadsheet
 
 Docs: https://boscolabs.dev/sheets-export.html
-Apify Store: https://apify.com/bosco_labs/sheets-export
+Apify Store: coming soon
 MCP: https://mcp.apify.com?tools=bosco_labs/sheets-export
 Price: $0.00015 per row exported
 
 Export any Apify dataset to Google Sheets: replace a tab or append rows, with nested fields as columns and your header kept. Uses a Google service account key that never expires, so scheduled runs keep working; retries Google rate limits. Use to send scraper results to a spreadsheet.
 
 Coverage: Any Apify dataset, written with your own Google service account (the sheet shared with it as Editor). Google allows 10 million cells per spreadsheet; rows are sent in batches of up to 5,000 rows or 2 MB.
+
+Example questions:
+
+- Put the results of my last Google Maps run into the 'Leads' tab of my spreadsheet, only name, phone and website.
+- Replace the 'Daily' tab with today's scraper results.
+- Append this week's new listings below the existing rows.
 
 ### Input fields
 

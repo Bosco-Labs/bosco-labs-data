@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>13F Holdings API: fund holdings, 13D/13G, Form 144</title>
+<meta name="description" content="Who owns a stock and who is selling: a fund&#x27;s 13F holdings with quarterly changes, funds holding a ticker, 13D/13G stakes and Form 144 sales.">
+<link rel="canonical" href="https://boscolabs.dev/sec-ownership.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bosco Labs">
+<meta property="og:title" content="13F Holdings API: fund holdings, 13D/13G, Form 144">
+<meta property="og:description" content="Who owns a stock and who is selling: a fund&#x27;s 13F holdings with quarterly changes, funds holding a ticker, 13D/13G stakes and Form 144 sales.">
+<meta property="og:url" content="https://boscolabs.dev/sec-ownership.html">
+<meta property="og:image" content="https://boscolabs.dev/icons/sec-ownership.png">
+<meta name="twitter:card" content="summary">
+<script defer src="/_vercel/insights/script.js"></script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "SoftwareApplication",
+ "name": "SEC Ownership API: 13F Holdings, 13D/13G Stakes, Form 144",
+ "description": "Who owns a stock and who is selling, from official SEC filings: a fund's 13F holdings with quarter-over-quarter changes, the funds holding a ticker, 5%+ stakes (13D activist, 13G passive) and Form 144 planned insider sales. One ticker or fund in, small JSON out, a source link per row.",
+ "url": "https://boscolabs.dev/sec-ownership.html",
+ "image": "https://boscolabs.dev/icons/sec-ownership.png",
+ "applicationCategory": "DeveloperApplication",
+ "operatingSystem": "Web (Apify platform)",
+ "offers": {
+  "@type": "Offer",
+  "priceCurrency": "USD",
+  "description": "$0.0018 per row",
+  "availability": "https://schema.org/PreOrder"
+ },
+ "provider": {
+  "@type": "Organization",
+  "name": "Bosco Labs",
+  "url": "https://boscolabs.dev/"
+ }
+}
+</script>
+<style>:root{color-scheme:light dark;--head:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--body:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;--ink:#1D2721;--muted:#545F58;--bg:#F5F3EA;--surface:#EAE8DC;--line:#D6D3C3;--accent:#2E5A47;--accent-fg:#F5F3EA;--accent2:#8DA889;--accent2-text:#4A6646;--success:#36694A;--warn:#8E5D1C}
+@media (prefers-color-scheme:dark){:root{--ink:#E5E8DE;--muted:#A3ADA4;--bg:#121914;--surface:#1B241E;--line:#2B372F;--accent:#9EC7B1;--accent-fg:#121914;--accent2:#B5C9A4;--accent2-text:#B5C9A4;--success:#93C7A0;--warn:#DDB070}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--body)}h1,h2,h3,.brand{font-family:var(--head)}
+a{color:var(--accent);text-underline-offset:2px}.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+.site{border-bottom:1px solid var(--line)}.site .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;padding-top:12px;padding-bottom:12px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-weight:650;letter-spacing:-.01em}.brand img{width:30px;height:30px}
+nav{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:.95rem}nav a{color:var(--muted);text-decoration:none}nav a:hover{color:var(--ink)}
+h1{font-size:clamp(1.65rem,4vw,2.4rem);line-height:1.2;letter-spacing:-.02em;margin:0 0 12px}
+h2{font-size:1.3rem;line-height:1.3;letter-spacing:-.01em;margin:44px 0 12px}h3{font-size:1.02rem;margin:20px 0 6px}
+.hero{padding:52px 0 8px;max-width:780px}.lead{font-size:1.13rem;color:var(--muted)}.muted{color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}.chips a{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:.9rem;color:var(--ink);text-decoration:none}.chips a:hover{border-color:var(--accent)}
+.grid{list-style:none;padding:0;margin:0;display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.card-top{display:flex;gap:12px;align-items:center}.card img{width:48px;height:48px;flex:none}
+.card h3{margin:0;font-size:1rem;line-height:1.3}.card h3 a{color:var(--ink);text-decoration:none}.card h3 a:hover{text-decoration:underline}
+.card p{margin:0;font-size:.92rem;color:var(--muted)}.card .row{margin-top:auto;padding-top:6px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-size:.88rem}
+.price{font-weight:600;color:var(--ink)}.badge{display:inline-block;font-size:.78rem;font-weight:600;line-height:1.5;padding:1px 9px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.badge.live{color:var(--success)}.badge.soon{color:var(--warn)}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-fg);font-weight:650;padding:11px 18px;border-radius:10px;text-decoration:none}
+.btn.ghost{background:none;color:var(--accent);border:1px solid var(--line)}.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0}
+.crumbs{font-size:.9rem;color:var(--muted);margin:22px 0 0}.crumbs a{color:var(--muted)}
+.head{display:flex;gap:20px;align-items:flex-start;margin:18px 0 0}.head img{width:84px;height:84px;flex:none}
+.prose{max-width:800px}.facts{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));margin:22px 0}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:.95rem}.fact b{display:block;font-size:.75rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.qs{padding-left:20px}.qs li{margin:4px 0}.two{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}.two h3{margin-top:0}.two>div,.prose,main{min-width:0}
+code{font:.86em var(--mono)}:not(pre)>code{overflow-wrap:anywhere}
+pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px;overflow:auto;max-height:520px;font-size:.84rem;line-height:1.45;margin:0}
+.table{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{text-align:left;vertical-align:top;padding:7px 8px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-weight:600}td:first-child{white-space:nowrap}
+details{border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:10px 0}summary{cursor:pointer;font-weight:600}
+footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font-size:.9rem;color:var(--muted)}footer a{color:var(--muted)}
+@media (max-width:560px){.head{flex-direction:column;gap:12px}.head img{width:64px;height:64px}.hero{padding-top:32px}}</style>
+</head>
+<body>
+<header class="site"><div class="wrap"><a class="brand" href="index.html"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav><a href="index.html#tools">Tools</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
+<main class="wrap">
+<p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#finance-sec">Finance &amp; SEC</a></p>
+<article>
+<div class="head"><img src="icons/sec-ownership.svg" alt="" width="84" height="84"><div><h1>SEC Ownership API: 13F Holdings, 13D/13G Stakes, Form 144</h1><span class="badge soon">Coming soon to the Store</span></div></div>
+<div class="prose">
+<p class="lead"><strong>Who owns a stock and who is about to sell it, from official SEC filings</strong>: what a fund such as Berkshire Hathaway holds (13F, with changes vs the previous quarter), which funds hold a ticker, who filed a 5%+ stake (13D activist, 13G passive), and which insiders filed to sell (Form 144). For investors, analysts and AI agents.</p>
+<div class="facts"><div class="fact"><b>Price</b>$0.0018 per row</div><div class="fact"><b>Domain</b>Finance &amp; SEC</div><div class="fact"><b>Call it</b>Apify API or MCP</div></div>
+<p><strong>Pricing (pay per event):</strong> $0.0018 per row ($1.80 per 1,000), no start fee.</p>
+<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=SEC Ownership API">Ask for early access</a></div>
+<h2>Questions agents ask</h2>
+<ul class="qs"><li>&ldquo;What did Berkshire Hathaway buy and sell last quarter?&rdquo;</li><li>&ldquo;Which funds hold the most Nvidia stock?&rdquo;</li><li>&ldquo;Has anyone filed an activist 13D on Peraso?&rdquo;</li><li>&ldquo;Which insiders filed to sell more than $1 million of stock this week?&rdquo;</li></ul>
+</div>
+<h2>Example</h2>
+<div class="two"><div><h3>Input</h3><pre><code>{&quot;mode&quot;: &quot;holdings13f&quot;, &quot;filer&quot;: &quot;Berkshire Hathaway&quot;}</code></pre></div>
+<div><h3>Output</h3><pre><code>{
+  &quot;record_type&quot;: &quot;holding&quot;,
+  &quot;filer_name&quot;: &quot;BERKSHIRE HATHAWAY INC&quot;,
+  &quot;filer_cik&quot;: &quot;0001067983&quot;,
+  &quot;period_of_report&quot;: &quot;2026-06-30&quot;,
+  &quot;form&quot;: &quot;13F-HR&quot;,
+  &quot;filing_date&quot;: &quot;2026-08-14&quot;,
+  &quot;issuer_name&quot;: &quot;ALPHABET INC&quot;,
+  &quot;title_of_class&quot;: &quot;CAP STK CL A&quot;,
+  &quot;cusip&quot;: &quot;02079K305&quot;,
+  &quot;ticker&quot;: &quot;GOOGL&quot;,
+  &quot;put_call&quot;: null,
+  &quot;shares&quot;: 78791167,
+  &quot;share_type&quot;: &quot;SH&quot;,
+  &quot;value_usd&quot;: 28157599351,
+  &quot;portfolio_pct&quot;: 9.41,
+  &quot;previous_period&quot;: &quot;2026-03-31&quot;,
+  &quot;previous_shares&quot;: 54249798,
+  &quot;previous_value_usd&quot;: 15600071913,
+  &quot;shares_change&quot;: 24541369,
+  &quot;shares_change_pct&quot;: 45.24,
+  &quot;change&quot;: &quot;increased&quot;,
+  &quot;filing_url&quot;: &quot;https://www.sec.gov/Archives/edgar/data/1067983/000119312526352200/0001193125-26-352200-index.htm&quot;,
+  &quot;source&quot;: &quot;edgar-13f&quot;,
+  &quot;source_url&quot;: &quot;https://www.sec.gov/Archives/edgar/data/1067983/000119312526352200/56757.xml&quot;
+}</code></pre></div></div>
+<div class="prose">
+<h2>What you get</h2>
+<div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>schema_version</code></td><td>string</td><td>Output schema version.</td></tr>
+<tr><td><code>record_type</code></td><td>string</td><td>holding = a position in one 13F filer&#x27;s portfolio; holder = one 13F filer holding the asked stock (SEC Form 13F data set); stake = one Schedule 13D/13G filing; form144 = one Form 144 notice.</td></tr>
+<tr><td><code>form</code></td><td>string</td><td>Form as filed: 13F-HR or 13F-HR/A; 13D, 13D/A, 13G or 13G/A (Schedule); 144 or 144/A.</td></tr>
+<tr><td><code>filer_name</code></td><td>string | null</td><td>holding/holder: the 13F manager. stake: the first reporting person on the filing.</td></tr>
+<tr><td><code>filer_cik</code></td><td>string | null</td><td>SEC CIK (10 digits) of the 13F manager, of the 13D/13G filer, or of the person filing the Form 144.</td></tr>
+<tr><td><code>period_of_report</code></td><td>string</td><td>13F rows: the quarter end the holdings are reported for (YYYY-MM-DD).</td></tr>
+<tr><td><code>accession_number</code></td><td>string</td><td>SEC accession number of the filing the row comes from.</td></tr>
+<tr><td><code>filing_date</code></td><td>string</td><td>Date the SEC received the filing (YYYY-MM-DD).</td></tr>
+<tr><td><code>issuer_name</code></td><td>string | null</td><td>Company whose securities are held, owned or to be sold, as written in the filing (13F names are often abbreviated).</td></tr>
+<tr><td><code>issuer_cik</code></td><td>string | null</td><td>stake/form144: SEC CIK (10 digits) of the issuer.</td></tr>
+<tr><td><code>title_of_class</code></td><td>string | null</td><td>13F rows: class of the security as filed, e.g. COM, CL A, CAP STK CL C.</td></tr>
+<tr><td><code>cusip</code></td><td>string</td><td>13F rows: 9-character CUSIP of the security.</td></tr>
+<tr><td><code>cusips</code></td><td>array</td><td>stake: the issuer CUSIP(s) on the cover page.</td></tr>
+<tr><td><code>ticker</code></td><td>string | null</td><td>Issuer ticker from the SEC&#x27;s ticker list. 13F holding rows: matched on the issuer name, so it can be null or the company&#x27;s main ticker for another share class; use cusip to tell classes apart.</td></tr>
+<tr><td><code>put_call</code></td><td>string | null</td><td>13F rows: PUT or CALL for option positions (value = the underlying), null for shares and bonds.</td></tr>
+<tr><td><code>shares</code></td><td>number | null</td><td>13F rows: shares (or principal amount when share_type is PRN) held at quarter end, summed over the filing&#x27;s lines; 0 for a closed position. stake: shares beneficially owned by the reporting person with the highest percent.</td></tr>
+<tr><td><code>share_type</code></td><td>string | null</td><td>13F rows: SH (shares) or PRN (principal amount).</td></tr>
+<tr><td><code>value_usd</code></td><td>number | null</td><td>13F rows: market value in US dollars at quarter end as reported (filings before 2023-01-03 reported $1,000s and are multiplied by 1,000).</td></tr>
+<tr><td><code>portfolio_pct</code></td><td>number | null</td><td>holding: value as a percentage of the filing&#x27;s total reported value.</td></tr>
+<tr><td><code>previous_period</code></td><td>string | null</td><td>holding: the previous quarter end the change is measured against.</td></tr>
+<tr><td><code>previous_shares</code></td><td>number | null</td><td>holding: shares at the previous quarter end (0 = not held then, null = no 13F for that quarter).</td></tr>
+<tr><td><code>previous_value_usd</code></td><td>number | null</td><td>holding: value at the previous quarter end, in US dollars.</td></tr>
+<tr><td><code>shares_change</code></td><td>number | null</td><td>holding: shares minus previous_shares.</td></tr>
+<tr><td><code>shares_change_pct</code></td><td>number | null</td><td>holding: shares_change as a percentage of previous_shares (null when not held before).</td></tr>
+<tr><td><code>change</code></td><td>string | null</td><td>holding: new, increased, decreased, unchanged or closed (sold out) vs the previous quarter; null when unknown.</td></tr>
+<tr><td><code>stake_type</code></td><td>string | null</td><td>stake: activist (Schedule 13D: may seek to influence control) or passive (Schedule 13G).</td></tr>
+<tr><td><code>amendment_no</code></td><td>integer | null</td><td>stake: amendment number on the cover page (null for an original filing).</td></tr>
+<tr><td><code>security_class</code></td><td>string | null</td><td>stake/form144: class of securities as filed, e.g. Common Stock.</td></tr>
+<tr><td><code>percent_of_class</code></td><td>number | null</td><td>stake: percent of the class beneficially owned, the highest among the reporting persons (group members usually report the same aggregate).</td></tr>
+<tr><td><code>reporting_persons</code></td><td>array</td><td>stake: every reporting person on the cover pages: name, cik (null if none), percent_of_class, shares, person_type (SEC codes like IA, IN, PN, CO).</td></tr>
+<tr><td><code>event_date</code></td><td>string | null</td><td>stake: date of the event that required the filing (YYYY-MM-DD).</td></tr>
+<tr><td><code>seller_name</code></td><td>string | null</td><td>form144: the person for whose account the securities are to be sold, as filed.</td></tr>
+<tr><td><code>relationships</code></td><td>array</td><td>form144: relationship to the issuer as filed, e.g. Director, Officer, 10% Securityholder.</td></tr>
+<tr><td><code>shares_to_be_sold</code></td><td>number | null</td><td>form144: number of shares (units) to be sold, summed over the notice&#x27;s lines.</td></tr>
+<tr><td><code>aggregate_market_value_usd</code></td><td>number | null</td><td>form144: aggregate market value of the shares to be sold, in US dollars, as filed.</td></tr>
+<tr><td><code>shares_outstanding</code></td><td>number | null</td><td>form144: shares of the class outstanding, as filed.</td></tr>
+<tr><td><code>approx_sale_date</code></td><td>string | null</td><td>form144: approximate date of sale (YYYY-MM-DD; the earliest if several).</td></tr>
+<tr><td><code>exchanges</code></td><td>array</td><td>form144: exchange(s) where the shares are to be sold.</td></tr>
+<tr><td><code>broker_names</code></td><td>array</td><td>form144: broker(s) or market maker(s) handling the sale.</td></tr>
+<tr><td><code>plan_adoption_dates</code></td><td>array</td><td>form144: adoption dates of the Rule 10b5-1 trading plan, if the sale is under one (YYYY-MM-DD).</td></tr>
+<tr><td><code>notice_date</code></td><td>string | null</td><td>form144: date of the notice (YYYY-MM-DD).</td></tr>
+<tr><td><code>filing_url</code></td><td>string</td><td>EDGAR index page of the filing.</td></tr>
+<tr><td><code>source</code></td><td>string</td><td>edgar-13f (the filing&#x27;s information table), sec-13f-data-set (SEC Form 13F data set) or edgar-xml (the filing&#x27;s XML).</td></tr>
+<tr><td><code>source_url</code></td><td>string</td><td>The exact SEC file the row was read from.</td></tr>
+<tr><td><code>retrieved_at</code></td><td>string</td><td>UTC time the row was produced.</td></tr>
+</tbody></table></div>
+
+<h2>Use with AI agents (MCP)</h2>
+<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is live on the Apify Store.</p>
+<pre><code>https://mcp.apify.com?tools=bosco_labs/sec-ownership</code></pre>
+<p>For &ldquo;What did Berkshire Hathaway buy and sell last quarter?&rdquo; the agent passes:</p>
+<pre><code>{&quot;mode&quot;: &quot;holdings13f&quot;, &quot;filer&quot;: &quot;Berkshire Hathaway&quot;}</code></pre>
+<p>small, typed JSON, one row per position, holder or filing, with <code>schema_version</code>, a <code>source_url</code> pointing to the exact SEC file and a <code>filing_url</code> for the filing, so the agent can cite its source. Bad input fails within seconds with a status message that says what to fix and shows a valid input.</p>
+<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~sec-ownership/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.0018 per row.</p>
+<h2>Input fields</h2>
+<div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>mode</code></td><td>string</td><td>holdings13f = Form 13F: pass <code>filer</code> for a fund manager&#x27;s holdings (with changes vs the previous quarter), or <code>ticker</code>/<code>cusip</code> for the funds holding a stock. stakes13dg = Schedule 13D/13G filings about <code>ticker</code>, or new 13D filings market-wide. planned144 = Form 144 notices of planned insider sales for <code>ticker</code>, or market-wide. Default holdings13f.</td></tr>
+<tr><td><code>filer</code></td><td>string</td><td>holdings13f only: the fund manager&#x27;s name or SEC CIK, e.g. &quot;Berkshire Hathaway&quot; or &quot;1067983&quot;. A name is matched with EDGAR&#x27;s company search (the first match that files 13F reports); a CIK is exact. Empty = look up the holders of <code>ticker</code>/<code>cusip</code> instead.</td></tr>
+<tr><td><code>ticker</code></td><td>string</td><td>The company the shares are in, as a current US ticker, e.g. &quot;AAPL&quot;. holdings13f: the funds holding it (or, with <code>filer</code>, only that position). stakes13dg / planned144: filings about it. Empty = whole market (stakes13dg, planned144).</td></tr>
+<tr><td><code>issuerCik</code></td><td>string</td><td>Instead of <code>ticker</code>: the company&#x27;s SEC CIK as digits, e.g. &quot;320193&quot; for Apple. Use for delisted or renamed companies. Empty = use <code>ticker</code>.</td></tr>
+<tr><td><code>cusip</code></td><td>string</td><td>holdings13f only: the 9-character CUSIP of one share class, e.g. &quot;037833100&quot; (Apple common stock). Most precise way to ask which funds hold a security. Empty = CUSIPs found in the company&#x27;s recent Schedule 13D/13G filings (all its share classes).</td></tr>
+<tr><td><code>quarter</code></td><td>string</td><td>holdings13f only: the quarter of the holdings, as &quot;2026Q2&quot; or the quarter end &quot;2026-06-30&quot;. Empty = the newest: the filer&#x27;s latest 13F, or for holders of a stock the newest quarter in the SEC&#x27;s Form 13F data sets (13F reports are due 45 days after quarter end).</td></tr>
+<tr><td><code>stakeForms</code></td><td>array</td><td>stakes13dg only: which forms, e.g. [&quot;13D&quot;] for new activist stakes only. Empty = all four for a ticker; 13D and 13D/A for the whole market (activist alerts).</td></tr>
+<tr><td><code>minValueUsd</code></td><td>integer</td><td>Minimum value in US dollars, e.g. 1000000. planned144: the notice&#x27;s aggregate market value; holdings13f: the position value. Default 0 = no minimum. Not used by stakes13dg.</td></tr>
+<tr><td><code>dateFrom</code></td><td>string</td><td>stakes13dg / planned144: earliest filing date, YYYY-MM-DD, e.g. &quot;2026-10-01&quot;. Structured 13D/13G start 2024-12-18. Empty = <code>lookbackDays</code> before today.</td></tr>
+<tr><td><code>dateTo</code></td><td>string</td><td>stakes13dg / planned144: latest filing date, YYYY-MM-DD, e.g. &quot;2026-10-31&quot;. Empty = today, including today&#x27;s filings from the EDGAR live feed.</td></tr>
+<tr><td><code>lookbackDays</code></td><td>integer</td><td>stakes13dg / planned144, used when <code>dateFrom</code> is empty: filings from this many days back until today, e.g. 30. Empty = 365 days for a ticker&#x27;s 13D/13G, 90 for a ticker&#x27;s Form 144, 7 for the whole market.</td></tr>
+<tr><td><code>maxResults</code></td><td>integer</td><td>Maximum rows (one charged event each), e.g. 200. Default 50: a fund&#x27;s largest positions, a stock&#x27;s largest holders, or the newest filings.</td></tr>
+</tbody></table></div>
+<h2>Sources, licence and limits</h2>
+<p><strong>How current is 13F data?</strong> 13F reports are quarterly and due 45 days after quarter end, so holdings are up to 4.5 months old when they appear. Positions are what the manager reported: long US-listed equities, options and convertibles on the SEC&#x27;s 13(f) list; no shorts, no non-US holdings, no cash.</p>
+<p><strong>Values?</strong> As reported, in US dollars at quarter end (reports filed before 2023 used $1,000s and are converted). Amendments are applied: a restatement replaces the original report, a &quot;new holdings&quot; amendment adds to it.</p>
+<p><strong>Tickers?</strong> 13F filings carry CUSIPs, not tickers, and the SEC publishes no CUSIP-to-ticker list. On holdings rows the ticker is matched on the issuer name with the SEC&#x27;s ticker list: it can be missing (renamed or oddly abbreviated names) or show the company&#x27;s main ticker for another share class (Alphabet class C shows GOOGL). Use <code>cusip</code> to tell share classes apart.</p>
+<p><strong>Which funds hold a ticker: which CUSIP?</strong> The ticker&#x27;s CUSIPs are read from the company&#x27;s recent Schedule 13D/13G filings, which can cover several share classes. Pass <code>cusip</code> for one class, or when the company has no recent 13D/13G.</p>
+<p><strong>A name matched the wrong fund?</strong> Names go through EDGAR&#x27;s company search; the status message lists the other matches. Pass the CIK as <code>filer</code> to be exact.</p>
+<p><strong>Older 13D/13G?</strong> Only filings since 2024-12-18, when Schedule 13D/13G became structured XML. For older ones, use our SEC EDGAR Filings Actor for the filing links.</p>
+<p><strong>13D vs 13G?</strong> A 13D is filed by a holder of more than 5% who may seek to influence the company (activist); a 13G by passive holders and institutions. <code>percent_of_class</code> is the highest among the filing&#x27;s reporting persons; all of them are in <code>reporting_persons</code>.</p>
+<p><strong>Form 144?</strong> A notice by an insider or affiliate of a planned sale of restricted or control stock, filed when the order is placed. It is not proof that the sale happened (Form 4 reports that: see our SEC Insider Trading Actor). Not every Form 144 is followed by a sale.</p>
+<p><strong>Legal basis?</strong> SEC filings are US government public records; see LEGAL.md. This is data, not investment advice.</p>
+<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=SEC Ownership API">Ask for early access</a></div>
+</div>
+</article>
+</main>
+<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
+</body>
+</html>

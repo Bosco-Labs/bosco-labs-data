@@ -3,18 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pentagon DoD Contract Awards API: winners, amounts, tickers</title>
+<title>DoD Contract Awards API: Pentagon contracts daily</title>
 <meta name="description" content="Pentagon contract awards of $7.5M+ the same evening, plus USAspending.gov history since FY2008, with the winner&#x27;s stock ticker and SEC shares outstanding.">
 <link rel="canonical" href="https://boscolabs.dev/dod-contract-awards.html">
+<link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="logo.svg" type="image/svg+xml">
 <link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Bosco Labs">
-<meta property="og:title" content="Pentagon DoD Contract Awards API: winners, amounts, tickers">
+<meta property="og:title" content="DoD Contract Awards API: Pentagon contracts daily">
 <meta property="og:description" content="Pentagon contract awards of $7.5M+ the same evening, plus USAspending.gov history since FY2008, with the winner&#x27;s stock ticker and SEC shares outstanding.">
 <meta property="og:url" content="https://boscolabs.dev/dod-contract-awards.html">
-<meta property="og:image" content="https://boscolabs.dev/logo-512.png">
+<meta property="og:image" content="https://boscolabs.dev/icons/dod-contract-awards.png">
 <meta name="twitter:card" content="summary">
+<script defer src="/_vercel/insights/script.js"></script>
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -22,43 +24,110 @@
  "name": "Pentagon / DoD Contract Awards API: winners, amounts, tickers",
  "description": "Pentagon/DoD contract awards of $7.5M+ the same evening they are announced, plus USAspending.gov history since FY2008 (any federal agency). Winner, amount, service, NAICS/PSC, matched to a US stock ticker with SEC shares outstanding. Filter by date, agency, amount, company, ticker.",
  "url": "https://boscolabs.dev/dod-contract-awards.html",
- "installUrl": "https://apify.com/bosco_labs/dod-contract-awards",
+ "image": "https://boscolabs.dev/icons/dod-contract-awards.png",
  "applicationCategory": "DeveloperApplication",
  "operatingSystem": "Web (Apify platform)",
  "offers": {
   "@type": "Offer",
-  "url": "https://apify.com/bosco_labs/dod-contract-awards",
   "priceCurrency": "USD",
-  "description": "$0.005 per award row"
+  "description": "$0.005 per award row",
+  "availability": "https://schema.org/PreOrder"
  },
  "provider": {
   "@type": "Organization",
   "name": "Bosco Labs",
-  "url": "https://apify.com/bosco_labs"
+  "url": "https://boscolabs.dev/"
  }
 }
 </script>
-<style>:root{--bg:#fff;--fg:#1a2230;--muted:#5a6575;--line:#dfe3ea;--card:#f5f7fa;--accent:#0f766e;--btn:#0f766e;--btnfg:#fff}
-@media (prefers-color-scheme:dark){:root{--bg:#0d1520;--fg:#e6ebf2;--muted:#9aa6b6;--line:#26323f;--card:#15202d;--accent:#5eead4;--btn:#2dd4bf;--btnfg:#04201d}}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-header,main,footer{max-width:860px;margin:0 auto;padding:0 16px}header{display:flex;align-items:center;gap:10px;padding-top:18px}
-header a{display:flex;align-items:center;gap:10px;color:var(--fg);text-decoration:none;font-weight:600}header img{width:32px;height:32px}
-a{color:var(--accent)}h1{font-size:1.9rem;line-height:1.25;margin:1.2rem 0 .6rem}h2{margin-top:2.2rem;font-size:1.3rem}
-.lead{font-size:1.15rem}.muted{color:var(--muted)}code{font:.9em ui-monospace,SFMono-Regular,Consolas,monospace}
-pre{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px;overflow-x:auto;font-size:.85rem;line-height:1.45}
-.table{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{text-align:left;vertical-align:top;padding:6px 8px;border-bottom:1px solid var(--line)}
-td:first-child{white-space:nowrap}.cta{display:inline-block;background:var(--btn);color:var(--btnfg);font-weight:700;font-size:1.1rem;padding:14px 22px;border-radius:10px;text-decoration:none;margin:1.2rem 0}
-.cards{list-style:none;padding:0;display:grid;gap:12px}.cards li{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}
-.cards h3{margin:0 0 .3rem;font-size:1.05rem}.cards p{margin:.2rem 0}footer{border-top:1px solid var(--line);margin-top:3rem;padding-top:12px;padding-bottom:24px;font-size:.9rem}</style>
+<style>:root{color-scheme:light dark;--head:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--body:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;--ink:#1D2721;--muted:#545F58;--bg:#F5F3EA;--surface:#EAE8DC;--line:#D6D3C3;--accent:#2E5A47;--accent-fg:#F5F3EA;--accent2:#8DA889;--accent2-text:#4A6646;--success:#36694A;--warn:#8E5D1C}
+@media (prefers-color-scheme:dark){:root{--ink:#E5E8DE;--muted:#A3ADA4;--bg:#121914;--surface:#1B241E;--line:#2B372F;--accent:#9EC7B1;--accent-fg:#121914;--accent2:#B5C9A4;--accent2-text:#B5C9A4;--success:#93C7A0;--warn:#DDB070}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--body)}h1,h2,h3,.brand{font-family:var(--head)}
+a{color:var(--accent);text-underline-offset:2px}.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+.site{border-bottom:1px solid var(--line)}.site .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;padding-top:12px;padding-bottom:12px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-weight:650;letter-spacing:-.01em}.brand img{width:30px;height:30px}
+nav{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:.95rem}nav a{color:var(--muted);text-decoration:none}nav a:hover{color:var(--ink)}
+h1{font-size:clamp(1.65rem,4vw,2.4rem);line-height:1.2;letter-spacing:-.02em;margin:0 0 12px}
+h2{font-size:1.3rem;line-height:1.3;letter-spacing:-.01em;margin:44px 0 12px}h3{font-size:1.02rem;margin:20px 0 6px}
+.hero{padding:52px 0 8px;max-width:780px}.lead{font-size:1.13rem;color:var(--muted)}.muted{color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}.chips a{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:.9rem;color:var(--ink);text-decoration:none}.chips a:hover{border-color:var(--accent)}
+.grid{list-style:none;padding:0;margin:0;display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.card-top{display:flex;gap:12px;align-items:center}.card img{width:48px;height:48px;flex:none}
+.card h3{margin:0;font-size:1rem;line-height:1.3}.card h3 a{color:var(--ink);text-decoration:none}.card h3 a:hover{text-decoration:underline}
+.card p{margin:0;font-size:.92rem;color:var(--muted)}.card .row{margin-top:auto;padding-top:6px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-size:.88rem}
+.price{font-weight:600;color:var(--ink)}.badge{display:inline-block;font-size:.78rem;font-weight:600;line-height:1.5;padding:1px 9px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.badge.live{color:var(--success)}.badge.soon{color:var(--warn)}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-fg);font-weight:650;padding:11px 18px;border-radius:10px;text-decoration:none}
+.btn.ghost{background:none;color:var(--accent);border:1px solid var(--line)}.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0}
+.crumbs{font-size:.9rem;color:var(--muted);margin:22px 0 0}.crumbs a{color:var(--muted)}
+.head{display:flex;gap:20px;align-items:flex-start;margin:18px 0 0}.head img{width:84px;height:84px;flex:none}
+.prose{max-width:800px}.facts{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));margin:22px 0}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:.95rem}.fact b{display:block;font-size:.75rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.qs{padding-left:20px}.qs li{margin:4px 0}.two{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}.two h3{margin-top:0}.two>div,.prose,main{min-width:0}
+code{font:.86em var(--mono)}:not(pre)>code{overflow-wrap:anywhere}
+pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px;overflow:auto;max-height:520px;font-size:.84rem;line-height:1.45;margin:0}
+.table{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{text-align:left;vertical-align:top;padding:7px 8px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-weight:600}td:first-child{white-space:nowrap}
+details{border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:10px 0}summary{cursor:pointer;font-weight:600}
+footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font-size:.9rem;color:var(--muted)}footer a{color:var(--muted)}
+@media (max-width:560px){.head{flex-direction:column;gap:12px}.head img{width:64px;height:64px}.hero{padding-top:32px}}</style>
 </head>
 <body>
-<header><a href="index.html"><img src="logo.svg" alt="" width="32" height="32">Bosco Labs data APIs</a></header>
-<main>
+<header class="site"><div class="wrap"><a class="brand" href="index.html"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav><a href="index.html#tools">Tools</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
+<main class="wrap">
+<p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#government-procurement">Government &amp; procurement</a></p>
 <article>
-<h1>Pentagon / DoD Contract Awards API: winners, amounts, tickers</h1>
-<p class="lead">Pentagon/DoD contract awards of $7.5M+ the same evening they are announced, plus USAspending.gov history since FY2008 (any federal agency).</p>
-<p>Winner, amount, service, NAICS/PSC, matched to a US stock ticker with SEC shares outstanding. Filter by date, agency, amount, company, ticker.</p>
-<p><a class="cta" href="https://apify.com/bosco_labs/dod-contract-awards">Run it on Apify Store &rarr;</a></p>
+<div class="head"><img src="icons/dod-contract-awards.svg" alt="" width="84" height="84"><div><h1>Pentagon / DoD Contract Awards API: winners, amounts, tickers</h1><span class="badge soon">Coming soon to the Store</span></div></div>
+<div class="prose">
+<p class="lead">Get <strong>every US Department of Defense contract award of $7.5M or more, the same evening it is announced, plus the full history since FY2008</strong>: who won, how much, which service (Army, Navy, Air Force, DLA, Missile Defense Agency, ...), and <strong>the winner&#x27;s US stock ticker</strong> with its SEC-reported shares outstanding. History rows add the parent company and NAICS/PSC codes. Switch the history to any other federal agency, or all of them, with one input. For defense-sector investors, government sales teams and AI agents.</p>
+<div class="facts"><div class="fact"><b>Price</b>$0.005 per award row</div><div class="fact"><b>Domain</b>Government &amp; procurement</div><div class="fact"><b>Call it</b>Apify API or MCP</div></div>
+<p><strong>Pricing (pay per event):</strong> $0.005 per award row ($5 per 1,000 awards). No start fee. You only pay for rows delivered, a row is never charged twice in one run, scheduled runs can skip awards you already received, and the Actor stops at your max charge limit.</p>
+<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=Pentagon / DoD Contract Awards API">Ask for early access</a></div>
+<h2>Questions agents ask</h2>
+<ul class="qs"><li>&ldquo;Which Kratos contracts did the Pentagon award in 2019, and how large were they?&rdquo;</li><li>&ldquo;Who won the largest Navy shipbuilding contracts (NAICS 336611) in 2025?&rdquo;</li><li>&ldquo;Show Department of Homeland Security contracts over $10 million signed in the first half of 2026.&rdquo;</li></ul>
+</div>
+<h2>Example</h2>
+<div class="two"><div><h3>Input</h3><pre><code>{
+  &quot;dateFrom&quot;: &quot;2019-01-01&quot;,
+  &quot;dateTo&quot;: &quot;2019-12-31&quot;,
+  &quot;tickers&quot;: [&quot;KTOS&quot;],
+  &quot;maxResults&quot;: 1000
+}</code></pre></div>
+<div><h3>Output</h3><pre><code>{
+  &quot;award_id&quot;: &quot;N0018923F3020&quot;,
+  &quot;parent_award_id&quot;: &quot;N0017819D7295&quot;,
+  &quot;action_date&quot;: &quot;2026-06-24&quot;,
+  &quot;amount_usd&quot;: 37046089.24,
+  &quot;action_count&quot;: 1,
+  &quot;new_award&quot;: false,
+  &quot;award_type&quot;: &quot;DELIVERY ORDER&quot;,
+  &quot;awarding_agency&quot;: &quot;Department of Defense&quot;,
+  &quot;awarding_sub_agency&quot;: &quot;Department of the Navy&quot;,
+  &quot;recipient_name&quot;: &quot;CACI, INC. - FEDERAL&quot;,
+  &quot;recipient_uei&quot;: &quot;N3PBJAVNKF61&quot;,
+  &quot;parent_name&quot;: &quot;CACI INTERNATIONAL INC&quot;,
+  &quot;recipient_city&quot;: &quot;CHANTILLY&quot;,
+  &quot;recipient_state&quot;: &quot;VA&quot;,
+  &quot;naics_code&quot;: &quot;541330&quot;,
+  &quot;naics_description&quot;: &quot;ENGINEERING SERVICES&quot;,
+  &quot;psc_code&quot;: &quot;R706&quot;,
+  &quot;psc_description&quot;: &quot;SUPPORT- MANAGEMENT: LOGISTICS SUPPORT&quot;,
+  &quot;description&quot;: &quot;NAVAL FORCES LOGISTICS SUPPORT SERVICES-NFL&quot;,
+  &quot;ticker&quot;: &quot;CACI&quot;,
+  &quot;matched_on&quot;: &quot;parent&quot;,
+  &quot;sec_cik&quot;: 16058,
+  &quot;exchange&quot;: &quot;NYSE&quot;,
+  &quot;shares_outstanding&quot;: 22091305,
+  &quot;shares_as_of&quot;: &quot;2026-04-17&quot;,
+  &quot;usaspending_url&quot;: &quot;https://www.usaspending.gov/award/CONT_AWD_N0018923F3020_9700_N0017819D7295_9700&quot;,
+  &quot;source&quot;: &quot;usaspending&quot;,
+  &quot;is_ceiling&quot;: false,
+  &quot;data_lag_note&quot;: &quot;DoD contract actions reach FPDS/USAspending up to 90 days after signing ...&quot;,
+  &quot;retrieved_at&quot;: &quot;2026-11-05T16:00:00+00:00&quot;
+}</code></pre></div></div>
+<div class="prose">
 <h2>What you get</h2>
 <div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
 <tr><td><code>schema_version</code></td><td>string</td><td>Output schema version.</td></tr>
@@ -101,50 +170,14 @@ td:first-child{white-space:nowrap}.cta{display:inline-block;background:var(--btn
 <tr><td><code>data_lag_note</code></td><td>string</td><td>Reporting lag of the source: DoD actions appear up to 90 days after signing.</td></tr>
 <tr><td><code>retrieved_at</code></td><td>string</td><td>UTC time the row was built.</td></tr>
 </tbody></table></div>
-<h2>Coverage</h2>
-<p>Same evening: the Pentagon&#x27;s daily contract list (weekdays, rows in by about 7 p.m. New York). History: the USAspending.gov API from 2007-10-01, for the Department of Defense or any other federal agency. DoD contract actions reach USAspending up to 90 days after signing, so the default window is the last 135 days.</p>
-<h2>Price</h2>
-<p><strong>Pricing (pay per event):</strong> $0.005 per award row ($5 per 1,000 awards). No start fee. You only pay for rows delivered, a row is never charged twice in one run, scheduled runs can skip awards you already received, and the Actor stops at your max charge limit.</p>
-<h2>Example input</h2>
-<pre><code>{
-  &quot;dateFrom&quot;: &quot;2019-01-01&quot;,
-  &quot;dateTo&quot;: &quot;2019-12-31&quot;,
-  &quot;tickers&quot;: [&quot;KTOS&quot;],
-  &quot;maxResults&quot;: 1000
-}</code></pre>
-<h2>Example output</h2>
-<pre><code>{
-  &quot;award_id&quot;: &quot;N0018923F3020&quot;,
-  &quot;parent_award_id&quot;: &quot;N0017819D7295&quot;,
-  &quot;action_date&quot;: &quot;2026-06-24&quot;,
-  &quot;amount_usd&quot;: 37046089.24,
-  &quot;action_count&quot;: 1,
-  &quot;new_award&quot;: false,
-  &quot;award_type&quot;: &quot;DELIVERY ORDER&quot;,
-  &quot;awarding_agency&quot;: &quot;Department of Defense&quot;,
-  &quot;awarding_sub_agency&quot;: &quot;Department of the Navy&quot;,
-  &quot;recipient_name&quot;: &quot;CACI, INC. - FEDERAL&quot;,
-  &quot;recipient_uei&quot;: &quot;N3PBJAVNKF61&quot;,
-  &quot;parent_name&quot;: &quot;CACI INTERNATIONAL INC&quot;,
-  &quot;recipient_city&quot;: &quot;CHANTILLY&quot;,
-  &quot;recipient_state&quot;: &quot;VA&quot;,
-  &quot;naics_code&quot;: &quot;541330&quot;,
-  &quot;naics_description&quot;: &quot;ENGINEERING SERVICES&quot;,
-  &quot;psc_code&quot;: &quot;R706&quot;,
-  &quot;psc_description&quot;: &quot;SUPPORT- MANAGEMENT: LOGISTICS SUPPORT&quot;,
-  &quot;description&quot;: &quot;NAVAL FORCES LOGISTICS SUPPORT SERVICES-NFL&quot;,
-  &quot;ticker&quot;: &quot;CACI&quot;,
-  &quot;matched_on&quot;: &quot;parent&quot;,
-  &quot;sec_cik&quot;: 16058,
-  &quot;exchange&quot;: &quot;NYSE&quot;,
-  &quot;shares_outstanding&quot;: 22091305,
-  &quot;shares_as_of&quot;: &quot;2026-04-17&quot;,
-  &quot;usaspending_url&quot;: &quot;https://www.usaspending.gov/award/CONT_AWD_N0018923F3020_9700_N0017819D7295_9700&quot;,
-  &quot;source&quot;: &quot;usaspending&quot;,
-  &quot;is_ceiling&quot;: false,
-  &quot;data_lag_note&quot;: &quot;DoD contract actions reach FPDS/USAspending up to 90 days after signing ...&quot;,
-  &quot;retrieved_at&quot;: &quot;2026-11-05T16:00:00+00:00&quot;
-}</code></pre>
+<h2>Coverage</h2><p>Same evening: the Pentagon&#x27;s daily contract list (weekdays, rows in by about 7 p.m. New York). History: the USAspending.gov API from 2007-10-01, for the Department of Defense or any other federal agency. DoD contract actions reach USAspending up to 90 days after signing, so the default window is the last 135 days.</p>
+<h2>Use with AI agents (MCP)</h2>
+<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is live on the Apify Store.</p>
+<pre><code>https://mcp.apify.com?tools=bosco_labs/dod-contract-awards</code></pre>
+<p>For &ldquo;Which Kratos contracts did the Pentagon award in 2019, and how large were they?&rdquo; the agent passes:</p>
+<pre><code>{&quot;tickers&quot;: [&quot;KTOS&quot;], &quot;dateFrom&quot;: &quot;2019-01-01&quot;, &quot;dateTo&quot;: &quot;2019-12-31&quot;}</code></pre>
+<p>stable, typed JSON, one row per award per signing day, newest first. Every row has <code>schema_version</code>, <code>source</code> (<code>dod_daily_list</code>: the same-evening announcement; <code>usaspending</code>: the history, up to 90 days late for DoD) and a <code>source_url</code> (the war.gov article or the USAspending API record), so the agent can cite its source. Rows with <code>is_ceiling: true</code> are contract ceilings, not money committed.</p>
+<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~dod-contract-awards/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.005 per award row.</p>
 <h2>Input fields</h2>
 <div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
 <tr><td><code>source</code></td><td>string</td><td>&quot;both&quot; (default) = the Pentagon&#x27;s same-evening contract list (published around 5 p.m. New York on the signing day, face values, DoD only) plus the USAspending history (obligations, ~3 months behind for DoD). &quot;dailyList&quot; = only the same-evening list rows. &quot;history&quot; = only USAspending. The list has no NAICS/PSC codes, so it is skipped when naicsCodes or pscCodes are set, and when agencies excludes the Department of Defense.</td></tr>
@@ -160,16 +193,23 @@ td:first-child{white-space:nowrap}.cta{display:inline-block;background:var(--btn
 <tr><td><code>maxResults</code></td><td>integer</td><td>Maximum award rows, newest signing dates first, then largest amounts, e.g. 20. Default 100. Each row is one charged event.</td></tr>
 <tr><td><code>onlyNewSinceLastRun</code></td><td>boolean</td><td>true = skip (and don&#x27;t charge for) award-days (including old-dated actions the DoD publishes late) an earlier run with the same filters already delivered. For scheduled runs. Default false. Remembered in a named key-value store in your account.</td></tr>
 </tbody></table></div>
-<h2>Use with AI agents</h2>
-<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>.</p>
-<pre><code>https://mcp.apify.com?tools=bosco_labs/dod-contract-awards</code></pre>
-<p>Example prompt: <em>&ldquo;&quot;Which Kratos contracts did the Pentagon award in 2019, and how large were they?&quot;&rdquo;</em> The agent passes:</p>
-<pre><code>{&quot;tickers&quot;: [&quot;KTOS&quot;], &quot;dateFrom&quot;: &quot;2019-01-01&quot;, &quot;dateTo&quot;: &quot;2019-12-31&quot;}</code></pre>
-<p>stable, typed JSON, one row per award per signing day, newest first. Every row has <code>schema_version</code>, <code>source</code> (<code>dod_daily_list</code>: the same-evening announcement; <code>usaspending</code>: the history, up to 90 days late for DoD) and a <code>source_url</code> (the war.gov article or the USAspending API record), so the agent can cite its source. Rows with <code>is_ceiling: true</code> are contract ceilings, not money committed.</p>
-<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~dod-contract-awards/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.005 per award row.</p>
-<p><a class="cta" href="https://apify.com/bosco_labs/dod-contract-awards">Open Pentagon / DoD Contract Awards API on Apify Store &rarr;</a></p>
+<h2>Sources, licence and limits</h2>
+<p><strong>How fresh is the data?</strong> Same-evening rows are in by about 7 p.m. New York on the day the Pentagon announces them (weekdays). The USAspending history is months behind for DoD: contract actions are published in FPDS, and so on USAspending, <strong>with a delay of up to 90 days</strong> (a DoD rule for operational security). On 2026-11-05 the DoD data was complete up to 2026-07-23, a lag of about 105 days; later dates only held a few hundred actions (mainly Army Corps of Engineers civil works). That is why the default window is the last 135 days, and why every row carries a <code>data_lag_note</code>. Civilian agencies report within days. Old dates keep filling in, so use <code>onlyNewSinceLastRun</code> on a schedule instead of re-reading the same window.</p>
+<p><strong>How does the same-evening list get in?</strong> The Pentagon e-mails its daily contract list around 5 p.m. New York. Each weekday evening we read that e-mail, turn every awardee in it into a row and store it; your run reads the stored rows (no e-mail or AI call happens in your run). Rows are matched to tickers the same strict way as the history.</p>
+<p><strong>The list is parsed by AI. Can I trust it?</strong> The prose is turned into rows by Claude (Haiku), with checks around it: the model has no tools and is told the text is data, not instructions; its answer must be exactly a JSON list in a fixed schema with valid types, or that part of the day is rejected and read again; and every row&#x27;s company name and dollar amount must literally appear in the announcement text, or the row is dropped. That stops made-up rows, but the model can still occasionally pick the wrong one of two amounts in a paragraph, or the wrong city. For anything you act on, open <code>source_url</code> (the war.gov article) and check.</p>
+<p><strong>What does <code>is_ceiling</code> mean?</strong> The list states face values. For a multiple-award contract the amount is a shared ceiling: eleven firms &quot;are awarded a $975,000,000 contract&quot; means they compete for orders up to $975M together, and each of them gets a row with the full $975M. IDIQ contracts also state a maximum, not money committed. Those rows have <code>is_ceiling: true</code>; don&#x27;t add them up as revenue. USAspending rows are obligations, so always <code>false</code>.</p>
+<p><strong>Is this the same as the DoD&#x27;s daily 5 p.m. contract announcements?</strong> Same contract actions, two records. <code>dod_daily_list</code> rows come from the announcement itself, the same evening, with face values. <code>usaspending</code> rows arrive months later with the obligated amount of that day (often lower than the face value), UEI, parent company, NAICS and PSC. The Actor does not merge them: the same award can appear once from each source.</p>
+<p><strong>Why do amounts differ from the press release?</strong> For USAspending rows: obligations vs. face value (see above). Also, one row sums all actions on that contract that day, and modifications can be negative.</p>
+<p><strong>Why is my company&#x27;s ticker missing?</strong> The recipient name and its parent must match the SEC name exactly after cleaning (the daily list names no parent, so only the awardee&#x27;s own name counts there). Joint ventures, foreign parents and renamed subsidiaries are missed on purpose. Search by <code>recipients</code> (name contains) to see them anyway.</p>
+<p><strong>Why is <code>shares_outstanding</code> empty for a matched ticker?</strong> Companies with several share classes (e.g. Palantir) or that don&#x27;t report the cover-page count as a single number, and counts older than 400 days from the signing date, are left empty rather than guessed.</p>
+<p><strong>Is the ticker the company that was listed at the time?</strong> Matching uses today&#x27;s SEC list and today&#x27;s parent company from USAspending. A subsidiary sold since then may show its current owner&#x27;s ticker; companies that are no longer listed are not matched.</p>
+<p><strong>Is this investment advice?</strong> No. It is a data product: public contract records joined to public SEC identifiers. No prices, no market caps, no signals.</p>
+<p><strong>Legal basis?</strong> US federal government data is public domain. See LEGAL.md in the source.</p>
+<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=Pentagon / DoD Contract Awards API">Ask for early access</a></div>
+</div>
 </article>
 </main>
-<footer><p><a href="index.html">All Actors</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p></footer>
+<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
 </body>
 </html>
