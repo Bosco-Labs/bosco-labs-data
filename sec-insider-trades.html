@@ -62,7 +62,7 @@ td:first-child{white-space:nowrap}.cta{display:inline-block;background:var(--btn
 <h2>What you get</h2>
 <div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
 <tr><td><code>schema_version</code></td><td>string</td><td>Output schema version.</td></tr>
-<tr><td><code>record_type</code></td><td>string</td><td>transaction = one Form 4 transaction; cluster = one cluster-buy signal.</td></tr>
+<tr><td><code>record_type</code></td><td>string</td><td>transaction = one Form 4 transaction; cluster = one cluster-buy or cluster-sell signal.</td></tr>
 <tr><td><code>cluster_side</code></td><td>string | null</td><td>Cluster rows only: buy = insiders buying together, sell = insiders selling together (10b5-1 plan sales excluded).</td></tr>
 <tr><td><code>accession_number</code></td><td>string</td><td>SEC accession number of the Form 4 filing.</td></tr>
 <tr><td><code>form</code></td><td>string</td><td>4, or 4/A for an amendment.</td></tr>

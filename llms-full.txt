@@ -63,7 +63,7 @@ Coverage: Today's filings from the EDGAR live feed, minutes after the SEC accept
 ### Output fields
 
 - `schema_version` (string): Output schema version.
-- `record_type` (string): transaction = one Form 4 transaction; cluster = one cluster-buy signal.
+- `record_type` (string): transaction = one Form 4 transaction; cluster = one cluster-buy or cluster-sell signal.
 - `cluster_side` (string | null): Cluster rows only: buy = insiders buying together, sell = insiders selling together (10b5-1 plan sales excluded).
 - `accession_number` (string): SEC accession number of the Form 4 filing.
 - `form` (string): 4, or 4/A for an amendment.
