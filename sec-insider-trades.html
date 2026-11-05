@@ -142,7 +142,7 @@ td:first-child{white-space:nowrap}.cta{display:inline-block;background:var(--btn
 }</code></pre>
 <h2>Input fields</h2>
 <div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
-<tr><td><code>tickers</code></td><td>array</td><td>Issuer stock tickers, e.g. [&quot;AAPL&quot;, &quot;TSLA&quot;]. Mapped to the company&#x27;s CIK with the SEC&#x27;s own ticker list; history is also matched on the ticker as written in the filing. Empty (and <code>ciks</code> empty) = the whole market.</td></tr>
+<tr><td><code>tickers</code></td><td>array</td><td>Optional: issuer stock tickers, e.g. [&quot;AAPL&quot;, &quot;TSLA&quot;]. Leave empty to scan the whole market (the usual use: insider buying anywhere). Mapped to the company&#x27;s CIK with the SEC&#x27;s ticker list; history is also matched on the ticker as written in the filing.</td></tr>
 <tr><td><code>ciks</code></td><td>array</td><td>Issuer SEC Central Index Keys as digits, leading zeros optional, e.g. [&quot;320193&quot;] for Apple. Use for delisted or renamed companies the SEC&#x27;s ticker list no longer has. Empty = no CIK filter.</td></tr>
 <tr><td><code>transactionCodes</code></td><td>array</td><td>Form 4 transaction codes to return, e.g. [&quot;P&quot;] for open-market purchases only. Default [&quot;P&quot;, &quot;S&quot;] (open-market purchases and sales). Pass [] for all codes, including awards (A), tax withholding (F) and option exercises (M).</td></tr>
 <tr><td><code>insiderRoles</code></td><td>array</td><td>Only insiders with one of these roles: director, officer, ten_percent_owner, other, e.g. [&quot;director&quot;, &quot;officer&quot;]. Empty = all roles.</td></tr>

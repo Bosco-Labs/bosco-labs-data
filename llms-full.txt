@@ -30,7 +30,7 @@ Apify Store profile: https://apify.com/bosco_labs
 - Apify API (synchronous): POST `https://api.apify.com/v2/acts/bosco_labs~<actor>/run-sync-get-dataset-items` with header `Authorization: Bearer <APIFY_TOKEN>` and the Actor input as the JSON body; the response is the dataset items.
 - Apify hosted MCP server: add `https://mcp.apify.com?tools=bosco_labs/<actor>` to your MCP client (Claude, Cursor, VS Code, ...). It loads the Actor as a tool plus `get-actor-run` and `get-dataset-items`, and signs you in with OAuth or `Authorization: Bearer <APIFY_TOKEN>`. On the default server (`https://mcp.apify.com`) agents can also find the Actors with `search-actors` and run them with `call-actor`.
 - Pricing: pay per event, billed to your own Apify account: you pay for rows delivered at the prices listed per Actor, and runs stop at your max charge limit.
-- Bosco Labs MCP server: `bosco-labs-data-mcp`, one MCP server for all data Actors: coming soon.
+- Bosco Labs MCP server: `bosco-labs-data-mcp` on PyPI (https://pypi.org/project/bosco-labs-data-mcp/) and the official MCP Registry (`io.github.PB7-debug/bosco-labs-data`): one MCP server for all data Actors. Run it with `uvx bosco-labs-data-mcp` and set `APIFY_TOKEN`; source in https://github.com/PB7-debug/bosco-labs-data/tree/main/mcp.
 
 ## SEC Insider Trading API (Form 4): live + history since 2006
 
@@ -45,7 +45,7 @@ Coverage: Today's filings from the EDGAR live feed, minutes after the SEC accept
 
 ### Input fields
 
-- `tickers` (array): Issuer stock tickers, e.g. ["AAPL", "TSLA"]. Mapped to the company's CIK with the SEC's own ticker list; history is also matched on the ticker as written in the filing. Empty (and `ciks` empty) = the whole market.
+- `tickers` (array): Optional: issuer stock tickers, e.g. ["AAPL", "TSLA"]. Leave empty to scan the whole market (the usual use: insider buying anywhere). Mapped to the company's CIK with the SEC's ticker list; history is also matched on the ticker as written in the filing.
 - `ciks` (array): Issuer SEC Central Index Keys as digits, leading zeros optional, e.g. ["320193"] for Apple. Use for delisted or renamed companies the SEC's ticker list no longer has. Empty = no CIK filter.
 - `transactionCodes` (array): Form 4 transaction codes to return, e.g. ["P"] for open-market purchases only. Default ["P", "S"] (open-market purchases and sales). Pass [] for all codes, including awards (A), tax withholding (F) and option exercises (M).
 - `insiderRoles` (array): Only insiders with one of these roles: director, officer, ten_percent_owner, other, e.g. ["director", "officer"]. Empty = all roles.

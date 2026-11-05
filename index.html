@@ -145,7 +145,7 @@ td:first-child{white-space:nowrap}.cta{display:inline-block;background:var(--btn
 <li><strong>Apify API (synchronous):</strong> POST <code>https://api.apify.com/v2/acts/bosco_labs~&lt;actor&gt;/run-sync-get-dataset-items</code> with header <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code> and the Actor input as the JSON body; the response is the dataset items.</li>
 <li><strong>Apify hosted MCP server:</strong> add <code>https://mcp.apify.com?tools=bosco_labs/&lt;actor&gt;</code> to your MCP client (Claude, Cursor, VS Code, ...). It loads the Actor as a tool plus <code>get-actor-run</code> and <code>get-dataset-items</code>, and signs you in with OAuth or <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. On the default server (<code>https://mcp.apify.com</code>) agents can also find the Actors with <code>search-actors</code> and run them with <code>call-actor</code>.</li>
 <li><strong>Pricing:</strong> pay per event, billed to your own Apify account: you pay for rows delivered at the prices listed per Actor, and runs stop at your max charge limit.</li>
-<li><strong>Bosco Labs MCP server:</strong> <code>bosco-labs-data-mcp</code>, one MCP server for all data Actors: coming soon.</li>
+<li><strong>Bosco Labs MCP server:</strong> <code>bosco-labs-data-mcp</code> on PyPI (https://pypi.org/project/bosco-labs-data-mcp/) and the official MCP Registry (<code>io.github.PB7-debug/bosco-labs-data</code>): one MCP server for all data Actors. Run it with <code>uvx bosco-labs-data-mcp</code> and set <code>APIFY_TOKEN</code>; source in https://github.com/PB7-debug/bosco-labs-data/tree/main/mcp.</li>
 </ul>
 </section>
 </main>
