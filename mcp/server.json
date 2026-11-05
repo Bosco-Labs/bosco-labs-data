@@ -3,7 +3,7 @@
   "name": "io.github.PB7-debug/bosco-labs-data",
   "title": "Bosco Labs data",
   "description": "SEC insider trades & filings, US House trades, DoD contracts, EU tenders, EU company financials",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "repository": {
     "url": "https://github.com/PB7-debug/bosco-labs-data",
     "source": "github",
@@ -14,7 +14,7 @@
       "registryType": "pypi",
       "registryBaseUrl": "https://pypi.org",
       "identifier": "bosco-labs-data-mcp",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "runtimeHint": "uvx",
       "transport": {
         "type": "stdio"

@@ -229,9 +229,9 @@ async def european_company_accounts(
     Register of Company Accounts (NO). Use it for revenue, profit, equity, cash or employees of
     a (private) company in these countries when you know its registration number.
 
-    Coverage: UK only accounts filed in the last ~60 days (a company that has not filed in that
-    window returns nothing, at no cost; small UK companies often file no profit and loss
-    account); Denmark all years; Norway the last 3 fiscal years (own accounts, not group).
+    Coverage: UK every year filed digitally (iXBRL; paper/PDF-only years are skipped, and small
+    UK companies often file no profit and loss account); Denmark all years; Norway the last 3
+    fiscal years (own accounts, not group).
     Pass at least one registration number. Newest fiscal year first.
 
     Returns one row per company per fiscal year: company_name, country, the registration
@@ -289,8 +289,14 @@ async def sec_insider_trades(
     date_from: Day | None = None,
     date_to: Day | None = None,
     lookback_days: Annotated[
-        int, Field(ge=1, le=3650, description="Days back when date_from is omitted")
-    ] = 30,
+        int | None,
+        Field(
+            ge=1,
+            le=3650,
+            description="Days back when date_from is omitted; omit for the default "
+            "(90 days for tickers/CIKs, 7 days for the whole market)",
+        ),
+    ] = None,
     cluster: Annotated[
         Literal["buys", "sells", "both"] | None,
         Field(
@@ -363,8 +369,14 @@ async def sec_filings(
     date_from: Day | None = None,
     date_to: Day | None = None,
     lookback_days: Annotated[
-        int, Field(ge=1, le=12000, description="Days back when date_from is omitted")
-    ] = 30,
+        int | None,
+        Field(
+            ge=1,
+            le=12000,
+            description="Days back when date_from is omitted; omit to get a company's latest "
+            "filings of any date (tickers/CIKs) or the last 7 days (whole market)",
+        ),
+    ] = None,
     max_results: limit(100, "filings") = 25,
 ) -> list[dict]:
     """SEC EDGAR filings of US-listed companies and other filers: any form (8-K, 10-K, 10-Q,

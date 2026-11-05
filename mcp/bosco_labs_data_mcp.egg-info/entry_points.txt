@@ -1,0 +1,2 @@
+[console_scripts]
+bosco-labs-data-mcp = bosco_mcp:main
