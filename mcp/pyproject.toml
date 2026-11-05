@@ -1,0 +1,32 @@
+[project]
+name = "bosco-labs-data-mcp"
+version = "0.1.0"
+description = "MCP server: SEC insider trades and filings, US House trades, DoD contracts, EU tenders and European company financials, via Apify."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+keywords = ["mcp", "apify", "sec", "edgar", "insider-trading", "tenders", "financials"]
+dependencies = ["mcp>=2.3,<3", "httpx>=0.27"]
+
+[project.urls]
+Homepage = "https://pb7-debug.github.io/bosco-labs-data/"
+Repository = "https://github.com/PB7-debug/bosco-labs-data"
+
+[project.scripts]
+bosco-labs-data-mcp = "bosco_mcp:main"
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+py-modules = ["bosco_mcp"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]

@@ -1,0 +1,21 @@
+# Smithery registry config (stdio, run locally by the user's client).
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    required: [apifyToken]
+    properties:
+      apifyToken:
+        type: string
+        description: >-
+          Your Apify API token (https://console.apify.com/settings/integrations). Every row a
+          tool returns is billed to your Apify account (from $0.001 to $0.05 per row, see the
+          README).
+  commandFunction: |-
+    (config) => ({
+      command: "uvx",
+      args: ["bosco-labs-data-mcp"],
+      env: { APIFY_TOKEN: config.apifyToken }
+    })
+  exampleConfig:
+    apifyToken: apify_api_xxxxxxxxxxxxxxxxxxxx

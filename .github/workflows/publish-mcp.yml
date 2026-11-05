@@ -1,0 +1,102 @@
+# Publishes the MCP server in mcp/ to PyPI (trusted publishing, no token) and then to the
+# official MCP Registry (GitHub OIDC). One-time setup: mcp/PUBLISHING.md.
+name: Publish MCP server
+
+on:
+  workflow_dispatch:
+  push:
+    tags: ["mcp-v*"] # e.g. mcp-v0.1.0; must equal the version in mcp/pyproject.toml
+
+jobs:
+  pypi:
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/bosco-labs-data-mcp
+    permissions:
+      id-token: write # PyPI trusted publishing
+      contents: read
+    defaults:
+      run:
+        working-directory: mcp
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Check versions match
+        run: |
+          python3 - <<'EOF'
+          import json, os, sys, tomllib
+          versions = {
+              "pyproject.toml": tomllib.load(open("pyproject.toml", "rb"))["project"]["version"],
+          }
+          server = json.load(open("server.json"))
+          versions["server.json version"] = server["version"]
+          for i, pkg in enumerate(server["packages"]):
+              versions[f"server.json packages[{i}].version"] = pkg["version"]
+          if os.environ["GITHUB_REF_TYPE"] == "tag":
+              versions["tag"] = os.environ["GITHUB_REF_NAME"].removeprefix("mcp-v")
+          print(versions)
+          if len(set(versions.values())) != 1:
+              sys.exit("Version mismatch: bump pyproject.toml and server.json (both places) together")
+          EOF
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+
+      - name: Run tests
+        run: uv run --with pytest pytest -q
+
+      - name: Build package
+        run: uv build
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: mcp/dist/
+          skip-existing: true # lets a re-run retry the registry job after PyPI succeeded
+
+  mcp-registry:
+    needs: pypi
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write # MCP Registry login via GitHub OIDC
+      contents: read
+    env:
+      MCP_PUBLISHER_VERSION: v1.8.7
+    defaults:
+      run:
+        working-directory: mcp
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Install cosign
+        uses: sigstore/cosign-installer@6f9f17788090df1f26f669e9d70d6ae9567deba6 # v4.1.2
+
+      - name: Download and verify mcp-publisher
+        run: |
+          set -euo pipefail
+          os="$(uname -s | tr '[:upper:]' '[:lower:]')"
+          arch="$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/')"
+          archive="mcp-publisher_${os}_${arch}.tar.gz"
+          base_url="https://github.com/modelcontextprotocol/registry/releases/download/${MCP_PUBLISHER_VERSION}"
+
+          curl --fail --location --silent --show-error --output "$archive" "$base_url/$archive"
+          curl --fail --location --silent --show-error --output "$archive.sigstore.json" "$base_url/$archive.sigstore.json"
+          cosign verify-blob \
+            --bundle "$archive.sigstore.json" \
+            --certificate-identity "https://github.com/modelcontextprotocol/registry/.github/workflows/release.yml@refs/tags/${MCP_PUBLISHER_VERSION}" \
+            --certificate-oidc-issuer "https://token.actions.githubusercontent.com" \
+            "$archive"
+          tar xzf "$archive" mcp-publisher
+          rm -f "$archive" "$archive.sigstore.json"
+
+      - name: Validate server.json
+        run: ./mcp-publisher validate
+
+      - name: Authenticate to MCP Registry
+        run: ./mcp-publisher login github-oidc
+
+      - name: Publish server to MCP Registry
+        run: ./mcp-publisher publish
