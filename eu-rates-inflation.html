@@ -141,6 +141,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <tr><td><code>observations</code></td><td>array</td><td>The newest <code>last</code> observations, oldest first, each {date, value, status}. status is the source&#x27;s observation flag, null when normal (ECB: P provisional, E estimated; Eurostat: e estimated, p provisional, b break in series).</td></tr>
 <tr><td><code>observation_count</code></td><td>integer</td><td>Number of entries in observations.</td></tr>
 <tr><td><code>source_url</code></td><td>string | null</td><td>Human-readable page of the series: ECB Data Portal series page or Eurostat data browser table.</td></tr>
+<tr><td><code>provided_by</code></td><td>string</td><td>Who compiled this row; cite together with source_url.</td></tr>
 <tr><td><code>api_url</code></td><td>string | null</td><td>The exact API request the values came from (re-run it to verify).</td></tr>
 <tr><td><code>attribution</code></td><td>string</td><td>Required source credit: names the source, says the values are unmodified and available free of charge from it, and marks <code>change</code> as computed by Bosco Labs. Keep it when you republish the values.</td></tr>
 <tr><td><code>warnings</code></td><td>array</td><td>Caveats in plain words, e.g. a requested frequency the series doesn&#x27;t have, or a window cut to the newest 1000 observations.</td></tr>

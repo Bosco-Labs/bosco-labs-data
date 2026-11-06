@@ -179,6 +179,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <tr><td><code>text</code></td><td>string | null</td><td>The decision as plain text (includeText only): &#x27;## &#x27; section headings, numbering kept, footnotes at the end; cut at maxTextChars.</td></tr>
 <tr><td><code>text_truncated</code></td><td>boolean | null</td><td>True when text was cut at maxTextChars; null without includeText.</td></tr>
 <tr><td><code>source_url</code></td><td>string</td><td>The decision on uitspraken.rechtspraak.nl.</td></tr>
+<tr><td><code>provided_by</code></td><td>string</td><td>Who compiled this row; cite together with source_url.</td></tr>
 <tr><td><code>data_url</code></td><td>string</td><td>The official Open Data XML this row was read from.</td></tr>
 <tr><td><code>warnings</code></td><td>array</td><td>Caveats in plain words: text cut, metadata only, replaced ECLI, keyword scan limit.</td></tr>
 <tr><td><code>retrieved_at</code></td><td>string</td><td>When the row was made (ISO 8601, UTC).</td></tr>

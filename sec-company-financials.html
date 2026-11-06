@@ -155,6 +155,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <tr><td><code>filed</code></td><td>string | null</td><td>Filing date of that filing (YYYY-MM-DD).</td></tr>
 <tr><td><code>accession_number</code></td><td>string | null</td><td>SEC accession number of the filing most values come from.</td></tr>
 <tr><td><code>source_url</code></td><td>string | null</td><td>EDGAR index page of that filing.</td></tr>
+<tr><td><code>provided_by</code></td><td>string</td><td>Who compiled this row; cite together with source_url.</td></tr>
 <tr><td><code>currency</code></td><td>string</td><td>Reporting currency of all money values (ISO 4217, e.g. USD, EUR, DKK). Values are in full units, not thousands.</td></tr>
 <tr><td><code>revenue</code></td><td>number | null</td><td>Total revenue / net sales (for banks: total net revenue). In <code>currency</code>.</td></tr>
 <tr><td><code>cost_of_revenue</code></td><td>number | null</td><td>Cost of revenue / cost of goods and services sold. In <code>currency</code>.</td></tr>

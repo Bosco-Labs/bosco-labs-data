@@ -132,6 +132,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <tr><td><code>primary_document_url</code></td><td>string | null</td><td>The main document (HTML/iXBRL, text or XML).</td></tr>
 <tr><td><code>source</code></td><td>string</td><td>submissions-api, full-index, daily-index or live-feed.</td></tr>
 <tr><td><code>source_url</code></td><td>string</td><td>The SEC page or file the row was read from.</td></tr>
+<tr><td><code>provided_by</code></td><td>string</td><td>Who compiled this row; cite together with source_url.</td></tr>
 <tr><td><code>retrieved_at</code></td><td>string</td><td>UTC time the row was produced.</td></tr>
 </tbody></table></div>
 <h2>Coverage</h2><p>All EDGAR forms. Companies: the SEC submissions API, complete history back to 1994. Whole market: the live feed, then the EDGAR daily and quarterly indexes back to 1993. 8-K item codes exist since August 2004. Rows hold links to the filing and its main document, not the document text.</p>

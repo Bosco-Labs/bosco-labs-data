@@ -233,7 +233,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <h1>Official-source data for AI agents and analysts</h1>
 <p class="lead">Clean, typed JSON from SEC EDGAR, Companies House, EUR-Lex, TED, USAspending, ClinicalTrials.gov and other official registers. Call each tool by API or from an AI agent over MCP, and pay per result. Every row links to its source.</p>
 <p class="muted">25 tools &middot; 5 live on the Apify Store &middot; the others coming soon</p>
-<div class="actions"><a class="btn" href="#tools">Browse the tools</a><a class="btn ghost" href="llms.txt">For agents: llms.txt</a></div>
+<div class="actions"><a class="btn" href="#tools">Browse the tools</a><a class="btn ghost" href="q/index.html">Example questions</a><a class="btn ghost" href="llms.txt">For agents: llms.txt</a></div>
 <ul class="chips"><li><a href="#finance-sec">Finance &amp; SEC</a></li><li><a href="#companies">Companies</a></li><li><a href="#compliance-law">Compliance &amp; law</a></li><li><a href="#government-procurement">Government &amp; procurement</a></li><li><a href="#macro-health-places">Macro, health &amp; places</a></li><li><a href="#data-tools">Data tools</a></li></ul>
 </section>
 <span id="tools"></span>
@@ -291,6 +291,11 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <li class="card"><div class="card-top"><img src="icons/dataset-change-monitor.svg" alt="" width="48" height="48"><h3><a href="dataset-change-monitor.html">Change Monitor</a></h3></div><p>Compare each scraper run with the previous one and get only new, changed and removed items, matched by your key fields. Slack, email or webhook alerts.</p><div class="row"><span class="price">$0.001 per change reported</span><span class="badge soon">Coming soon to the Store</span></div></li>
 <li class="card"><div class="card-top"><img src="icons/sheets-export.svg" alt="" width="48" height="48"><h3><a href="sheets-export.html">Google Sheets Export</a></h3></div><p>Export any Apify dataset to Google Sheets: replace a tab or append rows, nested fields as columns, header kept, rate limits retried. Works on schedules.</p><div class="row"><span class="price">$0.00015 per row exported</span><span class="badge soon">Coming soon to the Store</span></div></li>
 </ul>
+</section>
+<section id="questions" class="prose">
+<h2>Questions and comparisons</h2>
+<p><a href="q/index.html">53 questions agents ask</a>, each with the exact tool input, a prompt for MCP, the API call and an example answer.</p>
+<p>Comparisons with other Apify Store Actors, using public Store data: <a href="compare/insider-trades.html">Insider trades</a> &middot; <a href="compare/sec-edgar.html">SEC filings and financials</a> &middot; <a href="compare/company-data.html">Company check (KYB)</a> &middot; <a href="compare/eu-public-tenders.html">EU tenders</a> &middot; <a href="compare/sanctions-lists.html">Sanctions screening</a>.</p>
 </section>
 <section id="how-to-call" class="prose">
 <h2>How to call</h2>

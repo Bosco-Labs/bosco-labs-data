@@ -166,6 +166,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <tr><td><code>filing_url</code></td><td>string</td><td>EDGAR filing index page.</td></tr>
 <tr><td><code>source</code></td><td>string</td><td>edgar-xml (parsed Form 4 XML), dera (SEC Insider Transactions Data Sets) or derived (cluster).</td></tr>
 <tr><td><code>source_url</code></td><td>string | null</td><td>The exact SEC file the row was read from.</td></tr>
+<tr><td><code>provided_by</code></td><td>string</td><td>Who compiled this row; cite together with source_url.</td></tr>
 <tr><td><code>retrieved_at</code></td><td>string</td><td>UTC time the row was produced.</td></tr>
 </tbody></table></div>
 <h2>Coverage</h2><p>Today&#x27;s filings from the EDGAR live feed, minutes after the SEC accepts them; recent quarters from the EDGAR indexes and Form 4 XML; history from 2006 from the SEC&#x27;s quarterly Insider Transactions Data Sets. Non-derivative table only: options and other derivatives are not included.</p>

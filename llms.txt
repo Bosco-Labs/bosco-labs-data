@@ -48,6 +48,15 @@ Contact: support@boscolabs.dev
 - [Change Monitor: new, changed & removed items + Slack alerts](https://boscolabs.dev/dataset-change-monitor.html): Run any scraper on a schedule and get only what changed: new, changed and removed items compared with the previous run, matched by your key fields (e.g. url). Optional Slack, Discord, Telegram, email or webhook alert per run. Add it as an integration to your scraper. Price: $0.001 per change reported. (coming soon to the Apify Store)
 - [Google Sheets Export: send any Apify dataset to a spreadsheet](https://boscolabs.dev/sheets-export.html): Export any Apify dataset to Google Sheets: replace a tab or append rows, with nested fields as columns and your header kept; writes with your own Google service account key and retries Google rate limits. Price: $0.00015 per row exported. (coming soon to the Apify Store)
 
+## Questions and comparisons
+
+- [Questions agents ask](https://boscolabs.dev/q/index.html): 53 questions, each with the exact Actor input, an MCP prompt, the API call and an example output
+- [SEC insider trading data on Apify: tools compared](https://boscolabs.dev/compare/insider-trades.html): Insider trades tools compared with other Apify Store Actors (Store data, 2026-11-05)
+- [SEC EDGAR filings and financials on Apify compared](https://boscolabs.dev/compare/sec-edgar.html): SEC filings and financials tools compared with other Apify Store Actors (Store data, 2026-11-05)
+- [Company check and KYB data on Apify compared](https://boscolabs.dev/compare/company-data.html): Company check (KYB) tools compared with other Apify Store Actors (Store data, 2026-11-05)
+- [EU public tenders (TED) data on Apify compared](https://boscolabs.dev/compare/eu-public-tenders.html): EU tenders tools compared with other Apify Store Actors (Store data, 2026-11-05)
+- [Sanctions screening tools on Apify compared](https://boscolabs.dev/compare/sanctions-lists.html): Sanctions screening tools compared with other Apify Store Actors (Store data, 2026-11-05)
+
 ## How to call
 
 - Apify API (synchronous): POST `https://api.apify.com/v2/acts/bosco_labs~<actor>/run-sync-get-dataset-items` with header `Authorization: Bearer <APIFY_TOKEN>` and the Actor input as the JSON body; the response is the dataset items.

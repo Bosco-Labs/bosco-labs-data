@@ -214,6 +214,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <tr><td><code>sources</code></td><td>object</td><td>Only with includeSources: per metric {tag: XBRL concept used, accession: SEC filing the value comes from (the latest filing that reported it, or for re-checked values the first 10-K/10-Q that did), url: its EDGAR index page}, or {derived: formula} for derived values.</td></tr>
 <tr><td><code>warnings</code></td><td>array</td><td>Notes on this row: a value from a proxy statement replaced by the 10-K/10-Q figure, a value that could not be checked, or a metric left out because it was reported for a different period than the row&#x27;s.</td></tr>
 <tr><td><code>retrieved_at</code></td><td>string</td><td>UTC time the row was produced.</td></tr>
+<tr><td><code>provided_by</code></td><td>string</td><td>Who compiled this row; cite together with source_url.</td></tr>
 </tbody></table></div>
 
 <h2>Use with AI agents (MCP)</h2>

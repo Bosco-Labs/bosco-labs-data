@@ -160,6 +160,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <tr><td><code>candidates</code></td><td>array</td><td>For ambiguous or not_found rows: up to 3 nearest BAG addresses (display_name, postcode, nummeraanduiding_id, score). Re-run with one of them, or its id in bagIds. Empty when resolved.</td></tr>
 <tr><td><code>warnings</code></td><td>array</td><td>Caveats and failures in plain words an agent can relay; the rest of the row is still valid.</td></tr>
 <tr><td><code>source_url</code></td><td>string | null</td><td>PDOK record the address (or, for a pand id, the building) was read from; null when not resolved.</td></tr>
+<tr><td><code>provided_by</code></td><td>string</td><td>Who compiled this row; cite together with source_url.</td></tr>
 <tr><td><code>retrieved_at</code></td><td>string</td><td>When the row was made (ISO 8601, UTC).</td></tr>
 </tbody></table></div>
 

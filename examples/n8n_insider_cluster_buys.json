@@ -1,0 +1,50 @@
+{
+  "name": "Bosco Labs: SEC insider cluster buys",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "0b1c6f2e-1a77-4c39-9d43-3f5a1e0c0001",
+      "name": "When clicking 'Execute workflow'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [0, 0]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.apify.com/v2/actors/bosco_labs~sec-insider-trades/run-sync-get-dataset-items",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            { "name": "maxTotalChargeUsd", "value": "1" }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"clusterBuysOnly\": true,\n  \"lookbackDays\": 30,\n  \"maxResults\": 50\n}",
+        "options": {
+          "timeout": 310000
+        }
+      },
+      "id": "0b1c6f2e-1a77-4c39-9d43-3f5a1e0c0002",
+      "name": "Run sec-insider-trades",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [260, 0],
+      "notes": "Credential: Header Auth, name Authorization, value Bearer <your Apify token>. Docs: https://docs.apify.com/api/v2/act-run-sync-get-dataset-items-post and https://docs.apify.com/api/v2 (Authentication). Billed per row to your Apify account; maxTotalChargeUsd caps the run."
+    }
+  ],
+  "connections": {
+    "When clicking 'Execute workflow'": {
+      "main": [
+        [
+          { "node": "Run sec-insider-trades", "type": "main", "index": 0 }
+        ]
+      ]
+    }
+  },
+  "settings": {}
+}

@@ -93,6 +93,32 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
   -H &quot;Authorization: Bearer $BOSCO_API_KEY&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -d &#x27;{&quot;series&quot;: [&quot;ecb_deposit_rate&quot;, &quot;hicp:EA&quot;], &quot;last&quot;: 3}&#x27;</code></pre>
+<p>Python (<code>pip install httpx</code>):</p>
+<pre><code>import os, httpx
+
+r = httpx.post(
+    &quot;https://api.boscolabs.dev/v1/eu-rates-inflation&quot;,
+    headers={&quot;Authorization&quot;: f&quot;Bearer {os.environ[&#x27;BOSCO_API_KEY&#x27;]}&quot;},
+    json={&quot;series&quot;: [&quot;ecb_deposit_rate&quot;, &quot;hicp:EA&quot;], &quot;last&quot;: 3},
+    timeout=60,
+)
+body = r.json()
+if r.status_code != 200:
+    raise SystemExit(body[&quot;error&quot;][&quot;message&quot;])  # failed calls are never charged
+for row in body[&quot;rows&quot;]:
+    print(row[&quot;series&quot;], row[&quot;latest_value&quot;], row[&quot;source_url&quot;])</code></pre>
+<p>JavaScript (Node 18+ or the browser):</p>
+<pre><code>const r = await fetch(&quot;https://api.boscolabs.dev/v1/eu-rates-inflation&quot;, {
+  method: &quot;POST&quot;,
+  headers: {
+    Authorization: `Bearer ${process.env.BOSCO_API_KEY}`,
+    &quot;Content-Type&quot;: &quot;application/json&quot;,
+  },
+  body: JSON.stringify({ series: [&quot;ecb_deposit_rate&quot;, &quot;hicp:EA&quot;], last: 3 }),
+});
+const body = await r.json();
+if (!r.ok) throw new Error(body.error.message); // failed calls are never charged
+for (const row of body.rows) console.log(row.series, row.latest_value, row.source_url);</code></pre>
 <p>Every call is <code>POST /v1/&lt;tool&gt;</code> with the Actor's input object as JSON. A <code>200</code> answer is <code>{"tool", "rows": [...], "count", "warnings", "message", "charged_usd", "balance_usd", "duration_seconds"}</code>; the headers <code>X-Credits-Charged</code> and <code>X-Credits-Balance</code> repeat the charge. An empty result is <code>200</code> with <code>rows: []</code> and costs nothing. Check your balance with <code>GET /v1/me</code>; list tools, prices and input schemas with <code>GET /v1/tools</code> (free).</p>
 </div>
 <h2 id="pricing">Tools and prices</h2>
@@ -116,9 +142,8 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <p>Every error has one shape: <code>{"error": {"code", "message", "example"?}}</code>. Failed calls are never charged.</p>
 <div class="table"><table><thead><tr><th>HTTP</th><th>Code</th><th>Meaning</th></tr></thead><tbody>
 <tr><td>400</td><td><code>invalid_input</code></td><td>Bad input: the Actor's own validation message, often with an example.</td></tr>
-<tr><td>401</td><td><code>bad_key</code></td><td>Missing or unknown key.</td></tr>
+<tr><td>401</td><td><code>bad_key</code></td><td>Missing, unknown or disabled key.</td></tr>
 <tr><td>402</td><td><code>insufficient_credits</code></td><td>Balance below price x maximum rows for this input; shows your balance and how to buy credits.</td></tr>
-<tr><td>403</td><td><code>key_disabled</code></td><td>Key disabled (ask support).</td></tr>
 <tr><td>429</td><td><code>rate_limited</code></td><td>Too many calls; wait for the <code>Retry-After</code> seconds.</td></tr>
 <tr><td>502</td><td><code>source_failed</code></td><td>The official source is down or returned garbage. Nothing charged.</td></tr>
 <tr><td>503</td><td><code>paused</code></td><td>API paused (daily safety cap or maintenance). Nothing charged.</td></tr>
@@ -126,8 +151,11 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 </tbody></table></div>
 <h2 id="mcp">MCP</h2>
 <p>Add <code>https://api.boscolabs.dev/mcp</code> (streamable HTTP) to your MCP client with the header <code>Authorization: Bearer &lt;key&gt;</code>. Each tool above is one MCP tool, at the same price.</p>
+<h2 id="versioning">Versioning and changes</h2>
+<p>The API is in beta. What we aim for while it is:</p>
+<ul><li>Keep <code>/v1</code> backward compatible: we add tools and optional fields, and avoid renaming or removing fields.</li><li>A breaking change gets a new prefix (<code>/v2</code>), announced on this page in advance.</li><li>Every row has a <code>schema_version</code>; parse rows by field name and ignore fields you don't know.</li><li>Price changes are announced at least 14 days ahead; a call is charged the price shown in <code>GET /v1/tools</code> when it runs.</li></ul>
 <h2>Docs and privacy</h2>
-<p>Interactive docs: <a href="https://api.boscolabs.dev/docs">https://api.boscolabs.dev/docs</a>. OpenAPI: <a href="https://api.boscolabs.dev/openapi.json">https://api.boscolabs.dev/openapi.json</a>. What we log and what we never store: <a href="privacy.html">privacy</a>. For agents: <a href="llms.txt">llms.txt</a>.</p>
+<p>Interactive docs: <a href="https://api.boscolabs.dev/docs">https://api.boscolabs.dev/docs</a>. OpenAPI (with an example request and response per tool, for agents, Postman and code generators): <a href="https://api.boscolabs.dev/openapi.json">https://api.boscolabs.dev/openapi.json</a>. What we log and what we never store: <a href="privacy.html">privacy</a>. For agents: <a href="llms.txt">llms.txt</a>.</p>
 </div>
 <script>
 document.getElementById("key-form").addEventListener("submit", async (e) => {

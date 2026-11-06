@@ -165,6 +165,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <tr><td><code>registry_url</code></td><td>string | null</td><td>Company page in the official register (filing history / CVR).</td></tr>
 <tr><td><code>source_document</code></td><td>string | null</td><td>GB: Companies House filing transaction id (by company number) or file name of the accounts inside the daily bulk ZIP (newest filings).</td></tr>
 <tr><td><code>source_url</code></td><td>string</td><td>GB: the Companies House document (by company number, needs a key) or bulk ZIP (newest filings); DK: the XBRL file; NO: the Regnskapsregisteret JSON record; BE: the NBB accounting-data URL (needs a key).</td></tr>
+<tr><td><code>provided_by</code></td><td>string</td><td>Who compiled this row; cite together with source_url.</td></tr>
 <tr><td><code>retrieved_at</code></td><td>string</td><td>UTC time the source was fetched.</td></tr>
 </tbody></table></div>
 <h2>Coverage</h2><p>UK: accounts filed electronically with Companies House in the last ~60 days. Denmark: every annual report filed digitally with Erhvervsstyrelsen, all years. Norway: the last 3 fiscal years of every company that files accounts with the Brønnøysund Register (company accounts, not group accounts). Belgium only when the Actor owner has configured access. LEI looked up at GLEIF.</p>

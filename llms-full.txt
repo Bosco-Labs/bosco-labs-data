@@ -48,6 +48,69 @@ Contact: support@boscolabs.dev
 - [Change Monitor: new, changed & removed items + Slack alerts](https://boscolabs.dev/dataset-change-monitor.html): Run any scraper on a schedule and get only what changed: new, changed and removed items compared with the previous run, matched by your key fields (e.g. url). Optional Slack, Discord, Telegram, email or webhook alert per run. Add it as an integration to your scraper. Price: $0.001 per change reported. (coming soon to the Apify Store)
 - [Google Sheets Export: send any Apify dataset to a spreadsheet](https://boscolabs.dev/sheets-export.html): Export any Apify dataset to Google Sheets: replace a tab or append rows, with nested fields as columns and your header kept; writes with your own Google service account key and retries Google rate limits. Price: $0.00015 per row exported. (coming soon to the Apify Store)
 
+## Questions and comparisons
+
+- [Questions agents ask](https://boscolabs.dev/q/index.html): 53 questions, each with the exact Actor input, an MCP prompt, the API call and an example output
+- [SEC insider trading data on Apify: tools compared](https://boscolabs.dev/compare/insider-trades.html): Insider trades tools compared with other Apify Store Actors (Store data, 2026-11-05)
+- [SEC EDGAR filings and financials on Apify compared](https://boscolabs.dev/compare/sec-edgar.html): SEC filings and financials tools compared with other Apify Store Actors (Store data, 2026-11-05)
+- [Company check and KYB data on Apify compared](https://boscolabs.dev/compare/company-data.html): Company check (KYB) tools compared with other Apify Store Actors (Store data, 2026-11-05)
+- [EU public tenders (TED) data on Apify compared](https://boscolabs.dev/compare/eu-public-tenders.html): EU tenders tools compared with other Apify Store Actors (Store data, 2026-11-05)
+- [Sanctions screening tools on Apify compared](https://boscolabs.dev/compare/sanctions-lists.html): Sanctions screening tools compared with other Apify Store Actors (Store data, 2026-11-05)
+
+- [Did any Tesla insiders buy shares in the last 90 days?](https://boscolabs.dev/q/tesla-insider-buys-last-90-days.html) -> `sec-insider-trades` `{"tickers": ["TSLA"], "transactionCodes": ["P"], "lookbackDays": 90, "includeClusterSignals": false, "maxResults": 50}`
+- [Which US stocks had insider cluster buys in the last 30 days?](https://boscolabs.dev/q/insider-cluster-buys-last-30-days.html) -> `sec-insider-trades` `{"clusterBuysOnly": true, "lookbackDays": 30, "maxResults": 100}`
+- [List Nvidia insider sales over $1 million in the last year, with links to the Form 4s.](https://boscolabs.dev/q/nvidia-insider-sales-over-1-million.html) -> `sec-insider-trades` `{"tickers": ["NVDA"], "transactionCodes": ["S"], "minValueUsd": 1000000, "lookbackDays": 365, "includeClusterSignals": false, "maxResults": 100}`
+- [When did Nvidia release its last four quarterly results, and was it before or after the market closed?](https://boscolabs.dev/q/nvidia-earnings-release-dates.html) -> `sec-filings-feed` `{"tickers": ["NVDA"], "earningsReleasesOnly": true, "maxResults": 4}`
+- [Which companies had a 13D activist stake filed in the last 7 days, and who filed it?](https://boscolabs.dev/q/new-13d-filings-last-7-days.html) -> `sec-filings-feed` `{"formTypes": ["13D"], "lookbackDays": 7, "maxResults": 100}`
+- [Give me links to Apple's 10-K annual reports since 2015.](https://boscolabs.dev/q/apple-10-k-annual-reports-since-2015.html) -> `sec-filings-feed` `{"tickers": ["AAPL"], "formTypes": ["10-K"], "dateFrom": "2015-01-01", "maxResults": 20}`
+- [Which House members disclosed NVDA trades in 2026?](https://boscolabs.dev/q/house-members-nvda-trades-2026.html) -> `us-house-trades` `{"tickers": ["NVDA"], "years": ["2026"], "maxResults": 100}`
+- [Which House trades over $1 million were filed in 2025?](https://boscolabs.dev/q/house-trades-over-1-million-2025.html) -> `us-house-trades` `{"years": ["2025"], "minAmountUsd": 1000001, "maxResults": 100}`
+- [What did Berkshire Hathaway buy and sell last quarter?](https://boscolabs.dev/q/berkshire-hathaway-13f-changes.html) -> `sec-ownership` `{"mode": "holdings13f", "filer": "Berkshire Hathaway", "maxResults": 50}`
+- [Which insiders filed to sell more than $1 million of stock this week?](https://boscolabs.dev/q/planned-insider-sales-form-144-over-1-million.html) -> `sec-ownership` `{"mode": "planned144", "minValueUsd": 1000000, "lookbackDays": 7}`
+- [How did Microsoft's revenue, net income and free cash flow develop over the last 8 quarters?](https://boscolabs.dev/q/microsoft-quarterly-revenue-net-income-fcf.html) -> `sec-company-financials` `{"tickers": ["MSFT"], "period": "quarterly", "years": 2, "metrics": ["revenue", "net_income", "free_cash_flow"]}`
+- [Compare Nvidia, AMD and Intel on operating margin for the last 5 fiscal years.](https://boscolabs.dev/q/nvidia-amd-intel-operating-margin-5-years.html) -> `sec-company-financials` `{"tickers": ["NVDA", "AMD", "INTC"], "period": "annual", "years": 5, "metrics": ["revenue", "operating_profit", "operating_margin"]}`
+- [Which US companies had revenue over $10B and a net margin above 20% in fiscal 2025?](https://boscolabs.dev/q/us-companies-revenue-over-10b-net-margin-over-20.html) -> `sec-company-screen` `{"period": "CY2025", "filters": [{"metric": "revenue", "min": 10000000000}, {"metric": "net_margin", "min": 0.2}], "sortBy": "net_margin", "maxResults": 50, "tickersOnly": true}`
+- [What were the top 20 US companies by operating cash flow in 2025?](https://boscolabs.dev/q/top-20-us-companies-operating-cash-flow-2025.html) -> `sec-company-screen` `{"period": "CY2025", "sortBy": "operating_cash_flow", "maxResults": 20, "tickersOnly": true}`
+- [What were Heineken's latest revenue growth and operating margin, from its annual report?](https://boscolabs.dev/q/heineken-revenue-growth-operating-margin.html) -> `esef-annual-reports` `{"companyName": "heineken", "maxFilings": 1}`
+- [Compare net income and equity of Belgian listed companies for fiscal years ending in 2024.](https://boscolabs.dev/q/belgian-listed-companies-net-income-2024.html) -> `esef-annual-reports` `{"countries": ["BE"], "periodFrom": "2024-01-01", "periodTo": "2024-12-31", "maxFilings": 20}`
+- [Who is Novo Nordisk legally, and what were its revenue and net income in the last three years? Cite your sources.](https://boscolabs.dev/q/novo-nordisk-company-check.html) -> `company-check` `{"query": "Novo Nordisk", "country": "DK", "maxYears": 3}`
+- [Who is UK company 03117531, is it still active, and what do its latest accounts show?](https://boscolabs.dev/q/uk-company-03117531-check.html) -> `company-check` `{"query": "03117531", "country": "GB", "maxYears": 3}`
+- [What were Novo Nordisk's revenue and equity in its latest Danish annual report?](https://boscolabs.dev/q/novo-nordisk-danish-annual-report-figures.html) -> `company-accounts` `{"cvrNumbers": ["24256790"], "maxResults": 1}`
+- [Get the last three years of Equinor ASA's own accounts from the Norwegian register.](https://boscolabs.dev/q/equinor-norwegian-accounts-3-years.html) -> `company-accounts` `{"orgNumbers": ["923609016"], "maxResults": 3}`
+- [Which new UK IT companies were incorporated in London recently?](https://boscolabs.dev/q/new-uk-it-companies-london.html) -> `uk-new-companies` `{"sicCodes": ["62"], "location": "London", "maxResults": 50}`
+- [Which new restaurants were registered as companies in Manchester recently?](https://boscolabs.dev/q/new-uk-restaurants-manchester.html) -> `uk-new-companies` `{"sicCodes": ["56101"], "location": "Manchester", "maxResults": 50}`
+- [Is Notion hiring engineers? How many roles, where, and since when? Link the postings.](https://boscolabs.dev/q/is-notion-hiring-engineers.html) -> `company-hiring-signals` `{"companies": ["notion.so"], "keywords": ["engineer"], "maxJobsPerCompany": 10}`
+- [How many open roles does Stripe have, and in which departments and countries?](https://boscolabs.dev/q/stripe-hiring-summary.html) -> `company-hiring-signals` `{"companies": ["stripe.com"], "summaryOnly": true}`
+- [Before we sign with these suppliers, check whether Sovcomflot or Novo Nordisk A/S are on any sanctions list, and cite the lists you checked.](https://boscolabs.dev/q/sovcomflot-supplier-sanctions-check.html) -> `sanctions-screening` `{"names": ["Sovcomflot", "Novo Nordisk A/S"]}`
+- [Is Rosneft on the EU or UK sanctions list?](https://boscolabs.dev/q/rosneft-eu-uk-sanctions-check.html) -> `sanctions-screening` `{"names": ["Rosneft"], "entityType": "organization", "lists": ["eu", "uk"]}`
+- [What does Article 50 of the AI Act require today, and has it been amended? Quote the text and link the source.](https://boscolabs.dev/q/ai-act-article-50-requirements.html) -> `eu-law-lookup` `{"query": "AI Act", "article": "50"}`
+- [What exactly does GDPR Article 17 (right to erasure) say?](https://boscolabs.dev/q/gdpr-article-17-right-to-erasure.html) -> `eu-law-lookup` `{"query": "GDPR", "article": "17"}`
+- [What does article 13 of the Dutch Wet op de vennootschapsbelasting 1969 say as of 1 January 2025?](https://boscolabs.dev/q/dutch-corporate-tax-act-article-13.html) -> `national-law-lookup` `{"query": "artikel 13 Wet Vpb 1969", "asOf": "2025-01-01"}`
+- [What does section 172 of the UK Companies Act 2006 require of directors?](https://boscolabs.dev/q/uk-companies-act-section-172.html) -> `national-law-lookup` `{"query": "Companies Act 2006 s 172", "jurisdiction": "UK"}`
+- [Find Hoge Raad rulings on tenancy law (huurrecht) since 2024 and summarise what each one decided, with links.](https://boscolabs.dev/q/hoge-raad-tenancy-law-rulings-since-2024.html) -> `dutch-case-law` `{"query": "huurrecht", "courts": ["HR"], "dateFrom": "2024-01-01", "maxResults": 20}`
+- [Which Raad van State rulings on nitrogen (stikstof) were published since 2025?](https://boscolabs.dev/q/raad-van-state-nitrogen-rulings.html) -> `dutch-case-law` `{"query": "stikstof", "courts": ["RVS"], "dateFrom": "2025-01-01", "maxResults": 20}`
+- [Find open IT tenders above 1 million euros in Germany and the Netherlands and list their deadlines.](https://boscolabs.dev/q/open-it-tenders-germany-netherlands-over-1m.html) -> `eu-tenders` `{"countries": ["DE", "NL"], "cpvCodes": ["72"], "minValueEur": 1000000}`
+- [Which companies won construction contracts from Polish buyers since October 2026, and for how much?](https://boscolabs.dev/q/polish-construction-contract-awards.html) -> `eu-tenders` `{"countries": ["PL"], "cpvCodes": ["45"], "noticeTypes": ["contract_award"], "publishedFrom": "2026-10-01", "maxResults": 50}`
+- [Alert me to new cloud hosting tenders in the Nordics every morning.](https://boscolabs.dev/q/nordic-cloud-hosting-tenders-daily.html) -> `eu-tenders` `{"keywords": "cloud hosting", "countries": ["SE", "NO", "DK", "FI"], "maxResults": 50}`
+- [Which Kratos contracts did the Pentagon award in 2019, and how large were they?](https://boscolabs.dev/q/kratos-pentagon-contracts-2019.html) -> `dod-contract-awards` `{"tickers": ["KTOS"], "dateFrom": "2019-01-01", "dateTo": "2019-12-31"}`
+- [Who won the largest Navy shipbuilding contracts (NAICS 336611) in 2025?](https://boscolabs.dev/q/navy-shipbuilding-contracts-2025.html) -> `dod-contract-awards` `{"naicsCodes": ["336611"], "dateFrom": "2025-01-01", "dateTo": "2025-12-31", "source": "history", "maxResults": 50}`
+- [Which federal contracts did Palantir win in the last 30 days?](https://boscolabs.dev/q/palantir-federal-contracts-last-30-days.html) -> `us-federal-awards` `{"tickers": ["PLTR"]}`
+- [What were the largest NASA contracts in the last 30 days?](https://boscolabs.dev/q/largest-nasa-contracts-last-30-days.html) -> `us-federal-awards` `{"agencies": ["NASA"]}`
+- [Which grants for AI went to universities in Texas in 2026?](https://boscolabs.dev/q/texas-university-ai-grants-2026.html) -> `us-federal-awards` `{"awardTypes": ["grants"], "recipients": ["university"], "keywords": ["artificial intelligence"], "placeOfPerformanceStates": ["TX"], "dateFrom": "2026-01-01", "dateTo": "2026-12-31"}`
+- [What's the ECB deposit rate now, when did it last change, and how does euro-area inflation compare?](https://boscolabs.dev/q/ecb-deposit-rate-vs-euro-inflation.html) -> `eu-rates-inflation` `{"series": ["ecb_deposit_rate", "hicp:EA"], "last": 3}`
+- [What was the EUR/USD reference rate on 15 March 2026?](https://boscolabs.dev/q/eur-usd-rate-on-a-date.html) -> `eu-rates-inflation` `{"series": ["eur_fx:USD"], "dateTo": "2026-03-15", "last": 1}`
+- [How have German and Italian 10-year government bond yields moved over the last 6 months?](https://boscolabs.dev/q/german-italian-10-year-bond-yields.html) -> `eu-rates-inflation` `{"series": ["gov_bond_10y:DE", "gov_bond_10y:IT"], "last": 6}`
+- [What is the status and primary completion date of NCT05813925?](https://boscolabs.dev/q/nct05813925-status-completion-date.html) -> `clinical-trials` `{"nctIds": ["NCT05813925"]}`
+- [Which phase 3 obesity trials of semaglutide or tirzepatide are recruiting in Europe?](https://boscolabs.dev/q/recruiting-phase-3-obesity-trials-europe.html) -> `clinical-trials` `{"condition": "obesity", "intervention": "semaglutide OR tirzepatide", "phase": ["PHASE3"], "status": ["RECRUITING"], "locationCountries": ["Europe"], "maxResults": 20}`
+- [Is 'Damrak 1 Amsterdam' a valid address? Give me its postcode, building year, use and floor area.](https://boscolabs.dev/q/damrak-1-amsterdam-address-check.html) -> `dutch-address-lookup` `{"addresses": ["Damrak 1 Amsterdam"]}`
+- [Which address and building are at postcode 3011AD, house number 40?](https://boscolabs.dev/q/dutch-postcode-house-number-lookup.html) -> `dutch-address-lookup` `{"postcode": "3011AD", "houseNumber": 40}`
+- [Get the wage bracket table on page 14 of IRS Publication 15-T as rows.](https://boscolabs.dev/q/irs-wage-bracket-table-page-14.html) -> `pdf-to-data` `{"urls": ["https://www.irs.gov/pub/irs-pdf/p15t.pdf"], "pages": "14", "extract": ["tables"]}`
+- [Turn the first three pages of the SEC's Form 10-K instructions PDF into text I can read.](https://boscolabs.dev/q/pdf-first-pages-as-markdown.html) -> `pdf-to-data` `{"urls": ["https://www.sec.gov/files/form10-k.pdf"], "pages": "1-3", "extract": ["text", "metadata"], "outputFormat": "markdown"}`
+- [Merge the results of my last three Google Maps runs and remove duplicate places by placeId.](https://boscolabs.dev/q/merge-datasets-remove-duplicates-by-place-id.html) -> `dataset-dedup` `{"datasetIds": ["<dataset ID 1>", "<dataset ID 2>", "<dataset ID 3>"], "fields": ["placeId"]}`
+- [Remove the duplicate URLs from this list and keep the newest entry for each.](https://boscolabs.dev/q/remove-duplicate-urls-from-list.html) -> `dataset-dedup` `{"items": [{"url": "https://example.com/a", "name": "A"}, {"url": "https://example.com/b", "name": "B"}, {"url": "https://example.com/a", "name": "A (updated)"}], "fields": ["url"], "keep": "last"}`
+- [Compare today's run of my shop scraper with the previous one by url and tell me which prices changed.](https://boscolabs.dev/q/price-changes-between-scraper-runs.html) -> `dataset-change-monitor` `{"datasetId": "<dataset ID of the run>", "monitorName": "shop", "keyFields": ["url"], "watchFields": ["price"]}`
+- [Tell me only the job postings that are new since my last check.](https://boscolabs.dev/q/new-job-postings-since-last-check.html) -> `dataset-change-monitor` `{"items": [{"url": "https://jobs.example.com/1042", "title": "Data Engineer", "company": "Northwind"}, {"url": "https://jobs.example.com/1043", "title": "Analyst", "company": "Northwind"}], "monitorName": "jobs", "keyFields": ["url"], "report": ["new"]}`
+
 ## How to call
 
 - Apify API (synchronous): POST `https://api.apify.com/v2/acts/bosco_labs~<actor>/run-sync-get-dataset-items` with header `Authorization: Bearer <APIFY_TOKEN>` and the Actor input as the JSON body; the response is the dataset items.
@@ -146,6 +209,7 @@ Example questions:
 - `filing_url` (string): EDGAR filing index page.
 - `source` (string): edgar-xml (parsed Form 4 XML), dera (SEC Insider Transactions Data Sets) or derived (cluster).
 - `source_url` (string | null): The exact SEC file the row was read from.
+- `provided_by` (string): Who compiled this row; cite together with source_url.
 - `retrieved_at` (string): UTC time the row was produced.
 
 ### Example input
@@ -205,6 +269,7 @@ Example questions:
 - `primary_document_url` (string | null): The main document (HTML/iXBRL, text or XML).
 - `source` (string): submissions-api, full-index, daily-index or live-feed.
 - `source_url` (string): The SEC page or file the row was read from.
+- `provided_by` (string): Who compiled this row; cite together with source_url.
 - `retrieved_at` (string): UTC time the row was produced.
 
 ### Example input
@@ -270,6 +335,7 @@ Example questions:
 - `doc_id` (string): The Clerk's document (filing) ID.
 - `pdf_url` (string): The PTR PDF on disclosures-clerk.house.gov.
 - `source_url` (string): Where the row was extracted from (the PTR PDF).
+- `provided_by` (string): Who compiled this row; cite together with source_url.
 - `retrieved_at` (string): UTC time the PDF was fetched and parsed.
 
 ### Example input
@@ -356,6 +422,7 @@ Example questions:
 - `filing_url` (string): EDGAR index page of the filing.
 - `source` (string): edgar-13f (the filing's information table), sec-13f-data-set (SEC Form 13F data set) or edgar-xml (the filing's XML).
 - `source_url` (string): The exact SEC file the row was read from.
+- `provided_by` (string): Who compiled this row; cite together with source_url.
 - `retrieved_at` (string): UTC time the row was produced.
 
 ### Example input
@@ -403,6 +470,7 @@ Example questions:
 - `filed` (string | null): Filing date of that filing (YYYY-MM-DD).
 - `accession_number` (string | null): SEC accession number of the filing most values come from.
 - `source_url` (string | null): EDGAR index page of that filing.
+- `provided_by` (string): Who compiled this row; cite together with source_url.
 - `currency` (string): Reporting currency of all money values (ISO 4217, e.g. USD, EUR, DKK). Values are in full units, not thousands.
 - `revenue` (number | null): Total revenue / net sales (for banks: total net revenue). In `currency`.
 - `cost_of_revenue` (number | null): Cost of revenue / cost of goods and services sold. In `currency`.
@@ -529,6 +597,7 @@ Example questions:
 - `sources` (object): Only with includeSources: per metric {tag: XBRL concept used, accession: SEC filing the value comes from (the latest filing that reported it, or for re-checked values the first 10-K/10-Q that did), url: its EDGAR index page}, or {derived: formula} for derived values.
 - `warnings` (array): Notes on this row: a value from a proxy statement replaced by the 10-K/10-Q figure, a value that could not be checked, or a metric left out because it was reported for a different period than the row's.
 - `retrieved_at` (string): UTC time the row was produced.
+- `provided_by` (string): Who compiled this row; cite together with source_url.
 
 ### Example input
 
@@ -628,6 +697,7 @@ Example questions:
 - `viewer_url` (string | null): Inline XBRL viewer of the annual report.
 - `report_url` (string | null): The iXBRL (XHTML) annual report.
 - `source_url` (string): xBRL-JSON the row was extracted from.
+- `provided_by` (string): Who compiled this row; cite together with source_url.
 - `retrieved_at` (string): UTC time the source was fetched.
 
 ### Example input
@@ -673,6 +743,7 @@ Example questions:
 - `sources` (array): Every source used, each {section, name, url}.
 - `retrieved_at` (string): When the report was made (ISO 8601, UTC).
 - `duration_seconds` (number): How long the lookup took.
+- `provided_by` (string): Who compiled this row; cite together with source_url.
 
 ### Example input
 
@@ -744,6 +815,7 @@ Example questions:
 - `registry_url` (string | null): Company page in the official register (filing history / CVR).
 - `source_document` (string | null): GB: Companies House filing transaction id (by company number) or file name of the accounts inside the daily bulk ZIP (newest filings).
 - `source_url` (string): GB: the Companies House document (by company number, needs a key) or bulk ZIP (newest filings); DK: the XBRL file; NO: the Regnskapsregisteret JSON record; BE: the NBB accounting-data URL (needs a key).
+- `provided_by` (string): Who compiled this row; cite together with source_url.
 - `retrieved_at` (string): UTC time the source was fetched.
 
 ### Example input
@@ -795,6 +867,7 @@ Example questions:
 - `postcode_area` (string | null): Postcode area (leading letters of the postcode), e.g. EC, M, SW.
 - `country` (string | null): Registered office: country, e.g. England, Wales, Scotland, Northern Ireland.
 - `source_url` (string): The company's page on the Companies House register (find-and-update.company-information.service.gov.uk).
+- `provided_by` (string): Who compiled this row; cite together with source_url.
 - `api_url` (string): The company profile in the Companies House API (needs an API key).
 - `retrieved_at` (string): UTC time the data was fetched.
 
@@ -846,6 +919,7 @@ Example questions:
 - `board_token` (string | null): The company's board name at the provider, e.g. stripe. Pass it as provider:token for an exact lookup.
 - `board_url` (string | null): Summary rows: the company's public job board page.
 - `source_url` (string | null): Summary rows: the public API URL all counts were computed from. Job rows: the job's public posting page.
+- `provided_by` (string): Who compiled this row; cite together with source_url.
 - `total_open_roles` (integer | null): Summary rows: all open roles on the board, before filters.
 - `matching_roles` (integer | null): Summary rows: open roles matching departments, locations, keywords and postedSince. All counts below are over these.
 - `filters` (object | null): Summary rows: the filters applied (lower-cased), null if none.
@@ -923,7 +997,9 @@ Example questions:
 - `min_score` (integer): Threshold used.
 - `entity_type` (string): Entity type filter used.
 - `country` (string | null): Country used for ranking (ISO-2), or null.
+- `attribution` (string): Source notices for the lists checked (ITA non-endorsement, Open Government Licence v3.0, EU reuse; see LEGAL.md).
 - `checked_at` (string): When the screening ran (ISO 8601, UTC).
+- `provided_by` (string): Who compiled this row; cite together with source_url.
 
 ### Example input
 
@@ -984,6 +1060,7 @@ Example questions:
 - `consolidated_version_date` (string | null): Date of the consolidated version used, YYYY-MM-DD.
 - `text_notice` (string | null): For consolidated texts: EUR-Lex's own disclaimer (no legal effect; the OJ text is authentic).
 - `source_url` (string): EUR-Lex page of the exact text version used (consolidated version or OJ act).
+- `provided_by` (string): Who compiled this row; cite together with source_url.
 - `cellar_url` (string | null): The Cellar document the text was read from.
 - `amended_by` (array): Acts that amend this act: {celex, title, date, url}, newest first (include amendments).
 - `corrected_by` (array): Corrigenda to this act: {celex, title, date, url}.
@@ -1063,6 +1140,7 @@ Example questions:
 - `consolidated_version_date` (string | null): Date from which the version used applies, YYYY-MM-DD.
 - `text_notice` (string | null): Licence attribution and the source's status note: revised texts are editorial consolidations; for NL the authentic text is the Staatsblad/Staatscourant publication.
 - `source_url` (string): Page of the exact text version used (article-level when available).
+- `provided_by` (string): Who compiled this row; cite together with source_url.
 - `data_url` (string | null): The XML the text was read from. Same role as cellar_url in eu-law-lookup.
 - `article` (string | null): The section, regulation or article returned, e.g. "172", "658", "8:1"; null for an act-level row.
 - `paragraph` (string | null): The subsection (UK) or lid (NL) returned; null = whole article.
@@ -1137,6 +1215,7 @@ Example questions:
 - `text` (string | null): The decision as plain text (includeText only): '## ' section headings, numbering kept, footnotes at the end; cut at maxTextChars.
 - `text_truncated` (boolean | null): True when text was cut at maxTextChars; null without includeText.
 - `source_url` (string): The decision on uitspraken.rechtspraak.nl.
+- `provided_by` (string): Who compiled this row; cite together with source_url.
 - `data_url` (string): The official Open Data XML this row was read from.
 - `warnings` (array): Caveats in plain words: text cut, metadata only, replaced ECLI, keyword scan limit.
 - `retrieved_at` (string): When the row was made (ISO 8601, UTC).
@@ -1202,6 +1281,7 @@ Example questions:
 - `lots_count` (integer | null): Number of lots (eForms notices only).
 - `ted_url` (string): Notice page on ted.europa.eu.
 - `source_url` (string): Official XML of the notice on ted.europa.eu.
+- `provided_by` (string): Who compiled this row; cite together with source_url.
 - `retrieved_at` (string): UTC time the notice was fetched from the TED API.
 
 ### Example input
@@ -1300,6 +1380,7 @@ Example questions:
 - `shares_as_of` (string | null): Date of that share count, YYYY-MM-DD.
 - `usaspending_url` (string): Award page on USAspending.gov.
 - `source_url` (string | null): USAspending API record of the award; for daily-list rows the war.gov article, null when the e-mail did not link it.
+- `provided_by` (string): Who compiled this row; cite together with source_url.
 - `data_lag_note` (string): Reporting lag of the source: DoD actions appear up to 90 days after signing.
 - `retrieved_at` (string): UTC time the row was built.
 
@@ -1386,6 +1467,7 @@ Example questions:
 - `performance_state` (string | null): Place of performance US state code.
 - `performance_country` (string | null): Place of performance country.
 - `source_url` (string): The award's page on usaspending.gov (the source to cite).
+- `provided_by` (string): Who compiled this row; cite together with source_url.
 - `api_url` (string): The award record in the USAspending API (JSON).
 - `retrieved_at` (string): When this row was retrieved, ISO-8601 UTC.
 
@@ -1444,6 +1526,7 @@ Example questions:
 - `observations` (array): The newest `last` observations, oldest first, each {date, value, status}. status is the source's observation flag, null when normal (ECB: P provisional, E estimated; Eurostat: e estimated, p provisional, b break in series).
 - `observation_count` (integer): Number of entries in observations.
 - `source_url` (string | null): Human-readable page of the series: ECB Data Portal series page or Eurostat data browser table.
+- `provided_by` (string): Who compiled this row; cite together with source_url.
 - `api_url` (string | null): The exact API request the values came from (re-run it to verify).
 - `attribution` (string): Required source credit: names the source, says the values are unmodified and available free of charge from it, and marks `change` as computed by Bosco Labs. Keep it when you republish the values.
 - `warnings` (array): Caveats in plain words, e.g. a requested frequency the series doesn't have, or a window cut to the newest 1000 observations.
@@ -1521,6 +1604,7 @@ Example questions:
 - `secondary_outcomes` (array | null): detail=full only (null in summary): secondary outcome measures, up to 15.
 - `sites` (array | null): detail=full only (null in summary): study sites, up to 100. Organisation-level only: no contact persons, emails or phones.
 - `source_url` (string | null): The trial's page on ClinicalTrials.gov.
+- `provided_by` (string): Who compiled this row; cite together with source_url.
 - `data_processed_at` (string | null): When ClinicalTrials.gov last processed (posted) its dataset, from its /api/v2/version endpoint (dataTimestamp, no time zone given); null if that endpoint was unavailable.
 - `retrieved_at` (string): When this Actor retrieved the record (ISO 8601, UTC).
 - `attribution` (string): Required credit: source ClinicalTrials.gov, processing and retrieval dates, and the modifications made.
@@ -1570,6 +1654,7 @@ Example questions:
 - `candidates` (array): For ambiguous or not_found rows: up to 3 nearest BAG addresses (display_name, postcode, nummeraanduiding_id, score). Re-run with one of them, or its id in bagIds. Empty when resolved.
 - `warnings` (array): Caveats and failures in plain words an agent can relay; the rest of the row is still valid.
 - `source_url` (string | null): PDOK record the address (or, for a pand id, the building) was read from; null when not resolved.
+- `provided_by` (string): Who compiled this row; cite together with source_url.
 - `retrieved_at` (string): When the row was made (ISO 8601, UTC).
 
 ### Example input

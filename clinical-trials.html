@@ -174,6 +174,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <tr><td><code>secondary_outcomes</code></td><td>array | null</td><td>detail=full only (null in summary): secondary outcome measures, up to 15.</td></tr>
 <tr><td><code>sites</code></td><td>array | null</td><td>detail=full only (null in summary): study sites, up to 100. Organisation-level only: no contact persons, emails or phones.</td></tr>
 <tr><td><code>source_url</code></td><td>string | null</td><td>The trial&#x27;s page on ClinicalTrials.gov.</td></tr>
+<tr><td><code>provided_by</code></td><td>string</td><td>Who compiled this row; cite together with source_url.</td></tr>
 <tr><td><code>data_processed_at</code></td><td>string | null</td><td>When ClinicalTrials.gov last processed (posted) its dataset, from its /api/v2/version endpoint (dataTimestamp, no time zone given); null if that endpoint was unavailable.</td></tr>
 <tr><td><code>retrieved_at</code></td><td>string</td><td>When this Actor retrieved the record (ISO 8601, UTC).</td></tr>
 <tr><td><code>attribution</code></td><td>string</td><td>Required credit: source ClinicalTrials.gov, processing and retrieval dates, and the modifications made.</td></tr>

@@ -151,6 +151,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <tr><td><code>board_token</code></td><td>string | null</td><td>The company&#x27;s board name at the provider, e.g. stripe. Pass it as provider:token for an exact lookup.</td></tr>
 <tr><td><code>board_url</code></td><td>string | null</td><td>Summary rows: the company&#x27;s public job board page.</td></tr>
 <tr><td><code>source_url</code></td><td>string | null</td><td>Summary rows: the public API URL all counts were computed from. Job rows: the job&#x27;s public posting page.</td></tr>
+<tr><td><code>provided_by</code></td><td>string</td><td>Who compiled this row; cite together with source_url.</td></tr>
 <tr><td><code>total_open_roles</code></td><td>integer | null</td><td>Summary rows: all open roles on the board, before filters.</td></tr>
 <tr><td><code>matching_roles</code></td><td>integer | null</td><td>Summary rows: open roles matching departments, locations, keywords and postedSince. All counts below are over these.</td></tr>
 <tr><td><code>filters</code></td><td>object | null</td><td>Summary rows: the filters applied (lower-cased), null if none.</td></tr>
