@@ -30,14 +30,15 @@
  "offers": {
   "@type": "Offer",
   "priceCurrency": "USD",
-  "description": "$0.01 per act or article returned",
-  "availability": "https://schema.org/PreOrder"
+  "description": "$0.005 per act or article returned",
+  "url": "https://apify.com/bosco_labs/eu-law-lookup"
  },
  "provider": {
   "@type": "Organization",
   "name": "Bosco Labs",
   "url": "https://boscolabs.dev/"
- }
+ },
+ "installUrl": "https://apify.com/bosco_labs/eu-law-lookup"
 }
 </script>
 <style>:root{color-scheme:light dark;--head:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--body:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;--ink:#1D2721;--muted:#545F58;--bg:#F5F3EA;--surface:#EAE8DC;--line:#D6D3C3;--accent:#2E5A47;--accent-fg:#F5F3EA;--accent2:#8DA889;--accent2-text:#4A6646;--success:#36694A;--warn:#8E5D1C}
@@ -81,12 +82,12 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <main class="wrap">
 <p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#compliance-law">Compliance &amp; law</a></p>
 <article>
-<div class="head"><img src="icons/eu-law-lookup.svg" alt="" width="84" height="84"><div><h1>EU Law Lookup API (EUR-Lex): article text, in force, amendments</h1><span class="badge soon">Coming soon to the Store</span></div></div>
+<div class="head"><img src="icons/eu-law-lookup.svg" alt="" width="84" height="84"><div><h1>EU Law Lookup API (EUR-Lex): article text, in force, amendments</h1><span class="badge live">On Apify Store</span></div></div>
 <div class="prose">
 <p class="lead"><strong>One call answers &quot;what does Article 50 of the AI Act say today, is it in force, and what amended it?&quot;</strong>: the article as plain text from the current consolidated version (or the one in force on any date), the act&#x27;s in-force status and dates, and the acts that amend, correct or repeal it. A second mode lists new acts in the Official Journal L series. Built for <strong>AI agents</strong> doing legal and compliance work, and for people who want a sourced answer without SPARQL.</p>
-<div class="facts"><div class="fact"><b>Price</b>$0.01 per act or article returned</div><div class="fact"><b>Domain</b>Compliance &amp; law</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
-<p><strong>Pricing (pay per event):</strong> $0.01 per act or article returned (<code>act-lookup</code>). A citation that can&#x27;t be read, or an article that doesn&#x27;t exist, fails in seconds and costs nothing.</p>
-<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=EU Law Lookup API (EUR-Lex)">Ask for early access</a></div>
+<div class="facts"><div class="fact"><b>Price</b>$0.005 per act or article returned</div><div class="fact"><b>Domain</b>Compliance &amp; law</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
+<p><strong>Pricing (pay per event):</strong> $0.005 per act or article returned (<code>act-lookup</code>). A citation that can&#x27;t be read, or an article that doesn&#x27;t exist, fails in seconds and costs nothing.</p>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/eu-law-lookup">Run it on Apify Store &rarr;</a></div>
 <h2>Questions agents ask</h2>
 <ul class="qs"><li>&ldquo;What does Article 50 of the AI Act require today, and has it been amended? Quote the text and link the source.&rdquo;</li></ul>
 </div>
@@ -201,12 +202,12 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 </tbody></table></div>
 
 <h2>Use with AI agents (MCP)</h2>
-<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is live on the Apify Store.</p>
+<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>.</p>
 <pre><code>https://mcp.apify.com?tools=bosco_labs/eu-law-lookup</code></pre>
 <p>For &ldquo;What does Article 50 of the AI Act require today, and has it been amended? Quote the text and link the source.&rdquo; the agent passes:</p>
 <pre><code>{ &quot;query&quot;: &quot;AI Act&quot;, &quot;article&quot;: &quot;50&quot; }</code></pre>
 <p>small JSON rows (typically 5-20 KB), stable <code>snake_case</code> fields, ISO dates, <code>null</code> for unknown, a EUR-Lex link for the act, the text version and every related act. <code>warnings</code> says in plain words when a fallback was used (another language, the OJ text instead of a consolidated version) or the act was not in force on <code>asOf</code>. A lookup takes about 1 second after start-up (measured 0.6-0.7 s for GDPR Art. 5 and AI Act Art. 50).</p>
-<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~eu-law-lookup/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.01 per act or article returned.</p>
+<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~eu-law-lookup/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.005 per act or article returned.</p>
 <h2 id="http-api">HTTP API</h2>
 <p>Also on the Bosco Labs HTTP API (beta): same input and same rows as the Actor, <strong>$0.005 per act or article returned</strong> from prepaid credits (max 50 results (maxResults) per call). <a href="api.html#key">Get a key</a> with a $0.50 free trial; see <a href="api.html">prices and limits</a>.</p>
 <pre><code>curl https://api.boscolabs.dev/v1/eu-law-lookup \
@@ -237,7 +238,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <p><strong>Points like 6(1)(a)?</strong> The paragraph is returned whole; points are lines inside it.</p>
 <p><strong>Personal data?</strong> None is requested or returned beyond what the published legal acts contain. Signatory names in the metadata are not output.</p>
 <p>Content: © European Union, https://eur-lex.europa.eu (reuse under Commission Decision 2011/833/EU; consolidated texts and editorial content under CC BY 4.0; metadata CC0). Text is converted from XHTML to plain text and long texts are cut where <code>maxTextChars</code> says; nothing else is changed.</p>
-<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=EU Law Lookup API (EUR-Lex)">Ask for early access</a></div>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/eu-law-lookup">Run it on Apify Store &rarr;</a></div>
 </div>
 </article>
 </main>
