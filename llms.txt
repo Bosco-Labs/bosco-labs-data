@@ -71,7 +71,7 @@ Contact: support@boscolabs.dev
 - Pricing: pay per event, billed to your own Apify account: you pay for rows delivered at the prices listed per Actor, and runs stop at your max charge limit.
 - Bosco Labs HTTP API: `POST https://api.boscolabs.dev/v1/<tool>` with `Authorization: Bearer <key>` for 15 fast lookups (same input and rows as the Actors), prepaid credits, $0.50 free trial, or no key and pay per call in USDC via x402; remote MCP at `https://api.boscolabs.dev/mcp`. Keys, prices and limits: https://boscolabs.dev/api.html
 - Contact: support@boscolabs.dev (questions, data issues, custom data requests).
-- Bosco Labs MCP server: `bosco-labs-data-mcp` on PyPI (https://pypi.org/project/bosco-labs-data-mcp/) and the official MCP Registry (`io.github.PB7-debug/bosco-labs-data`): one MCP server for all data Actors. Run it with `uvx bosco-labs-data-mcp` and set `APIFY_TOKEN`; source in https://github.com/PB7-debug/bosco-labs-data/tree/main/mcp.
+- Bosco Labs MCP server: `bosco-labs-data-mcp` on PyPI (https://pypi.org/project/bosco-labs-data-mcp/) and the official MCP Registry (`io.github.Bosco-Labs/bosco-labs-data`): one MCP server for all data Actors. Run it with `uvx bosco-labs-data-mcp` and set `APIFY_TOKEN`; source in https://github.com/Bosco-Labs/bosco-labs-data/tree/main/mcp.
 
 ## API (beta)
 
@@ -79,7 +79,7 @@ Contact: support@boscolabs.dev
 - OpenAPI: https://api.boscolabs.dev/openapi.json; interactive docs: https://api.boscolabs.dev/docs; catalogue with prices and input schemas: https://api.boscolabs.dev/v1/tools (free)
 - Remote MCP (streamable HTTP, same key header): https://api.boscolabs.dev/mcp
 - [Get a key, prices and limits](https://boscolabs.dev/api.html): prepaid credits, packs $10, $50, $200, one-time $0.50 free trial per verified e-mail; prices include VAT
-- x402, no account (https://boscolabs.dev/api.html#x402): call `POST /v1/<tool>` without a key to get `402 Payment Required` (x402 v2) and pay per call in USDC on Base mainnet (eip155:8453); schemes `upto` (settles only what was delivered: rows x price, min $0.005) and `exact` (settles the quote: bound it with maxResults; keyless calls default to 10 rows) are offered; with `upto` a wallet needs only USDC on Base (gasless permit, no ETH). Nothing is settled on an error or empty result (`404 no_results`). Prices = https://api.boscolabs.dev/v1/tools. Example agent: https://github.com/PB7-debug/bosco-labs-data/tree/main/examples/x402-agent
+- x402, no account (https://boscolabs.dev/api.html#x402): call `POST /v1/<tool>` without a key to get `402 Payment Required` (x402 v2) and pay per call in USDC on Base mainnet (eip155:8453); schemes `upto` (settles only what was delivered: rows x price, min $0.005) and `exact` (settles the quote: bound it with maxResults; keyless calls default to 10 rows) are offered; with `upto` a wallet needs only USDC on Base (gasless permit, no ETH). Nothing is settled on an error or empty result (`404 no_results`). Prices = https://api.boscolabs.dev/v1/tools. Example agent: https://github.com/Bosco-Labs/bosco-labs-data/tree/main/examples/x402-agent
 - [Privacy](https://boscolabs.dev/privacy.html): request bodies (names screened, queries) are never logged or stored
 - [Terms](https://boscolabs.dev/terms.html): prepaid credits, 14-day refunds, data is information with a source link, not advice
 - `company-check`: $0.03 per company report (max 1 report).

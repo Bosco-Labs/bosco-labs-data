@@ -1,4 +1,4 @@
-<!-- mcp-name: io.github.PB7-debug/bosco-labs-data -->
+<!-- mcp-name: io.github.Bosco-Labs/bosco-labs-data -->
 
 # Bosco Labs data: MCP server
 
@@ -106,7 +106,7 @@ This server is the lighter option: typed parameters, small defaults and compact 
 uv run --with pytest pytest -q    # from this folder; Apify, GLEIF and SEC are mocked, plus a stdio smoke test
 ```
 
-Source and releases: https://github.com/PB7-debug/bosco-labs-data (folder `mcp/`). Releases are
+Source and releases: https://github.com/Bosco-Labs/bosco-labs-data (folder `mcp/`). Releases are
 published to PyPI and the official MCP Registry by the `publish-mcp.yml` GitHub Actions
 workflow; see
-[PUBLISHING.md](https://github.com/PB7-debug/bosco-labs-data/blob/main/mcp/PUBLISHING.md).
+[PUBLISHING.md](https://github.com/Bosco-Labs/bosco-labs-data/blob/main/mcp/PUBLISHING.md).

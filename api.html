@@ -188,7 +188,7 @@ async def main():
 
 asyncio.run(main())</code></pre>
 <p>TypeScript: use <code>wrapFetchWithPaymentFromConfig</code> from <code>@x402/fetch</code> with <code>UptoEvmScheme</code> from <code>@x402/evm/upto/client</code>; see the <a href="https://github.com/coinbase/x402/tree/main/typescript/packages/http/fetch">official x402 fetch docs</a>.</p>
-<p>A complete example agent (sanctions screening, then company data, each call paid with x402): <a href="https://github.com/PB7-debug/bosco-labs-data/tree/main/examples/x402-agent">examples/x402-agent</a> (open source).</p>
+<p>A complete example agent (sanctions screening, then company data, each call paid with x402): <a href="https://github.com/Bosco-Labs/bosco-labs-data/tree/main/examples/x402-agent">examples/x402-agent</a> (open source).</p>
 <h2 id="limits">Rate limits</h2>
 <ul><li>About 60 calls per minute per key (10 per minute on free-trial keys); counted per server instance, so treat it as approximate.</li><li>Daily spending cap per key: $5 by default, raised on request.</li><li>Each call has a 55-second budget. Some tools pace their source (for example, UK and Dutch law lookups wait 5 seconds between pages), so a call can take up to about 35 seconds.</li></ul>
 <h2 id="errors">Errors</h2>

@@ -10,7 +10,7 @@ dependencies = ["mcp>=2.3,<3", "httpx>=0.27"]
 
 [project.urls]
 Homepage = "https://boscolabs.dev"
-Repository = "https://github.com/PB7-debug/bosco-labs-data"
+Repository = "https://github.com/Bosco-Labs/bosco-labs-data"
 
 [project.scripts]
 bosco-labs-data-mcp = "bosco_mcp:main"

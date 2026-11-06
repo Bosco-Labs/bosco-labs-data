@@ -6,7 +6,7 @@ Releases go out from this public repo through the GitHub Actions workflow
 1. job `pypi`: checks that the versions match, runs the tests, builds `mcp/` and uploads it to
    PyPI as `bosco-labs-data-mcp` with trusted publishing (no API token);
 2. job `mcp-registry`: installs a pinned, signature-verified `mcp-publisher`, validates
-   `server.json`, logs in with GitHub OIDC and publishes `io.github.PB7-debug/bosco-labs-data`
+   `server.json`, logs in with GitHub OIDC and publishes `io.github.Bosco-Labs/bosco-labs-data`
    to the official MCP Registry. The registry checks PyPI ownership through the
    `mcp-name:` comment on the first line of `mcp/README.md`.
 
@@ -25,7 +25,7 @@ At https://pypi.org/manage/account/publishing/, under "Add a new pending publish
 | Field | Value |
 |---|---|
 | PyPI Project Name | `bosco-labs-data-mcp` |
-| Owner | `PB7-debug` |
+| Owner | `Bosco-Labs` |
 | Repository name | `bosco-labs-data` |
 | Workflow name | `publish-mcp.yml` |
 | Environment name | `pypi` |
@@ -60,7 +60,7 @@ Check the result:
 - PyPI: https://pypi.org/project/bosco-labs-data-mcp/ and `uvx bosco-labs-data-mcp` starts
   the server (it waits on stdin; stop it with Ctrl+C).
 - MCP Registry:
-  `curl "https://registry.modelcontextprotocol.io/v0.1/servers?search=io.github.PB7-debug/bosco-labs-data"`
+  `curl "https://registry.modelcontextprotocol.io/v0.1/servers?search=io.github.Bosco-Labs/bosco-labs-data"`
 
 If the PyPI job succeeded and the registry job failed, use "Re-run failed jobs" (re-running the
 whole workflow also works: the PyPI upload skips files that already exist).
@@ -73,12 +73,12 @@ The registry refuses a version it already has, and PyPI never accepts the same f
 
 ## 5. Glama
 
-`glama.json` in the repo root names `PB7-debug` as maintainer, which lets that GitHub account
+`glama.json` in the repo root names `Bosco-Labs` as maintainer, which lets that GitHub account
 claim the listing.
 
-1. Sign in at https://glama.ai with GitHub (`PB7-debug`).
+1. Sign in at https://glama.ai with GitHub (`Bosco-Labs`).
 2. At https://glama.ai/mcp/servers click "Add Server" and submit
-   `https://github.com/PB7-debug/bosco-labs-data`.
+   `https://github.com/Bosco-Labs/bosco-labs-data`.
 3. Once it is indexed, claim the server on its Glama page. The server lives in `mcp/`, not
    the repo root: if Glama's checks or its build fail, set the build/start settings in the
    server's admin page (install and start with `uvx bosco-labs-data-mcp`, environment variable
