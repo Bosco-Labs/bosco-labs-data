@@ -3,7 +3,7 @@
   "name": "io.github.Bosco-Labs/bosco-labs-data",
   "title": "Bosco Labs data",
   "description": "Free LEI & SEC company lookups; SEC insider trades & filings, House trades, DoD contracts, EU data",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "repository": {
     "url": "https://github.com/Bosco-Labs/bosco-labs-data",
     "source": "github",
@@ -14,7 +14,7 @@
       "registryType": "pypi",
       "registryBaseUrl": "https://pypi.org",
       "identifier": "bosco-labs-data-mcp",
-      "version": "0.2.1",
+      "version": "0.2.2",
       "runtimeHint": "uvx",
       "transport": {
         "type": "stdio"
