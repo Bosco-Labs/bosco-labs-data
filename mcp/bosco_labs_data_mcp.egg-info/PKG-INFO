@@ -1,11 +1,11 @@
 Metadata-Version: 2.4
 Name: bosco-labs-data-mcp
-Version: 0.1.1
-Summary: MCP server: SEC insider trades and filings, US House trades, DoD contracts, EU tenders and European company financials, via Apify.
+Version: 0.2.1
+Summary: MCP server: free LEI and SEC company lookups, plus SEC insider trades and filings, US House trades, DoD contracts, EU tenders and European company financials via Apify.
 License-Expression: MIT
-Project-URL: Homepage, https://pb7-debug.github.io/bosco-labs-data/
+Project-URL: Homepage, https://boscolabs.dev
 Project-URL: Repository, https://github.com/PB7-debug/bosco-labs-data
-Keywords: mcp,apify,sec,edgar,insider-trading,tenders,financials
+Keywords: mcp,apify,sec,edgar,insider-trading,tenders,financials,lei,gleif
 Requires-Python: >=3.10
 Description-Content-Type: text/markdown
 License-File: LICENSE
@@ -17,13 +17,30 @@ Dynamic: license-file
 
 # Bosco Labs data: MCP server
 
-One MCP server that gives AI agents official-source data: SEC insider trades and filings,
-US House members' stock trades, Pentagon contract awards, EU public tenders and the financials
-of European companies. Each tool runs one of the
-[Bosco Labs Apify Actors](https://apify.com/Bosco_labs) with **your own** Apify token and
-returns a short JSON list with a source link on every row.
+One MCP server that gives AI agents official-source data: free company lookups (LEI, SEC),
+plus SEC insider trades and filings, US House members' stock trades, Pentagon contract awards,
+EU public tenders and the financials of European companies. The paid tools each run one of the
+[Bosco Labs Apify Actors](https://apify.com/Bosco_labs) with **your own** Apify token. Every
+tool returns a short JSON list with a source link on every row.
 
-## Tools
+## Free tools (no token)
+
+These two tools call the open official APIs directly: no Apify token, no key, no cost.
+
+| Tool | Data (source) | Example question |
+|---|---|---|
+| `lei_lookup` | LEI, legal name, status, jurisdiction, registration number and ultimate parent of any legal entity (GLEIF, CC0 open data) | "What is Heineken N.V.'s LEI and is it active?" |
+| `sec_company_lookup` | CIK, official name, tickers, exchanges, SIC industry and state of incorporation of SEC-registered companies (SEC EDGAR) | "What is Alphabet's CIK and on which exchange does it trade?" |
+
+```bash
+claude mcp add bosco-labs-data -- uvx bosco-labs-data-mcp   # no token needed for these
+# ask: "Look up the LEI of ASML" -> lei_lookup {"query": "ASML"}
+```
+
+Each result has a `next_step` field naming the paid tool below that gives the full picture
+(filings, insider trades or financials).
+
+## Paid tools
 
 | Tool | Data (source) | Price per row | Example question |
 |---|---|---|---|
@@ -44,12 +61,14 @@ Google credentials: [Dedup & Merge Datasets](https://apify.com/Bosco_labs/datase
 
 ## Pricing
 
-You pay Apify per row returned, with your own token, at the prices above (the free Apify plan
-includes monthly credit). The server itself is free and sends nothing anywhere else.
+The free tools cost nothing. For the paid tools you pay Apify per row returned, with your own
+token, at the prices above (the free Apify plan includes monthly credit). The server itself is
+free; it only calls Apify (paid tools), GLEIF and the SEC (free tools).
 
 ## Install
 
-1. Get an Apify API token: https://console.apify.com/settings/integrations
+1. For the paid tools, get an Apify API token:
+   https://console.apify.com/settings/integrations (skip this for the free tools only).
 2. Install [uv](https://docs.astral.sh/uv/).
 3. Add the server to your client (below). Once the package is on PyPI the command is
    `uvx bosco-labs-data-mcp`. Until then, run it from this folder:
@@ -82,6 +101,9 @@ above.
 claude mcp add bosco-labs-data -e APIFY_TOKEN=apify_api_... -- uvx bosco-labs-data-mcp
 ```
 
+Without a token, leave out the `env` block (or `-e APIFY_TOKEN=...`): the free tools work and
+the paid tools reply that a token is needed.
+
 ## Alternative: Apify's hosted MCP server
 
 Without installing anything, you can use the same Actors through Apify's own MCP server
@@ -96,7 +118,7 @@ This server is the lighter option: typed parameters, small defaults and compact 
 ## Development
 
 ```bash
-uv run --with pytest pytest -q    # from this folder; Apify is mocked, plus a stdio smoke test
+uv run --with pytest pytest -q    # from this folder; Apify, GLEIF and SEC are mocked, plus a stdio smoke test
 ```
 
 Source and releases: https://github.com/PB7-debug/bosco-labs-data (folder `mcp/`). Releases are
