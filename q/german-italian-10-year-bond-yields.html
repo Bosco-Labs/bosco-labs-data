@@ -107,7 +107,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
   -H &quot;Content-Type: application/json&quot; \
   -d &#x27;{&quot;series&quot;: [&quot;gov_bond_10y:DE&quot;, &quot;gov_bond_10y:IT&quot;], &quot;last&quot;: 6}&#x27;</code></pre>
 <h2>Call the Bosco Labs HTTP API</h2>
-<p>Bosco Labs HTTP API (beta): same input and rows, <strong>$0.002 per series returned (catalogue free)</strong> from prepaid credits. <a href="api.html#key">Get a key</a> with a $0.50 free trial.</p>
+<p>Bosco Labs HTTP API (beta): same input and rows, <strong>$0.002 per series returned (catalogue free)</strong> from prepaid credits. <a href="api.html#key">Get a key</a> with a $0.50 free trial, or send the same call without a key and <a href="api.html#x402">pay per call in USDC via x402</a> (no account).</p>
 <pre><code>curl https://api.boscolabs.dev/v1/eu-rates-inflation \
   -H &quot;Authorization: Bearer $BOSCO_API_KEY&quot; \
   -H &quot;Content-Type: application/json&quot; \
@@ -145,7 +145,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
   &quot;duration_seconds&quot;: 0.16
 }</code></pre>
 <div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=ECB Rates &amp; Euro Inflation API">Ask for early access</a><a class="btn ghost" href="eu-rates-inflation.html">All fields and limits</a></div>
-<h2>More questions for this tool</h2><ul class="qs"><li><a href="q/ecb-deposit-rate-vs-euro-inflation.html">What&#x27;s the ECB deposit rate now, when did it last change, and how does euro-area inflation compare?</a></li><li><a href="q/eur-usd-rate-on-a-date.html">What was the EUR/USD reference rate on 15 March 2026?</a></li></ul>
+<h2>More questions for this tool</h2><ul class="qs"><li><a href="q/ecb-deposit-rate-vs-euro-inflation.html">What&#x27;s the ECB deposit rate now, when did it last change, and how does euro-area inflation compare?</a></li><li><a href="q/eur-usd-rate-on-a-date.html">What was the EUR/USD reference rate on 15 March 2026?</a></li><li><a href="q/estr-rate-today.html">What is the euro short-term rate (€STR) today?</a></li></ul>
 <p><a href="q/index.html">All questions</a></p>
 </article>
 </main>

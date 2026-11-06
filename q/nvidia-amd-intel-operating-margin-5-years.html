@@ -114,7 +114,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
   -H &quot;Content-Type: application/json&quot; \
   -d &#x27;{&quot;tickers&quot;: [&quot;NVDA&quot;, &quot;AMD&quot;, &quot;INTC&quot;], &quot;period&quot;: &quot;annual&quot;, &quot;years&quot;: 5, &quot;metrics&quot;: [&quot;revenue&quot;, &quot;operating_profit&quot;, &quot;operating_margin&quot;]}&#x27;</code></pre>
 <h2>Call the Bosco Labs HTTP API</h2>
-<p>Bosco Labs HTTP API (beta): same input and rows, <strong>$0.005 per company-period row</strong> from prepaid credits. <a href="api.html#key">Get a key</a> with a $0.50 free trial.</p>
+<p>Bosco Labs HTTP API (beta): same input and rows, <strong>$0.005 per company-period row</strong> from prepaid credits. <a href="api.html#key">Get a key</a> with a $0.50 free trial, or send the same call without a key and <a href="api.html#x402">pay per call in USDC via x402</a> (no account).</p>
 <pre><code>curl https://api.boscolabs.dev/v1/sec-company-financials \
   -H &quot;Authorization: Bearer $BOSCO_API_KEY&quot; \
   -H &quot;Content-Type: application/json&quot; \
@@ -171,7 +171,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
   &quot;retrieved_at&quot;: &quot;2026-11-05T21:38:54+00:00&quot;
 }</code></pre>
 <div class="actions"><a class="btn" href="https://apify.com/bosco_labs/sec-company-financials">Run it on Apify Store &rarr;</a><a class="btn ghost" href="sec-company-financials.html">All fields and limits</a></div>
-<h2>More questions for this tool</h2><ul class="qs"><li><a href="q/microsoft-quarterly-revenue-net-income-fcf.html">How did Microsoft&#x27;s revenue, net income and free cash flow develop over the last 8 quarters?</a></li></ul>
+<h2>More questions for this tool</h2><ul class="qs"><li><a href="q/microsoft-quarterly-revenue-net-income-fcf.html">How did Microsoft&#x27;s revenue, net income and free cash flow develop over the last 8 quarters?</a></li><li><a href="q/apple-free-cash-flow-5-years.html">What was Apple&#x27;s free cash flow in each of the last 5 fiscal years?</a></li><li><a href="q/tesla-cash-and-debt-last-4-quarters.html">How much cash and long-term debt did Tesla have over the last 4 quarters?</a></li></ul>
 <p><a href="q/index.html">All questions</a></p>
 </article>
 </main>

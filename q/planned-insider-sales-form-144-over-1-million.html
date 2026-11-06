@@ -105,7 +105,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
   -H &quot;Content-Type: application/json&quot; \
   -d &#x27;{&quot;mode&quot;: &quot;planned144&quot;, &quot;minValueUsd&quot;: 1000000, &quot;lookbackDays&quot;: 7}&#x27;</code></pre>
 <h2>Call the Bosco Labs HTTP API</h2>
-<p>Bosco Labs HTTP API (beta): same input and rows, <strong>$0.0018 per holding, holder or filing row (one fund or company per call)</strong> from prepaid credits. <a href="api.html#key">Get a key</a> with a $0.50 free trial.</p>
+<p>Bosco Labs HTTP API (beta): same input and rows, <strong>$0.0018 per holding, holder or filing row (one fund or company per call)</strong> from prepaid credits. <a href="api.html#key">Get a key</a> with a $0.50 free trial, or send the same call without a key and <a href="api.html#x402">pay per call in USDC via x402</a> (no account).</p>
 <pre><code>curl https://api.boscolabs.dev/v1/sec-ownership \
   -H &quot;Authorization: Bearer $BOSCO_API_KEY&quot; \
   -H &quot;Content-Type: application/json&quot; \
@@ -141,7 +141,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
   &quot;source_url&quot;: &quot;https://www.sec.gov/Archives/edgar/data/1067983/000119312526352200/56757.xml&quot;
 }</code></pre>
 <div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=SEC Ownership API">Ask for early access</a><a class="btn ghost" href="sec-ownership.html">All fields and limits</a></div>
-<h2>More questions for this tool</h2><ul class="qs"><li><a href="q/berkshire-hathaway-13f-changes.html">What did Berkshire Hathaway buy and sell last quarter?</a></li></ul>
+<h2>More questions for this tool</h2><ul class="qs"><li><a href="q/berkshire-hathaway-13f-changes.html">What did Berkshire Hathaway buy and sell last quarter?</a></li><li><a href="q/arkk-top-holdings.html">What are the top holdings of the ARK Innovation ETF (ARKK)?</a></li><li><a href="q/pershing-square-13f-holdings.html">What stocks does Pershing Square own, and what did it change last quarter?</a></li><li><a href="q/who-owns-more-than-5-percent-apple.html">Who owns more than 5% of Apple stock, according to 13D and 13G filings?</a></li></ul>
 <p><a href="q/index.html">All questions</a></p>
 </article>
 </main>

@@ -109,7 +109,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
   -H &quot;Content-Type: application/json&quot; \
   -d &#x27;{&quot;companies&quot;: [&quot;notion.so&quot;], &quot;keywords&quot;: [&quot;engineer&quot;], &quot;maxJobsPerCompany&quot;: 10}&#x27;</code></pre>
 <h2>Call the Bosco Labs HTTP API</h2>
-<p>Bosco Labs HTTP API (beta): same input and rows, <strong>$0.001 per unit: a company summary = 5 units ($0.005), a job row = 1 ($0.001); companies without a public job board are free</strong> from prepaid credits. <a href="api.html#key">Get a key</a> with a $0.50 free trial.</p>
+<p>Bosco Labs HTTP API (beta): same input and rows, <strong>$0.001 per unit: a company summary = 5 units ($0.005), a job row = 1 ($0.001); companies without a public job board are free</strong> from prepaid credits. <a href="api.html#key">Get a key</a> with a $0.50 free trial, or send the same call without a key and <a href="api.html#x402">pay per call in USDC via x402</a> (no account).</p>
 <pre><code>curl https://api.boscolabs.dev/v1/company-hiring-signals \
   -H &quot;Authorization: Bearer $BOSCO_API_KEY&quot; \
   -H &quot;Content-Type: application/json&quot; \
@@ -161,7 +161,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
   &quot;retrieved_at&quot;: &quot;2026-11-05T21:42:10Z&quot;
 }</code></pre>
 <div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=Company Hiring Signals API">Ask for early access</a><a class="btn ghost" href="company-hiring-signals.html">All fields and limits</a></div>
-<h2>More questions for this tool</h2><ul class="qs"><li><a href="q/stripe-hiring-summary.html">How many open roles does Stripe have, and in which departments and countries?</a></li></ul>
+<h2>More questions for this tool</h2><ul class="qs"><li><a href="q/stripe-hiring-summary.html">How many open roles does Stripe have, and in which departments and countries?</a></li><li><a href="q/is-openai-hiring-in-london.html">Is OpenAI hiring in London, and for which roles?</a></li><li><a href="q/cloudflare-sales-roles-last-30-days.html">Which sales roles has Cloudflare posted in the last 30 days?</a></li></ul>
 <p><a href="q/index.html">All questions</a></p>
 </article>
 </main>

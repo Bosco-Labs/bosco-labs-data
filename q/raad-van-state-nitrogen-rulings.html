@@ -108,7 +108,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
   -H &quot;Content-Type: application/json&quot; \
   -d &#x27;{&quot;query&quot;: &quot;stikstof&quot;, &quot;courts&quot;: [&quot;RVS&quot;], &quot;dateFrom&quot;: &quot;2025-01-01&quot;, &quot;maxResults&quot;: 20}&#x27;</code></pre>
 <h2>Call the Bosco Labs HTTP API</h2>
-<p>Bosco Labs HTTP API (beta): same input and rows, <strong>$0.005 per court decision returned</strong> from prepaid credits. <a href="api.html#key">Get a key</a> with a $0.50 free trial.</p>
+<p>Bosco Labs HTTP API (beta): same input and rows, <strong>$0.005 per court decision returned</strong> from prepaid credits. <a href="api.html#key">Get a key</a> with a $0.50 free trial, or send the same call without a key and <a href="api.html#x402">pay per call in USDC via x402</a> (no account).</p>
 <pre><code>curl https://api.boscolabs.dev/v1/dutch-case-law \
   -H &quot;Authorization: Bearer $BOSCO_API_KEY&quot; \
   -H &quot;Content-Type: application/json&quot; \
@@ -175,7 +175,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
   &quot;duration_seconds&quot;: 0.11
 }</code></pre>
 <div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=Dutch Case Law API (Rechtspraak)">Ask for early access</a><a class="btn ghost" href="dutch-case-law.html">All fields and limits</a></div>
-<h2>More questions for this tool</h2><ul class="qs"><li><a href="q/hoge-raad-tenancy-law-rulings-since-2024.html">Find Hoge Raad rulings on tenancy law (huurrecht) since 2024 and summarise what each one decided, with links.</a></li></ul>
+<h2>More questions for this tool</h2><ul class="qs"><li><a href="q/hoge-raad-tenancy-law-rulings-since-2024.html">Find Hoge Raad rulings on tenancy law (huurrecht) since 2024 and summarise what each one decided, with links.</a></li><li><a href="q/urgenda-hoge-raad-ruling.html">What did the Hoge Raad decide in the Urgenda climate case?</a></li></ul>
 <p><a href="q/index.html">All questions</a></p>
 </article>
 </main>

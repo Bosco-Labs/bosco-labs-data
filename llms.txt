@@ -57,7 +57,7 @@ Contact: support@boscolabs.dev
 
 ## Questions and comparisons
 
-- [Questions agents ask](https://boscolabs.dev/q/index.html): 53 questions, each with the exact Actor input, an MCP prompt, the API call and an example output
+- [Questions agents ask](https://boscolabs.dev/q/index.html): 96 questions, each with the exact Actor input, an MCP prompt, the API call and an example output
 - [SEC insider trading data on Apify: tools compared](https://boscolabs.dev/compare/insider-trades.html): Insider trades tools compared with other Apify Store Actors (Store data, 2026-11-05)
 - [SEC EDGAR filings and financials on Apify compared](https://boscolabs.dev/compare/sec-edgar.html): SEC filings and financials tools compared with other Apify Store Actors (Store data, 2026-11-05)
 - [Company check and KYB data on Apify compared](https://boscolabs.dev/compare/company-data.html): Company check (KYB) tools compared with other Apify Store Actors (Store data, 2026-11-05)
