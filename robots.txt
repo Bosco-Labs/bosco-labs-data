@@ -13,4 +13,10 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
+User-agent: CCBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
 Sitemap: https://boscolabs.dev/sitemap.xml
