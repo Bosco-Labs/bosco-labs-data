@@ -33,7 +33,7 @@
  },
  "about": {
   "@type": "SoftwareApplication",
-  "name": "SEC Insider Trading API (Form 4): live + history since 2006",
+  "name": "SEC Insider Trading API (Form 4): stock transactions since 2006",
   "url": "https://boscolabs.dev/sec-insider-trades.html"
  },
  "publisher": {
@@ -85,7 +85,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="q/index.html">Questions</a> &rsaquo; <a href="sec-insider-trades.html">SEC Insider Trading API (Form 4)</a></p>
 <article class="prose">
 <h1 style="margin-top:18px">Did any Tesla insiders buy shares in the last 90 days?</h1>
-<div class="facts"><div class="fact"><b>Answered by</b><a href="sec-insider-trades.html">SEC Insider Trading API (Form 4): live + history since 2006</a></div><div class="fact"><b>Price</b>$0.0018 per transaction row and $0.02 per cluster signal</div><div class="fact"><b>Status</b><span class="badge live">On Apify Store</span></div></div>
+<div class="facts"><div class="fact"><b>Answered by</b><a href="sec-insider-trades.html">SEC Insider Trading API (Form 4): stock transactions since 2006</a></div><div class="fact"><b>Price</b>$0.0018 per transaction row and $0.02 per cluster signal</div><div class="fact"><b>Status</b><span class="badge live">On Apify Store</span></div></div>
 <p>Transaction code P is an open-market purchase on SEC Form 4, so this input returns only real buys by Tesla directors, officers and 10% owners filed in the last 90 days, and leaves out grants, option exercises and tax withholding. Each row has the insider_name, insider_roles, transaction_date, shares, price and value_usd, the shares_owned_after the trade, and a filing_url to the Form 4 on EDGAR. An empty result means no insider bought on the open market in that window, which is itself the answer.</p>
 <h2>Tool input</h2>
 <pre><code>{

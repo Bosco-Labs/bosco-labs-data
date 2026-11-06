@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SEC Form 4 Insider Trading API: live and since 2006</title>
-<meta name="description" content="Every SEC Form 4 insider purchase and sale since 2006 as JSON, with cluster-buy and cluster-sell signals. Filter by ticker, role, value and date.">
+<title>SEC Form 4 Insider Trading API: stock transactions</title>
+<meta name="description" content="Every SEC Form 4 insider stock transaction (purchase or sale) since 2006 as JSON, with cluster-buy signals. Filter by ticker, role, value and date.">
 <link rel="canonical" href="https://boscolabs.dev/sec-insider-trades.html">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="logo.svg" type="image/svg+xml">
 <link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Bosco Labs">
-<meta property="og:title" content="SEC Form 4 Insider Trading API: live and since 2006">
-<meta property="og:description" content="Every SEC Form 4 insider purchase and sale since 2006 as JSON, with cluster-buy and cluster-sell signals. Filter by ticker, role, value and date.">
+<meta property="og:title" content="SEC Form 4 Insider Trading API: stock transactions">
+<meta property="og:description" content="Every SEC Form 4 insider stock transaction (purchase or sale) since 2006 as JSON, with cluster-buy signals. Filter by ticker, role, value and date.">
 <meta property="og:url" content="https://boscolabs.dev/sec-insider-trades.html">
 <meta property="og:image" content="https://boscolabs.dev/icons/sec-insider-trades.png">
 <meta name="twitter:card" content="summary">
@@ -21,8 +21,8 @@
 {
  "@context": "https://schema.org",
  "@type": "SoftwareApplication",
- "name": "SEC Insider Trading API (Form 4): live + history since 2006",
- "description": "Insider trading data from SEC Form 4: every insider purchase and sale by directors, officers and 10% owners, from official EDGAR filings, 2006 to today. Filter by ticker, CIK, transaction code, role, value and date; adds cluster-buy and cluster-sell signals. Use for insider screens and alerts.",
+ "name": "SEC Insider Trading API (Form 4): stock transactions since 2006",
+ "description": "Insider trading data from SEC Form 4: every insider stock transaction (buy or sell) by directors, officers and 10% owners, from official EDGAR filings, 2006 to today. Filter by ticker, CIK, transaction code, role, value and date; adds cluster-buy and cluster-sell signals.",
  "url": "https://boscolabs.dev/sec-insider-trades.html",
  "image": "https://boscolabs.dev/icons/sec-insider-trades.png",
  "applicationCategory": "DeveloperApplication",
@@ -82,7 +82,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <main class="wrap">
 <p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#finance-sec">Finance &amp; SEC</a></p>
 <article>
-<div class="head"><img src="icons/sec-insider-trades.svg" alt="" width="84" height="84"><div><h1>SEC Insider Trading API (Form 4): live + history since 2006</h1><span class="badge live">On Apify Store</span></div></div>
+<div class="head"><img src="icons/sec-insider-trades.svg" alt="" width="84" height="84"><div><h1>SEC Insider Trading API (Form 4): stock transactions since 2006</h1><span class="badge live">On Apify Store</span></div></div>
 <div class="prose">
 <p class="lead">Get <strong>every insider purchase and sale reported to the SEC on Form 4</strong>, from today&#x27;s filings back to 2006, as clean JSON rows: who traded (director, CEO, 10% owner), what, when, how many shares, at what price, and how many they hold afterwards. Plus <strong>cluster-buy and cluster-sell signals</strong>: the moment two or more directors or officers of the same company buy, or sell, their own stock within a few weeks. Filter by ticker, CIK, transaction code, insider role, value and date. For investors, fintech apps and AI agents.</p>
 <div class="facts"><div class="fact"><b>Price</b>$0.0018 per transaction row and $0.02 per cluster signal</div><div class="fact"><b>Domain</b>Finance &amp; SEC</div><div class="fact"><b>Call it</b>Apify API or MCP</div></div>

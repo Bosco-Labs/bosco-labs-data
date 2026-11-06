@@ -7,7 +7,7 @@ Contact: support@boscolabs.dev
 
 ## Finance & SEC
 
-- [SEC Insider Trading API (Form 4): live + history since 2006](https://boscolabs.dev/sec-insider-trades.html): Every insider purchase and sale reported on SEC Form 4 (directors, officers, 10% owners), from official EDGAR filings, 2006 to today, with cluster-buy and cluster-sell signals; filter by ticker, CIK, transaction code, role, value and date. Price: $0.0018 per transaction row and $0.02 per cluster signal. ([Apify Store](https://apify.com/bosco_labs/sec-insider-trades))
+- [SEC Insider Trading API (Form 4): stock transactions since 2006](https://boscolabs.dev/sec-insider-trades.html): Every insider purchase and sale reported on SEC Form 4 (directors, officers, 10% owners), from official EDGAR filings, 2006 to today, with cluster-buy and cluster-sell signals; filter by ticker, CIK, transaction code, role, value and date. Price: $0.0018 per transaction row and $0.02 per cluster signal. ([Apify Store](https://apify.com/bosco_labs/sec-insider-trades))
 - [SEC EDGAR Filings API: 8-K, 10-K, 10-Q feed since 1994](https://boscolabs.dev/sec-filings-feed.html): SEC EDGAR filings (8-K, 10-K, 10-Q, S-1, 13D, 13G, Form 4 and every other form) for any company or the whole market, live or back to 1994, from the SEC's own feeds; 8-K item codes and earnings releases (Item 2.02); links to each filing, not its text. Price: $0.001 per filing. ([Apify Store](https://apify.com/bosco_labs/sec-filings-feed))
 - [Congress Stock Trades API: US House STOCK Act since 2014](https://boscolabs.dev/us-house-trades.html): Congress stock trades: stock, option, fund and bond trades that US House members disclose in STOCK Act Periodic Transaction Reports, from the Clerk of the House's official filings since January 2014 (no Senate); ticker, amount range, owner, days to disclose. Price: $0.0018 per trade. ([Apify Store](https://apify.com/bosco_labs/us-house-trades))
 - [SEC Ownership API: 13F Holdings, 13D/13G Stakes, Form 144](https://boscolabs.dev/sec-ownership.html): Who owns a stock and who is selling, from official SEC filings: a fund's 13F holdings with quarter-over-quarter changes, the funds holding a ticker, 5%+ stakes (13D activist, 13G passive) and Form 144 planned insider sales. One ticker or fund in, small JSON out, a source link per row. Price: $0.0018 per row. (coming soon to the Apify Store)
@@ -136,14 +136,14 @@ Contact: support@boscolabs.dev
 - `national-law-lookup`: $0.005 per article or act returned (max 10 articles). UK: contains public sector information licensed under the Open Government Licence v3.0 (© Crown and database right, legislation.gov.uk).
 - `eu-rates-inflation`: $0.002 per series returned (catalogue free) (max 20 series). Source: ECB statistics (data.ecb.europa.eu). The data are free of charge from the ECB; we charge for processing and delivery, not for the data. Eurostat HICP: © European Union, free of charge from Eurostat. The change field is computed by Bosco Labs.
 
-## SEC Insider Trading API (Form 4): live + history since 2006
+## SEC Insider Trading API (Form 4): stock transactions since 2006
 
 Docs: https://boscolabs.dev/sec-insider-trades.html
 Apify Store: https://apify.com/bosco_labs/sec-insider-trades
 MCP: https://mcp.apify.com?tools=bosco_labs/sec-insider-trades
 Price: $0.0018 per transaction row and $0.02 per cluster signal
 
-Insider trading data from SEC Form 4: every insider purchase and sale by directors, officers and 10% owners, from official EDGAR filings, 2006 to today. Filter by ticker, CIK, transaction code, role, value and date; adds cluster-buy and cluster-sell signals. Use for insider screens and alerts.
+Insider trading data from SEC Form 4: every insider stock transaction (buy or sell) by directors, officers and 10% owners, from official EDGAR filings, 2006 to today. Filter by ticker, CIK, transaction code, role, value and date; adds cluster-buy and cluster-sell signals.
 
 Coverage: Today's filings from the EDGAR live feed, minutes after the SEC accepts them; recent quarters from the EDGAR indexes and Form 4 XML; history from 2006 from the SEC's quarterly Insider Transactions Data Sets. Non-derivative table only: options and other derivatives are not included.
 
@@ -285,7 +285,7 @@ Apify Store: https://apify.com/bosco_labs/us-house-trades
 MCP: https://mcp.apify.com?tools=bosco_labs/us-house-trades
 Price: $0.0018 per trade
 
-Congress stock trades: stock, option, fund and bond trades that US House members disclose in STOCK Act Periodic Transaction Reports, from the Clerk's official filings since 2014 (no Senate). Each row: ticker, amount range, owner, disclosure delay. Filter by member, ticker, type, amount, date.
+Congress stock trades: stock trading by US House members (politicians' trade disclosures under the STOCK Act), from the Clerk's official Periodic Transaction Reports since 2014 (no Senate). Each row: ticker, amount range, owner, disclosure delay. Filter by member, ticker, type, amount, date.
 
 Coverage: Periodic Transaction Reports of House members filed online, from January 2014 to the latest update of the Clerk's index. Scanned paper PTRs are skipped (their PDF links are listed in the run's SUMMARY record). The Senate and annual financial disclosure reports are not included.
 
@@ -620,7 +620,7 @@ Apify Store: https://apify.com/bosco_labs/esef-annual-reports
 MCP: https://mcp.apify.com?tools=bosco_labs/esef-annual-reports
 Price: $0.01 per run plus $0.05 per annual report; raw XBRL fact rows, if switched on, $0.0005 each
 
-Key financials (revenue, EBIT, net income, EPS, assets, equity, cash flows, margins, growth) from ESEF annual reports of European listed companies in 28 countries, via filings.xbrl.org. Each value links to its XBRL fact. Filter by LEI, company name, country and fiscal year end.
+Key financials (revenue, operating income/EBIT, net income, EPS, assets, equity, cash flows, margins, growth) from the ESEF annual reports of European listed companies in 28 countries, via filings.xbrl.org. Each value links to its XBRL fact. Filter by LEI, company name, country, fiscal year.
 
 Coverage: ESEF annual reports collected by filings.xbrl.org: 27,626 reports from 28 countries (counted 2026-11-05; largest: UA, GB, DK, SE, NO, FR, FI). Germany is not in the index. Reports appear a few days to a few weeks after publication, once filings.xbrl.org has processed them. All values are in full currency units.
 
@@ -758,7 +758,7 @@ Apify Store: https://apify.com/bosco_labs/company-accounts
 MCP: https://mcp.apify.com?tools=bosco_labs/company-accounts
 Price: $0.04 per company-year
 
-Company financials (revenue, profit, equity, assets, cash, employees) of private and public companies from official accounts: UK Companies House (all digital years), Denmark (all years), Norway Brønnøysund (last 3 years). Look up by company number, CVR or org number; adds LEI and a source per value.
+Company financials (revenue, profit, equity, cash, employees) from official annual accounts, private companies included: UK Companies House (all digital years), Denmark by CVR number (all years), Norway Brønnøysund (3 years). Look up by company number, CVR or org number; adds LEI and sources.
 
 Coverage: UK: accounts filed electronically with Companies House in the last ~60 days. Denmark: every annual report filed digitally with Erhvervsstyrelsen, all years. Norway: the last 3 fiscal years of every company that files accounts with the Brønnøysund Register (company accounts, not group accounts). Belgium only when the Actor owner has configured access. LEI looked up at GLEIF.
 
