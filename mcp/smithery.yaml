@@ -3,19 +3,19 @@ startCommand:
   type: stdio
   configSchema:
     type: object
-    required: [apifyToken]
     properties:
       apifyToken:
         type: string
         description: >-
-          Your Apify API token (https://console.apify.com/settings/integrations). Every row a
-          tool returns is billed to your Apify account (from $0.001 to $0.05 per row, see the
-          README).
+          Your Apify API token (https://console.apify.com/settings/integrations), for the paid
+          tools: every row they return is billed to your Apify account (from $0.001 to $0.05
+          per row, see the README). The free tools (lei_lookup, sec_company_lookup) work
+          without it.
   commandFunction: |-
     (config) => ({
       command: "uvx",
       args: ["bosco-labs-data-mcp"],
-      env: { APIFY_TOKEN: config.apifyToken }
+      env: { APIFY_TOKEN: config.apifyToken || "" }
     })
   exampleConfig:
     apifyToken: apify_api_xxxxxxxxxxxxxxxxxxxx

@@ -1,10 +1,14 @@
 """Bosco Labs data: one MCP server (stdio) for the Bosco Labs Apify Actors.
 
-Each tool runs one Actor with the user's own APIFY_TOKEN, so every row is billed to the user's
-Apify account (pay per event).
+Two free tools (lei_lookup, sec_company_lookup) call open official APIs directly and need no
+token. Every other tool runs one Actor with the user's own APIFY_TOKEN, so every row is billed
+to the user's Apify account (pay per event).
 """
 
+import asyncio
 import os
+import re
+import time
 from datetime import date
 from typing import Annotated, Literal
 
@@ -24,10 +28,11 @@ MAX_TEXT = 300  # long texts (notice/award descriptions) are cut to this many ch
 mcp = MCPServer(
     "bosco-labs-data",
     instructions=(
-        "Official-source data (SEC EDGAR, US House Clerk, USAspending, EU TED, ESEF annual "
-        "reports, UK/DK/NO company registers). Every row returned is billed to the user's own "
-        "Apify account, so request only as many rows as the question needs. Cite the source "
-        "link of each row."
+        "Official-source data (GLEIF, SEC EDGAR, US House Clerk, USAspending, EU TED, ESEF "
+        "annual reports, UK/DK/NO company registers). lei_lookup and sec_company_lookup are "
+        "free and need no token: use them first to identify a company. Every other tool bills "
+        "each row returned to the user's own Apify account (APIFY_TOKEN), so request only as "
+        "many rows as the question needs. Cite the source link of each row."
     ),
 )
 RO = ToolAnnotations(readOnlyHint=True, openWorldHint=True)
@@ -127,6 +132,263 @@ async def fetch(actor: str, payload: dict, keys: list[str], cap: int) -> list[di
     return [pick(row, keys) for row in (await run_actor(actor, payload))[:cap]]
 
 
+# --- Free tools: open official APIs, no token ----------------------------------------------
+
+OPEN_TIMEOUT = 20  # s per request to an open API
+RETRY_DELAY = 2.0  # s before the one retry on 429/5xx
+
+
+async def get_json(url: str, source: str, params=None, headers=None):
+    """GET JSON from an open API with one retry on 429/5xx; None when the record is not found."""
+    try:
+        async with httpx.AsyncClient(timeout=OPEN_TIMEOUT, headers=headers) as client:
+            for attempt in (1, 2):
+                r = await client.get(url, params=params)
+                if attempt == 1 and (r.status_code == 429 or r.status_code >= 500):
+                    await asyncio.sleep(RETRY_DELAY)
+                    continue
+                break
+    except httpx.TimeoutException as e:
+        raise ToolError(f"{source} did not answer in time; try again in a minute.") from e
+    except httpx.HTTPError as e:
+        raise ToolError(f"Could not reach {source}: {type(e).__name__}") from e
+    if r.status_code == 404:
+        return None
+    if r.status_code == 429:
+        raise ToolError(f"{source} is rate-limiting requests (429); wait a minute and retry.")
+    if r.status_code >= 400:
+        raise ToolError(f"{source} returned HTTP {r.status_code}; try again in a minute.")
+    return r.json()
+
+
+# GLEIF: "The data available through the Access Service are provided under the CC0 licence"
+# (https://www.gleif.org/en/meta/lei-data-terms-of-use).
+GLEIF_API = "https://api.gleif.org/api/v1"
+LEI_RE = re.compile(r"^[A-Z0-9]{18}[0-9]{2}$")
+ACCOUNTS_PARAM = {"GB": "uk_company_numbers", "DK": "dk_cvr_numbers", "NO": "no_org_numbers"}
+LEI_KEYS = [
+    "lei", "legal_name", "entity_status", "registration_status", "jurisdiction",
+    "legal_address_country", "legal_address_city", "headquarters_country", "registered_as",
+    "ultimate_parent", "source_url",
+]  # fmt: skip
+
+
+def lei_row(rec: dict, parent: dict | None) -> dict:
+    a = rec["attributes"]
+    e, reg = a["entity"], a.get("registration") or {}
+    legal, hq = e.get("legalAddress") or {}, e.get("headquartersAddress") or {}
+    full = {
+        "lei": a["lei"],
+        "legal_name": e["legalName"]["name"],
+        "entity_status": e.get("status"),
+        "registration_status": reg.get("status"),
+        "jurisdiction": e.get("jurisdiction"),
+        "legal_address_country": legal.get("country"),
+        "legal_address_city": legal.get("city"),
+        "headquarters_country": hq.get("country"),
+        "registered_as": e.get("registeredAs"),
+        "ultimate_parent": parent,
+        "source_url": f"https://search.gleif.org/#/record/{a['lei']}",
+    }
+    row = pick(full, LEI_KEYS)
+    country = row.get("legal_address_country")
+    if country in ACCOUNTS_PARAM and row.get("registered_as"):
+        row["next_step"] = (
+            "Filed accounts (revenue, profit, equity): Bosco Labs company-accounts (paid; MCP "
+            "tool european_company_accounts in bosco-labs-data-mcp, or "
+            "apify.com/bosco_labs/company-accounts) with "
+            f"{ACCOUNTS_PARAM[country]}=['{row['registered_as']}']."
+        )
+    else:
+        row["next_step"] = (
+            "Audited financials if it is an EU/UK listed company: Bosco Labs esef-annual-reports "
+            "(paid; MCP tool eu_annual_report_financials in bosco-labs-data-mcp, or "
+            f"apify.com/bosco_labs/esef-annual-reports) with lei='{row['lei']}'."
+        )
+    return row
+
+
+async def ultimate_parent(rec: dict) -> dict | None:
+    links = rec.get("relationships", {}).get("ultimate-parent", {}).get("links", {})
+    if "lei-record" not in links:  # no parent reported, or a reporting exception
+        return None
+    data = await get_json(links["lei-record"], "GLEIF")
+    if not data or not data.get("data"):
+        return None
+    p = data["data"]["attributes"]
+    return {"lei": p["lei"], "legal_name": p["entity"]["legalName"]["name"]}
+
+
+@mcp.tool(title="LEI lookup (GLEIF, free)", annotations=RO)
+async def lei_lookup(
+    query: Annotated[
+        str,
+        Field(
+            min_length=2,
+            max_length=200,
+            description="A 20-character LEI, e.g. 724500Y6DUVHQD6OXN27, or a company name, "
+            'e.g. "Heineken"',
+        ),
+    ],
+    max_results: Annotated[
+        int, Field(ge=1, le=5, description="Max companies for a name search (1-5).")
+    ] = 3,
+) -> list[dict]:
+    """Free, no API token needed. Legal Entity Identifier (LEI) lookup in the official GLEIF
+    register: about 2.9 million companies, funds and other legal entities worldwide (source:
+    GLEIF API, CC0 open data). Use it to identify a company: its exact legal name, LEI,
+    whether it is active, its jurisdiction and country, its local registration number and its
+    ultimate parent company.
+
+    Pass an LEI (exact record) or a company name (best matches first; check `legal_name`).
+
+    Returns one row per entity: lei, legal_name, entity_status (ACTIVE/INACTIVE),
+    registration_status (ISSUED, LAPSED, ...), jurisdiction, legal_address_country,
+    legal_address_city, headquarters_country, registered_as (local registry number),
+    ultimate_parent (lei, legal_name; when reported), source_url (the GLEIF record; cite it)
+    and next_step (the paid Bosco Labs tool for this company's financials).
+    """
+    q = query.strip()
+    if LEI_RE.match(q.upper()):
+        data = await get_json(f"{GLEIF_API}/lei-records/{q.upper()}", "GLEIF")
+        if not data:
+            raise ToolError(
+                f"No LEI record {q.upper()}. Check the 20 characters (e.g. 724500Y6DUVHQD6OXN27 "
+                f"for ASML) or pass the company name instead."
+            )
+        recs = [data["data"]]
+    else:
+        hits = await get_json(
+            f"{GLEIF_API}/autocompletions", "GLEIF", params={"field": "fulltext", "q": q}
+        )
+        ids = []
+        for h in (hits or {}).get("data", []):
+            lei = h.get("relationships", {}).get("lei-records", {}).get("data", {}).get("id")
+            if lei and lei not in ids:
+                ids.append(lei)
+        if not ids:
+            raise ToolError(
+                f"GLEIF has no entity matching {q!r}. Try the registered name (e.g. "
+                f'"Heineken N.V.") or a 20-character LEI (e.g. 724500Y6DUVHQD6OXN27).'
+            )
+        ids = ids[:max_results]
+        data = await get_json(
+            f"{GLEIF_API}/lei-records", "GLEIF", params={"filter[lei]": ",".join(ids)}
+        )
+        by_id = {r["id"]: r for r in (data or {}).get("data", [])}
+        recs = [by_id[i] for i in ids if i in by_id]
+    return [lei_row(r, await ultimate_parent(r)) for r in recs]
+
+
+# SEC: "Information presented on sec.gov is considered public information and may be copied or
+# further distributed by users of the web site without the SEC's permission"
+# (https://www.sec.gov/about/privacy-information). Fair access: at most 10 requests per second
+# and a declared User-Agent (https://www.sec.gov/about/developer-resources).
+SEC_HEADERS = {"User-Agent": "BoscoLabs support@boscolabs.dev"}  # same as the Actors send
+SEC_TICKERS_URL = "https://www.sec.gov/files/company_tickers_exchange.json"
+SEC_TICKERS_TTL = 86400  # s; SEC refreshes the file daily
+SEC_KEYS = [
+    "cik", "name", "tickers", "exchanges", "sic", "sic_description", "state_of_incorporation",
+    "fiscal_year_end", "source_url", "next_step",
+]  # fmt: skip
+_sec_tickers: dict = {"rows": None, "at": 0.0}
+
+
+async def sec_tickers() -> list[list]:
+    """[cik, name, ticker, exchange] rows, cached in memory for a day per process."""
+    if _sec_tickers["rows"] is None or time.monotonic() - _sec_tickers["at"] > SEC_TICKERS_TTL:
+        data = await get_json(SEC_TICKERS_URL, "SEC EDGAR", headers=SEC_HEADERS)
+        if not data or "data" not in data:
+            raise ToolError("Unexpected response from SEC EDGAR (company tickers file).")
+        _sec_tickers.update(rows=data["data"], at=time.monotonic())
+    return _sec_tickers["rows"]
+
+
+def norm(name: str) -> str:
+    """Lower-case words joined by single spaces, with a leading space for word matching."""
+    return " " + " ".join(re.findall(r"[a-z0-9]+", name.lower()))
+
+
+async def sec_ciks(q: str) -> list[int]:
+    """CIKs whose ticker equals q or whose name matches q, best match first."""
+    t, n = q.upper(), norm(q)
+    words = n != " "  # False for a query of punctuation only
+    best: dict[int, int] = {}  # cik -> rank; the file is sorted by size, so ties keep that order
+    for cik, name, ticker, _ in await sec_tickers():
+        nn = norm(name or "")
+        if ticker and ticker.upper() == t:
+            rank = 0
+        elif words and nn == n:
+            rank = 1
+        elif words and nn.startswith(n):
+            rank = 2
+        elif words and n in nn:  # starts a later word: "hathaway" -> BERKSHIRE HATHAWAY
+            rank = 3
+        else:
+            continue
+        best[cik] = min(rank, best.get(cik, 9))
+    return sorted(best, key=best.__getitem__)
+
+
+@mcp.tool(title="SEC company lookup: ticker to CIK (free)", annotations=RO)
+async def sec_company_lookup(
+    query: Annotated[
+        str,
+        Field(
+            min_length=1,
+            max_length=100,
+            description='A ticker (AAPL), a CIK (320193) or part of the company name ("apple")',
+        ),
+    ],
+    max_results: Annotated[
+        int, Field(ge=1, le=5, description="Max companies for a name search (1-5).")
+    ] = 3,
+) -> list[dict]:
+    """Free, no API token needed. Identify a US-listed (SEC-registered) company: CIK, official
+    name, ticker(s), exchange(s), industry (SIC code) and state of incorporation (source: SEC
+    EDGAR company tickers file and submissions API). Use it to turn a ticker or name into the
+    CIK that SEC tools take, or to check which exchange a stock trades on.
+
+    Pass a ticker, a CIK or part of the name (best matches first, then by company size; check
+    `name`). A name search covers companies with a listed ticker (about 10,000); a CIK also
+    finds filers without one.
+
+    Returns one row per company: cik, name, tickers, exchanges, sic, sic_description,
+    state_of_incorporation, fiscal_year_end (MMDD), source_url (the EDGAR company page; cite
+    it) and next_step (the paid Bosco Labs tools for its filings and insider trades).
+    """
+    q = query.strip()
+    ciks = [int(q)] if q.isdigit() and len(q) <= 10 else (await sec_ciks(q))[:max_results]
+    rows = []
+    for cik in ciks:
+        url = f"https://data.sec.gov/submissions/CIK{cik:010d}.json"
+        sub = await get_json(url, "SEC EDGAR", headers=SEC_HEADERS)
+        if sub is None:
+            continue
+        full = {
+            "cik": str(cik),
+            "name": sub.get("name"),
+            "tickers": sub.get("tickers"),
+            "exchanges": sub.get("exchanges"),
+            "sic": sub.get("sic"),
+            "sic_description": sub.get("sicDescription"),
+            "state_of_incorporation": sub.get("stateOfIncorporation"),
+            "fiscal_year_end": sub.get("fiscalYearEnd"),
+            "source_url": f"https://www.sec.gov/edgar/browse/?CIK={cik}",
+            "next_step": "Filings: Bosco Labs sec-filings-feed; insider buys and sells: Bosco Labs "
+            "sec-insider-trades (both paid; MCP tools sec_filings and sec_insider_trades in "
+            "bosco-labs-data-mcp, or apify.com/bosco_labs/sec-filings-feed and "
+            f"apify.com/bosco_labs/sec-insider-trades) with ciks=['{cik}'].",
+        }
+        rows.append(pick(full, SEC_KEYS))
+    if not rows:
+        raise ToolError(
+            f"No SEC-registered company matches {q!r}. Try a ticker (AAPL), a CIK (320193) or "
+            f'part of the registered name ("apple").'
+        )
+    return rows
+
+
 # --- EU annual reports (ESEF) -------------------------------------------------------------
 
 ESEF_METRICS = [
@@ -140,7 +402,7 @@ ESEF_KEYS = ["lei", "company_name", "country", *ESEF_METRICS, "revenue_growth"]
 ESEF_LINKS = ["viewer_url", "report_url", "source_url"]
 
 
-@mcp.tool(annotations=RO)
+@mcp.tool(title="EU annual report financials (ESEF)", annotations=RO)
 async def eu_annual_report_financials(
     company: Annotated[
         str | None,
@@ -208,7 +470,7 @@ ACCOUNTS_KEYS = [
 ]  # fmt: skip
 
 
-@mcp.tool(annotations=RO)
+@mcp.tool(title="UK, Danish and Norwegian company accounts", annotations=RO)
 async def european_company_accounts(
     uk_company_numbers: Annotated[
         list[Annotated[str, Field(pattern=r"^[A-Za-z0-9]{1,8}$")]] | None,
@@ -262,7 +524,8 @@ async def european_company_accounts(
 # --- SEC insider trades (Form 4) -----------------------------------------------------------
 
 INSIDER_KEYS = [
-    "filing_date", "ticker", "issuer_name", "insider_name", "insider_roles", "officer_title",
+    "filing_date", "usable_from", "ticker", "issuer_name", "insider_name", "insider_roles",
+    "officer_title",
     "transaction_date", "transaction_code", "transaction_type", "shares", "price", "value_usd",
     "shares_owned_after", "ownership", "plan_10b5_1", "in_cluster", "cluster_insiders",
     "filing_url",
@@ -272,7 +535,7 @@ TxCode = Literal[
 ]  # fmt: skip
 
 
-@mcp.tool(annotations=RO)
+@mcp.tool(title="SEC insider trades (Form 4)", annotations=RO)
 async def sec_insider_trades(
     tickers: Tickers | None = None,
     ciks: Ciks | None = None,
@@ -317,7 +580,8 @@ async def sec_insider_trades(
 
     Returns one row per transaction: filing_date, ticker, issuer_name, insider_name,
     insider_roles, officer_title, transaction_date, transaction_code (P buy, S sell, ...),
-    shares, price, value_usd, shares_owned_after, plan_10b5_1 (pre-planned sale),
+    shares, price, value_usd, shares_owned_after, plan_10b5_1 (pre-planned sale; unknown
+    before 2023-04), usable_from (first day a backtest may act on the row),
     in_cluster and filing_url (the SEC filing; cite it).
 
     Cost to the user: $0.0018 per transaction returned.
@@ -348,7 +612,7 @@ FILING_KEYS = [
 ]  # fmt: skip
 
 
-@mcp.tool(annotations=RO)
+@mcp.tool(title="SEC EDGAR filings feed", annotations=RO)
 async def sec_filings(
     tickers: Tickers | None = None,
     ciks: Ciks | None = None,
@@ -420,7 +684,7 @@ HOUSE_KEYS = [
 ]  # fmt: skip
 
 
-@mcp.tool(annotations=RO)
+@mcp.tool(title="US House stock trades", annotations=RO)
 async def us_house_stock_trades(
     members: Annotated[
         Names | None, Field(description='Part of the member name, e.g. "Pelosi"')
@@ -481,7 +745,7 @@ NoticeType = Literal[
 ]  # fmt: skip
 
 
-@mcp.tool(annotations=RO)
+@mcp.tool(title="EU public tenders (TED)", annotations=RO)
 async def eu_public_tenders(
     keywords: Annotated[
         str | None,
@@ -550,7 +814,7 @@ DOD_KEYS = [
 ]  # fmt: skip
 
 
-@mcp.tool(annotations=RO)
+@mcp.tool(title="Pentagon (DoD) contract awards", annotations=RO)
 async def dod_contract_awards(
     recipients: Annotated[
         Names | None, Field(description='Winner or parent name contains, e.g. "kratos"')

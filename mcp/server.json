@@ -2,8 +2,8 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.PB7-debug/bosco-labs-data",
   "title": "Bosco Labs data",
-  "description": "SEC insider trades & filings, US House trades, DoD contracts, EU tenders, EU company financials",
-  "version": "0.1.1",
+  "description": "Free LEI & SEC company lookups; SEC insider trades & filings, House trades, DoD contracts, EU data",
+  "version": "0.2.0",
   "repository": {
     "url": "https://github.com/PB7-debug/bosco-labs-data",
     "source": "github",
@@ -14,7 +14,7 @@
       "registryType": "pypi",
       "registryBaseUrl": "https://pypi.org",
       "identifier": "bosco-labs-data-mcp",
-      "version": "0.1.1",
+      "version": "0.2.0",
       "runtimeHint": "uvx",
       "transport": {
         "type": "stdio"
@@ -22,8 +22,8 @@
       "environmentVariables": [
         {
           "name": "APIFY_TOKEN",
-          "description": "Your Apify API token; each row returned is billed to your Apify account",
-          "isRequired": true,
+          "description": "Your Apify API token for the paid tools (each row returned is billed to your Apify account); the free tools work without it",
+          "isRequired": false,
           "isSecret": true
         }
       ]

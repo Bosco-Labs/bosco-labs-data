@@ -1,15 +1,15 @@
 [project]
 name = "bosco-labs-data-mcp"
-version = "0.1.1"
-description = "MCP server: SEC insider trades and filings, US House trades, DoD contracts, EU tenders and European company financials, via Apify."
+version = "0.2.0"
+description = "MCP server: free LEI and SEC company lookups, plus SEC insider trades and filings, US House trades, DoD contracts, EU tenders and European company financials via Apify."
 readme = "README.md"
 requires-python = ">=3.10"
 license = "MIT"
-keywords = ["mcp", "apify", "sec", "edgar", "insider-trading", "tenders", "financials"]
+keywords = ["mcp", "apify", "sec", "edgar", "insider-trading", "tenders", "financials", "lei", "gleif"]
 dependencies = ["mcp>=2.3,<3", "httpx>=0.27"]
 
 [project.urls]
-Homepage = "https://pb7-debug.github.io/bosco-labs-data/"
+Homepage = "https://boscolabs.dev"
 Repository = "https://github.com/PB7-debug/bosco-labs-data"
 
 [project.scripts]
