@@ -213,7 +213,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <p>small JSON rows (a section is typically 5-25 KB with the default text cap), stable <code>snake_case</code> fields, ISO dates, <code>null</code> for unknown, a source link per row and per linked rule. A unit whose text eCFR fails to send in a part listing comes back with <code>text: null</code>, a warning and no charge. <code>warnings</code> says in plain words when text was cut, a date was capped at the eCFR&#x27;s latest data, or more results matched than were returned. A section lookup takes 1-2 seconds after start-up (measured 1.6 s for 21 CFR 101.9); a part with changes 2-7 seconds for a few units (the Entity List alone is 1.4 million characters of XML), up to about a minute for 25 units, which are downloaded two at a time to stay within eCFR&#x27;s limits.</p>
 <p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~us-federal-rules/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.005 per section, $0.002 per document.</p>
 <h2 id="http-api">HTTP API</h2>
-<p>Also on the Bosco Labs HTTP API (beta, test mode): same input and same rows as the Actor, <strong>$0.001 per unit: a CFR section with text = 5 units ($0.005), a Federal Register document = 2 ($0.002); rows without text are free</strong> from prepaid credits (max 10 CFR units or 50 documents per call). <a href="api.html#key">Get a key</a> with a $0.50 free trial; see <a href="api.html">prices and limits</a>.</p>
+<p>Also on the Bosco Labs HTTP API (beta): same input and same rows as the Actor, <strong>$0.001 per unit: a CFR section with text = 5 units ($0.005), a Federal Register document = 2 ($0.002); rows without text are free</strong> from prepaid credits (max 10 CFR units or 50 documents per call). <a href="api.html#key">Get a key</a> with a $0.50 free trial; see <a href="api.html">prices and limits</a>.</p>
 <pre><code>curl https://api.boscolabs.dev/v1/us-federal-rules \
   -H &quot;Authorization: Bearer $BOSCO_API_KEY&quot; \
   -H &quot;Content-Type: application/json&quot; \
@@ -245,7 +245,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 </div>
 </article>
 </main>
-<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="privacy.html">Privacy</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
 <p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
 </body>
 </html>

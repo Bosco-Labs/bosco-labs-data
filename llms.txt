@@ -72,13 +72,14 @@ Contact: support@boscolabs.dev
 - Contact: support@boscolabs.dev (questions, data issues, custom data requests).
 - Bosco Labs MCP server: `bosco-labs-data-mcp` on PyPI (https://pypi.org/project/bosco-labs-data-mcp/) and the official MCP Registry (`io.github.PB7-debug/bosco-labs-data`): one MCP server for all data Actors. Run it with `uvx bosco-labs-data-mcp` and set `APIFY_TOKEN`; source in https://github.com/PB7-debug/bosco-labs-data/tree/main/mcp.
 
-## API (beta, test mode)
+## API (beta)
 
 - Base URL: https://api.boscolabs.dev; `POST /v1/<tool>` with header `Authorization: Bearer <key>` (or `X-API-Key`) and the Actor's input object as JSON body; the response holds the Actor's rows plus `charged_usd` and `balance_usd`.
 - OpenAPI: https://api.boscolabs.dev/openapi.json; interactive docs: https://api.boscolabs.dev/docs; catalogue with prices and input schemas: https://api.boscolabs.dev/v1/tools (free)
 - Remote MCP (streamable HTTP, same key header): https://api.boscolabs.dev/mcp
 - [Get a key, prices and limits](https://boscolabs.dev/api.html): prepaid credits, packs $10, $50, $200, one-time $0.50 free trial per verified e-mail; prices include VAT
 - [Privacy](https://boscolabs.dev/privacy.html): request bodies (names screened, queries) are never logged or stored
+- [Terms](https://boscolabs.dev/terms.html): prepaid credits, 14-day refunds, data is information with a source link, not advice
 - `company-check`: $0.03 per company report (max 1 report).
 - `sec-company-financials`: $0.005 per company-period row (max 10 tickers/CIKs x 20 years).
 - `sec-company-screen`: $0.002 per company returned (max 200 companies (maxResults)).

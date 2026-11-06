@@ -160,7 +160,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <p>one small row per name (typically 2-7 KB), stable <code>snake_case</code> fields, ISO dates, <code>null</code> for unknown. <code>summary</code> is one sentence the agent can repeat; <code>match_found</code> is the yes/no; <code>lists_checked</code> gives the dates for the citation. A cold run (lists downloaded fresh) takes about 15-20 seconds; runs within an hour of the last one reuse the parsed lists and take a few seconds.</p>
 <p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~sanctions-screening/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.01 per name screened.</p>
 <h2 id="http-api">HTTP API</h2>
-<p>Also on the Bosco Labs HTTP API (beta, test mode): same input and same rows as the Actor, <strong>$0.01 per name screened</strong> from prepaid credits (max 50 names per call). <a href="api.html#key">Get a key</a> with a $0.50 free trial; see <a href="api.html">prices and limits</a>.</p>
+<p>Also on the Bosco Labs HTTP API (beta): same input and same rows as the Actor, <strong>$0.01 per name screened</strong> from prepaid credits (max 50 names per call). <a href="api.html#key">Get a key</a> with a $0.50 free trial; see <a href="api.html">prices and limits</a>.</p>
 <pre><code>curl https://api.boscolabs.dev/v1/sanctions-screening \
   -H &quot;Authorization: Bearer $BOSCO_API_KEY&quot; \
   -H &quot;Content-Type: application/json&quot; \
@@ -194,7 +194,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 </div>
 </article>
 </main>
-<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="privacy.html">Privacy</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
 <p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
 </body>
 </html>
