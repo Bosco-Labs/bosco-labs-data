@@ -173,7 +173,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <tr><td><code>years</code></td><td>array</td><td>Whole filing years to load, as strings, e.g. [&quot;2024&quot;, &quot;2025&quot;] (one Clerk index per year; online PTRs start in 2014). Without dates, returns those whole years. Use this or <code>filedFrom</code> for history.</td></tr>
 <tr><td><code>minAmountUsd</code></td><td>integer</td><td>Only trades whose reported range starts at or above this USD amount, e.g. 15001 leaves out the smallest $1,001 - $15,000 range, 1000001 keeps trades over $1 million. Empty = no minimum.</td></tr>
 <tr><td><code>maxResults</code></td><td>integer</td><td>Maximum trades, newest filings first, e.g. 500. Default 100. You pay per trade returned.</td></tr>
-<tr><td><code>onlyNewSinceLastRun</code></td><td>boolean</td><td>true = skip (and don&#x27;t charge for) trades an earlier run with the same filters already delivered. For scheduled runs. Default false. Remembered in a named key-value store in your account.</td></tr>
+<tr><td><code>onlyNewSinceLastRun</code></td><td>boolean</td><td>true = skip (and don&#x27;t charge for) trades an earlier run with the same filters already delivered. For scheduled runs. Default false. Remembered in a named key-value store in your account. E.g. <code>true</code> for a daily scheduled run.</td></tr>
 </tbody></table></div>
 <h2>Sources, licence and limits</h2>
 <p><strong>Which filings are covered?</strong> Periodic Transaction Reports of House members filed online, from January 2014 to the latest update of the Clerk&#x27;s index. Annual financial disclosure reports and the Senate are not included.</p>

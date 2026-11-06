@@ -213,7 +213,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <tr><td><code>periodTo</code></td><td>string</td><td>Fiscal year ending on or before this date, YYYY-MM-DD, e.g. &quot;2024-12-31&quot;. Empty = no upper limit.</td></tr>
 <tr><td><code>maxFilings</code></td><td>integer</td><td>Maximum annual reports, newest fiscal period first, e.g. 1 for a company&#x27;s latest report. Default 10. One report per company per fiscal year, with the prior year nested in each row.</td></tr>
 <tr><td><code>includeRawFacts</code></td><td>boolean</td><td>true = also output every tagged XBRL fact of each report as its own row (record_type = &quot;fact&quot;), charged per fact row. Default false (one summary row per report).</td></tr>
-<tr><td><code>onlyNewSinceLastRun</code></td><td>boolean</td><td>true = skip (and don&#x27;t charge for) reports an earlier run with the same filters already delivered. For scheduled runs. Default false. Remembered in a named key-value store in your account.</td></tr>
+<tr><td><code>onlyNewSinceLastRun</code></td><td>boolean</td><td>true = skip (and don&#x27;t charge for) reports an earlier run with the same filters already delivered. For scheduled runs. Default false. Remembered in a named key-value store in your account. E.g. <code>true</code> for a daily scheduled run.</td></tr>
 </tbody></table></div>
 <h2>Sources, licence and limits</h2>
 <p><strong>Which countries?</strong> All 28 countries in the filings.xbrl.org index, listed above. Germany is not in the index (0 filings). Most testing was done on NL, BE and FR reports; reports from countries with their own IFRS taxonomy variant (e.g. Ukraine) may have fewer standard fields filled. <code>metrics_found</code> tells you how complete a row is.</p>

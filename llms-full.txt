@@ -1,6 +1,6 @@
 # Bosco Labs data APIs
 
-> Bosco Labs publishes data tools for AI agents and analysts as Apify Actors that return clean, typed JSON from official sources: SEC filings, insider trades, 13F holdings and XBRL financials, US House STOCK Act trades, European ESEF annual reports, UK/Danish/Norwegian company accounts and registries, sanctions lists, EU, UK and Dutch law and case law, EU tenders, US federal and Pentagon contract awards, ECB rates and euro inflation, clinical trials, Dutch addresses, plus PDF-to-JSON and Apify dataset tools. Each Actor runs on the Apify platform via API or MCP and is priced per result (pay per event). Data rows carry a source link. Tools marked 'coming soon' are built but not yet public on the Store.
+> Bosco Labs publishes data tools for AI agents and analysts as Apify Actors that return clean, typed JSON from official sources: SEC filings, insider trades, 13F holdings and XBRL financials, US House STOCK Act trades, European ESEF annual reports, UK/Danish/Norwegian company accounts and registries, sanctions lists, EU, UK and Dutch law and case law, EU tenders, US federal and Pentagon contract awards, ECB rates and euro inflation, clinical trials, Dutch addresses, plus PDF-to-JSON and Apify dataset tools. 15 of them are also plain HTTPS endpoints that an agent can call without an account and pay per call in USDC via x402 (https://api.boscolabs.dev/v1/<tool>, see API below). Each Actor runs on the Apify platform via API or MCP and is priced per result (pay per event). Data rows carry a source link. Tools marked 'coming soon' are built but not yet public on the Store.
 
 Apify Store profile: https://apify.com/bosco_labs
 Contact: support@boscolabs.dev
@@ -10,7 +10,7 @@ Contact: support@boscolabs.dev
 - [SEC Insider Trading API (Form 4): stock transactions since 2006](https://boscolabs.dev/sec-insider-trades.html): Every insider purchase and sale reported on SEC Form 4 (directors, officers, 10% owners), from official EDGAR filings, 2006 to today, with cluster-buy and cluster-sell signals; filter by ticker, CIK, transaction code, role, value and date. Price: $0.0018 per transaction row and $0.02 per cluster signal. ([Apify Store](https://apify.com/bosco_labs/sec-insider-trades))
 - [SEC EDGAR Filings API: 8-K, 10-K, 10-Q feed since 1994](https://boscolabs.dev/sec-filings-feed.html): SEC EDGAR filings (8-K, 10-K, 10-Q, S-1, 13D, 13G, Form 4 and every other form) for any company or the whole market, live or back to 1994, from the SEC's own feeds; 8-K item codes and earnings releases (Item 2.02); links to each filing, not its text. Price: $0.001 per filing. ([Apify Store](https://apify.com/bosco_labs/sec-filings-feed))
 - [Congress Stock Trades API: US House STOCK Act since 2014](https://boscolabs.dev/us-house-trades.html): Congress stock trades: stock, option, fund and bond trades that US House members disclose in STOCK Act Periodic Transaction Reports, from the Clerk of the House's official filings since January 2014 (no Senate); ticker, amount range, owner, days to disclose. Price: $0.0018 per trade. ([Apify Store](https://apify.com/bosco_labs/us-house-trades))
-- [SEC Ownership API: 13F, N-PORT Fund Holdings, 13D/13G, Form 144](https://boscolabs.dev/sec-ownership.html): Who owns a stock, from official SEC filings: a fund manager's 13F holdings, a mutual fund's or ETF's N-PORT holdings (with changes), the funds holding a ticker, 5%+ stakes (13D/13G) and Form 144 planned insider sales. One ticker or fund in, JSON out, a source link per row. Price: $0.0018 per row. (coming soon to the Apify Store)
+- [SEC Ownership API: 13F, N-PORT Fund Holdings, 13D/13G, Form 144](https://boscolabs.dev/sec-ownership.html): Who owns a stock, from official SEC filings: a fund manager's 13F holdings, a mutual fund's or ETF's N-PORT holdings (with changes), the funds holding a ticker, 5%+ stakes (13D/13G) and Form 144 planned insider sales. One ticker or fund in, JSON out, a source link per row. Price: $0.0018 per row, plus $0.01 per "who holds this stock" search (13F or N-PORT data set). (coming soon to the Apify Store)
 - [SEC Company Financials API: income, balance sheet, cash flow](https://boscolabs.dev/sec-company-financials.html): US company financials from SEC XBRL: revenue, profit, EPS, balance sheet, cash flow, free cash flow and margins per fiscal year or quarter, 2009 to today. By ticker or CIK, 10-K/10-Q and 20-F filers. Each value cites its XBRL tag and SEC filing. Q4 derived where not reported. Price: $0.005 per company-period row. ([Apify Store](https://apify.com/bosco_labs/sec-company-financials))
 - [SEC Company Screener API: filter all US filers by financials](https://boscolabs.dev/sec-company-screen.html): US companies matching your filters for one calendar year or quarter: revenue, net income, margins, cash flow, assets and 30 more metrics from SEC XBRL frames, sorted and capped. Each value cites its XBRL tag and SEC filing. Same metrics as SEC Company Financials. Price: $0.002 per company returned. (coming soon to the Apify Store)
 - [EU Annual Reports API (ESEF): XBRL financial statements](https://boscolabs.dev/esef-annual-reports.html): Normalized key financials (revenue, EBIT, EBITDA, net income, EPS, assets, equity, cash flows, margins, growth) of European listed companies from official ESEF annual reports via filings.xbrl.org; 28 countries; every value linked to its XBRL fact. Price: $0.01 per run plus $0.05 per annual report; raw XBRL fact rows, if switched on, $0.0005 each. ([Apify Store](https://apify.com/bosco_labs/esef-annual-reports))
@@ -45,6 +45,7 @@ Contact: support@boscolabs.dev
 - [ClinicalTrials.gov API: trial search & NCT dossier](https://boscolabs.dev/clinical-trials.html): Clinical trials as compact JSON rows: status, phase, sponsor, conditions, interventions, enrollment, start and primary completion dates, countries, outcomes and results. Look up NCT numbers or search by condition, drug, sponsor, phase, status, country and dates. Sourced, no contact data. Price: $0.004 per trial. (coming soon to the Apify Store)
 - [Drug Safety API: FDA label, FAERS, recalls, EMA status](https://boscolabs.dev/drug-safety.html): Drug safety dossier for one drug name as one sourced JSON row: FDA boxed warning and indications, top FAERS adverse reaction counts, US recalls and shortages (openFDA), EU authorisation, EPAR link and EU shortages (EMA). Or one cheaper sub-query. Not medical advice. Price: $0.02 per dossier or $0.004 per single-section query. (coming soon to the Apify Store)
 - [Dutch Address Lookup API: BAG postcode, geocode & building data](https://boscolabs.dev/dutch-address-lookup.html): Validates and geocodes Dutch addresses against the official BAG register (via PDOK): postcode, BAG ids, WGS84 + RD coordinates, construction year, use, floor area and building status. Free text, postcode + house number (or range) or BAG ids; up to 100 per run. Unmatched inputs are free. Price: $0.002 per resolved address. (coming soon to the Apify Store)
+- [Weather Forecast API: hourly + daily by city or lat/lon](https://boscolabs.dev/weather-forecast.html): Weather forecast for up to 50 places or coordinates, up to 10 days: hourly temperature, rain, wind, gusts, clouds and humidity plus a daily summary in local time. Source MET Norway (CC BY 4.0), cached per its terms. Unknown places are free. Price: $0.0015 per location forecast. (coming soon to the Apify Store)
 
 ## Data tools
 
@@ -122,7 +123,7 @@ Contact: support@boscolabs.dev
 - Apify API (synchronous): POST `https://api.apify.com/v2/acts/bosco_labs~<actor>/run-sync-get-dataset-items` with header `Authorization: Bearer <APIFY_TOKEN>` and the Actor input as the JSON body; the response is the dataset items.
 - Apify hosted MCP server: add `https://mcp.apify.com?tools=bosco_labs/<actor>` to your MCP client (Claude, Cursor, VS Code, ...). It loads the Actor as a tool plus `get-actor-run` and `get-dataset-items`, and signs you in with OAuth or `Authorization: Bearer <APIFY_TOKEN>`. On the default server (`https://mcp.apify.com`) agents can also find the Actors with `search-actors` and run them with `call-actor`.
 - Pricing: pay per event, billed to your own Apify account: you pay for rows delivered at the prices listed per Actor, and runs stop at your max charge limit.
-- Bosco Labs HTTP API: `POST https://api.boscolabs.dev/v1/<tool>` with `Authorization: Bearer <key>` for 8 fast lookups (same input and rows as the Actors), prepaid credits, $0.50 free trial; remote MCP at `https://api.boscolabs.dev/mcp`. Keys, prices and limits: https://boscolabs.dev/api.html
+- Bosco Labs HTTP API: `POST https://api.boscolabs.dev/v1/<tool>` with `Authorization: Bearer <key>` for 15 fast lookups (same input and rows as the Actors), prepaid credits, $0.50 free trial, or no key and pay per call in USDC via x402; remote MCP at `https://api.boscolabs.dev/mcp`. Keys, prices and limits: https://boscolabs.dev/api.html
 - Contact: support@boscolabs.dev (questions, data issues, custom data requests).
 - Bosco Labs MCP server: `bosco-labs-data-mcp` on PyPI (https://pypi.org/project/bosco-labs-data-mcp/) and the official MCP Registry (`io.github.PB7-debug/bosco-labs-data`): one MCP server for all data Actors. Run it with `uvx bosco-labs-data-mcp` and set `APIFY_TOKEN`; source in https://github.com/PB7-debug/bosco-labs-data/tree/main/mcp.
 
@@ -132,7 +133,7 @@ Contact: support@boscolabs.dev
 - OpenAPI: https://api.boscolabs.dev/openapi.json; interactive docs: https://api.boscolabs.dev/docs; catalogue with prices and input schemas: https://api.boscolabs.dev/v1/tools (free)
 - Remote MCP (streamable HTTP, same key header): https://api.boscolabs.dev/mcp
 - [Get a key, prices and limits](https://boscolabs.dev/api.html): prepaid credits, packs $10, $50, $200, one-time $0.50 free trial per verified e-mail; prices include VAT
-- x402, no account (https://boscolabs.dev/api.html#x402): call `POST /v1/<tool>` without a key to get `402 Payment Required` (x402 v2) and pay per call in USDC on Base mainnet (eip155:8453); schemes `upto` (settles only what was delivered: rows x price, min $0.005) and `exact` (settles the quote) are offered; with `upto` a wallet needs only USDC on Base (gasless permit, no ETH). Empty answers are `404 no_results` and free. Prices = https://api.boscolabs.dev/v1/tools. Example agent: https://github.com/PB7-debug/bosco-labs-data/tree/main/examples/x402-agent
+- x402, no account (https://boscolabs.dev/api.html#x402): call `POST /v1/<tool>` without a key to get `402 Payment Required` (x402 v2) and pay per call in USDC on Base mainnet (eip155:8453); schemes `upto` (settles only what was delivered: rows x price, min $0.005) and `exact` (settles the quote: bound it with maxResults; keyless calls default to 10 rows) are offered; with `upto` a wallet needs only USDC on Base (gasless permit, no ETH). Nothing is settled on an error or empty result (`404 no_results`). Prices = https://api.boscolabs.dev/v1/tools. Example agent: https://github.com/PB7-debug/bosco-labs-data/tree/main/examples/x402-agent
 - [Privacy](https://boscolabs.dev/privacy.html): request bodies (names screened, queries) are never logged or stored
 - [Terms](https://boscolabs.dev/terms.html): prepaid credits, 14-day refunds, data is information with a source link, not advice
 - `company-check`: $0.03 per company report (max 1 report).
@@ -141,7 +142,7 @@ Contact: support@boscolabs.dev
 - `sec-filings-feed`: $0.001 per filing (max 200 filings (maxResults)).
 - `sanctions-screening`: $0.01 per name screened (max 50 names). This product uses the International Trade Administration's Data API but is not endorsed or certified by the International Trade Administration. OFAC and CSL data are US government works. UK Sanctions List: contains public sector information licensed under the Open Government Licence v3.0. EU list: European Commission, names as published. No endorsement by any publisher is implied.
 - `eu-law-lookup`: $0.005 per act or article returned (max 50 results (maxResults)). Consolidated texts from EUR-Lex (© European Union) are a documentation tool with no legal effect; only the acts published in the Official Journal of the European Union are authentic.
-- `national-law-lookup`: $0.005 per article or act returned (max 10 articles). UK: contains public sector information licensed under the Open Government Licence v3.0 (© Crown and database right, legislation.gov.uk).
+- `national-law-lookup`: $0.005 per article or act returned (max 5 articles). UK: contains public sector information licensed under the Open Government Licence v3.0 (© Crown and database right, legislation.gov.uk).
 - `eu-rates-inflation`: $0.002 per series returned (catalogue free) (max 20 series). Source: ECB statistics (data.ecb.europa.eu). The data are free of charge from the ECB; we charge for processing and delivery, not for the data. Eurostat HICP: © European Union, free of charge from Eurostat. The change field is computed by Bosco Labs.
 - `us-federal-rules`: $0.001 per unit: a CFR section with text = 5 units ($0.005), a Federal Register document = 2 ($0.002); rows without text are free (max 10 CFR units or 50 documents).
 - `drug-safety`: $0.004 per sub-query; a full dossier = 5 units ($0.02); partial answers are free (max 1 drug).
@@ -181,7 +182,7 @@ Example questions:
 - `insiderRoles` (array): Only insiders with one of these roles: director, officer, ten_percent_owner, other, e.g. ["director", "officer"]. Empty = all roles.
 - `minValueUsd` (integer): Minimum transaction value in USD (shares x price), e.g. 100000. Default 0 = no minimum. Transactions without a price count as 0.
 - `maxResults` (integer): Maximum transaction rows, newest first, e.g. 500. Default 100, up to 200,000 per run (split bigger exports by date range). The run stops reading once it has this many, and returns at most this many cluster signals.
-- `onlyNewSinceLastRun` (boolean): true = skip (and don't charge for) transactions and signals an earlier run with the same filters already delivered. For scheduled runs. Default false. Remembered in a named key-value store in your account.
+- `onlyNewSinceLastRun` (boolean): true = skip (and don't charge for) transactions and signals an earlier run with the same filters already delivered. For scheduled runs. Default false. Remembered in a named key-value store in your account. E.g. `true` for a daily scheduled run.
 - `tickers` (array): Optional: issuer stock tickers, e.g. ["AAPL", "TSLA"]. Leave empty to scan the whole market (the usual use: insider buying anywhere). Mapped to the company's CIK with the SEC's ticker list; history is also matched on the ticker as written in the filing.
 - `ciks` (array): Issuer SEC Central Index Keys as digits, leading zeros optional, e.g. ["320193"] for Apple. Use for delisted or renamed companies the SEC's ticker list no longer has. Empty = no CIK filter.
 
@@ -261,10 +262,10 @@ Example questions:
 - `earningsReleasesOnly` (boolean): true = only 8-Ks with Item 2.02 (Results of Operations and Financial Condition): the dates and exact times companies released earnings. Overrides `formTypes` and `itemCodes`. Default false.
 - `itemCodes` (array): Only 8-Ks reporting at least one of these items, as strings, e.g. ["5.02"] (director/officer change), "1.01" (material agreement), "2.01" (acquisition), "1.05" (cybersecurity incident). Without `formTypes`, reads 8-K and 8-K/A. Empty = no item filter.
 - `dateFrom` (string): Earliest filing date, YYYY-MM-DD, e.g. "2020-01-01". EDGAR's index goes back to 1993. Empty = `lookbackDays` days before today (or, for tickers/CIKs without `lookbackDays`, the company's newest filings).
-- `dateTo` (string): Latest filing date, YYYY-MM-DD. Empty = today, including filings accepted minutes ago (live EDGAR feed).
+- `dateTo` (string): Latest filing date, YYYY-MM-DD. Empty = today, including filings accepted minutes ago (live EDGAR feed). E.g. "2026-03-31".
 - `lookbackDays` (integer): Used only when `dateFrom` is empty: read filings from this many days back until today, e.g. 365. Empty = 7 days for the whole market; for `tickers`/`ciks`, empty = each company's newest filings (its last 1,000), so "latest 10-K of AAPL" needs no dates.
 - `maxResults` (integer): Maximum filings, newest first, e.g. 10 for a company's latest 10 filings. Default 100. The run stops once it has this many; you pay per filing returned.
-- `onlyNewSinceLastRun` (boolean): true = skip (and don't charge for) filings an earlier run with the same filters already delivered. For scheduled runs. Default false. Remembered in a named key-value store in your account.
+- `onlyNewSinceLastRun` (boolean): true = skip (and don't charge for) filings an earlier run with the same filters already delivered. For scheduled runs. Default false. Remembered in a named key-value store in your account. E.g. `true` for a daily scheduled run.
 
 ### Output fields
 
@@ -321,7 +322,7 @@ Example questions:
 - `years` (array): Whole filing years to load, as strings, e.g. ["2024", "2025"] (one Clerk index per year; online PTRs start in 2014). Without dates, returns those whole years. Use this or `filedFrom` for history.
 - `minAmountUsd` (integer): Only trades whose reported range starts at or above this USD amount, e.g. 15001 leaves out the smallest $1,001 - $15,000 range, 1000001 keeps trades over $1 million. Empty = no minimum.
 - `maxResults` (integer): Maximum trades, newest filings first, e.g. 500. Default 100. You pay per trade returned.
-- `onlyNewSinceLastRun` (boolean): true = skip (and don't charge for) trades an earlier run with the same filters already delivered. For scheduled runs. Default false. Remembered in a named key-value store in your account.
+- `onlyNewSinceLastRun` (boolean): true = skip (and don't charge for) trades an earlier run with the same filters already delivered. For scheduled runs. Default false. Remembered in a named key-value store in your account. E.g. `true` for a daily scheduled run.
 
 ### Output fields
 
@@ -365,7 +366,7 @@ Example questions:
 Docs: https://boscolabs.dev/sec-ownership.html
 Apify Store: coming soon
 MCP: https://mcp.apify.com?tools=bosco_labs/sec-ownership
-Price: $0.0018 per row
+Price: $0.0018 per row, plus $0.01 per "who holds this stock" search (13F or N-PORT data set)
 API: POST https://api.boscolabs.dev/v1/sec-ownership, $0.0018 per holding, holder or filing row (one fund or company per call) (max 200 rows (maxResults))
 
 Who owns a stock, from official SEC filings: a fund manager's 13F holdings, a mutual fund's or ETF's N-PORT holdings (with changes), the funds holding a ticker, 5%+ stakes (13D/13G) and Form 144 planned insider sales. One ticker or fund in, JSON out, a source link per row.
@@ -383,7 +384,7 @@ Example questions:
 
 - `mode` (string): holdings13f = Form 13F: pass `filer` for a fund manager's holdings (with changes vs the previous quarter), or `ticker`/`cusip` for the managers holding a stock. holdingsNport = Form N-PORT: pass `fund` (a mutual fund or ETF ticker) for its holdings (with changes vs its previous report), or `ticker`/`cusip` for the mutual funds and ETFs holding a stock. stakes13dg = Schedule 13D/13G filings about `ticker`, or new 13D filings market-wide. planned144 = Form 144 notices of planned insider sales for `ticker`, or market-wide. Default holdings13f.
 - `filer` (string): holdings13f only: the fund manager's name or SEC CIK, e.g. "Berkshire Hathaway" or "1067983". A name is matched with EDGAR's company search (the first match that files 13F reports); a CIK is exact. Empty = look up the holders of `ticker`/`cusip` instead.
-- `fund` (string): holdingsNport only: the fund's ticker (any share class), e.g. "VOO", "VFIAX" or "ARKK", or its SEC series ID, e.g. "S000002839". Names are not searched. Empty = look up the funds holding `ticker`/`cusip` instead.
+- `fund` (string): holdingsNport only: the fund's ticker (any share class), e.g. "VOO" or "ARKK"; its SEC series ID, e.g. "S000002839"; or its name, e.g. "Vanguard 500 Index Fund" (matched with the SEC's series and class list; the fund picked and up to 3 close alternatives are named in the status message). Letters, digits, spaces and . , & ' ( ) / + -, up to 100 characters. Empty = look up the funds holding `ticker`/`cusip` instead.
 - `ticker` (string): The company the shares are in, as a current US ticker, e.g. "AAPL". holdings13f/holdingsNport: the managers or funds holding it (or, with `filer`/`fund`, only that position). stakes13dg / planned144: filings about it. Empty = whole market (stakes13dg, planned144).
 - `issuerCik` (string): Instead of `ticker`: the company's SEC CIK as digits, e.g. "320193" for Apple. Use for delisted or renamed companies. Empty = use `ticker`.
 - `cusip` (string): holdings13f/holdingsNport only: the 9-character CUSIP of one share class, e.g. "037833100" (Apple common stock). Most precise way to ask which managers or funds hold a security. Empty = CUSIPs found in the company's recent Schedule 13D/13G filings (all its share classes).
@@ -574,7 +575,7 @@ Example questions:
 - `sortOrder` (string): "desc" = largest first (top N), "asc" = smallest first (e.g. the lowest net margin). Default "desc".
 - `maxResults` (integer): Most companies to return (and charge for), e.g. 20 for a top 20. The status message says how many matched in total. Default 50, max 1000.
 - `metrics` (array): More fields to show per company besides the sortBy and filter metrics, e.g. ["operating_cash_flow", "total_assets"]. Same names as sortBy. Each adds a few SEC requests. Empty = only the sortBy and filter metrics (plus the inputs of derived ones).
-- `tickersOnly` (boolean): true = skip companies without a ticker in the SEC's company_tickers.json (delisted companies, private issuers of public debt, subsidiaries). Default false.
+- `tickersOnly` (boolean): true = skip companies without a ticker in the SEC's company_tickers.json (delisted companies, private issuers of public debt, subsidiaries). Default false. E.g. `true`.
 - `includeSources` (boolean): true = each row has `sources`: per value the XBRL tag, the SEC accession number and the filing URL (or the formula for derived values). false = values only, about 3x smaller rows. Default true.
 
 ### Output fields
@@ -668,7 +669,7 @@ Example questions:
 - `periodTo` (string): Fiscal year ending on or before this date, YYYY-MM-DD, e.g. "2024-12-31". Empty = no upper limit.
 - `maxFilings` (integer): Maximum annual reports, newest fiscal period first, e.g. 1 for a company's latest report. Default 10. One report per company per fiscal year, with the prior year nested in each row.
 - `includeRawFacts` (boolean): true = also output every tagged XBRL fact of each report as its own row (record_type = "fact"), charged per fact row. Default false (one summary row per report).
-- `onlyNewSinceLastRun` (boolean): true = skip (and don't charge for) reports an earlier run with the same filters already delivered. For scheduled runs. Default false. Remembered in a named key-value store in your account.
+- `onlyNewSinceLastRun` (boolean): true = skip (and don't charge for) reports an earlier run with the same filters already delivered. For scheduled runs. Default false. Remembered in a named key-value store in your account. E.g. `true` for a daily scheduled run.
 
 ### Output fields
 
@@ -937,7 +938,7 @@ Example questions:
 - `location` (string): Registered office location as free text, passed to Companies House's location filter: a town, county or postcode (area), e.g. "London", "Manchester" or "EC1". Empty = all of the UK.
 - `companyTypes` (array): Companies House company types, e.g. ["ltd"] (private limited), "plc", "llp", "private-limited-guarant-nsc" (company limited by guarantee), "limited-partnership". Default ["ltd", "plc", "llp"]. Pass [] for all types.
 - `maxResults` (integer): Maximum companies to return, e.g. 500. Default 100. You pay per company delivered.
-- `onlyNewSinceLastRun` (boolean): true = skip (and don't charge for) companies an earlier run with the same filters already delivered. For scheduled runs. Default false. Remembered in a named key-value store in your account.
+- `onlyNewSinceLastRun` (boolean): true = skip (and don't charge for) companies an earlier run with the same filters already delivered. For scheduled runs. Default false. Remembered in a named key-value store in your account. E.g. `true` for a daily scheduled run.
 
 ### Output fields
 
@@ -1117,7 +1118,7 @@ Example questions:
 
 - `query` (string): The EU act to look up: a short name ("GDPR", "AI Act", "DSA", "NIS2", "DORA", "MiCA", "CSRD"...), a citation ("Regulation (EU) 2024/1689", "Directive 95/46/EC", "Regulation (EC) No 1907/2006"), a bare number ("2016/679"), a CELEX number ("32016R0679") or an ELI URI ("http://data.europa.eu/eli/reg/2016/679/oj"). "AI Act Article 50" also works. Leave empty only when using ojSince (new Official Journal acts). An unreadable citation fails in seconds, with examples, at no charge.
 - `article` (string): Article number, optionally with a paragraph: "5", "6(1)", "4a"; several separated by commas ("5, 6(1)", up to 10). One row per article. Empty = one row for the whole act with its table of contents and recital count (no full text unless include has "text").
-- `language` (string): EU language code of the text and titles: BG, CS, DA, DE, EL, EN, ES, ET, FI, FR, GA, HR, HU, IT, LT, LV, MT, NL, PL, PT, RO, SK, SL, SV. Default EN. If the text is missing in that language, English is returned with a warning.
+- `language` (string): EU language code of the text and titles: BG, CS, DA, DE, EL, EN, ES, ET, FI, FR, GA, HR, HU, IT, LT, LV, MT, NL, PL, PT, RO, SK, SL, SV. Default EN. If the text is missing in that language, English is returned with a warning. E.g. "DE".
 - `asOf` (string): YYYY-MM-DD, e.g. "2025-01-01": return the consolidated version that applied on that date. Empty = today (the newest consolidated version in force now). Acts without consolidated versions return the Official Journal text.
 - `include` (array): Any of "metadata" (always on), "amendments" (amended_by, corrected_by, repealed_by, amends, repeals), "citing" (acts and judgments that cite this act, newest first) and "text" (the whole act as plain text, cut at maxTextChars). Default ["metadata", "amendments"]. The price is the same.
 - `maxTextChars` (integer): Cap on article_text and text, in characters, e.g. 30000 (default). Longer text is cut and flagged (article_text_truncated / text_truncated) with a warning.
@@ -1190,7 +1191,7 @@ Docs: https://boscolabs.dev/national-law-lookup.html
 Apify Store: coming soon
 MCP: https://mcp.apify.com?tools=bosco_labs/national-law-lookup
 Price: $0.01 per article or act returned
-API: POST https://api.boscolabs.dev/v1/national-law-lookup, $0.005 per article or act returned (max 10 articles)
+API: POST https://api.boscolabs.dev/v1/national-law-lookup, $0.005 per article or act returned (max 5 articles)
 
 The text of a UK section or Dutch article as in force today (or on a date), whether it is in force and what changed it. Ask by citation: "Companies Act 2006 s 172", "BW 7:658", "artikel 13 Wet Vpb 1969". Official legislation.gov.uk and Dutch BWB data with a source link per row.
 
@@ -1276,7 +1277,7 @@ Example questions:
 - `dateTo` (string): Latest decision date, inclusive, YYYY-MM-DD, e.g. "2024-12-31". Empty = today when dateFrom is set, else no limit.
 - `documentType` (string): "uitspraak" = court decisions only, "conclusie" = opinions of the Advocate-General at the Hoge Raad only. Empty = both.
 - `maxResults` (integer): Most decisions to return from a search, most recently published or updated first, e.g. 20 (default). One charge per decision returned.
-- `includeText` (boolean): true = add the full decision as plain text (section headings as '## ', numbered paragraphs kept), cut at maxTextChars. Default false: metadata and summary only (small rows). Same price.
+- `includeText` (boolean): true = add the full decision as plain text (section headings as '## ', numbered paragraphs kept), cut at maxTextChars. Default false: metadata and summary only (small rows). Same price. E.g. `true`.
 - `maxTextChars` (integer): With includeText: cap on the text per decision in characters, e.g. 20000 (default). Longer text is cut and flagged (text_truncated, text_chars gives the full length).
 
 ### Output fields
@@ -1341,8 +1342,8 @@ Example questions:
 - `documentNumber` (string): One Federal Register document by its number, e.g. "2026-17231" (corrections look like "C1-2026-16628"). Returns its citation, type, agencies, dates, the CFR parts it affects and links. Empty = no document lookup. Takes precedence over every other field.
 - `search` (string): Full-text search of Federal Register documents since 1994, newest first, e.g. "entity list". Combine with agency, documentType, since and citation. Empty = no word filter (agency or documentType alone also search).
 - `agency` (string): Federal Register search by issuing agency: an acronym ("BIS", "FDA", "EPA", "SEC", "OFAC"), a name ("Bureau of Industry and Security") or a FederalRegister.gov slug ("industry-and-security-bureau"). Empty = all agencies. An unknown name fails with suggestions, at no charge.
-- `documentType` (string): Federal Register search by type: RULE (final rules), PRORULE (proposed rules), NOTICE or PRESDOCU (presidential documents). Empty = all types.
-- `maxResults` (integer): Most rows to return: for a part citation the most recently changed units (max 25 per run, each with its text), for a search the newest documents (max 100). Default 20. One charge per row returned with an answer.
+- `documentType` (string): Federal Register search by type: RULE (final rules), PRORULE (proposed rules), NOTICE or PRESDOCU (presidential documents). Empty = all types. E.g. "RULE".
+- `maxResults` (integer): Most rows to return: for a part citation the most recently changed units (max 25 per run, each with its text), for a search the newest documents (max 100). Default 20. One charge per row returned with an answer. E.g. 10.
 - `maxTextChars` (integer): Cap on each section's text in characters, e.g. 20000 (default). Longer text is cut at a line end and flagged with text_truncated and a warning; source_url has the whole text.
 
 ### Output fields
@@ -1529,10 +1530,10 @@ Example questions:
 - `cpvCodes` (array): Common Procurement Vocabulary (CPV) code prefixes as digit strings; a prefix matches every code below it, e.g. ["72"] = IT services, "45" = construction work, "3312" = medical equipment, "72212000" = one specific code. Empty = all sectors.
 - `noticeTypes` (array): Kinds of notices: contract_notice (open call for tenders), contract_award (who won, for how much), prior_information, direct_award_preannouncement, contract_modification, market_consultation. Default ["contract_notice"]. Pass [] for all kinds.
 - `publishedFrom` (string): Earliest publication date, YYYY-MM-DD, e.g. "2026-10-01". The TED API covers notices from November 2016. Empty = 7 days before `publishedTo`.
-- `publishedTo` (string): Latest publication date, YYYY-MM-DD. Empty = today.
+- `publishedTo` (string): Latest publication date, YYYY-MM-DD. Empty = today. E.g. "2026-03-31".
 - `minValueEur` (integer): Minimum total notice value in EUR, e.g. 1000000 (estimated value for calls, awarded value for awards). When set, notices stated in other currencies (e.g. PLN, SEK) and notices without a value are left out, as TED does not convert currencies. Empty = no minimum.
 - `maxResults` (integer): Maximum notices, newest first, e.g. 100. Default 50. You pay per notice delivered.
-- `onlyNewSinceLastRun` (boolean): true = skip (and don't charge for) notices an earlier run with the same filters already delivered. For scheduled runs. Default false. Remembered in a named key-value store in your account.
+- `onlyNewSinceLastRun` (boolean): true = skip (and don't charge for) notices an earlier run with the same filters already delivered. For scheduled runs. Default false. Remembered in a named key-value store in your account. E.g. `true` for a daily scheduled run.
 
 ### Output fields
 
@@ -1604,9 +1605,9 @@ Example questions:
 - `tickers` (array): Only awards matched to these US-listed tickers (NYSE, Nasdaq, CBOE), e.g. ["LMT", "KTOS", "AVAV"]. Turns ticker matching on. Empty = no ticker filter.
 - `naicsCodes` (array): NAICS industry codes, 2 to 6 digits, e.g. ["336414"] (guided missiles and space vehicles) or ["3364"]. Empty = all.
 - `pscCodes` (array): Product and Service Codes, e.g. ["1410"] (guided missiles), ["R425"] (engineering support). Empty = all.
-- `matchTickers` (boolean): true (default) = match the recipient or its parent company to a US-listed ticker by exact cleaned name (SEC company list) and add the SEC-reported shares outstanding. Unmatched awards are still returned, with ticker = null.
+- `matchTickers` (boolean): true (default) = match the recipient or its parent company to a US-listed ticker by exact cleaned name (SEC company list) and add the SEC-reported shares outstanding. Unmatched awards are still returned, with ticker = null. E.g. `false` to skip the ticker match.
 - `maxResults` (integer): Maximum award rows, newest signing dates first, then largest amounts, e.g. 20. Default 100. Each row is one charged event.
-- `onlyNewSinceLastRun` (boolean): true = skip (and don't charge for) award-days (including old-dated actions the DoD publishes late) an earlier run with the same filters already delivered. For scheduled runs. Default false. Remembered in a named key-value store in your account.
+- `onlyNewSinceLastRun` (boolean): true = skip (and don't charge for) award-days (including old-dated actions the DoD publishes late) an earlier run with the same filters already delivered. For scheduled runs. Default false. Remembered in a named key-value store in your account. E.g. `true` for a daily scheduled run.
 
 ### Output fields
 
@@ -1844,7 +1845,7 @@ Example questions:
 - `startDateTo` (string): Latest trial start date, YYYY-MM-DD, e.g. "2025-12-31". Inclusive. Empty = no upper bound (includes planned future starts).
 - `primaryCompletionFrom` (string): Earliest primary completion date (actual or estimated: when the primary endpoint data are complete, the usual read-out catalyst), YYYY-MM-DD, e.g. "2026-01-01". Empty = no lower bound.
 - `primaryCompletionTo` (string): Latest primary completion date, YYYY-MM-DD, e.g. "2026-12-31". Empty = no upper bound.
-- `hasResults` (boolean): true = only trials with results posted on ClinicalTrials.gov; false = only trials without. Leave empty (omit) for both.
+- `hasResults` (boolean): true = only trials with results posted on ClinicalTrials.gov; false = only trials without. Leave empty (omit) for both. E.g. `true`.
 - `maxResults` (integer): Maximum number of trials (rows) to return in search mode, e.g. 20. Default 20, maximum 500. Each row is one charged `trial` event, so this also caps the cost. Ranked by relevance when a condition or intervention is given, else newest start date first.
 - `detail` (string): "summary" (default): the compact dossier. "full" also fills eligibility (criteria up to 4,000 characters, sex, ages), arms (up to 20), secondary outcomes (up to 15) and sites (facility, city, country, status; up to 100). Same price.
 
@@ -1984,6 +1985,59 @@ Example questions:
 
 ```json
 { "addresses": ["Damrak 1 Amsterdam", "Coolsingel 40, 3011AD Rotterdam", "1012LG 1", "Damrak 18-1 Amsterdam"] }
+```
+
+## Weather Forecast API: hourly + daily by city or lat/lon
+
+Docs: https://boscolabs.dev/weather-forecast.html
+Apify Store: coming soon
+MCP: https://mcp.apify.com?tools=bosco_labs/weather-forecast
+Price: $0.0015 per location forecast
+
+Weather forecast for up to 50 places or coordinates, up to 10 days: hourly temperature, rain, wind, gusts, clouds and humidity plus a daily summary in local time. Source MET Norway (CC BY 4.0), cached per its terms. Unknown places are free.
+
+Example questions:
+
+- Will it rain in Amsterdam tomorrow afternoon?
+- Wind speed forecast for these 5 wind farm coordinates, next 48 hours.
+
+### Input fields
+
+- `locations` (array, required): Places to forecast, one per line: a town or city name, optionally with a country or region after a comma ("Amsterdam", "Paris, FR", "Portland, Oregon"), or coordinates as "lat,lon" in decimal degrees, latitude first ("52.3676,4.9041"; rounded to 4 decimals). Place names come from a built-in list of towns of 15,000+ people and capitals; for anything else (a farm, a venue, a wind turbine) give coordinates. Up to 50; repeats are forecast once. One output row per location. Required.
+- `hours` (integer): How far ahead to forecast, counted from the current hour, e.g. 48 for today and tomorrow. Max 240 (10 days; MET Norway's forecast ends after about 9.5). Steps are hourly for the first ~2.5 days, then every 6 hours. Default (or empty) = 48.
+- `timezone` (string): IANA timezone for output times and daily summaries, e.g. "Europe/Amsterdam", "America/New_York", "UTC". Empty (default) = the place's own timezone for place names, UTC for coordinates.
+- `summary` (boolean): true (default) = a daily summary for every day in `hours` plus only the next 12 hourly steps (about 7 KB per location). false = the daily summary plus every forecast step in `hours` (about 18 KB per location for 48 hours, 33 KB for 240). The price is the same.
+
+### Output fields
+
+- `schema_version` (string): Output schema version.
+- `input` (string): The location as given.
+- `resolved` (boolean): true = a forecast was returned; only these rows are charged.
+- `status` (string): ok: forecast returned; not_found: place name not in the built-in list (give 'lat,lon'); invalid_input: coordinates out of range; source_error: MET Norway did not answer.
+- `name` (string | null): Matched place as 'name, region, country code', e.g. 'Rotterdam, South Holland, NL'; null for coordinate input.
+- `country_code` (string | null): ISO 3166-1 alpha-2 country of the matched place; null for coordinate input.
+- `latitude` (number | null): Latitude used, decimal degrees, rounded to 4 decimals.
+- `longitude` (number | null): Longitude used, decimal degrees, rounded to 4 decimals.
+- `elevation_m` (number | null): Ground height used for the temperature, metres above sea level (MET Norway's, or the place's from GeoNames).
+- `timezone` (string | null): IANA timezone of the output times and daily summaries.
+- `updated_at` (string | null): When MET Norway's forecast model data were last updated (ISO 8601, UTC).
+- `fetched_at` (string | null): When this forecast was fetched from MET Norway (ISO 8601, UTC); may be earlier than the run, because MET's terms require reusing a response until it expires.
+- `hours` (integer): Hours ahead covered (the input `hours`); 0 when not resolved.
+- `units` (object): Unit of each value field in timeseries and daily.
+- `timeseries` (array): Forecast steps in time order: the next 12 hourly steps when summary=true, every step within `hours` when false. Empty when not resolved.
+- `daily` (array): One summary per local calendar day within `hours`, derived from the steps. Empty when not resolved.
+- `warnings` (array): Plain-language notes: ambiguous place names (with alternatives), UTC default for coordinates, why a location failed.
+- `source_url` (string | null): The MET Norway Locationforecast request the forecast comes from; null when not resolved.
+- `provided_by` (string): Who compiled this row; cite together with source_url.
+- `place_source_url` (string | null): GeoNames record of the matched place; null for coordinate input.
+- `attribution` (string): Required credit: 'Data from MET Norway (CC BY 4.0)'.
+- `attribution_details` (string): Licence link, the note that daily values are derived (not MET Norway's responsibility), and GeoNames credit when a place name was used.
+- `retrieved_at` (string): When the row was made (ISO 8601, UTC).
+
+### Example input
+
+```json
+{ "locations": ["Rotterdam", "Paris, FR", "Portland, Oregon", "52.3676,4.9041"], "hours": 48 }
 ```
 
 ## Package Vulnerability Check API: CVEs, CISA KEV, safe upgrade
@@ -2149,18 +2203,18 @@ Example questions:
 - `items` (array): Items to check directly, as a JSON array of objects, e.g. [{"url": "https://jobs.example.com/1042", "salary_eur": 65000}]. Checked before the dataset. Pasted items are all reported as new on a monitor's first run (no silent baseline). Without a monitorName nothing is saved, so every run is a fresh try-out; give a monitorName and paste again with an edit to see a change.
 - `monitorName` (string): Name of the saved state: one name = one watched list, e.g. "shop-prices". Runs with the same name are compared with each other; use a different name per scraper or task. Letters, digits, - and _. Empty = "default" with a datasetId; with only pasted items, empty = a try-out that saves nothing.
 - `keyFields` (array): Fields that identify the same item in every run, e.g. ["url"] or ["placeId"]. Dot paths work: ["product.sku"]. Required unless you use whole-item comparison. Items without any key field are skipped.
-- `compareWholeItem` (boolean): For datasets without an ID field: an item is identified by all its fields (minus ignored ones), so items are only reported as new or removed, never as changed. Default false.
-- `ignoreFields` (array): Fields that change on every run and are never compared, as dot paths. Default: scrapedAt, scraped_at, crawledAt, retrieved_at, timestamp and #debug. Set [] to compare everything.
+- `compareWholeItem` (boolean): For datasets without an ID field: an item is identified by all its fields (minus ignored ones), so items are only reported as new or removed, never as changed. Default false. E.g. `true`.
+- `ignoreFields` (array): Fields that change on every run and are never compared, as dot paths. Default: scrapedAt, scraped_at, crawledAt, retrieved_at, timestamp and #debug. Set [] to compare everything. E.g. ["scrapedAt", "#debug"].
 - `watchFields` (array): Only changes in these fields count, e.g. ["price", "stock", "offer.status"]. The output then also shows the old values (previous). Empty = every field except the ignored ones.
-- `report` (array): Which changes become output rows (and are charged): new, changed and/or removed items. Removed is off by default, because a scraper run that stopped early would make many items look removed.
-- `reportOnFirstRun` (boolean): The first run of a monitor only saves the baseline and reports nothing (free). Turn on to report every item as new on that first run (charged per item).
-- `slackWebhookUrl` (string): Slack incoming webhook URL (https://hooks.slack.com/services/...). Secret input, stored encrypted.
-- `discordWebhookUrl` (string): Discord channel webhook URL (https://discord.com/api/webhooks/...). Secret input, stored encrypted.
-- `webhookUrl` (string): Any URL that receives a JSON POST with the counts, example rows and the link (Zapier, Make, n8n, your own API). Secret input, stored encrypted.
-- `telegramBotToken` (string): Token of your Telegram bot from @BotFather. Needs the chat ID too. Secret input, stored encrypted.
+- `report` (array): Which changes become output rows (and are charged): new, changed and/or removed items. Removed is off by default, because a scraper run that stopped early would make many items look removed. E.g. ["new", "changed"].
+- `reportOnFirstRun` (boolean): The first run of a monitor only saves the baseline and reports nothing (free). Turn on to report every item as new on that first run (charged per item). E.g. `true`.
+- `slackWebhookUrl` (string): Slack incoming webhook URL (https://hooks.slack.com/services/...). Secret input, stored encrypted. E.g. "https://hooks.slack.com/services/T000/B000/XXXX".
+- `discordWebhookUrl` (string): Discord channel webhook URL (https://discord.com/api/webhooks/...). Secret input, stored encrypted. E.g. "https://discord.com/api/webhooks/123/abc".
+- `webhookUrl` (string): Any URL that receives a JSON POST with the counts, example rows and the link (Zapier, Make, n8n, your own API). Secret input, stored encrypted. E.g. "https://hooks.zapier.com/hooks/catch/123/abc/".
+- `telegramBotToken` (string): Token of your Telegram bot from @BotFather. Needs the chat ID too. Secret input, stored encrypted. E.g. "123456:ABC-DEF1234ghIkl" (digits, colon, letters).
 - `telegramChatId` (string): Chat, group or channel ID the bot posts to, e.g. "123456789" or "@mychannel".
-- `email` (string): Address(es) for an email alert, comma-separated. Sent by the public Actor apify/send-mail, which runs in your account (a few seconds of compute).
-- `alertMaxItems` (integer): How many changes to list in the alert as examples (key values and what changed). Default 10.
+- `email` (string): Address(es) for an email alert, comma-separated. Sent by the public Actor apify/send-mail, which runs in your account (a few seconds of compute). E.g. "alerts@example.com, ops@example.com".
+- `alertMaxItems` (integer): How many changes to list in the alert as examples (key values and what changed). Default 10. E.g. 5.
 - `alertWhenNoChanges` (boolean): Send the alert even when a run found no changes (a daily "all quiet"). Default false.
 
 ### Output fields
@@ -2203,7 +2257,7 @@ Example questions:
 - `spreadsheetId` (string, required): Google spreadsheet ID: the part between /d/ and /edit in the sheet URL docs.google.com/spreadsheets/d/<ID>/edit, e.g. "1AbCdEfGhIjKlMnOpQrStUvWxYz0123456789". The full sheet URL also works.
 - `sheetName` (string): Name of the tab to write to, e.g. "Leads". Created if it doesn't exist. Leave empty to use the first tab (whatever it is called, e.g. "Sheet1" or "Blad1").
 - `mode` (string): "replace" (default) clears the tab's values and writes the dataset; "append" adds rows below the existing data, keeps your header and adds any new columns on the right.
-- `serviceAccountJson` (string, required): Full contents of a Google service account JSON key file (secret input, stored encrypted). Share the spreadsheet with that account's client_email as Editor first. See the README for the 2-minute setup.
+- `serviceAccountJson` (string, required): Full contents of a Google service account JSON key file (secret input, stored encrypted). Share the spreadsheet with that account's client_email as Editor first. See the README for the 2-minute setup. E.g. the whole file, starting with {"type": "service_account", ...}.
 - `fields` (array): Columns to export, in this order; nested fields use dots, e.g. ["name", "address.city", "phone"]. Empty = all fields.
 
 ### Output fields

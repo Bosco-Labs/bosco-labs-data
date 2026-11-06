@@ -239,7 +239,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <tr><td><code>sortOrder</code></td><td>string</td><td>&quot;desc&quot; = largest first (top N), &quot;asc&quot; = smallest first (e.g. the lowest net margin). Default &quot;desc&quot;.</td></tr>
 <tr><td><code>maxResults</code></td><td>integer</td><td>Most companies to return (and charge for), e.g. 20 for a top 20. The status message says how many matched in total. Default 50, max 1000.</td></tr>
 <tr><td><code>metrics</code></td><td>array</td><td>More fields to show per company besides the sortBy and filter metrics, e.g. [&quot;operating_cash_flow&quot;, &quot;total_assets&quot;]. Same names as sortBy. Each adds a few SEC requests. Empty = only the sortBy and filter metrics (plus the inputs of derived ones).</td></tr>
-<tr><td><code>tickersOnly</code></td><td>boolean</td><td>true = skip companies without a ticker in the SEC&#x27;s company_tickers.json (delisted companies, private issuers of public debt, subsidiaries). Default false.</td></tr>
+<tr><td><code>tickersOnly</code></td><td>boolean</td><td>true = skip companies without a ticker in the SEC&#x27;s company_tickers.json (delisted companies, private issuers of public debt, subsidiaries). Default false. E.g. <code>true</code>.</td></tr>
 <tr><td><code>includeSources</code></td><td>boolean</td><td>true = each row has <code>sources</code>: per value the XBRL tag, the SEC accession number and the filing URL (or the formula for derived values). false = values only, about 3x smaller rows. Default true.</td></tr>
 </tbody></table></div>
 <h2>Sources, licence and limits</h2>

@@ -194,30 +194,36 @@
     {
      "@type": "ListItem",
      "position": 27,
+     "url": "https://boscolabs.dev/weather-forecast.html",
+     "name": "Weather Forecast API: hourly + daily by city or lat/lon"
+    },
+    {
+     "@type": "ListItem",
+     "position": 28,
      "url": "https://boscolabs.dev/package-vulns.html",
      "name": "Package Vulnerability Check API: CVEs, CISA KEV, safe upgrade"
     },
     {
      "@type": "ListItem",
-     "position": 28,
+     "position": 29,
      "url": "https://boscolabs.dev/pdf-to-data.html",
      "name": "PDF to JSON API: text, tables and metadata from a PDF URL"
     },
     {
      "@type": "ListItem",
-     "position": 29,
+     "position": 30,
      "url": "https://boscolabs.dev/dataset-dedup.html",
      "name": "Deduplicate & Merge Apify Datasets: remove duplicate items"
     },
     {
      "@type": "ListItem",
-     "position": 30,
+     "position": 31,
      "url": "https://boscolabs.dev/dataset-change-monitor.html",
      "name": "Change Monitor: new, changed & removed items + Slack alerts"
     },
     {
      "@type": "ListItem",
-     "position": 31,
+     "position": 32,
      "url": "https://boscolabs.dev/sheets-export.html",
      "name": "Google Sheets Export: send any Apify dataset to a spreadsheet"
     }
@@ -268,7 +274,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <section class="hero">
 <h1>Official-source data for AI agents and analysts</h1>
 <p class="lead">Clean, typed JSON from SEC EDGAR, Companies House, EUR-Lex, TED, USAspending, ClinicalTrials.gov and other official registers. Call each tool by API or from an AI agent over MCP, and pay per result. Every row links to its source.</p>
-<p class="muted">31 tools &middot; 10 live on the Apify Store &middot; the others coming soon</p>
+<p class="muted">32 tools &middot; 10 live on the Apify Store &middot; the others coming soon</p>
 <div class="actions"><a class="btn" href="#tools">Browse the tools</a><a class="btn ghost" href="q/index.html">Example questions</a><a class="btn ghost" href="llms.txt">For agents: llms.txt</a></div>
 <ul class="chips"><li><a href="#finance-sec">Finance &amp; SEC</a></li><li><a href="#companies">Companies</a></li><li><a href="#compliance-law">Compliance &amp; law</a></li><li><a href="#government-procurement">Government &amp; procurement</a></li><li><a href="#macro-health-places">Macro, health &amp; places</a></li><li><a href="#data-tools">Data tools</a></li></ul>
 </section>
@@ -279,7 +285,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <li class="card"><div class="card-top"><img src="icons/sec-insider-trades.svg" alt="" width="48" height="48"><h3><a href="sec-insider-trades.html">SEC Insider Trading API (Form 4)</a></h3></div><p>Every SEC Form 4 insider stock transaction (purchase or sale) since 2006 as JSON, with cluster-buy signals. Filter by ticker, role, value and date.</p><div class="row"><span class="price">$0.0018 per transaction row and $0.02 per cluster signal</span><a href="https://apify.com/bosco_labs/sec-insider-trades">On Apify Store</a></div></li>
 <li class="card"><div class="card-top"><img src="icons/sec-filings-feed.svg" alt="" width="48" height="48"><h3><a href="sec-filings-feed.html">SEC EDGAR Filings API</a></h3></div><p>SEC EDGAR filings as JSON for one company or the whole market, live or since 1994: 8-K items, earnings release times, filing links. No scraper setup.</p><div class="row"><span class="price">$0.001 per filing</span><a href="https://apify.com/bosco_labs/sec-filings-feed">On Apify Store</a></div></li>
 <li class="card"><div class="card-top"><img src="icons/us-house-trades.svg" alt="" width="48" height="48"><h3><a href="us-house-trades.html">Congress Stock Trades API</a></h3></div><p>Congress stock trading disclosures by US House members (politicians) under the STOCK Act since 2014, from official Clerk filings: ticker, amount, delay.</p><div class="row"><span class="price">$0.0018 per trade</span><a href="https://apify.com/bosco_labs/us-house-trades">On Apify Store</a></div></li>
-<li class="card"><div class="card-top"><img src="icons/sec-ownership.svg" alt="" width="48" height="48"><h3><a href="sec-ownership.html">SEC Ownership API</a></h3></div><p>Who owns a stock and who is selling: a fund&#x27;s 13F holdings with quarterly changes, funds holding a ticker, 13D/13G stakes and Form 144 sales.</p><div class="row"><span class="price">$0.0018 per row</span><span class="badge soon">Coming soon to the Store</span></div></li>
+<li class="card"><div class="card-top"><img src="icons/sec-ownership.svg" alt="" width="48" height="48"><h3><a href="sec-ownership.html">SEC Ownership API</a></h3></div><p>Who owns a stock: 13F manager holdings, mutual fund and ETF N-PORT holdings with changes, funds holding a ticker, 13D/13G stakes and Form 144 sales.</p><div class="row"><span class="price">$0.0018 per row, plus $0.01 per &quot;who holds this stock&quot; search (13F or N-PORT data set)</span><span class="badge soon">Coming soon to the Store</span></div></li>
 <li class="card"><div class="card-top"><img src="icons/sec-company-financials.svg" alt="" width="48" height="48"><h3><a href="sec-company-financials.html">SEC Company Financials API</a></h3></div><p>Income statement, balance sheet and cash flow of US-listed companies from SEC XBRL, per year or quarter since 2009, by ticker or CIK, each value sourced.</p><div class="row"><span class="price">$0.005 per company-period row</span><a href="https://apify.com/bosco_labs/sec-company-financials">On Apify Store</a></div></li>
 <li class="card"><div class="card-top"><img src="icons/sec-company-screen.svg" alt="" width="48" height="48"><h3><a href="sec-company-screen.html">SEC Company Screener API</a></h3></div><p>Screen all US SEC filers by revenue, net income, margins, cash flow and 30 more metrics for one year or quarter. Each value cites its SEC filing.</p><div class="row"><span class="price">$0.002 per company returned</span><span class="badge soon">Coming soon to the Store</span></div></li>
 <li class="card"><div class="card-top"><img src="icons/esef-annual-reports.svg" alt="" width="48" height="48"><h3><a href="esef-annual-reports.html">EU Annual Reports API (ESEF)</a></h3></div><p>Revenue, operating income, net income, EPS, equity, cash flow from ESEF annual reports of EU listed companies in 28 countries, linked to the XBRL facts.</p><div class="row"><span class="price">$0.01 per run plus $0.05 per annual report; raw XBRL fact rows, if switched on, $0.0005 each</span><a href="https://apify.com/bosco_labs/esef-annual-reports">On Apify Store</a></div></li>
@@ -322,6 +328,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <li class="card"><div class="card-top"><img src="icons/clinical-trials.svg" alt="" width="48" height="48"><h3><a href="clinical-trials.html">ClinicalTrials.gov API</a></h3></div><p>Clinical trials as compact JSON: status, phase, sponsor, conditions, interventions, enrollment, dates, countries, results. Search or look up NCT numbers.</p><div class="row"><span class="price">$0.004 per trial</span><span class="badge soon">Coming soon to the Store</span></div></li>
 <li class="card"><div class="card-top"><img src="icons/drug-safety.svg" alt="" width="48" height="48"><h3><a href="drug-safety.html">Drug Safety API</a></h3></div><p>Boxed warning, top FAERS adverse reactions, US recalls and shortages plus EU authorisation for any drug name. Sourced JSON for AI agents. $0.02.</p><div class="row"><span class="price">$0.02 per dossier or $0.004 per single-section query</span><span class="badge soon">Coming soon to the Store</span></div></li>
 <li class="card"><div class="card-top"><img src="icons/dutch-address-lookup.svg" alt="" width="48" height="48"><h3><a href="dutch-address-lookup.html">Dutch Address Lookup API</a></h3></div><p>Validate and geocode Dutch addresses against the official BAG register: postcode, BAG ids, WGS84 and RD coordinates, construction year, use and floor area.</p><div class="row"><span class="price">$0.002 per resolved address</span><span class="badge soon">Coming soon to the Store</span></div></li>
+<li class="card"><div class="card-top"><img src="icons/weather-forecast.svg" alt="" width="48" height="48"><h3><a href="weather-forecast.html">Weather Forecast API</a></h3></div><p>Hourly and 10-day weather forecasts for any city or coordinates: temperature, rain, wind, gusts, clouds, humidity, from MET Norway, sourced.</p><div class="row"><span class="price">$0.0015 per location forecast</span><span class="badge soon">Coming soon to the Store</span></div></li>
 </ul>
 </section>
 <section id="data-tools">
@@ -345,7 +352,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <li><strong>Apify API (synchronous):</strong> POST <code>https://api.apify.com/v2/acts/bosco_labs~&lt;actor&gt;/run-sync-get-dataset-items</code> with header <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code> and the Actor input as the JSON body; the response is the dataset items.</li>
 <li><strong>Apify hosted MCP server:</strong> add <code>https://mcp.apify.com?tools=bosco_labs/&lt;actor&gt;</code> to your MCP client (Claude, Cursor, VS Code, ...). It loads the Actor as a tool plus <code>get-actor-run</code> and <code>get-dataset-items</code>, and signs you in with OAuth or <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. On the default server (<code>https://mcp.apify.com</code>) agents can also find the Actors with <code>search-actors</code> and run them with <code>call-actor</code>.</li>
 <li><strong>Pricing:</strong> pay per event, billed to your own Apify account: you pay for rows delivered at the prices listed per Actor, and runs stop at your max charge limit.</li>
-<li><strong>Bosco Labs HTTP API:</strong> <code>POST https://api.boscolabs.dev/v1/&lt;tool&gt;</code> with <code>Authorization: Bearer &lt;key&gt;</code> for 8 fast lookups (same input and rows as the Actors), prepaid credits, $0.50 free trial; remote MCP at <code>https://api.boscolabs.dev/mcp</code>. Keys, prices and limits: https://boscolabs.dev/api.html</li>
+<li><strong>Bosco Labs HTTP API:</strong> <code>POST https://api.boscolabs.dev/v1/&lt;tool&gt;</code> with <code>Authorization: Bearer &lt;key&gt;</code> for 15 fast lookups (same input and rows as the Actors), prepaid credits, $0.50 free trial, or no key and pay per call in USDC via x402; remote MCP at <code>https://api.boscolabs.dev/mcp</code>. Keys, prices and limits: https://boscolabs.dev/api.html</li>
 <li><strong>Contact:</strong> support@boscolabs.dev (questions, data issues, custom data requests).</li>
 <li><strong>Bosco Labs MCP server:</strong> <code>bosco-labs-data-mcp</code> on PyPI (https://pypi.org/project/bosco-labs-data-mcp/) and the official MCP Registry (<code>io.github.PB7-debug/bosco-labs-data</code>): one MCP server for all data Actors. Run it with <code>uvx bosco-labs-data-mcp</code> and set <code>APIFY_TOKEN</code>; source in https://github.com/PB7-debug/bosco-labs-data/tree/main/mcp.</li>
 </ul>

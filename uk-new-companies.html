@@ -167,7 +167,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <tr><td><code>location</code></td><td>string</td><td>Registered office location as free text, passed to Companies House&#x27;s location filter: a town, county or postcode (area), e.g. &quot;London&quot;, &quot;Manchester&quot; or &quot;EC1&quot;. Empty = all of the UK.</td></tr>
 <tr><td><code>companyTypes</code></td><td>array</td><td>Companies House company types, e.g. [&quot;ltd&quot;] (private limited), &quot;plc&quot;, &quot;llp&quot;, &quot;private-limited-guarant-nsc&quot; (company limited by guarantee), &quot;limited-partnership&quot;. Default [&quot;ltd&quot;, &quot;plc&quot;, &quot;llp&quot;]. Pass [] for all types.</td></tr>
 <tr><td><code>maxResults</code></td><td>integer</td><td>Maximum companies to return, e.g. 500. Default 100. You pay per company delivered.</td></tr>
-<tr><td><code>onlyNewSinceLastRun</code></td><td>boolean</td><td>true = skip (and don&#x27;t charge for) companies an earlier run with the same filters already delivered. For scheduled runs. Default false. Remembered in a named key-value store in your account.</td></tr>
+<tr><td><code>onlyNewSinceLastRun</code></td><td>boolean</td><td>true = skip (and don&#x27;t charge for) companies an earlier run with the same filters already delivered. For scheduled runs. Default false. Remembered in a named key-value store in your account. E.g. <code>true</code> for a daily scheduled run.</td></tr>
 </tbody></table></div>
 <h2>Sources, licence and limits</h2>
 <p><strong>How fresh is it?</strong> Runs read the live Companies House API. A company appears once Companies House has registered it; run after the day is over (the default, yesterday) for a complete day.</p>

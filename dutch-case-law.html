@@ -204,7 +204,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <tr><td><code>dateTo</code></td><td>string</td><td>Latest decision date, inclusive, YYYY-MM-DD, e.g. &quot;2024-12-31&quot;. Empty = today when dateFrom is set, else no limit.</td></tr>
 <tr><td><code>documentType</code></td><td>string</td><td>&quot;uitspraak&quot; = court decisions only, &quot;conclusie&quot; = opinions of the Advocate-General at the Hoge Raad only. Empty = both.</td></tr>
 <tr><td><code>maxResults</code></td><td>integer</td><td>Most decisions to return from a search, most recently published or updated first, e.g. 20 (default). One charge per decision returned.</td></tr>
-<tr><td><code>includeText</code></td><td>boolean</td><td>true = add the full decision as plain text (section headings as &#x27;## &#x27;, numbered paragraphs kept), cut at maxTextChars. Default false: metadata and summary only (small rows). Same price.</td></tr>
+<tr><td><code>includeText</code></td><td>boolean</td><td>true = add the full decision as plain text (section headings as &#x27;## &#x27;, numbered paragraphs kept), cut at maxTextChars. Default false: metadata and summary only (small rows). Same price. E.g. <code>true</code>.</td></tr>
 <tr><td><code>maxTextChars</code></td><td>integer</td><td>With includeText: cap on the text per decision in characters, e.g. 20000 (default). Longer text is cut and flagged (text_truncated, text_chars gives the full length).</td></tr>
 </tbody></table></div>
 <h2>Sources, licence and limits</h2>

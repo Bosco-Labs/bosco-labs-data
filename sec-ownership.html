@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>13F Holdings API: fund holdings, 13D/13G, Form 144</title>
-<meta name="description" content="Who owns a stock and who is selling: a fund&#x27;s 13F holdings with quarterly changes, funds holding a ticker, 13D/13G stakes and Form 144 sales.">
+<title>13F &amp; N-PORT Holdings API: funds, ETFs, 13D/13G, Form 144</title>
+<meta name="description" content="Who owns a stock: 13F manager holdings, mutual fund and ETF N-PORT holdings with changes, funds holding a ticker, 13D/13G stakes and Form 144 sales.">
 <link rel="canonical" href="https://boscolabs.dev/sec-ownership.html">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="logo.svg" type="image/svg+xml">
 <link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Bosco Labs">
-<meta property="og:title" content="13F Holdings API: fund holdings, 13D/13G, Form 144">
-<meta property="og:description" content="Who owns a stock and who is selling: a fund&#x27;s 13F holdings with quarterly changes, funds holding a ticker, 13D/13G stakes and Form 144 sales.">
+<meta property="og:title" content="13F &amp; N-PORT Holdings API: funds, ETFs, 13D/13G, Form 144">
+<meta property="og:description" content="Who owns a stock: 13F manager holdings, mutual fund and ETF N-PORT holdings with changes, funds holding a ticker, 13D/13G stakes and Form 144 sales.">
 <meta property="og:url" content="https://boscolabs.dev/sec-ownership.html">
 <meta property="og:image" content="https://boscolabs.dev/icons/sec-ownership.png">
 <meta name="twitter:card" content="summary">
@@ -30,7 +30,7 @@
  "offers": {
   "@type": "Offer",
   "priceCurrency": "USD",
-  "description": "$0.0018 per row",
+  "description": "$0.0018 per row, plus $0.01 per \"who holds this stock\" search (13F or N-PORT data set)",
   "availability": "https://schema.org/PreOrder"
  },
  "provider": {
@@ -84,8 +84,8 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <div class="head"><img src="icons/sec-ownership.svg" alt="" width="84" height="84"><div><h1>SEC Ownership API: 13F, N-PORT Fund Holdings, 13D/13G, Form 144</h1><span class="badge soon">Coming soon to the Store</span></div></div>
 <div class="prose">
 <p class="lead"><strong>Who owns a stock and who is about to sell it, from official SEC filings</strong>: what a fund such as Berkshire Hathaway holds (13F, with changes vs the previous quarter), what a mutual fund or ETF such as VOO or ARKK holds (N-PORT), which managers and funds hold a ticker, who filed a 5%+ stake (13D activist, 13G passive), and which insiders filed to sell (Form 144). For investors, analysts and AI agents.</p>
-<div class="facts"><div class="fact"><b>Price</b>$0.0018 per row</div><div class="fact"><b>Domain</b>Finance &amp; SEC</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
-<p><strong>Pricing (pay per event):</strong> $0.0018 per row ($1.80 per 1,000), no start fee.</p>
+<div class="facts"><div class="fact"><b>Price</b>$0.0018 per row, plus $0.01 per &quot;who holds this stock&quot; search (13F or N-PORT data set)</div><div class="fact"><b>Domain</b>Finance &amp; SEC</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
+<p><strong>Pricing (pay per event):</strong> $0.0018 per row ($1.80 per 1,000), plus $0.01 per &quot;who holds this stock&quot; search (13F or N-PORT data set), no start fee. Empty or failed runs cost nothing.</p>
 <div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=SEC Ownership API">Ask for early access</a></div>
 <h2>Questions agents ask</h2>
 <ul class="qs"><li>&ldquo;What did Berkshire Hathaway buy and sell last quarter?&rdquo;</li><li>&ldquo;Which funds hold the most Nvidia stock?&rdquo;</li><li>&ldquo;What are ARKK&#x27;s top holdings and what did it add last quarter?&rdquo;</li><li>&ldquo;Which ETFs and mutual funds hold Palantir?&rdquo;</li><li>&ldquo;Has anyone filed an activist 13D on Peraso?&rdquo;</li><li>&ldquo;Which insiders filed to sell more than $1 million of stock this week?&rdquo;</li></ul>
@@ -186,7 +186,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <p>For &ldquo;What did Berkshire Hathaway buy and sell last quarter?&rdquo; the agent passes:</p>
 <pre><code>{&quot;mode&quot;: &quot;holdings13f&quot;, &quot;filer&quot;: &quot;Berkshire Hathaway&quot;}</code></pre>
 <p>small, typed JSON, one row per position, holder or filing, with <code>schema_version</code>, a <code>source_url</code> pointing to the exact SEC file and a <code>filing_url</code> for the filing, so the agent can cite its source. Bad input fails within seconds with a status message that says what to fix and shows a valid input.</p>
-<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~sec-ownership/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.0018 per row.</p>
+<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~sec-ownership/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.0018 per row, plus $0.01 per &quot;who holds this stock&quot; search (13F or N-PORT data set).</p>
 <h2 id="http-api">HTTP API</h2>
 <p>Also on the Bosco Labs HTTP API (beta): same input and same rows as the Actor, <strong>$0.0018 per holding, holder or filing row (one fund or company per call)</strong> from prepaid credits (max 200 rows (maxResults) per call). <a href="api.html#key">Get a key</a> with a $0.50 free trial; see <a href="api.html">prices and limits</a>.</p>
 <pre><code>curl https://api.boscolabs.dev/v1/sec-ownership \
@@ -198,7 +198,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
 <tr><td><code>mode</code></td><td>string</td><td>holdings13f = Form 13F: pass <code>filer</code> for a fund manager&#x27;s holdings (with changes vs the previous quarter), or <code>ticker</code>/<code>cusip</code> for the managers holding a stock. holdingsNport = Form N-PORT: pass <code>fund</code> (a mutual fund or ETF ticker) for its holdings (with changes vs its previous report), or <code>ticker</code>/<code>cusip</code> for the mutual funds and ETFs holding a stock. stakes13dg = Schedule 13D/13G filings about <code>ticker</code>, or new 13D filings market-wide. planned144 = Form 144 notices of planned insider sales for <code>ticker</code>, or market-wide. Default holdings13f.</td></tr>
 <tr><td><code>filer</code></td><td>string</td><td>holdings13f only: the fund manager&#x27;s name or SEC CIK, e.g. &quot;Berkshire Hathaway&quot; or &quot;1067983&quot;. A name is matched with EDGAR&#x27;s company search (the first match that files 13F reports); a CIK is exact. Empty = look up the holders of <code>ticker</code>/<code>cusip</code> instead.</td></tr>
-<tr><td><code>fund</code></td><td>string</td><td>holdingsNport only: the fund&#x27;s ticker (any share class), e.g. &quot;VOO&quot;, &quot;VFIAX&quot; or &quot;ARKK&quot;, or its SEC series ID, e.g. &quot;S000002839&quot;. Names are not searched. Empty = look up the funds holding <code>ticker</code>/<code>cusip</code> instead.</td></tr>
+<tr><td><code>fund</code></td><td>string</td><td>holdingsNport only: the fund&#x27;s ticker (any share class), e.g. &quot;VOO&quot; or &quot;ARKK&quot;; its SEC series ID, e.g. &quot;S000002839&quot;; or its name, e.g. &quot;Vanguard 500 Index Fund&quot; (matched with the SEC&#x27;s series and class list; the fund picked and up to 3 close alternatives are named in the status message). Letters, digits, spaces and . , &amp; &#x27; ( ) / + -, up to 100 characters. Empty = look up the funds holding <code>ticker</code>/<code>cusip</code> instead.</td></tr>
 <tr><td><code>ticker</code></td><td>string</td><td>The company the shares are in, as a current US ticker, e.g. &quot;AAPL&quot;. holdings13f/holdingsNport: the managers or funds holding it (or, with <code>filer</code>/<code>fund</code>, only that position). stakes13dg / planned144: filings about it. Empty = whole market (stakes13dg, planned144).</td></tr>
 <tr><td><code>issuerCik</code></td><td>string</td><td>Instead of <code>ticker</code>: the company&#x27;s SEC CIK as digits, e.g. &quot;320193&quot; for Apple. Use for delisted or renamed companies. Empty = use <code>ticker</code>.</td></tr>
 <tr><td><code>cusip</code></td><td>string</td><td>holdings13f/holdingsNport only: the 9-character CUSIP of one share class, e.g. &quot;037833100&quot; (Apple common stock). Most precise way to ask which managers or funds hold a security. Empty = CUSIPs found in the company&#x27;s recent Schedule 13D/13G filings (all its share classes).</td></tr>
@@ -216,7 +216,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <p><strong>Values?</strong> As reported, in US dollars at quarter end (reports filed before 2023 used $1,000s and are converted). Amendments are applied: a restatement replaces the original report, a &quot;new holdings&quot; amendment adds to it.</p>
 <p><strong>Tickers?</strong> 13F filings carry CUSIPs, not tickers, and the SEC publishes no CUSIP-to-ticker list. The company is found by its CIK or, on 13F rows, its name in the SEC&#x27;s ticker list (renamed or oddly abbreviated names stay <code>null</code>). The share class comes from the CUSIP (Alphabet class C <code>02079K107</code> is GOOG, class A <code>02079K305</code> is GOOGL; likewise Fox, News Corp, Under Armour, Zillow and the Liberty tracking stocks) or from the class in <code>title_of_class</code> when the ticker names it (BRK-A / BRK-B, LEN / LEN-B, HEI / HEI-A). When a company has several listed classes and the row doesn&#x27;t say which, <code>ticker</code> is <code>null</code> and <code>ticker_candidates</code> lists the company&#x27;s tickers; a <code>ticker</code> filter matches those too. <code>cusip</code> is always the exact security.</p>
 <p><strong>Which funds hold a ticker: which CUSIP?</strong> The ticker&#x27;s CUSIPs are read from the company&#x27;s recent Schedule 13D/13G filings, which can cover several share classes; CUSIPs of another class (GOOGL when you ask for GOOG) are left out and named in the status message. Pass <code>cusip</code> for one exact security, or when the company has no recent 13D/13G.</p>
-<p><strong>A name matched the wrong fund?</strong> Names go through EDGAR&#x27;s company search; the status message lists the other matches. Pass the CIK as <code>filer</code> to be exact.</p>
+<p><strong>A name matched the wrong fund?</strong> Manager names (<code>filer</code>) go through EDGAR&#x27;s company search; the status message lists the other matches. Pass the CIK as <code>filer</code> to be exact. Fund names (<code>fund</code>) are matched with the SEC&#x27;s yearly series and class list: case, punctuation and words like &quot;fund&quot;, &quot;index&quot;, &quot;trust&quot;, &quot;ETF&quot; and share classes (&quot;Admiral Shares&quot;, &quot;Class K&quot;) are ignored; an exact name wins, then names containing all your words, funds with a ticker and shorter names first. The status message names the fund picked and up to 3 alternatives; pass the ticker or series ID to be exact. Funds launched after the list&#x27;s yearly update (June) are found by ticker only.</p>
 <p><strong>Older 13D/13G?</strong> Only filings since 2024-12-18, when Schedule 13D/13G became structured XML. For older ones, use our SEC EDGAR Filings Actor for the filing links.</p>
 <p><strong>13D vs 13G?</strong> A 13D is filed by a holder of more than 5% who may seek to influence the company (activist); a 13G by passive holders and institutions. <code>percent_of_class</code> is the highest among the filing&#x27;s reporting persons; all of them are in <code>reporting_persons</code>.</p>
 <p><strong>Form 144?</strong> A notice by an insider or affiliate of a planned sale of restricted or control stock, filed when the order is placed. It is not proof that the sale happened (Form 4 reports that: see our SEC Insider Trading Actor). Not every Form 144 is followed by a sale.</p>
