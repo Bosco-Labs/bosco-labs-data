@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Product Recall Check API: CPSC, NHTSA, FDA, EU Safety Gate</title>
+<meta name="description" content="Is a product, UPC or VIN recalled? One call checks US CPSC, NHTSA, FDA and EU Safety Gate: hazard, remedy, date and official link per recall.">
+<link rel="canonical" href="https://boscolabs.dev/product-recalls.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bosco Labs">
+<meta property="og:title" content="Product Recall Check API: CPSC, NHTSA, FDA, EU Safety Gate">
+<meta property="og:description" content="Is a product, UPC or VIN recalled? One call checks US CPSC, NHTSA, FDA and EU Safety Gate: hazard, remedy, date and official link per recall.">
+<meta property="og:url" content="https://boscolabs.dev/product-recalls.html">
+<meta property="og:image" content="https://boscolabs.dev/icons/product-recalls.png">
+<meta name="twitter:card" content="summary">
+<script defer src="/_vercel/insights/script.js"></script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "SoftwareApplication",
+ "name": "Product Recall Check API: CPSC, NHTSA, FDA & EU Safety Gate",
+ "description": "Recalled yes/no, with each recall's date, hazard, remedy and official link, for a product name, brand, model, UPC/EAN or VIN. Checks US CPSC, NHTSA vehicle recalls, FDA enforcement reports (food, drugs, devices) and EU Safety Gate in one call. Lists every source checked.",
+ "url": "https://boscolabs.dev/product-recalls.html",
+ "image": "https://boscolabs.dev/icons/product-recalls.png",
+ "applicationCategory": "DeveloperApplication",
+ "operatingSystem": "Web (Apify platform)",
+ "offers": {
+  "@type": "Offer",
+  "priceCurrency": "USD",
+  "description": "$0.005 per product checked",
+  "availability": "https://schema.org/PreOrder"
+ },
+ "provider": {
+  "@type": "Organization",
+  "name": "Bosco Labs",
+  "url": "https://boscolabs.dev/"
+ }
+}
+</script>
+<style>:root{color-scheme:light dark;--head:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--body:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;--ink:#1D2721;--muted:#545F58;--bg:#F5F3EA;--surface:#EAE8DC;--line:#D6D3C3;--accent:#2E5A47;--accent-fg:#F5F3EA;--accent2:#8DA889;--accent2-text:#4A6646;--success:#36694A;--warn:#8E5D1C}
+@media (prefers-color-scheme:dark){:root{--ink:#E5E8DE;--muted:#A3ADA4;--bg:#121914;--surface:#1B241E;--line:#2B372F;--accent:#9EC7B1;--accent-fg:#121914;--accent2:#B5C9A4;--accent2-text:#B5C9A4;--success:#93C7A0;--warn:#DDB070}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--body)}h1,h2,h3,.brand{font-family:var(--head)}
+a{color:var(--accent);text-underline-offset:2px}.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+.site{border-bottom:1px solid var(--line)}.site .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;padding-top:12px;padding-bottom:12px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-weight:650;letter-spacing:-.01em}.brand img{width:30px;height:30px}
+nav{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:.95rem}nav a{color:var(--muted);text-decoration:none}nav a:hover{color:var(--ink)}
+h1{font-size:clamp(1.65rem,4vw,2.4rem);line-height:1.2;letter-spacing:-.02em;margin:0 0 12px}
+h2{font-size:1.3rem;line-height:1.3;letter-spacing:-.01em;margin:44px 0 12px}h3{font-size:1.02rem;margin:20px 0 6px}
+.hero{padding:52px 0 8px;max-width:780px}.lead{font-size:1.13rem;color:var(--muted)}.muted{color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}.chips a{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:.9rem;color:var(--ink);text-decoration:none}.chips a:hover{border-color:var(--accent)}
+.grid{list-style:none;padding:0;margin:0;display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.card-top{display:flex;gap:12px;align-items:center}.card img{width:48px;height:48px;flex:none}
+.card h3{margin:0;font-size:1rem;line-height:1.3}.card h3 a{color:var(--ink);text-decoration:none}.card h3 a:hover{text-decoration:underline}
+.card p{margin:0;font-size:.92rem;color:var(--muted)}.card .row{margin-top:auto;padding-top:6px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-size:.88rem}
+.price{font-weight:600;color:var(--ink)}.badge{display:inline-block;font-size:.78rem;font-weight:600;line-height:1.5;padding:1px 9px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.badge.live{color:var(--success)}.badge.soon{color:var(--warn)}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-fg);font-weight:650;padding:11px 18px;border-radius:10px;text-decoration:none}
+.btn.ghost{background:none;color:var(--accent);border:1px solid var(--line)}.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0}
+.crumbs{font-size:.9rem;color:var(--muted);margin:22px 0 0}.crumbs a{color:var(--muted)}
+.head{display:flex;gap:20px;align-items:flex-start;margin:18px 0 0}.head img{width:84px;height:84px;flex:none}
+.prose{max-width:800px}.facts{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));margin:22px 0}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:.95rem}.fact b{display:block;font-size:.75rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.qs{padding-left:20px}.qs li{margin:4px 0}.two{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}.two h3{margin-top:0}.two>div,.prose,main{min-width:0}
+code{font:.86em var(--mono)}:not(pre)>code{overflow-wrap:anywhere}
+pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px;overflow:auto;max-height:520px;font-size:.84rem;line-height:1.45;margin:0}
+.table{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{text-align:left;vertical-align:top;padding:7px 8px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-weight:600}td:first-child{white-space:nowrap}
+details{border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:10px 0}summary{cursor:pointer;font-weight:600}
+footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font-size:.9rem;color:var(--muted)}footer a{color:var(--muted)}
+form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:1 1 240px;min-width:0;font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}button.btn{border:0;cursor:pointer;font:inherit;font-weight:650}
+.note{border-left:3px solid var(--warn);background:var(--surface);border-radius:0 10px 10px 0;padding:10px 14px;margin:14px 0;font-size:.95rem}.notice{font-size:.88rem;color:var(--muted)}
+@media (max-width:560px){.head{flex-direction:column;gap:12px}.head img{width:64px;height:64px}.hero{padding-top:32px}}</style>
+</head>
+<body>
+<header class="site"><div class="wrap"><a class="brand" href="index.html"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav><a href="index.html#tools">Tools</a><a href="api.html">API</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
+<main class="wrap">
+<p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#compliance-law">Compliance &amp; law</a></p>
+<article>
+<div class="head"><img src="icons/product-recalls.svg" alt="" width="84" height="84"><div><h1>Product Recall Check API: CPSC, NHTSA, FDA &amp; EU Safety Gate</h1><span class="badge soon">Coming soon to the Store</span></div></div>
+<div class="prose">
+<p class="lead"><strong>Answers &quot;is this product recalled anywhere, and for what hazard?&quot;</strong> for a product name, brand, model, UPC/EAN barcode or VIN: one row per query with recalled yes/no, each recall&#x27;s date, hazard, remedy and official link, from US CPSC, NHTSA, FDA enforcement reports and the EU Safety Gate. Built for <strong>AI agents</strong> in e-commerce, resale, procurement and product compliance, and for people who want one sourced answer instead of four searches.</p>
+<div class="facts"><div class="fact"><b>Price</b>$0.005 per product checked</div><div class="fact"><b>Domain</b>Compliance &amp; law</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
+<p><strong>Pricing (pay per event):</strong> $0.005 per product checked, recall found or not. A query where a source could not be checked is returned with a warning and costs nothing.</p>
+<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=Product Recall Check API">Ask for early access</a></div>
+<h2>Questions agents ask</h2>
+<ul class="qs"><li>&ldquo;Before we list this used Peloton Bike+ and this 2012 Honda Accord for sale, check whether either has been recalled, for what hazard, and cite the source.&rdquo;</li></ul>
+</div>
+<h2>Example</h2>
+<div class="two"><div><h3>Input</h3><pre><code>{ &quot;queries&quot;: [&quot;Peloton Bike+&quot;, &quot;3418178586009&quot;, &quot;1HGCP2F31CA000000&quot;], &quot;maxMatches&quot;: 10 }</code></pre></div>
+<div><h3>Output</h3><pre><code>{
+  &quot;schema_version&quot;: &quot;1&quot;,
+  &quot;query&quot;: &quot;Peloton Bike+&quot;,
+  &quot;query_type&quot;: &quot;text&quot;,
+  &quot;vehicle&quot;: null,
+  &quot;recalled&quot;: true,
+  &quot;match_count&quot;: 3,
+  &quot;summary&quot;: &quot;Recall found for &#x27;Peloton Bike+&#x27;: 3 match(es) in US CPSC recalls. Newest: US CPSC recalls 2025-11-06 &#x27;Peloton Recalls Original Series Bike+ Exercise Bikes Due to Fall and Injury Hazards&#x27;, hazard: The bike&#x27;s seat post assembly can break during use, posing fall and injury hazards to the user. Matching is by words: confirm the exact model at source_url.&quot;,
+  &quot;matches&quot;: [
+    {
+      &quot;source&quot;: &quot;cpsc&quot;,
+      &quot;source_name&quot;: &quot;US CPSC recalls&quot;,
+      &quot;recall_id&quot;: &quot;26067&quot;,
+      &quot;date&quot;: &quot;2025-11-06&quot;,
+      &quot;title&quot;: &quot;Peloton Recalls Original Series Bike+ Exercise Bikes Due to Fall and Injury Hazards&quot;,
+      &quot;product&quot;: &quot;Peloton Original Series Bike+ Model PL02&quot;,
+      &quot;firm&quot;: &quot;Peloton Interactive Inc., of New York&quot;,
+      &quot;hazard&quot;: &quot;The bike&#x27;s seat post assembly can break during use, posing fall and injury hazards to the user.&quot;,
+      &quot;remedy&quot;: &quot;Consumers should immediately stop using the recalled exercise bikes and contact Peloton for a free repair. Peloton is offering consumers a free seat post that can be self-installed.&quot;,
+      &quot;classification&quot;: null,
+      &quot;status&quot;: null,
+      &quot;jurisdiction&quot;: &quot;US&quot;,
+      &quot;source_url&quot;: &quot;https://www.cpsc.gov/Recalls/2026/Peloton-Recalls-Original-Series-Bike-Exercise-Bikes-Due-to-Fall-and-Injury-Hazards&quot;
+    }
+  ],
+  &quot;sources_checked&quot;: [
+    {&quot;source&quot;: &quot;cpsc&quot;, &quot;source_name&quot;: &quot;US CPSC recalls&quot;, &quot;ok&quot;: true, &quot;matches&quot;: 3, &quot;coverage&quot;: &quot;all CPSC recalls&quot;},
+    {&quot;source&quot;: &quot;fda_food&quot;, &quot;source_name&quot;: &quot;US FDA enforcement reports (food)&quot;, &quot;ok&quot;: true, &quot;matches&quot;: 0, &quot;coverage&quot;: &quot;the 100 newest matching enforcement reports&quot;},
+    {&quot;source&quot;: &quot;fda_drug&quot;, &quot;source_name&quot;: &quot;US FDA enforcement reports (drugs)&quot;, &quot;ok&quot;: true, &quot;matches&quot;: 0, &quot;coverage&quot;: &quot;the 100 newest matching enforcement reports&quot;},
+    {&quot;source&quot;: &quot;fda_device&quot;, &quot;source_name&quot;: &quot;US FDA enforcement reports (medical devices)&quot;, &quot;ok&quot;: true, &quot;matches&quot;: 0, &quot;coverage&quot;: &quot;the 100 newest matching enforcement reports&quot;},
+    {&quot;source&quot;: &quot;eu_safety_gate&quot;, &quot;source_name&quot;: &quot;EU Safety Gate alerts&quot;, &quot;ok&quot;: true, &quot;matches&quot;: 0, &quot;coverage&quot;: &quot;weekly reports 2025-11-07 to 2026-11-06 (52 weeks)&quot;}
+  ],
+  &quot;warnings&quot;: [],
+  &quot;input_error&quot;: null,
+  &quot;source_url&quot;: &quot;https://www.cpsc.gov/Recalls/2026/Peloton-Recalls-Original-Series-Bike-Exercise-Bikes-Due-to-Fall-and-Injury-Hazards&quot;,
+  &quot;checked_at&quot;: &quot;2026-11-06T06:38:16+00:00&quot;
+}</code></pre></div></div>
+<div class="prose">
+<h2>What you get</h2>
+<div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>schema_version</code></td><td>string</td><td>Output schema version.</td></tr>
+<tr><td><code>query</code></td><td>string</td><td>The query as given (spaces tidied).</td></tr>
+<tr><td><code>query_type</code></td><td>string</td><td>How the query was read: text = product name, brand or model; upc = 8-14 digit barcode; vin = 17-character VIN (decoded with NHTSA vPIC); vehicle = year make model.</td></tr>
+<tr><td><code>vehicle</code></td><td>object | null</td><td>For vin and vehicle queries: {make, model, model_year} used for the NHTSA lookup; null otherwise.</td></tr>
+<tr><td><code>recalled</code></td><td>boolean | null</td><td>true = at least one recall or alert matched; false = no match in every source that applies; null = no match but a source could not be checked (see warnings).</td></tr>
+<tr><td><code>match_count</code></td><td>integer</td><td>Number of matching recalls found (only the newest maxMatches are in matches).</td></tr>
+<tr><td><code>summary</code></td><td>string</td><td>One sentence an agent can pass on: the newest match and its hazard, or &#x27;No recall found&#x27; with the sources checked.</td></tr>
+<tr><td><code>matches</code></td><td>array</td><td>Matching recalls and alerts, newest first, at most maxMatches.</td></tr>
+<tr><td><code>sources_checked</code></td><td>array</td><td>Every source that applied to this query: {source, source_name, ok, matches, coverage}. ok false = not checked (see warnings). coverage says what was searched (e.g. the Safety Gate weeks).</td></tr>
+<tr><td><code>warnings</code></td><td>array</td><td>Sources that could not be checked (or NHTSA vPIC down for a VIN), in plain words. Rows with warnings are not charged.</td></tr>
+<tr><td><code>input_error</code></td><td>string | null</td><td>Why this query could not be checked, e.g. a VIN with a wrong check digit, with NHTSA vPIC&#x27;s own error text and a valid example; null when the query was fine. Rows with an input_error are not charged.</td></tr>
+<tr><td><code>source_url</code></td><td>string | null</td><td>Official record of the newest match; null when nothing matched.</td></tr>
+<tr><td><code>provided_by</code></td><td>string</td><td>Who compiled this row; cite together with source_url.</td></tr>
+<tr><td><code>attribution</code></td><td>string</td><td>Source notices for the sources checked (CPSC credit, NHTSA, openFDA disclaimer, the EU Safety Gate acknowledgement).</td></tr>
+<tr><td><code>checked_at</code></td><td>string</td><td>When the check ran (ISO 8601, UTC).</td></tr>
+</tbody></table></div>
+
+<h2>Use with AI agents (MCP)</h2>
+<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is live on the Apify Store.</p>
+<pre><code>https://mcp.apify.com?tools=bosco_labs/product-recalls</code></pre>
+<p>For &ldquo;Before we list this used Peloton Bike+ and this 2012 Honda Accord for sale, check whether either has been recalled, for what hazard, and cite the source.&rdquo; the agent passes:</p>
+<pre><code>{ &quot;queries&quot;: [&quot;Peloton Bike+&quot;, &quot;2012 Honda Accord&quot;] }</code></pre>
+<p>one row per query (typically 2-9 KB), stable <code>snake_case</code> fields, ISO dates, <code>null</code> for unknown. <code>summary</code> is one sentence the agent can repeat; <code>recalled</code> is the yes/no/unknown; <code>source_url</code> is the official record. A run takes about 12 seconds (measured on 2026-11-06 for the two queries above; most of it is reading the 52 weekly EU reports, which are read once per run however many queries you send).</p>
+<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~product-recalls/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.005 per product checked.</p>
+<h2 id="http-api">HTTP API</h2>
+<p>Also on the Bosco Labs HTTP API (beta, test mode): same input and same rows as the Actor, <strong>$0.005 per product checked (every source answered)</strong> from prepaid credits (max 20 products per call). <a href="api.html#key">Get a key</a> with a $0.50 free trial; see <a href="api.html">prices and limits</a>.</p>
+<pre><code>curl https://api.boscolabs.dev/v1/product-recalls \
+  -H &quot;Authorization: Bearer $BOSCO_API_KEY&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{&quot;queries&quot;: [&quot;Peloton Bike+&quot;, &quot;2012 Honda Accord&quot;]}&#x27;</code></pre>
+
+<h2>Input fields</h2>
+<div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>queries</code></td><td>array (required)</td><td>What to check, one per entry: a product name, brand or model (&quot;Peloton Bike+&quot;), a UPC/EAN barcode of 8-14 digits (&quot;3418178586009&quot;), a 17-character VIN (&quot;1HGCP2F31CA000000&quot;) or a vehicle as year make model (&quot;2012 Honda Accord&quot;). Each entry gives one result row and at most one charge; repeats are checked once. 1-50 entries. Required.</td></tr>
+<tr><td><code>maxMatches</code></td><td>integer</td><td>How many recalls to list per query, newest first, e.g. 10 (default). match_count still gives the total found. Range 1-50; the price does not change.</td></tr>
+<tr><td><code>sources</code></td><td>array</td><td>Which sources to check, any of &quot;cpsc&quot;, &quot;nhtsa&quot;, &quot;fda_food&quot;, &quot;fda_drug&quot;, &quot;fda_device&quot;, &quot;eu_safety_gate&quot;, e.g. [&quot;cpsc&quot;, &quot;eu_safety_gate&quot;]. Default (or empty) = all six. Each query only goes to the sources that fit it (VINs to NHTSA and EU Safety Gate). Same price for any number of sources.</td></tr>
+<tr><td><code>euWeeks</code></td><td>integer</td><td>How many of the latest weekly EU Safety Gate reports to search, e.g. 52 (default, about one year). Range 1-260 (five years); more weeks take longer. The US sources always cover their full history.</td></tr>
+</tbody></table></div>
+<h2>Sources, licence and limits</h2>
+<p><strong>Why is &quot;no recall found&quot; charged?</strong> Because it is the answer you asked for: every source that applies was searched and none had a match, and <code>sources_checked</code> documents what was covered. That is the result a reseller or compliance check needs on file. What is never charged: a query where any applicable source could not be checked (the row is returned with <code>warnings</code> and <code>recalled: null</code> if nothing matched), a VIN that does not decode cleanly (<code>input_error</code>), bad input, or a run where no source answered.</p>
+<p><strong>How reliable is a match?</strong> Matching is by words, so it is fuzzy both ways. A common word can match unrelated products (&quot;charger&quot;), and a product listed under another name or spelling can be missed. Brand + model (&quot;Peloton Bike+&quot;, &quot;Philips DreamStation&quot;) works best; a model number or barcode is most precise. <strong>Always confirm the exact model, batch or date range at <code>source_url</code> before acting</strong>: a recall often covers only some serial numbers or production dates.</p>
+<p><strong>Does a VIN match mean that car is affected?</strong> Not necessarily. NHTSA&#x27;s open recalls API works by year, make and model, so the answer lists recalls for that model line. Whether one specific vehicle is included, or was already repaired, only the manufacturer or NHTSA&#x27;s VIN lookup at nhtsa.gov/recalls can say (that page uses a CAPTCHA, so this Actor does not use it).</p>
+<p><strong>What is covered?</strong></p>
+<div class="table"><table><thead><tr><th>Source</th><th>What</th><th>History</th></tr></thead><tbody>
+<tr><td><code>cpsc</code> US Consumer Product Safety Commission</td><td>Consumer product recalls (toys, furniture, appliances, sporting goods, ...)</td><td>All published recalls</td></tr>
+<tr><td><code>nhtsa</code> US NHTSA</td><td>Vehicle recalls by year, make and model</td><td>All campaigns for that vehicle</td></tr>
+<tr><td><code>fda_food</code>, <code>fda_drug</code>, <code>fda_device</code> openFDA</td><td>FDA enforcement reports: food (incl. infant formula, supplements), drugs, medical devices</td><td>The 100 newest matching reports per category</td></tr>
+<tr><td><code>eu_safety_gate</code> European Commission</td><td>EU/EEA alerts on dangerous non-food products and vehicles</td><td>The latest <code>euWeeks</code> weekly reports (default 52, up to 260)</td></tr>
+</tbody></table></div>
+<p><strong>What is not covered?</strong> Car seats, tyres and other vehicle equipment (NHTSA equipment recalls), EU food alerts (RASFF), UK, Canadian, Australian and other national recall lists, USDA meat and poultry recalls, and recall photos. FDA enforcement reports can lag the press release by a few weeks.</p>
+<p><strong>How fresh is it?</strong> Every run queries the sources live. CPSC, NHTSA and openFDA update as the agencies publish; EU Safety Gate publishes a weekly report every Friday.</p>
+<p><strong>Attribution.</strong> Recall data: U.S. Consumer Product Safety Commission (CPSC); no endorsement by CPSC implied. Vehicle recall data: U.S. NHTSA (public information); no endorsement implied. FDA enforcement reports via openFDA (CC0); do not rely on openFDA to make decisions regarding medical care. Alerts from the Rapid Alert System for dangerous non-food products, published free of charge on the Safety Gate website (https://ec.europa.eu/safety-gate-alerts) © European Union, 2005-2026; shortened and reformatted, not otherwise changed. Reuse terms of each source, quoted: see <code>LEGAL.md</code>.</p>
+<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=Product Recall Check API">Ask for early access</a></div>
+</div>
+</article>
+</main>
+<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="privacy.html">Privacy</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
+</body>
+</html>

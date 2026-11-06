@@ -14,6 +14,7 @@ Contact: support@boscolabs.dev
 - [SEC Company Financials API: income, balance sheet, cash flow](https://boscolabs.dev/sec-company-financials.html): US company financials from SEC XBRL: revenue, profit, EPS, balance sheet, cash flow, free cash flow and margins per fiscal year or quarter, 2009 to today. By ticker or CIK, 10-K/10-Q and 20-F filers. Each value cites its XBRL tag and SEC filing. Q4 derived where not reported. Price: $0.005 per company-period row. (coming soon to the Apify Store)
 - [SEC Company Screener API: filter all US filers by financials](https://boscolabs.dev/sec-company-screen.html): US companies matching your filters for one calendar year or quarter: revenue, net income, margins, cash flow, assets and 30 more metrics from SEC XBRL frames, sorted and capped. Each value cites its XBRL tag and SEC filing. Same metrics as SEC Company Financials. Price: $0.002 per company returned. (coming soon to the Apify Store)
 - [EU Annual Reports API (ESEF): XBRL financial statements](https://boscolabs.dev/esef-annual-reports.html): Normalized key financials (revenue, EBIT, EBITDA, net income, EPS, assets, equity, cash flows, margins, growth) of European listed companies from official ESEF annual reports via filings.xbrl.org; 28 countries; every value linked to its XBRL fact. Price: $0.01 per run plus $0.05 per annual report; raw XBRL fact rows, if switched on, $0.0005 each. ([Apify Store](https://apify.com/bosco_labs/esef-annual-reports))
+- [ISIN, LEI, CIK, FIGI & Ticker Resolver API (crosswalk)](https://boscolabs.dev/identifier-resolver.html): Issuer legal name, LEI, CIK, tickers, ISINs, FIGIs, CFI code and EU trading venues for one ISIN, LEI, CIK, ticker, FIGI or company name. Check digits validated first; a source URL per value. Data from GLEIF, OpenFIGI, SEC and ESMA FIRDS. Price: $0.002 per resolved identifier. (coming soon to the Apify Store)
 
 ## Companies
 
@@ -28,6 +29,9 @@ Contact: support@boscolabs.dev
 - [EU Law Lookup API (EUR-Lex): article text, in force, amendments](https://boscolabs.dev/eu-law-lookup.html): The text of an EU law article as in force today (or on a date), whether the act is in force, what amended it, plus new Official Journal acts. Ask by name (GDPR, AI Act), citation, CELEX or ELI; 24 languages. Official EUR-Lex/Cellar data with a source link per row. Price: $0.01 per act or article returned. (coming soon to the Apify Store)
 - [UK & Dutch Law Lookup API: article text by date, in force](https://boscolabs.dev/national-law-lookup.html): The text of a UK section or Dutch article as in force today (or on a date), whether it is in force and what changed it. Ask by citation: "Companies Act 2006 s 172", "BW 7:658", "artikel 13 Wet Vpb 1969". Official legislation.gov.uk and Dutch BWB data with a source link per row. Price: $0.01 per article or act returned. (coming soon to the Apify Store)
 - [Dutch Case Law API (Rechtspraak): ECLI lookup, uitspraken](https://boscolabs.dev/dutch-case-law.html): Dutch court decisions (uitspraken) by ECLI or search: court, dates, case numbers, legal area, summary (inhoudsindicatie), appeal/cassation relations, law references and optional text. Hoge Raad, Raad van State, gerechtshoven, rechtbanken. Official Rechtspraak Open Data, source link per row. Price: $0.005 per decision returned. (coming soon to the Apify Store)
+- [US Federal Rules API: CFR text as of a date + Federal Register](https://boscolabs.dev/us-federal-rules.html): The text of a CFR section as in force today or on any date, its amendment history and the Federal Register rules that changed it; what changed in a CFR part since a date; Federal Register documents by number or search. Official eCFR and FederalRegister.gov data, a source link per row. Price: $0.005 per section, $0.002 per document. (coming soon to the Apify Store)
+- [Product Recall Check API: CPSC, NHTSA, FDA & EU Safety Gate](https://boscolabs.dev/product-recalls.html): Recalled yes/no, with each recall's date, hazard, remedy and official link, for a product name, brand, model, UPC/EAN or VIN. Checks US CPSC, NHTSA vehicle recalls, FDA enforcement reports (food, drugs, devices) and EU Safety Gate in one call. Lists every source checked. Price: $0.005 per product checked. (coming soon to the Apify Store)
+- [Tariff Code & Duty Lookup API: US HTS (UK coming soon)](https://boscolabs.dev/tariff-lookup.html): Duty rates for a US HTS code: official description hierarchy, general/MFN rate, preferential rates, Chapter 99 references, units, source link. Or a product description in, 5 official candidate codes out. UK Trade Tariff coming soon. No binding ruling. Price: $0.005 per lookup or search. (coming soon to the Apify Store)
 
 ## Government & procurement
 
@@ -39,10 +43,12 @@ Contact: support@boscolabs.dev
 
 - [ECB Rates & Euro Inflation API: policy rates, FX, €STR, HICP](https://boscolabs.dev/eu-rates-inflation.html): Latest value, previous value, change and recent history of ECB policy rates, euro reference FX rates, €STR, euro-area and national bond yields, and Eurostat HICP inflation. Ask by plain name (ecb_deposit_rate, eur_fx:USD, hicp:NL), no SDMX keys. Official data, a source link per series. Price: $0.002 per series returned. (coming soon to the Apify Store)
 - [ClinicalTrials.gov API: trial search & NCT dossier](https://boscolabs.dev/clinical-trials.html): Clinical trials as compact JSON rows: status, phase, sponsor, conditions, interventions, enrollment, start and primary completion dates, countries, outcomes and results. Look up NCT numbers or search by condition, drug, sponsor, phase, status, country and dates. Sourced, no contact data. Price: $0.004 per trial. (coming soon to the Apify Store)
+- [Drug Safety API: FDA label, FAERS, recalls, EMA status](https://boscolabs.dev/drug-safety.html): Drug safety dossier for one drug name as one sourced JSON row: FDA boxed warning and indications, top FAERS adverse reaction counts, US recalls and shortages (openFDA), EU authorisation, EPAR link and EU shortages (EMA). Or one cheaper sub-query. Not medical advice. Price: $0.02 per dossier or $0.004 per single-section query. (coming soon to the Apify Store)
 - [Dutch Address Lookup API: BAG postcode, geocode & building data](https://boscolabs.dev/dutch-address-lookup.html): Validates and geocodes Dutch addresses against the official BAG register (via PDOK): postcode, BAG ids, WGS84 + RD coordinates, construction year, use, floor area and building status. Free text, postcode + house number (or range) or BAG ids; up to 100 per run. Unmatched inputs are free. Price: $0.002 per resolved address. (coming soon to the Apify Store)
 
 ## Data tools
 
+- [Package Vulnerability Check API: CVEs, CISA KEV, safe upgrade](https://boscolabs.dev/package-vulns.html): Known vulnerabilities in a package version (npm, PyPI, Maven, Go, crates.io, NuGet, RubyGems, Packagist) or one CVE/GHSA id: severity, CVSS, fixed versions, CISA KEV exploited status and the lowest safe upgrade; for a CVE also the affected packages. From OSV.dev and CISA, a source link per advisory. Price: $0.005 per answer. (coming soon to the Apify Store)
 - [PDF to JSON API: text, tables and metadata from a PDF URL](https://boscolabs.dev/pdf-to-data.html): PDF text, tables and metadata as clean JSON from 1-20 public PDF URLs or a base64 file: per-page markdown text in reading order, tables as rows with a header guess, title, author and dates. Processed in memory, never stored. Pay per page with text; scanned pages are flagged and free. Price: $0.0005 per page with text. (coming soon to the Apify Store)
 - [Deduplicate & Merge Apify Datasets: remove duplicate items](https://boscolabs.dev/dataset-dedup.html): Deduplicate and merge one or more Apify datasets (or a pasted JSON array): removes duplicate items by any fields (dot paths allowed) or by the whole item, keeping the first or last occurrence; streams millions of items with constant memory. Price: $0.00015 per unique item written (duplicates are free). (coming soon to the Apify Store)
 - [Change Monitor: new, changed & removed items + Slack alerts](https://boscolabs.dev/dataset-change-monitor.html): Run any scraper on a schedule and get only what changed: new, changed and removed items compared with the previous run, matched by your key fields (e.g. url). Optional Slack, Discord, Telegram, email or webhook alert per run. Add it as an integration to your scraper. Price: $0.001 per change reported. (coming soon to the Apify Store)
@@ -135,6 +141,12 @@ Contact: support@boscolabs.dev
 - `eu-law-lookup`: $0.005 per act or article returned (max 50 results (maxResults)). Consolidated texts from EUR-Lex (© European Union) are a documentation tool with no legal effect; only the acts published in the Official Journal of the European Union are authentic.
 - `national-law-lookup`: $0.005 per article or act returned (max 10 articles). UK: contains public sector information licensed under the Open Government Licence v3.0 (© Crown and database right, legislation.gov.uk).
 - `eu-rates-inflation`: $0.002 per series returned (catalogue free) (max 20 series). Source: ECB statistics (data.ecb.europa.eu). The data are free of charge from the ECB; we charge for processing and delivery, not for the data. Eurostat HICP: © European Union, free of charge from Eurostat. The change field is computed by Bosco Labs.
+- `us-federal-rules`: $0.001 per unit: a CFR section with text = 5 units ($0.005), a Federal Register document = 2 ($0.002); rows without text are free (max 10 CFR units or 50 documents).
+- `drug-safety`: $0.004 per sub-query; a full dossier = 5 units ($0.02); partial answers are free (max 1 drug).
+- `product-recalls`: $0.005 per product checked (every source answered) (max 20 products).
+- `package-vulns`: $0.005 per package version or CVE answered (max 1 check).
+- `identifier-resolver`: $0.002 per identifier resolved (max 1 identifier).
+- `tariff-lookup`: $0.005 per code lookup or code search (US) (max 1 code or 5 candidates).
 
 ## SEC Insider Trading API (Form 4): stock transactions since 2006
 
@@ -187,6 +199,7 @@ Example questions:
 - `owner_count` (integer): Number of reporting persons on the filing (joint filings > 1).
 - `transaction_date` (string | null): Date of the transaction (YYYY-MM-DD).
 - `filing_date` (string): Date the SEC received the filing (YYYY-MM-DD). For cluster rows: the day the cluster rule was first met.
+- `usable_from` (string): First weekday after filing_date: the earliest day a backtest may act on this row (Form 4s can be filed until 22:00 New York time, after the close). Trade at the first market open on or after this date.
 - `accepted_at` (string | null): EDGAR acceptance time with New York offset (live EDGAR rows only).
 - `transaction_code` (string): Form 4 code: P purchase, S sale, A award, M option exercise, F tax withholding, G gift, ...
 - `transaction_type` (string | null): Plain-English meaning of the transaction code.
@@ -196,7 +209,7 @@ Example questions:
 - `value_usd` (number | null): shares x price.
 - `shares_owned_after` (number | null): Shares owned after the transaction.
 - `ownership` (string | null): direct or indirect (e.g. through a trust or fund).
-- `plan_10b5_1` (boolean): Made under a Rule 10b5-1 trading plan (checkbox since 2023, or a footnote saying so).
+- `plan_10b5_1` (boolean | null): Made under a Rule 10b5-1 trading plan: true/false from the Form 4 checkbox (filings from 2023-04-01), true when a footnote says so, null when the filing predates the checkbox and no footnote mentions a plan (unknown, not 'no plan'). The box is optional for plans adopted before 2023-02-27, so false can still be such a plan.
 - `security_title` (string | null): Security, e.g. Common Stock.
 - `cluster_insiders` (integer | null): Transactions: distinct directors/officers buying this issuer in the cluster window up to this filing date (null for non-buys or when the window reaches before the data read). Clusters: insiders in the cluster.
 - `cluster_value_usd` (number | null): Total open-market purchase value of those insiders in the window.
@@ -704,6 +717,69 @@ Example questions:
 
 ```json
 { "countries": ["NL", "BE", "FR"], "periodFrom": "2025-01-01", "maxFilings": 50 }
+```
+
+## ISIN, LEI, CIK, FIGI & Ticker Resolver API (crosswalk)
+
+Docs: https://boscolabs.dev/identifier-resolver.html
+Apify Store: coming soon
+MCP: https://mcp.apify.com?tools=bosco_labs/identifier-resolver
+Price: $0.002 per resolved identifier
+API: POST https://api.boscolabs.dev/v1/identifier-resolver, $0.002 per identifier resolved (max 1 identifier)
+
+Issuer legal name, LEI, CIK, tickers, ISINs, FIGIs, CFI code and EU trading venues for one ISIN, LEI, CIK, ticker, FIGI or company name. Check digits validated first; a source URL per value. Data from GLEIF, OpenFIGI, SEC and ESMA FIRDS.
+
+Example questions:
+
+- What is the LEI, CIK and home-market FIGI of ISIN NL0010273215, and on how many EU venues does it trade? Cite the sources.
+
+### Input fields
+
+- `identifier` (string, required): ONE identifier of a security or company: an ISIN ("US0378331005"), an LEI ("HWUPKR0MPOU8FGXBT394"), an SEC CIK ("320193"), a ticker ("AAPL", "BRK.B"; add exchange for non-US markets), a FIGI ("BBG000B9XRY4") or a company name ("Siemens AG"). The type is detected automatically; ISIN, LEI and FIGI check digits are verified before any lookup, and a bad one fails in seconds with the correct digit, at no charge. Required.
+- `idType` (string): What the identifier is. Default "auto": digits only = CIK, 20 characters = LEI, 12 characters = ISIN or FIGI (by check digit), up to 6 characters without spaces = ticker (read as a name if no US ticker matches), anything else = company name. Set it for short names; numeric tickers just need exchange ("7203" with "JT").
+- `exchange` (string): Only for a ticker outside the US: a Bloomberg exchange code ("LN" London, "GR" Germany, "NA" Amsterdam, "FP" Paris, "JT" Tokyo, "SW" Swiss) or a 4-letter MIC ("XLON", "XAMS"). Empty (default) = US tickers from the SEC's list. With an exchange, an all-digit identifier is read as a ticker ("7974" + "JT" = Nintendo), not a CIK.
+
+### Output fields
+
+- `schema_version` (string): Output schema version.
+- `query` (string): The identifier as given.
+- `query_type` (string): How it was read: isin, lei, cik, ticker, figi or name.
+- `exchange_filter` (string | null): The exchange given for a ticker, else null.
+- `issuer_name` (string | null): Issuer legal name: GLEIF legal name, else SEC name, else OpenFIGI name.
+- `issuer_name_latin` (string | null): English or transliterated GLEIF name when the legal name is not in Latin script (e.g. Japanese), else null.
+- `lei` (string | null): Issuer Legal Entity Identifier (ISO 17442), e.g. HWUPKR0MPOU8FGXBT394.
+- `lei_status` (string | null): GLEIF registration status: ISSUED, LAPSED, RETIRED, ...
+- `issuer_country` (string | null): Country of the issuer's legal address (ISO 3166 alpha-2), from GLEIF.
+- `issuer_jurisdiction` (string | null): Legal jurisdiction from GLEIF, e.g. US-CA or NL.
+- `cik` (string | null): SEC Central Index Key (no leading zeros) if the issuer files with the SEC, else null.
+- `tickers` (array): Tickers with exchange: source SEC (exchange = SEC name, e.g. Nasdaq) and source OpenFIGI (exchange = Bloomberg composite code, e.g. US, GR, LN; composite_figi set), up to 10 OpenFIGI listings.
+- `isin` (string | null): The instrument ISIN: the one asked for, else the issuer's main share ISIN (equity shares on most EU venues in FIRDS).
+- `issuer_isins` (array): Up to 20 ISINs GLEIF maps to the issuer's LEI (shares, bonds, other securities).
+- `issuer_isin_count` (integer | null): Total ISINs GLEIF maps to the LEI (null if no LEI).
+- `composite_figi` (string | null): Composite (country-level) FIGI of the instrument's home or US listing, e.g. BBG000B9XRY4.
+- `share_class_figi` (string | null): Share-class FIGI (global across countries), e.g. BBG001S5N8V8.
+- `security_type` (string | null): OpenFIGI security type, e.g. Common Stock, Depositary Receipt, Corp.
+- `instrument_name` (string | null): Instrument name as most often reported to FIRDS, else OpenFIGI's name.
+- `cfi_code` (string | null): ISO 10962 CFI code from FIRDS, e.g. ESVUFR (equity, common share).
+- `currency` (string | null): Notional currency from FIRDS (ISO 4217).
+- `eu_trading_venues` (array): EU/EEA trading venues (MIC and first trading date) where FIRDS lists the instrument as currently traded, by MIC, up to 100.
+- `eu_venue_count` (integer | null): Number of current EU venues in FIRDS (null if FIRDS was not reached or no ISIN is known).
+- `eu_venues_terminated_count` (integer | null): Venues where trading has ended, per FIRDS.
+- `match_confidence` (number): 1.0 when every link is by identifier; lower when a link was made by name (0.9 exact name and jurisdiction, 0.6 ambiguous).
+- `match_note` (string): How the identifiers were linked, in words.
+- `alternatives` (array): Other candidate issuers (name, lei, isin, cik) when a name was matched.
+- `sources` (object): Source URL per value: lei, cik, isin, issuer_isins, issuer_name, tickers, figi, instrument (FIRDS query).
+- `source_url` (string | null): Main source: the GLEIF record, else SEC, FIRDS or OpenFIGI.
+- `provided_by` (string): Bosco Labs (boscolabs.dev).
+- `notices` (array): Licence and attribution notices (GLEIF CC0, OpenFIGI, ESMA free-of-charge notice).
+- `warnings` (array): Sources that failed or were rate-limited, and ambiguous matches, in plain words.
+- `retrieved_at` (string): ISO-8601 UTC time of the lookup.
+- `duration_seconds` (number): Time the lookup took.
+
+### Example input
+
+```json
+{ "identifier": "US0378331005" }
 ```
 
 ## Company Check API: identity, financials & SEC filings in 1 call
@@ -1227,6 +1303,192 @@ Example questions:
 { "query": "huurrecht", "courts": ["HR"], "dateFrom": "2024-01-01", "maxResults": 20 }
 ```
 
+## US Federal Rules API: CFR text as of a date + Federal Register
+
+Docs: https://boscolabs.dev/us-federal-rules.html
+Apify Store: coming soon
+MCP: https://mcp.apify.com?tools=bosco_labs/us-federal-rules
+Price: $0.005 per section, $0.002 per document
+API: POST https://api.boscolabs.dev/v1/us-federal-rules, $0.001 per unit: a CFR section with text = 5 units ($0.005), a Federal Register document = 2 ($0.002); rows without text are free (max 10 CFR units or 50 documents)
+
+The text of a CFR section as in force today or on any date, its amendment history and the Federal Register rules that changed it; what changed in a CFR part since a date; Federal Register documents by number or search. Official eCFR and FederalRegister.gov data, a source link per row.
+
+Example questions:
+
+- What changed in the Export Administration Regulations part 744 since August, and which Federal Register notices did it? Link the sources.
+
+### Input fields
+
+- `citation` (string): A CFR section, part or appendix: "21 CFR 101.9", "17 CFR 240.10b-5", "48 CFR 52.212-4", "15 CFR 744 Supplement No. 4", or an eCFR link ("https://www.ecfr.gov/current/title-21/section-101.9"). A section or appendix returns one row: its text as in force on asOf, its amendment history and the Federal Register rules behind each change. A part ("15 CFR 744") returns its sections and appendices changed since the since date. Together with search, agency or documentType it instead limits Federal Register documents to that CFR part. Empty = no CFR lookup. An unreadable citation fails in seconds with examples, at no charge.
+- `asOf` (string): YYYY-MM-DD, e.g. "2024-01-01": the CFR text in force on that date (eCFR history begins around January 2017). Empty = today (the eCFR's latest data, usually 1-2 days old).
+- `since` (string): YYYY-MM-DD, e.g. "2026-11-01". With a part citation: list sections changed on or after this date (empty = the last 30 days). With a search: only documents published on or after this date (empty = any date). Ignored for a single section or a document number.
+- `documentNumber` (string): One Federal Register document by its number, e.g. "2026-17231" (corrections look like "C1-2026-16628"). Returns its citation, type, agencies, dates, the CFR parts it affects and links. Empty = no document lookup. Takes precedence over every other field.
+- `search` (string): Full-text search of Federal Register documents since 1994, newest first, e.g. "entity list". Combine with agency, documentType, since and citation. Empty = no word filter (agency or documentType alone also search).
+- `agency` (string): Federal Register search by issuing agency: an acronym ("BIS", "FDA", "EPA", "SEC", "OFAC"), a name ("Bureau of Industry and Security") or a FederalRegister.gov slug ("industry-and-security-bureau"). Empty = all agencies. An unknown name fails with suggestions, at no charge.
+- `documentType` (string): Federal Register search by type: RULE (final rules), PRORULE (proposed rules), NOTICE or PRESDOCU (presidential documents). Empty = all types.
+- `maxResults` (integer): Most rows to return: for a part citation the most recently changed units (max 25 per run, each with its text), for a search the newest documents (max 100). Default 20. One charge per row returned with an answer.
+- `maxTextChars` (integer): Cap on each section's text in characters, e.g. 20000 (default). Longer text is cut at a line end and flagged with text_truncated and a warning; source_url has the whole text.
+
+### Output fields
+
+- `schema_version` (string): Output schema version.
+- `record_type` (string): "cfr_section" (a CFR section or appendix as of a date) or "fr_document" (a Federal Register document).
+- `query` (string | null): The citation, document number or search as understood, e.g. "21 CFR 101.9".
+- `citation` (string | null): cfr_section: the unit's CFR citation, e.g. "21 CFR 101.9". fr_document: the Federal Register citation (volume FR page), e.g. "91 FR 54658".
+- `cfr_title` (integer): cfr_section: CFR title number (1-50), e.g. 21.
+- `cfr_title_name` (string | null): cfr_section: name of the CFR title, e.g. "Food and Drugs".
+- `part` (string | null): cfr_section: CFR part, e.g. "101".
+- `subpart` (string | null): cfr_section: subpart letter, e.g. "A"; null when the part has none or for appendices.
+- `section` (string | null): cfr_section: section number ("101.9") or appendix name ("Supplement No. 4 to Part 744").
+- `unit_type` (string | null): cfr_section: "section" or "appendix".
+- `heading` (string | null): cfr_section: the heading as printed, e.g. "§ 101.9 Nutrition labeling of food.".
+- `as_of` (string | null): cfr_section: the date (YYYY-MM-DD) the text is in force for: asOf, capped at the eCFR's latest data.
+- `text` (string | null): cfr_section: plain text as in force on as_of, one line per paragraph ("(a) ...", "(1) ..."), tables as "cell | cell" rows; cut at maxTextChars. Null when the unit was removed.
+- `text_chars` (integer | null): cfr_section: length of text in characters (after any cut).
+- `text_truncated` (boolean | null): cfr_section: true when text was cut at maxTextChars.
+- `source_note` (string | null): cfr_section: the CFR source note with the Federal Register citation(s) that created the unit, e.g. "[58 FR 2175, Jan. 6, 1993]".
+- `removed` (boolean | null): cfr_section: true when the unit was removed from the CFR on or before as_of.
+- `latest_change_date` (string | null): cfr_section: date of the newest amendment on or before as_of (YYYY-MM-DD).
+- `changed_since` (string | null): cfr_section from a part citation: the since date of the change window; null for a single-section lookup.
+- `amendments` (array): cfr_section: amendment history from the eCFR versioner, newest first (max 50): {date, substantive, removed, fr_documents}. fr_documents lists final rules affecting this CFR part that took effect (or, failing that, were published) on that date: {document_number, citation, title, type, publication_date, effective_on, url}. They are the likely source of the change, matched by part and date (the Federal Register does not index by section). [] = looked up, none found; null = not looked up (only the 5 newest dates, or the dates inside the since window, are).
+- `ecfr_up_to_date_as_of` (string | null): cfr_section: the date through which the eCFR title is current (YYYY-MM-DD).
+- `source_url` (string | null): eCFR page of the unit as of as_of (cfr_section), or FederalRegister.gov page of the document (fr_document).
+- `provided_by` (string): Who compiled this row; cite together with source_url.
+- `api_url` (string | null): cfr_section: the eCFR versioner API call the text was read from.
+- `document_number` (string | null): fr_document: Federal Register document number, e.g. "2026-17231".
+- `title` (string | null): fr_document: document title.
+- `type` (string | null): fr_document: "Rule", "Proposed Rule", "Notice" or "Presidential Document".
+- `action` (string | null): fr_document: action line, e.g. "Final rule.".
+- `abstract` (string | null): fr_document: the summary published with the document.
+- `dates` (string | null): fr_document: the DATES paragraph as published, e.g. "This rule is effective August 21, 2026.".
+- `agencies` (array): fr_document: issuing agencies as FederalRegister.gov names them, e.g. ["Commerce Department", "Industry and Security Bureau"].
+- `publication_date` (string | null): fr_document: date published in the Federal Register (YYYY-MM-DD).
+- `effective_on` (string | null): fr_document: effective date (YYYY-MM-DD); null when none is given (proposed rules, most notices).
+- `comments_close_on` (string | null): fr_document: comment deadline (YYYY-MM-DD); null when not open for comment.
+- `cfr_references` (array): fr_document: CFR parts the document affects, e.g. ["15 CFR 744"].
+- `docket_ids` (array): fr_document: agency docket numbers.
+- `regulation_id_numbers` (array): fr_document: Regulation Identifier Numbers (RIN), e.g. ["0694-AK49"].
+- `start_page` (integer | null): fr_document: first Federal Register page.
+- `end_page` (integer | null): fr_document: last Federal Register page.
+- `significant` (boolean | null): fr_document: whether the rule is marked significant under EO 12866; null when not stated.
+- `pdf_url` (string | null): fr_document: the official PDF on govinfo.gov (the legally authentic edition).
+- `raw_text_url` (string | null): fr_document: full text as plain text on FederalRegister.gov.
+- `warnings` (array): Caveats in plain words: text cut, date capped, more results than returned, part-level matching.
+- `retrieved_at` (string): When the row was made (ISO 8601, UTC).
+- `duration_seconds` (number): How long the lookup took.
+
+### Example input
+
+```json
+{ "citation": "21 CFR 101.9", "asOf": "2024-01-01" }
+```
+
+## Product Recall Check API: CPSC, NHTSA, FDA & EU Safety Gate
+
+Docs: https://boscolabs.dev/product-recalls.html
+Apify Store: coming soon
+MCP: https://mcp.apify.com?tools=bosco_labs/product-recalls
+Price: $0.005 per product checked
+API: POST https://api.boscolabs.dev/v1/product-recalls, $0.005 per product checked (every source answered) (max 20 products)
+
+Recalled yes/no, with each recall's date, hazard, remedy and official link, for a product name, brand, model, UPC/EAN or VIN. Checks US CPSC, NHTSA vehicle recalls, FDA enforcement reports (food, drugs, devices) and EU Safety Gate in one call. Lists every source checked.
+
+Example questions:
+
+- Before we list this used Peloton Bike+ and this 2012 Honda Accord for sale, check whether either has been recalled, for what hazard, and cite the source.
+
+### Input fields
+
+- `queries` (array, required): What to check, one per entry: a product name, brand or model ("Peloton Bike+"), a UPC/EAN barcode of 8-14 digits ("3418178586009"), a 17-character VIN ("1HGCP2F31CA000000") or a vehicle as year make model ("2012 Honda Accord"). Each entry gives one result row and at most one charge; repeats are checked once. 1-50 entries. Required.
+- `maxMatches` (integer): How many recalls to list per query, newest first, e.g. 10 (default). match_count still gives the total found. Range 1-50; the price does not change.
+- `sources` (array): Which sources to check, any of "cpsc", "nhtsa", "fda_food", "fda_drug", "fda_device", "eu_safety_gate", e.g. ["cpsc", "eu_safety_gate"]. Default (or empty) = all six. Each query only goes to the sources that fit it (VINs to NHTSA and EU Safety Gate). Same price for any number of sources.
+- `euWeeks` (integer): How many of the latest weekly EU Safety Gate reports to search, e.g. 52 (default, about one year). Range 1-260 (five years); more weeks take longer. The US sources always cover their full history.
+
+### Output fields
+
+- `schema_version` (string): Output schema version.
+- `query` (string): The query as given (spaces tidied).
+- `query_type` (string): How the query was read: text = product name, brand or model; upc = 8-14 digit barcode; vin = 17-character VIN (decoded with NHTSA vPIC); vehicle = year make model.
+- `vehicle` (object | null): For vin and vehicle queries: {make, model, model_year} used for the NHTSA lookup; null otherwise.
+- `recalled` (boolean | null): true = at least one recall or alert matched; false = no match in every source that applies; null = no match but a source could not be checked (see warnings).
+- `match_count` (integer): Number of matching recalls found (only the newest maxMatches are in matches).
+- `summary` (string): One sentence an agent can pass on: the newest match and its hazard, or 'No recall found' with the sources checked.
+- `matches` (array): Matching recalls and alerts, newest first, at most maxMatches.
+- `sources_checked` (array): Every source that applied to this query: {source, source_name, ok, matches, coverage}. ok false = not checked (see warnings). coverage says what was searched (e.g. the Safety Gate weeks).
+- `warnings` (array): Sources that could not be checked (or NHTSA vPIC down for a VIN), in plain words. Rows with warnings are not charged.
+- `input_error` (string | null): Why this query could not be checked, e.g. a VIN with a wrong check digit, with NHTSA vPIC's own error text and a valid example; null when the query was fine. Rows with an input_error are not charged.
+- `source_url` (string | null): Official record of the newest match; null when nothing matched.
+- `provided_by` (string): Who compiled this row; cite together with source_url.
+- `attribution` (string): Source notices for the sources checked (CPSC credit, NHTSA, openFDA disclaimer, the EU Safety Gate acknowledgement).
+- `checked_at` (string): When the check ran (ISO 8601, UTC).
+
+### Example input
+
+```json
+{ "queries": ["Peloton Bike+", "3418178586009", "1HGCP2F31CA000000"], "maxMatches": 10 }
+```
+
+## Tariff Code & Duty Lookup API: US HTS (UK coming soon)
+
+Docs: https://boscolabs.dev/tariff-lookup.html
+Apify Store: coming soon
+MCP: https://mcp.apify.com?tools=bosco_labs/tariff-lookup
+Price: $0.005 per lookup or search
+API: POST https://api.boscolabs.dev/v1/tariff-lookup, $0.005 per code lookup or code search (US) (max 1 code or 5 candidates)
+
+Duty rates for a US HTS code: official description hierarchy, general/MFN rate, preferential rates, Chapter 99 references, units, source link. Or a product description in, 5 official candidate codes out. UK Trade Tariff coming soon. No binding ruling.
+
+Example questions:
+
+- What US import duty applies to kids' bicycles (wheels under 63.5 cm) from Vietnam? Give the HTS code and cite the source.
+
+### Input fields
+
+- `code` (string): A US HTS code (8 or 10 digits, e.g. "8712.00.15" or "8712001510") or a UK commodity code (10 digits, e.g. "8712003010"; UK coming soon). Dots and spaces are ignored. 4 or 6 digits (or a UK code that is not declarable) fail for free with a list of the codes under it. Empty = use `query` instead. Charged as one code-lookup.
+- `query` (string): Plain product description, 2-200 characters, e.g. "bicycle" or "cotton t-shirt". Returns up to 5 candidate codes from the official tariff search (USITC or UK Trade Tariff), each with its rates. Candidates are not a classification: confirm them. Empty = use `code`. Charged as one code-search however many candidates come back.
+- `market` (string): Which tariff to read: "US" (Harmonized Tariff Schedule, USITC) or "UK" (UK Global Tariff, HMRC; "GB" is the same). UK is coming soon: until this deployment has HMRC production API credentials, UK requests fail at once and cost nothing. Empty = "US".
+- `originCountry` (string): ISO 3166 alpha-2 code of the country the goods come from, e.g. "CN" or "DE". UK: preferential rates, additional duties and VAT are filtered to measures that apply to that country. US: preferential programs are filtered to ones named by that country code (plus USMCA for CA/MX), and column 2 and China Section 301 notes are added. Empty = all rates, unfiltered.
+
+### Output fields
+
+- `schema_version` (string): Output schema version, "1".
+- `match_type` (string): "code" for a code lookup, "search_candidate" for a candidate returned by a description search.
+- `query` (string | null): The product description searched for; null for a code lookup.
+- `candidate_rank` (integer | null): 1-5 rank of a search candidate (US: ranked by Bosco Labs from the USITC hits; UK: the search's own relevance order); null for a code lookup.
+- `market` (string): Importing market whose tariff was read.
+- `code` (string): The commodity code, digits only (US 8 or 10, UK 10).
+- `code_formatted` (string): The code as the source writes it (US 8712.00.15.10, UK 8712003010).
+- `description` (string | null): Official description of this line, as published (often short, like "Other": read it with hierarchy).
+- `hierarchy` (array): Official descriptions from the top (UK chapter, heading, ...; US heading level) down to this line: [{code, description}]. code is null for US sub-headers without a number.
+- `declarable` (boolean | null): UK: true (only declarable codes are returned). US: null (not stated by the HTS data).
+- `general_rate` (string | null): General / MFN duty rate as published: US column 1 General (e.g. "11%", "Free", "2.4¢/kg"); UK third-country duty for all origins (e.g. "14.00%", "£26.00 / 100 litre (hl)").
+- `rate_line` (string | null): The line that carries general_rate (US 10-digit statistical lines inherit the rate of their 8-digit line).
+- `column_2_rate` (string | null): US column 2 rate (goods of Cuba, North Korea, Belarus, Russia). null for UK.
+- `special_rates_text` (string | null): US column 1 Special text as published, e.g. "Free (A+,AU,...) 5.5% (JP)". null for UK.
+- `preferential_rates` (array): Preferential rates. US: [{rate, applies_to: [program codes]}] parsed from special_rates_text. UK: [{rate, applies_to: [area], measure_type, quota_order_number}] for tariff preferences, preferential quotas, suspensions and other non-general duty measures. Filtered when originCountry is given; UK without originCountry lists at most 10 (see preferential_rates_total).
+- `preferential_rates_total` (integer): How many preferential rates apply before the 10-row cap (UK without originCountry); equals the list length otherwise.
+- `additional_duties` (array): [{reference, type, rate, applies_to, additional_code, description}]. US: Chapter 99 references from footnotes and Chapter 99 lines whose text names this code (9903 additional duties; 9902 reductions are in temporary_reductions). UK: anti-dumping, countervailing, additional duties and excise measures, with additional codes (e.g. company-specific anti-dumping). rate null = depends on conditions; see source_url.
+- `temporary_reductions` (array): US only: HTS 9902 temporary duty reductions whose text names this code, [{reference, rate, description}]. Each applies only to the narrower goods it describes, within its effective dates; check eligibility before using its rate. Empty for UK.
+- `vat` (array): UK VAT measures [{rate, additional_code, description}] (e.g. 20.00%, or 0.00% with additional code VATZ). Empty for US.
+- `units` (array): Units of quantity: US units (e.g. "No.", "kg"); UK supplementary unit (e.g. "items (p/st)").
+- `origin_country` (string | null): The originCountry used for filtering (ISO alpha-2), or null.
+- `edition` (string | null): US HTS edition read (e.g. "2026 HTS Revision 22"); null for UK (the API serves today's tariff).
+- `source_url` (string): Official page for this code (hts.usitc.gov search or trade-tariff.service.gov.uk commodity page).
+- `provided_by` (string): "Bosco Labs (boscolabs.dev)".
+- `api_url` (string): The official API call the data came from.
+- `attribution` (string): Required source notice: USITC (U.S. Government work) or UK Open Government Licence v3.0 attribution.
+- `warnings` (array): Limits that apply to this row, e.g. Chapter 99 measures not linked in the US data, UK import controls not listed, the candidate notice.
+- `disclaimer` (string): Not a binding classification ruling; where to get one (CBP ruling, HMRC Advance Tariff Ruling).
+- `as_of` (string): Date (YYYY-MM-DD, UTC) the tariff was read; rates are those in force at the source on that day.
+- `retrieved_at` (string): ISO-8601 time of retrieval (UTC).
+- `duration_seconds` (number): Seconds from start of the run to this row.
+
+### Example input
+
+```json
+{ "code": "8712.00.15", "market": "US" }
+```
+
 ## EU Public Tenders & Contract Awards API (TED procurement)
 
 Docs: https://boscolabs.dev/eu-tenders.html
@@ -1616,6 +1878,51 @@ Example questions:
 { "nctIds": ["NCT05813925", "NCT04368728"] }
 ```
 
+## Drug Safety API: FDA label, FAERS, recalls, EMA status
+
+Docs: https://boscolabs.dev/drug-safety.html
+Apify Store: coming soon
+MCP: https://mcp.apify.com?tools=bosco_labs/drug-safety
+Price: $0.02 per dossier or $0.004 per single-section query
+API: POST https://api.boscolabs.dev/v1/drug-safety, $0.004 per sub-query; a full dossier = 5 units ($0.02); partial answers are free (max 1 drug)
+
+Drug safety dossier for one drug name as one sourced JSON row: FDA boxed warning and indications, top FAERS adverse reaction counts, US recalls and shortages (openFDA), EU authorisation, EPAR link and EU shortages (EMA). Or one cheaper sub-query. Not medical advice.
+
+Example questions:
+
+- Does semaglutide have a boxed warning, what are its most reported adverse reactions, and is it authorised in the EU? Cite the sources.
+
+### Input fields
+
+- `drug` (string, required): One drug: generic name, active ingredient or brand, e.g. "semaglutide", "metformin" or "Ozempic". Case does not matter. Brand names are resolved to the active ingredient for FAERS, recalls, shortages and EMA. An unknown or misspelled name fails in seconds with close names to try (nothing charged). Required.
+- `mode` (string): "dossier" (default) fills all five sections in one call (one `dossier` event). The other values fill one section only and cost one `drug-query` event: "label", "adverse_events_top", "recalls", "shortages" or "eu_status". Sections not asked for are null. Empty = dossier.
+- `maxItems` (integer): Cap on each list in the row: top FAERS reactions, recalls (newest first), US shortage records, EU products and EU shortages, e.g. 10. Default 10, maximum 50. Totals are always reported in full. Does not change the price.
+
+### Output fields
+
+- `query` (string): The drug name as given (whitespace normalised).
+- `mode` (string): dossier, label, adverse_events_top, recalls, shortages or eu_status.
+- `drug` (object): How the name was resolved.
+- `label` (object | null): FDA label (openFDA drug/label): the newest label for the drug, prescription labels first. null when not asked for, when no FDA label exists (see warnings) or when openFDA failed.
+- `adverse_events` (object | null): FAERS adverse event reports (openFDA drug/event) as COUNTS only, never individual case records. Reports that list the drug as suspect or concomitant; voluntary, unverified, not incidence, causality not established. null when not asked for or openFDA failed.
+- `recalls` (object | null): US drug recalls (openFDA drug/enforcement, FDA enforcement reports since 2004) whose generic name or product description names search_term; newest first. Includes compounded products. null when not asked for or openFDA failed.
+- `shortages` (object | null): US drug shortages (openFDA drug/shortages, FDA Drug Shortage list), one record per package; current first, then newest. null when not asked for or openFDA failed.
+- `eu_status` (object | null): EU status from the European Medicines Agency's medicines and shortages data files (centrally authorised human medicines only; nationally authorised products are not listed). null when not asked for or EMA failed.
+- `failed_sections` (array): Sections asked for whose source failed (null in the row, reason in warnings), e.g. ["eu_status"]. Not empty = partial answer, which is not charged; run again for the full one. [] when complete.
+- `related` (object): Bosco Labs tools for the next question: clinical_trials = the clinical-trials Actor and an input for trials of this drug.
+- `warnings` (array): Why a section is null or partial, e.g. "EMA: ... unavailable" or "label: no FDA label found ..."; [] when all fine.
+- `notice` (string): Not medical advice, and how to read FAERS counts.
+- `attribution` (string): Credits FDA/openFDA and acknowledges EMA as the source (with access month), plus Bosco Labs' changes. Keep it with any copy.
+- `retrieved_at` (string): When the sources were queried, ISO 8601 UTC.
+- `schema_version` (string): Output schema version, "1".
+- `provided_by` (string): "Bosco Labs (boscolabs.dev)".
+
+### Example input
+
+```json
+{ "drug": "semaglutide" }
+```
+
 ## Dutch Address Lookup API: BAG postcode, geocode & building data
 
 Docs: https://boscolabs.dev/dutch-address-lookup.html
@@ -1661,6 +1968,57 @@ Example questions:
 
 ```json
 { "addresses": ["Damrak 1 Amsterdam", "Coolsingel 40, 3011AD Rotterdam", "1012LG 1", "Damrak 18-1 Amsterdam"] }
+```
+
+## Package Vulnerability Check API: CVEs, CISA KEV, safe upgrade
+
+Docs: https://boscolabs.dev/package-vulns.html
+Apify Store: coming soon
+MCP: https://mcp.apify.com?tools=bosco_labs/package-vulns
+Price: $0.005 per answer
+API: POST https://api.boscolabs.dev/v1/package-vulns, $0.005 per package version or CVE answered (max 1 check)
+
+Known vulnerabilities in a package version (npm, PyPI, Maven, Go, crates.io, NuGet, RubyGems, Packagist) or one CVE/GHSA id: severity, CVSS, fixed versions, CISA KEV exploited status and the lowest safe upgrade; for a CVE also the affected packages. From OSV.dev and CISA, a source link per advisory.
+
+Example questions:
+
+- Before I bump lodash in package.json: is 4.17.15 vulnerable, is anything exploited, and what is the lowest safe version? Cite the advisories.
+
+### Input fields
+
+- `ecosystem` (string): Package registry of `name`, e.g. "npm". One of npm, PyPI, Maven, Go, crates.io, NuGet, RubyGems, Packagist (also accepted: pip, cargo, rust, golang, composer, gem; any case). Needed with `name`; ignored when `vulnerabilityId` is set. No default.
+- `name` (string): Package name exactly as in its registry, e.g. "lodash", "requests", "org.apache.logging.log4j:log4j-core" (Maven = group:artifact) or "github.com/gin-gonic/gin" (Go module path). When OSV has no advisory, the name (and version) is checked in the registry index; an unknown package fails free of charge. Ignored when `vulnerabilityId` is set.
+- `version` (string): Exact version to check, e.g. "4.17.15" (Go: "v1.9.0"). OSV.dev decides whether it falls in an affected range. With a version you also get `safe_version`: the lowest fixed version above it with no known vulnerability. Empty = every advisory for the package at any version (the 40 most severe are listed, no safe_version).
+- `vulnerabilityId` (string): One vulnerability id instead of a package, e.g. "CVE-2021-44228" or "GHSA-jfh8-c2jp-5v3q" (PYSEC-, GO-, RUSTSEC-, MAL- and OSV- ids work too). Returns the affected packages and version ranges, CISA KEV status, the FIRST EPSS score and NVD's CVSS. When set, the package fields are ignored. Empty = package mode.
+
+### Output fields
+
+- `schema_version` (string): Output schema version.
+- `query_type` (string): "package" (ecosystem + name [+ version]) or "vulnerability" (one CVE/GHSA id).
+- `ecosystem` (string | null): Ecosystem as OSV names it (npm, PyPI, Maven, Go, crates.io, NuGet, RubyGems, Packagist); null in vulnerability mode.
+- `name` (string | null): Package name as given; null in vulnerability mode.
+- `version` (string | null): Version checked; null = all versions (or vulnerability mode).
+- `vulnerability_id` (string | null): The CVE/GHSA id asked for, normalised (e.g. CVE-2021-44228); null in package mode.
+- `summary` (string): One sentence an agent can pass on: count, max severity, CISA KEV status and the safe version (package), or severity, KEV and affected packages (id).
+- `vulnerability_count` (integer | null): Package mode: number of distinct known vulnerabilities (duplicates across databases merged), even when `vulnerabilities` lists only the 40 most severe; 0 = none known (the package was found in its registry, or see warnings). Null in vulnerability mode.
+- `known_exploited` (boolean | null): True when any listed vulnerability is in the CISA Known Exploited Vulnerabilities catalog; false when none is; null when the catalog could not be loaded (see warnings).
+- `max_severity` (string | null): Highest severity among the vulnerabilities: CRITICAL, HIGH, MODERATE or LOW (GitHub's label, else from the CVSS v3 score); null when unknown or none.
+- `safe_version` (string | null): Package mode with a version: the lowest fixed version above it that OSV reports as having no known vulnerability (the version itself if it is clean). Null without a version, when none was found, or in vulnerability mode.
+- `safe_version_note` (string | null): How safe_version was found, or why there is none (e.g. no fix published).
+- `epss` (object | null): Vulnerability mode: FIRST EPSS {cve, score (0-1 probability of exploitation activity in the next 30 days), percentile, date, source_url}; null otherwise or when unavailable.
+- `nvd` (object | null): Vulnerability mode: NVD record {cve, cvss_score, cvss_severity, cvss_vector, cvss_version, cwe_ids, published, last_modified, vuln_status, description, source_url}; descriptions over 1,000 characters are shortened and marked as shortened by Bosco Labs; null otherwise or when NVD did not answer.
+- `vulnerabilities` (array): Known vulnerabilities, most severe first (known exploited, then severity, then CVSS), at most 40; vulnerability mode: one item.
+- `source_url` (string): OSV.dev page for the package or the vulnerability id.
+- `provided_by` (string): Who compiled this row; cite together with source_url.
+- `attribution` (string): Licence and source notices for the data in this row (GitHub Advisory Database CC BY 4.0, CISA KEV, FIRST EPSS, NVD notice, MITRE CVE terms, deps.dev). Keep it when you republish.
+- `warnings` (array): Optional sources that failed (KEV, EPSS, NVD, registry existence check), advisories omitted for licence reasons, or a capped list, in plain words.
+- `checked_at` (string): When the check ran (ISO 8601, UTC).
+- `duration_seconds` (number): Time the check took.
+
+### Example input
+
+```json
+{ "ecosystem": "PyPI", "name": "requests", "version": "2.32.5" }
 ```
 
 ## PDF to JSON API: text, tables and metadata from a PDF URL

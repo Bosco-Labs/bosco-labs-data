@@ -108,6 +108,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
   &quot;owner_count&quot;: 1,
   &quot;transaction_date&quot;: &quot;2015-03-27&quot;,
   &quot;filing_date&quot;: &quot;2015-03-31&quot;,
+  &quot;usable_from&quot;: &quot;2015-04-01&quot;,
   &quot;transaction_code&quot;: &quot;P&quot;,
   &quot;transaction_type&quot;: &quot;Open-market or private purchase&quot;,
   &quot;acquired_disposed&quot;: &quot;A&quot;,
@@ -116,7 +117,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
   &quot;value_usd&quot;: 13980000.0,
   &quot;shares_owned_after&quot;: 2635270,
   &quot;ownership&quot;: &quot;direct&quot;,
-  &quot;plan_10b5_1&quot;: false,
+  &quot;plan_10b5_1&quot;: null,
   &quot;cluster_insiders&quot;: 2,
   &quot;cluster_value_usd&quot;: 14029455.0,
   &quot;in_cluster&quot;: true,
@@ -144,6 +145,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <tr><td><code>owner_count</code></td><td>integer</td><td>Number of reporting persons on the filing (joint filings &gt; 1).</td></tr>
 <tr><td><code>transaction_date</code></td><td>string | null</td><td>Date of the transaction (YYYY-MM-DD).</td></tr>
 <tr><td><code>filing_date</code></td><td>string</td><td>Date the SEC received the filing (YYYY-MM-DD). For cluster rows: the day the cluster rule was first met.</td></tr>
+<tr><td><code>usable_from</code></td><td>string</td><td>First weekday after filing_date: the earliest day a backtest may act on this row (Form 4s can be filed until 22:00 New York time, after the close). Trade at the first market open on or after this date.</td></tr>
 <tr><td><code>accepted_at</code></td><td>string | null</td><td>EDGAR acceptance time with New York offset (live EDGAR rows only).</td></tr>
 <tr><td><code>transaction_code</code></td><td>string</td><td>Form 4 code: P purchase, S sale, A award, M option exercise, F tax withholding, G gift, ...</td></tr>
 <tr><td><code>transaction_type</code></td><td>string | null</td><td>Plain-English meaning of the transaction code.</td></tr>
@@ -153,7 +155,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <tr><td><code>value_usd</code></td><td>number | null</td><td>shares x price.</td></tr>
 <tr><td><code>shares_owned_after</code></td><td>number | null</td><td>Shares owned after the transaction.</td></tr>
 <tr><td><code>ownership</code></td><td>string | null</td><td>direct or indirect (e.g. through a trust or fund).</td></tr>
-<tr><td><code>plan_10b5_1</code></td><td>boolean</td><td>Made under a Rule 10b5-1 trading plan (checkbox since 2023, or a footnote saying so).</td></tr>
+<tr><td><code>plan_10b5_1</code></td><td>boolean | null</td><td>Made under a Rule 10b5-1 trading plan: true/false from the Form 4 checkbox (filings from 2023-04-01), true when a footnote says so, null when the filing predates the checkbox and no footnote mentions a plan (unknown, not &#x27;no plan&#x27;). The box is optional for plans adopted before 2023-02-27, so false can still be such a plan.</td></tr>
 <tr><td><code>security_title</code></td><td>string | null</td><td>Security, e.g. Common Stock.</td></tr>
 <tr><td><code>cluster_insiders</code></td><td>integer | null</td><td>Transactions: distinct directors/officers buying this issuer in the cluster window up to this filing date (null for non-buys or when the window reaches before the data read). Clusters: insiders in the cluster.</td></tr>
 <tr><td><code>cluster_value_usd</code></td><td>number | null</td><td>Total open-market purchase value of those insiders in the window.</td></tr>
@@ -196,6 +198,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <tr><td><code>ciks</code></td><td>array</td><td>Issuer SEC Central Index Keys as digits, leading zeros optional, e.g. [&quot;320193&quot;] for Apple. Use for delisted or renamed companies the SEC&#x27;s ticker list no longer has. Empty = no CIK filter.</td></tr>
 </tbody></table></div>
 <h2>Sources, licence and limits</h2>
+<p><strong>Can I backtest with this without look-ahead bias?</strong> Use <code>usable_from</code>, not <code>transaction_date</code>. Insiders report up to two business days after trading, and a Form 4 can be filed until 22:00 New York time, after the close. <code>usable_from</code> is the first weekday after <code>filing_date</code>; enter at the first market open on or after it. Delisted companies are included (look them up by CIK). Before 2023-04-01 Form 4 had no 10b5-1 checkbox, so <code>plan_10b5_1</code> is <code>null</code> (unknown) for older filings unless a footnote mentions a plan. After that, <code>false</code> can still be a sale under a plan adopted before 2023-02-27, for which the box was optional.</p>
 <p><strong>Is this the same data as OpenInsider and similar sites?</strong> Same source (SEC Form 4), but you get raw, complete rows through an API, 2006 onward, including amendments (<code>form: &quot;4/A&quot;</code>), joint filings and the 10b5-1 flag.</p>
 <p><strong>What about options?</strong> Grants, exercises and sales of options and other derivatives sit in the derivative table of Form 4 and are not included. Shares received from an exercise (code <code>M</code>) and sold (code <code>S</code>) are.</p>
 <p><strong>Joint filings?</strong> One row per transaction; <code>insider_name</code> is the first reporting person, <code>owner_count</code> the number of joint filers, and roles are combined.</p>

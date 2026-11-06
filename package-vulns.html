@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package Vulnerability Check: CVE, KEV &amp; Safe Upgrade API</title>
+<meta name="description" content="Is this npm, PyPI, Maven, Go or Rust package version vulnerable or exploited? CVEs, CVSS, CISA KEV and the lowest safe upgrade, per call.">
+<link rel="canonical" href="https://boscolabs.dev/package-vulns.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bosco Labs">
+<meta property="og:title" content="Package Vulnerability Check: CVE, KEV &amp; Safe Upgrade API">
+<meta property="og:description" content="Is this npm, PyPI, Maven, Go or Rust package version vulnerable or exploited? CVEs, CVSS, CISA KEV and the lowest safe upgrade, per call.">
+<meta property="og:url" content="https://boscolabs.dev/package-vulns.html">
+<meta property="og:image" content="https://boscolabs.dev/icons/package-vulns.png">
+<meta name="twitter:card" content="summary">
+<script defer src="/_vercel/insights/script.js"></script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "SoftwareApplication",
+ "name": "Package Vulnerability Check API: CVEs, CISA KEV, safe upgrade",
+ "description": "Known vulnerabilities in a package version (npm, PyPI, Maven, Go, crates.io, NuGet, RubyGems, Packagist) or one CVE/GHSA id: severity, CVSS, fixed versions, CISA KEV exploited status and the lowest safe upgrade; for a CVE also the affected packages. From OSV.dev and CISA, a source link per advisory.",
+ "url": "https://boscolabs.dev/package-vulns.html",
+ "image": "https://boscolabs.dev/icons/package-vulns.png",
+ "applicationCategory": "DeveloperApplication",
+ "operatingSystem": "Web (Apify platform)",
+ "offers": {
+  "@type": "Offer",
+  "priceCurrency": "USD",
+  "description": "$0.005 per answer",
+  "availability": "https://schema.org/PreOrder"
+ },
+ "provider": {
+  "@type": "Organization",
+  "name": "Bosco Labs",
+  "url": "https://boscolabs.dev/"
+ }
+}
+</script>
+<style>:root{color-scheme:light dark;--head:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--body:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;--ink:#1D2721;--muted:#545F58;--bg:#F5F3EA;--surface:#EAE8DC;--line:#D6D3C3;--accent:#2E5A47;--accent-fg:#F5F3EA;--accent2:#8DA889;--accent2-text:#4A6646;--success:#36694A;--warn:#8E5D1C}
+@media (prefers-color-scheme:dark){:root{--ink:#E5E8DE;--muted:#A3ADA4;--bg:#121914;--surface:#1B241E;--line:#2B372F;--accent:#9EC7B1;--accent-fg:#121914;--accent2:#B5C9A4;--accent2-text:#B5C9A4;--success:#93C7A0;--warn:#DDB070}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--body)}h1,h2,h3,.brand{font-family:var(--head)}
+a{color:var(--accent);text-underline-offset:2px}.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+.site{border-bottom:1px solid var(--line)}.site .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;padding-top:12px;padding-bottom:12px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-weight:650;letter-spacing:-.01em}.brand img{width:30px;height:30px}
+nav{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:.95rem}nav a{color:var(--muted);text-decoration:none}nav a:hover{color:var(--ink)}
+h1{font-size:clamp(1.65rem,4vw,2.4rem);line-height:1.2;letter-spacing:-.02em;margin:0 0 12px}
+h2{font-size:1.3rem;line-height:1.3;letter-spacing:-.01em;margin:44px 0 12px}h3{font-size:1.02rem;margin:20px 0 6px}
+.hero{padding:52px 0 8px;max-width:780px}.lead{font-size:1.13rem;color:var(--muted)}.muted{color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}.chips a{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:.9rem;color:var(--ink);text-decoration:none}.chips a:hover{border-color:var(--accent)}
+.grid{list-style:none;padding:0;margin:0;display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.card-top{display:flex;gap:12px;align-items:center}.card img{width:48px;height:48px;flex:none}
+.card h3{margin:0;font-size:1rem;line-height:1.3}.card h3 a{color:var(--ink);text-decoration:none}.card h3 a:hover{text-decoration:underline}
+.card p{margin:0;font-size:.92rem;color:var(--muted)}.card .row{margin-top:auto;padding-top:6px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-size:.88rem}
+.price{font-weight:600;color:var(--ink)}.badge{display:inline-block;font-size:.78rem;font-weight:600;line-height:1.5;padding:1px 9px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.badge.live{color:var(--success)}.badge.soon{color:var(--warn)}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-fg);font-weight:650;padding:11px 18px;border-radius:10px;text-decoration:none}
+.btn.ghost{background:none;color:var(--accent);border:1px solid var(--line)}.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0}
+.crumbs{font-size:.9rem;color:var(--muted);margin:22px 0 0}.crumbs a{color:var(--muted)}
+.head{display:flex;gap:20px;align-items:flex-start;margin:18px 0 0}.head img{width:84px;height:84px;flex:none}
+.prose{max-width:800px}.facts{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));margin:22px 0}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:.95rem}.fact b{display:block;font-size:.75rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.qs{padding-left:20px}.qs li{margin:4px 0}.two{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}.two h3{margin-top:0}.two>div,.prose,main{min-width:0}
+code{font:.86em var(--mono)}:not(pre)>code{overflow-wrap:anywhere}
+pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px;overflow:auto;max-height:520px;font-size:.84rem;line-height:1.45;margin:0}
+.table{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{text-align:left;vertical-align:top;padding:7px 8px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-weight:600}td:first-child{white-space:nowrap}
+details{border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:10px 0}summary{cursor:pointer;font-weight:600}
+footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font-size:.9rem;color:var(--muted)}footer a{color:var(--muted)}
+form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:1 1 240px;min-width:0;font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}button.btn{border:0;cursor:pointer;font:inherit;font-weight:650}
+.note{border-left:3px solid var(--warn);background:var(--surface);border-radius:0 10px 10px 0;padding:10px 14px;margin:14px 0;font-size:.95rem}.notice{font-size:.88rem;color:var(--muted)}
+@media (max-width:560px){.head{flex-direction:column;gap:12px}.head img{width:64px;height:64px}.hero{padding-top:32px}}</style>
+</head>
+<body>
+<header class="site"><div class="wrap"><a class="brand" href="index.html"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav><a href="index.html#tools">Tools</a><a href="api.html">API</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
+<main class="wrap">
+<p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#data-tools">Data tools</a></p>
+<article>
+<div class="head"><img src="icons/package-vulns.svg" alt="" width="84" height="84"><div><h1>Package Vulnerability Check API: CVEs, CISA KEV, safe upgrade</h1><span class="badge soon">Coming soon to the Store</span></div></div>
+<div class="prose">
+<p class="lead"><strong>Is this package version vulnerable, is any of it exploited in the wild, and which version is safe to upgrade to?</strong> One call answers it for npm, PyPI, Maven, Go, crates.io, NuGet, RubyGems and Packagist packages, or for one CVE/GHSA id, from OSV.dev and the CISA KEV catalog (a CVE lookup also shows NVD&#x27;s record). Built for <strong>coding agents</strong> and for developers who want a sourced answer instead of a scanner setup.</p>
+<div class="facts"><div class="fact"><b>Price</b>$0.005 per answer</div><div class="fact"><b>Domain</b>Data tools</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
+<p><strong>Pricing (pay per event):</strong> $0.005 per answer (<code>package-check</code>, $5 per 1,000). A clean &quot;no known vulnerabilities&quot; is a real answer and is charged once the package is confirmed to exist; bad input, a misspelled or unreleased package, an unknown id or a dead source fails in seconds and costs nothing.</p>
+<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=Package Vulnerability Check API">Ask for early access</a></div>
+<h2>Questions agents ask</h2>
+<ul class="qs"><li>&ldquo;Before I bump lodash in package.json: is 4.17.15 vulnerable, is anything exploited, and what is the lowest safe version? Cite the advisories.&rdquo;</li></ul>
+</div>
+<h2>Example</h2>
+<div class="two"><div><h3>Input</h3><pre><code>{ &quot;ecosystem&quot;: &quot;PyPI&quot;, &quot;name&quot;: &quot;requests&quot;, &quot;version&quot;: &quot;2.32.5&quot; }</code></pre></div>
+<div><h3>Output</h3><pre><code>{
+  &quot;schema_version&quot;: &quot;1&quot;,
+  &quot;query_type&quot;: &quot;package&quot;,
+  &quot;ecosystem&quot;: &quot;npm&quot;,
+  &quot;name&quot;: &quot;lodash&quot;,
+  &quot;version&quot;: &quot;4.17.15&quot;,
+  &quot;vulnerability_id&quot;: null,
+  &quot;summary&quot;: &quot;npm lodash 4.17.15: 5 known vulnerabilities (max severity HIGH), none in CISA KEV; safe version: 4.18.1.&quot;,
+  &quot;vulnerability_count&quot;: 5,
+  &quot;known_exploited&quot;: false,
+  &quot;max_severity&quot;: &quot;HIGH&quot;,
+  &quot;safe_version&quot;: &quot;4.18.1&quot;,
+  &quot;safe_version_note&quot;: &quot;4.18.1 is the lowest version above 4.17.15 among the advisories&#x27; fixed versions with no known vulnerability in OSV.dev (checked with OSV, not a release-list scan).&quot;,
+  &quot;epss&quot;: null,
+  &quot;nvd&quot;: null,
+  &quot;vulnerabilities&quot;: [
+    {
+      &quot;id&quot;: &quot;GHSA-r5fr-rjxr-66jc&quot;,
+      &quot;aliases&quot;: [&quot;CVE-2026-4800&quot;],
+      &quot;summary&quot;: &quot;lodash vulnerable to Code Injection via `_.template` imports key names&quot;,
+      &quot;severity&quot;: &quot;HIGH&quot;,
+      &quot;cvss_score&quot;: 8.1,
+      &quot;cvss_vector&quot;: &quot;CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H&quot;,
+      &quot;published&quot;: &quot;2026-04-01T23:51:12Z&quot;,
+      &quot;modified&quot;: &quot;2026-10-17T02:56:15.633068434Z&quot;,
+      &quot;fixed_versions&quot;: [&quot;4.18.0&quot;],
+      &quot;affected_ranges&quot;: [
+        { &quot;ecosystem&quot;: &quot;npm&quot;, &quot;name&quot;: &quot;lodash&quot;, &quot;introduced&quot;: &quot;4.0.0&quot;, &quot;fixed&quot;: &quot;4.18.0&quot;, &quot;last_affected&quot;: null }
+      ],
+      &quot;known_exploited&quot;: false,
+      &quot;kev&quot;: null,
+      &quot;source_db&quot;: &quot;GitHub Advisory Database&quot;,
+      &quot;license&quot;: &quot;CC BY 4.0&quot;,
+      &quot;source_url&quot;: &quot;https://osv.dev/vulnerability/GHSA-r5fr-rjxr-66jc&quot;
+    },
+    {
+      &quot;id&quot;: &quot;GHSA-p6mc-m468-83gw&quot;,
+      &quot;aliases&quot;: [&quot;CVE-2020-8203&quot;],
+      &quot;summary&quot;: &quot;Prototype Pollution in lodash&quot;,
+      &quot;severity&quot;: &quot;HIGH&quot;,
+      &quot;cvss_score&quot;: 7.4,
+      &quot;cvss_vector&quot;: &quot;CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:H&quot;,
+      &quot;published&quot;: &quot;2020-07-15T19:15:48Z&quot;,
+      &quot;modified&quot;: &quot;2025-08-12T21:56:17.174859Z&quot;,
+      &quot;fixed_versions&quot;: [&quot;4.17.19&quot;],
+      &quot;affected_ranges&quot;: [
+        { &quot;ecosystem&quot;: &quot;npm&quot;, &quot;name&quot;: &quot;lodash&quot;, &quot;introduced&quot;: &quot;3.7.0&quot;, &quot;fixed&quot;: &quot;4.17.19&quot;, &quot;last_affected&quot;: null }
+      ],
+      &quot;known_exploited&quot;: false,
+      &quot;kev&quot;: null,
+      &quot;source_db&quot;: &quot;GitHub Advisory Database&quot;,
+      &quot;license&quot;: &quot;CC BY 4.0&quot;,
+      &quot;source_url&quot;: &quot;https://osv.dev/vulnerability/GHSA-p6mc-m468-83gw&quot;
+    }
+  ],
+  &quot;source_url&quot;: &quot;https://osv.dev/list?ecosystem=npm&amp;q=lodash&quot;,
+  &quot;provided_by&quot;: &quot;Bosco Labs (boscolabs.dev)&quot;,
+  &quot;attribution&quot;: &quot;Advisories via OSV.dev from: GitHub Advisory Database (CC BY 4.0). Reformatted by Bosco Labs; cvss_score is computed by Bosco Labs from the advisory&#x27;s CVSS v3 vector. Known-exploited status: CISA Known Exploited Vulnerabilities catalog (CC0 1.0); no endorsement by CISA or DHS.&quot;,
+  &quot;warnings&quot;: [],
+  &quot;checked_at&quot;: &quot;2026-11-06T08:59:29+00:00&quot;,
+  &quot;duration_seconds&quot;: 1.2
+}</code></pre></div></div>
+<div class="prose">
+<h2>What you get</h2>
+<div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>schema_version</code></td><td>string</td><td>Output schema version.</td></tr>
+<tr><td><code>query_type</code></td><td>string</td><td>&quot;package&quot; (ecosystem + name [+ version]) or &quot;vulnerability&quot; (one CVE/GHSA id).</td></tr>
+<tr><td><code>ecosystem</code></td><td>string | null</td><td>Ecosystem as OSV names it (npm, PyPI, Maven, Go, crates.io, NuGet, RubyGems, Packagist); null in vulnerability mode.</td></tr>
+<tr><td><code>name</code></td><td>string | null</td><td>Package name as given; null in vulnerability mode.</td></tr>
+<tr><td><code>version</code></td><td>string | null</td><td>Version checked; null = all versions (or vulnerability mode).</td></tr>
+<tr><td><code>vulnerability_id</code></td><td>string | null</td><td>The CVE/GHSA id asked for, normalised (e.g. CVE-2021-44228); null in package mode.</td></tr>
+<tr><td><code>summary</code></td><td>string</td><td>One sentence an agent can pass on: count, max severity, CISA KEV status and the safe version (package), or severity, KEV and affected packages (id).</td></tr>
+<tr><td><code>vulnerability_count</code></td><td>integer | null</td><td>Package mode: number of distinct known vulnerabilities (duplicates across databases merged), even when <code>vulnerabilities</code> lists only the 40 most severe; 0 = none known (the package was found in its registry, or see warnings). Null in vulnerability mode.</td></tr>
+<tr><td><code>known_exploited</code></td><td>boolean | null</td><td>True when any listed vulnerability is in the CISA Known Exploited Vulnerabilities catalog; false when none is; null when the catalog could not be loaded (see warnings).</td></tr>
+<tr><td><code>max_severity</code></td><td>string | null</td><td>Highest severity among the vulnerabilities: CRITICAL, HIGH, MODERATE or LOW (GitHub&#x27;s label, else from the CVSS v3 score); null when unknown or none.</td></tr>
+<tr><td><code>safe_version</code></td><td>string | null</td><td>Package mode with a version: the lowest fixed version above it that OSV reports as having no known vulnerability (the version itself if it is clean). Null without a version, when none was found, or in vulnerability mode.</td></tr>
+<tr><td><code>safe_version_note</code></td><td>string | null</td><td>How safe_version was found, or why there is none (e.g. no fix published).</td></tr>
+<tr><td><code>epss</code></td><td>object | null</td><td>Vulnerability mode: FIRST EPSS {cve, score (0-1 probability of exploitation activity in the next 30 days), percentile, date, source_url}; null otherwise or when unavailable.</td></tr>
+<tr><td><code>nvd</code></td><td>object | null</td><td>Vulnerability mode: NVD record {cve, cvss_score, cvss_severity, cvss_vector, cvss_version, cwe_ids, published, last_modified, vuln_status, description, source_url}; descriptions over 1,000 characters are shortened and marked as shortened by Bosco Labs; null otherwise or when NVD did not answer.</td></tr>
+<tr><td><code>vulnerabilities</code></td><td>array</td><td>Known vulnerabilities, most severe first (known exploited, then severity, then CVSS), at most 40; vulnerability mode: one item.</td></tr>
+<tr><td><code>source_url</code></td><td>string</td><td>OSV.dev page for the package or the vulnerability id.</td></tr>
+<tr><td><code>provided_by</code></td><td>string</td><td>Who compiled this row; cite together with source_url.</td></tr>
+<tr><td><code>attribution</code></td><td>string</td><td>Licence and source notices for the data in this row (GitHub Advisory Database CC BY 4.0, CISA KEV, FIRST EPSS, NVD notice, MITRE CVE terms, deps.dev). Keep it when you republish.</td></tr>
+<tr><td><code>warnings</code></td><td>array</td><td>Optional sources that failed (KEV, EPSS, NVD, registry existence check), advisories omitted for licence reasons, or a capped list, in plain words.</td></tr>
+<tr><td><code>checked_at</code></td><td>string</td><td>When the check ran (ISO 8601, UTC).</td></tr>
+<tr><td><code>duration_seconds</code></td><td>number</td><td>Time the check took.</td></tr>
+</tbody></table></div>
+
+<h2>Use with AI agents (MCP)</h2>
+<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is live on the Apify Store.</p>
+<pre><code>https://mcp.apify.com?tools=bosco_labs/package-vulns</code></pre>
+<p>For &ldquo;Before I bump lodash in package.json: is 4.17.15 vulnerable, is anything exploited, and what is the lowest safe version? Cite the advisories.&rdquo; the agent passes:</p>
+<pre><code>{ &quot;ecosystem&quot;: &quot;npm&quot;, &quot;name&quot;: &quot;lodash&quot;, &quot;version&quot;: &quot;4.17.15&quot; }</code></pre>
+<p>one JSON item (2-15 KB), stable <code>snake_case</code> fields, ISO dates, <code>null</code> for unknown, a one-sentence <code>summary</code>, an OSV link per advisory. Bad input fails at once with a valid example. A package check takes about 1 second; each source has a 15-second limit with two retries.</p>
+<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~package-vulns/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.005 per answer.</p>
+<h2 id="http-api">HTTP API</h2>
+<p>Also on the Bosco Labs HTTP API (beta, test mode): same input and same rows as the Actor, <strong>$0.005 per package version or CVE answered</strong> from prepaid credits (max 1 check per call). <a href="api.html#key">Get a key</a> with a $0.50 free trial; see <a href="api.html">prices and limits</a>.</p>
+<pre><code>curl https://api.boscolabs.dev/v1/package-vulns \
+  -H &quot;Authorization: Bearer $BOSCO_API_KEY&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{&quot;ecosystem&quot;: &quot;npm&quot;, &quot;name&quot;: &quot;lodash&quot;, &quot;version&quot;: &quot;4.17.15&quot;}&#x27;</code></pre>
+
+<h2>Input fields</h2>
+<div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>ecosystem</code></td><td>string</td><td>Package registry of <code>name</code>, e.g. &quot;npm&quot;. One of npm, PyPI, Maven, Go, crates.io, NuGet, RubyGems, Packagist (also accepted: pip, cargo, rust, golang, composer, gem; any case). Needed with <code>name</code>; ignored when <code>vulnerabilityId</code> is set. No default.</td></tr>
+<tr><td><code>name</code></td><td>string</td><td>Package name exactly as in its registry, e.g. &quot;lodash&quot;, &quot;requests&quot;, &quot;org.apache.logging.log4j:log4j-core&quot; (Maven = group:artifact) or &quot;github.com/gin-gonic/gin&quot; (Go module path). When OSV has no advisory, the name (and version) is checked in the registry index; an unknown package fails free of charge. Ignored when <code>vulnerabilityId</code> is set.</td></tr>
+<tr><td><code>version</code></td><td>string</td><td>Exact version to check, e.g. &quot;4.17.15&quot; (Go: &quot;v1.9.0&quot;). OSV.dev decides whether it falls in an affected range. With a version you also get <code>safe_version</code>: the lowest fixed version above it with no known vulnerability. Empty = every advisory for the package at any version (the 40 most severe are listed, no safe_version).</td></tr>
+<tr><td><code>vulnerabilityId</code></td><td>string</td><td>One vulnerability id instead of a package, e.g. &quot;CVE-2021-44228&quot; or &quot;GHSA-jfh8-c2jp-5v3q&quot; (PYSEC-, GO-, RUSTSEC-, MAL- and OSV- ids work too). Returns the affected packages and version ranges, CISA KEV status, the FIRST EPSS score and NVD&#x27;s CVSS. When set, the package fields are ignored. Empty = package mode.</td></tr>
+</tbody></table></div>
+<h2>Sources, licence and limits</h2>
+<p><strong>Where does the data come from?</strong> OSV.dev, Google&#x27;s open vulnerability database, which collects the GitHub Advisory Database, the PyPA, Go and RustSec databases, OpenSSF malicious-package reports and more. OSV decides whether your exact version is in an affected range (we never re-implement version rules). Exploit status comes from the CISA KEV catalog (downloaded fresh every run); for a CVE/GHSA id we add FIRST&#x27;s EPSS score and NVD&#x27;s record.</p>
+<p><strong>Is a clean answer charged?</strong> Yes, once we know the package is real. &quot;No known vulnerabilities in OSV.dev&quot; is the answer you asked for and costs $0.005 like any other. Nothing is charged when the input is invalid, the package or version does not exist, the id is unknown or OSV.dev does not answer.</p>
+<p><strong>Does it check that the package or version exists?</strong> Yes, whenever OSV.dev has no advisory for it: the name (and version) is looked up in the registry index (deps.dev for npm, PyPI, Maven, Go, crates.io, NuGet and RubyGems; Packagist for PHP). Not found = the run fails with &quot;check the spelling&quot; and costs nothing. Releases from the last few hours may not be indexed yet. If the index itself is down, you get the answer with the warning &quot;Existence not verified&quot;. When OSV does have advisories, the package is reported even if it was removed from its registry (for example a malicious package).</p>
+<p><strong>How fresh is it?</strong> Live: OSV.dev, KEV, EPSS and NVD are queried on every run. OSV imports new GitHub advisories within minutes to hours; brand-new CVEs can take a day to appear.</p>
+<p><strong>How is <code>safe_version</code> chosen, and what are its limits?</strong> We take the fixed versions from the advisories, keep those above your version, and ask OSV which of them have no known vulnerability. If all are hit by other advisories, we follow those advisories&#x27; fixed versions (three rounds). It is not a scan of every release: a clean version that no advisory names as &quot;fixed&quot; is not proposed, and it ignores semver majors (check breaking changes yourself). Versions are ordered numerically; pre-release tags are not ranked precisely. Without a <code>version</code> there is no <code>safe_version</code>: the newest fixed version could be older than what you run.</p>
+<p><strong>Why is <code>cvss_score</code> sometimes null?</strong> OSV records carry CVSS vectors, not scores. We compute the CVSS v3 base score from the vector (FIRST&#x27;s formula); v4-only advisories keep the vector and a null score. In CVE mode, <code>nvd.cvss_score</code> is NVD&#x27;s own score.</p>
+<p><strong>What is not included?</strong> Operating-system packages (Debian, Ubuntu, Alpine, Red Hat), container images and transitive dependencies: pass each package you care about. Advisories from sources whose licence forbids commercial reuse (Chainguard/Wolfi, CC BY-NC-ND) are omitted, with a warning naming them.</p>
+<p><strong>Can I republish the results?</strong> Keep the <code>attribution</code> text. Licences, checked first-hand on 6 Nov 2026: - OSV.dev lists a licence per source (<a href="https://google.github.io/osv.dev/data/">osv.dev data sources</a>). We use only: GitHub Advisory Database, PyPA, Go and OSS-Fuzz data (CC BY 4.0, which requires credit and noting changes: each item names its <code>source_db</code> and <code>license</code>), RustSec (CC0 1.0), OpenSSF Malicious Packages (Apache 2.0) and NVD-converted CVE records (NVD is a US government work in the public domain; CVE content is used under MITRE&#x27;s <a href="https://www.cve.org/Legal/TermsOfUse">CVE Terms of Use</a>, whose copyright line is in <code>attribution</code>). - CISA KEV: &quot;The KEV database is distributed under the Creative Commons 0 1.0 License&quot; (<a href="https://www.cisa.gov/sites/default/files/licenses/kev/license.txt">license.txt</a>); no CISA endorsement is implied. - FIRST EPSS: &quot;Attribution is requested when EPSS data is used in publications or products&quot; (<a href="https://www.first.org/epss/faq">EPSS FAQ</a>); FIRST&#x27;s <a href="https://www.first.org/about/policies/terms">Services Terms</a> license distribution for vulnerability disclosure, incident response or preventative cybersecurity uses. - NVD: This product uses the NVD API but is not endorsed or certified by the NVD (<a href="https://nvd.nist.gov/developers/terms-of-use">NVD terms of use</a>). NVD descriptions over 1,000 characters are shortened and marked as shortened by Bosco Labs. - deps.dev (existence check only): its data is &quot;available under a CC-BY 4.0 license&quot; and the API is used under the Google API Terms of Service (<a href="https://github.com/google/deps.dev#data">deps.dev</a>); only a yes/no is used.</p>
+<p><strong>Personal data?</strong> None. Advisories describe software, not people.</p>
+<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=Package Vulnerability Check API">Ask for early access</a></div>
+</div>
+</article>
+</main>
+<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="privacy.html">Privacy</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
+</body>
+</html>

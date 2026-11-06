@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tariff Code and Duty Lookup API: US HTS, UK coming soon</title>
+<meta name="description" content="US HTS duty rate for a commodity code: MFN, preferential rates, Chapter 99 references, official source link. Or find candidate codes. UK soon.">
+<link rel="canonical" href="https://boscolabs.dev/tariff-lookup.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bosco Labs">
+<meta property="og:title" content="Tariff Code and Duty Lookup API: US HTS, UK coming soon">
+<meta property="og:description" content="US HTS duty rate for a commodity code: MFN, preferential rates, Chapter 99 references, official source link. Or find candidate codes. UK soon.">
+<meta property="og:url" content="https://boscolabs.dev/tariff-lookup.html">
+<meta property="og:image" content="https://boscolabs.dev/icons/tariff-lookup.png">
+<meta name="twitter:card" content="summary">
+<script defer src="/_vercel/insights/script.js"></script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "SoftwareApplication",
+ "name": "Tariff Code & Duty Lookup API: US HTS (UK coming soon)",
+ "description": "Duty rates for a US HTS code: official description hierarchy, general/MFN rate, preferential rates, Chapter 99 references, units, source link. Or a product description in, 5 official candidate codes out. UK Trade Tariff coming soon. No binding ruling.",
+ "url": "https://boscolabs.dev/tariff-lookup.html",
+ "image": "https://boscolabs.dev/icons/tariff-lookup.png",
+ "applicationCategory": "DeveloperApplication",
+ "operatingSystem": "Web (Apify platform)",
+ "offers": {
+  "@type": "Offer",
+  "priceCurrency": "USD",
+  "description": "$0.005 per lookup or search",
+  "availability": "https://schema.org/PreOrder"
+ },
+ "provider": {
+  "@type": "Organization",
+  "name": "Bosco Labs",
+  "url": "https://boscolabs.dev/"
+ }
+}
+</script>
+<style>:root{color-scheme:light dark;--head:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--body:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;--ink:#1D2721;--muted:#545F58;--bg:#F5F3EA;--surface:#EAE8DC;--line:#D6D3C3;--accent:#2E5A47;--accent-fg:#F5F3EA;--accent2:#8DA889;--accent2-text:#4A6646;--success:#36694A;--warn:#8E5D1C}
+@media (prefers-color-scheme:dark){:root{--ink:#E5E8DE;--muted:#A3ADA4;--bg:#121914;--surface:#1B241E;--line:#2B372F;--accent:#9EC7B1;--accent-fg:#121914;--accent2:#B5C9A4;--accent2-text:#B5C9A4;--success:#93C7A0;--warn:#DDB070}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--body)}h1,h2,h3,.brand{font-family:var(--head)}
+a{color:var(--accent);text-underline-offset:2px}.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+.site{border-bottom:1px solid var(--line)}.site .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;padding-top:12px;padding-bottom:12px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-weight:650;letter-spacing:-.01em}.brand img{width:30px;height:30px}
+nav{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:.95rem}nav a{color:var(--muted);text-decoration:none}nav a:hover{color:var(--ink)}
+h1{font-size:clamp(1.65rem,4vw,2.4rem);line-height:1.2;letter-spacing:-.02em;margin:0 0 12px}
+h2{font-size:1.3rem;line-height:1.3;letter-spacing:-.01em;margin:44px 0 12px}h3{font-size:1.02rem;margin:20px 0 6px}
+.hero{padding:52px 0 8px;max-width:780px}.lead{font-size:1.13rem;color:var(--muted)}.muted{color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}.chips a{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:.9rem;color:var(--ink);text-decoration:none}.chips a:hover{border-color:var(--accent)}
+.grid{list-style:none;padding:0;margin:0;display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.card-top{display:flex;gap:12px;align-items:center}.card img{width:48px;height:48px;flex:none}
+.card h3{margin:0;font-size:1rem;line-height:1.3}.card h3 a{color:var(--ink);text-decoration:none}.card h3 a:hover{text-decoration:underline}
+.card p{margin:0;font-size:.92rem;color:var(--muted)}.card .row{margin-top:auto;padding-top:6px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-size:.88rem}
+.price{font-weight:600;color:var(--ink)}.badge{display:inline-block;font-size:.78rem;font-weight:600;line-height:1.5;padding:1px 9px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.badge.live{color:var(--success)}.badge.soon{color:var(--warn)}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-fg);font-weight:650;padding:11px 18px;border-radius:10px;text-decoration:none}
+.btn.ghost{background:none;color:var(--accent);border:1px solid var(--line)}.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0}
+.crumbs{font-size:.9rem;color:var(--muted);margin:22px 0 0}.crumbs a{color:var(--muted)}
+.head{display:flex;gap:20px;align-items:flex-start;margin:18px 0 0}.head img{width:84px;height:84px;flex:none}
+.prose{max-width:800px}.facts{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));margin:22px 0}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:.95rem}.fact b{display:block;font-size:.75rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.qs{padding-left:20px}.qs li{margin:4px 0}.two{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}.two h3{margin-top:0}.two>div,.prose,main{min-width:0}
+code{font:.86em var(--mono)}:not(pre)>code{overflow-wrap:anywhere}
+pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px;overflow:auto;max-height:520px;font-size:.84rem;line-height:1.45;margin:0}
+.table{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{text-align:left;vertical-align:top;padding:7px 8px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-weight:600}td:first-child{white-space:nowrap}
+details{border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:10px 0}summary{cursor:pointer;font-weight:600}
+footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font-size:.9rem;color:var(--muted)}footer a{color:var(--muted)}
+form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:1 1 240px;min-width:0;font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}button.btn{border:0;cursor:pointer;font:inherit;font-weight:650}
+.note{border-left:3px solid var(--warn);background:var(--surface);border-radius:0 10px 10px 0;padding:10px 14px;margin:14px 0;font-size:.95rem}.notice{font-size:.88rem;color:var(--muted)}
+@media (max-width:560px){.head{flex-direction:column;gap:12px}.head img{width:64px;height:64px}.hero{padding-top:32px}}</style>
+</head>
+<body>
+<header class="site"><div class="wrap"><a class="brand" href="index.html"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav><a href="index.html#tools">Tools</a><a href="api.html">API</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
+<main class="wrap">
+<p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#compliance-law">Compliance &amp; law</a></p>
+<article>
+<div class="head"><img src="icons/tariff-lookup.svg" alt="" width="84" height="84"><div><h1>Tariff Code &amp; Duty Lookup API: US HTS (UK coming soon)</h1><span class="badge soon">Coming soon to the Store</span></div></div>
+<div class="prose">
+<p class="lead"><strong>Send a US HTS code and get the official description hierarchy, the general (MFN) duty rate, preferential rates, linked Chapter 99 references and units, with a source link.</strong> No code yet? Send a plain product description and get up to 5 candidate codes from the official USITC search. Built for <strong>AI agents</strong>, customs brokers and e-commerce teams who need a sourced duty rate, not a guess. <strong>UK Trade Tariff (with VAT and anti-dumping duties) is coming soon:</strong> it is built and tested, and switches on once this deployment holds HMRC production API credentials. Until then a UK request fails at once and costs nothing.</p>
+<div class="facts"><div class="fact"><b>Price</b>$0.005 per lookup or search</div><div class="fact"><b>Domain</b>Compliance &amp; law</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
+<p><strong>Pricing (pay per event):</strong> $0.005 per code lookup (<code>code-lookup</code>) and $0.005 per description search however many candidates it returns (<code>code-search</code>). Bad input, unknown or non-declarable codes, searches without results, UK requests (for now) and source outages fail in seconds and cost nothing. The data is free from USITC (hts.usitc.gov) and HMRC (trade-tariff.service.gov.uk); you pay for the one-call summary across both tariffs and the hosted API.</p>
+<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=Tariff Code &amp; Duty Lookup API">Ask for early access</a></div>
+<h2>Questions agents ask</h2>
+<ul class="qs"><li>&ldquo;What US import duty applies to kids&#x27; bicycles (wheels under 63.5 cm) from Vietnam? Give the HTS code and cite the source.&rdquo;</li></ul>
+</div>
+<h2>Example</h2>
+<div class="two"><div><h3>Input</h3><pre><code>{ &quot;code&quot;: &quot;8712.00.15&quot;, &quot;market&quot;: &quot;US&quot; }</code></pre></div>
+<div><h3>Output</h3><pre><code>{
+  &quot;schema_version&quot;: &quot;1&quot;,
+  &quot;match_type&quot;: &quot;code&quot;,
+  &quot;query&quot;: null,
+  &quot;candidate_rank&quot;: null,
+  &quot;market&quot;: &quot;US&quot;,
+  &quot;code&quot;: &quot;87120015&quot;,
+  &quot;code_formatted&quot;: &quot;8712.00.15&quot;,
+  &quot;description&quot;: &quot;Bicycles having both wheels not exceeding 63.5 cm in diameter&quot;,
+  &quot;hierarchy&quot;: [
+    { &quot;code&quot;: &quot;8712.00&quot;, &quot;description&quot;: &quot;Bicycles and other cycles (including delivery tricycles), not motorized:&quot; },
+    { &quot;code&quot;: &quot;8712.00.15&quot;, &quot;description&quot;: &quot;Bicycles having both wheels not exceeding 63.5 cm in diameter&quot; }
+  ],
+  &quot;declarable&quot;: null,
+  &quot;general_rate&quot;: &quot;11%&quot;,
+  &quot;rate_line&quot;: &quot;8712.00.15&quot;,
+  &quot;column_2_rate&quot;: &quot;30%&quot;,
+  &quot;special_rates_text&quot;: &quot;Free (A+,AU,BH,CL,CO,D,E,IL,JO,KR,MA,OM,P,PA,PE,S,SG) 5.5% (JP)&quot;,
+  &quot;preferential_rates&quot;: [
+    { &quot;rate&quot;: &quot;Free&quot;, &quot;applies_to&quot;: [&quot;A+&quot;, &quot;AU&quot;, &quot;BH&quot;, &quot;CL&quot;, &quot;CO&quot;, &quot;D&quot;, &quot;E&quot;, &quot;IL&quot;, &quot;JO&quot;, &quot;KR&quot;, &quot;MA&quot;, &quot;OM&quot;, &quot;P&quot;, &quot;PA&quot;, &quot;PE&quot;, &quot;S&quot;, &quot;SG&quot;] },
+    { &quot;rate&quot;: &quot;5.5%&quot;, &quot;applies_to&quot;: [&quot;JP&quot;] }
+  ],
+  &quot;preferential_rates_total&quot;: 2,
+  &quot;additional_duties&quot;: [],
+  &quot;temporary_reductions&quot;: [
+    {
+      &quot;reference&quot;: &quot;9902.17.07&quot;,
+      &quot;rate&quot;: &quot;Free&quot;,
+      &quot;description&quot;: &quot;Bicycles each with no seat, no seat tube and no seat stay, designed to be pedaled by a user in a standing position only, such bicycles having both wheels not exceeding 63.5 cm in diameter (provided for in subheading 8712.00.15).&quot;
+    }
+  ],
+  &quot;vat&quot;: [],
+  &quot;units&quot;: [],
+  &quot;origin_country&quot;: null,
+  &quot;edition&quot;: &quot;2026 HTS Revision 22&quot;,
+  &quot;source_url&quot;: &quot;https://hts.usitc.gov/search?query=8712.00.15&quot;,
+  &quot;provided_by&quot;: &quot;Bosco Labs (boscolabs.dev)&quot;,
+  &quot;api_url&quot;: &quot;https://hts.usitc.gov/reststop/exportList?from=8712&amp;to=8712.99.99.99&amp;format=JSON&quot;,
+  &quot;attribution&quot;: &quot;Source: Harmonized Tariff Schedule of the United States (HTS), U.S. International Trade Commission, hts.usitc.gov. A U.S. Government work, not covered by copyright in the United States. Text and rates reproduced as published (HTML tags removed); not endorsed by USITC.&quot;,
+  &quot;warnings&quot;: [
+    &quot;Chapter 99 measures applied by note lists (Section 301 duties on goods of China, Section 232, IEEPA and other temporary duties) are usually not linked to the line in the HTS data, so additional_duties can be incomplete. Check HTS Chapter 99, subchapter III and IV.&quot;,
+    &quot;temporary_reductions (HTS 9902) apply only to the goods each one describes, within their effective dates; check eligibility before using that rate instead of general_rate.&quot;
+  ],
+  &quot;disclaimer&quot;: &quot;Not a binding classification ruling. Reference data only, not legal advice; the importer is responsible for the correct HTS classification. Binding rulings: U.S. Customs and Border Protection (CBP).&quot;,
+  &quot;as_of&quot;: &quot;2026-11-06&quot;,
+  &quot;retrieved_at&quot;: &quot;2026-11-06T08:58:34+00:00&quot;,
+  &quot;duration_seconds&quot;: 0.76
+}</code></pre></div></div>
+<div class="prose">
+<h2>What you get</h2>
+<div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>schema_version</code></td><td>string</td><td>Output schema version, &quot;1&quot;.</td></tr>
+<tr><td><code>match_type</code></td><td>string</td><td>&quot;code&quot; for a code lookup, &quot;search_candidate&quot; for a candidate returned by a description search.</td></tr>
+<tr><td><code>query</code></td><td>string | null</td><td>The product description searched for; null for a code lookup.</td></tr>
+<tr><td><code>candidate_rank</code></td><td>integer | null</td><td>1-5 rank of a search candidate (US: ranked by Bosco Labs from the USITC hits; UK: the search&#x27;s own relevance order); null for a code lookup.</td></tr>
+<tr><td><code>market</code></td><td>string</td><td>Importing market whose tariff was read.</td></tr>
+<tr><td><code>code</code></td><td>string</td><td>The commodity code, digits only (US 8 or 10, UK 10).</td></tr>
+<tr><td><code>code_formatted</code></td><td>string</td><td>The code as the source writes it (US 8712.00.15.10, UK 8712003010).</td></tr>
+<tr><td><code>description</code></td><td>string | null</td><td>Official description of this line, as published (often short, like &quot;Other&quot;: read it with hierarchy).</td></tr>
+<tr><td><code>hierarchy</code></td><td>array</td><td>Official descriptions from the top (UK chapter, heading, ...; US heading level) down to this line: [{code, description}]. code is null for US sub-headers without a number.</td></tr>
+<tr><td><code>declarable</code></td><td>boolean | null</td><td>UK: true (only declarable codes are returned). US: null (not stated by the HTS data).</td></tr>
+<tr><td><code>general_rate</code></td><td>string | null</td><td>General / MFN duty rate as published: US column 1 General (e.g. &quot;11%&quot;, &quot;Free&quot;, &quot;2.4¢/kg&quot;); UK third-country duty for all origins (e.g. &quot;14.00%&quot;, &quot;£26.00 / 100 litre (hl)&quot;).</td></tr>
+<tr><td><code>rate_line</code></td><td>string | null</td><td>The line that carries general_rate (US 10-digit statistical lines inherit the rate of their 8-digit line).</td></tr>
+<tr><td><code>column_2_rate</code></td><td>string | null</td><td>US column 2 rate (goods of Cuba, North Korea, Belarus, Russia). null for UK.</td></tr>
+<tr><td><code>special_rates_text</code></td><td>string | null</td><td>US column 1 Special text as published, e.g. &quot;Free (A+,AU,...) 5.5% (JP)&quot;. null for UK.</td></tr>
+<tr><td><code>preferential_rates</code></td><td>array</td><td>Preferential rates. US: [{rate, applies_to: [program codes]}] parsed from special_rates_text. UK: [{rate, applies_to: [area], measure_type, quota_order_number}] for tariff preferences, preferential quotas, suspensions and other non-general duty measures. Filtered when originCountry is given; UK without originCountry lists at most 10 (see preferential_rates_total).</td></tr>
+<tr><td><code>preferential_rates_total</code></td><td>integer</td><td>How many preferential rates apply before the 10-row cap (UK without originCountry); equals the list length otherwise.</td></tr>
+<tr><td><code>additional_duties</code></td><td>array</td><td>[{reference, type, rate, applies_to, additional_code, description}]. US: Chapter 99 references from footnotes and Chapter 99 lines whose text names this code (9903 additional duties; 9902 reductions are in temporary_reductions). UK: anti-dumping, countervailing, additional duties and excise measures, with additional codes (e.g. company-specific anti-dumping). rate null = depends on conditions; see source_url.</td></tr>
+<tr><td><code>temporary_reductions</code></td><td>array</td><td>US only: HTS 9902 temporary duty reductions whose text names this code, [{reference, rate, description}]. Each applies only to the narrower goods it describes, within its effective dates; check eligibility before using its rate. Empty for UK.</td></tr>
+<tr><td><code>vat</code></td><td>array</td><td>UK VAT measures [{rate, additional_code, description}] (e.g. 20.00%, or 0.00% with additional code VATZ). Empty for US.</td></tr>
+<tr><td><code>units</code></td><td>array</td><td>Units of quantity: US units (e.g. &quot;No.&quot;, &quot;kg&quot;); UK supplementary unit (e.g. &quot;items (p/st)&quot;).</td></tr>
+<tr><td><code>origin_country</code></td><td>string | null</td><td>The originCountry used for filtering (ISO alpha-2), or null.</td></tr>
+<tr><td><code>edition</code></td><td>string | null</td><td>US HTS edition read (e.g. &quot;2026 HTS Revision 22&quot;); null for UK (the API serves today&#x27;s tariff).</td></tr>
+<tr><td><code>source_url</code></td><td>string</td><td>Official page for this code (hts.usitc.gov search or trade-tariff.service.gov.uk commodity page).</td></tr>
+<tr><td><code>provided_by</code></td><td>string</td><td>&quot;Bosco Labs (boscolabs.dev)&quot;.</td></tr>
+<tr><td><code>api_url</code></td><td>string</td><td>The official API call the data came from.</td></tr>
+<tr><td><code>attribution</code></td><td>string</td><td>Required source notice: USITC (U.S. Government work) or UK Open Government Licence v3.0 attribution.</td></tr>
+<tr><td><code>warnings</code></td><td>array</td><td>Limits that apply to this row, e.g. Chapter 99 measures not linked in the US data, UK import controls not listed, the candidate notice.</td></tr>
+<tr><td><code>disclaimer</code></td><td>string</td><td>Not a binding classification ruling; where to get one (CBP ruling, HMRC Advance Tariff Ruling).</td></tr>
+<tr><td><code>as_of</code></td><td>string</td><td>Date (YYYY-MM-DD, UTC) the tariff was read; rates are those in force at the source on that day.</td></tr>
+<tr><td><code>retrieved_at</code></td><td>string</td><td>ISO-8601 time of retrieval (UTC).</td></tr>
+<tr><td><code>duration_seconds</code></td><td>number</td><td>Seconds from start of the run to this row.</td></tr>
+</tbody></table></div>
+
+<h2>Use with AI agents (MCP)</h2>
+<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is live on the Apify Store.</p>
+<pre><code>https://mcp.apify.com?tools=bosco_labs/tariff-lookup</code></pre>
+<p>For &ldquo;What US import duty applies to kids&#x27; bicycles (wheels under 63.5 cm) from Vietnam? Give the HTS code and cite the source.&rdquo; the agent passes:</p>
+<pre><code>{ &quot;query&quot;: &quot;bicycle&quot;, &quot;market&quot;: &quot;US&quot;, &quot;originCountry&quot;: &quot;VN&quot; }</code></pre>
+<p>one 2-5 KB JSON item per code, stable <code>snake_case</code> fields, rates exactly as published (strings like &quot;11%&quot;, &quot;Free&quot;, &quot;£26.00 / 100 litre (hl)&quot;), <code>null</code> for unknown, a source link, the API call, the licence notice and the disclaimer per row. A US lookup takes about 1 s; a search 1-3 s. Each request has a 20-second limit with two retries.</p>
+<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~tariff-lookup/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.005 per lookup or search.</p>
+<h2 id="http-api">HTTP API</h2>
+<p>Also on the Bosco Labs HTTP API (beta, test mode): same input and same rows as the Actor, <strong>$0.005 per code lookup or code search (US)</strong> from prepaid credits (max 1 code or 5 candidates per call). <a href="api.html#key">Get a key</a> with a $0.50 free trial; see <a href="api.html">prices and limits</a>.</p>
+<pre><code>curl https://api.boscolabs.dev/v1/tariff-lookup \
+  -H &quot;Authorization: Bearer $BOSCO_API_KEY&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{&quot;query&quot;: &quot;bicycle&quot;, &quot;market&quot;: &quot;US&quot;, &quot;originCountry&quot;: &quot;VN&quot;}&#x27;</code></pre>
+
+<h2>Input fields</h2>
+<div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>code</code></td><td>string</td><td>A US HTS code (8 or 10 digits, e.g. &quot;8712.00.15&quot; or &quot;8712001510&quot;) or a UK commodity code (10 digits, e.g. &quot;8712003010&quot;; UK coming soon). Dots and spaces are ignored. 4 or 6 digits (or a UK code that is not declarable) fail for free with a list of the codes under it. Empty = use <code>query</code> instead. Charged as one code-lookup.</td></tr>
+<tr><td><code>query</code></td><td>string</td><td>Plain product description, 2-200 characters, e.g. &quot;bicycle&quot; or &quot;cotton t-shirt&quot;. Returns up to 5 candidate codes from the official tariff search (USITC or UK Trade Tariff), each with its rates. Candidates are not a classification: confirm them. Empty = use <code>code</code>. Charged as one code-search however many candidates come back.</td></tr>
+<tr><td><code>market</code></td><td>string</td><td>Which tariff to read: &quot;US&quot; (Harmonized Tariff Schedule, USITC) or &quot;UK&quot; (UK Global Tariff, HMRC; &quot;GB&quot; is the same). UK is coming soon: until this deployment has HMRC production API credentials, UK requests fail at once and cost nothing. Empty = &quot;US&quot;.</td></tr>
+<tr><td><code>originCountry</code></td><td>string</td><td>ISO 3166 alpha-2 code of the country the goods come from, e.g. &quot;CN&quot; or &quot;DE&quot;. UK: preferential rates, additional duties and VAT are filtered to measures that apply to that country. US: preferential programs are filtered to ones named by that country code (plus USMCA for CA/MX), and column 2 and China Section 301 notes are added. Empty = all rates, unfiltered.</td></tr>
+</tbody></table></div>
+<h2>Sources, licence and limits</h2>
+<p><strong>Is this a classification?</strong> No. A code lookup returns what the official tariff says for the code you give. A search returns the official search engine&#x27;s hits (for the US, ranked by us: lines under a heading that matches your words first). Neither is a binding ruling; the importer or declarant remains responsible. Get a binding ruling from U.S. CBP or an HMRC Advance Tariff Ruling.</p>
+<p><strong>Does it give the total duty I will pay?</strong> No. It gives the rates the tariff publishes. It does not apply rules of origin, quotas, end-use relief, valuation or the duty calculator.</p>
+<p><strong>US: are Section 301, 232 and IEEPA tariffs included?</strong> Only where the HTS data links them to the line: Chapter 99 footnotes on the line and Chapter 99 lines whose text names the code. Duties applied through Chapter 99 note lists (most Section 301 China lists, Section 232 derivatives, IEEPA reciprocal tariffs) are not linked per line in the HTS data, so every US row says so in <code>warnings</code>. Check HTS Chapter 99 for goods of China and for steel, aluminium and autos.</p>
+<p><strong>When does UK work?</strong> As soon as this deployment holds HMRC Trade Tariff production API credentials (HMRC asks production users to authenticate; the keyless host is for trying the API). Until then UK requests fail in a second with that message and cost nothing.</p>
+<p><strong>UK: what will be left out?</strong> Import controls and prohibitions (licences, certificates) are counted in <code>warnings</code>, not listed. Excise and some company-specific anti-dumping rates depend on conditions and come back with <code>rate: null</code>; follow <code>source_url</code>. Export measures, quotas&#x27; balances and Northern Ireland (XI) tariffs are not included.</p>
+<p><strong>How fresh is it?</strong> Each run reads the current US HTS edition (named in <code>edition</code>) live. UK responses are cached for up to 24 hours, as HMRC recommends (&quot;It is recommended you cache requests for 24 hours&quot;): within a run on Apify, and per server process in the Bosco Labs API.</p>
+<p><strong>Where does the data come from, and may I reuse it?</strong> USITC&#x27;s HTS REST API (a U.S. Government work, public domain in the US) and HMRC&#x27;s UK Trade Tariff API (Open Government Licence v3.0: keep the <code>attribution</code> text when you republish UK data). USITC&#x27;s disclaimer says the site is &quot;only intended to be general summary information to the public. It is not intended to provide legal advice&quot;. HMRC&#x27;s terms say &quot;If you use the Trade Tariff APIs, you must follow published guidance and usage limits&quot;, which we do: managed OAuth credentials on HMRC&#x27;s production host, the 24-hour cache, retries with backoff and a 20-second limit. Neither forbids automated access within those limits.</p>
+<p><strong>Which codes work?</strong> US: 8- and 10-digit HTS lines (description searches skip Chapters 98 and 99, which are special provisions). UK: declarable 10-digit commodity codes; anything shorter lists the declarable codes under it for free.</p>
+<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=Tariff Code &amp; Duty Lookup API">Ask for early access</a></div>
+</div>
+</article>
+</main>
+<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="privacy.html">Privacy</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
+</body>
+</html>

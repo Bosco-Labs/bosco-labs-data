@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ISIN to LEI, CIK, FIGI &amp; Ticker Resolver API</title>
+<meta name="description" content="Resolve an ISIN, LEI, CIK, ticker, FIGI or company name to issuer name, LEI, CIK, tickers, FIGIs, CFI code and EU trading venues, each with a source URL.">
+<link rel="canonical" href="https://boscolabs.dev/identifier-resolver.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bosco Labs">
+<meta property="og:title" content="ISIN to LEI, CIK, FIGI &amp; Ticker Resolver API">
+<meta property="og:description" content="Resolve an ISIN, LEI, CIK, ticker, FIGI or company name to issuer name, LEI, CIK, tickers, FIGIs, CFI code and EU trading venues, each with a source URL.">
+<meta property="og:url" content="https://boscolabs.dev/identifier-resolver.html">
+<meta property="og:image" content="https://boscolabs.dev/icons/identifier-resolver.png">
+<meta name="twitter:card" content="summary">
+<script defer src="/_vercel/insights/script.js"></script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "SoftwareApplication",
+ "name": "ISIN, LEI, CIK, FIGI & Ticker Resolver API (crosswalk)",
+ "description": "Issuer legal name, LEI, CIK, tickers, ISINs, FIGIs, CFI code and EU trading venues for one ISIN, LEI, CIK, ticker, FIGI or company name. Check digits validated first; a source URL per value. Data from GLEIF, OpenFIGI, SEC and ESMA FIRDS.",
+ "url": "https://boscolabs.dev/identifier-resolver.html",
+ "image": "https://boscolabs.dev/icons/identifier-resolver.png",
+ "applicationCategory": "DeveloperApplication",
+ "operatingSystem": "Web (Apify platform)",
+ "offers": {
+  "@type": "Offer",
+  "priceCurrency": "USD",
+  "description": "$0.002 per resolved identifier",
+  "availability": "https://schema.org/PreOrder"
+ },
+ "provider": {
+  "@type": "Organization",
+  "name": "Bosco Labs",
+  "url": "https://boscolabs.dev/"
+ }
+}
+</script>
+<style>:root{color-scheme:light dark;--head:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--body:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;--ink:#1D2721;--muted:#545F58;--bg:#F5F3EA;--surface:#EAE8DC;--line:#D6D3C3;--accent:#2E5A47;--accent-fg:#F5F3EA;--accent2:#8DA889;--accent2-text:#4A6646;--success:#36694A;--warn:#8E5D1C}
+@media (prefers-color-scheme:dark){:root{--ink:#E5E8DE;--muted:#A3ADA4;--bg:#121914;--surface:#1B241E;--line:#2B372F;--accent:#9EC7B1;--accent-fg:#121914;--accent2:#B5C9A4;--accent2-text:#B5C9A4;--success:#93C7A0;--warn:#DDB070}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--body)}h1,h2,h3,.brand{font-family:var(--head)}
+a{color:var(--accent);text-underline-offset:2px}.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+.site{border-bottom:1px solid var(--line)}.site .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;padding-top:12px;padding-bottom:12px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-weight:650;letter-spacing:-.01em}.brand img{width:30px;height:30px}
+nav{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:.95rem}nav a{color:var(--muted);text-decoration:none}nav a:hover{color:var(--ink)}
+h1{font-size:clamp(1.65rem,4vw,2.4rem);line-height:1.2;letter-spacing:-.02em;margin:0 0 12px}
+h2{font-size:1.3rem;line-height:1.3;letter-spacing:-.01em;margin:44px 0 12px}h3{font-size:1.02rem;margin:20px 0 6px}
+.hero{padding:52px 0 8px;max-width:780px}.lead{font-size:1.13rem;color:var(--muted)}.muted{color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}.chips a{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:.9rem;color:var(--ink);text-decoration:none}.chips a:hover{border-color:var(--accent)}
+.grid{list-style:none;padding:0;margin:0;display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.card-top{display:flex;gap:12px;align-items:center}.card img{width:48px;height:48px;flex:none}
+.card h3{margin:0;font-size:1rem;line-height:1.3}.card h3 a{color:var(--ink);text-decoration:none}.card h3 a:hover{text-decoration:underline}
+.card p{margin:0;font-size:.92rem;color:var(--muted)}.card .row{margin-top:auto;padding-top:6px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-size:.88rem}
+.price{font-weight:600;color:var(--ink)}.badge{display:inline-block;font-size:.78rem;font-weight:600;line-height:1.5;padding:1px 9px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.badge.live{color:var(--success)}.badge.soon{color:var(--warn)}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-fg);font-weight:650;padding:11px 18px;border-radius:10px;text-decoration:none}
+.btn.ghost{background:none;color:var(--accent);border:1px solid var(--line)}.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0}
+.crumbs{font-size:.9rem;color:var(--muted);margin:22px 0 0}.crumbs a{color:var(--muted)}
+.head{display:flex;gap:20px;align-items:flex-start;margin:18px 0 0}.head img{width:84px;height:84px;flex:none}
+.prose{max-width:800px}.facts{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));margin:22px 0}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:.95rem}.fact b{display:block;font-size:.75rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.qs{padding-left:20px}.qs li{margin:4px 0}.two{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}.two h3{margin-top:0}.two>div,.prose,main{min-width:0}
+code{font:.86em var(--mono)}:not(pre)>code{overflow-wrap:anywhere}
+pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px;overflow:auto;max-height:520px;font-size:.84rem;line-height:1.45;margin:0}
+.table{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{text-align:left;vertical-align:top;padding:7px 8px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-weight:600}td:first-child{white-space:nowrap}
+details{border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:10px 0}summary{cursor:pointer;font-weight:600}
+footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font-size:.9rem;color:var(--muted)}footer a{color:var(--muted)}
+form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:1 1 240px;min-width:0;font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}button.btn{border:0;cursor:pointer;font:inherit;font-weight:650}
+.note{border-left:3px solid var(--warn);background:var(--surface);border-radius:0 10px 10px 0;padding:10px 14px;margin:14px 0;font-size:.95rem}.notice{font-size:.88rem;color:var(--muted)}
+@media (max-width:560px){.head{flex-direction:column;gap:12px}.head img{width:64px;height:64px}.hero{padding-top:32px}}</style>
+</head>
+<body>
+<header class="site"><div class="wrap"><a class="brand" href="index.html"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav><a href="index.html#tools">Tools</a><a href="api.html">API</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
+<main class="wrap">
+<p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#finance-sec">Finance &amp; SEC</a></p>
+<article>
+<div class="head"><img src="icons/identifier-resolver.svg" alt="" width="84" height="84"><div><h1>ISIN, LEI, CIK, FIGI &amp; Ticker Resolver API (crosswalk)</h1><span class="badge soon">Coming soon to the Store</span></div></div>
+<div class="prose">
+<p class="lead"><strong>One identifier in, the whole crosswalk out:</strong> give an ISIN, LEI, SEC CIK, ticker, FIGI or company name and get the issuer&#x27;s legal name, LEI, CIK, tickers per exchange, ISINs, FIGIs, CFI code and the EU trading venues, each value with its source URL. Built for <strong>AI agents</strong> and people who join datasets keyed by different identifiers (KYC, portfolio data, filings research).</p>
+<div class="facts"><div class="fact"><b>Price</b>$0.002 per resolved identifier</div><div class="fact"><b>Domain</b>Finance &amp; SEC</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
+<p><strong>Pricing (pay per event):</strong> $0.002 per resolved identifier (<code>resolve</code>). A malformed identifier (wrong ISIN/LEI/FIGI check digit), an identifier nobody knows, or a failed source costs nothing.</p>
+<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=ISIN, LEI, CIK, FIGI &amp; Ticker Resolver API (crosswalk)">Ask for early access</a></div>
+<h2>Questions agents ask</h2>
+<ul class="qs"><li>&ldquo;What is the LEI, CIK and home-market FIGI of ISIN NL0010273215, and on how many EU venues does it trade? Cite the sources.&rdquo;</li></ul>
+</div>
+<h2>Example</h2>
+<div class="two"><div><h3>Input</h3><pre><code>{ &quot;identifier&quot;: &quot;US0378331005&quot; }</code></pre></div>
+<div><h3>Output</h3><pre><code>{
+  &quot;schema_version&quot;: &quot;1&quot;,
+  &quot;query&quot;: &quot;NL0010273215&quot;,
+  &quot;query_type&quot;: &quot;isin&quot;,
+  &quot;exchange_filter&quot;: null,
+  &quot;issuer_name&quot;: &quot;ASML Holding N.V.&quot;,
+  &quot;issuer_name_latin&quot;: null,
+  &quot;lei&quot;: &quot;724500Y6DUVHQD6OXN27&quot;,
+  &quot;lei_status&quot;: &quot;ISSUED&quot;,
+  &quot;issuer_country&quot;: &quot;NL&quot;,
+  &quot;issuer_jurisdiction&quot;: &quot;NL&quot;,
+  &quot;cik&quot;: &quot;937966&quot;,
+  &quot;tickers&quot;: [
+    { &quot;ticker&quot;: &quot;ASML&quot;, &quot;exchange&quot;: &quot;Nasdaq&quot;, &quot;source&quot;: &quot;SEC&quot;, &quot;composite_figi&quot;: null },
+    { &quot;ticker&quot;: &quot;ASMLF&quot;, &quot;exchange&quot;: &quot;OTC&quot;, &quot;source&quot;: &quot;SEC&quot;, &quot;composite_figi&quot;: null },
+    { &quot;ticker&quot;: &quot;ASML&quot;, &quot;exchange&quot;: &quot;NA&quot;, &quot;source&quot;: &quot;OpenFIGI&quot;, &quot;composite_figi&quot;: &quot;BBG000C1HSN8&quot; },
+    { &quot;ticker&quot;: &quot;ASME&quot;, &quot;exchange&quot;: &quot;GR&quot;, &quot;source&quot;: &quot;OpenFIGI&quot;, &quot;composite_figi&quot;: &quot;BBG000H4D9Z0&quot; },
+    { &quot;ticker&quot;: &quot;ASMLF&quot;, &quot;exchange&quot;: &quot;US&quot;, &quot;source&quot;: &quot;OpenFIGI&quot;, &quot;composite_figi&quot;: &quot;BBG000MW4W72&quot; }
+  ],
+  &quot;isin&quot;: &quot;NL0010273215&quot;,
+  &quot;issuer_isins&quot;: [&quot;NL0010273215&quot;, &quot;USN070592100&quot;],
+  &quot;issuer_isin_count&quot;: 2,
+  &quot;composite_figi&quot;: &quot;BBG000C1HSN8&quot;,
+  &quot;share_class_figi&quot;: &quot;BBG001S7Q066&quot;,
+  &quot;security_type&quot;: &quot;Common Stock&quot;,
+  &quot;instrument_name&quot;: &quot;ASML HOLDING&quot;,
+  &quot;cfi_code&quot;: &quot;ESVUFN&quot;,
+  &quot;currency&quot;: &quot;EUR&quot;,
+  &quot;eu_trading_venues&quot;: [
+    { &quot;mic&quot;: &quot;AQEA&quot;, &quot;trading_start&quot;: &quot;2020-11-12&quot; },
+    { &quot;mic&quot;: &quot;XAMS&quot;, &quot;trading_start&quot;: &quot;2012-11-26&quot; },
+    { &quot;mic&quot;: &quot;XETB&quot;, &quot;trading_start&quot;: &quot;2012-11-27&quot; }
+  ],
+  &quot;eu_venue_count&quot;: 48,
+  &quot;eu_venues_terminated_count&quot;: 37,
+  &quot;match_confidence&quot;: 1.0,
+  &quot;match_note&quot;: &quot;linked by identifiers only&quot;,
+  &quot;alternatives&quot;: [],
+  &quot;sources&quot;: {
+    &quot;cik&quot;: &quot;https://www.sec.gov/files/company_tickers_exchange.json&quot;,
+    &quot;figi&quot;: &quot;https://www.openfigi.com/id/BBG000C1HSN8&quot;,
+    &quot;instrument&quot;: &quot;https://registers.esma.europa.eu/solr/esma_registers_firds/select?q=isin%3ANL0010273215&amp;fq=latest_received_flag%3A1&amp;rows=500&amp;fl=isin%2Cmic%2Clei%2Cgnr_full_name%2Cgnr_cfi_code%2Cgnr_notional_curr_code%2Cmrkt_trdng_start_date%2Cmrkt_trdng_trmination_date%2Cstatus_label&amp;wt=json&quot;,
+    &quot;issuer_isins&quot;: &quot;https://api.gleif.org/api/v1/lei-records/724500Y6DUVHQD6OXN27/isins?page%5Bsize%5D=20&quot;,
+    &quot;issuer_name&quot;: &quot;https://api.gleif.org/api/v1/lei-records?filter%5Bisin%5D=NL0010273215&quot;,
+    &quot;lei&quot;: &quot;https://api.gleif.org/api/v1/lei-records?filter%5Bisin%5D=NL0010273215&quot;,
+    &quot;tickers&quot;: &quot;https://data.sec.gov/submissions/CIK0000937966.json&quot;
+  },
+  &quot;source_url&quot;: &quot;https://api.gleif.org/api/v1/lei-records?filter%5Bisin%5D=NL0010273215&quot;,
+  &quot;provided_by&quot;: &quot;Bosco Labs (boscolabs.dev)&quot;,
+  &quot;notices&quot;: [
+    &quot;LEI data: GLEIF, CC0. No endorsement by GLEIF is implied.&quot;,
+    &quot;FIGIs: OpenFIGI (public domain); security descriptions as is.&quot;,
+    &quot;Instrument data (cfi_code, instrument_name, currency, eu_trading_venues) come from ESMA&#x27;s FIRDS register and may be obtained free of charge through the ESMA website: https://registers.esma.europa.eu/publication/searchRegister?core=esma_registers_firds. ESMA does not endorse this service.&quot;
+  ],
+  &quot;warnings&quot;: [],
+  &quot;retrieved_at&quot;: &quot;2026-11-06T08:39:04+00:00&quot;,
+  &quot;duration_seconds&quot;: 0.67
+}</code></pre></div></div>
+<div class="prose">
+<h2>What you get</h2>
+<div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>schema_version</code></td><td>string</td><td>Output schema version.</td></tr>
+<tr><td><code>query</code></td><td>string</td><td>The identifier as given.</td></tr>
+<tr><td><code>query_type</code></td><td>string</td><td>How it was read: isin, lei, cik, ticker, figi or name.</td></tr>
+<tr><td><code>exchange_filter</code></td><td>string | null</td><td>The exchange given for a ticker, else null.</td></tr>
+<tr><td><code>issuer_name</code></td><td>string | null</td><td>Issuer legal name: GLEIF legal name, else SEC name, else OpenFIGI name.</td></tr>
+<tr><td><code>issuer_name_latin</code></td><td>string | null</td><td>English or transliterated GLEIF name when the legal name is not in Latin script (e.g. Japanese), else null.</td></tr>
+<tr><td><code>lei</code></td><td>string | null</td><td>Issuer Legal Entity Identifier (ISO 17442), e.g. HWUPKR0MPOU8FGXBT394.</td></tr>
+<tr><td><code>lei_status</code></td><td>string | null</td><td>GLEIF registration status: ISSUED, LAPSED, RETIRED, ...</td></tr>
+<tr><td><code>issuer_country</code></td><td>string | null</td><td>Country of the issuer&#x27;s legal address (ISO 3166 alpha-2), from GLEIF.</td></tr>
+<tr><td><code>issuer_jurisdiction</code></td><td>string | null</td><td>Legal jurisdiction from GLEIF, e.g. US-CA or NL.</td></tr>
+<tr><td><code>cik</code></td><td>string | null</td><td>SEC Central Index Key (no leading zeros) if the issuer files with the SEC, else null.</td></tr>
+<tr><td><code>tickers</code></td><td>array</td><td>Tickers with exchange: source SEC (exchange = SEC name, e.g. Nasdaq) and source OpenFIGI (exchange = Bloomberg composite code, e.g. US, GR, LN; composite_figi set), up to 10 OpenFIGI listings.</td></tr>
+<tr><td><code>isin</code></td><td>string | null</td><td>The instrument ISIN: the one asked for, else the issuer&#x27;s main share ISIN (equity shares on most EU venues in FIRDS).</td></tr>
+<tr><td><code>issuer_isins</code></td><td>array</td><td>Up to 20 ISINs GLEIF maps to the issuer&#x27;s LEI (shares, bonds, other securities).</td></tr>
+<tr><td><code>issuer_isin_count</code></td><td>integer | null</td><td>Total ISINs GLEIF maps to the LEI (null if no LEI).</td></tr>
+<tr><td><code>composite_figi</code></td><td>string | null</td><td>Composite (country-level) FIGI of the instrument&#x27;s home or US listing, e.g. BBG000B9XRY4.</td></tr>
+<tr><td><code>share_class_figi</code></td><td>string | null</td><td>Share-class FIGI (global across countries), e.g. BBG001S5N8V8.</td></tr>
+<tr><td><code>security_type</code></td><td>string | null</td><td>OpenFIGI security type, e.g. Common Stock, Depositary Receipt, Corp.</td></tr>
+<tr><td><code>instrument_name</code></td><td>string | null</td><td>Instrument name as most often reported to FIRDS, else OpenFIGI&#x27;s name.</td></tr>
+<tr><td><code>cfi_code</code></td><td>string | null</td><td>ISO 10962 CFI code from FIRDS, e.g. ESVUFR (equity, common share).</td></tr>
+<tr><td><code>currency</code></td><td>string | null</td><td>Notional currency from FIRDS (ISO 4217).</td></tr>
+<tr><td><code>eu_trading_venues</code></td><td>array</td><td>EU/EEA trading venues (MIC and first trading date) where FIRDS lists the instrument as currently traded, by MIC, up to 100.</td></tr>
+<tr><td><code>eu_venue_count</code></td><td>integer | null</td><td>Number of current EU venues in FIRDS (null if FIRDS was not reached or no ISIN is known).</td></tr>
+<tr><td><code>eu_venues_terminated_count</code></td><td>integer | null</td><td>Venues where trading has ended, per FIRDS.</td></tr>
+<tr><td><code>match_confidence</code></td><td>number</td><td>1.0 when every link is by identifier; lower when a link was made by name (0.9 exact name and jurisdiction, 0.6 ambiguous).</td></tr>
+<tr><td><code>match_note</code></td><td>string</td><td>How the identifiers were linked, in words.</td></tr>
+<tr><td><code>alternatives</code></td><td>array</td><td>Other candidate issuers (name, lei, isin, cik) when a name was matched.</td></tr>
+<tr><td><code>sources</code></td><td>object</td><td>Source URL per value: lei, cik, isin, issuer_isins, issuer_name, tickers, figi, instrument (FIRDS query).</td></tr>
+<tr><td><code>source_url</code></td><td>string | null</td><td>Main source: the GLEIF record, else SEC, FIRDS or OpenFIGI.</td></tr>
+<tr><td><code>provided_by</code></td><td>string</td><td>Bosco Labs (boscolabs.dev).</td></tr>
+<tr><td><code>notices</code></td><td>array</td><td>Licence and attribution notices (GLEIF CC0, OpenFIGI, ESMA free-of-charge notice).</td></tr>
+<tr><td><code>warnings</code></td><td>array</td><td>Sources that failed or were rate-limited, and ambiguous matches, in plain words.</td></tr>
+<tr><td><code>retrieved_at</code></td><td>string</td><td>ISO-8601 UTC time of the lookup.</td></tr>
+<tr><td><code>duration_seconds</code></td><td>number</td><td>Time the lookup took.</td></tr>
+</tbody></table></div>
+
+<h2>Use with AI agents (MCP)</h2>
+<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is live on the Apify Store.</p>
+<pre><code>https://mcp.apify.com?tools=bosco_labs/identifier-resolver</code></pre>
+<p>For &ldquo;What is the LEI, CIK and home-market FIGI of ISIN NL0010273215, and on how many EU venues does it trade? Cite the sources.&rdquo; the agent passes:</p>
+<pre><code>{ &quot;identifier&quot;: &quot;NL0010273215&quot; }</code></pre>
+<p>one small row (typically 3-8 KB), stable <code>snake_case</code> fields, <code>null</code> for unknown, a source URL per value. A resolve takes about 0.5-3 seconds (measured 0.3-1.7 s for ISINs, LEIs and CIKs; up to 6 s for names). <strong>Cost:</strong> $0.002 per resolved identifier, billed to the Apify account the MCP server is signed in with.</p>
+<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~identifier-resolver/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.002 per resolved identifier.</p>
+<h2 id="http-api">HTTP API</h2>
+<p>Also on the Bosco Labs HTTP API (beta, test mode): same input and same rows as the Actor, <strong>$0.002 per identifier resolved</strong> from prepaid credits (max 1 identifier per call). <a href="api.html#key">Get a key</a> with a $0.50 free trial; see <a href="api.html">prices and limits</a>.</p>
+<pre><code>curl https://api.boscolabs.dev/v1/identifier-resolver \
+  -H &quot;Authorization: Bearer $BOSCO_API_KEY&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{&quot;identifier&quot;: &quot;NL0010273215&quot;}&#x27;</code></pre>
+
+<h2>Input fields</h2>
+<div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>identifier</code></td><td>string (required)</td><td>ONE identifier of a security or company: an ISIN (&quot;US0378331005&quot;), an LEI (&quot;HWUPKR0MPOU8FGXBT394&quot;), an SEC CIK (&quot;320193&quot;), a ticker (&quot;AAPL&quot;, &quot;BRK.B&quot;; add exchange for non-US markets), a FIGI (&quot;BBG000B9XRY4&quot;) or a company name (&quot;Siemens AG&quot;). The type is detected automatically; ISIN, LEI and FIGI check digits are verified before any lookup, and a bad one fails in seconds with the correct digit, at no charge. Required.</td></tr>
+<tr><td><code>idType</code></td><td>string</td><td>What the identifier is. Default &quot;auto&quot;: digits only = CIK, 20 characters = LEI, 12 characters = ISIN or FIGI (by check digit), up to 6 characters without spaces = ticker (read as a name if no US ticker matches), anything else = company name. Set it for short names; numeric tickers just need exchange (&quot;7203&quot; with &quot;JT&quot;).</td></tr>
+<tr><td><code>exchange</code></td><td>string</td><td>Only for a ticker outside the US: a Bloomberg exchange code (&quot;LN&quot; London, &quot;GR&quot; Germany, &quot;NA&quot; Amsterdam, &quot;FP&quot; Paris, &quot;JT&quot; Tokyo, &quot;SW&quot; Swiss) or a 4-letter MIC (&quot;XLON&quot;, &quot;XAMS&quot;). Empty (default) = US tickers from the SEC&#x27;s list. With an exchange, an all-digit identifier is read as a ticker (&quot;7974&quot; + &quot;JT&quot; = Nintendo), not a CIK.</td></tr>
+</tbody></table></div>
+<h2>Sources, licence and limits</h2>
+<p><strong>Where does the data come from?</strong> Four official or openly licensed sources, called live: GLEIF (LEI records and the ISIN-to-LEI map), OpenFIGI (FIGIs and listings), the SEC (CIKs and US tickers) and ESMA&#x27;s FIRDS register (CFI code, instrument name, EU trading venues).</p>
+<p><strong>Can I reuse the output?</strong> The sources allow it, with these terms, quoted: - GLEIF: &quot;The data available through the Access Service are provided under the CC0 licence&quot;. You must not create the impression that the data or this service are &quot;provided or supported or authorized&quot; by GLEIF. GLEIF calls its ISIN-to-LEI files &quot;open source&quot; and names no separate licence for them; this Actor reads them through the same API. - OpenFIGI: Bloomberg &quot;hereby dedicates FIGI Identifiers to the public domain&quot;, including &quot;redistribution of the FIGI Identifiers to your customers&quot;. Names, tickers and exchange codes come with OpenFIGI&#x27;s &quot;as is&quot; disclaimer. - SEC: &quot;Information presented on sec.gov is considered public information and may be copied or further distributed&quot;. - ESMA: reproduction is &quot;authorised ... provided the source is acknowledged&quot;, and where it is sold &quot;the publisher must inform buyers that it may be obtained free of charge through ESMA website&quot;. <strong>So: the FIRDS fields in this output are available free of charge from ESMA</strong> at https://registers.esma.europa.eu/publication/searchRegister?core=esma_registers_firds. You pay for the join, the validation and the speed, not for ESMA&#x27;s data. ESMA does not endorse this service.</p>
+<p><strong>What is not covered?</strong> CUSIP and SEDOL (licensed identifiers; not used or returned). FIRDS covers only instruments admitted to or traded on EU/EEA venues, so a US-only small cap has no CFI code or venues. CIKs exist only for SEC registrants. FIRDS is searched by ISIN, LEI and share name only (one query each, no bulk download); derivatives with thousands of venue records are cut at 500 records.</p>
+<p><strong>How good is name matching?</strong> Best with the full legal name (&quot;Siemens AG&quot;, &quot;Toyota Motor Corporation&quot;). A name is matched to an exact SEC company name, else to the issuer whose shares carry that name on the most EU venues, else to an exact GLEIF name. <code>match_confidence</code>, <code>match_note</code> and <code>alternatives</code> say how sure the match is; for certainty pass an ISIN or LEI.</p>
+<p><strong>What if OpenFIGI is busy?</strong> OpenFIGI allows 25 mapping requests a minute per caller. Answers are cached for 6 hours. When the limit is hit, the row still comes back with the GLEIF, SEC and FIRDS fields, FIGI fields <code>null</code> and a warning saying when to retry. A FIGI or a non-US ticker can only be resolved through OpenFIGI, so those fail (no charge) while it is limited.</p>
+<p><strong>How fresh is it?</strong> Live on every call: GLEIF updates daily, FIRDS publishes daily, the SEC ticker list is cached for at most 6 hours per run.</p>
+<p><strong>Personal data?</strong> None. GLEIF records of sole proprietors (natural persons) are never used for name matches.</p>
+<p><strong>Is this investment advice?</strong> No. It returns identifiers and reference data as the sources publish them.</p>
+<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=ISIN, LEI, CIK, FIGI &amp; Ticker Resolver API (crosswalk)">Ask for early access</a></div>
+</div>
+</article>
+</main>
+<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="privacy.html">Privacy</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
+</body>
+</html>
