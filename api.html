@@ -74,7 +74,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <section class="hero">
 <h1>Bosco Labs HTTP API</h1>
 <span class="badge soon">Beta</span>
-<p class="lead">14 of our data tools as plain HTTPS endpoints: the same input fields and the same rows as the Apify Actors, from official sources, paid from prepaid credits. One key works for REST and for the remote MCP server.</p>
+<p class="lead">15 of our data tools as plain HTTPS endpoints: the same input fields and the same rows as the Apify Actors, from official sources, paid from prepaid credits. One key works for REST and for the remote MCP server.</p>
 <div class="actions"><a class="btn" href="#key">Get a key</a><a class="btn ghost" href="https://api.boscolabs.dev/docs">API docs</a><a class="btn ghost" href="https://api.boscolabs.dev/openapi.json">openapi.json</a></div>
 </section>
 <div class="prose">
@@ -137,6 +137,7 @@ for (const row of body.rows) console.log(row.series, row.latest_value, row.sourc
 <tr><td><a href="product-recalls.html">Product Recall Check API</a><br><code>POST /v1/product-recalls</code></td><td><strong>$0.005</strong> per product checked (every source answered)<br><span class="muted">50 credits</span></td><td>20 products</td><td></td></tr>
 <tr><td><a href="package-vulns.html">Package Vulnerability Check API</a><br><code>POST /v1/package-vulns</code></td><td><strong>$0.005</strong> per package version or CVE answered<br><span class="muted">50 credits</span></td><td>1 check</td><td></td></tr>
 <tr><td><a href="identifier-resolver.html">ISIN, LEI, CIK, FIGI &amp; Ticker Resolver API (crosswalk)</a><br><code>POST /v1/identifier-resolver</code></td><td><strong>$0.002</strong> per identifier resolved<br><span class="muted">20 credits</span></td><td>1 identifier</td><td></td></tr>
+<tr><td><a href="sec-ownership.html">SEC Ownership API</a><br><code>POST /v1/sec-ownership</code></td><td><strong>$0.0018</strong> per holding, holder or filing row (one fund or company per call)<br><span class="muted">18 credits</span></td><td>200 rows (maxResults)</td><td></td></tr>
 <tr><td><a href="tariff-lookup.html">Tariff Code &amp; Duty Lookup API</a><br><code>POST /v1/tariff-lookup</code></td><td><strong>$0.005</strong> per code lookup or code search (US or UK)<br><span class="muted">50 credits</span></td><td>1 code or 5 candidates</td><td></td></tr>
 </tbody></table></div>
 <div class="prose">

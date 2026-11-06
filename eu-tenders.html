@@ -31,13 +31,14 @@
   "@type": "Offer",
   "priceCurrency": "USD",
   "description": "$0.002 per notice",
-  "availability": "https://schema.org/PreOrder"
+  "url": "https://apify.com/bosco_labs/eu-tenders"
  },
  "provider": {
   "@type": "Organization",
   "name": "Bosco Labs",
   "url": "https://boscolabs.dev/"
- }
+ },
+ "installUrl": "https://apify.com/bosco_labs/eu-tenders"
 }
 </script>
 <style>:root{color-scheme:light dark;--head:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--body:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;--ink:#1D2721;--muted:#545F58;--bg:#F5F3EA;--surface:#EAE8DC;--line:#D6D3C3;--accent:#2E5A47;--accent-fg:#F5F3EA;--accent2:#8DA889;--accent2-text:#4A6646;--success:#36694A;--warn:#8E5D1C}
@@ -81,12 +82,12 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <main class="wrap">
 <p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#government-procurement">Government &amp; procurement</a></p>
 <article>
-<div class="head"><img src="icons/eu-tenders.svg" alt="" width="84" height="84"><div><h1>EU Public Tenders &amp; Contract Awards API (TED procurement)</h1><span class="badge soon">Coming soon to the Store</span></div></div>
+<div class="head"><img src="icons/eu-tenders.svg" alt="" width="84" height="84"><div><h1>EU Public Tenders &amp; Contract Awards API (TED procurement)</h1><span class="badge live">On Apify Store</span></div></div>
 <div class="prose">
 <p class="lead">Get <strong>European public tenders and contract awards as clean, predictable JSON</strong> from TED, filtered by keyword, buyer country, CPV code, notice type, date and value: open calls for tenders with their deadline and estimated value, award notices with the winning companies and the awarded amount, and prior information notices about planned purchases. One row per notice, the same field names for every country and notice form. For bid teams, tender-alert services, market researchers and AI agents.</p>
 <div class="facts"><div class="fact"><b>Price</b>$0.002 per notice</div><div class="fact"><b>Domain</b>Government &amp; procurement</div><div class="fact"><b>Call it</b>Apify API or MCP</div></div>
 <p><strong>Pricing (pay per event):</strong> $0.002 per notice ($2 per 1,000 notices), no start fee. You only pay for notices delivered, a notice is never charged twice in the same run, and the Actor stops at your max charge limit. With <code>onlyNewSinceLastRun</code>, scheduled runs only pay for notices you haven&#x27;t received yet.</p>
-<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=EU Public Tenders &amp; Contract Awards API (TED procurement)">Ask for early access</a></div>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/eu-tenders">Run it on Apify Store &rarr;</a></div>
 <h2>Questions agents ask</h2>
 <ul class="qs"><li>&ldquo;Find open IT tenders above 1 million euros in Germany and the Netherlands from the last two weeks and list their deadlines.&rdquo;</li><li>&ldquo;Which companies won construction contracts from Polish buyers last month, and for how much?&rdquo;</li><li>&ldquo;Alert me to new cloud hosting tenders in the Nordics every morning.&rdquo;</li></ul>
 </div>
@@ -157,7 +158,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 </tbody></table></div>
 <h2>Coverage</h2><p>Every country that publishes on TED: the 27 EU member states, Norway, Iceland, Liechtenstein, Switzerland, candidate countries and EU-funded procurement abroad; about 22,000 notices a week. History from November 2016 (complete from 2017). New notices are available the day they are published.</p>
 <h2>Use with AI agents (MCP)</h2>
-<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is live on the Apify Store.</p>
+<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>.</p>
 <pre><code>https://mcp.apify.com?tools=bosco_labs/eu-tenders</code></pre>
 <p>For &ldquo;Find open IT tenders above 1 million euros in Germany and the Netherlands from the last two weeks and list their deadlines.&rdquo; the agent passes:</p>
 <pre><code>{&quot;countries&quot;: [&quot;DE&quot;, &quot;NL&quot;], &quot;cpvCodes&quot;: [&quot;72&quot;], &quot;minValueEur&quot;: 1000000, &quot;publishedFrom&quot;: &quot;2026-10-22&quot;}</code></pre>
@@ -185,7 +186,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <p><strong>Can I get older notices?</strong> Yes: set <code>publishedFrom</code> and <code>publishedTo</code>. The TED API covers notices from November 2016 onwards (complete from 2017; checked 2026-11-05), and there is no 15,000-notice cap per run.</p>
 <p><strong>Contact details?</strong> Not included. Rows contain no contact persons, e-mail addresses or phone numbers, even where TED publishes them; they are also removed from descriptions.</p>
 <p><strong>Legal basis?</strong> TED notices may be freely reused for commercial and non-commercial purposes (Commission Decision 2011/833/EU, see the TED legal notice). Winner names are published by law; some winners are sole traders (natural persons), so if you process the data further, you are responsible for your own legal basis under GDPR.</p>
-<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=EU Public Tenders &amp; Contract Awards API (TED procurement)">Ask for early access</a></div>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/eu-tenders">Run it on Apify Store &rarr;</a></div>
 </div>
 </article>
 </main>

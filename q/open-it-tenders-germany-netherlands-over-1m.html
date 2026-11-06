@@ -85,7 +85,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="q/index.html">Questions</a> &rsaquo; <a href="eu-tenders.html">EU Public Tenders &amp; Contract Awards API (TED procurement)</a></p>
 <article class="prose">
 <h1 style="margin-top:18px">Find open IT tenders above 1 million euros in Germany and the Netherlands and list their deadlines.</h1>
-<div class="facts"><div class="fact"><b>Answered by</b><a href="eu-tenders.html">EU Public Tenders &amp; Contract Awards API (TED procurement)</a></div><div class="fact"><b>Price</b>$0.002 per notice</div><div class="fact"><b>Status</b><span class="badge soon">Coming soon to the Store</span></div></div>
+<div class="facts"><div class="fact"><b>Answered by</b><a href="eu-tenders.html">EU Public Tenders &amp; Contract Awards API (TED procurement)</a></div><div class="fact"><b>Price</b>$0.002 per notice</div><div class="fact"><b>Status</b><span class="badge live">On Apify Store</span></div></div>
 <p>The Actor queries TED, the EU&#x27;s official journal for public procurement. CPV code 72 covers IT services; a prefix matches every code under it. The default notice type is contract_notice (open calls). Each row has notice_id, title, buyer_name and buyer_country, deadline, estimated_value and currency, cpv_codes and a ted_url to the notice. With publishedFrom left empty it searches notices published in the last 7 days. minValueEur uses TED&#x27;s total value of the notice; notices without a value, or stated in another currency, are left out when it is set.</p>
 <h2>Tool input</h2>
 <pre><code>{
@@ -99,12 +99,12 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
   &quot;minValueEur&quot;: 1000000
 }</code></pre>
 <h2>Ask it from an AI agent (MCP)</h2>
-<p>Add the Apify MCP server with this tool to your MCP client (Claude, Cursor, VS Code, ...); it signs you in with OAuth or <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is live on the Apify Store.</p>
+<p>Add the Apify MCP server with this tool to your MCP client (Claude, Cursor, VS Code, ...); it signs you in with OAuth or <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>.</p>
 <pre><code>https://mcp.apify.com?tools=bosco_labs/eu-tenders</code></pre>
 <p>Then ask:</p>
 <pre><code>Use the bosco_labs/eu-tenders tool to answer: Find open IT tenders above 1 million euros in Germany and the Netherlands and list their deadlines.</code></pre>
 <h2>Call the Apify API</h2>
-<p>Runs the Actor and returns the rows in one request, billed to your Apify account ($0.002 per notice). It works once the Actor is live on the Apify Store.</p>
+<p>Runs the Actor and returns the rows in one request, billed to your Apify account ($0.002 per notice).</p>
 <pre><code>curl https://api.apify.com/v2/acts/bosco_labs~eu-tenders/run-sync-get-dataset-items \
   -H &quot;Authorization: Bearer $APIFY_TOKEN&quot; \
   -H &quot;Content-Type: application/json&quot; \
@@ -138,7 +138,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
   &quot;source_url&quot;: &quot;https://ted.europa.eu/en/notice/768694-2026/xml&quot;,
   &quot;retrieved_at&quot;: &quot;2026-11-05T16:05:27+00:00&quot;
 }</code></pre>
-<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=EU Public Tenders &amp; Contract Awards API (TED procurement)">Ask for early access</a><a class="btn ghost" href="eu-tenders.html">All fields and limits</a></div>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/eu-tenders">Run it on Apify Store &rarr;</a><a class="btn ghost" href="eu-tenders.html">All fields and limits</a></div>
 <h2>More questions for this tool</h2><ul class="qs"><li><a href="q/polish-construction-contract-awards.html">Which companies won construction contracts from Polish buyers since October 2026, and for how much?</a></li><li><a href="q/nordic-cloud-hosting-tenders-daily.html">Alert me to new cloud hosting tenders in the Nordics every morning.</a></li></ul>
 <p><a href="q/index.html">All questions</a></p>
 </article>

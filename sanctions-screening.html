@@ -31,13 +31,14 @@
   "@type": "Offer",
   "priceCurrency": "USD",
   "description": "$0.01 per name screened",
-  "availability": "https://schema.org/PreOrder"
+  "url": "https://apify.com/bosco_labs/sanctions-screening"
  },
  "provider": {
   "@type": "Organization",
   "name": "Bosco Labs",
   "url": "https://boscolabs.dev/"
- }
+ },
+ "installUrl": "https://apify.com/bosco_labs/sanctions-screening"
 }
 </script>
 <style>:root{color-scheme:light dark;--head:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--body:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;--ink:#1D2721;--muted:#545F58;--bg:#F5F3EA;--surface:#EAE8DC;--line:#D6D3C3;--accent:#2E5A47;--accent-fg:#F5F3EA;--accent2:#8DA889;--accent2-text:#4A6646;--success:#36694A;--warn:#8E5D1C}
@@ -81,12 +82,12 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <main class="wrap">
 <p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#compliance-law">Compliance &amp; law</a></p>
 <article>
-<div class="head"><img src="icons/sanctions-screening.svg" alt="" width="84" height="84"><div><h1>Sanctions Screening API: OFAC, UK, EU &amp; US export lists</h1><span class="badge soon">Coming soon to the Store</span></div></div>
+<div class="head"><img src="icons/sanctions-screening.svg" alt="" width="84" height="84"><div><h1>Sanctions Screening API: OFAC, UK, EU &amp; US export lists</h1><span class="badge live">On Apify Store</span></div></div>
 <div class="prose">
 <p class="lead"><strong>Answers &quot;is this company, vessel or person sanctioned?&quot;</strong> for one or many names, against the official OFAC SDN and non-SDN lists, the US Consolidated Screening List (Commerce Entity List, Denied Persons, State lists), the UK Sanctions List and the EU financial sanctions list. Every answer says which lists were checked and how current they were, and every match links to its official source. Built for <strong>AI agents</strong> doing KYB, compliance or procurement checks, and for people who need a quick, sourced screen.</p>
 <div class="facts"><div class="fact"><b>Price</b>$0.01 per name screened</div><div class="fact"><b>Domain</b>Compliance &amp; law</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
 <p><strong>Pricing (pay per event):</strong> $0.01 per name screened, match or no match. A run that cannot load any list fails and costs nothing.</p>
-<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=Sanctions Screening API">Ask for early access</a></div>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/sanctions-screening">Run it on Apify Store &rarr;</a></div>
 <h2>Questions agents ask</h2>
 <ul class="qs"><li>&ldquo;Before we sign with these suppliers, check whether Sovcomflot or Novo Nordisk A/S are on any sanctions list, and cite the lists you checked.&rdquo;</li></ul>
 </div>
@@ -153,7 +154,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 </tbody></table></div>
 
 <h2>Use with AI agents (MCP)</h2>
-<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is live on the Apify Store.</p>
+<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>.</p>
 <pre><code>https://mcp.apify.com?tools=bosco_labs/sanctions-screening</code></pre>
 <p>For &ldquo;Before we sign with these suppliers, check whether Sovcomflot or Novo Nordisk A/S are on any sanctions list, and cite the lists you checked.&rdquo; the agent passes:</p>
 <pre><code>{ &quot;names&quot;: [&quot;Sovcomflot&quot;, &quot;Novo Nordisk A/S&quot;] }</code></pre>
@@ -190,7 +191,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <p><strong>Why is <code>listing_date</code> null for OFAC?</strong> OFAC&#x27;s standard XML doesn&#x27;t include designation dates (only its 110 MB &quot;enhanced&quot; file does). Check the OFAC entry page in <code>source_url</code>.</p>
 <p><strong>Personal data?</strong> The lists name individuals. This Actor serves only per-name screening results (at most 5 listings per name, no bulk export) for sanctions compliance, and keeps only the fields needed to confirm or rule out a match. See <code>LEGAL.md</code>.</p>
 <p><strong>Attribution.</strong> OFAC and CSL data are US government works. This product uses the International Trade Administration&#x27;s Data API but is not endorsed or certified by the International Trade Administration. Contains public sector information licensed under the Open Government Licence v3.0 (UK Sanctions List). EU data: European Commission, Consolidated list of persons, groups and entities subject to EU financial sanctions; reformatted for matching, names as published. No endorsement by any publisher is implied.</p>
-<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=Sanctions Screening API">Ask for early access</a></div>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/sanctions-screening">Run it on Apify Store &rarr;</a></div>
 </div>
 </article>
 </main>

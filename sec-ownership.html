@@ -21,8 +21,8 @@
 {
  "@context": "https://schema.org",
  "@type": "SoftwareApplication",
- "name": "SEC Ownership API: 13F Holdings, 13D/13G Stakes, Form 144",
- "description": "Who owns a stock and who is selling, from official SEC filings: a fund's 13F holdings with quarter-over-quarter changes, the funds holding a ticker, 5%+ stakes (13D activist, 13G passive) and Form 144 planned insider sales. One ticker or fund in, small JSON out, a source link per row.",
+ "name": "SEC Ownership API: 13F, N-PORT Fund Holdings, 13D/13G, Form 144",
+ "description": "Who owns a stock, from official SEC filings: a fund manager's 13F holdings, a mutual fund's or ETF's N-PORT holdings (with changes), the funds holding a ticker, 5%+ stakes (13D/13G) and Form 144 planned insider sales. One ticker or fund in, JSON out, a source link per row.",
  "url": "https://boscolabs.dev/sec-ownership.html",
  "image": "https://boscolabs.dev/icons/sec-ownership.png",
  "applicationCategory": "DeveloperApplication",
@@ -81,14 +81,14 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <main class="wrap">
 <p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#finance-sec">Finance &amp; SEC</a></p>
 <article>
-<div class="head"><img src="icons/sec-ownership.svg" alt="" width="84" height="84"><div><h1>SEC Ownership API: 13F Holdings, 13D/13G Stakes, Form 144</h1><span class="badge soon">Coming soon to the Store</span></div></div>
+<div class="head"><img src="icons/sec-ownership.svg" alt="" width="84" height="84"><div><h1>SEC Ownership API: 13F, N-PORT Fund Holdings, 13D/13G, Form 144</h1><span class="badge soon">Coming soon to the Store</span></div></div>
 <div class="prose">
-<p class="lead"><strong>Who owns a stock and who is about to sell it, from official SEC filings</strong>: what a fund such as Berkshire Hathaway holds (13F, with changes vs the previous quarter), which funds hold a ticker, who filed a 5%+ stake (13D activist, 13G passive), and which insiders filed to sell (Form 144). For investors, analysts and AI agents.</p>
-<div class="facts"><div class="fact"><b>Price</b>$0.0018 per row</div><div class="fact"><b>Domain</b>Finance &amp; SEC</div><div class="fact"><b>Call it</b>Apify API or MCP</div></div>
+<p class="lead"><strong>Who owns a stock and who is about to sell it, from official SEC filings</strong>: what a fund such as Berkshire Hathaway holds (13F, with changes vs the previous quarter), what a mutual fund or ETF such as VOO or ARKK holds (N-PORT), which managers and funds hold a ticker, who filed a 5%+ stake (13D activist, 13G passive), and which insiders filed to sell (Form 144). For investors, analysts and AI agents.</p>
+<div class="facts"><div class="fact"><b>Price</b>$0.0018 per row</div><div class="fact"><b>Domain</b>Finance &amp; SEC</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
 <p><strong>Pricing (pay per event):</strong> $0.0018 per row ($1.80 per 1,000), no start fee.</p>
 <div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=SEC Ownership API">Ask for early access</a></div>
 <h2>Questions agents ask</h2>
-<ul class="qs"><li>&ldquo;What did Berkshire Hathaway buy and sell last quarter?&rdquo;</li><li>&ldquo;Which funds hold the most Nvidia stock?&rdquo;</li><li>&ldquo;Has anyone filed an activist 13D on Peraso?&rdquo;</li><li>&ldquo;Which insiders filed to sell more than $1 million of stock this week?&rdquo;</li></ul>
+<ul class="qs"><li>&ldquo;What did Berkshire Hathaway buy and sell last quarter?&rdquo;</li><li>&ldquo;Which funds hold the most Nvidia stock?&rdquo;</li><li>&ldquo;What are ARKK&#x27;s top holdings and what did it add last quarter?&rdquo;</li><li>&ldquo;Which ETFs and mutual funds hold Palantir?&rdquo;</li><li>&ldquo;Has anyone filed an activist 13D on Peraso?&rdquo;</li><li>&ldquo;Which insiders filed to sell more than $1 million of stock this week?&rdquo;</li></ul>
 </div>
 <h2>Example</h2>
 <div class="two"><div><h3>Input</h3><pre><code>{&quot;mode&quot;: &quot;holdings13f&quot;, &quot;filer&quot;: &quot;Berkshire Hathaway&quot;}</code></pre></div>
@@ -123,11 +123,11 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <h2>What you get</h2>
 <div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
 <tr><td><code>schema_version</code></td><td>string</td><td>Output schema version.</td></tr>
-<tr><td><code>record_type</code></td><td>string</td><td>holding = a position in one 13F filer&#x27;s portfolio; holder = one 13F filer holding the asked stock (SEC Form 13F data set); stake = one Schedule 13D/13G filing; form144 = one Form 144 notice.</td></tr>
+<tr><td><code>record_type</code></td><td>string</td><td>holding = a position in one 13F filer&#x27;s portfolio; holder = one 13F filer holding the asked stock (SEC Form 13F data set); fund_holding = a position in one mutual fund&#x27;s or ETF&#x27;s portfolio (Form N-PORT); fund_holder = one fund holding the asked stock (SEC Form N-PORT data set); stake = one Schedule 13D/13G filing; form144 = one Form 144 notice.</td></tr>
 <tr><td><code>form</code></td><td>string</td><td>Form as filed: 13F-HR or 13F-HR/A; 13D, 13D/A, 13G or 13G/A (Schedule); 144 or 144/A.</td></tr>
-<tr><td><code>filer_name</code></td><td>string | null</td><td>holding/holder: the 13F manager. stake: the first reporting person on the filing.</td></tr>
-<tr><td><code>filer_cik</code></td><td>string | null</td><td>SEC CIK (10 digits) of the 13F manager, of the 13D/13G filer, or of the person filing the Form 144.</td></tr>
-<tr><td><code>period_of_report</code></td><td>string</td><td>13F rows: the quarter end the holdings are reported for (YYYY-MM-DD).</td></tr>
+<tr><td><code>filer_name</code></td><td>string | null</td><td>holding/holder: the 13F manager. fund_holding/fund_holder: the fund (series) name. stake: the first reporting person on the filing.</td></tr>
+<tr><td><code>filer_cik</code></td><td>string | null</td><td>SEC CIK (10 digits) of the 13F manager, of the fund&#x27;s registrant (trust), of the 13D/13G filer, or of the person filing the Form 144.</td></tr>
+<tr><td><code>period_of_report</code></td><td>string</td><td>13F rows: the quarter end the holdings are reported for (YYYY-MM-DD). N-PORT rows: the date the fund&#x27;s holdings are reported as of (a fund&#x27;s fiscal quarter end, YYYY-MM-DD).</td></tr>
 <tr><td><code>accession_number</code></td><td>string</td><td>SEC accession number of the filing the row comes from.</td></tr>
 <tr><td><code>filing_date</code></td><td>string</td><td>Date the SEC received the filing (YYYY-MM-DD).</td></tr>
 <tr><td><code>issuer_name</code></td><td>string | null</td><td>Company whose securities are held, owned or to be sold, as written in the filing (13F names are often abbreviated).</td></tr>
@@ -139,15 +139,24 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <tr><td><code>ticker_candidates</code></td><td>array</td><td>When ticker is null because the issuer has several listed share classes: the issuer&#x27;s tickers, main first (e.g. [&quot;BRK-B&quot;, &quot;BRK-A&quot;]). Empty otherwise. Ticker filters match these too.</td></tr>
 <tr><td><code>put_call</code></td><td>string | null</td><td>13F rows: PUT or CALL for option positions (value = the underlying), null for shares and bonds.</td></tr>
 <tr><td><code>shares</code></td><td>number | null</td><td>13F rows: shares (or principal amount when share_type is PRN) held at quarter end, summed over the filing&#x27;s lines; 0 for a closed position. stake: shares beneficially owned by the reporting person with the highest percent.</td></tr>
-<tr><td><code>share_type</code></td><td>string | null</td><td>13F rows: SH (shares) or PRN (principal amount).</td></tr>
+<tr><td><code>share_type</code></td><td>string | null</td><td>13F and N-PORT rows: SH (shares) or PRN (principal amount); N-PORT also NC (contracts) or OU (other units).</td></tr>
 <tr><td><code>value_usd</code></td><td>number | null</td><td>13F rows: market value in US dollars at quarter end as reported (filings before 2023-01-03 reported $1,000s and are multiplied by 1,000).</td></tr>
-<tr><td><code>portfolio_pct</code></td><td>number | null</td><td>holding: value as a percentage of the filing&#x27;s total reported value.</td></tr>
+<tr><td><code>portfolio_pct</code></td><td>number | null</td><td>holding: value as a percentage of the filing&#x27;s total reported value. fund_holding/fund_holder: value as a percentage of the fund&#x27;s net assets, as filed (closed positions 0).</td></tr>
 <tr><td><code>previous_period</code></td><td>string | null</td><td>holding: the previous quarter end the change is measured against.</td></tr>
 <tr><td><code>previous_shares</code></td><td>number | null</td><td>holding: shares at the previous quarter end (0 = not held then, null = no 13F for that quarter).</td></tr>
 <tr><td><code>previous_value_usd</code></td><td>number | null</td><td>holding: value at the previous quarter end, in US dollars.</td></tr>
 <tr><td><code>shares_change</code></td><td>number | null</td><td>holding: shares minus previous_shares.</td></tr>
 <tr><td><code>shares_change_pct</code></td><td>number | null</td><td>holding: shares_change as a percentage of previous_shares (null when not held before).</td></tr>
 <tr><td><code>change</code></td><td>string | null</td><td>holding: new, increased, decreased, unchanged or closed (sold out) vs the previous quarter; null when unknown.</td></tr>
+<tr><td><code>series_id</code></td><td>string | null</td><td>N-PORT rows: the fund&#x27;s SEC series ID, e.g. S000002839 (Vanguard 500 Index Fund).</td></tr>
+<tr><td><code>registrant_name</code></td><td>string | null</td><td>N-PORT rows: the registered investment company (trust) the fund belongs to, e.g. VANGUARD INDEX FUNDS.</td></tr>
+<tr><td><code>fund_net_assets_usd</code></td><td>number | null</td><td>N-PORT rows: the fund&#x27;s net assets in US dollars at period_of_report.</td></tr>
+<tr><td><code>payoff_profile</code></td><td>string | null</td><td>N-PORT rows: Long, Short or N/A as filed.</td></tr>
+<tr><td><code>isin</code></td><td>string | null</td><td>fund_holding: the security&#x27;s ISIN when the fund reported one, e.g. US0378331005.</td></tr>
+<tr><td><code>issuer_lei</code></td><td>string | null</td><td>fund_holding: the issuer&#x27;s LEI when the fund reported one.</td></tr>
+<tr><td><code>asset_category</code></td><td>string | null</td><td>fund_holding: the N-PORT asset category, e.g. EC (common equity), EP (preferred), DBT (debt), STIV (short-term investment vehicle), DE/DIR/DCR (derivatives).</td></tr>
+<tr><td><code>currency</code></td><td>string | null</td><td>fund_holding: the currency the security is denominated in (ISO 4217); value_usd is always in US dollars.</td></tr>
+<tr><td><code>country</code></td><td>string | null</td><td>fund_holding: the investment&#x27;s country (ISO 3166 alpha-2) as filed.</td></tr>
 <tr><td><code>stake_type</code></td><td>string | null</td><td>stake: activist (Schedule 13D: may seek to influence control) or passive (Schedule 13G).</td></tr>
 <tr><td><code>amendment_no</code></td><td>integer | null</td><td>stake: amendment number on the cover page (null for an original filing).</td></tr>
 <tr><td><code>security_class</code></td><td>string | null</td><td>stake/form144: class of securities as filed, e.g. Common Stock.</td></tr>
@@ -165,7 +174,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <tr><td><code>plan_adoption_dates</code></td><td>array</td><td>form144: adoption dates of the Rule 10b5-1 trading plan, if the sale is under one (YYYY-MM-DD).</td></tr>
 <tr><td><code>notice_date</code></td><td>string | null</td><td>form144: date of the notice (YYYY-MM-DD).</td></tr>
 <tr><td><code>filing_url</code></td><td>string</td><td>EDGAR index page of the filing.</td></tr>
-<tr><td><code>source</code></td><td>string</td><td>edgar-13f (the filing&#x27;s information table), sec-13f-data-set (SEC Form 13F data set) or edgar-xml (the filing&#x27;s XML).</td></tr>
+<tr><td><code>source</code></td><td>string</td><td>edgar-13f (the filing&#x27;s information table), sec-13f-data-set (SEC Form 13F data set), edgar-nport (the fund&#x27;s N-PORT-P XML), sec-nport-data-set (SEC Form N-PORT data set) or edgar-xml (the filing&#x27;s XML).</td></tr>
 <tr><td><code>source_url</code></td><td>string</td><td>The exact SEC file the row was read from.</td></tr>
 <tr><td><code>provided_by</code></td><td>string</td><td>Who compiled this row; cite together with source_url.</td></tr>
 <tr><td><code>retrieved_at</code></td><td>string</td><td>UTC time the row was produced.</td></tr>
@@ -178,17 +187,24 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <pre><code>{&quot;mode&quot;: &quot;holdings13f&quot;, &quot;filer&quot;: &quot;Berkshire Hathaway&quot;}</code></pre>
 <p>small, typed JSON, one row per position, holder or filing, with <code>schema_version</code>, a <code>source_url</code> pointing to the exact SEC file and a <code>filing_url</code> for the filing, so the agent can cite its source. Bad input fails within seconds with a status message that says what to fix and shows a valid input.</p>
 <p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~sec-ownership/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.0018 per row.</p>
+<h2 id="http-api">HTTP API</h2>
+<p>Also on the Bosco Labs HTTP API (beta): same input and same rows as the Actor, <strong>$0.0018 per holding, holder or filing row (one fund or company per call)</strong> from prepaid credits (max 200 rows (maxResults) per call). <a href="api.html#key">Get a key</a> with a $0.50 free trial; see <a href="api.html">prices and limits</a>.</p>
+<pre><code>curl https://api.boscolabs.dev/v1/sec-ownership \
+  -H &quot;Authorization: Bearer $BOSCO_API_KEY&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{&quot;mode&quot;: &quot;holdings13f&quot;, &quot;filer&quot;: &quot;Berkshire Hathaway&quot;}&#x27;</code></pre>
 
 <h2>Input fields</h2>
 <div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
-<tr><td><code>mode</code></td><td>string</td><td>holdings13f = Form 13F: pass <code>filer</code> for a fund manager&#x27;s holdings (with changes vs the previous quarter), or <code>ticker</code>/<code>cusip</code> for the funds holding a stock. stakes13dg = Schedule 13D/13G filings about <code>ticker</code>, or new 13D filings market-wide. planned144 = Form 144 notices of planned insider sales for <code>ticker</code>, or market-wide. Default holdings13f.</td></tr>
+<tr><td><code>mode</code></td><td>string</td><td>holdings13f = Form 13F: pass <code>filer</code> for a fund manager&#x27;s holdings (with changes vs the previous quarter), or <code>ticker</code>/<code>cusip</code> for the managers holding a stock. holdingsNport = Form N-PORT: pass <code>fund</code> (a mutual fund or ETF ticker) for its holdings (with changes vs its previous report), or <code>ticker</code>/<code>cusip</code> for the mutual funds and ETFs holding a stock. stakes13dg = Schedule 13D/13G filings about <code>ticker</code>, or new 13D filings market-wide. planned144 = Form 144 notices of planned insider sales for <code>ticker</code>, or market-wide. Default holdings13f.</td></tr>
 <tr><td><code>filer</code></td><td>string</td><td>holdings13f only: the fund manager&#x27;s name or SEC CIK, e.g. &quot;Berkshire Hathaway&quot; or &quot;1067983&quot;. A name is matched with EDGAR&#x27;s company search (the first match that files 13F reports); a CIK is exact. Empty = look up the holders of <code>ticker</code>/<code>cusip</code> instead.</td></tr>
-<tr><td><code>ticker</code></td><td>string</td><td>The company the shares are in, as a current US ticker, e.g. &quot;AAPL&quot;. holdings13f: the funds holding it (or, with <code>filer</code>, only that position). stakes13dg / planned144: filings about it. Empty = whole market (stakes13dg, planned144).</td></tr>
+<tr><td><code>fund</code></td><td>string</td><td>holdingsNport only: the fund&#x27;s ticker (any share class), e.g. &quot;VOO&quot;, &quot;VFIAX&quot; or &quot;ARKK&quot;, or its SEC series ID, e.g. &quot;S000002839&quot;. Names are not searched. Empty = look up the funds holding <code>ticker</code>/<code>cusip</code> instead.</td></tr>
+<tr><td><code>ticker</code></td><td>string</td><td>The company the shares are in, as a current US ticker, e.g. &quot;AAPL&quot;. holdings13f/holdingsNport: the managers or funds holding it (or, with <code>filer</code>/<code>fund</code>, only that position). stakes13dg / planned144: filings about it. Empty = whole market (stakes13dg, planned144).</td></tr>
 <tr><td><code>issuerCik</code></td><td>string</td><td>Instead of <code>ticker</code>: the company&#x27;s SEC CIK as digits, e.g. &quot;320193&quot; for Apple. Use for delisted or renamed companies. Empty = use <code>ticker</code>.</td></tr>
-<tr><td><code>cusip</code></td><td>string</td><td>holdings13f only: the 9-character CUSIP of one share class, e.g. &quot;037833100&quot; (Apple common stock). Most precise way to ask which funds hold a security. Empty = CUSIPs found in the company&#x27;s recent Schedule 13D/13G filings (all its share classes).</td></tr>
-<tr><td><code>quarter</code></td><td>string</td><td>holdings13f only: the quarter of the holdings, as &quot;2026Q2&quot; or the quarter end &quot;2026-06-30&quot;. Empty = the newest: the filer&#x27;s latest 13F, or for holders of a stock the newest quarter in the SEC&#x27;s Form 13F data sets (13F reports are due 45 days after quarter end).</td></tr>
+<tr><td><code>cusip</code></td><td>string</td><td>holdings13f/holdingsNport only: the 9-character CUSIP of one share class, e.g. &quot;037833100&quot; (Apple common stock). Most precise way to ask which managers or funds hold a security. Empty = CUSIPs found in the company&#x27;s recent Schedule 13D/13G filings (all its share classes).</td></tr>
+<tr><td><code>quarter</code></td><td>string</td><td>holdings13f/holdingsNport only: the quarter of the holdings, as &quot;2026Q2&quot; or the quarter end &quot;2026-06-30&quot;. Empty = the newest: the filer&#x27;s or fund&#x27;s latest report, or for holders of a stock the newest SEC data set (13F reports are due 45 days after quarter end; N-PORT reports are public 60 days after a fund&#x27;s fiscal quarter end, so a fund&#x27;s report can fall in any month of the quarter).</td></tr>
 <tr><td><code>stakeForms</code></td><td>array</td><td>stakes13dg only: which forms, e.g. [&quot;13D&quot;] for new activist stakes only. Empty = all four for a ticker; 13D and 13D/A for the whole market (activist alerts).</td></tr>
-<tr><td><code>minValueUsd</code></td><td>integer</td><td>Minimum value in US dollars, e.g. 1000000. planned144: the notice&#x27;s aggregate market value; holdings13f: the position value. Default 0 = no minimum. Not used by stakes13dg.</td></tr>
+<tr><td><code>minValueUsd</code></td><td>integer</td><td>Minimum value in US dollars, e.g. 1000000. planned144: the notice&#x27;s aggregate market value; holdings13f/holdingsNport: the position value. Default 0 = no minimum. Not used by stakes13dg.</td></tr>
 <tr><td><code>dateFrom</code></td><td>string</td><td>stakes13dg / planned144: earliest filing date, YYYY-MM-DD, e.g. &quot;2026-10-01&quot;. Structured 13D/13G start 2024-12-18. Empty = <code>lookbackDays</code> before today.</td></tr>
 <tr><td><code>dateTo</code></td><td>string</td><td>stakes13dg / planned144: latest filing date, YYYY-MM-DD, e.g. &quot;2026-10-31&quot;. Empty = today, including today&#x27;s filings from the EDGAR live feed.</td></tr>
 <tr><td><code>lookbackDays</code></td><td>integer</td><td>stakes13dg / planned144, used when <code>dateFrom</code> is empty: filings from this many days back until today, e.g. 30. Empty = 365 days for a ticker&#x27;s 13D/13G, 90 for a ticker&#x27;s Form 144, 7 for the whole market.</td></tr>
@@ -196,6 +212,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 </tbody></table></div>
 <h2>Sources, licence and limits</h2>
 <p><strong>How current is 13F data?</strong> 13F reports are quarterly and due 45 days after quarter end, so holdings are up to 4.5 months old when they appear. Positions are what the manager reported: long US-listed equities, options and convertibles on the SEC&#x27;s 13(f) list; no shorts, no non-US holdings, no cash.</p>
+<p><strong>How current is N-PORT data?</strong> Funds report holdings monthly, but only the report for the last month of each fiscal quarter is made public, 60 days after that month ends. A fund&#x27;s <code>period_of_report</code> is therefore its own fiscal quarter end (ARKK: 2026-07-31; VOO: 2026-06-30), and the holders of a stock can be as of different month ends (each row says which). N-PORT covers registered funds and ETFs (open-end funds, closed-end funds, most ETFs), not money market funds or unit investment trusts such as SPY; it includes bonds, cash vehicles, derivatives and short positions (<code>payoff_profile</code>).</p>
 <p><strong>Values?</strong> As reported, in US dollars at quarter end (reports filed before 2023 used $1,000s and are converted). Amendments are applied: a restatement replaces the original report, a &quot;new holdings&quot; amendment adds to it.</p>
 <p><strong>Tickers?</strong> 13F filings carry CUSIPs, not tickers, and the SEC publishes no CUSIP-to-ticker list. The company is found by its CIK or, on 13F rows, its name in the SEC&#x27;s ticker list (renamed or oddly abbreviated names stay <code>null</code>). The share class comes from the CUSIP (Alphabet class C <code>02079K107</code> is GOOG, class A <code>02079K305</code> is GOOGL; likewise Fox, News Corp, Under Armour, Zillow and the Liberty tracking stocks) or from the class in <code>title_of_class</code> when the ticker names it (BRK-A / BRK-B, LEN / LEN-B, HEI / HEI-A). When a company has several listed classes and the row doesn&#x27;t say which, <code>ticker</code> is <code>null</code> and <code>ticker_candidates</code> lists the company&#x27;s tickers; a <code>ticker</code> filter matches those too. <code>cusip</code> is always the exact security.</p>
 <p><strong>Which funds hold a ticker: which CUSIP?</strong> The ticker&#x27;s CUSIPs are read from the company&#x27;s recent Schedule 13D/13G filings, which can cover several share classes; CUSIPs of another class (GOOGL when you ask for GOOG) are left out and named in the status message. Pass <code>cusip</code> for one exact security, or when the company has no recent 13D/13G.</p>

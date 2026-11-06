@@ -85,7 +85,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="q/index.html">Questions</a> &rsaquo; <a href="company-check.html">Company Check API</a></p>
 <article class="prose">
 <h1 style="margin-top:18px">Who is UK company 03117531, is it still active, and what do its latest accounts show?</h1>
-<div class="facts"><div class="fact"><b>Answered by</b><a href="company-check.html">Company Check API: identity, financials &amp; SEC filings in 1 call</a></div><div class="fact"><b>Price</b>$0.03 per report</div><div class="fact"><b>Status</b><span class="badge soon">Coming soon to the Store</span></div></div>
+<div class="facts"><div class="fact"><b>Answered by</b><a href="company-check.html">Company Check API: identity, financials &amp; SEC filings in 1 call</a></div><div class="fact"><b>Price</b>$0.03 per report</div><div class="fact"><b>Status</b><span class="badge live">On Apify Store</span></div></div>
 <p>A registry number with country GB is looked up directly at Companies House, so there is no name ambiguity. The report holds the identity block (name, status, incorporation date, registered office, SIC codes), the LEI from GLEIF if the company has one, and the financials from the accounts filed with Companies House, each with its source link.</p>
 <h2>Tool input</h2>
 <pre><code>{
@@ -94,12 +94,12 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
   &quot;maxYears&quot;: 3
 }</code></pre>
 <h2>Ask it from an AI agent (MCP)</h2>
-<p>Add the Apify MCP server with this tool to your MCP client (Claude, Cursor, VS Code, ...); it signs you in with OAuth or <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is live on the Apify Store.</p>
+<p>Add the Apify MCP server with this tool to your MCP client (Claude, Cursor, VS Code, ...); it signs you in with OAuth or <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>.</p>
 <pre><code>https://mcp.apify.com?tools=bosco_labs/company-check</code></pre>
 <p>Then ask:</p>
 <pre><code>Use the bosco_labs/company-check tool to answer: Who is UK company 03117531, is it still active, and what do its latest accounts show?</code></pre>
 <h2>Call the Apify API</h2>
-<p>Runs the Actor and returns the rows in one request, billed to your Apify account ($0.03 per report). It works once the Actor is live on the Apify Store.</p>
+<p>Runs the Actor and returns the rows in one request, billed to your Apify account ($0.03 per report).</p>
 <pre><code>curl https://api.apify.com/v2/acts/bosco_labs~company-check/run-sync-get-dataset-items \
   -H &quot;Authorization: Bearer $APIFY_TOKEN&quot; \
   -H &quot;Content-Type: application/json&quot; \
@@ -171,7 +171,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
   &quot;retrieved_at&quot;: &quot;2026-11-05T20:50:37+00:00&quot;,
   &quot;duration_seconds&quot;: 2.0
 }</code></pre>
-<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=Company Check API">Ask for early access</a><a class="btn ghost" href="company-check.html">All fields and limits</a></div>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/company-check">Run it on Apify Store &rarr;</a><a class="btn ghost" href="company-check.html">All fields and limits</a></div>
 <h2>More questions for this tool</h2><ul class="qs"><li><a href="q/novo-nordisk-company-check.html">Who is Novo Nordisk legally, and what were its revenue and net income in the last three years? Cite your sources.</a></li></ul>
 <p><a href="q/index.html">All questions</a></p>
 </article>

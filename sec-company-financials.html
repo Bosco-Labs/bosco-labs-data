@@ -31,13 +31,14 @@
   "@type": "Offer",
   "priceCurrency": "USD",
   "description": "$0.005 per company-period row",
-  "availability": "https://schema.org/PreOrder"
+  "url": "https://apify.com/bosco_labs/sec-company-financials"
  },
  "provider": {
   "@type": "Organization",
   "name": "Bosco Labs",
   "url": "https://boscolabs.dev/"
- }
+ },
+ "installUrl": "https://apify.com/bosco_labs/sec-company-financials"
 }
 </script>
 <style>:root{color-scheme:light dark;--head:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--body:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;--ink:#1D2721;--muted:#545F58;--bg:#F5F3EA;--surface:#EAE8DC;--line:#D6D3C3;--accent:#2E5A47;--accent-fg:#F5F3EA;--accent2:#8DA889;--accent2-text:#4A6646;--success:#36694A;--warn:#8E5D1C}
@@ -81,12 +82,12 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <main class="wrap">
 <p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#finance-sec">Finance &amp; SEC</a></p>
 <article>
-<div class="head"><img src="icons/sec-company-financials.svg" alt="" width="84" height="84"><div><h1>SEC Company Financials API: income, balance sheet, cash flow</h1><span class="badge soon">Coming soon to the Store</span></div></div>
+<div class="head"><img src="icons/sec-company-financials.svg" alt="" width="84" height="84"><div><h1>SEC Company Financials API: income, balance sheet, cash flow</h1><span class="badge live">On Apify Store</span></div></div>
 <div class="prose">
 <p class="lead">Get <strong>clean financial statements of any US-listed company from the SEC&#x27;s own XBRL data</strong>: revenue, profit, EPS, balance sheet, cash flow, free cash flow and margins, per fiscal year or per quarter, by ticker or CIK. For analysts, finance apps and AI agents that need a company&#x27;s numbers over 5-20 years without parsing filings. Every value cites <strong>the XBRL tag and the SEC filing it came from</strong>.</p>
 <div class="facts"><div class="fact"><b>Price</b>$0.005 per company-period row</div><div class="fact"><b>Domain</b>Finance &amp; SEC</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
 <p><strong>Pricing (pay per event):</strong> $0.005 per company-period row ($5 per 1,000). Five years of Apple&#x27;s annual figures cost $0.025; eight quarters $0.04. Empty or failed lookups are free, and the Actor stops at your max charge limit.</p>
-<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=SEC Company Financials API">Ask for early access</a></div>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/sec-company-financials">Run it on Apify Store &rarr;</a></div>
 <h2>Questions agents ask</h2>
 <ul class="qs"><li>&ldquo;How did Microsoft&#x27;s revenue, net income and free cash flow develop over the last 8 quarters?&rdquo;</li><li>&ldquo;Compare Nvidia, AMD and Intel on operating margin for the last 5 fiscal years.&rdquo;</li><li>&ldquo;What was JPMorgan&#x27;s net income in 2024, and which filing is it from?&rdquo;</li></ul>
 </div>
@@ -202,7 +203,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 </tbody></table></div>
 
 <h2>Use with AI agents (MCP)</h2>
-<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is live on the Apify Store.</p>
+<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>.</p>
 <pre><code>https://mcp.apify.com?tools=bosco_labs/sec-company-financials</code></pre>
 <p>For &ldquo;How did Microsoft&#x27;s revenue, net income and free cash flow develop over the last 8 quarters?&rdquo; the agent passes:</p>
 <pre><code>{&quot;tickers&quot;: [&quot;MSFT&quot;], &quot;period&quot;: &quot;quarterly&quot;, &quot;years&quot;: 2, &quot;metrics&quot;: [&quot;revenue&quot;, &quot;net_income&quot;, &quot;free_cash_flow&quot;]}</code></pre>
@@ -232,7 +233,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <p><strong>Why is a field empty for some companies?</strong> Companies tag differently. Some use their own company-specific tags instead of the standard ones (Microsoft reports sales &amp; marketing and G&amp;A separately, so <code>selling_general_and_administrative</code> is <code>null</code>); those stay <code>null</code> rather than being guessed. <code>metrics_found</code> tells you how complete a row is.</p>
 <p><strong>What is not included?</strong> Market data (share prices, market cap, valuation multiples), segment and geographic breakdowns, guidance, non-GAAP figures, and anything before a company&#x27;s first XBRL filing (2009-2011).</p>
 <p><strong>Legal basis?</strong> SEC filings are US government public records. See LEGAL.md.</p>
-<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=SEC Company Financials API">Ask for early access</a></div>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/sec-company-financials">Run it on Apify Store &rarr;</a></div>
 </div>
 </article>
 </main>

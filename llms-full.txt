@@ -10,22 +10,22 @@ Contact: support@boscolabs.dev
 - [SEC Insider Trading API (Form 4): stock transactions since 2006](https://boscolabs.dev/sec-insider-trades.html): Every insider purchase and sale reported on SEC Form 4 (directors, officers, 10% owners), from official EDGAR filings, 2006 to today, with cluster-buy and cluster-sell signals; filter by ticker, CIK, transaction code, role, value and date. Price: $0.0018 per transaction row and $0.02 per cluster signal. ([Apify Store](https://apify.com/bosco_labs/sec-insider-trades))
 - [SEC EDGAR Filings API: 8-K, 10-K, 10-Q feed since 1994](https://boscolabs.dev/sec-filings-feed.html): SEC EDGAR filings (8-K, 10-K, 10-Q, S-1, 13D, 13G, Form 4 and every other form) for any company or the whole market, live or back to 1994, from the SEC's own feeds; 8-K item codes and earnings releases (Item 2.02); links to each filing, not its text. Price: $0.001 per filing. ([Apify Store](https://apify.com/bosco_labs/sec-filings-feed))
 - [Congress Stock Trades API: US House STOCK Act since 2014](https://boscolabs.dev/us-house-trades.html): Congress stock trades: stock, option, fund and bond trades that US House members disclose in STOCK Act Periodic Transaction Reports, from the Clerk of the House's official filings since January 2014 (no Senate); ticker, amount range, owner, days to disclose. Price: $0.0018 per trade. ([Apify Store](https://apify.com/bosco_labs/us-house-trades))
-- [SEC Ownership API: 13F Holdings, 13D/13G Stakes, Form 144](https://boscolabs.dev/sec-ownership.html): Who owns a stock and who is selling, from official SEC filings: a fund's 13F holdings with quarter-over-quarter changes, the funds holding a ticker, 5%+ stakes (13D activist, 13G passive) and Form 144 planned insider sales. One ticker or fund in, small JSON out, a source link per row. Price: $0.0018 per row. (coming soon to the Apify Store)
-- [SEC Company Financials API: income, balance sheet, cash flow](https://boscolabs.dev/sec-company-financials.html): US company financials from SEC XBRL: revenue, profit, EPS, balance sheet, cash flow, free cash flow and margins per fiscal year or quarter, 2009 to today. By ticker or CIK, 10-K/10-Q and 20-F filers. Each value cites its XBRL tag and SEC filing. Q4 derived where not reported. Price: $0.005 per company-period row. (coming soon to the Apify Store)
+- [SEC Ownership API: 13F, N-PORT Fund Holdings, 13D/13G, Form 144](https://boscolabs.dev/sec-ownership.html): Who owns a stock, from official SEC filings: a fund manager's 13F holdings, a mutual fund's or ETF's N-PORT holdings (with changes), the funds holding a ticker, 5%+ stakes (13D/13G) and Form 144 planned insider sales. One ticker or fund in, JSON out, a source link per row. Price: $0.0018 per row. (coming soon to the Apify Store)
+- [SEC Company Financials API: income, balance sheet, cash flow](https://boscolabs.dev/sec-company-financials.html): US company financials from SEC XBRL: revenue, profit, EPS, balance sheet, cash flow, free cash flow and margins per fiscal year or quarter, 2009 to today. By ticker or CIK, 10-K/10-Q and 20-F filers. Each value cites its XBRL tag and SEC filing. Q4 derived where not reported. Price: $0.005 per company-period row. ([Apify Store](https://apify.com/bosco_labs/sec-company-financials))
 - [SEC Company Screener API: filter all US filers by financials](https://boscolabs.dev/sec-company-screen.html): US companies matching your filters for one calendar year or quarter: revenue, net income, margins, cash flow, assets and 30 more metrics from SEC XBRL frames, sorted and capped. Each value cites its XBRL tag and SEC filing. Same metrics as SEC Company Financials. Price: $0.002 per company returned. (coming soon to the Apify Store)
 - [EU Annual Reports API (ESEF): XBRL financial statements](https://boscolabs.dev/esef-annual-reports.html): Normalized key financials (revenue, EBIT, EBITDA, net income, EPS, assets, equity, cash flows, margins, growth) of European listed companies from official ESEF annual reports via filings.xbrl.org; 28 countries; every value linked to its XBRL fact. Price: $0.01 per run plus $0.05 per annual report; raw XBRL fact rows, if switched on, $0.0005 each. ([Apify Store](https://apify.com/bosco_labs/esef-annual-reports))
 - [ISIN, LEI, CIK, FIGI & Ticker Resolver API (crosswalk)](https://boscolabs.dev/identifier-resolver.html): Issuer legal name, LEI, CIK, tickers, ISINs, FIGIs, CFI code and EU trading venues for one ISIN, LEI, CIK, ticker, FIGI or company name. Check digits validated first; a source URL per value. Data from GLEIF, OpenFIGI, SEC and ESMA FIRDS. Price: $0.002 per resolved identifier. (coming soon to the Apify Store)
 
 ## Companies
 
-- [Company Check API: identity, financials & SEC filings in 1 call](https://boscolabs.dev/company-check.html): One company report per call: legal name, LEI, registration number, status, address and industry, years of revenue, profit, equity, assets and cash, SEC filings and FDIC bank data. Look up by name, LEI, UK, DK, NO, FR, FI or EE number, ticker, CIK or FDIC cert. Sourced values. Price: $0.03 per report. (coming soon to the Apify Store)
+- [Company Check API: identity, financials & SEC filings in 1 call](https://boscolabs.dev/company-check.html): One company report per call: legal name, LEI, registration number, status, address and industry, years of revenue, profit, equity, assets and cash, SEC filings and FDIC bank data. Look up by name, LEI, UK, DK, NO, FR, FI or EE number, ticker, CIK or FDIC cert. Sourced values. Price: $0.03 per report. ([Apify Store](https://apify.com/bosco_labs/company-check))
 - [Company Financials API: UK, Denmark & Norway accounts + LEI](https://boscolabs.dev/company-accounts.html): Financials (revenue, profit, equity, assets, cash, employees) of private and public companies from official accounts: UK Companies House, Denmark Erhvervsstyrelsen, Norway Brønnøysund; adds the LEI from GLEIF and a source per value. Price: $0.04 per company-year. ([Apify Store](https://apify.com/bosco_labs/company-accounts))
 - [UK New Companies API: daily Companies House incorporations](https://boscolabs.dev/uk-new-companies.html): New UK companies incorporated on any day (default: yesterday) from the official Companies House API: number, name, type, status, SIC codes with descriptions, registered office address and a register link. Filter by SIC prefix, location and type. No director data. Price: $0.002 per company. (coming soon to the Apify Store)
 - [Company Hiring Signals API: open roles, departments, locations](https://boscolabs.dev/company-hiring-signals.html): Is a company hiring? Open roles by department, location and remote share, newest and oldest posting dates and top titles, plus job rows with a link each. Read from the company's public Greenhouse, Lever or Ashby job board. Look up by name, domain or board URL. Price: $0.005 per company found plus $0.001 per job row. (coming soon to the Apify Store)
 
 ## Compliance & law
 
-- [Sanctions Screening API: OFAC, UK, EU & US export lists](https://boscolabs.dev/sanctions-screening.html): Is this company, vessel or person sanctioned? Returns per name: match yes/no, the listed entry, aliases, programs, listing date, identifiers and a source link, from the official OFAC SDN and non-SDN, US Consolidated Screening List, UK Sanctions List and EU lists, with each list's date. Price: $0.01 per name screened. (coming soon to the Apify Store)
+- [Sanctions Screening API: OFAC, UK, EU & US export lists](https://boscolabs.dev/sanctions-screening.html): Is this company, vessel or person sanctioned? Returns per name: match yes/no, the listed entry, aliases, programs, listing date, identifiers and a source link, from the official OFAC SDN and non-SDN, US Consolidated Screening List, UK Sanctions List and EU lists, with each list's date. Price: $0.01 per name screened. ([Apify Store](https://apify.com/bosco_labs/sanctions-screening))
 - [EU Law Lookup API (EUR-Lex): article text, in force, amendments](https://boscolabs.dev/eu-law-lookup.html): The text of an EU law article as in force today (or on a date), whether the act is in force, what amended it, plus new Official Journal acts. Ask by name (GDPR, AI Act), citation, CELEX or ELI; 24 languages. Official EUR-Lex/Cellar data with a source link per row. Price: $0.01 per act or article returned. (coming soon to the Apify Store)
 - [UK & Dutch Law Lookup API: article text by date, in force](https://boscolabs.dev/national-law-lookup.html): The text of a UK section or Dutch article as in force today (or on a date), whether it is in force and what changed it. Ask by citation: "Companies Act 2006 s 172", "BW 7:658", "artikel 13 Wet Vpb 1969". Official legislation.gov.uk and Dutch BWB data with a source link per row. Price: $0.01 per article or act returned. (coming soon to the Apify Store)
 - [Dutch Case Law API (Rechtspraak): ECLI lookup, uitspraken](https://boscolabs.dev/dutch-case-law.html): Dutch court decisions (uitspraken) by ECLI or search: court, dates, case numbers, legal area, summary (inhoudsindicatie), appeal/cassation relations, law references and optional text. Hoge Raad, Raad van State, gerechtshoven, rechtbanken. Official Rechtspraak Open Data, source link per row. Price: $0.005 per decision returned. (coming soon to the Apify Store)
@@ -35,7 +35,7 @@ Contact: support@boscolabs.dev
 
 ## Government & procurement
 
-- [EU Public Tenders & Contract Awards API (TED procurement)](https://boscolabs.dev/eu-tenders.html): EU public procurement notices from TED (Tenders Electronic Daily), the EU's official tenders journal: open calls with deadlines, contract awards with winners and values, prior information; EU, EEA and more, since 2016; filter by keyword, country, CPV code, notice type, date, EUR value. Price: $0.002 per notice. (coming soon to the Apify Store)
+- [EU Public Tenders & Contract Awards API (TED procurement)](https://boscolabs.dev/eu-tenders.html): EU public procurement notices from TED (Tenders Electronic Daily), the EU's official tenders journal: open calls with deadlines, contract awards with winners and values, prior information; EU, EEA and more, since 2016; filter by keyword, country, CPV code, notice type, date, EUR value. Price: $0.002 per notice. ([Apify Store](https://apify.com/bosco_labs/eu-tenders))
 - [Pentagon / DoD Contract Awards API: winners, amounts, tickers](https://boscolabs.dev/dod-contract-awards.html): US Department of Defense contract awards of $7.5M or more the same evening they are announced, plus USAspending.gov history since FY2008 (any federal agency); winner, amount, service, NAICS/PSC, matched to a US stock ticker with SEC shares outstanding. Price: $0.005 per award row. (coming soon to the Apify Store)
 - [US Federal Awards API: contracts & grants, all agencies](https://boscolabs.dev/us-federal-awards.html): US federal contract, grant and loan awards from every agency (USAspending.gov): winner, UEI, parent company, stock ticker, agency, amounts, dates, NAICS/PSC/assistance listing, place of performance and a source link. Filter by company, ticker, agency, keyword, state, date. Price: $0.004 per award row. (coming soon to the Apify Store)
 
@@ -148,6 +148,7 @@ Contact: support@boscolabs.dev
 - `product-recalls`: $0.005 per product checked (every source answered) (max 20 products).
 - `package-vulns`: $0.005 per package version or CVE answered (max 1 check).
 - `identifier-resolver`: $0.002 per identifier resolved (max 1 identifier).
+- `sec-ownership`: $0.0018 per holding, holder or filing row (one fund or company per call) (max 200 rows (maxResults)).
 - `tariff-lookup`: $0.005 per code lookup or code search (US or UK) (max 1 code or 5 candidates).
 
 ## SEC Insider Trading API (Form 4): stock transactions since 2006
@@ -359,32 +360,36 @@ Example questions:
 { "members": ["Pelosi"], "years": ["2024", "2025"], "transactionTypes": ["purchase"], "maxResults": 500 }
 ```
 
-## SEC Ownership API: 13F Holdings, 13D/13G Stakes, Form 144
+## SEC Ownership API: 13F, N-PORT Fund Holdings, 13D/13G, Form 144
 
 Docs: https://boscolabs.dev/sec-ownership.html
 Apify Store: coming soon
 MCP: https://mcp.apify.com?tools=bosco_labs/sec-ownership
 Price: $0.0018 per row
+API: POST https://api.boscolabs.dev/v1/sec-ownership, $0.0018 per holding, holder or filing row (one fund or company per call) (max 200 rows (maxResults))
 
-Who owns a stock and who is selling, from official SEC filings: a fund's 13F holdings with quarter-over-quarter changes, the funds holding a ticker, 5%+ stakes (13D activist, 13G passive) and Form 144 planned insider sales. One ticker or fund in, small JSON out, a source link per row.
+Who owns a stock, from official SEC filings: a fund manager's 13F holdings, a mutual fund's or ETF's N-PORT holdings (with changes), the funds holding a ticker, 5%+ stakes (13D/13G) and Form 144 planned insider sales. One ticker or fund in, JSON out, a source link per row.
 
 Example questions:
 
 - What did Berkshire Hathaway buy and sell last quarter?
 - Which funds hold the most Nvidia stock?
+- What are ARKK's top holdings and what did it add last quarter?
+- Which ETFs and mutual funds hold Palantir?
 - Has anyone filed an activist 13D on Peraso?
 - Which insiders filed to sell more than $1 million of stock this week?
 
 ### Input fields
 
-- `mode` (string): holdings13f = Form 13F: pass `filer` for a fund manager's holdings (with changes vs the previous quarter), or `ticker`/`cusip` for the funds holding a stock. stakes13dg = Schedule 13D/13G filings about `ticker`, or new 13D filings market-wide. planned144 = Form 144 notices of planned insider sales for `ticker`, or market-wide. Default holdings13f.
+- `mode` (string): holdings13f = Form 13F: pass `filer` for a fund manager's holdings (with changes vs the previous quarter), or `ticker`/`cusip` for the managers holding a stock. holdingsNport = Form N-PORT: pass `fund` (a mutual fund or ETF ticker) for its holdings (with changes vs its previous report), or `ticker`/`cusip` for the mutual funds and ETFs holding a stock. stakes13dg = Schedule 13D/13G filings about `ticker`, or new 13D filings market-wide. planned144 = Form 144 notices of planned insider sales for `ticker`, or market-wide. Default holdings13f.
 - `filer` (string): holdings13f only: the fund manager's name or SEC CIK, e.g. "Berkshire Hathaway" or "1067983". A name is matched with EDGAR's company search (the first match that files 13F reports); a CIK is exact. Empty = look up the holders of `ticker`/`cusip` instead.
-- `ticker` (string): The company the shares are in, as a current US ticker, e.g. "AAPL". holdings13f: the funds holding it (or, with `filer`, only that position). stakes13dg / planned144: filings about it. Empty = whole market (stakes13dg, planned144).
+- `fund` (string): holdingsNport only: the fund's ticker (any share class), e.g. "VOO", "VFIAX" or "ARKK", or its SEC series ID, e.g. "S000002839". Names are not searched. Empty = look up the funds holding `ticker`/`cusip` instead.
+- `ticker` (string): The company the shares are in, as a current US ticker, e.g. "AAPL". holdings13f/holdingsNport: the managers or funds holding it (or, with `filer`/`fund`, only that position). stakes13dg / planned144: filings about it. Empty = whole market (stakes13dg, planned144).
 - `issuerCik` (string): Instead of `ticker`: the company's SEC CIK as digits, e.g. "320193" for Apple. Use for delisted or renamed companies. Empty = use `ticker`.
-- `cusip` (string): holdings13f only: the 9-character CUSIP of one share class, e.g. "037833100" (Apple common stock). Most precise way to ask which funds hold a security. Empty = CUSIPs found in the company's recent Schedule 13D/13G filings (all its share classes).
-- `quarter` (string): holdings13f only: the quarter of the holdings, as "2026Q2" or the quarter end "2026-06-30". Empty = the newest: the filer's latest 13F, or for holders of a stock the newest quarter in the SEC's Form 13F data sets (13F reports are due 45 days after quarter end).
+- `cusip` (string): holdings13f/holdingsNport only: the 9-character CUSIP of one share class, e.g. "037833100" (Apple common stock). Most precise way to ask which managers or funds hold a security. Empty = CUSIPs found in the company's recent Schedule 13D/13G filings (all its share classes).
+- `quarter` (string): holdings13f/holdingsNport only: the quarter of the holdings, as "2026Q2" or the quarter end "2026-06-30". Empty = the newest: the filer's or fund's latest report, or for holders of a stock the newest SEC data set (13F reports are due 45 days after quarter end; N-PORT reports are public 60 days after a fund's fiscal quarter end, so a fund's report can fall in any month of the quarter).
 - `stakeForms` (array): stakes13dg only: which forms, e.g. ["13D"] for new activist stakes only. Empty = all four for a ticker; 13D and 13D/A for the whole market (activist alerts).
-- `minValueUsd` (integer): Minimum value in US dollars, e.g. 1000000. planned144: the notice's aggregate market value; holdings13f: the position value. Default 0 = no minimum. Not used by stakes13dg.
+- `minValueUsd` (integer): Minimum value in US dollars, e.g. 1000000. planned144: the notice's aggregate market value; holdings13f/holdingsNport: the position value. Default 0 = no minimum. Not used by stakes13dg.
 - `dateFrom` (string): stakes13dg / planned144: earliest filing date, YYYY-MM-DD, e.g. "2026-10-01". Structured 13D/13G start 2024-12-18. Empty = `lookbackDays` before today.
 - `dateTo` (string): stakes13dg / planned144: latest filing date, YYYY-MM-DD, e.g. "2026-10-31". Empty = today, including today's filings from the EDGAR live feed.
 - `lookbackDays` (integer): stakes13dg / planned144, used when `dateFrom` is empty: filings from this many days back until today, e.g. 30. Empty = 365 days for a ticker's 13D/13G, 90 for a ticker's Form 144, 7 for the whole market.
@@ -393,11 +398,11 @@ Example questions:
 ### Output fields
 
 - `schema_version` (string): Output schema version.
-- `record_type` (string): holding = a position in one 13F filer's portfolio; holder = one 13F filer holding the asked stock (SEC Form 13F data set); stake = one Schedule 13D/13G filing; form144 = one Form 144 notice.
+- `record_type` (string): holding = a position in one 13F filer's portfolio; holder = one 13F filer holding the asked stock (SEC Form 13F data set); fund_holding = a position in one mutual fund's or ETF's portfolio (Form N-PORT); fund_holder = one fund holding the asked stock (SEC Form N-PORT data set); stake = one Schedule 13D/13G filing; form144 = one Form 144 notice.
 - `form` (string): Form as filed: 13F-HR or 13F-HR/A; 13D, 13D/A, 13G or 13G/A (Schedule); 144 or 144/A.
-- `filer_name` (string | null): holding/holder: the 13F manager. stake: the first reporting person on the filing.
-- `filer_cik` (string | null): SEC CIK (10 digits) of the 13F manager, of the 13D/13G filer, or of the person filing the Form 144.
-- `period_of_report` (string): 13F rows: the quarter end the holdings are reported for (YYYY-MM-DD).
+- `filer_name` (string | null): holding/holder: the 13F manager. fund_holding/fund_holder: the fund (series) name. stake: the first reporting person on the filing.
+- `filer_cik` (string | null): SEC CIK (10 digits) of the 13F manager, of the fund's registrant (trust), of the 13D/13G filer, or of the person filing the Form 144.
+- `period_of_report` (string): 13F rows: the quarter end the holdings are reported for (YYYY-MM-DD). N-PORT rows: the date the fund's holdings are reported as of (a fund's fiscal quarter end, YYYY-MM-DD).
 - `accession_number` (string): SEC accession number of the filing the row comes from.
 - `filing_date` (string): Date the SEC received the filing (YYYY-MM-DD).
 - `issuer_name` (string | null): Company whose securities are held, owned or to be sold, as written in the filing (13F names are often abbreviated).
@@ -409,15 +414,24 @@ Example questions:
 - `ticker_candidates` (array): When ticker is null because the issuer has several listed share classes: the issuer's tickers, main first (e.g. ["BRK-B", "BRK-A"]). Empty otherwise. Ticker filters match these too.
 - `put_call` (string | null): 13F rows: PUT or CALL for option positions (value = the underlying), null for shares and bonds.
 - `shares` (number | null): 13F rows: shares (or principal amount when share_type is PRN) held at quarter end, summed over the filing's lines; 0 for a closed position. stake: shares beneficially owned by the reporting person with the highest percent.
-- `share_type` (string | null): 13F rows: SH (shares) or PRN (principal amount).
+- `share_type` (string | null): 13F and N-PORT rows: SH (shares) or PRN (principal amount); N-PORT also NC (contracts) or OU (other units).
 - `value_usd` (number | null): 13F rows: market value in US dollars at quarter end as reported (filings before 2023-01-03 reported $1,000s and are multiplied by 1,000).
-- `portfolio_pct` (number | null): holding: value as a percentage of the filing's total reported value.
+- `portfolio_pct` (number | null): holding: value as a percentage of the filing's total reported value. fund_holding/fund_holder: value as a percentage of the fund's net assets, as filed (closed positions 0).
 - `previous_period` (string | null): holding: the previous quarter end the change is measured against.
 - `previous_shares` (number | null): holding: shares at the previous quarter end (0 = not held then, null = no 13F for that quarter).
 - `previous_value_usd` (number | null): holding: value at the previous quarter end, in US dollars.
 - `shares_change` (number | null): holding: shares minus previous_shares.
 - `shares_change_pct` (number | null): holding: shares_change as a percentage of previous_shares (null when not held before).
 - `change` (string | null): holding: new, increased, decreased, unchanged or closed (sold out) vs the previous quarter; null when unknown.
+- `series_id` (string | null): N-PORT rows: the fund's SEC series ID, e.g. S000002839 (Vanguard 500 Index Fund).
+- `registrant_name` (string | null): N-PORT rows: the registered investment company (trust) the fund belongs to, e.g. VANGUARD INDEX FUNDS.
+- `fund_net_assets_usd` (number | null): N-PORT rows: the fund's net assets in US dollars at period_of_report.
+- `payoff_profile` (string | null): N-PORT rows: Long, Short or N/A as filed.
+- `isin` (string | null): fund_holding: the security's ISIN when the fund reported one, e.g. US0378331005.
+- `issuer_lei` (string | null): fund_holding: the issuer's LEI when the fund reported one.
+- `asset_category` (string | null): fund_holding: the N-PORT asset category, e.g. EC (common equity), EP (preferred), DBT (debt), STIV (short-term investment vehicle), DE/DIR/DCR (derivatives).
+- `currency` (string | null): fund_holding: the currency the security is denominated in (ISO 4217); value_usd is always in US dollars.
+- `country` (string | null): fund_holding: the investment's country (ISO 3166 alpha-2) as filed.
 - `stake_type` (string | null): stake: activist (Schedule 13D: may seek to influence control) or passive (Schedule 13G).
 - `amendment_no` (integer | null): stake: amendment number on the cover page (null for an original filing).
 - `security_class` (string | null): stake/form144: class of securities as filed, e.g. Common Stock.
@@ -435,7 +449,7 @@ Example questions:
 - `plan_adoption_dates` (array): form144: adoption dates of the Rule 10b5-1 trading plan, if the sale is under one (YYYY-MM-DD).
 - `notice_date` (string | null): form144: date of the notice (YYYY-MM-DD).
 - `filing_url` (string): EDGAR index page of the filing.
-- `source` (string): edgar-13f (the filing's information table), sec-13f-data-set (SEC Form 13F data set) or edgar-xml (the filing's XML).
+- `source` (string): edgar-13f (the filing's information table), sec-13f-data-set (SEC Form 13F data set), edgar-nport (the fund's N-PORT-P XML), sec-nport-data-set (SEC Form N-PORT data set) or edgar-xml (the filing's XML).
 - `source_url` (string): The exact SEC file the row was read from.
 - `provided_by` (string): Who compiled this row; cite together with source_url.
 - `retrieved_at` (string): UTC time the row was produced.
@@ -449,7 +463,7 @@ Example questions:
 ## SEC Company Financials API: income, balance sheet, cash flow
 
 Docs: https://boscolabs.dev/sec-company-financials.html
-Apify Store: coming soon
+Apify Store: https://apify.com/bosco_labs/sec-company-financials
 MCP: https://mcp.apify.com?tools=bosco_labs/sec-company-financials
 Price: $0.005 per company-period row
 API: POST https://api.boscolabs.dev/v1/sec-company-financials, $0.005 per company-period row (max 10 tickers/CIKs x 20 years)
@@ -787,7 +801,7 @@ Example questions:
 ## Company Check API: identity, financials & SEC filings in 1 call
 
 Docs: https://boscolabs.dev/company-check.html
-Apify Store: coming soon
+Apify Store: https://apify.com/bosco_labs/company-check
 MCP: https://mcp.apify.com?tools=bosco_labs/company-check
 Price: $0.03 per report
 API: POST https://api.boscolabs.dev/v1/company-check, $0.03 per company report (max 1 report)
@@ -1042,7 +1056,7 @@ Example questions:
 ## Sanctions Screening API: OFAC, UK, EU & US export lists
 
 Docs: https://boscolabs.dev/sanctions-screening.html
-Apify Store: coming soon
+Apify Store: https://apify.com/bosco_labs/sanctions-screening
 MCP: https://mcp.apify.com?tools=bosco_labs/sanctions-screening
 Price: $0.01 per name screened
 API: POST https://api.boscolabs.dev/v1/sanctions-screening, $0.01 per name screened (max 50 names)
@@ -1494,7 +1508,7 @@ Example questions:
 ## EU Public Tenders & Contract Awards API (TED procurement)
 
 Docs: https://boscolabs.dev/eu-tenders.html
-Apify Store: coming soon
+Apify Store: https://apify.com/bosco_labs/eu-tenders
 MCP: https://mcp.apify.com?tools=bosco_labs/eu-tenders
 Price: $0.002 per notice
 

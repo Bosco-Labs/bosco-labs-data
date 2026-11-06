@@ -31,13 +31,14 @@
   "@type": "Offer",
   "priceCurrency": "USD",
   "description": "$0.03 per report",
-  "availability": "https://schema.org/PreOrder"
+  "url": "https://apify.com/bosco_labs/company-check"
  },
  "provider": {
   "@type": "Organization",
   "name": "Bosco Labs",
   "url": "https://boscolabs.dev/"
- }
+ },
+ "installUrl": "https://apify.com/bosco_labs/company-check"
 }
 </script>
 <style>:root{color-scheme:light dark;--head:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--body:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;--ink:#1D2721;--muted:#545F58;--bg:#F5F3EA;--surface:#EAE8DC;--line:#D6D3C3;--accent:#2E5A47;--accent-fg:#F5F3EA;--accent2:#8DA889;--accent2-text:#4A6646;--success:#36694A;--warn:#8E5D1C}
@@ -81,12 +82,12 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <main class="wrap">
 <p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#companies">Companies</a></p>
 <article>
-<div class="head"><img src="icons/company-check.svg" alt="" width="84" height="84"><div><h1>Company Check API: identity, financials &amp; SEC filings in 1 call</h1><span class="badge soon">Coming soon to the Store</span></div></div>
+<div class="head"><img src="icons/company-check.svg" alt="" width="84" height="84"><div><h1>Company Check API: identity, financials &amp; SEC filings in 1 call</h1><span class="badge live">On Apify Store</span></div></div>
 <div class="prose">
 <p class="lead"><strong>One call answers &quot;who is this company and what are its numbers?&quot;</strong>: legal name, LEI, registration number, status, legal form, registered address and (France, Finland, Estonia) industry and registration date, the key figures of its last fiscal years (revenue, operating profit, net income, equity, assets, cash, employees), the US listing and latest SEC filings, and for US banks the FDIC record. Every value links to the official record it came from. Built for <strong>AI agents</strong> doing research, KYB or due diligence, and for people who want a quick, sourced company profile.</p>
 <div class="facts"><div class="fact"><b>Price</b>$0.03 per report</div><div class="fact"><b>Domain</b>Companies</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
 <p><strong>Pricing (pay per event):</strong> $0.03 per company report. A lookup that finds nothing fails in seconds and costs nothing.</p>
-<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=Company Check API">Ask for early access</a></div>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/company-check">Run it on Apify Store &rarr;</a></div>
 <h2>Questions agents ask</h2>
 <ul class="qs"><li>&ldquo;Who is Novo Nordisk legally, and what were its revenue and net income in the last three years? Cite your sources.&rdquo;</li></ul>
 </div>
@@ -171,7 +172,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 </tbody></table></div>
 
 <h2>Use with AI agents (MCP)</h2>
-<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is live on the Apify Store.</p>
+<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>.</p>
 <pre><code>https://mcp.apify.com?tools=bosco_labs/company-check</code></pre>
 <p>For &ldquo;Who is Novo Nordisk legally, and what were its revenue and net income in the last three years? Cite your sources.&rdquo; the agent passes:</p>
 <pre><code>{ &quot;query&quot;: &quot;Novo Nordisk&quot;, &quot;country&quot;: &quot;DK&quot;, &quot;maxYears&quot;: 3 }</code></pre>
@@ -214,7 +215,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <p><strong>Personal data?</strong> Company-level data only. Names of directors, officers, board members, auditors or shareholders are never requested or output (the French register&#x27;s <code>dirigeants</code> are never requested; Finland&#x27;s open data has no persons, and the address&#x27;s c/o line is dropped; the Estonian persons, shareholder and beneficial-owner files are never downloaded). Estonian sole traders (FIE) are left out of the index and name search, and a lookup by their code fails without a charge. Sole traders are natural persons: Norwegian ones are excluded from name search, French ones (entrepreneurs individuels) from name search and from lookups by SIREN, which fail without a charge; Finland&#x27;s open data holds none. Sole proprietors with an LEI (GLEIF category <code>SOLE_PROPRIETOR</code>, any country) are never candidates and are refused without a charge.</p>
 <p><strong>How fresh is it?</strong> Live: every call reads the sources directly (GLEIF is updated several times a day, registers when companies file). Exception: Estonia&#x27;s legal form, VAT number, activity and figures come from a weekly index of the register&#x27;s daily open-data files (the date is in <code>sources[].name</code>); name, status and address are read live. FDIC figures are quarterly (Call Reports).</p>
 <p><strong>Licences and attribution?</strong> French data: Sirene (INSEE) and RNE (INPI) via the government&#x27;s API Recherche d&#x27;entreprises, under the <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence/">Licence Ouverte 2.0</a>; each report&#x27;s <code>sources</code> names the source and the date of its last update. Finnish data: PRH (Finnish Patent and Registration Office) open data under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>; not endorsed by PRH, and figures are re-labelled into the fields above, otherwise unchanged. Estonian data: e-Business Register (Registrite ja Infosüsteemide Keskus, RIK) open data under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>; figures re-labelled into the fields above and EMTAK labels kept in Estonian; not endorsed by RIK. US bank data: FDIC BankFind Suite (US government data); not endorsed by the FDIC. GLEIF data is CC0.</p>
-<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=Company Check API">Ask for early access</a></div>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/company-check">Run it on Apify Store &rarr;</a></div>
 </div>
 </article>
 </main>

@@ -85,7 +85,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="q/index.html">Questions</a> &rsaquo; <a href="sec-company-financials.html">SEC Company Financials API</a></p>
 <article class="prose">
 <h1 style="margin-top:18px">Compare Nvidia, AMD and Intel on operating margin for the last 5 fiscal years.</h1>
-<div class="facts"><div class="fact"><b>Answered by</b><a href="sec-company-financials.html">SEC Company Financials API: income, balance sheet, cash flow</a></div><div class="fact"><b>Price</b>$0.005 per company-period row</div><div class="fact"><b>Status</b><span class="badge soon">Coming soon to the Store</span></div></div>
+<div class="facts"><div class="fact"><b>Answered by</b><a href="sec-company-financials.html">SEC Company Financials API: income, balance sheet, cash flow</a></div><div class="fact"><b>Price</b>$0.005 per company-period row</div><div class="fact"><b>Status</b><span class="badge live">On Apify Store</span></div></div>
 <p>One row per company per fiscal year (15 rows here). operating_margin is operating_profit divided by revenue, computed from the values as filed; revenue and operating_profit are included so the ratio can be checked. Fiscal years differ by company (Nvidia&#x27;s ends in late January), so compare fiscal_year and period_end rather than calendar years.</p>
 <h2>Tool input</h2>
 <pre><code>{
@@ -103,12 +103,12 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
   ]
 }</code></pre>
 <h2>Ask it from an AI agent (MCP)</h2>
-<p>Add the Apify MCP server with this tool to your MCP client (Claude, Cursor, VS Code, ...); it signs you in with OAuth or <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is live on the Apify Store.</p>
+<p>Add the Apify MCP server with this tool to your MCP client (Claude, Cursor, VS Code, ...); it signs you in with OAuth or <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>.</p>
 <pre><code>https://mcp.apify.com?tools=bosco_labs/sec-company-financials</code></pre>
 <p>Then ask:</p>
 <pre><code>Use the bosco_labs/sec-company-financials tool to answer: Compare Nvidia, AMD and Intel on operating margin for the last 5 fiscal years.</code></pre>
 <h2>Call the Apify API</h2>
-<p>Runs the Actor and returns the rows in one request, billed to your Apify account ($0.005 per company-period row). It works once the Actor is live on the Apify Store.</p>
+<p>Runs the Actor and returns the rows in one request, billed to your Apify account ($0.005 per company-period row).</p>
 <pre><code>curl https://api.apify.com/v2/acts/bosco_labs~sec-company-financials/run-sync-get-dataset-items \
   -H &quot;Authorization: Bearer $APIFY_TOKEN&quot; \
   -H &quot;Content-Type: application/json&quot; \
@@ -170,7 +170,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
   &quot;schema_version&quot;: &quot;1&quot;,
   &quot;retrieved_at&quot;: &quot;2026-11-05T21:38:54+00:00&quot;
 }</code></pre>
-<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=SEC Company Financials API">Ask for early access</a><a class="btn ghost" href="sec-company-financials.html">All fields and limits</a></div>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/sec-company-financials">Run it on Apify Store &rarr;</a><a class="btn ghost" href="sec-company-financials.html">All fields and limits</a></div>
 <h2>More questions for this tool</h2><ul class="qs"><li><a href="q/microsoft-quarterly-revenue-net-income-fcf.html">How did Microsoft&#x27;s revenue, net income and free cash flow develop over the last 8 quarters?</a></li></ul>
 <p><a href="q/index.html">All questions</a></p>
 </article>
