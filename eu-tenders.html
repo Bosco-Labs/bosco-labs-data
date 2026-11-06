@@ -85,7 +85,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <div class="head"><img src="icons/eu-tenders.svg" alt="" width="84" height="84"><div><h1>EU Public Tenders &amp; Contract Awards API (TED procurement)</h1><span class="badge live">On Apify Store</span></div></div>
 <div class="prose">
 <p class="lead">Get <strong>European public tenders and contract awards as clean, predictable JSON</strong> from TED, filtered by keyword, buyer country, CPV code, notice type, date and value: open calls for tenders with their deadline and estimated value, award notices with the winning companies and the awarded amount, and prior information notices about planned purchases. One row per notice, the same field names for every country and notice form. For bid teams, tender-alert services, market researchers and AI agents.</p>
-<div class="facts"><div class="fact"><b>Price</b>$0.002 per notice</div><div class="fact"><b>Domain</b>Government &amp; procurement</div><div class="fact"><b>Call it</b>Apify API or MCP</div></div>
+<div class="facts"><div class="fact"><b>Price</b>$0.002 per notice</div><div class="fact"><b>Domain</b>Government &amp; procurement</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
 <p><strong>Pricing (pay per event):</strong> $0.002 per notice ($2 per 1,000 notices), no start fee. You only pay for notices delivered, a notice is never charged twice in the same run, and the Actor stops at your max charge limit. With <code>onlyNewSinceLastRun</code>, scheduled runs only pay for notices you haven&#x27;t received yet.</p>
 <div class="actions"><a class="btn" href="https://apify.com/bosco_labs/eu-tenders">Run it on Apify Store &rarr;</a></div>
 <h2>Questions agents ask</h2>
@@ -164,6 +164,12 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <pre><code>{&quot;countries&quot;: [&quot;DE&quot;, &quot;NL&quot;], &quot;cpvCodes&quot;: [&quot;72&quot;], &quot;minValueEur&quot;: 1000000, &quot;publishedFrom&quot;: &quot;2026-10-22&quot;}</code></pre>
 <p>stable, typed JSON, one row per notice. Every row has <code>schema_version</code> and a <code>source_url</code> pointing to the official notice XML on ted.europa.eu (plus <code>ted_url</code>, the notice page), so the agent can cite its source.</p>
 <p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~eu-tenders/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.002 per notice.</p>
+<h2 id="http-api">HTTP API</h2>
+<p>Also on the Bosco Labs HTTP API (beta): same input and same rows as the Actor, <strong>$0.002 per TED notice</strong> from prepaid credits (max 200 notices (maxResults) per call). <a href="api.html#key">Get a key</a> with a $0.50 free trial; see <a href="api.html">prices and limits</a>.</p>
+<pre><code>curl https://api.boscolabs.dev/v1/eu-tenders \
+  -H &quot;Authorization: Bearer $BOSCO_API_KEY&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{&quot;countries&quot;: [&quot;DE&quot;, &quot;NL&quot;], &quot;cpvCodes&quot;: [&quot;72&quot;], &quot;minValueEur&quot;: 1000000, &quot;publishedFrom&quot;: &quot;2026-10-22&quot;}&#x27;</code></pre>
 
 <h2>Input fields</h2>
 <div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>

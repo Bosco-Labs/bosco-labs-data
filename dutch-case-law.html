@@ -84,7 +84,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <div class="head"><img src="icons/dutch-case-law.svg" alt="" width="84" height="84"><div><h1>Dutch Case Law API (Rechtspraak): ECLI lookup, uitspraken</h1><span class="badge soon">Coming soon to the Store</span></div></div>
 <div class="prose">
 <p class="lead"><strong>Look up Dutch court decisions (uitspraken) by ECLI, or search them by court, legal area, date and keywords</strong>: court, decision and publication dates, case numbers, legal areas, procedure, the court&#x27;s own summary (inhoudsindicatie), appeal / cassation / Advocate-General relations, referenced laws, and optionally the full text. Built for <strong>AI agents</strong> doing legal and compliance research, and for people who want Rechtspraak data as clean JSON.</p>
-<div class="facts"><div class="fact"><b>Price</b>$0.005 per decision returned</div><div class="fact"><b>Domain</b>Compliance &amp; law</div><div class="fact"><b>Call it</b>Apify API or MCP</div></div>
+<div class="facts"><div class="fact"><b>Price</b>$0.005 per decision returned</div><div class="fact"><b>Domain</b>Compliance &amp; law</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
 <p><strong>Pricing (pay per event):</strong> $0.005 per decision returned (<code>decision</code>). An unknown ECLI, bad input or an empty search costs nothing.</p>
 <div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=Dutch Case Law API (Rechtspraak)">Ask for early access</a></div>
 <h2>Questions agents ask</h2>
@@ -193,7 +193,13 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <pre><code>{ &quot;query&quot;: &quot;huurrecht&quot;, &quot;courts&quot;: [&quot;HR&quot;], &quot;dateFrom&quot;: &quot;2024-01-01&quot;, &quot;maxResults&quot;: 20 }</code></pre>
 <p>stable <code>snake_case</code> fields, ISO dates, <code>null</code> for unknown, a rechtspraak.nl link per decision and per related decision. <code>warnings</code> says in plain words when text was cut, an ECLI has metadata only or was replaced, or a keyword scan hit its limit. An empty search ends with a status message saying why and what to try.</p>
 <p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~dutch-case-law/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.005 per decision returned.</p>
-
+<h2 id="http-api">HTTP API</h2>
+<p>Also on the Bosco Labs HTTP API (beta): same input and same rows as the Actor, <strong>$0.005 per court decision returned</strong> from prepaid credits (max 25 ECLIs + 25 search results (maxResults) per call). <a href="api.html#key">Get a key</a> with a $0.50 free trial; see <a href="api.html">prices and limits</a>.</p>
+<pre><code>curl https://api.boscolabs.dev/v1/dutch-case-law \
+  -H &quot;Authorization: Bearer $BOSCO_API_KEY&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{&quot;query&quot;: &quot;huurrecht&quot;, &quot;courts&quot;: [&quot;HR&quot;], &quot;dateFrom&quot;: &quot;2024-01-01&quot;, &quot;maxResults&quot;: 20}&#x27;</code></pre>
+<p class="notice">Rechtspraak Open Data; no copyright on court decisions (art. 11 Auteurswet). The published decision on rechtspraak.nl is the reference text; not legal advice.</p>
 <h2>Input fields</h2>
 <div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
 <tr><td><code>ecli</code></td><td>string</td><td>One or more Dutch ECLIs, separated by commas or spaces, e.g. &quot;ECLI:NL:HR:2024:123&quot; or &quot;ECLI:NL:HR:2024:123, ECLI:NL:RVS:2024:1000&quot; (max 100). Lower case and uitspraken.rechtspraak.nl links also work. One row per ECLI; an unknown ECLI fails at no charge. Empty = search with the fields below (both can be combined: ECLI rows come first).</td></tr>

@@ -85,7 +85,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <div class="head"><img src="icons/esef-annual-reports.svg" alt="" width="84" height="84"><div><h1>EU Annual Reports API (ESEF): XBRL financial statements</h1><span class="badge live">On Apify Store</span></div></div>
 <div class="prose">
 <p class="lead">Get <strong>normalized key financials from the official ESEF annual reports of European listed companies</strong>, by LEI, company name, country or fiscal year: revenue, EBIT, EBITDA, net income, EPS, dividends, balance sheet and cash flows, plus margins, return on equity and revenue growth versus the prior year. Every number comes with <strong>the exact XBRL fact it was taken from</strong> and a link to the annual report viewer, so you can audit any value in one click. For equity analysts, finance apps and AI agents that need comparable numbers for European listed companies.</p>
-<div class="facts"><div class="fact"><b>Price</b>$0.01 per run plus $0.05 per annual report; raw XBRL fact rows, if switched on, $0.0005 each</div><div class="fact"><b>Domain</b>Finance &amp; SEC</div><div class="fact"><b>Call it</b>Apify API or MCP</div></div>
+<div class="facts"><div class="fact"><b>Price</b>$0.01 per run plus $0.05 per annual report; raw XBRL fact rows, if switched on, $0.0005 each</div><div class="fact"><b>Domain</b>Finance &amp; SEC</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
 <p><strong>Pricing (pay per event):</strong> $0.01 per run plus $0.05 per annual report ($50 per 1,000 reports). Each report includes the comparative prior year at no extra cost. Raw XBRL fact rows, if you switch them on, cost $0.0005 each. You only pay for reports delivered, the same fiscal year is never charged twice, and the Actor stops at your max charge limit.</p>
 <div class="actions"><a class="btn" href="https://apify.com/bosco_labs/esef-annual-reports">Run it on Apify Store &rarr;</a></div>
 <h2>Questions agents ask</h2>
@@ -203,6 +203,12 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <pre><code>{&quot;companyName&quot;: &quot;heineken&quot;, &quot;maxFilings&quot;: 1}</code></pre>
 <p>stable, typed JSON, one row per annual report. Every row has <code>schema_version</code> and a <code>source_url</code> pointing to the report&#x27;s xBRL-JSON on filings.xbrl.org (plus <code>viewer_url</code> and a <code>sources</code> entry per value), so the agent can cite its source. An LEI or name search covers every country; if nothing matches, the run&#x27;s status message says so.</p>
 <p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~esef-annual-reports/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.01 per run plus $0.05 per annual report; raw XBRL fact rows, if switched on, $0.0005 each.</p>
+<h2 id="http-api">HTTP API</h2>
+<p>Also on the Bosco Labs HTTP API (beta): same input and same rows as the Actor, <strong>$0.05 per annual report</strong> from prepaid credits (max 10 reports (maxFilings) per call). <a href="api.html#key">Get a key</a> with a $0.50 free trial; see <a href="api.html">prices and limits</a>.</p>
+<pre><code>curl https://api.boscolabs.dev/v1/esef-annual-reports \
+  -H &quot;Authorization: Bearer $BOSCO_API_KEY&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{&quot;companyName&quot;: &quot;heineken&quot;, &quot;maxFilings&quot;: 1}&#x27;</code></pre>
 
 <h2>Input fields</h2>
 <div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>

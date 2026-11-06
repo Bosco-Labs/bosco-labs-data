@@ -107,6 +107,12 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
   -H &quot;Authorization: Bearer $APIFY_TOKEN&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -d &#x27;{&quot;countries&quot;: [&quot;BE&quot;], &quot;periodFrom&quot;: &quot;2024-01-01&quot;, &quot;periodTo&quot;: &quot;2024-12-31&quot;, &quot;maxFilings&quot;: 20}&#x27;</code></pre>
+<h2>Call the Bosco Labs HTTP API</h2>
+<p>Bosco Labs HTTP API (beta): same input and rows, <strong>$0.05 per annual report</strong> from prepaid credits. <a href="api.html#key">Get a key</a> with a $0.50 free trial.</p>
+<pre><code>curl https://api.boscolabs.dev/v1/esef-annual-reports \
+  -H &quot;Authorization: Bearer $BOSCO_API_KEY&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{&quot;countries&quot;: [&quot;BE&quot;], &quot;periodFrom&quot;: &quot;2024-01-01&quot;, &quot;periodTo&quot;: &quot;2024-12-31&quot;, &quot;maxFilings&quot;: 20}&#x27;</code></pre>
 
 <h2>Example output</h2>
 <p class="muted">Snapshot taken 2026-11-06, source links in each row. First 1 of 1 rows (snapshot runs stop at 1 row); long values shortened.</p>

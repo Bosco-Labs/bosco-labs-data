@@ -84,7 +84,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <div class="head"><img src="icons/clinical-trials.svg" alt="" width="84" height="84"><div><h1>ClinicalTrials.gov API: trial search &amp; NCT dossier</h1><span class="badge soon">Coming soon to the Store</span></div></div>
 <div class="prose">
 <p class="lead"><strong>Answers &quot;which trials?&quot; and &quot;where does this trial stand?&quot; in one call</strong>: status, phase, sponsor, conditions, drugs, enrollment, start and primary completion dates, site countries, primary outcomes and whether results are posted, as one compact JSON row per trial with a link to its ClinicalTrials.gov record. Built for <strong>AI agents</strong> and people in pharma, biotech, health research and investing.</p>
-<div class="facts"><div class="fact"><b>Price</b>$0.004 per trial</div><div class="fact"><b>Domain</b>Macro, health &amp; places</div><div class="fact"><b>Call it</b>Apify API or MCP</div></div>
+<div class="facts"><div class="fact"><b>Price</b>$0.004 per trial</div><div class="fact"><b>Domain</b>Macro, health &amp; places</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
 <p><strong>Pricing (pay per event):</strong> $0.004 per trial returned. Invalid input, unknown NCT numbers and empty searches cost nothing.</p>
 <div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=ClinicalTrials.gov API">Ask for early access</a></div>
 <h2>Questions agents ask</h2>
@@ -188,6 +188,12 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <pre><code>{ &quot;nctIds&quot;: [&quot;NCT05813925&quot;] }</code></pre>
 <p>one row per trial (about 2-3 KB in summary mode), stable <code>snake_case</code> fields, ISO dates, numbers as numbers, <code>null</code> for unknown, a <code>source_url</code> per row. The run&#x27;s status message says how many trials matched in total (e.g. &quot;20 of 131 matching trials&quot;), which NCT numbers were not found, or why a search was empty. Typical run: under 5 seconds including start-up.</p>
 <p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~clinical-trials/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.004 per trial.</p>
+<h2 id="http-api">HTTP API</h2>
+<p>Also on the Bosco Labs HTTP API (beta): same input and same rows as the Actor, <strong>$0.004 per trial</strong> from prepaid credits (max 100 trials (maxResults) or 100 NCT numbers per call). <a href="api.html#key">Get a key</a> with a $0.50 free trial; see <a href="api.html">prices and limits</a>.</p>
+<pre><code>curl https://api.boscolabs.dev/v1/clinical-trials \
+  -H &quot;Authorization: Bearer $BOSCO_API_KEY&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{&quot;nctIds&quot;: [&quot;NCT05813925&quot;]}&#x27;</code></pre>
 
 <h2>Input fields</h2>
 <div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>

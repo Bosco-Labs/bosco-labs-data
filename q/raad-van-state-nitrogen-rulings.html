@@ -107,7 +107,13 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
   -H &quot;Authorization: Bearer $APIFY_TOKEN&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -d &#x27;{&quot;query&quot;: &quot;stikstof&quot;, &quot;courts&quot;: [&quot;RVS&quot;], &quot;dateFrom&quot;: &quot;2025-01-01&quot;, &quot;maxResults&quot;: 20}&#x27;</code></pre>
-
+<h2>Call the Bosco Labs HTTP API</h2>
+<p>Bosco Labs HTTP API (beta): same input and rows, <strong>$0.005 per court decision returned</strong> from prepaid credits. <a href="api.html#key">Get a key</a> with a $0.50 free trial.</p>
+<pre><code>curl https://api.boscolabs.dev/v1/dutch-case-law \
+  -H &quot;Authorization: Bearer $BOSCO_API_KEY&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{&quot;query&quot;: &quot;stikstof&quot;, &quot;courts&quot;: [&quot;RVS&quot;], &quot;dateFrom&quot;: &quot;2025-01-01&quot;, &quot;maxResults&quot;: 20}&#x27;</code></pre>
+<p class="notice">Rechtspraak Open Data; no copyright on court decisions (art. 11 Auteurswet). The published decision on rechtspraak.nl is the reference text; not legal advice.</p>
 <h2>Example output</h2>
 <p class="muted">Example output from the tool&#x27;s documentation (not a run of this exact question).</p>
 <pre><code>{

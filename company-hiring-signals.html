@@ -84,7 +84,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <div class="head"><img src="icons/company-hiring-signals.svg" alt="" width="84" height="84"><div><h1>Company Hiring Signals API: open roles, departments, locations</h1><span class="badge soon">Coming soon to the Store</span></div></div>
 <div class="prose">
 <p class="lead"><strong>Is a company hiring, for what, where and since when?</strong> Give company names, domains or job board URLs; get one summary per company (open roles by department, location and country, remote share, newest and oldest posting dates, top titles) plus the open jobs, each with a link to the posting. Built for <strong>AI agents</strong> doing sales prospecting, recruiting or market research, and for people who want hiring data without scraping LinkedIn or Indeed.</p>
-<div class="facts"><div class="fact"><b>Price</b>$0.005 per company found plus $0.001 per job row</div><div class="fact"><b>Domain</b>Companies</div><div class="fact"><b>Call it</b>Apify API or MCP</div></div>
+<div class="facts"><div class="fact"><b>Price</b>$0.005 per company found plus $0.001 per job row</div><div class="fact"><b>Domain</b>Companies</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
 <p><strong>Pricing (pay per event):</strong> $0.005 per company summary and $0.001 per job row. Companies without a public board on a supported provider cost nothing.</p>
 <div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=Company Hiring Signals API">Ask for early access</a></div>
 <h2>Questions agents ask</h2>
@@ -190,6 +190,12 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <pre><code>{ &quot;companies&quot;: [&quot;notion.so&quot;], &quot;keywords&quot;: [&quot;engineer&quot;], &quot;maxJobsPerCompany&quot;: 10 }</code></pre>
 <p>stable <code>snake_case</code> fields, ISO 8601 UTC dates, counts as numbers, <code>null</code> for unknown, a source URL per row. One summary is about 2-4 KB; a 5-company summary-only run is under 20 KB. Typical time: 5-15 seconds for 5 companies (Lever asks for one request per second, so many Lever lookups take a little longer).</p>
 <p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~company-hiring-signals/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.005 per company found plus $0.001 per job row.</p>
+<h2 id="http-api">HTTP API</h2>
+<p>Also on the Bosco Labs HTTP API (beta): same input and same rows as the Actor, <strong>$0.001 per unit: a company summary = 5 units ($0.005), a job row = 1 ($0.001); companies without a public job board are free</strong> from prepaid credits (max 5 companies x 200 jobs per call). <a href="api.html#key">Get a key</a> with a $0.50 free trial; see <a href="api.html">prices and limits</a>.</p>
+<pre><code>curl https://api.boscolabs.dev/v1/company-hiring-signals \
+  -H &quot;Authorization: Bearer $BOSCO_API_KEY&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{&quot;companies&quot;: [&quot;notion.so&quot;], &quot;keywords&quot;: [&quot;engineer&quot;], &quot;maxJobsPerCompany&quot;: 10}&#x27;</code></pre>
 
 <h2>Input fields</h2>
 <div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>

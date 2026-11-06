@@ -1,6 +1,6 @@
 # Bosco Labs data APIs
 
-> Bosco Labs publishes data tools for AI agents and analysts as Apify Actors that return clean, typed JSON from official sources: SEC filings, insider trades, 13F holdings and XBRL financials, US House STOCK Act trades, European ESEF annual reports, UK/Danish/Norwegian company accounts and registries, sanctions lists, EU, UK and Dutch law and case law, EU tenders, US federal and Pentagon contract awards, ECB rates and euro inflation, clinical trials, Dutch addresses, plus PDF-to-JSON and Apify dataset tools. 15 of them are also plain HTTPS endpoints that an agent can call without an account and pay per call in USDC via x402 (https://api.boscolabs.dev/v1/<tool>, see API below). Each Actor runs on the Apify platform via API or MCP and is priced per result (pay per event). Data rows carry a source link. Tools marked 'coming soon' are built but not yet public on the Store.
+> Bosco Labs publishes data tools for AI agents and analysts as Apify Actors that return clean, typed JSON from official sources: SEC filings, insider trades, 13F holdings and XBRL financials, US House STOCK Act trades, European ESEF annual reports, UK/Danish/Norwegian company accounts and registries, sanctions lists, EU, UK and Dutch law and case law, EU tenders, US federal and Pentagon contract awards, ECB rates and euro inflation, clinical trials, Dutch addresses, plus PDF-to-JSON and Apify dataset tools. 27 of them are also plain HTTPS endpoints that an agent can call without an account and pay per call in USDC via x402 (https://api.boscolabs.dev/v1/<tool>, see API below). Each Actor runs on the Apify platform via API or MCP and is priced per result (pay per event). Data rows carry a source link. Tools marked 'coming soon' are built but not yet public on the Store.
 
 Apify Store profile: https://apify.com/bosco_labs
 Contact: support@boscolabs.dev
@@ -149,6 +149,18 @@ Contact: support@boscolabs.dev
 - `product-recalls`: $0.005 per product checked (every source answered) (max 20 products).
 - `package-vulns`: $0.005 per package version or CVE answered (max 1 check).
 - `identifier-resolver`: $0.002 per identifier resolved (max 1 identifier).
+- `clinical-trials`: $0.004 per trial (max 100 trials (maxResults) or 100 NCT numbers).
+- `company-hiring-signals`: $0.001 per unit: a company summary = 5 units ($0.005), a job row = 1 ($0.001); companies without a public job board are free (max 5 companies x 200 jobs).
+- `dutch-address-lookup`: $0.002 per address resolved (unresolved inputs are free) (max 50 addresses/BAG ids or 1 postcode (100 addresses)). BAG data (Kadaster, via PDOK): Public Domain Mark 1.0. No endorsement by Kadaster or PDOK implied.
+- `dutch-case-law`: $0.005 per court decision returned (max 25 ECLIs + 25 search results (maxResults)). Rechtspraak Open Data; no copyright on court decisions (art. 11 Auteurswet). The published decision on rechtspraak.nl is the reference text; not legal advice.
+- `uk-new-companies`: $0.002 per company returned (max 200 companies (maxResults)). UK: contains public sector information licensed under the Open Government Licence v3.0 (Companies House).
+- `eu-tenders`: $0.002 per TED notice (max 200 notices (maxResults)).
+- `us-federal-awards`: $0.004 per award row (max 100 awards (maxResults)).
+- `dod-contract-awards`: $0.005 per award row (USAspending history) (max 100 awards (maxResults)).
+- `us-house-trades`: $0.0018 per PTR transaction (max 200 trades (maxResults)).
+- `sec-insider-trades`: $0.0002 per unit: a Form 4 transaction = 9 units ($0.0018), a cluster signal = 100 ($0.02) (max 5 tickers/CIKs x 183 days, 200 rows (maxResults)).
+- `company-accounts`: $0.04 per company-year (max 5 companies, 10 years per country (maxResults)).
+- `esef-annual-reports`: $0.05 per annual report (max 10 reports (maxFilings)).
 - `sec-ownership`: $0.0018 per holding, holder or filing row (one fund or company per call) (max 200 rows (maxResults)).
 - `tariff-lookup`: $0.005 per code lookup or code search (US or UK) (max 1 code or 5 candidates).
 
@@ -158,6 +170,7 @@ Docs: https://boscolabs.dev/sec-insider-trades.html
 Apify Store: https://apify.com/bosco_labs/sec-insider-trades
 MCP: https://mcp.apify.com?tools=bosco_labs/sec-insider-trades
 Price: $0.0018 per transaction row and $0.02 per cluster signal
+API: POST https://api.boscolabs.dev/v1/sec-insider-trades, $0.0002 per unit: a Form 4 transaction = 9 units ($0.0018), a cluster signal = 100 ($0.02) (max 5 tickers/CIKs x 183 days, 200 rows (maxResults))
 
 Insider trading data from SEC Form 4: every insider stock transaction (buy or sell) by directors, officers and 10% owners, from official EDGAR filings, 2006 to today. Filter by ticker, CIK, transaction code, role, value and date; adds cluster-buy and cluster-sell signals.
 
@@ -301,6 +314,7 @@ Docs: https://boscolabs.dev/us-house-trades.html
 Apify Store: https://apify.com/bosco_labs/us-house-trades
 MCP: https://mcp.apify.com?tools=bosco_labs/us-house-trades
 Price: $0.0018 per trade
+API: POST https://api.boscolabs.dev/v1/us-house-trades, $0.0018 per PTR transaction (max 200 trades (maxResults))
 
 Congress stock trades: stock trading by US House members (politicians' trade disclosures under the STOCK Act), from the Clerk's official Periodic Transaction Reports since 2014 (no Senate). Each row: ticker, amount range, owner, disclosure delay. Filter by member, ticker, type, amount, date.
 
@@ -649,6 +663,7 @@ Docs: https://boscolabs.dev/esef-annual-reports.html
 Apify Store: https://apify.com/bosco_labs/esef-annual-reports
 MCP: https://mcp.apify.com?tools=bosco_labs/esef-annual-reports
 Price: $0.01 per run plus $0.05 per annual report; raw XBRL fact rows, if switched on, $0.0005 each
+API: POST https://api.boscolabs.dev/v1/esef-annual-reports, $0.05 per annual report (max 10 reports (maxFilings))
 
 Key financials (revenue, operating income/EBIT, net income, EPS, assets, equity, cash flows, margins, growth) from the ESEF annual reports of European listed companies in 28 countries, via filings.xbrl.org. Each value links to its XBRL fact. Filter by LEI, company name, country, fiscal year.
 
@@ -850,6 +865,7 @@ Docs: https://boscolabs.dev/company-accounts.html
 Apify Store: https://apify.com/bosco_labs/company-accounts
 MCP: https://mcp.apify.com?tools=bosco_labs/company-accounts
 Price: $0.04 per company-year
+API: POST https://api.boscolabs.dev/v1/company-accounts, $0.04 per company-year (max 5 companies, 10 years per country (maxResults))
 
 Company financials (revenue, profit, equity, cash, employees) from official annual accounts, private companies included: UK Companies House (all digital years), Denmark by CVR number (all years), Norway Brønnøysund (3 years). Look up by company number, CVR or org number; adds LEI and sources.
 
@@ -923,6 +939,7 @@ Docs: https://boscolabs.dev/uk-new-companies.html
 Apify Store: coming soon
 MCP: https://mcp.apify.com?tools=bosco_labs/uk-new-companies
 Price: $0.002 per company
+API: POST https://api.boscolabs.dev/v1/uk-new-companies, $0.002 per company returned (max 200 companies (maxResults))
 
 New UK companies incorporated on any day (default: yesterday) from the official Companies House API: number, name, type, status, SIC codes with descriptions, registered office address and a register link. Filter by SIC prefix, location and type. No director data.
 
@@ -984,6 +1001,7 @@ Docs: https://boscolabs.dev/company-hiring-signals.html
 Apify Store: coming soon
 MCP: https://mcp.apify.com?tools=bosco_labs/company-hiring-signals
 Price: $0.005 per company found plus $0.001 per job row
+API: POST https://api.boscolabs.dev/v1/company-hiring-signals, $0.001 per unit: a company summary = 5 units ($0.005), a job row = 1 ($0.001); companies without a public job board are free (max 5 companies x 200 jobs)
 
 Is a company hiring? Open roles by department, location and remote share, newest and oldest posting dates and top titles, plus job rows with a link each. Read from the company's public Greenhouse, Lever or Ashby job board. Look up by name, domain or board URL.
 
@@ -1260,6 +1278,7 @@ Docs: https://boscolabs.dev/dutch-case-law.html
 Apify Store: coming soon
 MCP: https://mcp.apify.com?tools=bosco_labs/dutch-case-law
 Price: $0.005 per decision returned
+API: POST https://api.boscolabs.dev/v1/dutch-case-law, $0.005 per court decision returned (max 25 ECLIs + 25 search results (maxResults))
 
 Dutch court decisions (uitspraken) by ECLI or search: court, dates, case numbers, legal area, summary (inhoudsindicatie), appeal/cassation relations, law references and optional text. Hoge Raad, Raad van State, gerechtshoven, rechtbanken. Official Rechtspraak Open Data, source link per row.
 
@@ -1512,6 +1531,7 @@ Docs: https://boscolabs.dev/eu-tenders.html
 Apify Store: https://apify.com/bosco_labs/eu-tenders
 MCP: https://mcp.apify.com?tools=bosco_labs/eu-tenders
 Price: $0.002 per notice
+API: POST https://api.boscolabs.dev/v1/eu-tenders, $0.002 per TED notice (max 200 notices (maxResults))
 
 EU public procurement notices from TED, the EU's official tenders journal (EU, EEA and more, since 2016): open calls with deadlines, contract awards with winners and values, prior information. Filter by keyword, buyer country, CPV code, notice type, date and EUR value. Use for tender alerts.
 
@@ -1583,6 +1603,7 @@ Docs: https://boscolabs.dev/dod-contract-awards.html
 Apify Store: coming soon
 MCP: https://mcp.apify.com?tools=bosco_labs/dod-contract-awards
 Price: $0.005 per award row
+API: POST https://api.boscolabs.dev/v1/dod-contract-awards, $0.005 per award row (USAspending history) (max 100 awards (maxResults))
 
 Pentagon/DoD contract awards of $7.5M+ the same evening they are announced, plus USAspending.gov history since FY2008 (any federal agency). Winner, amount, service, NAICS/PSC, matched to a US stock ticker with SEC shares outstanding. Filter by date, agency, amount, company, ticker.
 
@@ -1680,6 +1701,7 @@ Docs: https://boscolabs.dev/us-federal-awards.html
 Apify Store: coming soon
 MCP: https://mcp.apify.com?tools=bosco_labs/us-federal-awards
 Price: $0.004 per award row
+API: POST https://api.boscolabs.dev/v1/us-federal-awards, $0.004 per award row (max 100 awards (maxResults))
 
 US federal contract, grant and loan awards from every agency (USAspending.gov): winner, UEI, parent company, stock ticker, agency, amounts, dates, NAICS/PSC/assistance listing, place of performance and a source link. Filter by company, ticker, agency, keyword, state, date.
 
@@ -1825,6 +1847,7 @@ Docs: https://boscolabs.dev/clinical-trials.html
 Apify Store: coming soon
 MCP: https://mcp.apify.com?tools=bosco_labs/clinical-trials
 Price: $0.004 per trial
+API: POST https://api.boscolabs.dev/v1/clinical-trials, $0.004 per trial (max 100 trials (maxResults) or 100 NCT numbers)
 
 Clinical trials as compact JSON rows: status, phase, sponsor, conditions, interventions, enrollment, start and primary completion dates, countries, outcomes and results. Look up NCT numbers or search by condition, drug, sponsor, phase, status, country and dates. Sourced, no contact data.
 
@@ -1946,6 +1969,7 @@ Docs: https://boscolabs.dev/dutch-address-lookup.html
 Apify Store: coming soon
 MCP: https://mcp.apify.com?tools=bosco_labs/dutch-address-lookup
 Price: $0.002 per resolved address
+API: POST https://api.boscolabs.dev/v1/dutch-address-lookup, $0.002 per address resolved (unresolved inputs are free) (max 50 addresses/BAG ids or 1 postcode (100 addresses))
 
 Validates and geocodes Dutch addresses against the official BAG register (via PDOK): postcode, BAG ids, WGS84 + RD coordinates, construction year, use, floor area and building status. Free text, postcode + house number (or range) or BAG ids; up to 100 per run. Unmatched inputs are free.
 

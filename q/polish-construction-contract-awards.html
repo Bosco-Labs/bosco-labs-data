@@ -112,6 +112,12 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
   -H &quot;Authorization: Bearer $APIFY_TOKEN&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -d &#x27;{&quot;countries&quot;: [&quot;PL&quot;], &quot;cpvCodes&quot;: [&quot;45&quot;], &quot;noticeTypes&quot;: [&quot;contract_award&quot;], &quot;publishedFrom&quot;: &quot;2026-10-01&quot;, &quot;maxResults&quot;: 50}&#x27;</code></pre>
+<h2>Call the Bosco Labs HTTP API</h2>
+<p>Bosco Labs HTTP API (beta): same input and rows, <strong>$0.002 per TED notice</strong> from prepaid credits. <a href="api.html#key">Get a key</a> with a $0.50 free trial.</p>
+<pre><code>curl https://api.boscolabs.dev/v1/eu-tenders \
+  -H &quot;Authorization: Bearer $BOSCO_API_KEY&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{&quot;countries&quot;: [&quot;PL&quot;], &quot;cpvCodes&quot;: [&quot;45&quot;], &quot;noticeTypes&quot;: [&quot;contract_award&quot;], &quot;publishedFrom&quot;: &quot;2026-10-01&quot;, &quot;maxResults&quot;: 50}&#x27;</code></pre>
 
 <h2>Example output</h2>
 <p class="muted">Example output from the tool&#x27;s documentation (not a run of this exact question).</p>
