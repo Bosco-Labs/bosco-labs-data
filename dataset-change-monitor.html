@@ -71,11 +71,13 @@ pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;pa
 .table{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{text-align:left;vertical-align:top;padding:7px 8px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-weight:600}td:first-child{white-space:nowrap}
 details{border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:10px 0}summary{cursor:pointer;font-weight:600}
 footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font-size:.9rem;color:var(--muted)}footer a{color:var(--muted)}
+form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:1 1 240px;min-width:0;font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}button.btn{border:0;cursor:pointer;font:inherit;font-weight:650}
+.note{border-left:3px solid var(--warn);background:var(--surface);border-radius:0 10px 10px 0;padding:10px 14px;margin:14px 0;font-size:.95rem}.notice{font-size:.88rem;color:var(--muted)}
 @media (max-width:560px){.head{flex-direction:column;gap:12px}.head img{width:64px;height:64px}.hero{padding-top:32px}}</style>
 </head>
 <body>
 <header class="site"><div class="wrap"><a class="brand" href="index.html"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
-<nav><a href="index.html#tools">Tools</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
+<nav><a href="index.html#tools">Tools</a><a href="api.html">API</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
 <main class="wrap">
 <p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#data-tools">Data tools</a></p>
 <article>
@@ -106,7 +108,7 @@ footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font
 <tr><td><code>change_type</code></td><td>string</td><td>new = key not seen in the previous run; changed = a compared field differs; removed = key missing from this run.</td></tr>
 <tr><td><code>key</code></td><td>object | null</td><td>The item&#x27;s key field values, e.g. {&quot;url&quot;: &quot;https://...&quot;}. null with whole-item comparison.</td></tr>
 <tr><td><code>changed_fields</code></td><td>array</td><td>changed rows: the fields that differ (top-level field names, or your watchFields paths). Empty for new and removed.</td></tr>
-<tr><td><code>previous</code></td><td>object | null</td><td>changed rows with watchFields: the old values of the changed fields. null otherwise (only hashes of other fields are kept).</td></tr>
+<tr><td><code>previous</code></td><td>object | null</td><td>changed rows: the old values of the changed fields that were kept: all watchFields, else small values (text up to 200 characters, numbers, booleans; up to 20 fields and 400 characters per item). Long text, lists and objects are left out; a field that was missing before is null. null when no old value is known, and for new and removed rows.</td></tr>
 <tr><td><code>item</code></td><td>object | null</td><td>The current item, unchanged. For removed rows: the key values (the last known identity; with whole-item comparison, the removed item minus ignored fields).</td></tr>
 <tr><td><code>monitor_name</code></td><td>string</td><td>The monitorName of this run.</td></tr>
 <tr><td><code>checked_at</code></td><td>string</td><td>When this run started the comparison (UTC, ISO 8601).</td></tr>
@@ -120,6 +122,7 @@ footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font
 <pre><code>{&quot;datasetId&quot;: &quot;&lt;the run&#x27;s dataset ID&gt;&quot;, &quot;monitorName&quot;: &quot;shop&quot;, &quot;keyFields&quot;: [&quot;url&quot;], &quot;watchFields&quot;: [&quot;price&quot;]}</code></pre>
 
 <p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~dataset-change-monitor/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.001 per change reported.</p>
+
 <h2>Input fields</h2>
 <div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
 <tr><td><code>datasetId</code></td><td>string</td><td>Apify dataset to compare with the previous run, e.g. &quot;aBcD1234efGH5678i&quot;: usually your scraper run&#x27;s default dataset. As an integration on your scraper, set it to &quot;{{resource.defaultDatasetId}}&quot; (see the README). Optional if you paste items.</td></tr>
@@ -142,10 +145,11 @@ footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font
 </tbody></table></div>
 <h2>Sources, licence and limits</h2>
 <p><strong>Why does the first run report nothing?</strong> There is nothing to compare with yet. It saves the baseline for free, so you don&#x27;t pay for every item on day one. Turn on <code>reportOnFirstRun</code> if you do want them all as new. Pasted items are the exception: they are always reported as new on a monitor&#x27;s first run.</p>
-<p><strong>Where is the saved state?</strong> In a named key-value store <code>dataset-change-monitor-state</code> in your own Apify account, under the records <code>&lt;monitorName&gt;-meta</code> and <code>&lt;monitorName&gt;-000</code> to <code>-127</code>. It holds fingerprints (hashes), the key values and, with <code>watchFields</code>, those values (with <code>compareWholeItem</code>, the items themselves, so removals can be shown). Delete those records to start over.</p>
+<p><strong>Where is the saved state?</strong> In a named key-value store <code>dataset-change-monitor-state</code> in your own Apify account, under the records <code>&lt;monitorName&gt;-meta</code> and <code>&lt;monitorName&gt;-000</code> to <code>-127</code>. It holds fingerprints (hashes), the key values and the old values of small fields (with <code>watchFields</code>, the watched values; with <code>compareWholeItem</code>, the items themselves, so removals can be shown). Delete those records to start over.</p>
+<p><strong>I updated from an older version: why is <code>previous</code> null?</strong> Older versions kept fingerprints only. The first run after the update can&#x27;t know the old values, so <code>previous</code> is null for that run&#x27;s changes; it saves them, and from the next run on <code>previous</code> is filled. Nothing else changes: no new baseline, no extra charges.</p>
 <p><strong>What if I change <code>keyFields</code>, <code>ignoreFields</code> or <code>watchFields</code>?</strong> The monitor starts a new baseline on the next run (with a warning in the log), because old and new fingerprints can&#x27;t be compared.</p>
 <p><strong>Why is &quot;removed&quot; off by default?</strong> A scraper run that stopped early, or was blocked, still &quot;succeeds&quot; with fewer items, and every missing item would be reported as removed. Turn it on when your scraper reliably returns the full list.</p>
-<p><strong>How many items can one monitor hold?</strong> Millions. The state is small: 1 million items with 10 fields took 40 MB (the largest of the 128 records 0.3 MB, far under Apify&#x27;s 9 MB limit) and under 1 GB of memory (the default); comparing them took a few minutes. Up to 8 GB of memory covers roughly 10 million items. If a state record would ever pass 9 MB, the run fails before saving and the old state stays intact: split the list over several monitors.</p>
+<p><strong>How many items can one monitor hold?</strong> Millions. Measured with 1 million shop items of 10 small fields: the state took 117 MB (the largest of the 128 records 0.95 MB, far under Apify&#x27;s 9 MB record limit) and about 600 MB of memory, under the 1 GB default; comparing them took about a minute. Items with 20+ text fields need up to about 1.3 GB per million: give such a monitor 2 GB of memory. Up to 8 GB of memory covers roughly 8 million small items. Past that, a state record would pass 9 MB: the run then saves fingerprints only (<code>previous</code> stays null, with a warning in the log; use <code>watchFields</code> for the fields whose old values you need). If even that passes 9 MB, the run fails before saving and the old state stays intact: split the list over several monitors.</p>
 <p><strong>What if the run hits my max charge limit?</strong> It stops pushing rows. Changes that weren&#x27;t reported are not marked as seen, so the next run reports them.</p>
 <p><strong>What if the run crashes or is restarted?</strong> The state is saved only at the end, after the changes are in the dataset, so a crash loses nothing: the next run finds the same changes. After a platform restart, rows already written are not charged again.</p>
 <p><strong>Two items with the same key in one dataset?</strong> The first one counts; the rest are skipped and counted as <code>duplicate_keys</code> in the log. Items without any key field are skipped too.</p>
@@ -154,7 +158,7 @@ footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font
 </div>
 </article>
 </main>
-<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="privacy.html">Privacy</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
 <p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
 </body>
 </html>

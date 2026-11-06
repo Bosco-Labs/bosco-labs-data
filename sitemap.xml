@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://boscolabs.dev/</loc></url>
+  <url><loc>https://boscolabs.dev/api.html</loc></url>
   <url><loc>https://boscolabs.dev/sec-insider-trades.html</loc></url>
   <url><loc>https://boscolabs.dev/sec-filings-feed.html</loc></url>
   <url><loc>https://boscolabs.dev/us-house-trades.html</loc></url>
@@ -26,4 +27,5 @@
   <url><loc>https://boscolabs.dev/dataset-dedup.html</loc></url>
   <url><loc>https://boscolabs.dev/dataset-change-monitor.html</loc></url>
   <url><loc>https://boscolabs.dev/sheets-export.html</loc></url>
+  <url><loc>https://boscolabs.dev/privacy.html</loc></url>
 </urlset>

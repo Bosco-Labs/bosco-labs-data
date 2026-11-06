@@ -17,7 +17,7 @@ Contact: support@boscolabs.dev
 
 ## Companies
 
-- [Company Check API: identity, financials & SEC filings in 1 call](https://boscolabs.dev/company-check.html): One company report per call: legal name, LEI, registration number, status, address and industry, plus years of revenue, profit, equity, assets and cash, and SEC filings for US issuers. Look up by name, LEI, UK, Danish, Norwegian, French or Finnish number, ticker or CIK. Sourced values. Price: $0.03 per report. (coming soon to the Apify Store)
+- [Company Check API: identity, financials & SEC filings in 1 call](https://boscolabs.dev/company-check.html): One company report per call: legal name, LEI, registration number, status, address and industry, years of revenue, profit, equity, assets and cash, SEC filings and FDIC bank data. Look up by name, LEI, UK, DK, NO, FR, FI or EE number, ticker, CIK or FDIC cert. Sourced values. Price: $0.03 per report. (coming soon to the Apify Store)
 - [Company Financials API: UK, Denmark & Norway accounts + LEI](https://boscolabs.dev/company-accounts.html): Financials (revenue, profit, equity, assets, cash, employees) of private and public companies from official accounts: UK Companies House, Denmark Erhvervsstyrelsen, Norway Brønnøysund; adds the LEI from GLEIF and a source per value. Price: $0.04 per company-year. ([Apify Store](https://apify.com/bosco_labs/company-accounts))
 - [UK New Companies API: daily Companies House incorporations](https://boscolabs.dev/uk-new-companies.html): New UK companies incorporated on any day (default: yesterday) from the official Companies House API: number, name, type, status, SIC codes with descriptions, registered office address and a register link. Filter by SIC prefix, location and type. No director data. Price: $0.002 per company. (coming soon to the Apify Store)
 - [Company Hiring Signals API: open roles, departments, locations](https://boscolabs.dev/company-hiring-signals.html): Is a company hiring? Open roles by department, location and remote share, newest and oldest posting dates and top titles, plus job rows with a link each. Read from the company's public Greenhouse, Lever or Ashby job board. Look up by name, domain or board URL. Price: $0.005 per company found plus $0.001 per job row. (coming soon to the Apify Store)
@@ -53,8 +53,25 @@ Contact: support@boscolabs.dev
 - Apify API (synchronous): POST `https://api.apify.com/v2/acts/bosco_labs~<actor>/run-sync-get-dataset-items` with header `Authorization: Bearer <APIFY_TOKEN>` and the Actor input as the JSON body; the response is the dataset items.
 - Apify hosted MCP server: add `https://mcp.apify.com?tools=bosco_labs/<actor>` to your MCP client (Claude, Cursor, VS Code, ...). It loads the Actor as a tool plus `get-actor-run` and `get-dataset-items`, and signs you in with OAuth or `Authorization: Bearer <APIFY_TOKEN>`. On the default server (`https://mcp.apify.com`) agents can also find the Actors with `search-actors` and run them with `call-actor`.
 - Pricing: pay per event, billed to your own Apify account: you pay for rows delivered at the prices listed per Actor, and runs stop at your max charge limit.
+- Bosco Labs HTTP API: `POST https://api.boscolabs.dev/v1/<tool>` with `Authorization: Bearer <key>` for 8 fast lookups (same input and rows as the Actors), prepaid credits, $0.50 free trial; remote MCP at `https://api.boscolabs.dev/mcp`. Keys, prices and limits: https://boscolabs.dev/api.html
 - Contact: support@boscolabs.dev (questions, data issues, custom data requests).
 - Bosco Labs MCP server: `bosco-labs-data-mcp` on PyPI (https://pypi.org/project/bosco-labs-data-mcp/) and the official MCP Registry (`io.github.PB7-debug/bosco-labs-data`): one MCP server for all data Actors. Run it with `uvx bosco-labs-data-mcp` and set `APIFY_TOKEN`; source in https://github.com/PB7-debug/bosco-labs-data/tree/main/mcp.
+
+## API (beta, test mode)
+
+- Base URL: https://api.boscolabs.dev; `POST /v1/<tool>` with header `Authorization: Bearer <key>` (or `X-API-Key`) and the Actor's input object as JSON body; the response holds the Actor's rows plus `charged_usd` and `balance_usd`.
+- OpenAPI: https://api.boscolabs.dev/openapi.json; interactive docs: https://api.boscolabs.dev/docs; catalogue with prices and input schemas: https://api.boscolabs.dev/v1/tools (free)
+- Remote MCP (streamable HTTP, same key header): https://api.boscolabs.dev/mcp
+- [Get a key, prices and limits](https://boscolabs.dev/api.html): prepaid credits, packs $10, $50, $200, one-time $0.50 free trial per verified e-mail; prices exclude VAT
+- [Privacy](https://boscolabs.dev/privacy.html): request bodies (names screened, queries) are never logged or stored
+- `company-check`: $0.03 per company report (max 1 report).
+- `sec-company-financials`: $0.005 per company-period row (max 10 tickers/CIKs x 20 years).
+- `sec-company-screen`: $0.002 per company returned (max 200 companies (maxResults)).
+- `sec-filings-feed`: $0.001 per filing (max 200 filings (maxResults)).
+- `sanctions-screening`: $0.01 per name screened (max 50 names). This product uses the International Trade Administration's Data API but is not endorsed or certified by the International Trade Administration. OFAC and CSL data are US government works. UK Sanctions List: contains public sector information licensed under the Open Government Licence v3.0. EU list: European Commission, names as published. No endorsement by any publisher is implied.
+- `eu-law-lookup`: $0.005 per act or article returned (max 50 results (maxResults)). Consolidated texts from EUR-Lex (© European Union) are a documentation tool with no legal effect; only the acts published in the Official Journal of the European Union are authentic.
+- `national-law-lookup`: $0.005 per article or act returned (max 10 articles). UK: contains public sector information licensed under the Open Government Licence v3.0 (© Crown and database right, legislation.gov.uk).
+- `eu-rates-inflation`: $0.002 per series returned (catalogue free) (max 20 series). Source: ECB statistics (data.ecb.europa.eu). The data are free of charge from the ECB; we charge for processing and delivery, not for the data. Eurostat HICP: © European Union, free of charge from Eurostat. The change field is computed by Bosco Labs.
 
 ## Optional
 

@@ -71,11 +71,13 @@ pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;pa
 .table{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{text-align:left;vertical-align:top;padding:7px 8px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-weight:600}td:first-child{white-space:nowrap}
 details{border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:10px 0}summary{cursor:pointer;font-weight:600}
 footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font-size:.9rem;color:var(--muted)}footer a{color:var(--muted)}
+form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:1 1 240px;min-width:0;font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}button.btn{border:0;cursor:pointer;font:inherit;font-weight:650}
+.note{border-left:3px solid var(--warn);background:var(--surface);border-radius:0 10px 10px 0;padding:10px 14px;margin:14px 0;font-size:.95rem}.notice{font-size:.88rem;color:var(--muted)}
 @media (max-width:560px){.head{flex-direction:column;gap:12px}.head img{width:64px;height:64px}.hero{padding-top:32px}}</style>
 </head>
 <body>
 <header class="site"><div class="wrap"><a class="brand" href="index.html"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
-<nav><a href="index.html#tools">Tools</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
+<nav><a href="index.html#tools">Tools</a><a href="api.html">API</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
 <main class="wrap">
 <p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#data-tools">Data tools</a></p>
 <article>
@@ -92,6 +94,7 @@ footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font
 <div class="two"><div><h3>Input</h3><pre><code>{ &quot;urls&quot;: [&quot;https://www.sec.gov/files/form10-k.pdf&quot;], &quot;pages&quot;: &quot;1-5,10&quot;, &quot;extract&quot;: [&quot;text&quot;, &quot;tables&quot;] }</code></pre></div>
 <div><h3>Output</h3><pre><code>{
   &quot;schema_version&quot;: &quot;1&quot;,
+  &quot;input_index&quot;: 0,
   &quot;url&quot;: &quot;https://www.sec.gov/files/form10-k.pdf&quot;,
   &quot;final_url&quot;: &quot;https://www.sec.gov/files/form10-k.pdf&quot;,
   &quot;file_size_bytes&quot;: 549322,
@@ -125,6 +128,7 @@ footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font
 <h2>What you get</h2>
 <div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
 <tr><td><code>schema_version</code></td><td>string</td><td>Output schema version.</td></tr>
+<tr><td><code>input_index</code></td><td>integer</td><td>Position of this PDF in the input, 0-based: urls[input_index], or len(urls) for pdfBase64. Rows are written as each PDF finishes, so their order can differ from the input.</td></tr>
 <tr><td><code>url</code></td><td>string | null</td><td>The PDF URL as given in the input; null for pdfBase64.</td></tr>
 <tr><td><code>final_url</code></td><td>string | null</td><td>URL the PDF was finally downloaded from, after redirects; null for pdfBase64 or on error.</td></tr>
 <tr><td><code>file_size_bytes</code></td><td>integer | null</td><td>Size of the PDF file in bytes; null when it could not be downloaded.</td></tr>
@@ -141,7 +145,7 @@ footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font
 <tr><td><code>pages</code></td><td>array | null</td><td>One entry per processed page: {page (1-based), text}. text is markdown-ish (## headings, | tables |) or plain, in reading order; null for pages without a text layer. null when text was not requested.</td></tr>
 <tr><td><code>tables</code></td><td>array | null</td><td>Tables detected from aligned text: {page, header (first row when it looks like a header, else null), rows (arrays of cell strings, null = empty cell), n_cols}. null when tables were not requested.</td></tr>
 <tr><td><code>warnings</code></td><td>array</td><td>Things to know, e.g. scanned pages without text (OCR not supported, not charged) or pages left out by maxPages.</td></tr>
-<tr><td><code>error</code></td><td>string | null</td><td>Why this PDF failed (refused URL, download error, not a PDF, password-protected, unreadable); null on success. Failed PDFs are not charged.</td></tr>
+<tr><td><code>error</code></td><td>string | null</td><td>Why this PDF failed (refused URL, download error, not a PDF, password-protected, unreadable, too complex: over the parse timeout or out of memory); null on success. Failed PDFs are not charged.</td></tr>
 <tr><td><code>source_url</code></td><td>string | null</td><td>Where the data came from (the input URL); null for pdfBase64.</td></tr>
 <tr><td><code>retrieved_at</code></td><td>string</td><td>UTC time the PDF was processed.</td></tr>
 </tbody></table></div>
@@ -153,6 +157,7 @@ footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font
 <pre><code>{&quot;urls&quot;: [&quot;https://www.irs.gov/pub/irs-pdf/p15t.pdf&quot;], &quot;pages&quot;: &quot;14&quot;, &quot;extract&quot;: [&quot;tables&quot;]}</code></pre>
 <p>one JSON row per PDF with <code>schema_version</code>, <code>source_url</code> and a page number on every page and table, so the agent can cite where a value came from. Errors come back as a row with an <code>error</code> text, never as a crashed run.</p>
 <p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~pdf-to-data/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.0005 per page with text.</p>
+
 <h2>Input fields</h2>
 <div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
 <tr><td><code>urls</code></td><td>array</td><td>1 to 20 public http(s) links to PDF files, e.g. [&quot;https://www.sec.gov/files/form10-k.pdf&quot;]. Each PDF gives one output row. Files up to 50 MB; links to private or local addresses are refused. Empty = use pdfBase64 instead.</td></tr>
@@ -161,6 +166,7 @@ footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font
 <tr><td><code>extract</code></td><td>array</td><td>Any of text, tables, metadata, e.g. [&quot;tables&quot;]. Default (empty) = all three. Metadata alone costs one page per PDF.</td></tr>
 <tr><td><code>maxPages</code></td><td>integer</td><td>Most pages read per PDF, counted from the first selected page, e.g. 10. Default 50. You pay per page with text, so this caps the cost per PDF; a warning tells you how to request the rest.</td></tr>
 <tr><td><code>outputFormat</code></td><td>string</td><td>How page text is written: &quot;markdown&quot; marks headings with ## and writes detected tables as markdown tables; &quot;text&quot; gives plain paragraphs and tab-separated table rows. Default markdown. The tables field is the same in both.</td></tr>
+<tr><td><code>timeoutSecs</code></td><td>integer</td><td>Most seconds spent parsing one PDF, e.g. 60. Default 120. Pages are read until 3/4 of this time (later pages get a warning and are not charged); a PDF still parsing at the limit is stopped and returns an error row, not charged. Empty = 120.</td></tr>
 </tbody></table></div>
 <h2>Sources, licence and limits</h2>
 <p><strong>Scanned PDFs?</strong> Pages that are only an image (scans, photos) have no text layer. They come back with <code>text: null</code> and a warning, and are <strong>not charged</strong>. OCR is not supported.</p>
@@ -169,12 +175,13 @@ footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font
 <p><strong>What does a metadata-only run cost?</strong> One page per PDF (<code>extract: [&quot;metadata&quot;]</code>).</p>
 <p><strong>Are my files stored?</strong> No. Each PDF is downloaded into memory, parsed and dropped. Only the extracted data goes to your dataset; nothing from the document is logged.</p>
 <p><strong>Size limits?</strong> 50 MB per file, up to 500 pages per PDF per run (<code>maxPages</code>, default 50), and about 8 MB of output per PDF. A warning tells you which <code>pages</code> to ask for next.</p>
+<p><strong>Very complex or hostile PDFs?</strong> Each PDF is parsed in its own process with a time limit (<code>timeoutSecs</code>, default 120 s) and a memory limit. Pages are read until 3/4 of that time, then the rest gets a warning. A PDF that is still stuck at the limit (for example one page that inflates to tens of MB of drawing commands) is stopped and returns an <code>error</code> row (&quot;PDF too complex&quot;), costs nothing, and the other PDFs in the run are delivered as usual.</p>
 <p><strong>Speed?</strong> Measured locally: 19 text pages in 2 s, 20 pages of the EU GDPR in 5 s, 50 pages of IRS Publication 15 in 10-20 s (parsing time, download excluded).</p>
 <div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=PDF to JSON API">Ask for early access</a></div>
 </div>
 </article>
 </main>
-<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="privacy.html">Privacy</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
 <p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
 </body>
 </html>

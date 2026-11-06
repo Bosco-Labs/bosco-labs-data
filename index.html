@@ -221,11 +221,13 @@ pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;pa
 .table{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{text-align:left;vertical-align:top;padding:7px 8px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-weight:600}td:first-child{white-space:nowrap}
 details{border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:10px 0}summary{cursor:pointer;font-weight:600}
 footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font-size:.9rem;color:var(--muted)}footer a{color:var(--muted)}
+form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:1 1 240px;min-width:0;font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}button.btn{border:0;cursor:pointer;font:inherit;font-weight:650}
+.note{border-left:3px solid var(--warn);background:var(--surface);border-radius:0 10px 10px 0;padding:10px 14px;margin:14px 0;font-size:.95rem}.notice{font-size:.88rem;color:var(--muted)}
 @media (max-width:560px){.head{flex-direction:column;gap:12px}.head img{width:64px;height:64px}.hero{padding-top:32px}}</style>
 </head>
 <body>
 <header class="site"><div class="wrap"><a class="brand" href="index.html"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
-<nav><a href="index.html#tools">Tools</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
+<nav><a href="index.html#tools">Tools</a><a href="api.html">API</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
 <main class="wrap">
 <section class="hero">
 <h1>Official-source data for AI agents and analysts</h1>
@@ -296,13 +298,14 @@ footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font
 <li><strong>Apify API (synchronous):</strong> POST <code>https://api.apify.com/v2/acts/bosco_labs~&lt;actor&gt;/run-sync-get-dataset-items</code> with header <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code> and the Actor input as the JSON body; the response is the dataset items.</li>
 <li><strong>Apify hosted MCP server:</strong> add <code>https://mcp.apify.com?tools=bosco_labs/&lt;actor&gt;</code> to your MCP client (Claude, Cursor, VS Code, ...). It loads the Actor as a tool plus <code>get-actor-run</code> and <code>get-dataset-items</code>, and signs you in with OAuth or <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. On the default server (<code>https://mcp.apify.com</code>) agents can also find the Actors with <code>search-actors</code> and run them with <code>call-actor</code>.</li>
 <li><strong>Pricing:</strong> pay per event, billed to your own Apify account: you pay for rows delivered at the prices listed per Actor, and runs stop at your max charge limit.</li>
+<li><strong>Bosco Labs HTTP API:</strong> <code>POST https://api.boscolabs.dev/v1/&lt;tool&gt;</code> with <code>Authorization: Bearer &lt;key&gt;</code> for 8 fast lookups (same input and rows as the Actors), prepaid credits, $0.50 free trial; remote MCP at <code>https://api.boscolabs.dev/mcp</code>. Keys, prices and limits: https://boscolabs.dev/api.html</li>
 <li><strong>Contact:</strong> support@boscolabs.dev (questions, data issues, custom data requests).</li>
 <li><strong>Bosco Labs MCP server:</strong> <code>bosco-labs-data-mcp</code> on PyPI (https://pypi.org/project/bosco-labs-data-mcp/) and the official MCP Registry (<code>io.github.PB7-debug/bosco-labs-data</code>): one MCP server for all data Actors. Run it with <code>uvx bosco-labs-data-mcp</code> and set <code>APIFY_TOKEN</code>; source in https://github.com/PB7-debug/bosco-labs-data/tree/main/mcp.</li>
 </ul>
 <p>Machine-readable index: <a href="llms.txt">llms.txt</a> (summary) and <a href="llms-full.txt">llms-full.txt</a> (all input and output fields). Live tools on the <a href="https://apify.com/bosco_labs">Bosco Labs Apify Store profile</a>.</p>
 </section>
 </main>
-<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="privacy.html">Privacy</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
 <p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
 </body>
 </html>

@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy: Bosco Labs API and website</title>
+<meta name="description" content="What the Bosco Labs API and website log and never store, who processes data for us, how long we keep it and how to contact us.">
+<link rel="canonical" href="https://boscolabs.dev/privacy.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bosco Labs">
+<meta property="og:title" content="Privacy: Bosco Labs API and website">
+<meta property="og:description" content="What the Bosco Labs API and website log and never store, who processes data for us, how long we keep it and how to contact us.">
+<meta property="og:url" content="https://boscolabs.dev/privacy.html">
+<meta property="og:image" content="https://boscolabs.dev/logo-512.png">
+<meta name="twitter:card" content="summary">
+<script defer src="/_vercel/insights/script.js"></script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "WebPage",
+ "name": "Privacy: Bosco Labs API and website",
+ "url": "https://boscolabs.dev/privacy.html",
+ "publisher": {
+  "@type": "Organization",
+  "name": "Bosco Labs",
+  "url": "https://boscolabs.dev/"
+ }
+}
+</script>
+<style>:root{color-scheme:light dark;--head:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--body:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;--ink:#1D2721;--muted:#545F58;--bg:#F5F3EA;--surface:#EAE8DC;--line:#D6D3C3;--accent:#2E5A47;--accent-fg:#F5F3EA;--accent2:#8DA889;--accent2-text:#4A6646;--success:#36694A;--warn:#8E5D1C}
+@media (prefers-color-scheme:dark){:root{--ink:#E5E8DE;--muted:#A3ADA4;--bg:#121914;--surface:#1B241E;--line:#2B372F;--accent:#9EC7B1;--accent-fg:#121914;--accent2:#B5C9A4;--accent2-text:#B5C9A4;--success:#93C7A0;--warn:#DDB070}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--body)}h1,h2,h3,.brand{font-family:var(--head)}
+a{color:var(--accent);text-underline-offset:2px}.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+.site{border-bottom:1px solid var(--line)}.site .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;padding-top:12px;padding-bottom:12px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-weight:650;letter-spacing:-.01em}.brand img{width:30px;height:30px}
+nav{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:.95rem}nav a{color:var(--muted);text-decoration:none}nav a:hover{color:var(--ink)}
+h1{font-size:clamp(1.65rem,4vw,2.4rem);line-height:1.2;letter-spacing:-.02em;margin:0 0 12px}
+h2{font-size:1.3rem;line-height:1.3;letter-spacing:-.01em;margin:44px 0 12px}h3{font-size:1.02rem;margin:20px 0 6px}
+.hero{padding:52px 0 8px;max-width:780px}.lead{font-size:1.13rem;color:var(--muted)}.muted{color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}.chips a{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:.9rem;color:var(--ink);text-decoration:none}.chips a:hover{border-color:var(--accent)}
+.grid{list-style:none;padding:0;margin:0;display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.card-top{display:flex;gap:12px;align-items:center}.card img{width:48px;height:48px;flex:none}
+.card h3{margin:0;font-size:1rem;line-height:1.3}.card h3 a{color:var(--ink);text-decoration:none}.card h3 a:hover{text-decoration:underline}
+.card p{margin:0;font-size:.92rem;color:var(--muted)}.card .row{margin-top:auto;padding-top:6px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-size:.88rem}
+.price{font-weight:600;color:var(--ink)}.badge{display:inline-block;font-size:.78rem;font-weight:600;line-height:1.5;padding:1px 9px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.badge.live{color:var(--success)}.badge.soon{color:var(--warn)}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-fg);font-weight:650;padding:11px 18px;border-radius:10px;text-decoration:none}
+.btn.ghost{background:none;color:var(--accent);border:1px solid var(--line)}.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0}
+.crumbs{font-size:.9rem;color:var(--muted);margin:22px 0 0}.crumbs a{color:var(--muted)}
+.head{display:flex;gap:20px;align-items:flex-start;margin:18px 0 0}.head img{width:84px;height:84px;flex:none}
+.prose{max-width:800px}.facts{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));margin:22px 0}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:.95rem}.fact b{display:block;font-size:.75rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.qs{padding-left:20px}.qs li{margin:4px 0}.two{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}.two h3{margin-top:0}.two>div,.prose,main{min-width:0}
+code{font:.86em var(--mono)}:not(pre)>code{overflow-wrap:anywhere}
+pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px;overflow:auto;max-height:520px;font-size:.84rem;line-height:1.45;margin:0}
+.table{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{text-align:left;vertical-align:top;padding:7px 8px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-weight:600}td:first-child{white-space:nowrap}
+details{border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:10px 0}summary{cursor:pointer;font-weight:600}
+footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font-size:.9rem;color:var(--muted)}footer a{color:var(--muted)}
+form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:1 1 240px;min-width:0;font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}button.btn{border:0;cursor:pointer;font:inherit;font-weight:650}
+.note{border-left:3px solid var(--warn);background:var(--surface);border-radius:0 10px 10px 0;padding:10px 14px;margin:14px 0;font-size:.95rem}.notice{font-size:.88rem;color:var(--muted)}
+@media (max-width:560px){.head{flex-direction:column;gap:12px}.head img{width:64px;height:64px}.hero{padding-top:32px}}</style>
+</head>
+<body>
+<header class="site"><div class="wrap"><a class="brand" href="index.html"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav><a href="index.html#tools">Tools</a><a href="api.html">API</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
+<main class="wrap">
+<div class="prose">
+<h1 style="margin-top:40px">Privacy</h1>
+<p class="lead">Bosco Labs runs this website and the HTTP API at <code>https://api.boscolabs.dev</code>. We collect as little as we can. Contact for anything below, including access and deletion requests: <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a>.</p>
+<h2>API calls</h2>
+<ul>
+<li><strong>What we log</strong>, one line per call: a key id, the tool, the HTTP status, the number of rows, the credits charged, the duration and any source warnings.</li>
+<li><strong>What we never log or store</strong>: request bodies and results. The names you screen with <code>sanctions-screening</code> and the companies or laws you look up are processed only to answer the call and are never stored.</li>
+<li>Keys are stored only as a SHA-256 hash; we cannot show a key again.</li>
+<li>The credit ledger keeps, per key: the tool, the rows charged and the time, so your balance and our accounts add up.</li>
+</ul>
+<h2>Accounts and payments</h2>
+<ul>
+<li>To issue a key we store your e-mail address and send you a one-time link. To limit abuse of the free trial we keep a daily-salted hash of the sign-up IP address, never the address itself.</li>
+<li>When you buy credits, Stripe handles the payment. We keep your e-mail address, the Stripe customer id, the billing country and a VAT ID if you give one; never card details.</li>
+</ul>
+<h2>This website</h2>
+<p>No cookies and no third-party trackers. Vercel Web Analytics counts page views without cookies and without storing IP addresses.</p>
+<h2>Processors</h2>
+<ul>
+<li><strong>Vercel</strong>: hosting of the website and the API, and request logs.</li>
+<li><strong>Supabase</strong>: the database with keys (hashed), e-mail addresses and the credit ledger (EU region, Ireland).</li>
+<li><strong>Stripe</strong>: payments.</li>
+<li><strong>Resend</strong>: the e-mails that deliver your key link.</li>
+</ul>
+<h2>Retention</h2>
+<ul>
+<li>API request logs: only as long as Vercel keeps runtime logs (days, not months).</li>
+<li>E-mail address, hashed key and ledger: while your key exists; ask us to delete them. Payment records: as long as bookkeeping and tax law require (seven years in the Netherlands).</li>
+<li>Sign-up IP hashes: only for the daily sign-up limit.</li>
+</ul>
+<h2>Data in the results</h2>
+<p>Some tools return personal data that official sources publish, such as the names of sanctioned persons, company officers or insiders in SEC filings. We return it unchanged, with a link to its source, for compliance, research and due-diligence purposes, and limit how much a single call returns.</p>
+<p class="muted">Last updated 2026-11-06.</p>
+</div>
+</main>
+<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="privacy.html">Privacy</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
+</body>
+</html>

@@ -71,11 +71,13 @@ pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;pa
 .table{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{text-align:left;vertical-align:top;padding:7px 8px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-weight:600}td:first-child{white-space:nowrap}
 details{border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:10px 0}summary{cursor:pointer;font-weight:600}
 footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font-size:.9rem;color:var(--muted)}footer a{color:var(--muted)}
+form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:1 1 240px;min-width:0;font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}button.btn{border:0;cursor:pointer;font:inherit;font-weight:650}
+.note{border-left:3px solid var(--warn);background:var(--surface);border-radius:0 10px 10px 0;padding:10px 14px;margin:14px 0;font-size:.95rem}.notice{font-size:.88rem;color:var(--muted)}
 @media (max-width:560px){.head{flex-direction:column;gap:12px}.head img{width:64px;height:64px}.hero{padding-top:32px}}</style>
 </head>
 <body>
 <header class="site"><div class="wrap"><a class="brand" href="index.html"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
-<nav><a href="index.html#tools">Tools</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
+<nav><a href="index.html#tools">Tools</a><a href="api.html">API</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
 <main class="wrap">
 <p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#finance-sec">Finance &amp; SEC</a></p>
 <article>
@@ -101,6 +103,7 @@ footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font
   &quot;title_of_class&quot;: &quot;CAP STK CL A&quot;,
   &quot;cusip&quot;: &quot;02079K305&quot;,
   &quot;ticker&quot;: &quot;GOOGL&quot;,
+  &quot;ticker_candidates&quot;: [],
   &quot;put_call&quot;: null,
   &quot;shares&quot;: 78791167,
   &quot;share_type&quot;: &quot;SH&quot;,
@@ -132,7 +135,8 @@ footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font
 <tr><td><code>title_of_class</code></td><td>string | null</td><td>13F rows: class of the security as filed, e.g. COM, CL A, CAP STK CL C.</td></tr>
 <tr><td><code>cusip</code></td><td>string</td><td>13F rows: 9-character CUSIP of the security.</td></tr>
 <tr><td><code>cusips</code></td><td>array</td><td>stake: the issuer CUSIP(s) on the cover page.</td></tr>
-<tr><td><code>ticker</code></td><td>string | null</td><td>Issuer ticker from the SEC&#x27;s ticker list. 13F holding rows: matched on the issuer name, so it can be null or the company&#x27;s main ticker for another share class; use cusip to tell classes apart.</td></tr>
+<tr><td><code>ticker</code></td><td>string | null</td><td>Ticker of this security from the SEC&#x27;s ticker list: the issuer by CIK or name, the share class by CUSIP or the class in title_of_class (GOOG for Alphabet class C). Null when unknown, or when the issuer has several share classes and the class can&#x27;t be told (see ticker_candidates).</td></tr>
+<tr><td><code>ticker_candidates</code></td><td>array</td><td>When ticker is null because the issuer has several listed share classes: the issuer&#x27;s tickers, main first (e.g. [&quot;BRK-B&quot;, &quot;BRK-A&quot;]). Empty otherwise. Ticker filters match these too.</td></tr>
 <tr><td><code>put_call</code></td><td>string | null</td><td>13F rows: PUT or CALL for option positions (value = the underlying), null for shares and bonds.</td></tr>
 <tr><td><code>shares</code></td><td>number | null</td><td>13F rows: shares (or principal amount when share_type is PRN) held at quarter end, summed over the filing&#x27;s lines; 0 for a closed position. stake: shares beneficially owned by the reporting person with the highest percent.</td></tr>
 <tr><td><code>share_type</code></td><td>string | null</td><td>13F rows: SH (shares) or PRN (principal amount).</td></tr>
@@ -173,6 +177,7 @@ footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font
 <pre><code>{&quot;mode&quot;: &quot;holdings13f&quot;, &quot;filer&quot;: &quot;Berkshire Hathaway&quot;}</code></pre>
 <p>small, typed JSON, one row per position, holder or filing, with <code>schema_version</code>, a <code>source_url</code> pointing to the exact SEC file and a <code>filing_url</code> for the filing, so the agent can cite its source. Bad input fails within seconds with a status message that says what to fix and shows a valid input.</p>
 <p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~sec-ownership/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.0018 per row.</p>
+
 <h2>Input fields</h2>
 <div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
 <tr><td><code>mode</code></td><td>string</td><td>holdings13f = Form 13F: pass <code>filer</code> for a fund manager&#x27;s holdings (with changes vs the previous quarter), or <code>ticker</code>/<code>cusip</code> for the funds holding a stock. stakes13dg = Schedule 13D/13G filings about <code>ticker</code>, or new 13D filings market-wide. planned144 = Form 144 notices of planned insider sales for <code>ticker</code>, or market-wide. Default holdings13f.</td></tr>
@@ -191,8 +196,8 @@ footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font
 <h2>Sources, licence and limits</h2>
 <p><strong>How current is 13F data?</strong> 13F reports are quarterly and due 45 days after quarter end, so holdings are up to 4.5 months old when they appear. Positions are what the manager reported: long US-listed equities, options and convertibles on the SEC&#x27;s 13(f) list; no shorts, no non-US holdings, no cash.</p>
 <p><strong>Values?</strong> As reported, in US dollars at quarter end (reports filed before 2023 used $1,000s and are converted). Amendments are applied: a restatement replaces the original report, a &quot;new holdings&quot; amendment adds to it.</p>
-<p><strong>Tickers?</strong> 13F filings carry CUSIPs, not tickers, and the SEC publishes no CUSIP-to-ticker list. On holdings rows the ticker is matched on the issuer name with the SEC&#x27;s ticker list: it can be missing (renamed or oddly abbreviated names) or show the company&#x27;s main ticker for another share class (Alphabet class C shows GOOGL). Use <code>cusip</code> to tell share classes apart.</p>
-<p><strong>Which funds hold a ticker: which CUSIP?</strong> The ticker&#x27;s CUSIPs are read from the company&#x27;s recent Schedule 13D/13G filings, which can cover several share classes. Pass <code>cusip</code> for one class, or when the company has no recent 13D/13G.</p>
+<p><strong>Tickers?</strong> 13F filings carry CUSIPs, not tickers, and the SEC publishes no CUSIP-to-ticker list. The company is found by its CIK or, on 13F rows, its name in the SEC&#x27;s ticker list (renamed or oddly abbreviated names stay <code>null</code>). The share class comes from the CUSIP (Alphabet class C <code>02079K107</code> is GOOG, class A <code>02079K305</code> is GOOGL; likewise Fox, News Corp, Under Armour, Zillow and the Liberty tracking stocks) or from the class in <code>title_of_class</code> when the ticker names it (BRK-A / BRK-B, LEN / LEN-B, HEI / HEI-A). When a company has several listed classes and the row doesn&#x27;t say which, <code>ticker</code> is <code>null</code> and <code>ticker_candidates</code> lists the company&#x27;s tickers; a <code>ticker</code> filter matches those too. <code>cusip</code> is always the exact security.</p>
+<p><strong>Which funds hold a ticker: which CUSIP?</strong> The ticker&#x27;s CUSIPs are read from the company&#x27;s recent Schedule 13D/13G filings, which can cover several share classes; CUSIPs of another class (GOOGL when you ask for GOOG) are left out and named in the status message. Pass <code>cusip</code> for one exact security, or when the company has no recent 13D/13G.</p>
 <p><strong>A name matched the wrong fund?</strong> Names go through EDGAR&#x27;s company search; the status message lists the other matches. Pass the CIK as <code>filer</code> to be exact.</p>
 <p><strong>Older 13D/13G?</strong> Only filings since 2024-12-18, when Schedule 13D/13G became structured XML. For older ones, use our SEC EDGAR Filings Actor for the filing links.</p>
 <p><strong>13D vs 13G?</strong> A 13D is filed by a holder of more than 5% who may seek to influence the company (activist); a 13G by passive holders and institutions. <code>percent_of_class</code> is the highest among the filing&#x27;s reporting persons; all of them are in <code>reporting_persons</code>.</p>
@@ -202,7 +207,7 @@ footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font
 </div>
 </article>
 </main>
-<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="privacy.html">Privacy</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
 <p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
 </body>
 </html>

@@ -17,7 +17,7 @@ Contact: support@boscolabs.dev
 
 ## Companies
 
-- [Company Check API: identity, financials & SEC filings in 1 call](https://boscolabs.dev/company-check.html): One company report per call: legal name, LEI, registration number, status, address and industry, plus years of revenue, profit, equity, assets and cash, and SEC filings for US issuers. Look up by name, LEI, UK, Danish, Norwegian, French or Finnish number, ticker or CIK. Sourced values. Price: $0.03 per report. (coming soon to the Apify Store)
+- [Company Check API: identity, financials & SEC filings in 1 call](https://boscolabs.dev/company-check.html): One company report per call: legal name, LEI, registration number, status, address and industry, years of revenue, profit, equity, assets and cash, SEC filings and FDIC bank data. Look up by name, LEI, UK, DK, NO, FR, FI or EE number, ticker, CIK or FDIC cert. Sourced values. Price: $0.03 per report. (coming soon to the Apify Store)
 - [Company Financials API: UK, Denmark & Norway accounts + LEI](https://boscolabs.dev/company-accounts.html): Financials (revenue, profit, equity, assets, cash, employees) of private and public companies from official accounts: UK Companies House, Denmark Erhvervsstyrelsen, Norway Brønnøysund; adds the LEI from GLEIF and a source per value. Price: $0.04 per company-year. ([Apify Store](https://apify.com/bosco_labs/company-accounts))
 - [UK New Companies API: daily Companies House incorporations](https://boscolabs.dev/uk-new-companies.html): New UK companies incorporated on any day (default: yesterday) from the official Companies House API: number, name, type, status, SIC codes with descriptions, registered office address and a register link. Filter by SIC prefix, location and type. No director data. Price: $0.002 per company. (coming soon to the Apify Store)
 - [Company Hiring Signals API: open roles, departments, locations](https://boscolabs.dev/company-hiring-signals.html): Is a company hiring? Open roles by department, location and remote share, newest and oldest posting dates and top titles, plus job rows with a link each. Read from the company's public Greenhouse, Lever or Ashby job board. Look up by name, domain or board URL. Price: $0.005 per company found plus $0.001 per job row. (coming soon to the Apify Store)
@@ -53,8 +53,25 @@ Contact: support@boscolabs.dev
 - Apify API (synchronous): POST `https://api.apify.com/v2/acts/bosco_labs~<actor>/run-sync-get-dataset-items` with header `Authorization: Bearer <APIFY_TOKEN>` and the Actor input as the JSON body; the response is the dataset items.
 - Apify hosted MCP server: add `https://mcp.apify.com?tools=bosco_labs/<actor>` to your MCP client (Claude, Cursor, VS Code, ...). It loads the Actor as a tool plus `get-actor-run` and `get-dataset-items`, and signs you in with OAuth or `Authorization: Bearer <APIFY_TOKEN>`. On the default server (`https://mcp.apify.com`) agents can also find the Actors with `search-actors` and run them with `call-actor`.
 - Pricing: pay per event, billed to your own Apify account: you pay for rows delivered at the prices listed per Actor, and runs stop at your max charge limit.
+- Bosco Labs HTTP API: `POST https://api.boscolabs.dev/v1/<tool>` with `Authorization: Bearer <key>` for 8 fast lookups (same input and rows as the Actors), prepaid credits, $0.50 free trial; remote MCP at `https://api.boscolabs.dev/mcp`. Keys, prices and limits: https://boscolabs.dev/api.html
 - Contact: support@boscolabs.dev (questions, data issues, custom data requests).
 - Bosco Labs MCP server: `bosco-labs-data-mcp` on PyPI (https://pypi.org/project/bosco-labs-data-mcp/) and the official MCP Registry (`io.github.PB7-debug/bosco-labs-data`): one MCP server for all data Actors. Run it with `uvx bosco-labs-data-mcp` and set `APIFY_TOKEN`; source in https://github.com/PB7-debug/bosco-labs-data/tree/main/mcp.
+
+## API (beta, test mode)
+
+- Base URL: https://api.boscolabs.dev; `POST /v1/<tool>` with header `Authorization: Bearer <key>` (or `X-API-Key`) and the Actor's input object as JSON body; the response holds the Actor's rows plus `charged_usd` and `balance_usd`.
+- OpenAPI: https://api.boscolabs.dev/openapi.json; interactive docs: https://api.boscolabs.dev/docs; catalogue with prices and input schemas: https://api.boscolabs.dev/v1/tools (free)
+- Remote MCP (streamable HTTP, same key header): https://api.boscolabs.dev/mcp
+- [Get a key, prices and limits](https://boscolabs.dev/api.html): prepaid credits, packs $10, $50, $200, one-time $0.50 free trial per verified e-mail; prices exclude VAT
+- [Privacy](https://boscolabs.dev/privacy.html): request bodies (names screened, queries) are never logged or stored
+- `company-check`: $0.03 per company report (max 1 report).
+- `sec-company-financials`: $0.005 per company-period row (max 10 tickers/CIKs x 20 years).
+- `sec-company-screen`: $0.002 per company returned (max 200 companies (maxResults)).
+- `sec-filings-feed`: $0.001 per filing (max 200 filings (maxResults)).
+- `sanctions-screening`: $0.01 per name screened (max 50 names). This product uses the International Trade Administration's Data API but is not endorsed or certified by the International Trade Administration. OFAC and CSL data are US government works. UK Sanctions List: contains public sector information licensed under the Open Government Licence v3.0. EU list: European Commission, names as published. No endorsement by any publisher is implied.
+- `eu-law-lookup`: $0.005 per act or article returned (max 50 results (maxResults)). Consolidated texts from EUR-Lex (© European Union) are a documentation tool with no legal effect; only the acts published in the Official Journal of the European Union are authentic.
+- `national-law-lookup`: $0.005 per article or act returned (max 10 articles). UK: contains public sector information licensed under the Open Government Licence v3.0 (© Crown and database right, legislation.gov.uk).
+- `eu-rates-inflation`: $0.002 per series returned (catalogue free) (max 20 series). Source: ECB statistics (data.ecb.europa.eu). The data are free of charge from the ECB; we charge for processing and delivery, not for the data. Eurostat HICP: © European Union, free of charge from Eurostat. The change field is computed by Bosco Labs.
 
 ## SEC Insider Trading API (Form 4): live + history since 2006
 
@@ -144,6 +161,7 @@ Docs: https://boscolabs.dev/sec-filings-feed.html
 Apify Store: https://apify.com/bosco_labs/sec-filings-feed
 MCP: https://mcp.apify.com?tools=bosco_labs/sec-filings-feed
 Price: $0.001 per filing
+API: POST https://api.boscolabs.dev/v1/sec-filings-feed, $0.001 per filing (max 200 filings (maxResults))
 
 SEC EDGAR filings (8-K, 10-K, 10-Q, S-1, 13D, 13G, Form 4 and every other form) for any company or the whole market, live or back to 1994, from the SEC's own feeds. Filter by ticker, CIK, form, 8-K item and date; flags earnings releases (Item 2.02). Returns links to each filing, not its text.
 
@@ -306,7 +324,8 @@ Example questions:
 - `title_of_class` (string | null): 13F rows: class of the security as filed, e.g. COM, CL A, CAP STK CL C.
 - `cusip` (string): 13F rows: 9-character CUSIP of the security.
 - `cusips` (array): stake: the issuer CUSIP(s) on the cover page.
-- `ticker` (string | null): Issuer ticker from the SEC's ticker list. 13F holding rows: matched on the issuer name, so it can be null or the company's main ticker for another share class; use cusip to tell classes apart.
+- `ticker` (string | null): Ticker of this security from the SEC's ticker list: the issuer by CIK or name, the share class by CUSIP or the class in title_of_class (GOOG for Alphabet class C). Null when unknown, or when the issuer has several share classes and the class can't be told (see ticker_candidates).
+- `ticker_candidates` (array): When ticker is null because the issuer has several listed share classes: the issuer's tickers, main first (e.g. ["BRK-B", "BRK-A"]). Empty otherwise. Ticker filters match these too.
 - `put_call` (string | null): 13F rows: PUT or CALL for option positions (value = the underlying), null for shares and bonds.
 - `shares` (number | null): 13F rows: shares (or principal amount when share_type is PRN) held at quarter end, summed over the filing's lines; 0 for a closed position. stake: shares beneficially owned by the reporting person with the highest percent.
 - `share_type` (string | null): 13F rows: SH (shares) or PRN (principal amount).
@@ -351,6 +370,7 @@ Docs: https://boscolabs.dev/sec-company-financials.html
 Apify Store: coming soon
 MCP: https://mcp.apify.com?tools=bosco_labs/sec-company-financials
 Price: $0.005 per company-period row
+API: POST https://api.boscolabs.dev/v1/sec-company-financials, $0.005 per company-period row (max 10 tickers/CIKs x 20 years)
 
 US company financials from SEC XBRL: revenue, profit, EPS, balance sheet, cash flow, free cash flow and margins per fiscal year or quarter, 2009 to today. By ticker or CIK, 10-K/10-Q and 20-F filers. Each value cites its XBRL tag and SEC filing. Q4 derived where not reported.
 
@@ -439,6 +459,7 @@ Docs: https://boscolabs.dev/sec-company-screen.html
 Apify Store: coming soon
 MCP: https://mcp.apify.com?tools=bosco_labs/sec-company-screen
 Price: $0.002 per company returned
+API: POST https://api.boscolabs.dev/v1/sec-company-screen, $0.002 per company returned (max 200 companies (maxResults))
 
 US companies matching your filters for one calendar year or quarter: revenue, net income, margins, cash flow, assets and 30 more metrics from SEC XBRL frames, sorted and capped. Each value cites its XBRL tag and SEC filing. Same metrics as SEC Company Financials.
 
@@ -621,8 +642,9 @@ Docs: https://boscolabs.dev/company-check.html
 Apify Store: coming soon
 MCP: https://mcp.apify.com?tools=bosco_labs/company-check
 Price: $0.03 per report
+API: POST https://api.boscolabs.dev/v1/company-check, $0.03 per company report (max 1 report)
 
-One company report per call: legal name, LEI, registration number, status, address and industry, plus years of revenue, profit, equity, assets and cash, and SEC filings for US issuers. Look up by name, LEI, UK, Danish, Norwegian, French or Finnish number, ticker or CIK. Sourced values.
+One company report per call: legal name, LEI, registration number, status, address and industry, years of revenue, profit, equity, assets and cash, SEC filings and FDIC bank data. Look up by name, LEI, UK, DK, NO, FR, FI or EE number, ticker, CIK or FDIC cert. Sourced values.
 
 Example questions:
 
@@ -630,8 +652,8 @@ Example questions:
 
 ### Input fields
 
-- `query` (string, required): The company to check: a name (e.g. "Novo Nordisk") or an identifier: LEI (20 characters, e.g. "724500Y6DUVHQD6OXN27"), UK company number ("00445790", "SC123456"), Danish CVR ("24256790"), Norwegian org number ("923609016"), French SIREN (9 digits, "552032534") or SIRET (14 digits, "55203253400703"), Finnish Business ID with its dash ("0112038-9"), US ticker in capitals or with $ ("AAPL", "$brk.b") or SEC CIK ("320193"). The type is detected from format and check digits; a number valid in two registers is settled by asking them, and `country` decides when given. Required.
-- `country` (string): ISO 3166 alpha-2 country code to disambiguate, e.g. "DK", "GB", "NO", "FR", "FI", "NL", "US". With a name it limits the search to that country and, for NO, FR and FI, also searches the national register (most companies there have no LEI); with a number it says which register the number belongs to (e.g. "GB" for a UK number without a leading zero, "FI" for a Business ID typed without its dash). Empty = detect from the query.
+- `query` (string, required): The company to check: a name (e.g. "Novo Nordisk") or an identifier: LEI (20 characters, e.g. "724500Y6DUVHQD6OXN27"), UK company number ("00445790", "SC123456"), Danish CVR ("24256790"), Norwegian org number ("923609016"), French SIREN (9 digits, "552032534") or SIRET (14 digits, "55203253400703"), Finnish Business ID with its dash ("0112038-9"), Estonian registry code (8 digits, "12417834"), US ticker in capitals or with $ ("AAPL", "$brk.b"; foreign companies listed in the US resolve to their home country), SEC CIK ("320193") or FDIC certificate of a US bank ("FDIC:628"). The type is detected from format and check digits; an 8-digit number valid in several registers (UK, Danish CVR, Estonian) is settled by asking them, and `country` decides when given. Required.
+- `country` (string): ISO 3166 alpha-2 country code to disambiguate, e.g. "DK", "GB", "NO", "FR", "FI", "EE", "NL", "US". With a name it limits the search to that country and, for NO, FR, FI and EE, also searches the national register (most companies there have no LEI); with a number it says which register the number belongs to (e.g. "GB" for a UK number without a leading zero, "EE" for an Estonian registry code, "FI" for a Business ID typed without its dash). Empty = detect from the query.
 - `maxYears` (integer): How many fiscal years of key figures to return, newest first, e.g. 3. Default 3, maximum 10. Norway's open register holds the last 3 years only. The price is the same for any number of years.
 - `include` (array): Which sections to fill: any of "identity", "financials", "us" (SEC filings of US issuers), e.g. ["identity", "financials"]. Default (or empty) = all three. Fewer sections = fewer sources called, slightly faster; the price is the same.
 
@@ -639,11 +661,12 @@ Example questions:
 
 - `schema_version` (string): Output schema version.
 - `query` (string): The query as given.
-- `query_type` (string): How the query was read: lei, uk (UK company number), cvr, orgnr (Norwegian org number), siren (French SIREN, also for a SIRET), ytunnus (Finnish Business ID), cik, ticker or name.
-- `country` (string | null): ISO 3166 alpha-2 country of the company.
-- `identity` (object | null): Who the company is: from the national register, GLEIF and the SEC (first source that has a value wins). null if no source had a record or the section was not requested.
-- `financials` (object | null): Key figures of the last `maxYears` fiscal years, each with its source filing. null when none were found (see not_found).
-- `us` (object | null): SEC EDGAR data for US issuers (by ticker, CIK, or a US company in GLEIF that the SEC lists). null otherwise.
+- `query_type` (string): How the query was read: lei, uk (UK company number), cvr, ee (Estonian registry code), orgnr (Norwegian org number), siren (French SIREN, also for a SIRET), ytunnus (Finnish Business ID), fdic (FDIC certificate number), cik, ticker or name.
+- `country` (string | null): ISO 3166 alpha-2 country of the company (its home country, also for a foreign company listed in the US). null when unknown.
+- `identity` (object | null): Who the company is: from the national register, GLEIF, the SEC and (US banks) the FDIC (first source that has a value wins). null if no source had a record or the section was not requested.
+- `financials` (object | null): Key figures of the last `maxYears` fiscal years, each with its source filing: a listed company's ESEF report first, else the national register, else the company's SEC XBRL filings (10-K, 20-F, 40-F). null when none were found (see not_found).
+- `us` (object | null): The US listing: SEC EDGAR data for US issuers and for foreign companies listed in the US (by ticker, CIK, or a US company in GLEIF that the SEC lists). null otherwise.
+- `bank` (object | null): US banks: the FDIC-insured bank of this company from the FDIC BankFind Suite (company level only). Filled for a US bank (found by FDIC certificate, LEI or name) and for a US bank holding company (its largest bank). Requested with the `us` section. null otherwise.
 - `candidates` (array): When a name (or a number valid in two registers) matches several companies: the top 3 (legal_name, country, lei, lei_status, registration_number, score 0-1). The report is for the first; re-run with its LEI or registration number (and country) to pick another. Empty when the match was clear.
 - `not_found` (array): Requested sections without data, each {section, reason} in plain words an agent can relay.
 - `warnings` (array): Sources that failed or timed out, and other caveats, in plain words. The rest of the report is still valid.
@@ -870,6 +893,7 @@ Docs: https://boscolabs.dev/sanctions-screening.html
 Apify Store: coming soon
 MCP: https://mcp.apify.com?tools=bosco_labs/sanctions-screening
 Price: $0.01 per name screened
+API: POST https://api.boscolabs.dev/v1/sanctions-screening, $0.01 per name screened (max 50 names)
 
 Is this company, vessel or person sanctioned? Returns per name: match yes/no, the listed entry, aliases, programs, listing date, identifiers and a source link, from the official OFAC SDN and non-SDN, US Consolidated Screening List, UK Sanctions List and EU lists, with each list's date.
 
@@ -913,6 +937,7 @@ Docs: https://boscolabs.dev/eu-law-lookup.html
 Apify Store: coming soon
 MCP: https://mcp.apify.com?tools=bosco_labs/eu-law-lookup
 Price: $0.01 per act or article returned
+API: POST https://api.boscolabs.dev/v1/eu-law-lookup, $0.005 per act or article returned (max 50 results (maxResults))
 
 The text of an EU law article as in force today (or on a date), whether the act is in force, what amended it, plus new Official Journal acts. Ask by name (GDPR, AI Act), citation, CELEX or ELI; 24 languages. Official EUR-Lex/Cellar data with a source link per row.
 
@@ -996,6 +1021,7 @@ Docs: https://boscolabs.dev/national-law-lookup.html
 Apify Store: coming soon
 MCP: https://mcp.apify.com?tools=bosco_labs/national-law-lookup
 Price: $0.01 per article or act returned
+API: POST https://api.boscolabs.dev/v1/national-law-lookup, $0.005 per article or act returned (max 10 articles)
 
 The text of a UK section or Dutch article as in force today (or on a date), whether it is in force and what changed it. Ask by citation: "Companies Act 2006 s 172", "BW 7:658", "artikel 13 Wet Vpb 1969". Official legislation.gov.uk and Dutch BWB data with a source link per row.
 
@@ -1232,8 +1258,19 @@ Example questions:
 - `parent_award_id` (string | null): PIID of the parent IDV (IDIQ, BPA, GSA schedule) for task and delivery orders; null for standalone contracts.
 - `award_key` (string): USAspending generated_internal_id: unique award key (PIID + agency + parent IDV).
 - `action_date` (string): Signing (action) date, YYYY-MM-DD; for daily-list rows the announcement date.
-- `amount_usd` (number): USAspending rows: obligated amount in USD, that day's actions on this award summed (modifications can be negative). Daily-list rows: the face value as stated (often with options, or a ceiling: see is_ceiling).
-- `is_ceiling` (boolean): True when amount_usd is a ceiling, not money committed: a multiple-award contract (shared by several awardees) or an IDIQ maximum. Only daily-list rows can be true.
+- `amount_usd` (number): USAspending rows: obligated amount in USD, that day's actions on this award summed (modifications can be negative). Daily-list rows: the amount as stated (see amount_basis); for a multiple-award contract the full shared ceiling on every awardee's row (see shared_award).
+- `is_ceiling` (boolean): True when amount_usd is a ceiling, not money committed (amount_basis is "ceiling"): an IDIQ maximum or a multiple-award ceiling. Kept for compatibility; use amount_basis and shared_award. Only daily-list rows can be true.
+- `contract_number` (string | null): Contract number (PIID) as stated: for USAspending rows the same as award_id; for daily-list rows the number in the announcement paragraph, null when that paragraph states none.
+- `award_kind` (string | null): What kind of award the row is. Daily list: from the announcement wording ("has been awarded a ... contract" = new_contract, "modification (P00012) to previously awarded contract" = modification, "exercises an option" = option_exercise, "task order", "delivery order" or an order under an ordering agreement, "multiple award" or "will compete for each order" = multiple_award_idiq, "single award" = single_award_idiq; an IDIQ that says neither is new_contract), kept only when such a keyword is in the paragraph. USAspending: award type A BPA CALL = bpa_call, B PURCHASE ORDER = new_contract, C DELIVERY ORDER = delivery_order (FPDS files task orders as delivery orders), D DEFINITIVE CONTRACT = new_contract; a day without the base award is option_exercise (action type G) or modification. Null when unknown.
+- `pricing_type` (string | null): Contract pricing from the announcement wording ("firm-fixed-price", "cost-plus-fixed-fee", ...; hybrid = two or more named). Daily-list rows only; null for USAspending rows (the transaction search does not return it) and when the text names none.
+- `amount_basis` (string | null): What amount_usd measures: ceiling (a maximum or multiple-award ceiling, not money committed; shared when shared_award is true), face_value (a definitive contract's or order's value), modification_value (the value of a modification), obligated (money obligated: every USAspending row), estimated. Null when the text does not say.
+- `obligated_at_award_usd` (number | null): Daily list: the amount the announcement says is obligated at the time of award (0 for "no funds are obligated"), only when that figure is in a sentence about obligation; else null. USAspending: the obligated amount (same as amount_usd).
+- `shared_award` (boolean | null): True when several companies share this one amount (a multiple-award contract: every awardee gets a row with the full ceiling). Never sum amount_usd over such rows: count each award_group_id once. False for USAspending rows; null for daily-list days read before schema 2.
+- `awardees_count` (integer | null): Number of companies sharing this award_group_id (1 = not shared).
+- `award_group_id` (string | null): Stable id shared by all rows of one award: daily list = one announcement paragraph and amount; USAspending = one award and signing day. To total money without double counting, take amount_usd once per award_group_id.
+- `co_awardees` (array | null): The other companies in the same award_group_id (at most 20); empty when not shared.
+- `completion_date` (string | null): Estimated completion date stated in the announcement, YYYY-MM-DD (a month alone: its last day); null when not stated and for USAspending rows.
+- `classification_evidence` (string | null): The words that support award_kind, pricing_type and amount_basis, e.g. "multiple award; firm-fixed-price; maximum" (daily list) or "award type DELIVERY ORDER" (USAspending).
 - `action_count` (integer): Number of contract actions summed into this row.
 - `modification_numbers` (array): Modification numbers of those actions ('0' = the base award).
 - `new_award` (boolean): True when the day includes the base award (modification 0), false for modifications only.
@@ -1370,6 +1407,7 @@ Docs: https://boscolabs.dev/eu-rates-inflation.html
 Apify Store: coming soon
 MCP: https://mcp.apify.com?tools=bosco_labs/eu-rates-inflation
 Price: $0.002 per series returned
+API: POST https://api.boscolabs.dev/v1/eu-rates-inflation, $0.002 per series returned (catalogue free) (max 20 series)
 
 Latest value, previous value, change and recent history of ECB policy rates, euro reference FX rates, €STR, euro-area and national bond yields, and Eurostat HICP inflation. Ask by plain name (ecb_deposit_rate, eur_fx:USD, hicp:NL), no SDMX keys. Official data, a source link per series.
 
@@ -1561,10 +1599,12 @@ Example questions:
 - `extract` (array): Any of text, tables, metadata, e.g. ["tables"]. Default (empty) = all three. Metadata alone costs one page per PDF.
 - `maxPages` (integer): Most pages read per PDF, counted from the first selected page, e.g. 10. Default 50. You pay per page with text, so this caps the cost per PDF; a warning tells you how to request the rest.
 - `outputFormat` (string): How page text is written: "markdown" marks headings with ## and writes detected tables as markdown tables; "text" gives plain paragraphs and tab-separated table rows. Default markdown. The tables field is the same in both.
+- `timeoutSecs` (integer): Most seconds spent parsing one PDF, e.g. 60. Default 120. Pages are read until 3/4 of this time (later pages get a warning and are not charged); a PDF still parsing at the limit is stopped and returns an error row, not charged. Empty = 120.
 
 ### Output fields
 
 - `schema_version` (string): Output schema version.
+- `input_index` (integer): Position of this PDF in the input, 0-based: urls[input_index], or len(urls) for pdfBase64. Rows are written as each PDF finishes, so their order can differ from the input.
 - `url` (string | null): The PDF URL as given in the input; null for pdfBase64.
 - `final_url` (string | null): URL the PDF was finally downloaded from, after redirects; null for pdfBase64 or on error.
 - `file_size_bytes` (integer | null): Size of the PDF file in bytes; null when it could not be downloaded.
@@ -1581,7 +1621,7 @@ Example questions:
 - `pages` (array | null): One entry per processed page: {page (1-based), text}. text is markdown-ish (## headings, | tables |) or plain, in reading order; null for pages without a text layer. null when text was not requested.
 - `tables` (array | null): Tables detected from aligned text: {page, header (first row when it looks like a header, else null), rows (arrays of cell strings, null = empty cell), n_cols}. null when tables were not requested.
 - `warnings` (array): Things to know, e.g. scanned pages without text (OCR not supported, not charged) or pages left out by maxPages.
-- `error` (string | null): Why this PDF failed (refused URL, download error, not a PDF, password-protected, unreadable); null on success. Failed PDFs are not charged.
+- `error` (string | null): Why this PDF failed (refused URL, download error, not a PDF, password-protected, unreadable, too complex: over the parse timeout or out of memory); null on success. Failed PDFs are not charged.
 - `source_url` (string | null): Where the data came from (the input URL); null for pdfBase64.
 - `retrieved_at` (string): UTC time the PDF was processed.
 
@@ -1669,7 +1709,7 @@ Example questions:
 - `change_type` (string): new = key not seen in the previous run; changed = a compared field differs; removed = key missing from this run.
 - `key` (object | null): The item's key field values, e.g. {"url": "https://..."}. null with whole-item comparison.
 - `changed_fields` (array): changed rows: the fields that differ (top-level field names, or your watchFields paths). Empty for new and removed.
-- `previous` (object | null): changed rows with watchFields: the old values of the changed fields. null otherwise (only hashes of other fields are kept).
+- `previous` (object | null): changed rows: the old values of the changed fields that were kept: all watchFields, else small values (text up to 200 characters, numbers, booleans; up to 20 fields and 400 characters per item). Long text, lists and objects are left out; a field that was missing before is null. null when no old value is known, and for new and removed rows.
 - `item` (object | null): The current item, unchanged. For removed rows: the key values (the last known identity; with whole-item comparison, the removed item minus ignored fields).
 - `monitor_name` (string): The monitorName of this run.
 - `checked_at` (string): When this run started the comparison (UTC, ISO 8601).

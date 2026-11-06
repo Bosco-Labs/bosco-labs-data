@@ -71,18 +71,20 @@ pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;pa
 .table{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{text-align:left;vertical-align:top;padding:7px 8px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-weight:600}td:first-child{white-space:nowrap}
 details{border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:10px 0}summary{cursor:pointer;font-weight:600}
 footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font-size:.9rem;color:var(--muted)}footer a{color:var(--muted)}
+form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:1 1 240px;min-width:0;font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}button.btn{border:0;cursor:pointer;font:inherit;font-weight:650}
+.note{border-left:3px solid var(--warn);background:var(--surface);border-radius:0 10px 10px 0;padding:10px 14px;margin:14px 0;font-size:.95rem}.notice{font-size:.88rem;color:var(--muted)}
 @media (max-width:560px){.head{flex-direction:column;gap:12px}.head img{width:64px;height:64px}.hero{padding-top:32px}}</style>
 </head>
 <body>
 <header class="site"><div class="wrap"><a class="brand" href="index.html"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
-<nav><a href="index.html#tools">Tools</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
+<nav><a href="index.html#tools">Tools</a><a href="api.html">API</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
 <main class="wrap">
 <p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#compliance-law">Compliance &amp; law</a></p>
 <article>
 <div class="head"><img src="icons/sanctions-screening.svg" alt="" width="84" height="84"><div><h1>Sanctions Screening API: OFAC, UK, EU &amp; US export lists</h1><span class="badge soon">Coming soon to the Store</span></div></div>
 <div class="prose">
 <p class="lead"><strong>Answers &quot;is this company, vessel or person sanctioned?&quot;</strong> for one or many names, against the official OFAC SDN and non-SDN lists, the US Consolidated Screening List (Commerce Entity List, Denied Persons, State lists), the UK Sanctions List and the EU financial sanctions list. Every answer says which lists were checked and how current they were, and every match links to its official source. Built for <strong>AI agents</strong> doing KYB, compliance or procurement checks, and for people who need a quick, sourced screen.</p>
-<div class="facts"><div class="fact"><b>Price</b>$0.01 per name screened</div><div class="fact"><b>Domain</b>Compliance &amp; law</div><div class="fact"><b>Call it</b>Apify API or MCP</div></div>
+<div class="facts"><div class="fact"><b>Price</b>$0.01 per name screened</div><div class="fact"><b>Domain</b>Compliance &amp; law</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
 <p><strong>Pricing (pay per event):</strong> $0.01 per name screened, match or no match. A run that cannot load any list fails and costs nothing.</p>
 <div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=Sanctions Screening API">Ask for early access</a></div>
 <h2>Questions agents ask</h2>
@@ -155,6 +157,13 @@ footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font
 <pre><code>{ &quot;names&quot;: [&quot;Sovcomflot&quot;, &quot;Novo Nordisk A/S&quot;] }</code></pre>
 <p>one small row per name (typically 2-7 KB), stable <code>snake_case</code> fields, ISO dates, <code>null</code> for unknown. <code>summary</code> is one sentence the agent can repeat; <code>match_found</code> is the yes/no; <code>lists_checked</code> gives the dates for the citation. A cold run (lists downloaded fresh) takes about 15-20 seconds; runs within an hour of the last one reuse the parsed lists and take a few seconds.</p>
 <p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~sanctions-screening/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.01 per name screened.</p>
+<h2 id="http-api">HTTP API</h2>
+<p>Also on the Bosco Labs HTTP API (beta, test mode): same input and same rows as the Actor, <strong>$0.01 per name screened</strong> from prepaid credits (max 50 names per call). <a href="api.html#key">Get a key</a> with a $0.50 free trial; see <a href="api.html">prices and limits</a>.</p>
+<pre><code>curl https://api.boscolabs.dev/v1/sanctions-screening \
+  -H &quot;Authorization: Bearer $BOSCO_API_KEY&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{&quot;names&quot;: [&quot;Sovcomflot&quot;, &quot;Novo Nordisk A/S&quot;]}&#x27;</code></pre>
+<p class="notice">This product uses the International Trade Administration&#x27;s Data API but is not endorsed or certified by the International Trade Administration. OFAC and CSL data are US government works. UK Sanctions List: contains public sector information licensed under the Open Government Licence v3.0. EU list: European Commission, names as published. No endorsement by any publisher is implied.</p>
 <h2>Input fields</h2>
 <div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
 <tr><td><code>names</code></td><td>array (required)</td><td>Company, vessel or person names to check, one per entry, as plain text, e.g. [&quot;Sovcomflot&quot;, &quot;Novo Nordisk A/S&quot;, &quot;Vladimir Putin&quot;]. Legal forms (Ltd, LLC, GmbH, PJSC), accents, punctuation and word order are ignored. 1-200 names; each name gives one result row and one charge; repeats are screened once. Required.</td></tr>
@@ -183,7 +192,7 @@ footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font
 </div>
 </article>
 </main>
-<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="privacy.html">Privacy</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
 <p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
 </body>
 </html>
