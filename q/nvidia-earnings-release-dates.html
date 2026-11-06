@@ -114,26 +114,63 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
   -d &#x27;{&quot;tickers&quot;: [&quot;NVDA&quot;], &quot;earningsReleasesOnly&quot;: true, &quot;maxResults&quot;: 4}&#x27;</code></pre>
 
 <h2>Example output</h2>
-<p class="muted">Example output from the tool&#x27;s documentation (not a run of this exact question).</p>
-<pre><code>{
-  &quot;accession_number&quot;: &quot;0000320193-26-000024&quot;,
-  &quot;form&quot;: &quot;8-K&quot;,
-  &quot;company_name&quot;: &quot;Apple Inc.&quot;,
-  &quot;cik&quot;: &quot;0000320193&quot;,
-  &quot;ticker&quot;: &quot;AAPL&quot;,
-  &quot;filing_date&quot;: &quot;2026-11-02&quot;,
-  &quot;accepted_at&quot;: &quot;2026-11-02T16:30:23-05:00&quot;,
-  &quot;market_timing&quot;: &quot;after_close&quot;,
-  &quot;report_date&quot;: &quot;2026-11-02&quot;,
-  &quot;items&quot;: [&quot;2.02&quot;, &quot;9.01&quot;],
-  &quot;item_descriptions&quot;: [&quot;Results of Operations and Financial Condition&quot;, &quot;Financial Statements and Exhibits&quot;],
-  &quot;parties&quot;: null,
-  &quot;filing_index_url&quot;: &quot;https://www.sec.gov/Archives/edgar/data/320193/000032019326000024/0000320193-26-000024-index.htm&quot;,
-  &quot;primary_document_url&quot;: &quot;https://www.sec.gov/Archives/edgar/data/320193/000032019326000024/aapl-20261102.htm&quot;,
-  &quot;source&quot;: &quot;submissions-api&quot;,
-  &quot;source_url&quot;: &quot;https://data.sec.gov/submissions/CIK0000320193.json&quot;,
-  &quot;retrieved_at&quot;: &quot;2026-11-05T16:23:00+00:00&quot;
-}</code></pre>
+<p class="muted">Snapshot taken 2026-11-06, source links in each row. First 2 of 4 rows (snapshot runs stop at 5 rows); long values shortened.</p>
+<pre><code>[
+  {
+    &quot;schema_version&quot;: &quot;1&quot;,
+    &quot;accession_number&quot;: &quot;0001045810-26-000073&quot;,
+    &quot;form&quot;: &quot;8-K&quot;,
+    &quot;company_name&quot;: &quot;NVIDIA CORP&quot;,
+    &quot;cik&quot;: &quot;0001045810&quot;,
+    &quot;ticker&quot;: &quot;NVDA&quot;,
+    &quot;filing_date&quot;: &quot;2026-08-26&quot;,
+    &quot;accepted_at&quot;: &quot;2026-08-26T16:21:19-04:00&quot;,
+    &quot;market_timing&quot;: &quot;after_close&quot;,
+    &quot;report_date&quot;: &quot;2026-08-26&quot;,
+    &quot;items&quot;: [
+      &quot;2.02&quot;,
+      &quot;9.01&quot;
+    ],
+    &quot;item_descriptions&quot;: [
+      &quot;Results of Operations and Financial Condition&quot;,
+      &quot;Financial Statements and Exhibits&quot;
+    ],
+    &quot;parties&quot;: null,
+    &quot;filing_index_url&quot;: &quot;https://www.sec.gov/Archives/edgar/data/1045810/000104581026000073/0001045810-26-000073-index.htm&quot;,
+    &quot;primary_document_url&quot;: &quot;https://www.sec.gov/Archives/edgar/data/1045810/000104581026000073/nvda-20260826.htm&quot;,
+    &quot;source&quot;: &quot;submissions-api&quot;,
+    &quot;source_url&quot;: &quot;https://data.sec.gov/submissions/CIK0001045810.json&quot;,
+    &quot;provided_by&quot;: &quot;Bosco Labs (boscolabs.dev)&quot;,
+    &quot;retrieved_at&quot;: &quot;2026-11-06T14:34:27+00:00&quot;
+  },
+  {
+    &quot;schema_version&quot;: &quot;1&quot;,
+    &quot;accession_number&quot;: &quot;0001045810-26-000051&quot;,
+    &quot;form&quot;: &quot;8-K&quot;,
+    &quot;company_name&quot;: &quot;NVIDIA CORP&quot;,
+    &quot;cik&quot;: &quot;0001045810&quot;,
+    &quot;ticker&quot;: &quot;NVDA&quot;,
+    &quot;filing_date&quot;: &quot;2026-05-20&quot;,
+    &quot;accepted_at&quot;: &quot;2026-05-20T16:21:19-04:00&quot;,
+    &quot;market_timing&quot;: &quot;after_close&quot;,
+    &quot;report_date&quot;: &quot;2026-05-20&quot;,
+    &quot;items&quot;: [
+      &quot;2.02&quot;,
+      &quot;9.01&quot;
+    ],
+    &quot;item_descriptions&quot;: [
+      &quot;Results of Operations and Financial Condition&quot;,
+      &quot;Financial Statements and Exhibits&quot;
+    ],
+    &quot;parties&quot;: null,
+    &quot;filing_index_url&quot;: &quot;https://www.sec.gov/Archives/edgar/data/1045810/000104581026000051/0001045810-26-000051-index.htm&quot;,
+    &quot;primary_document_url&quot;: &quot;https://www.sec.gov/Archives/edgar/data/1045810/000104581026000051/nvda-20260520.htm&quot;,
+    &quot;source&quot;: &quot;submissions-api&quot;,
+    &quot;source_url&quot;: &quot;https://data.sec.gov/submissions/CIK0001045810.json&quot;,
+    &quot;provided_by&quot;: &quot;Bosco Labs (boscolabs.dev)&quot;,
+    &quot;retrieved_at&quot;: &quot;2026-11-06T14:34:27+00:00&quot;
+  }
+]</code></pre>
 <div class="actions"><a class="btn" href="https://apify.com/bosco_labs/sec-filings-feed">Run it on Apify Store &rarr;</a><a class="btn ghost" href="sec-filings-feed.html">All fields and limits</a></div>
 <h2>More questions for this tool</h2><ul class="qs"><li><a href="q/new-13d-filings-last-7-days.html">Which companies had a 13D activist stake filed in the last 7 days, and who filed it?</a></li><li><a href="q/apple-10-k-annual-reports-since-2015.html">Give me links to Apple&#x27;s 10-K annual reports since 2015.</a></li></ul>
 <p><a href="q/index.html">All questions</a></p>

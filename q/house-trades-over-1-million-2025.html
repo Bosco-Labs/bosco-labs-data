@@ -108,36 +108,39 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
   -d &#x27;{&quot;years&quot;: [&quot;2025&quot;], &quot;minAmountUsd&quot;: 1000001, &quot;maxResults&quot;: 100}&#x27;</code></pre>
 
 <h2>Example output</h2>
-<p class="muted">Example output from the tool&#x27;s documentation (not a run of this exact question).</p>
-<pre><code>{
-  &quot;schema_version&quot;: &quot;1&quot;,
-  &quot;transaction_id&quot;: &quot;20033337-1&quot;,
-  &quot;member_name&quot;: &quot;Nancy Pelosi&quot;,
-  &quot;first_name&quot;: &quot;Nancy&quot;,
-  &quot;last_name&quot;: &quot;Pelosi&quot;,
-  &quot;state_district&quot;: &quot;CA11&quot;,
-  &quot;state&quot;: &quot;CA&quot;,
-  &quot;filing_date&quot;: &quot;2025-10-24&quot;,
-  &quot;transaction_date&quot;: &quot;2025-10-22&quot;,
-  &quot;notification_date&quot;: &quot;2025-10-22&quot;,
-  &quot;days_to_disclose&quot;: 2,
-  &quot;owner&quot;: &quot;SP&quot;,
-  &quot;ticker&quot;: &quot;AAPL&quot;,
-  &quot;asset_description&quot;: &quot;Apple Inc. - Common Stock (AAPL) [ST]&quot;,
-  &quot;asset_type&quot;: &quot;stock&quot;,
-  &quot;asset_type_code&quot;: &quot;ST&quot;,
-  &quot;option_type&quot;: null,
-  &quot;transaction_type&quot;: &quot;sale&quot;,
-  &quot;is_partial&quot;: true,
-  &quot;amount_min&quot;: 100001,
-  &quot;amount_max&quot;: 250000,
-  &quot;amount_text&quot;: &quot;$100,001 - $250,000&quot;,
-  &quot;is_amendment&quot;: false,
-  &quot;doc_id&quot;: &quot;20033337&quot;,
-  &quot;pdf_url&quot;: &quot;https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2025/20033337.pdf&quot;,
-  &quot;source_url&quot;: &quot;https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2025/20033337.pdf&quot;,
-  &quot;retrieved_at&quot;: &quot;2026-11-05T16:38:21+00:00&quot;
-}</code></pre>
+<p class="muted">Snapshot taken 2026-11-06, source links in each row. First 1 of 5 rows (snapshot runs stop at 5 rows); long values shortened.</p>
+<pre><code>[
+  {
+    &quot;schema_version&quot;: &quot;1&quot;,
+    &quot;transaction_id&quot;: &quot;20033700-1&quot;,
+    &quot;member_name&quot;: &quot;Jefferson Shreve&quot;,
+    &quot;first_name&quot;: &quot;Jefferson&quot;,
+    &quot;last_name&quot;: &quot;Shreve&quot;,
+    &quot;state_district&quot;: &quot;IN06&quot;,
+    &quot;state&quot;: &quot;IN&quot;,
+    &quot;filing_date&quot;: &quot;2025-12-31&quot;,
+    &quot;transaction_date&quot;: &quot;2025-12-30&quot;,
+    &quot;notification_date&quot;: &quot;2025-12-30&quot;,
+    &quot;days_to_disclose&quot;: 1,
+    &quot;owner&quot;: null,
+    &quot;ticker&quot;: null,
+    &quot;asset_description&quot;: &quot;JP Morgan 3-year auto callable buffer note [CS]&quot;,
+    &quot;asset_type&quot;: &quot;bond&quot;,
+    &quot;asset_type_code&quot;: &quot;CS&quot;,
+    &quot;option_type&quot;: null,
+    &quot;transaction_type&quot;: &quot;purchase&quot;,
+    &quot;is_partial&quot;: false,
+    &quot;amount_min&quot;: 5000001,
+    &quot;amount_max&quot;: 25000000,
+    &quot;amount_text&quot;: &quot;$5,000,001 - $25,000,000&quot;,
+    &quot;is_amendment&quot;: false,
+    &quot;doc_id&quot;: &quot;20033700&quot;,
+    &quot;pdf_url&quot;: &quot;https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2025/20033700.pdf&quot;,
+    &quot;source_url&quot;: &quot;https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2025/20033700.pdf&quot;,
+    &quot;provided_by&quot;: &quot;Bosco Labs (boscolabs.dev)&quot;,
+    &quot;retrieved_at&quot;: &quot;2026-11-06T14:35:21+00:00&quot;
+  }
+]</code></pre>
 <div class="actions"><a class="btn" href="https://apify.com/bosco_labs/us-house-trades">Run it on Apify Store &rarr;</a><a class="btn ghost" href="us-house-trades.html">All fields and limits</a></div>
 <h2>More questions for this tool</h2><ul class="qs"><li><a href="q/house-members-nvda-trades-2026.html">Which House members disclosed NVDA trades in 2026?</a></li></ul>
 <p><a href="q/index.html">All questions</a></p>

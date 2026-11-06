@@ -109,49 +109,52 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
   -d &#x27;{&quot;countries&quot;: [&quot;BE&quot;], &quot;periodFrom&quot;: &quot;2024-01-01&quot;, &quot;periodTo&quot;: &quot;2024-12-31&quot;, &quot;maxFilings&quot;: 20}&#x27;</code></pre>
 
 <h2>Example output</h2>
-<p class="muted">Example output from the tool&#x27;s documentation (not a run of this exact question).</p>
-<pre><code>{
-  &quot;lei&quot;: &quot;724500Y6DUVHQD6OXN27&quot;,
-  &quot;company_name&quot;: &quot;ASML Holding N.V.&quot;,
-  &quot;country&quot;: &quot;NL&quot;,
-  &quot;period_end&quot;: &quot;2025-12-31&quot;,
-  &quot;fiscal_year_start&quot;: &quot;2025-01-01&quot;,
-  &quot;currency&quot;: &quot;EUR&quot;,
-  &quot;revenue&quot;: 32667300000,
-  &quot;revenue_growth&quot;: 0.1558,
-  &quot;operating_profit&quot;: 12054000000,
-  &quot;ebitda&quot;: 13486800000,
-  &quot;net_income&quot;: 10213000000,
-  &quot;operating_margin&quot;: 0.369,
-  &quot;return_on_equity&quot;: 0.4223,
-  &quot;eps_basic&quot;: 26.29,
-  &quot;dividend_proposed_per_share&quot;: 7.5,
-  &quot;total_assets&quot;: 55576800000,
-  &quot;total_equity&quot;: 24185000000,
-  &quot;operating_cash_flow&quot;: 13826500000,
-  &quot;metrics_found&quot;: 22,
-  &quot;sources&quot;: {
-    &quot;revenue&quot;: {
-      &quot;concept&quot;: &quot;ifrs-full:RevenueFromContractsWithCustomers&quot;,
-      &quot;fact_id&quot;: &quot;f-9&quot;,
-      &quot;period&quot;: &quot;2025-01-01T00:00:00/2026-01-01T00:00:00&quot;,
-      &quot;unit&quot;: &quot;iso4217:EUR&quot;,
-      &quot;decimals&quot;: -5
-    },
-    &quot;ebitda&quot;: {
-      &quot;derived&quot;: &quot;operating_profit + depreciation_amortisation&quot;
-    }
-  },
-  &quot;prior_year&quot;: {
+<p class="muted">Snapshot taken 2026-11-06, source links in each row. First 1 of 1 rows (snapshot runs stop at 1 row); long values shortened.</p>
+<pre><code>[
+  {
+    &quot;schema_version&quot;: &quot;1&quot;,
+    &quot;record_type&quot;: &quot;summary&quot;,
+    &quot;lei&quot;: &quot;549300ZKLIF7RP6EH823&quot;,
+    &quot;company_name&quot;: &quot;Tessenderlo Group&quot;,
+    &quot;country&quot;: &quot;BE&quot;,
     &quot;period_end&quot;: &quot;2024-12-31&quot;,
-    &quot;revenue&quot;: 28262900000,
-    &quot;net_income&quot;: 8349000000,
-    &quot;...&quot;: &quot;same fields as above&quot;
-  },
-  &quot;viewer_url&quot;: &quot;https://filings.xbrl.org/724500Y6DUVHQD6OXN27/2025-12-31/ESEF/NL/0/asml-2025-12-31-1-en/reports/ixbrlviewer.html&quot;,
-  &quot;source_url&quot;: &quot;https://filings.xbrl.org/724500Y6DUVHQD6OXN27/2025-12-31/ESEF/NL/0/asml-2025-12-31-1-en.json&quot;,
-  &quot;retrieved_at&quot;: &quot;2026-11-05T15:00:00+00:00&quot;
-}</code></pre>
+    &quot;fiscal_year_start&quot;: &quot;2024-01-01&quot;,
+    &quot;currency&quot;: &quot;EUR&quot;,
+    &quot;revenue&quot;: 2647700000,
+    &quot;gross_profit&quot;: 513200000,
+    &quot;operating_profit&quot;: 16500000,
+    &quot;profit_before_tax&quot;: 46600000,
+    &quot;net_income&quot;: 44000000,
+    &quot;net_income_attributable_to_parent&quot;: 42800000,
+    &quot;eps_basic&quot;: 0.7,
+    &quot;eps_diluted&quot;: 0.7,
+    &quot;total_assets&quot;: 2934800000,
+    &quot;current_assets&quot;: 1267500000,
+    &quot;cash_and_equivalents&quot;: 182400000,
+    &quot;total_equity&quot;: 1912400000,
+    &quot;equity_attributable_to_parent&quot;: 1896000000,
+    &quot;total_liabilities&quot;: 1022500000,
+    &quot;current_liabilities&quot;: 599700000,
+    &quot;noncurrent_liabilities&quot;: 422700000,
+    &quot;operating_cash_flow&quot;: 333200000,
+    &quot;investing_cash_flow&quot;: -232900000,
+    &quot;financing_cash_flow&quot;: -94700000,
+    &quot;depreciation_amortisation&quot;: 211500000,
+    &quot;employee_benefits_expense&quot;: null,
+    &quot;dividends_paid&quot;: 54000000,
+    &quot;dividend_per_share&quot;: null,
+    &quot;dividend_proposed_per_share&quot;: null,
+    &quot;shares_outstanding&quot;: null,
+    &quot;metrics_found&quot;: 21,
+    &quot;ebitda&quot;: 228000000,
+    &quot;operating_margin&quot;: 0.0062,
+    &quot;net_margin&quot;: 0.0166,
+    &quot;return_on_equity&quot;: 0.023,
+    &quot;equity_ratio&quot;: 0.6516,
+    &quot;revenue_growth&quot;: -0.0958,
+    &quot;...&quot;: &quot;9 more fields&quot;
+  }
+]</code></pre>
 <div class="actions"><a class="btn" href="https://apify.com/bosco_labs/esef-annual-reports">Run it on Apify Store &rarr;</a><a class="btn ghost" href="esef-annual-reports.html">All fields and limits</a></div>
 <h2>More questions for this tool</h2><ul class="qs"><li><a href="q/heineken-revenue-growth-operating-margin.html">What were Heineken&#x27;s latest revenue growth and operating margin, from its annual report?</a></li></ul>
 <p><a href="q/index.html">All questions</a></p>

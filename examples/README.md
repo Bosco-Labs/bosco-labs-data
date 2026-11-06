@@ -11,6 +11,7 @@ Every call is billed per result to your own Apify account; get a token at https:
 | [claude_mcp_sec.py](claude_mcp_sec.py) | Claude Messages API + Apify's hosted MCP server | `sec-insider-trades` + `sec-filings-feed` |
 | [httpx_company_accounts.py](httpx_company_accounts.py) | Plain HTTP (`httpx`), no framework | `bosco_labs/company-accounts` |
 | [n8n_insider_cluster_buys.json](n8n_insider_cluster_buys.json) | n8n workflow (HTTP Request node), import and run | `bosco_labs/sec-insider-trades` |
+| [x402-agent/](x402-agent/) | Plain Python, paid per call in USDC with x402 (no Apify account) | `sanctions-screening` + `company-check` |
 
 All tokens come from environment variables; never paste a token into code. Each file names the
 docs it was written against in its header. Questions: support@boscolabs.dev

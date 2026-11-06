@@ -113,40 +113,48 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
   -d &#x27;{&quot;tickers&quot;: [&quot;NVDA&quot;], &quot;transactionCodes&quot;: [&quot;S&quot;], &quot;minValueUsd&quot;: 1000000, &quot;lookbackDays&quot;: 365, &quot;includeClusterSignals&quot;: false, &quot;maxResults&quot;: 100}&#x27;</code></pre>
 
 <h2>Example output</h2>
-<p class="muted">Example output from the tool&#x27;s documentation (not a run of this exact question).</p>
-<pre><code>{
-  &quot;record_type&quot;: &quot;transaction&quot;,
-  &quot;accession_number&quot;: &quot;0000895126-15-000082&quot;,
-  &quot;form&quot;: &quot;4&quot;,
-  &quot;issuer_name&quot;: &quot;CHESAPEAKE ENERGY CORP&quot;,
-  &quot;issuer_cik&quot;: &quot;0000895126&quot;,
-  &quot;ticker&quot;: &quot;CHK&quot;,
-  &quot;insider_name&quot;: &quot;DUNHAM ARCHIE W&quot;,
-  &quot;insider_cik&quot;: &quot;0001192053&quot;,
-  &quot;insider_roles&quot;: [&quot;director&quot;],
-  &quot;officer_title&quot;: null,
-  &quot;owner_count&quot;: 1,
-  &quot;transaction_date&quot;: &quot;2015-03-27&quot;,
-  &quot;filing_date&quot;: &quot;2015-03-31&quot;,
-  &quot;usable_from&quot;: &quot;2015-04-01&quot;,
-  &quot;transaction_code&quot;: &quot;P&quot;,
-  &quot;transaction_type&quot;: &quot;Open-market or private purchase&quot;,
-  &quot;acquired_disposed&quot;: &quot;A&quot;,
-  &quot;shares&quot;: 1000000,
-  &quot;price&quot;: 13.98,
-  &quot;value_usd&quot;: 13980000.0,
-  &quot;shares_owned_after&quot;: 2635270,
-  &quot;ownership&quot;: &quot;direct&quot;,
-  &quot;plan_10b5_1&quot;: null,
-  &quot;cluster_insiders&quot;: 2,
-  &quot;cluster_value_usd&quot;: 14029455.0,
-  &quot;in_cluster&quot;: true,
-  &quot;cluster_date&quot;: &quot;2015-03-31&quot;,
-  &quot;filing_url&quot;: &quot;https://www.sec.gov/Archives/edgar/data/895126/000089512615000082/0000895126-15-000082-index.htm&quot;,
-  &quot;source&quot;: &quot;dera&quot;,
-  &quot;source_url&quot;: &quot;https://www.sec.gov/files/structureddata/data/insider-transactions-data-sets/2015q1_form345.zip&quot;,
-  &quot;retrieved_at&quot;: &quot;2026-11-05T16:15:49+00:00&quot;
-}</code></pre>
+<p class="muted">Snapshot taken 2026-11-06, source links in each row. First 1 of 5 rows (snapshot runs stop at 5 rows); long values shortened.</p>
+<pre><code>[
+  {
+    &quot;schema_version&quot;: &quot;1&quot;,
+    &quot;record_type&quot;: &quot;transaction&quot;,
+    &quot;accession_number&quot;: &quot;0001696841-26-000014&quot;,
+    &quot;form&quot;: &quot;4&quot;,
+    &quot;issuer_name&quot;: &quot;NVIDIA CORP&quot;,
+    &quot;issuer_cik&quot;: &quot;0001045810&quot;,
+    &quot;ticker&quot;: &quot;NVDA&quot;,
+    &quot;insider_name&quot;: &quot;Teter Timothy S.&quot;,
+    &quot;insider_cik&quot;: &quot;0001696841&quot;,
+    &quot;insider_roles&quot;: [
+      &quot;officer&quot;
+    ],
+    &quot;officer_title&quot;: &quot;EVP, General Counsel and Sec&quot;,
+    &quot;owner_count&quot;: 1,
+    &quot;filing_date&quot;: &quot;2026-09-23&quot;,
+    &quot;usable_from&quot;: &quot;2026-09-24&quot;,
+    &quot;accepted_at&quot;: null,
+    &quot;filing_url&quot;: &quot;https://www.sec.gov/Archives/edgar/data/1045810/000169684126000014/0001696841-26-000014-index.htm&quot;,
+    &quot;source&quot;: &quot;dera&quot;,
+    &quot;transaction_date&quot;: &quot;2026-09-21&quot;,
+    &quot;transaction_code&quot;: &quot;S&quot;,
+    &quot;transaction_type&quot;: &quot;Open-market or private sale&quot;,
+    &quot;acquired_disposed&quot;: &quot;D&quot;,
+    &quot;shares&quot;: 4499,
+    &quot;price&quot;: 223.75,
+    &quot;value_usd&quot;: 1006651.25,
+    &quot;shares_owned_after&quot;: 2687660,
+    &quot;ownership&quot;: &quot;indirect&quot;,
+    &quot;plan_10b5_1&quot;: true,
+    &quot;security_title&quot;: &quot;Common Stock&quot;,
+    &quot;source_url&quot;: &quot;https://www.sec.gov/files/datastandardsinnovation/data/insider-transactions-data-sets/2026q3_form345.zip&quot;,
+    &quot;provided_by&quot;: &quot;Bosco Labs (boscolabs.dev)&quot;,
+    &quot;cluster_insiders&quot;: null,
+    &quot;cluster_value_usd&quot;: null,
+    &quot;in_cluster&quot;: null,
+    &quot;cluster_date&quot;: null,
+    &quot;retrieved_at&quot;: &quot;2026-11-06T14:34:24+00:00&quot;
+  }
+]</code></pre>
 <div class="actions"><a class="btn" href="https://apify.com/bosco_labs/sec-insider-trades">Run it on Apify Store &rarr;</a><a class="btn ghost" href="sec-insider-trades.html">All fields and limits</a></div>
 <h2>More questions for this tool</h2><ul class="qs"><li><a href="q/tesla-insider-buys-last-90-days.html">Did any Tesla insiders buy shares in the last 90 days?</a></li><li><a href="q/insider-cluster-buys-last-30-days.html">Which US stocks had insider cluster buys in the last 30 days?</a></li></ul>
 <p><a href="q/index.html">All questions</a></p>

@@ -1,0 +1,3 @@
+x402[evm]>=2.27,<3
+httpx
+eth-account
