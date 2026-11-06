@@ -141,7 +141,16 @@ for (const row of body.rows) console.log(row.series, row.latest_value, row.sourc
 </tbody></table></div>
 <div class="prose">
 <h2 id="credits">Credits</h2>
-<p>Credit packs: $10 = 100,000 credits, $50 = 500,000 credits, $200 = 2,000,000 credits. Buy with <code>POST /v1/credits/checkout</code> (your key in the header), which returns a Stripe Checkout link. Prices are in US dollars and include any VAT. Credits expire 24 months after purchase; unused credits are refunded on request within 14 days of purchase (<a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a>). <a href="terms.html">Terms of service</a>.</p>
+<p id="paid-status" role="status" class="note" hidden>Payment received. The credits are on your key within a minute; Stripe e-mails you a receipt. Check your balance with <code>GET /v1/me</code>.</p>
+<p>Buy credits for the key you already have (no key yet? <a href="#key">get one first</a>, it is free):</p>
+<form class="key" id="buy-form" method="post" action="https://api.boscolabs.dev/v1/credits/checkout">
+<label class="muted" for="buy-key" style="flex-basis:100%">Your API key</label>
+<input id="buy-key" type="password" name="key" required autocomplete="off" spellcheck="false" placeholder="bl_live_...">
+<select name="pack" aria-label="Credit pack"><option value="10">$10 = 100,000 credits</option><option value="50">$50 = 500,000 credits</option><option value="200">$200 = 2,000,000 credits</option></select>
+<button class="btn" type="submit">Buy credits</button>
+</form>
+<p class="muted">You go to Stripe to pay by card; the credits land on this key right after payment.</p>
+<p>Credit packs: $10 = 100,000 credits, $50 = 500,000 credits, $200 = 2,000,000 credits. Agents and code buy with <code>POST /v1/credits/checkout</code> (your key in the header, <code>{"pack": "10"}</code>), which returns a Stripe Checkout link. Prices are in US dollars and include any VAT. Credits expire 24 months after purchase; unused credits are refunded on request within 14 days of purchase (<a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a>). <a href="terms.html">Terms of service</a>.</p>
 <h2 id="limits">Rate limits</h2>
 <ul><li>About 60 calls per minute per key (10 per minute on free-trial keys); counted per server instance, so treat it as approximate.</li><li>Daily spending cap per key: $5 by default, raised on request.</li><li>Each call has a 55-second budget. Some tools pace their source (for example, UK and Dutch law lookups wait 5 seconds between pages), so a call can take up to about 35 seconds.</li></ul>
 <h2 id="errors">Errors</h2>
@@ -178,6 +187,10 @@ document.getElementById("key-form").addEventListener("submit", async (e) => {
     f.submit();
   }
 });
+if (new URLSearchParams(location.search).get("checkout") === "ok") {
+  document.getElementById("paid-status").hidden = false;
+  document.getElementById("credits").scrollIntoView();
+}
 </script>
 </main>
 <footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
