@@ -30,14 +30,15 @@
  "offers": {
   "@type": "Offer",
   "priceCurrency": "USD",
-  "description": "$0.002 per identifier resolved (HTTP API)",
-  "availability": "https://schema.org/PreOrder"
+  "description": "$0.002 per resolved identifier",
+  "url": "https://apify.com/bosco_labs/identifier-resolver"
  },
  "provider": {
   "@type": "Organization",
   "name": "Bosco Labs",
   "url": "https://boscolabs.dev/"
- }
+ },
+ "installUrl": "https://apify.com/bosco_labs/identifier-resolver"
 }
 </script>
 <style>:root{color-scheme:light dark;--head:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--body:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;--ink:#1D2721;--muted:#545F58;--bg:#F5F3EA;--surface:#EAE8DC;--line:#D6D3C3;--accent:#2E5A47;--accent-fg:#F5F3EA;--accent2:#8DA889;--accent2-text:#4A6646;--success:#36694A;--warn:#8E5D1C}
@@ -81,12 +82,12 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <main class="wrap">
 <p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#finance-sec">Finance &amp; SEC</a></p>
 <article>
-<div class="head"><img src="icons/identifier-resolver.svg" alt="" width="84" height="84"><div><h1>ISIN, LEI, CIK, FIGI &amp; Ticker Resolver API (crosswalk)</h1><span class="badge live">On the HTTP API</span></div></div>
+<div class="head"><img src="icons/identifier-resolver.svg" alt="" width="84" height="84"><div><h1>ISIN, LEI, CIK, FIGI &amp; Ticker Resolver API (crosswalk)</h1><span class="badge live">On Apify Store</span></div></div>
 <div class="prose">
 <p class="lead"><strong>One identifier in, the whole crosswalk out:</strong> give an ISIN, LEI, SEC CIK, ticker, FIGI or company name and get the issuer&#x27;s legal name, LEI, CIK, tickers per exchange, ISINs, FIGIs, CFI code and the EU trading venues, each value with its source URL. Built for <strong>AI agents</strong> and people who join datasets keyed by different identifiers (KYC, portfolio data, filings research).</p>
-<div class="facts"><div class="fact"><b>Price</b>$0.002 per identifier resolved (HTTP API)</div><div class="fact"><b>Domain</b>Finance &amp; SEC</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
+<div class="facts"><div class="fact"><b>Price</b>$0.002 per resolved identifier</div><div class="fact"><b>Domain</b>Finance &amp; SEC</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
 <p><strong>Pricing (pay per event):</strong> $0.002 per resolved identifier (<code>resolve</code>). A malformed identifier (wrong ISIN/LEI/FIGI check digit), an identifier nobody knows, or a failed source costs nothing.</p>
-<div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a></div>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/identifier-resolver">Run it on Apify Store &rarr;</a></div>
 <h2>Questions agents ask</h2>
 <ul class="qs"><li>&ldquo;What is the LEI, CIK and home-market FIGI of ISIN NL0010273215, and on how many EU venues does it trade? Cite the sources.&rdquo;</li></ul>
 </div>
@@ -190,12 +191,12 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 </tbody></table></div>
 
 <h2>Use with AI agents (MCP)</h2>
-<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is listed on the Apify Store; until then use the HTTP API or the remote MCP server at https://api.boscolabs.dev/mcp.</p>
+<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>.</p>
 <pre><code>https://mcp.apify.com?tools=bosco_labs/identifier-resolver</code></pre>
 <p>For &ldquo;What is the LEI, CIK and home-market FIGI of ISIN NL0010273215, and on how many EU venues does it trade? Cite the sources.&rdquo; the agent passes:</p>
 <pre><code>{ &quot;identifier&quot;: &quot;NL0010273215&quot; }</code></pre>
 <p>one small row (typically 3-8 KB), stable <code>snake_case</code> fields, <code>null</code> for unknown, a source URL per value. A resolve takes about 0.5-3 seconds (measured 0.3-1.7 s for ISINs, LEIs and CIKs; up to 6 s for names). <strong>Cost:</strong> $0.002 per resolved identifier, billed to the Apify account the MCP server is signed in with.</p>
-<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~identifier-resolver/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.002 per identifier resolved (HTTP API).</p>
+<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~identifier-resolver/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.002 per resolved identifier.</p>
 <h2 id="http-api">HTTP API</h2>
 <p>Also on the Bosco Labs HTTP API (beta): same input and same rows as the Actor, <strong>$0.002 per identifier resolved</strong> from prepaid credits (max 1 identifier per call). <a href="api.html#key">Get a key</a> with a $0.50 free trial; see <a href="api.html">prices and limits</a>.</p>
 <pre><code>curl https://api.boscolabs.dev/v1/identifier-resolver \
@@ -218,7 +219,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <p><strong>How fresh is it?</strong> Live on every call: GLEIF updates daily, FIRDS publishes daily, the SEC ticker list is cached for at most 6 hours per run.</p>
 <p><strong>Personal data?</strong> None. GLEIF records of sole proprietors (natural persons) are never used for name matches.</p>
 <p><strong>Is this investment advice?</strong> No. It returns identifiers and reference data as the sources publish them.</p>
-<div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a></div>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/identifier-resolver">Run it on Apify Store &rarr;</a></div>
 </div>
 </article>
 </main>

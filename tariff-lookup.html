@@ -30,14 +30,15 @@
  "offers": {
   "@type": "Offer",
   "priceCurrency": "USD",
-  "description": "$0.005 per code lookup or code search (US or UK) (HTTP API)",
-  "availability": "https://schema.org/PreOrder"
+  "description": "$0.005 per lookup or search",
+  "url": "https://apify.com/bosco_labs/tariff-lookup"
  },
  "provider": {
   "@type": "Organization",
   "name": "Bosco Labs",
   "url": "https://boscolabs.dev/"
- }
+ },
+ "installUrl": "https://apify.com/bosco_labs/tariff-lookup"
 }
 </script>
 <style>:root{color-scheme:light dark;--head:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--body:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;--ink:#1D2721;--muted:#545F58;--bg:#F5F3EA;--surface:#EAE8DC;--line:#D6D3C3;--accent:#2E5A47;--accent-fg:#F5F3EA;--accent2:#8DA889;--accent2-text:#4A6646;--success:#36694A;--warn:#8E5D1C}
@@ -81,12 +82,12 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <main class="wrap">
 <p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#compliance-law">Compliance &amp; law</a></p>
 <article>
-<div class="head"><img src="icons/tariff-lookup.svg" alt="" width="84" height="84"><div><h1>Tariff Code &amp; Duty Lookup API: US HTS and UK Tariff</h1><span class="badge live">On the HTTP API</span></div></div>
+<div class="head"><img src="icons/tariff-lookup.svg" alt="" width="84" height="84"><div><h1>Tariff Code &amp; Duty Lookup API: US HTS and UK Tariff</h1><span class="badge live">On Apify Store</span></div></div>
 <div class="prose">
 <p class="lead"><strong>Send a US HTS code and get the official description hierarchy, the general (MFN) duty rate, preferential rates, linked Chapter 99 references and units, with a source link.</strong> No code yet? Send a plain product description and get up to 5 candidate codes from the official USITC search. Built for <strong>AI agents</strong>, customs brokers and e-commerce teams who need a sourced duty rate, not a guess. <strong>UK Trade Tariff too:</strong> send a UK 10-digit commodity code (or a description) with <code>&quot;market&quot;: &quot;UK&quot;</code> for the UK duty, preferential rates, VAT and trade remedies, read live from HMRC.</p>
-<div class="facts"><div class="fact"><b>Price</b>$0.005 per code lookup or code search (US or UK) (HTTP API)</div><div class="fact"><b>Domain</b>Compliance &amp; law</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
+<div class="facts"><div class="fact"><b>Price</b>$0.005 per lookup or search</div><div class="fact"><b>Domain</b>Compliance &amp; law</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
 <p><strong>Pricing (pay per event):</strong> $0.005 per code lookup (<code>code-lookup</code>) and $0.005 per description search however many candidates it returns (<code>code-search</code>). Same price for US and UK. Bad input, unknown or non-declarable codes, searches without results and source outages fail in seconds and cost nothing. The data is free from USITC (hts.usitc.gov) and HMRC (trade-tariff.service.gov.uk); you pay for the one-call summary across both tariffs and the hosted API.</p>
-<div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a></div>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/tariff-lookup">Run it on Apify Store &rarr;</a></div>
 <h2>Questions agents ask</h2>
 <ul class="qs"><li>&ldquo;What US import duty applies to kids&#x27; bicycles (wheels under 63.5 cm) from Vietnam? Give the HTS code and cite the source.&rdquo;</li></ul>
 </div>
@@ -177,12 +178,12 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 </tbody></table></div>
 
 <h2>Use with AI agents (MCP)</h2>
-<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is listed on the Apify Store; until then use the HTTP API or the remote MCP server at https://api.boscolabs.dev/mcp.</p>
+<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>.</p>
 <pre><code>https://mcp.apify.com?tools=bosco_labs/tariff-lookup</code></pre>
 <p>For &ldquo;What US import duty applies to kids&#x27; bicycles (wheels under 63.5 cm) from Vietnam? Give the HTS code and cite the source.&rdquo; the agent passes:</p>
 <pre><code>{ &quot;query&quot;: &quot;bicycle&quot;, &quot;market&quot;: &quot;US&quot;, &quot;originCountry&quot;: &quot;VN&quot; }</code></pre>
 <p>one 2-5 KB JSON item per code, stable <code>snake_case</code> fields, rates exactly as published (strings like &quot;11%&quot;, &quot;Free&quot;, &quot;£26.00 / 100 litre (hl)&quot;), <code>null</code> for unknown, a source link, the API call, the licence notice and the disclaimer per row. A US lookup takes about 1 s; a search 1-3 s. Each request has a 20-second limit with two retries.</p>
-<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~tariff-lookup/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.005 per code lookup or code search (US or UK) (HTTP API).</p>
+<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~tariff-lookup/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.005 per lookup or search.</p>
 <h2 id="http-api">HTTP API</h2>
 <p>Also on the Bosco Labs HTTP API (beta): same input and same rows as the Actor, <strong>$0.005 per code lookup or code search (US or UK)</strong> from prepaid credits (max 1 code or 5 candidates per call). <a href="api.html#key">Get a key</a> with a $0.50 free trial; see <a href="api.html">prices and limits</a>.</p>
 <pre><code>curl https://api.boscolabs.dev/v1/tariff-lookup \
@@ -206,7 +207,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <p><strong>How fresh is it?</strong> Each run reads the current US HTS edition (named in <code>edition</code>) live. UK responses are cached for up to 24 hours, as HMRC recommends (&quot;It is recommended you cache requests for 24 hours&quot;): within a run on Apify, and per server process in the Bosco Labs API.</p>
 <p><strong>Where does the data come from, and may I reuse it?</strong> USITC&#x27;s HTS REST API (a U.S. Government work, public domain in the US) and HMRC&#x27;s UK Trade Tariff API (Open Government Licence v3.0: keep the <code>attribution</code> text when you republish UK data). USITC&#x27;s disclaimer says the site is &quot;only intended to be general summary information to the public. It is not intended to provide legal advice&quot;. HMRC&#x27;s terms say &quot;If you use the Trade Tariff APIs, you must follow published guidance and usage limits&quot;, which we do: managed OAuth credentials on HMRC&#x27;s production host, the 24-hour cache, retries with backoff and a 20-second limit. Neither forbids automated access within those limits.</p>
 <p><strong>Which codes work?</strong> US: 8- and 10-digit HTS lines (description searches skip Chapters 98 and 99, which are special provisions). UK: declarable 10-digit commodity codes; anything shorter lists the declarable codes under it for free.</p>
-<div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a></div>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/tariff-lookup">Run it on Apify Store &rarr;</a></div>
 </div>
 </article>
 </main>
