@@ -564,6 +564,30 @@
    "position": 90,
    "url": "https://boscolabs.dev/q/cloudflare-sales-roles-last-30-days.html",
    "name": "Which sales roles has Cloudflare posted in the last 30 days?"
+  },
+  {
+   "@type": "ListItem",
+   "position": 91,
+   "url": "https://boscolabs.dev/q/supplier-vat-number-and-iban-check.html",
+   "name": "A new supplier sent VAT number IE6388047V and IBAN NL91ABNA0417164300 for Google Ireland. Are both real, and does the VAT number belong to them?"
+  },
+  {
+   "@type": "ListItem",
+   "position": 92,
+   "url": "https://boscolabs.dev/q/crypto-wallet-ofac-sanctions-check.html",
+   "name": "Before we accept a USDT payment, is wallet 0x7FF9cFad3877F21d41Da833E2F775dB0569eE3D9 on a sanctions list?"
+  },
+  {
+   "@type": "ListItem",
+   "position": 93,
+   "url": "https://boscolabs.dev/q/polish-company-krs-board-insolvency.html",
+   "name": "Check Polish company KRS 0000028860: is it active, who is on the board, and is it in bankruptcy or restructuring?"
+  },
+  {
+   "@type": "ListItem",
+   "position": 94,
+   "url": "https://boscolabs.dev/q/uk-company-charges-gazette-insolvency.html",
+   "name": "For UK company 00445790, list the registered charges and any insolvency notices in The Gazette."
   }
  ]
 }
@@ -609,7 +633,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <main class="wrap">
 <section class="hero">
 <h1>Questions agents ask</h1>
-<p class="lead">90 real questions and the tool call that answers each one: the exact input, a prompt for MCP clients, the Apify API call and an example of the rows you get back, with a source link in every row.</p>
+<p class="lead">94 real questions and the tool call that answers each one: the exact input, a prompt for MCP clients, the Apify API call and an example of the rows you get back, with a source link in every row.</p>
 </section>
 <div class="prose">
 <h2>Finance &amp; SEC</h2>
@@ -622,12 +646,13 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <h3><a href="esef-annual-reports.html">EU Annual Reports API (ESEF)</a> &middot; <span class="muted">$0.01 per run plus $0.05 per annual report; raw XBRL fact rows, if switched on, $0.0005 each</span></h3><ul class="qs"><li><a href="q/heineken-revenue-growth-operating-margin.html">What were Heineken&#x27;s latest revenue growth and operating margin, from its annual report?</a></li><li><a href="q/belgian-listed-companies-net-income-2024.html">Compare net income and equity of Belgian listed companies for fiscal years ending in 2024.</a></li><li><a href="q/asml-revenue-net-profit-annual-report.html">What were ASML&#x27;s revenue and net profit in its latest annual report?</a></li></ul>
 <h3><a href="identifier-resolver.html">ISIN, LEI, CIK, FIGI &amp; Ticker Resolver API (crosswalk)</a> &middot; <span class="muted">$0.002 per identifier resolved (HTTP API)</span></h3><ul class="qs"><li><a href="q/isin-us0378331005-to-ticker-cik-lei.html">Convert ISIN US0378331005 to its ticker, CIK and LEI.</a></li><li><a href="q/nvidia-cik-number.html">What is Nvidia&#x27;s SEC CIK number, and what are its ISIN and LEI?</a></li><li><a href="q/lei-lookup-company-name.html">Which company does LEI 549300GKFG0RYRRQ1414 belong to?</a></li></ul>
 <h2>Companies</h2>
-<h3><a href="company-check.html">Company Check API</a> &middot; <span class="muted">$0.03 per report</span></h3><ul class="qs"><li><a href="q/novo-nordisk-company-check.html">Who is Novo Nordisk legally, and what were its revenue and net income in the last three years? Cite your sources.</a></li><li><a href="q/uk-company-03117531-check.html">Who is UK company 03117531, is it still active, and what do its latest accounts show?</a></li><li><a href="q/equinor-company-check.html">Is Equinor ASA an active company, and what were its revenue and profit in the last 3 years?</a></li><li><a href="q/nokia-oyj-business-id.html">What is Nokia Oyj&#x27;s business ID and LEI, and is it still active?</a></li></ul>
+<h3><a href="company-check.html">Company Check API</a> &middot; <span class="muted">$0.03 per report</span></h3><ul class="qs"><li><a href="q/novo-nordisk-company-check.html">Who is Novo Nordisk legally, and what were its revenue and net income in the last three years? Cite your sources.</a></li><li><a href="q/uk-company-03117531-check.html">Who is UK company 03117531, is it still active, and what do its latest accounts show?</a></li><li><a href="q/equinor-company-check.html">Is Equinor ASA an active company, and what were its revenue and profit in the last 3 years?</a></li><li><a href="q/nokia-oyj-business-id.html">What is Nokia Oyj&#x27;s business ID and LEI, and is it still active?</a></li><li><a href="q/polish-company-krs-board-insolvency.html">Check Polish company KRS 0000028860: is it active, who is on the board, and is it in bankruptcy or restructuring?</a></li><li><a href="q/uk-company-charges-gazette-insolvency.html">For UK company 00445790, list the registered charges and any insolvency notices in The Gazette.</a></li></ul>
+<h3><a href="vat-iban-check.html">VAT Number &amp; IBAN Check API</a> &middot; <span class="muted">$0.002 per definite check (VAT number answered by VIES, or a valid IBAN); malformed, failed and unverified are free (HTTP API)</span></h3><ul class="qs"><li><a href="q/supplier-vat-number-and-iban-check.html">A new supplier sent VAT number IE6388047V and IBAN NL91ABNA0417164300 for Google Ireland. Are both real, and does the VAT number belong to them?</a></li></ul>
 <h3><a href="company-accounts.html">Company Financials API</a> &middot; <span class="muted">$0.04 per company-year</span></h3><ul class="qs"><li><a href="q/novo-nordisk-danish-annual-report-figures.html">What were Novo Nordisk&#x27;s revenue and equity in its latest Danish annual report?</a></li><li><a href="q/equinor-norwegian-accounts-3-years.html">Get the last three years of Equinor ASA&#x27;s own accounts from the Norwegian register.</a></li></ul>
 <h3><a href="uk-new-companies.html">UK New Companies API</a> &middot; <span class="muted">$0.002 per company returned (HTTP API)</span></h3><ul class="qs"><li><a href="q/new-uk-it-companies-london.html">Which new UK IT companies were incorporated in London recently?</a></li><li><a href="q/new-uk-restaurants-manchester.html">Which new restaurants were registered as companies in Manchester recently?</a></li><li><a href="q/new-uk-fintech-companies-this-week.html">Which new UK fintech companies were incorporated this week?</a></li></ul>
 <h3><a href="company-hiring-signals.html">Company Hiring Signals API</a> &middot; <span class="muted">$0.001 per unit: a company summary = 5 units ($0.005), a job row = 1 ($0.001); companies without a public job board are free (HTTP API)</span></h3><ul class="qs"><li><a href="q/is-notion-hiring-engineers.html">Is Notion hiring engineers? How many roles, where, and since when? Link the postings.</a></li><li><a href="q/stripe-hiring-summary.html">How many open roles does Stripe have, and in which departments and countries?</a></li><li><a href="q/is-openai-hiring-in-london.html">Is OpenAI hiring in London, and for which roles?</a></li><li><a href="q/cloudflare-sales-roles-last-30-days.html">Which sales roles has Cloudflare posted in the last 30 days?</a></li></ul>
 <h2>Compliance &amp; law</h2>
-<h3><a href="sanctions-screening.html">Sanctions Screening API</a> &middot; <span class="muted">$0.01 per name screened</span></h3><ul class="qs"><li><a href="q/sovcomflot-supplier-sanctions-check.html">Before we sign with these suppliers, check whether Sovcomflot or Novo Nordisk A/S are on any sanctions list, and cite the lists you checked.</a></li><li><a href="q/rosneft-eu-uk-sanctions-check.html">Is Rosneft on the EU or UK sanctions list?</a></li><li><a href="q/huawei-us-consolidated-screening-list.html">Is Huawei on the US Consolidated Screening List (Entity List)?</a></li></ul>
+<h3><a href="sanctions-screening.html">Sanctions Screening API</a> &middot; <span class="muted">$0.01 per name or wallet address screened</span></h3><ul class="qs"><li><a href="q/sovcomflot-supplier-sanctions-check.html">Before we sign with these suppliers, check whether Sovcomflot or Novo Nordisk A/S are on any sanctions list, and cite the lists you checked.</a></li><li><a href="q/rosneft-eu-uk-sanctions-check.html">Is Rosneft on the EU or UK sanctions list?</a></li><li><a href="q/huawei-us-consolidated-screening-list.html">Is Huawei on the US Consolidated Screening List (Entity List)?</a></li><li><a href="q/crypto-wallet-ofac-sanctions-check.html">Before we accept a USDT payment, is wallet 0x7FF9cFad3877F21d41Da833E2F775dB0569eE3D9 on a sanctions list?</a></li></ul>
 <h3><a href="eu-law-lookup.html">EU Law Lookup API (EUR-Lex)</a> &middot; <span class="muted">$0.005 per act or article returned</span></h3><ul class="qs"><li><a href="q/ai-act-article-50-requirements.html">What does Article 50 of the AI Act require today, and has it been amended? Quote the text and link the source.</a></li><li><a href="q/gdpr-article-17-right-to-erasure.html">What exactly does GDPR Article 17 (right to erasure) say?</a></li><li><a href="q/nis2-article-21-security-measures.html">What cybersecurity measures does NIS2 Article 21 require?</a></li><li><a href="q/eu-russia-sanctions-official-journal.html">Which EU acts on Russia were published in the Official Journal in the last month?</a></li></ul>
 <h3><a href="national-law-lookup.html">UK &amp; Dutch Law Lookup API</a> &middot; <span class="muted">$0.005 per article or act returned (HTTP API)</span></h3><ul class="qs"><li><a href="q/dutch-corporate-tax-act-article-13.html">What does article 13 of the Dutch Wet op de vennootschapsbelasting 1969 say as of 1 January 2025?</a></li><li><a href="q/uk-companies-act-section-172.html">What does section 172 of the UK Companies Act 2006 require of directors?</a></li><li><a href="q/dutch-civil-code-7-658-employer-liability.html">What does article 7:658 of the Dutch Civil Code say about employer liability?</a></li><li><a href="q/uk-bribery-act-section-7.html">What does section 7 of the UK Bribery Act 2010 (failure to prevent bribery) say?</a></li></ul>
 <h3><a href="dutch-case-law.html">Dutch Case Law API (Rechtspraak)</a> &middot; <span class="muted">$0.005 per court decision returned (HTTP API)</span></h3><ul class="qs"><li><a href="q/hoge-raad-tenancy-law-rulings-since-2024.html">Find Hoge Raad rulings on tenancy law (huurrecht) since 2024 and summarise what each one decided, with links.</a></li><li><a href="q/raad-van-state-nitrogen-rulings.html">Which Raad van State rulings on nitrogen (stikstof) were published since 2025?</a></li><li><a href="q/urgenda-hoge-raad-ruling.html">What did the Hoge Raad decide in the Urgenda climate case?</a></li></ul>
@@ -647,7 +672,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <h3><a href="package-vulns.html">Package Vulnerability Check API</a> &middot; <span class="muted">$0.005 per package version or CVE answered (HTTP API)</span></h3><ul class="qs"><li><a href="q/log4j-core-2-14-1-log4shell.html">Is log4j-core 2.14.1 vulnerable to Log4Shell, and which version fixes it?</a></li><li><a href="q/requests-2-25-0-vulnerabilities.html">Does Python requests 2.25.0 have known vulnerabilities?</a></li><li><a href="q/cve-2024-3094-xz-affected-versions.html">What is CVE-2024-3094 (the xz backdoor) and which versions are affected?</a></li></ul>
 </div>
 </main>
-<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
 <p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
 </body>
 </html>

@@ -11,6 +11,7 @@
   <url><loc>https://boscolabs.dev/esef-annual-reports.html</loc></url>
   <url><loc>https://boscolabs.dev/identifier-resolver.html</loc></url>
   <url><loc>https://boscolabs.dev/company-check.html</loc></url>
+  <url><loc>https://boscolabs.dev/vat-iban-check.html</loc></url>
   <url><loc>https://boscolabs.dev/company-accounts.html</loc></url>
   <url><loc>https://boscolabs.dev/uk-new-companies.html</loc></url>
   <url><loc>https://boscolabs.dev/company-hiring-signals.html</loc></url>
@@ -31,6 +32,8 @@
   <url><loc>https://boscolabs.dev/package-vulns.html</loc></url>
   <url><loc>https://boscolabs.dev/privacy.html</loc></url>
   <url><loc>https://boscolabs.dev/terms.html</loc></url>
+  <url><loc>https://boscolabs.dev/security.html</loc></url>
+  <url><loc>https://boscolabs.dev/status.html</loc></url>
   <url><loc>https://boscolabs.dev/q/index.html</loc></url>
   <url><loc>https://boscolabs.dev/q/tesla-insider-buys-last-90-days.html</loc></url>
   <url><loc>https://boscolabs.dev/q/insider-cluster-buys-last-30-days.html</loc></url>
@@ -122,6 +125,10 @@
   <url><loc>https://boscolabs.dev/q/pershing-square-13f-holdings.html</loc></url>
   <url><loc>https://boscolabs.dev/q/who-owns-more-than-5-percent-apple.html</loc></url>
   <url><loc>https://boscolabs.dev/q/cloudflare-sales-roles-last-30-days.html</loc></url>
+  <url><loc>https://boscolabs.dev/q/supplier-vat-number-and-iban-check.html</loc></url>
+  <url><loc>https://boscolabs.dev/q/crypto-wallet-ofac-sanctions-check.html</loc></url>
+  <url><loc>https://boscolabs.dev/q/polish-company-krs-board-insolvency.html</loc></url>
+  <url><loc>https://boscolabs.dev/q/uk-company-charges-gazette-insolvency.html</loc></url>
   <url><loc>https://boscolabs.dev/compare/insider-trades.html</loc></url>
   <url><loc>https://boscolabs.dev/compare/sec-edgar.html</loc></url>
   <url><loc>https://boscolabs.dev/compare/company-data.html</loc></url>

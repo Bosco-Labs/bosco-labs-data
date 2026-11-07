@@ -112,8 +112,35 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
   -d &#x27;{&quot;clusterBuysOnly&quot;: true, &quot;lookbackDays&quot;: 30, &quot;maxResults&quot;: 100}&#x27;</code></pre>
 
 <h2>Example output</h2>
-<p class="muted">Snapshot taken 2026-11-06, source links in each row. First 2 of 4 rows (snapshot runs stop at 5 rows); long values shortened.</p>
+<p class="muted">Snapshot taken 2026-11-07, source links in each row. First 2 of 4 rows (snapshot runs stop at 5 rows); long values shortened.</p>
 <pre><code>[
+  {
+    &quot;schema_version&quot;: &quot;1&quot;,
+    &quot;record_type&quot;: &quot;cluster&quot;,
+    &quot;cluster_side&quot;: &quot;buy&quot;,
+    &quot;issuer_name&quot;: &quot;Kayne Anderson Energy Infrastructure Fund, Inc.&quot;,
+    &quot;issuer_cik&quot;: &quot;0001293613&quot;,
+    &quot;ticker&quot;: &quot;KYN&quot;,
+    &quot;filing_date&quot;: &quot;2026-11-06&quot;,
+    &quot;usable_from&quot;: &quot;2026-11-09&quot;,
+    &quot;first_filing_date&quot;: &quot;2026-11-06&quot;,
+    &quot;cluster_insiders&quot;: 2,
+    &quot;cluster_value_usd&quot;: 382623.5,
+    &quot;cluster_window_days&quot;: 30,
+    &quot;insider_names&quot;: [
+      &quot;Baker James C&quot;,
+      &quot;Little Harrison James&quot;
+    ],
+    &quot;accession_numbers&quot;: [
+      &quot;0001331674-26-000005&quot;,
+      &quot;0002025837-26-000003&quot;
+    ],
+    &quot;filing_url&quot;: &quot;https://www.sec.gov/Archives/edgar/data/1293613/000202583726000003/0002025837-26-000003-index.htm&quot;,
+    &quot;source&quot;: &quot;derived&quot;,
+    &quot;source_url&quot;: &quot;https://www.sec.gov/Archives/edgar/data/1293613/000202583726000003/0002025837-26-000003-index.htm&quot;,
+    &quot;provided_by&quot;: &quot;Bosco Labs (boscolabs.dev)&quot;,
+    &quot;retrieved_at&quot;: &quot;2026-11-07T13:30:01+00:00&quot;
+  },
   {
     &quot;schema_version&quot;: &quot;1&quot;,
     &quot;record_type&quot;: &quot;cluster&quot;,
@@ -140,34 +167,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
     &quot;source&quot;: &quot;derived&quot;,
     &quot;source_url&quot;: &quot;https://www.sec.gov/Archives/edgar/data/1374339/000137433926000011/0001374339-26-000011-index.htm&quot;,
     &quot;provided_by&quot;: &quot;Bosco Labs (boscolabs.dev)&quot;,
-    &quot;retrieved_at&quot;: &quot;2026-11-06T14:34:17+00:00&quot;
-  },
-  {
-    &quot;schema_version&quot;: &quot;1&quot;,
-    &quot;record_type&quot;: &quot;cluster&quot;,
-    &quot;cluster_side&quot;: &quot;buy&quot;,
-    &quot;issuer_name&quot;: &quot;Matador Resources Co&quot;,
-    &quot;issuer_cik&quot;: &quot;0001520006&quot;,
-    &quot;ticker&quot;: &quot;MTDR&quot;,
-    &quot;filing_date&quot;: &quot;2026-11-05&quot;,
-    &quot;usable_from&quot;: &quot;2026-11-06&quot;,
-    &quot;first_filing_date&quot;: &quot;2026-11-05&quot;,
-    &quot;cluster_insiders&quot;: 2,
-    &quot;cluster_value_usd&quot;: 130900,
-    &quot;cluster_window_days&quot;: 30,
-    &quot;insider_names&quot;: [
-      &quot;Calvert Christopher P&quot;,
-      &quot;Colodney Benjamin T&quot;
-    ],
-    &quot;accession_numbers&quot;: [
-      &quot;0002020286-26-000011&quot;,
-      &quot;0002074755-26-000008&quot;
-    ],
-    &quot;filing_url&quot;: &quot;https://www.sec.gov/Archives/edgar/data/1520006/000207475526000008/0002074755-26-000008-index.htm&quot;,
-    &quot;source&quot;: &quot;derived&quot;,
-    &quot;source_url&quot;: &quot;https://www.sec.gov/Archives/edgar/data/1520006/000207475526000008/0002074755-26-000008-index.htm&quot;,
-    &quot;provided_by&quot;: &quot;Bosco Labs (boscolabs.dev)&quot;,
-    &quot;retrieved_at&quot;: &quot;2026-11-06T14:34:17+00:00&quot;
+    &quot;retrieved_at&quot;: &quot;2026-11-07T13:30:01+00:00&quot;
   }
 ]</code></pre>
 <div class="actions"><a class="btn" href="https://apify.com/bosco_labs/sec-insider-trades">Run it on Apify Store &rarr;</a><a class="btn ghost" href="sec-insider-trades.html">All fields and limits</a></div>
@@ -175,7 +175,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <p><a href="q/index.html">All questions</a></p>
 </article>
 </main>
-<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
 <p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
 </body>
 </html>

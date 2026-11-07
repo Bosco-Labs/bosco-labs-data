@@ -30,7 +30,7 @@
  "offers": {
   "@type": "Offer",
   "priceCurrency": "USD",
-  "description": "$0.01 per name screened",
+  "description": "$0.01 per name or wallet address screened",
   "url": "https://apify.com/bosco_labs/sanctions-screening"
  },
  "provider": {
@@ -84,9 +84,9 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <article>
 <div class="head"><img src="icons/sanctions-screening.svg" alt="" width="84" height="84"><div><h1>Sanctions Screening API: OFAC, UK, EU &amp; US export lists</h1><span class="badge live">On Apify Store</span></div></div>
 <div class="prose">
-<p class="lead"><strong>Answers &quot;is this company, vessel or person sanctioned?&quot;</strong> for one or many names, against the official OFAC SDN and non-SDN lists, the US Consolidated Screening List (Commerce Entity List, Denied Persons, State lists), the UK Sanctions List and the EU financial sanctions list. Every answer says which lists were checked and how current they were, and every match links to its official source. Built for <strong>AI agents</strong> doing KYB, compliance or procurement checks, and for people who need a quick, sourced screen.</p>
-<div class="facts"><div class="fact"><b>Price</b>$0.01 per name screened</div><div class="fact"><b>Domain</b>Compliance &amp; law</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
-<p><strong>Pricing (pay per event):</strong> $0.01 per name screened, match or no match. A run that cannot load any list fails and costs nothing.</p>
+<p class="lead"><strong>Answers &quot;is this company, vessel or person sanctioned?&quot;</strong> for one or many names, against the official OFAC SDN and non-SDN lists, the US Consolidated Screening List (Commerce Entity List, Denied Persons, State lists), the UK Sanctions List and the EU financial sanctions list. Every answer says which lists were checked and how current they were, and every match links to its official source. Built for <strong>AI agents</strong> doing KYB, compliance or procurement checks, and for people who need a quick, sourced screen. It also checks <strong>crypto wallet addresses</strong> exactly against the addresses OFAC lists (XBT, ETH, USDT, TRX and more), e.g. before an agent pays.</p>
+<div class="facts"><div class="fact"><b>Price</b>$0.01 per name or wallet address screened</div><div class="fact"><b>Domain</b>Compliance &amp; law</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
+<p><strong>Pricing (pay per event):</strong> $0.01 per name or wallet address screened, match or no match. An address that none of the selected lists publishes wallets for is answered free, and a run that cannot load any list fails and costs nothing.</p>
 <div class="actions"><a class="btn" href="https://apify.com/bosco_labs/sanctions-screening">Run it on Apify Store &rarr;</a></div>
 <h2>Questions agents ask</h2>
 <ul class="qs"><li>&ldquo;Before we sign with these suppliers, check whether Sovcomflot or Novo Nordisk A/S are on any sanctions list, and cite the lists you checked.&rdquo;</li></ul>
@@ -137,13 +137,18 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <h2>What you get</h2>
 <div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
 <tr><td><code>schema_version</code></td><td>string</td><td>Output schema version.</td></tr>
-<tr><td><code>query</code></td><td>string</td><td>The name as given.</td></tr>
+<tr><td><code>query</code></td><td>string</td><td>The name or wallet address as given.</td></tr>
+<tr><td><code>address</code></td><td>string</td><td>Address rows only: the wallet address as given (trimmed).</td></tr>
+<tr><td><code>chain</code></td><td>string | null</td><td>Address rows only: currency code(s) the list gives for the matched address, e.g. ETH or USDT/USDC; for an unmatched address a guess from its format (EVM, TRX, XBT) or null.</td></tr>
 <tr><td><code>match_found</code></td><td>boolean</td><td>True when at least one listing scored &gt;= min_score.</td></tr>
 <tr><td><code>match_count</code></td><td>integer</td><td>Number of listings at or above min_score (only the top 5 are in matches).</td></tr>
 <tr><td><code>best_score</code></td><td>integer | null</td><td>Highest score, null when nothing matched.</td></tr>
-<tr><td><code>summary</code></td><td>string</td><td>One sentence an agent can pass on: the best match, or &#x27;No match &gt;= N&#x27; with every list checked and its date.</td></tr>
+<tr><td><code>summary</code></td><td>string</td><td>One sentence an agent can pass on: the best match, or &#x27;No match &gt;= N&#x27; with every list checked and its date; ends with &#x27;INCOMPLETE: not checked: ...&#x27; when an asked list could not be loaded.</td></tr>
+<tr><td><code>complete</code></td><td>boolean</td><td>True when every asked list was checked. False: a no-match covers only lists_checked.</td></tr>
+<tr><td><code>lists_not_checked</code></td><td>array</td><td>Names of asked lists that could not be loaded for this run (empty when complete).</td></tr>
+<tr><td><code>notice</code></td><td>string</td><td>Screening aid on official lists only (no PEP or adverse media); neither a match nor no match is a compliance determination.</td></tr>
 <tr><td><code>matches</code></td><td>array</td><td>Top 5 listings, best first (listings in other countries than <code>country</code> last).</td></tr>
-<tr><td><code>lists_checked</code></td><td>array</td><td>Every list this answer covers, with its publish date (version_date), when it was downloaded (fetched_at), its number of entries and the official file URL.</td></tr>
+<tr><td><code>lists_checked</code></td><td>array</td><td>Every list this answer covers, with its publish date (version_date), when it was downloaded (fetched_at), its number of entries and the official file URL. Address rows list only the lists that publish wallet addresses, with their number of addresses instead of entries.</td></tr>
 <tr><td><code>warnings</code></td><td>array</td><td>Lists that could not be downloaded (not checked, or checked from an older cached copy), in plain words.</td></tr>
 <tr><td><code>min_score</code></td><td>integer</td><td>Threshold used.</td></tr>
 <tr><td><code>entity_type</code></td><td>string</td><td>Entity type filter used.</td></tr>
@@ -159,9 +164,9 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <p>For &ldquo;Before we sign with these suppliers, check whether Sovcomflot or Novo Nordisk A/S are on any sanctions list, and cite the lists you checked.&rdquo; the agent passes:</p>
 <pre><code>{ &quot;names&quot;: [&quot;Sovcomflot&quot;, &quot;Novo Nordisk A/S&quot;] }</code></pre>
 <p>one small row per name (typically 2-7 KB), stable <code>snake_case</code> fields, ISO dates, <code>null</code> for unknown. <code>summary</code> is one sentence the agent can repeat; <code>match_found</code> is the yes/no; <code>lists_checked</code> gives the dates for the citation. A cold run (lists downloaded fresh) takes about 15-20 seconds; runs within an hour of the last one reuse the parsed lists and take a few seconds.</p>
-<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~sanctions-screening/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.01 per name screened.</p>
+<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~sanctions-screening/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.01 per name or wallet address screened.</p>
 <h2 id="http-api">HTTP API</h2>
-<p>Also on the Bosco Labs HTTP API (beta): same input and same rows as the Actor, <strong>$0.01 per name screened</strong> from prepaid credits (max 50 names per call). <a href="api.html#key">Get a key</a> with a $0.50 free trial; see <a href="api.html">prices and limits</a>.</p>
+<p>Also on the Bosco Labs HTTP API (beta): same input and same rows as the Actor, <strong>$0.01 per name or wallet address screened (an address no list could be checked against is free)</strong> from prepaid credits (max 50 names and 50 addresses per call). <a href="api.html#key">Get a key</a> with a $0.50 free trial; see <a href="api.html">prices and limits</a>.</p>
 <pre><code>curl https://api.boscolabs.dev/v1/sanctions-screening \
   -H &quot;Authorization: Bearer $BOSCO_API_KEY&quot; \
   -H &quot;Content-Type: application/json&quot; \
@@ -169,7 +174,8 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <p class="notice">This product uses the International Trade Administration&#x27;s Data API but is not endorsed or certified by the International Trade Administration. OFAC and CSL data are US government works. UK Sanctions List: contains public sector information licensed under the Open Government Licence v3.0. EU list: European Commission, names as published. No endorsement by any publisher is implied.</p>
 <h2>Input fields</h2>
 <div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
-<tr><td><code>names</code></td><td>array (required)</td><td>Company, vessel or person names to check, one per entry, as plain text, e.g. [&quot;Sovcomflot&quot;, &quot;Novo Nordisk A/S&quot;, &quot;Vladimir Putin&quot;]. Legal forms (Ltd, LLC, GmbH, PJSC), accents, punctuation and word order are ignored. 1-200 names; each name gives one result row and one charge; repeats are screened once. Required.</td></tr>
+<tr><td><code>names</code></td><td>array</td><td>Company, vessel or person names to check, one per entry, as plain text, e.g. [&quot;Sovcomflot&quot;, &quot;Novo Nordisk A/S&quot;, &quot;Vladimir Putin&quot;]. Legal forms (Ltd, LLC, GmbH, PJSC), accents, punctuation and word order are ignored. Up to 200 names; each name gives one result row and one charge; repeats are screened once. Give names, addresses or both.</td></tr>
+<tr><td><code>addresses</code></td><td>array</td><td>Crypto wallet addresses to check, one per entry, e.g. [&quot;0x7FF9cFad3877F21d41Da833E2F775dB0569eE3D9&quot;]. Matched exactly against the wallet addresses the lists publish (OFAC SDN: XBT, ETH, USDT, TRX and more); EVM 0x and bech32 bc1 addresses ignore case, others must match as written. Up to 50; each checked address gives one result row and one charge, same price as a name (an address no selected list publishes wallets for is answered free). Give names, addresses or both.</td></tr>
 <tr><td><code>country</code></td><td>string</td><td>Country of the party you are screening, as an ISO 3166 alpha-2 code or English name, e.g. &quot;RU&quot; or &quot;Russia&quot;. It never hides a match: listings that name other countries move to the end and get country_match false. Empty = no country ranking.</td></tr>
 <tr><td><code>entityType</code></td><td>string</td><td>Only return listings of this type, e.g. &quot;organization&quot;. Default &quot;any&quot;. Listings whose type the list does not state (the US Commerce and State lists) are always kept.</td></tr>
 <tr><td><code>minScore</code></td><td>integer</td><td>Lowest similarity score (0-100) that counts as a match, e.g. 85 (default). 100 = same name after normalisation; 90-99 = small spelling differences or the name inside a longer listed name; lower values find more variants and more false positives. Range 50-100.</td></tr>
@@ -195,7 +201,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 </div>
 </article>
 </main>
-<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
 <p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
 </body>
 </html>

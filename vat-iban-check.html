@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EU VAT Number (VIES) &amp; IBAN Validation API</title>
+<meta name="description" content="Check EU VAT numbers live in VIES (valid, registered name, address, name match) and validate IBANs (check digits, length, bank code). Pay per answer.">
+<link rel="canonical" href="https://boscolabs.dev/vat-iban-check.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bosco Labs">
+<meta property="og:title" content="EU VAT Number (VIES) &amp; IBAN Validation API">
+<meta property="og:description" content="Check EU VAT numbers live in VIES (valid, registered name, address, name match) and validate IBANs (check digits, length, bank code). Pay per answer.">
+<meta property="og:url" content="https://boscolabs.dev/vat-iban-check.html">
+<meta property="og:image" content="https://boscolabs.dev/icons/vat-iban-check.png">
+<meta name="twitter:card" content="summary">
+<script defer src="/_vercel/insights/script.js"></script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "SoftwareApplication",
+ "name": "VAT Number & IBAN Check API: EU VIES + IBAN validation",
+ "description": "Valid or not for EU VAT numbers (live from the official EU VIES service, with registered name, address and a name match) and IBANs (ISO 13616 check digits, length, bank code, country match). Pass, fail or unverified per check, with the source; unverified and malformed input are free.",
+ "url": "https://boscolabs.dev/vat-iban-check.html",
+ "image": "https://boscolabs.dev/icons/vat-iban-check.png",
+ "applicationCategory": "DeveloperApplication",
+ "operatingSystem": "Web (Apify platform)",
+ "offers": {
+  "@type": "Offer",
+  "priceCurrency": "USD",
+  "description": "$0.002 per definite check (VAT number answered by VIES, or a valid IBAN); malformed, failed and unverified are free (HTTP API)",
+  "availability": "https://schema.org/PreOrder"
+ },
+ "provider": {
+  "@type": "Organization",
+  "name": "Bosco Labs",
+  "url": "https://boscolabs.dev/"
+ }
+}
+</script>
+<style>:root{color-scheme:light dark;--head:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--body:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;--ink:#1D2721;--muted:#545F58;--bg:#F5F3EA;--surface:#EAE8DC;--line:#D6D3C3;--accent:#2E5A47;--accent-fg:#F5F3EA;--accent2:#8DA889;--accent2-text:#4A6646;--success:#36694A;--warn:#8E5D1C}
+@media (prefers-color-scheme:dark){:root{--ink:#E5E8DE;--muted:#A3ADA4;--bg:#121914;--surface:#1B241E;--line:#2B372F;--accent:#9EC7B1;--accent-fg:#121914;--accent2:#B5C9A4;--accent2-text:#B5C9A4;--success:#93C7A0;--warn:#DDB070}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--body)}h1,h2,h3,.brand{font-family:var(--head)}
+a{color:var(--accent);text-underline-offset:2px}.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+.site{border-bottom:1px solid var(--line)}.site .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;padding-top:12px;padding-bottom:12px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-weight:650;letter-spacing:-.01em}.brand img{width:30px;height:30px}
+nav{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:.95rem}nav a{color:var(--muted);text-decoration:none}nav a:hover{color:var(--ink)}
+h1{font-size:clamp(1.65rem,4vw,2.4rem);line-height:1.2;letter-spacing:-.02em;margin:0 0 12px}
+h2{font-size:1.3rem;line-height:1.3;letter-spacing:-.01em;margin:44px 0 12px}h3{font-size:1.02rem;margin:20px 0 6px}
+.hero{padding:52px 0 8px;max-width:780px}.lead{font-size:1.13rem;color:var(--muted)}.muted{color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}.chips a{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:.9rem;color:var(--ink);text-decoration:none}.chips a:hover{border-color:var(--accent)}
+.grid{list-style:none;padding:0;margin:0;display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.card-top{display:flex;gap:12px;align-items:center}.card img{width:48px;height:48px;flex:none}
+.card h3{margin:0;font-size:1rem;line-height:1.3}.card h3 a{color:var(--ink);text-decoration:none}.card h3 a:hover{text-decoration:underline}
+.card p{margin:0;font-size:.92rem;color:var(--muted)}.card .row{margin-top:auto;padding-top:6px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-size:.88rem}
+.price{font-weight:600;color:var(--ink)}.badge{display:inline-block;font-size:.78rem;font-weight:600;line-height:1.5;padding:1px 9px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.badge.live{color:var(--success)}.badge.soon{color:var(--warn)}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-fg);font-weight:650;padding:11px 18px;border-radius:10px;text-decoration:none}
+.btn.ghost{background:none;color:var(--accent);border:1px solid var(--line)}.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0}
+.crumbs{font-size:.9rem;color:var(--muted);margin:22px 0 0}.crumbs a{color:var(--muted)}
+.head{display:flex;gap:20px;align-items:flex-start;margin:18px 0 0}.head img{width:84px;height:84px;flex:none}
+.prose{max-width:800px}.facts{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));margin:22px 0}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:.95rem}.fact b{display:block;font-size:.75rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.qs{padding-left:20px}.qs li{margin:4px 0}.two{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}.two h3{margin-top:0}.two>div,.prose,main{min-width:0}
+code{font:.86em var(--mono)}:not(pre)>code{overflow-wrap:anywhere}
+pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px;overflow:auto;max-height:520px;font-size:.84rem;line-height:1.45;margin:0}
+.table{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{text-align:left;vertical-align:top;padding:7px 8px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-weight:600}td:first-child{white-space:nowrap}
+details{border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:10px 0}summary{cursor:pointer;font-weight:600}
+footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font-size:.9rem;color:var(--muted)}footer a{color:var(--muted)}
+form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:1 1 240px;min-width:0;font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}button.btn{border:0;cursor:pointer;font:inherit;font-weight:650}
+.note{border-left:3px solid var(--warn);background:var(--surface);border-radius:0 10px 10px 0;padding:10px 14px;margin:14px 0;font-size:.95rem}.notice{font-size:.88rem;color:var(--muted)}
+@media (max-width:560px){.head{flex-direction:column;gap:12px}.head img{width:64px;height:64px}.hero{padding-top:32px}}</style>
+</head>
+<body>
+<header class="site"><div class="wrap"><a class="brand" href="index.html"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav><a href="index.html#tools">Tools</a><a href="api.html">API</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
+<main class="wrap">
+<p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#companies">Companies</a></p>
+<article>
+<div class="head"><img src="icons/vat-iban-check.svg" alt="" width="84" height="84"><div><h1>VAT Number &amp; IBAN Check API: EU VIES + IBAN validation</h1><span class="badge live">On the HTTP API</span></div></div>
+<div class="prose">
+<p class="lead"><strong>Answers &quot;is this EU VAT number registered, to whom, and is this IBAN real?&quot;</strong> One row per VAT number, checked live against the European Commission&#x27;s VIES service (valid, registered name and address, a name match against the company you expect), and one row per IBAN, checked against ISO 13616 (check digits, length and layout per country, bank code, country match). Built for <strong>AI agents</strong> doing supplier onboarding, invoice checks and KYB, and for finance teams who want one sourced answer per number.</p>
+<div class="facts"><div class="fact"><b>Price</b>$0.002 per definite check (VAT number answered by VIES, or a valid IBAN); malformed, failed and unverified are free (HTTP API)</div><div class="fact"><b>Domain</b>Companies</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
+<p><strong>Pricing (pay per event):</strong> $0.002 per check with a definite answer (<code>check</code>): a VAT number VIES answered valid or not valid, or a valid IBAN. Malformed numbers and anything VIES could not answer (&quot;unverified&quot;) cost nothing.</p>
+<div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a></div>
+<h2>Questions agents ask</h2>
+<ul class="qs"><li>&ldquo;Check that supplier VAT number IE6388047V belongs to Google Ireland and that IBAN NL91ABNA0417164300 is valid.&rdquo;</li></ul>
+</div>
+<h2>Example</h2>
+<div class="two"><div><h3>Input</h3><pre><code>{
+  &quot;vatNumbers&quot;: [&quot;IE6388047V&quot;],
+  &quot;ibans&quot;: [&quot;NL91ABNA0417164300&quot;],
+  &quot;expectedName&quot;: &quot;Google Ireland Ltd&quot;,
+  &quot;expectedCountry&quot;: &quot;IE&quot;,
+  &quot;requesterVatNumber&quot;: &quot;NL123456789B01&quot;
+}</code></pre></div>
+<div><h3>Output</h3><pre><code>[
+  {
+    &quot;schema_version&quot;: &quot;1&quot;,
+    &quot;query&quot;: &quot;IE6388047V&quot;,
+    &quot;check_type&quot;: &quot;vat&quot;,
+    &quot;number&quot;: &quot;IE6388047V&quot;,
+    &quot;country_code&quot;: &quot;IE&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;valid&quot;: true,
+    &quot;reason&quot;: null,
+    &quot;registered_name&quot;: &quot;GOOGLE IRELAND LIMITED&quot;,
+    &quot;registered_address&quot;: &quot;3RD FLOOR, GORDON HOUSE, BARROW STREET, DUBLIN 4&quot;,
+    &quot;request_date&quot;: &quot;2026-11-07T16:05:31.393Z&quot;,
+    &quot;consultation_number&quot;: null,
+    &quot;bank_code&quot;: null,
+    &quot;sepa_country&quot;: null,
+    &quot;expected_name&quot;: &quot;Google Ireland Ltd&quot;,
+    &quot;name_match&quot;: true,
+    &quot;expected_country&quot;: &quot;IE&quot;,
+    &quot;country_match&quot;: true,
+    &quot;checks&quot;: [
+      {&quot;check&quot;: &quot;vat_format&quot;, &quot;status&quot;: &quot;pass&quot;, &quot;detail&quot;: &quot;IE VAT number format&quot;, &quot;source&quot;: &quot;VIES FAQ format table&quot;},
+      {&quot;check&quot;: &quot;vies_registration&quot;, &quot;status&quot;: &quot;pass&quot;, &quot;detail&quot;: &quot;valid&quot;, &quot;source&quot;: &quot;VIES (European Commission), answered by the national tax administration&quot;},
+      {&quot;check&quot;: &quot;name_match&quot;, &quot;status&quot;: &quot;pass&quot;, &quot;detail&quot;: &quot;expected &#x27;Google Ireland Ltd&#x27;, registered &#x27;GOOGLE IRELAND LIMITED&#x27; (case, accents, punctuation and legal forms ignored)&quot;, &quot;source&quot;: &quot;VIES (European Commission), answered by the national tax administration&quot;},
+      {&quot;check&quot;: &quot;country_match&quot;, &quot;status&quot;: &quot;pass&quot;, &quot;detail&quot;: &quot;expected IE, number is IE&quot;, &quot;source&quot;: &quot;VIES (European Commission), answered by the national tax administration&quot;}
+    ],
+    &quot;source&quot;: &quot;VIES (European Commission), answered by the national tax administration&quot;,
+    &quot;source_url&quot;: &quot;https://ec.europa.eu/taxation_customs/vies/#/vat-validation&quot;,
+    &quot;checked_at&quot;: &quot;2026-11-07T16:05:31Z&quot;
+  },
+  {
+    &quot;schema_version&quot;: &quot;1&quot;,
+    &quot;query&quot;: &quot;NL91 ABNA 0417 1643 00&quot;,
+    &quot;check_type&quot;: &quot;iban&quot;,
+    &quot;number&quot;: &quot;NL91ABNA0417164300&quot;,
+    &quot;country_code&quot;: &quot;NL&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;valid&quot;: true,
+    &quot;reason&quot;: null,
+    &quot;registered_name&quot;: null,
+    &quot;registered_address&quot;: null,
+    &quot;request_date&quot;: null,
+    &quot;consultation_number&quot;: null,
+    &quot;bank_code&quot;: &quot;ABNA&quot;,
+    &quot;sepa_country&quot;: true,
+    &quot;expected_name&quot;: null,
+    &quot;name_match&quot;: null,
+    &quot;expected_country&quot;: &quot;IE&quot;,
+    &quot;country_match&quot;: false,
+    &quot;checks&quot;: [
+      {&quot;check&quot;: &quot;iban_structure&quot;, &quot;status&quot;: &quot;pass&quot;, &quot;detail&quot;: &quot;NL length 18, layout and check digits&quot;, &quot;source&quot;: &quot;ISO 13616 check digits (mod 97) and the SWIFT IBAN Registry formats&quot;},
+      {&quot;check&quot;: &quot;country_match&quot;, &quot;status&quot;: &quot;fail&quot;, &quot;detail&quot;: &quot;expected IE, number is NL&quot;, &quot;source&quot;: &quot;ISO 13616 check digits (mod 97) and the SWIFT IBAN Registry formats&quot;}
+    ],
+    &quot;source&quot;: &quot;ISO 13616 check digits (mod 97) and the SWIFT IBAN Registry formats&quot;,
+    &quot;source_url&quot;: &quot;https://www.swift.com/standards/data-standards/iban-international-bank-account-number&quot;,
+    &quot;checked_at&quot;: &quot;2026-11-07T16:05:32Z&quot;
+  }
+]</code></pre></div></div>
+<div class="prose">
+<h2>What you get</h2>
+<div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>schema_version</code></td><td>string</td><td>Output schema version.</td></tr>
+<tr><td><code>query</code></td><td>string</td><td>The VAT number or IBAN as given.</td></tr>
+<tr><td><code>check_type</code></td><td>string</td><td>vat or iban.</td></tr>
+<tr><td><code>number</code></td><td>string | null</td><td>Normalised number: upper case without spaces, e.g. IE6388047V or NL91ABNA0417164300 (Greek VAT numbers with EL).</td></tr>
+<tr><td><code>country_code</code></td><td>string | null</td><td>Country of the number: VAT prefix (EL = Greece, XI = Northern Ireland) or IBAN country (ISO 3166 alpha-2); null if unreadable.</td></tr>
+<tr><td><code>status</code></td><td>string</td><td>pass = valid; fail = invalid (malformed, or VIES says not valid); unverified = VIES or the member state gave no answer (never means invalid; check again later).</td></tr>
+<tr><td><code>valid</code></td><td>boolean | null</td><td>true, false, or null when unverified.</td></tr>
+<tr><td><code>reason</code></td><td>string | null</td><td>Why the row failed or is unverified, in words an agent can act on; null on pass.</td></tr>
+<tr><td><code>registered_name</code></td><td>string | null</td><td>Name registered with the VAT number, as VIES returns it; null when the member state does not share it (e.g. DE) or the number is not valid.</td></tr>
+<tr><td><code>registered_address</code></td><td>string | null</td><td>Registered address as VIES returns it (lines joined with commas); null when not shared.</td></tr>
+<tr><td><code>request_date</code></td><td>string | null</td><td>VIES request date-time (ISO 8601, UTC) of the answer; null for IBANs and unanswered requests.</td></tr>
+<tr><td><code>consultation_number</code></td><td>string | null</td><td>VIES consultation number, only when requesterVatNumber was given; keep it as proof of the check.</td></tr>
+<tr><td><code>bank_code</code></td><td>string | null</td><td>Bank identifier taken from a valid IBAN at the SWIFT IBAN Registry position, e.g. ABNA (NL) or 37040044 (DE).</td></tr>
+<tr><td><code>sepa_country</code></td><td>boolean | null</td><td>Whether the IBAN&#x27;s country is in the SEPA scheme (SWIFT IBAN Registry).</td></tr>
+<tr><td><code>expected_name</code></td><td>string | null</td><td>expectedName from the input (VAT rows).</td></tr>
+<tr><td><code>name_match</code></td><td>boolean | null</td><td>expectedName equals the VIES name after removing case, accents, punctuation and legal forms; null when not asked or no name was shared.</td></tr>
+<tr><td><code>expected_country</code></td><td>string | null</td><td>expectedCountry from the input.</td></tr>
+<tr><td><code>country_match</code></td><td>boolean | null</td><td>The number&#x27;s country equals expectedCountry (GB IBANs cover JE, GG, IM); null when not asked or not checked.</td></tr>
+<tr><td><code>checks</code></td><td>array</td><td>Every check made: {check (vat_format, vies_registration, name_match, iban_structure, country_match), status (pass/fail/unverified), detail, source}.</td></tr>
+<tr><td><code>source</code></td><td>string</td><td>Where the answer comes from: VIES (European Commission, answered by the national tax administration) or the ISO 13616 / SWIFT IBAN Registry rules.</td></tr>
+<tr><td><code>source_url</code></td><td>string</td><td>VIES page or the SWIFT IBAN Registry page.</td></tr>
+<tr><td><code>provided_by</code></td><td>string</td><td>Bosco Labs (boscolabs.dev).</td></tr>
+<tr><td><code>checked_at</code></td><td>string</td><td>ISO 8601 UTC time of the check.</td></tr>
+</tbody></table></div>
+
+<h2>Use with AI agents (MCP)</h2>
+<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is listed on the Apify Store; until then use the HTTP API or the remote MCP server at https://api.boscolabs.dev/mcp.</p>
+<pre><code>https://mcp.apify.com?tools=bosco_labs/vat-iban-check</code></pre>
+<p>For &ldquo;Check that supplier VAT number IE6388047V belongs to Google Ireland and that IBAN NL91ABNA0417164300 is valid.&rdquo; the agent passes:</p>
+<pre><code>{&quot;vatNumbers&quot;: [&quot;IE6388047V&quot;], &quot;ibans&quot;: [&quot;NL91ABNA0417164300&quot;], &quot;expectedName&quot;: &quot;Google Ireland&quot;}</code></pre>
+<p>one small row per number (typically 1-3 KB), stable <code>snake_case</code> fields, a <code>checks</code> list with pass, fail or unverified per check and its source. VIES answers in about 1-3 seconds per VAT number (numbers are sent one at a time); IBANs are checked offline in milliseconds. <strong>Cost:</strong> $0.002 per check with a definite answer, billed to the Apify account the MCP server is signed in with.</p>
+<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~vat-iban-check/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.002 per definite check (VAT number answered by VIES, or a valid IBAN); malformed, failed and unverified are free (HTTP API).</p>
+<h2 id="http-api">HTTP API</h2>
+<p>Also on the Bosco Labs HTTP API (beta): same input and same rows as the Actor, <strong>$0.002 per definite check (VAT number answered by VIES, or a valid IBAN); malformed, failed and unverified are free</strong> from prepaid credits (max 10 VAT numbers and 50 IBANs per call). <a href="api.html#key">Get a key</a> with a $0.50 free trial; see <a href="api.html">prices and limits</a>.</p>
+<pre><code>curl https://api.boscolabs.dev/v1/vat-iban-check \
+  -H &quot;Authorization: Bearer $BOSCO_API_KEY&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{&quot;vatNumbers&quot;: [&quot;IE6388047V&quot;], &quot;ibans&quot;: [&quot;NL91ABNA0417164300&quot;], &quot;expectedName&quot;: &quot;Google Ireland&quot;}&#x27;</code></pre>
+<p class="notice">VAT answers: EU VIES (European Commission); IBAN layouts: SWIFT IBAN Registry.</p>
+<h2>Input fields</h2>
+<div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>vatNumbers</code></td><td>array</td><td>EU VAT numbers to check live against VIES, each with its country prefix, e.g. [&quot;IE6388047V&quot;, &quot;NL004495445B01&quot;]. Spaces, dots and dashes are ignored; GR is read as EL (Greece), XI is Northern Ireland. 0-10 numbers, checked one at a time (about 1-3 s each). Empty = no VAT check.</td></tr>
+<tr><td><code>ibans</code></td><td>array</td><td>IBANs to validate (check digits, length and layout per country, bank code), in electronic or print format, e.g. [&quot;NL91ABNA0417164300&quot;, &quot;DE89 3704 0044 0532 0130 00&quot;]. 0-50 IBANs; no bank or third-party service is called. Empty = no IBAN check.</td></tr>
+<tr><td><code>expectedName</code></td><td>string</td><td>The company name you expect behind the VAT numbers, e.g. &quot;Google Ireland Ltd&quot;. Compared with the name VIES returns after removing case, accents, punctuation and legal forms (Ltd = Limited, B.V., GmbH ...): name_match true or false; null when the member state shares no name (e.g. Germany). Empty = no name check.</td></tr>
+<tr><td><code>expectedCountry</code></td><td>string</td><td>ISO 3166 alpha-2 code of the country you expect, e.g. &quot;NL&quot;. Compared with each IBAN&#x27;s and VAT number&#x27;s country (country_match; GB IBANs also match JE, GG and IM, FR IBANs the French overseas territories). Empty = no country check.</td></tr>
+<tr><td><code>requesterVatNumber</code></td><td>string</td><td>Your own EU VAT number, e.g. &quot;NL123456789B01&quot;. VIES then returns a consultation number (consultation_number) that proves to a tax authority that you checked a number at a given time. Empty = no consultation number.</td></tr>
+</tbody></table></div>
+<h2>Sources, licence and limits</h2>
+<p><strong>Where does the VAT answer come from?</strong> VIES, the European Commission&#x27;s VAT Information Exchange System, which asks the tax administration of the member state in real time. The Commission accepts no responsibility for the data, which comes from national databases. A VIES answer is not legal or tax advice and does not by itself give a right to a VAT exemption.</p>
+<p><strong>What does &quot;unverified&quot; mean?</strong> VIES or that member state&#x27;s database did not answer (maintenance, outage or a request limit). It is not &quot;invalid&quot; and costs nothing; check again later. The Actor never retries more than once and never sends numbers in parallel.</p>
+<p><strong>Why is a real VAT number &quot;fail&quot;?</strong> Some member states only list numbers registered for intra-EU trade in VIES. &quot;Not valid&quot; means not valid <em>in VIES</em>; the company can ask its tax administration to update VIES.</p>
+<p><strong>Does a valid IBAN mean the account exists?</strong> No. It means the number is well-formed for its country and the check digits are right, which catches typos and invented numbers. Whether the account is open and whose it is only the bank knows. <code>bank_code</code> is the bank identifier at the position the SWIFT IBAN Registry gives for that country.</p>
+<p><strong>Do you store the numbers or answers?</strong> No. VIES answers are returned to you only, not cached or reused, and numbers are not logged.</p>
+<p><strong>Which countries?</strong> VAT: the 27 EU member states and Northern Ireland (XI); not the UK (GB), Norway or Switzerland, which VIES does not cover. IBAN: all 89 countries in the SWIFT IBAN Registry.</p>
+<p><strong>Limits:</strong> 10 VAT numbers and 50 IBANs per run; about 1-3 seconds per VAT number.</p>
+<div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a></div>
+</div>
+</article>
+</main>
+<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
+</body>
+</html>

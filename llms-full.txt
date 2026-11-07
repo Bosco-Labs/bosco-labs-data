@@ -1,9 +1,16 @@
 # Bosco Labs data APIs
 
-> Bosco Labs publishes data tools for AI agents and analysts (HTTP API, remote MCP, x402 and Apify Actors) that return clean, typed JSON from official sources: SEC filings, insider trades, 13F holdings and XBRL financials, US House STOCK Act trades, European ESEF annual reports, UK/Danish/Norwegian company accounts and registries, sanctions lists, EU, UK and Dutch law and case law, EU tenders, US federal and Pentagon contract awards, ECB rates and euro inflation, clinical trials, drug safety, recalls, tariffs, package vulnerabilities and Dutch addresses. 27 tools are live: all 27 HTTP API tools are plain HTTPS endpoints and remote MCP tools that an agent can call with a key (prepaid credits) or without an account, paying per call in USDC via x402 (https://api.boscolabs.dev/v1/<tool>, see API below); 10 of them are also Apify Actors on the Apify Store (pay per event). Data rows carry a source link.
+> Bosco Labs publishes data tools for AI agents and analysts (HTTP API, remote MCP, x402 and Apify Actors) that return clean, typed JSON from official sources: SEC filings, insider trades, 13F holdings and XBRL financials, US House STOCK Act trades, European ESEF annual reports, UK/Danish/Norwegian company accounts and registries, sanctions lists, EU, UK and Dutch law and case law, EU tenders, US federal and Pentagon contract awards, ECB rates and euro inflation, clinical trials, drug safety, recalls, tariffs, package vulnerabilities and Dutch addresses. 28 tools are live: all 28 HTTP API tools are plain HTTPS endpoints and remote MCP tools that an agent can call with a key (prepaid credits) or without an account, paying per call in USDC via x402 (https://api.boscolabs.dev/v1/<tool>, see API below); 10 of them are also Apify Actors on the Apify Store (pay per event). Data rows carry a source link.
 
 Apify Store profile: https://apify.com/bosco_labs
 Contact: support@boscolabs.dev
+
+## Start here (free, no key)
+
+- Plan a question: `curl -s -X POST https://api.boscolabs.dev/v1/plan -H 'content-type: application/json' -d '{"question": "Is Rosneft on the EU sanctions list?"}'` returns the exact call, its input and its maximum price; a question it cannot answer is refused with `not_covered` instead of guessed
+- Compact catalogue (one line per tool, ~4 KB): https://api.boscolabs.dev/v1/tools?compact=true
+- Claude Code: `claude mcp add --transport http bosco-labs https://api.boscolabs.dev/mcp/free` (planner, tool descriptions, free LEI and SEC lookups); the paid tools are on https://api.boscolabs.dev/mcp with your key
+- Cursor: `{"mcpServers": {"bosco-labs": {"url": "https://api.boscolabs.dev/mcp/free"}}}` in `.cursor/mcp.json`
 
 ## Finance & SEC
 
@@ -19,13 +26,14 @@ Contact: support@boscolabs.dev
 ## Companies
 
 - [Company Check API: identity, financials & SEC filings in 1 call](https://boscolabs.dev/company-check.html): One company report per call: legal name, LEI, registration number, status, address and industry, years of revenue, profit, equity, assets and cash, SEC filings and FDIC bank data. Look up by name, LEI, UK, DK, NO, FR, FI or EE number, ticker, CIK or FDIC cert. Sourced values. Price: Apify Store $0.03 per report; HTTP API $0.03 per company report. ([Apify Store](https://apify.com/bosco_labs/company-check))
+- [VAT Number & IBAN Check API: EU VIES + IBAN validation](https://boscolabs.dev/vat-iban-check.html): Valid or not for EU VAT numbers (live from the official EU VIES service, with registered name, address and a name match) and IBANs (ISO 13616 check digits, length, bank code, country match). Pass, fail or unverified per check, with the source; unverified and malformed input are free. Price: $0.002 per definite check (VAT number answered by VIES, or a valid IBAN); malformed, failed and unverified are free (HTTP API). (HTTP API and MCP)
 - [Company Financials API: UK, Denmark & Norway accounts + LEI](https://boscolabs.dev/company-accounts.html): Financials (revenue, profit, equity, assets, cash, employees) of private and public companies from official accounts: UK Companies House, Denmark Erhvervsstyrelsen, Norway Brønnøysund; adds the LEI from GLEIF and a source per value. Price: Apify Store $0.04 per company-year; HTTP API $0.04 per company-year. ([Apify Store](https://apify.com/bosco_labs/company-accounts))
 - [UK New Companies API: daily Companies House incorporations](https://boscolabs.dev/uk-new-companies.html): New UK companies incorporated on any day (default: yesterday) from the official Companies House API: number, name, type, status, SIC codes with descriptions, registered office address and a register link. Filter by SIC prefix, location and type. No director data. Price: $0.002 per company returned (HTTP API). (HTTP API and MCP)
 - [Company Hiring Signals API: open roles, departments, locations](https://boscolabs.dev/company-hiring-signals.html): Is a company hiring? Open roles by department, location and remote share, newest and oldest posting dates and top titles, plus job rows with a link each. Read from the company's public Greenhouse, Lever or Ashby job board. Look up by name, domain or board URL. Price: $0.001 per unit: a company summary = 5 units ($0.005), a job row = 1 ($0.001); companies without a public job board are free (HTTP API). (HTTP API and MCP)
 
 ## Compliance & law
 
-- [Sanctions Screening API: OFAC, UK, EU & US export lists](https://boscolabs.dev/sanctions-screening.html): Is this company, vessel or person sanctioned? Returns per name: match yes/no, the listed entry, aliases, programs, listing date, identifiers and a source link, from the official OFAC SDN and non-SDN, US Consolidated Screening List, UK Sanctions List and EU lists, with each list's date. Price: Apify Store $0.01 per name screened; HTTP API $0.01 per name screened. ([Apify Store](https://apify.com/bosco_labs/sanctions-screening))
+- [Sanctions Screening API: OFAC, UK, EU & US export lists](https://boscolabs.dev/sanctions-screening.html): Is this company, vessel or person sanctioned? Returns per name: match yes/no, the listed entry, aliases, programs, listing date, identifiers and a source link, from the official OFAC SDN and non-SDN, US Consolidated Screening List, UK Sanctions List and EU lists, with each list's date. Price: Apify Store $0.01 per name or wallet address screened; HTTP API $0.01 per name or wallet address screened (an address no list could be checked against is free). ([Apify Store](https://apify.com/bosco_labs/sanctions-screening))
 - [EU Law Lookup API (EUR-Lex): article text, in force, amendments](https://boscolabs.dev/eu-law-lookup.html): The text of an EU law article as in force today (or on a date), whether the act is in force, what amended it, plus new Official Journal acts. Ask by name (GDPR, AI Act), citation, CELEX or ELI; 24 languages. Official EUR-Lex/Cellar data with a source link per row. Price: Apify Store $0.005 per act or article returned; HTTP API $0.005 per act or article returned. ([Apify Store](https://apify.com/bosco_labs/eu-law-lookup))
 - [UK & Dutch Law Lookup API: article text by date, in force](https://boscolabs.dev/national-law-lookup.html): The text of a UK section or Dutch article as in force today (or on a date), whether it is in force and what changed it. Ask by citation: "Companies Act 2006 s 172", "BW 7:658", "artikel 13 Wet Vpb 1969". Official legislation.gov.uk and Dutch BWB data with a source link per row. Price: $0.005 per article or act returned (HTTP API). (HTTP API and MCP)
 - [Dutch Case Law API (Rechtspraak): ECLI lookup, uitspraken](https://boscolabs.dev/dutch-case-law.html): Dutch court decisions (uitspraken) by ECLI or search: court, dates, case numbers, legal area, summary (inhoudsindicatie), appeal/cassation relations, law references and optional text. Hoge Raad, Raad van State, gerechtshoven, rechtbanken. Official Rechtspraak Open Data, source link per row. Price: $0.005 per court decision returned (HTTP API). (HTTP API and MCP)
@@ -52,7 +60,7 @@ Contact: support@boscolabs.dev
 
 ## Questions and comparisons
 
-- [Questions agents ask](https://boscolabs.dev/q/index.html): 90 questions, each with the exact Actor input, an MCP prompt, the API call and an example output
+- [Questions agents ask](https://boscolabs.dev/q/index.html): 94 questions, each with the exact Actor input, an MCP prompt, the API call and an example output
 - [SEC insider trading data on Apify: tools compared](https://boscolabs.dev/compare/insider-trades.html): Insider trades tools compared with other Apify Store Actors (Store data, 2026-11-05)
 - [SEC EDGAR filings and financials on Apify compared](https://boscolabs.dev/compare/sec-edgar.html): SEC filings and financials tools compared with other Apify Store Actors (Store data, 2026-11-05)
 - [Company check and KYB data on Apify compared](https://boscolabs.dev/compare/company-data.html): Company check (KYB) tools compared with other Apify Store Actors (Store data, 2026-11-05)
@@ -149,6 +157,10 @@ Contact: support@boscolabs.dev
 - [What stocks does Pershing Square own, and what did it change last quarter?](https://boscolabs.dev/q/pershing-square-13f-holdings.html) -> `sec-ownership` `{"mode": "holdings13f", "filer": "Pershing Square Capital Management", "maxResults": 25}`
 - [Who owns more than 5% of Apple stock, according to 13D and 13G filings?](https://boscolabs.dev/q/who-owns-more-than-5-percent-apple.html) -> `sec-ownership` `{"mode": "stakes13dg", "ticker": "AAPL", "maxResults": 20}`
 - [Which sales roles has Cloudflare posted in the last 30 days?](https://boscolabs.dev/q/cloudflare-sales-roles-last-30-days.html) -> `company-hiring-signals` `{"companies": ["cloudflare.com"], "departments": ["sales"], "postedSince": "30d", "maxJobsPerCompany": 20}`
+- [A new supplier sent VAT number IE6388047V and IBAN NL91ABNA0417164300 for Google Ireland. Are both real, and does the VAT number belong to them?](https://boscolabs.dev/q/supplier-vat-number-and-iban-check.html) -> `vat-iban-check` `{"vatNumbers": ["IE6388047V"], "ibans": ["NL91ABNA0417164300"], "expectedName": "Google Ireland"}`
+- [Before we accept a USDT payment, is wallet 0x7FF9cFad3877F21d41Da833E2F775dB0569eE3D9 on a sanctions list?](https://boscolabs.dev/q/crypto-wallet-ofac-sanctions-check.html) -> `sanctions-screening` `{"addresses": ["0x7FF9cFad3877F21d41Da833E2F775dB0569eE3D9"]}`
+- [Check Polish company KRS 0000028860: is it active, who is on the board, and is it in bankruptcy or restructuring?](https://boscolabs.dev/q/polish-company-krs-board-insolvency.html) -> `company-check` `{"query": "0000028860", "country": "PL"}`
+- [For UK company 00445790, list the registered charges and any insolvency notices in The Gazette.](https://boscolabs.dev/q/uk-company-charges-gazette-insolvency.html) -> `company-check` `{"query": "00445790", "country": "GB", "include": ["identity", "charges", "insolvency"]}`
 
 ## How to call
 
@@ -170,11 +182,14 @@ Contact: support@boscolabs.dev
 - x402 payment details: payTo 0x7bcb52707d5C4f334ad0D2548f96a0419fa6203F (USDC on Base); facilitator: Coinbase CDP. The `facilitatorAddress` in a 402 rotates within CDP's own set of addresses, so it can differ from a Bazaar listing; every address CDP hands out is valid.
 - [Privacy](https://boscolabs.dev/privacy.html): request bodies (names screened, queries) are never logged or stored
 - [Terms](https://boscolabs.dev/terms.html): prepaid credits, 14-day refunds, data is information with a source link, not advice
+- [Trust](https://boscolabs.dev/security.html): read-only tools, sources and licences, sanctions screening limits, untrusted text in results
+- [Status](https://boscolabs.dev/status.html): daily check of every tool against its source and the version date of every sanctions list (JSON: https://s1uqkufag2x3nhpu.public.blob.vercel-storage.com/status/status.json)
 - `company-check`: $0.03 per company report (max 1 report).
+- `vat-iban-check`: $0.002 per definite check (VAT number answered by VIES, or a valid IBAN); malformed, failed and unverified are free (max 10 VAT numbers and 50 IBANs). VAT answers: EU VIES (European Commission); IBAN layouts: SWIFT IBAN Registry.
 - `sec-company-financials`: $0.005 per company-period row (max 10 tickers/CIKs x 20 years).
 - `sec-company-screen`: $0.002 per company returned (max 200 companies (maxResults)).
 - `sec-filings-feed`: $0.001 per filing (max 200 filings (maxResults)).
-- `sanctions-screening`: $0.01 per name screened (max 50 names). This product uses the International Trade Administration's Data API but is not endorsed or certified by the International Trade Administration. OFAC and CSL data are US government works. UK Sanctions List: contains public sector information licensed under the Open Government Licence v3.0. EU list: European Commission, names as published. No endorsement by any publisher is implied.
+- `sanctions-screening`: $0.01 per name or wallet address screened (an address no list could be checked against is free) (max 50 names and 50 addresses). This product uses the International Trade Administration's Data API but is not endorsed or certified by the International Trade Administration. OFAC and CSL data are US government works. UK Sanctions List: contains public sector information licensed under the Open Government Licence v3.0. EU list: European Commission, names as published. No endorsement by any publisher is implied.
 - `eu-law-lookup`: $0.005 per act or article returned (max 50 results (maxResults)). Consolidated texts from EUR-Lex (© European Union) are a documentation tool with no legal effect; only the acts published in the Official Journal of the European Union are authentic.
 - `national-law-lookup`: $0.005 per article or act returned (max 5 articles). UK: contains public sector information licensed under the Open Government Licence v3.0 (© Crown and database right, legislation.gov.uk).
 - `eu-rates-inflation`: $0.002 per series returned (catalogue free) (max 20 series). Source: ECB statistics (data.ecb.europa.eu). The data are free of charge from the ECB; we charge for processing and delivery, not for the data. Eurostat HICP: © European Union, free of charge from Eurostat. The change field is computed by Bosco Labs.
@@ -867,7 +882,7 @@ Example questions:
 - `query` (string, required): The company to check: a name (e.g. "Novo Nordisk") or an identifier: LEI (20 characters, e.g. "724500Y6DUVHQD6OXN27"), UK company number ("00445790", "SC123456"), Danish CVR ("24256790"), Norwegian org number ("923609016"), French SIREN (9 digits, "552032534") or SIRET (14 digits, "55203253400703"), Finnish Business ID with its dash ("0112038-9"), Estonian registry code (8 digits, "12417834"), US ticker in capitals or with $ ("AAPL", "$brk.b"; foreign companies listed in the US resolve to their home country), SEC CIK ("320193") or FDIC certificate of a US bank ("FDIC:628"). The type is detected from format and check digits; an 8-digit number valid in several registers (UK, Danish CVR, Estonian) is settled by asking them, and `country` decides when given. Required.
 - `country` (string): ISO 3166 alpha-2 country code to disambiguate, e.g. "DK", "GB", "NO", "FR", "FI", "EE", "NL", "US". With a name it limits the search to that country and, for NO, FR, FI and EE, also searches the national register (most companies there have no LEI); with a number it says which register the number belongs to (e.g. "GB" for a UK number without a leading zero, "EE" for an Estonian registry code, "FI" for a Business ID typed without its dash). Empty = detect from the query.
 - `maxYears` (integer): How many fiscal years of key figures to return, newest first, e.g. 3. Default 3, maximum 10. Norway's open register holds the last 3 years only. The price is the same for any number of years.
-- `include` (array): Which sections to fill: any of "identity", "financials", "us" (SEC filings of US issuers), "people" (UK officers and owners from Companies House), e.g. ["identity", "people"]. Default (or empty) = all four. Fewer sections = fewer sources called, slightly faster; the price is the same.
+- `include` (array): Which sections to fill: any of "identity", "financials", "us" (SEC filings of US issuers), "people" (UK officers and owners from Companies House; Polish board, proxies and shareholders from KRS), and the due-diligence sections "charges" (UK registered mortgages and secured debt), "appointments" (each current UK officer's other company appointments; also fills "people") and "insolvency" (UK: insolvency notices in The Gazette; Poland: bankruptcy, restructuring and liquidation entries from KRS), e.g. ["identity", "charges", "insolvency"]. Default (or empty) = identity, financials, us and people, plus insolvency for Polish companies (free from the KRS extract); the UK due-diligence sections only when listed. Fewer sections = fewer sources called, slightly faster; the price is the same.
 
 ### Output fields
 
@@ -880,6 +895,8 @@ Example questions:
 - `us` (object | null): The US listing: SEC EDGAR data for US issuers and for foreign companies listed in the US (by ticker, CIK, or a US company in GLEIF that the SEC lists). null otherwise.
 - `bank` (object | null): US banks: the FDIC-insured bank of this company from the FDIC BankFind Suite (company level only). Filled for a US bank (found by FDIC certificate, LEI or name) and for a US bank holding company (its largest bank). Requested with the `us` section. null otherwise.
 - `people` (object | null): UK companies: current officers (directors, secretaries) and persons with significant control (owners) from Companies House, with only the fields a KYB check needs (no addresses). Requested with the `people` section. null for other countries.
+- `charges` (object | null): UK companies, with the `charges` section: charges (mortgages, debentures, other secured debt) registered at Companies House, newest first; an empty list means none registered. null when not requested or not UK.
+- `insolvency` (object | null): With the `insolvency` section (default for Polish companies). UK: corporate insolvency notices in The Gazette (winding-up orders and petitions, administration, liquidation, creditors' meetings) titled with the company's exact registered name (by company number when no name is known), newest first, in `notices`; notices under a former name are not found; Open Government Licence v3.0. Poland: bankruptcy, restructuring, arrangement, liquidation, dissolution and receivership entries (KRS extract, Dział 6) in `proceedings` and enforced arrears (Dział 4) in `arrears`, read live; trustees and liquidators are not listed. An empty list means none found. null when not requested or for other countries.
 - `candidates` (array): When a name (or a number valid in two registers) matches several companies: the top 3 (legal_name, country, lei, lei_status, registration_number, score 0-1). The report is for the first; re-run with its LEI or registration number (and country) to pick another. Empty when the match was clear.
 - `not_found` (array): Requested sections without data, each {section, reason} in plain words an agent can relay.
 - `warnings` (array): Sources that failed or timed out, and other caveats, in plain words. The rest of the report is still valid.
@@ -892,6 +909,66 @@ Example questions:
 
 ```json
 { "query": "Novo Nordisk", "country": "DK", "maxYears": 3 }
+```
+
+## VAT Number & IBAN Check API: EU VIES + IBAN validation
+
+Docs: https://boscolabs.dev/vat-iban-check.html
+Apify Store: not listed yet
+MCP: https://api.boscolabs.dev/mcp
+Price: $0.002 per definite check (VAT number answered by VIES, or a valid IBAN); malformed, failed and unverified are free (HTTP API)
+API: POST https://api.boscolabs.dev/v1/vat-iban-check, $0.002 per definite check (VAT number answered by VIES, or a valid IBAN); malformed, failed and unverified are free (max 10 VAT numbers and 50 IBANs)
+
+Valid or not for EU VAT numbers (live from the official EU VIES service, with registered name, address and a name match) and IBANs (ISO 13616 check digits, length, bank code, country match). Pass, fail or unverified per check, with the source; unverified and malformed input are free.
+
+Example questions:
+
+- Check that supplier VAT number IE6388047V belongs to Google Ireland and that IBAN NL91ABNA0417164300 is valid.
+
+### Input fields
+
+- `vatNumbers` (array): EU VAT numbers to check live against VIES, each with its country prefix, e.g. ["IE6388047V", "NL004495445B01"]. Spaces, dots and dashes are ignored; GR is read as EL (Greece), XI is Northern Ireland. 0-10 numbers, checked one at a time (about 1-3 s each). Empty = no VAT check.
+- `ibans` (array): IBANs to validate (check digits, length and layout per country, bank code), in electronic or print format, e.g. ["NL91ABNA0417164300", "DE89 3704 0044 0532 0130 00"]. 0-50 IBANs; no bank or third-party service is called. Empty = no IBAN check.
+- `expectedName` (string): The company name you expect behind the VAT numbers, e.g. "Google Ireland Ltd". Compared with the name VIES returns after removing case, accents, punctuation and legal forms (Ltd = Limited, B.V., GmbH ...): name_match true or false; null when the member state shares no name (e.g. Germany). Empty = no name check.
+- `expectedCountry` (string): ISO 3166 alpha-2 code of the country you expect, e.g. "NL". Compared with each IBAN's and VAT number's country (country_match; GB IBANs also match JE, GG and IM, FR IBANs the French overseas territories). Empty = no country check.
+- `requesterVatNumber` (string): Your own EU VAT number, e.g. "NL123456789B01". VIES then returns a consultation number (consultation_number) that proves to a tax authority that you checked a number at a given time. Empty = no consultation number.
+
+### Output fields
+
+- `schema_version` (string): Output schema version.
+- `query` (string): The VAT number or IBAN as given.
+- `check_type` (string): vat or iban.
+- `number` (string | null): Normalised number: upper case without spaces, e.g. IE6388047V or NL91ABNA0417164300 (Greek VAT numbers with EL).
+- `country_code` (string | null): Country of the number: VAT prefix (EL = Greece, XI = Northern Ireland) or IBAN country (ISO 3166 alpha-2); null if unreadable.
+- `status` (string): pass = valid; fail = invalid (malformed, or VIES says not valid); unverified = VIES or the member state gave no answer (never means invalid; check again later).
+- `valid` (boolean | null): true, false, or null when unverified.
+- `reason` (string | null): Why the row failed or is unverified, in words an agent can act on; null on pass.
+- `registered_name` (string | null): Name registered with the VAT number, as VIES returns it; null when the member state does not share it (e.g. DE) or the number is not valid.
+- `registered_address` (string | null): Registered address as VIES returns it (lines joined with commas); null when not shared.
+- `request_date` (string | null): VIES request date-time (ISO 8601, UTC) of the answer; null for IBANs and unanswered requests.
+- `consultation_number` (string | null): VIES consultation number, only when requesterVatNumber was given; keep it as proof of the check.
+- `bank_code` (string | null): Bank identifier taken from a valid IBAN at the SWIFT IBAN Registry position, e.g. ABNA (NL) or 37040044 (DE).
+- `sepa_country` (boolean | null): Whether the IBAN's country is in the SEPA scheme (SWIFT IBAN Registry).
+- `expected_name` (string | null): expectedName from the input (VAT rows).
+- `name_match` (boolean | null): expectedName equals the VIES name after removing case, accents, punctuation and legal forms; null when not asked or no name was shared.
+- `expected_country` (string | null): expectedCountry from the input.
+- `country_match` (boolean | null): The number's country equals expectedCountry (GB IBANs cover JE, GG, IM); null when not asked or not checked.
+- `checks` (array): Every check made: {check (vat_format, vies_registration, name_match, iban_structure, country_match), status (pass/fail/unverified), detail, source}.
+- `source` (string): Where the answer comes from: VIES (European Commission, answered by the national tax administration) or the ISO 13616 / SWIFT IBAN Registry rules.
+- `source_url` (string): VIES page or the SWIFT IBAN Registry page.
+- `provided_by` (string): Bosco Labs (boscolabs.dev).
+- `checked_at` (string): ISO 8601 UTC time of the check.
+
+### Example input
+
+```json
+{
+  "vatNumbers": ["IE6388047V"],
+  "ibans": ["NL91ABNA0417164300"],
+  "expectedName": "Google Ireland Ltd",
+  "expectedCountry": "IE",
+  "requesterVatNumber": "NL123456789B01"
+}
 ```
 
 ## Company Financials API: UK, Denmark & Norway accounts + LEI
@@ -1113,8 +1190,8 @@ Example questions:
 Docs: https://boscolabs.dev/sanctions-screening.html
 Apify Store: https://apify.com/bosco_labs/sanctions-screening
 MCP: https://mcp.apify.com?tools=bosco_labs/sanctions-screening
-Price: Apify Store $0.01 per name screened; HTTP API $0.01 per name screened
-API: POST https://api.boscolabs.dev/v1/sanctions-screening, $0.01 per name screened (max 50 names)
+Price: Apify Store $0.01 per name or wallet address screened; HTTP API $0.01 per name or wallet address screened (an address no list could be checked against is free)
+API: POST https://api.boscolabs.dev/v1/sanctions-screening, $0.01 per name or wallet address screened (an address no list could be checked against is free) (max 50 names and 50 addresses)
 
 Is this company, vessel or person sanctioned? Returns per name: match yes/no, the listed entry, aliases, programs, listing date, identifiers and a source link, from the official OFAC SDN and non-SDN, US Consolidated Screening List, UK Sanctions List and EU lists, with each list's date.
 
@@ -1124,7 +1201,8 @@ Example questions:
 
 ### Input fields
 
-- `names` (array, required): Company, vessel or person names to check, one per entry, as plain text, e.g. ["Sovcomflot", "Novo Nordisk A/S", "Vladimir Putin"]. Legal forms (Ltd, LLC, GmbH, PJSC), accents, punctuation and word order are ignored. 1-200 names; each name gives one result row and one charge; repeats are screened once. Required.
+- `names` (array): Company, vessel or person names to check, one per entry, as plain text, e.g. ["Sovcomflot", "Novo Nordisk A/S", "Vladimir Putin"]. Legal forms (Ltd, LLC, GmbH, PJSC), accents, punctuation and word order are ignored. Up to 200 names; each name gives one result row and one charge; repeats are screened once. Give names, addresses or both.
+- `addresses` (array): Crypto wallet addresses to check, one per entry, e.g. ["0x7FF9cFad3877F21d41Da833E2F775dB0569eE3D9"]. Matched exactly against the wallet addresses the lists publish (OFAC SDN: XBT, ETH, USDT, TRX and more); EVM 0x and bech32 bc1 addresses ignore case, others must match as written. Up to 50; each checked address gives one result row and one charge, same price as a name (an address no selected list publishes wallets for is answered free). Give names, addresses or both.
 - `country` (string): Country of the party you are screening, as an ISO 3166 alpha-2 code or English name, e.g. "RU" or "Russia". It never hides a match: listings that name other countries move to the end and get country_match false. Empty = no country ranking.
 - `entityType` (string): Only return listings of this type, e.g. "organization". Default "any". Listings whose type the list does not state (the US Commerce and State lists) are always kept.
 - `minScore` (integer): Lowest similarity score (0-100) that counts as a match, e.g. 85 (default). 100 = same name after normalisation; 90-99 = small spelling differences or the name inside a longer listed name; lower values find more variants and more false positives. Range 50-100.
@@ -1133,13 +1211,18 @@ Example questions:
 ### Output fields
 
 - `schema_version` (string): Output schema version.
-- `query` (string): The name as given.
+- `query` (string): The name or wallet address as given.
+- `address` (string): Address rows only: the wallet address as given (trimmed).
+- `chain` (string | null): Address rows only: currency code(s) the list gives for the matched address, e.g. ETH or USDT/USDC; for an unmatched address a guess from its format (EVM, TRX, XBT) or null.
 - `match_found` (boolean): True when at least one listing scored >= min_score.
 - `match_count` (integer): Number of listings at or above min_score (only the top 5 are in matches).
 - `best_score` (integer | null): Highest score, null when nothing matched.
-- `summary` (string): One sentence an agent can pass on: the best match, or 'No match >= N' with every list checked and its date.
+- `summary` (string): One sentence an agent can pass on: the best match, or 'No match >= N' with every list checked and its date; ends with 'INCOMPLETE: not checked: ...' when an asked list could not be loaded.
+- `complete` (boolean): True when every asked list was checked. False: a no-match covers only lists_checked.
+- `lists_not_checked` (array): Names of asked lists that could not be loaded for this run (empty when complete).
+- `notice` (string): Screening aid on official lists only (no PEP or adverse media); neither a match nor no match is a compliance determination.
 - `matches` (array): Top 5 listings, best first (listings in other countries than `country` last).
-- `lists_checked` (array): Every list this answer covers, with its publish date (version_date), when it was downloaded (fetched_at), its number of entries and the official file URL.
+- `lists_checked` (array): Every list this answer covers, with its publish date (version_date), when it was downloaded (fetched_at), its number of entries and the official file URL. Address rows list only the lists that publish wallet addresses, with their number of addresses instead of entries.
 - `warnings` (array): Lists that could not be downloaded (not checked, or checked from an older cached copy), in plain words.
 - `min_score` (integer): Threshold used.
 - `entity_type` (string): Entity type filter used.
