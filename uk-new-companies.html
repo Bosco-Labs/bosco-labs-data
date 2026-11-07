@@ -30,7 +30,7 @@
  "offers": {
   "@type": "Offer",
   "priceCurrency": "USD",
-  "description": "$0.002 per company",
+  "description": "$0.002 per company returned (HTTP API)",
   "availability": "https://schema.org/PreOrder"
  },
  "provider": {
@@ -81,12 +81,12 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <main class="wrap">
 <p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#companies">Companies</a></p>
 <article>
-<div class="head"><img src="icons/uk-new-companies.svg" alt="" width="84" height="84"><div><h1>UK New Companies API: daily Companies House incorporations</h1><span class="badge soon">Coming soon to the Store</span></div></div>
+<div class="head"><img src="icons/uk-new-companies.svg" alt="" width="84" height="84"><div><h1>UK New Companies API: daily Companies House incorporations</h1><span class="badge live">On the HTTP API</span></div></div>
 <div class="prose">
 <p class="lead">Get <strong>every new UK company incorporated yesterday (or on any date range)</strong> as clean JSON, filtered by SIC code, location and company type, for sales teams, lead-gen agents and B2B providers (accountants, banks, insurers, web agencies). <strong>$0.002 per company</strong>, no start fee.</p>
-<div class="facts"><div class="fact"><b>Price</b>$0.002 per company</div><div class="fact"><b>Domain</b>Companies</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
+<div class="facts"><div class="fact"><b>Price</b>$0.002 per company returned (HTTP API)</div><div class="fact"><b>Domain</b>Companies</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
 <p><strong>Pricing (pay per event):</strong> $0.002 per company delivered ($2 per 1,000). Nothing is charged for empty or failed runs, a company is never charged twice in the same run, and the Actor stops at your max charge limit. With <code>onlyNewSinceLastRun</code>, scheduled runs only pay for companies you haven&#x27;t received yet.</p>
-<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=UK New Companies API">Ask for early access</a></div>
+<div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a></div>
 <h2>Questions agents ask</h2>
 <ul class="qs"><li>&ldquo;New UK companies incorporated yesterday in London with SIC 62 (IT).&rdquo;</li></ul>
 </div>
@@ -152,12 +152,12 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 </tbody></table></div>
 
 <h2>Use with AI agents (MCP)</h2>
-<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is live on the Apify Store.</p>
+<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is listed on the Apify Store; until then use the HTTP API or the remote MCP server at https://api.boscolabs.dev/mcp.</p>
 <pre><code>https://mcp.apify.com?tools=bosco_labs/uk-new-companies</code></pre>
 <p>For &ldquo;New UK companies incorporated yesterday in London with SIC 62 (IT).&rdquo; the agent passes:</p>
 <pre><code>{&quot;sicCodes&quot;: [&quot;62&quot;], &quot;location&quot;: &quot;London&quot;, &quot;maxResults&quot;: 50}</code></pre>
 <p>stable <code>snake_case</code> JSON with <code>schema_version</code>, ISO dates and a <code>source_url</code> to the official Companies House page per row, so the agent can cite its source.</p>
-<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~uk-new-companies/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.002 per company.</p>
+<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~uk-new-companies/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.002 per company returned (HTTP API).</p>
 <h2 id="http-api">HTTP API</h2>
 <p>Also on the Bosco Labs HTTP API (beta): same input and same rows as the Actor, <strong>$0.002 per company returned</strong> from prepaid credits (max 200 companies (maxResults) per call). <a href="api.html#key">Get a key</a> with a $0.50 free trial; see <a href="api.html">prices and limits</a>.</p>
 <pre><code>curl https://api.boscolabs.dev/v1/uk-new-companies \
@@ -184,7 +184,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <p><strong>Which date is &quot;yesterday&quot;?</strong> Yesterday in UTC.</p>
 <p><strong>Limits?</strong> Up to 10,000 companies per run. For long ranges, split by month.</p>
 <p><strong>Legal basis?</strong> Companies House: &quot;We impose no rules or requirements on how the information on the public register is used.&quot; Source: Companies House. See <code>LEGAL.md</code> in the repository. Contains public sector information licensed under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open Government Licence v3.0</a> (SIC code descriptions: Companies House).</p>
-<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=UK New Companies API">Ask for early access</a></div>
+<div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a></div>
 </div>
 </article>
 </main>

@@ -85,7 +85,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="q/index.html">Questions</a> &rsaquo; <a href="tariff-lookup.html">Tariff Code &amp; Duty Lookup API</a></p>
 <article class="prose">
 <h1 style="margin-top:18px">What is the HTS code and US import duty rate for a bicycle?</h1>
-<div class="facts"><div class="fact"><b>Answered by</b><a href="tariff-lookup.html">Tariff Code &amp; Duty Lookup API: US HTS and UK Tariff</a></div><div class="fact"><b>Price</b>$0.005 per lookup or search</div><div class="fact"><b>Status</b><span class="badge soon">Coming soon to the Store</span></div></div>
+<div class="facts"><div class="fact"><b>Answered by</b><a href="tariff-lookup.html">Tariff Code &amp; Duty Lookup API: US HTS and UK Tariff</a></div><div class="fact"><b>Price</b>$0.005 per code lookup or code search (US or UK) (HTTP API)</div><div class="fact"><b>Status</b><span class="badge live">On the HTTP API</span></div></div>
 <p>Bicycles fall under HTS heading 8712.00; the general duty is 11% for small-wheel bicycles (8712.00.15) and 5.5% for some larger types, per the USITC Harmonized Tariff Schedule. A description search returns up to 5 candidate codes with general, column 2 and special-program rates and a warning that a candidate is not a classification.</p>
 <h2>Tool input</h2>
 <pre><code>{
@@ -93,12 +93,12 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
   &quot;market&quot;: &quot;US&quot;
 }</code></pre>
 <h2>Ask it from an AI agent (MCP)</h2>
-<p>Add the Apify MCP server with this tool to your MCP client (Claude, Cursor, VS Code, ...); it signs you in with OAuth or <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is live on the Apify Store.</p>
+<p>Add the Apify MCP server with this tool to your MCP client (Claude, Cursor, VS Code, ...); it signs you in with OAuth or <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is listed on the Apify Store; until then use the HTTP API or the remote MCP server at https://api.boscolabs.dev/mcp.</p>
 <pre><code>https://mcp.apify.com?tools=bosco_labs/tariff-lookup</code></pre>
 <p>Then ask:</p>
 <pre><code>Use the bosco_labs/tariff-lookup tool to answer: What is the HTS code and US import duty rate for a bicycle?</code></pre>
 <h2>Call the Apify API</h2>
-<p>Runs the Actor and returns the rows in one request, billed to your Apify account ($0.005 per lookup or search). It works once the Actor is live on the Apify Store.</p>
+<p>Runs the Actor and returns the rows in one request, billed to your Apify account ($0.005 per code lookup or code search (US or UK) (HTTP API)). It works once the Actor is listed on the Apify Store; until then use the HTTP API or the remote MCP server at https://api.boscolabs.dev/mcp.</p>
 <pre><code>curl https://api.apify.com/v2/acts/bosco_labs~tariff-lookup/run-sync-get-dataset-items \
   -H &quot;Authorization: Bearer $APIFY_TOKEN&quot; \
   -H &quot;Content-Type: application/json&quot; \
@@ -173,7 +173,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
     &quot;...&quot;: &quot;5 more fields&quot;
   }
 ]</code></pre>
-<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=Tariff Code &amp; Duty Lookup API">Ask for early access</a><a class="btn ghost" href="tariff-lookup.html">All fields and limits</a></div>
+<div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a><a class="btn ghost" href="tariff-lookup.html">All fields and limits</a></div>
 <h2>More questions for this tool</h2><ul class="qs"><li><a href="q/hts-8471-30-01-laptop-duty-china.html">What is the US import duty on laptops (HTS 8471.30.01) from China?</a></li><li><a href="q/uk-commodity-code-cotton-t-shirt.html">What is the UK commodity code and import duty for cotton T-shirts from China?</a></li></ul>
 <p><a href="q/index.html">All questions</a></p>
 </article>

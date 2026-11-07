@@ -30,7 +30,7 @@
  "offers": {
   "@type": "Offer",
   "priceCurrency": "USD",
-  "description": "$0.005 per section, $0.002 per document",
+  "description": "$0.001 per unit: a CFR section with text = 5 units ($0.005), a Federal Register document = 2 ($0.002); rows without text are free (HTTP API)",
   "availability": "https://schema.org/PreOrder"
  },
  "provider": {
@@ -81,12 +81,12 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <main class="wrap">
 <p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#compliance-law">Compliance &amp; law</a></p>
 <article>
-<div class="head"><img src="icons/us-federal-rules.svg" alt="" width="84" height="84"><div><h1>US Federal Rules API: CFR text as of a date + Federal Register</h1><span class="badge soon">Coming soon to the Store</span></div></div>
+<div class="head"><img src="icons/us-federal-rules.svg" alt="" width="84" height="84"><div><h1>US Federal Rules API: CFR text as of a date + Federal Register</h1><span class="badge live">On the HTTP API</span></div></div>
 <div class="prose">
 <p class="lead"><strong>One call answers &quot;what does 21 CFR 101.9 say today, when did it last change, and which Federal Register rule changed it?&quot;</strong>: the section as plain text from the eCFR (as in force today or on any date since 2017), its amendment history, and the final rules behind each change. It also lists what changed in a CFR part since a date (&quot;15 CFR 744 this week&quot;) and returns Federal Register documents by number or search. Built for <strong>AI agents</strong> doing regulatory, compliance and export-control work, and for people who want a sourced answer without learning two APIs.</p>
-<div class="facts"><div class="fact"><b>Price</b>$0.005 per section, $0.002 per document</div><div class="fact"><b>Domain</b>Compliance &amp; law</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
+<div class="facts"><div class="fact"><b>Price</b>$0.001 per unit: a CFR section with text = 5 units ($0.005), a Federal Register document = 2 ($0.002); rows without text are free (HTTP API)</div><div class="fact"><b>Domain</b>Compliance &amp; law</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
 <p><strong>Pricing (pay per event):</strong> $0.005 per CFR section returned (<code>section</code>), $0.002 per Federal Register document returned (<code>document</code>). A citation that can&#x27;t be read, a section that doesn&#x27;t exist or an empty result fails or ends in seconds and costs nothing.</p>
-<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=US Federal Rules API">Ask for early access</a></div>
+<div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a></div>
 <h2>Questions agents ask</h2>
 <ul class="qs"><li>&ldquo;What changed in the Export Administration Regulations part 744 since August, and which Federal Register notices did it? Link the sources.&rdquo;</li></ul>
 </div>
@@ -206,12 +206,12 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 </tbody></table></div>
 
 <h2>Use with AI agents (MCP)</h2>
-<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is live on the Apify Store.</p>
+<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is listed on the Apify Store; until then use the HTTP API or the remote MCP server at https://api.boscolabs.dev/mcp.</p>
 <pre><code>https://mcp.apify.com?tools=bosco_labs/us-federal-rules</code></pre>
 <p>For &ldquo;What changed in the Export Administration Regulations part 744 since August, and which Federal Register notices did it? Link the sources.&rdquo; the agent passes:</p>
 <pre><code>{ &quot;citation&quot;: &quot;15 CFR 744&quot;, &quot;since&quot;: &quot;2026-08-01&quot; }</code></pre>
 <p>small JSON rows (a section is typically 5-25 KB with the default text cap), stable <code>snake_case</code> fields, ISO dates, <code>null</code> for unknown, a source link per row and per linked rule. A unit whose text eCFR fails to send in a part listing comes back with <code>text: null</code>, a warning and no charge. <code>warnings</code> says in plain words when text was cut, a date was capped at the eCFR&#x27;s latest data, or more results matched than were returned. A section lookup takes 1-2 seconds after start-up (measured 1.6 s for 21 CFR 101.9); a part with changes 2-7 seconds for a few units (the Entity List alone is 1.4 million characters of XML), up to about a minute for 25 units, which are downloaded two at a time to stay within eCFR&#x27;s limits.</p>
-<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~us-federal-rules/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.005 per section, $0.002 per document.</p>
+<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~us-federal-rules/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.001 per unit: a CFR section with text = 5 units ($0.005), a Federal Register document = 2 ($0.002); rows without text are free (HTTP API).</p>
 <h2 id="http-api">HTTP API</h2>
 <p>Also on the Bosco Labs HTTP API (beta): same input and same rows as the Actor, <strong>$0.001 per unit: a CFR section with text = 5 units ($0.005), a Federal Register document = 2 ($0.002); rows without text are free</strong> from prepaid credits (max 10 CFR units or 50 documents per call). <a href="api.html#key">Get a key</a> with a $0.50 free trial; see <a href="api.html">prices and limits</a>.</p>
 <pre><code>curl https://api.boscolabs.dev/v1/us-federal-rules \
@@ -241,7 +241,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <p><strong>Which CFR units work?</strong> All 50 titles: sections, and appendices or supplements (<code>15 CFR 744 Supplement No. 4</code>, <code>40 CFR part 60 appendix A-1</code>). Reserved titles fail with a clear message.</p>
 <p><strong>Personal data?</strong> None is requested. Federal Register documents and CFR appendices can name people or companies (e.g. the Entity List); they are returned only as published.</p>
 <p>Content: Office of the Federal Register (National Archives) and US Government Publishing Office, via ecfr.gov and federalregister.gov. Not an official legal edition.</p>
-<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=US Federal Rules API">Ask for early access</a></div>
+<div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a></div>
 </div>
 </article>
 </main>

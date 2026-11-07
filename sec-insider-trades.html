@@ -96,36 +96,38 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
   &quot;dateFrom&quot;: &quot;2024-01-01&quot;, &quot;maxResults&quot;: 1000 }</code></pre></div>
 <div><h3>Output</h3><pre><code>{
   &quot;record_type&quot;: &quot;transaction&quot;,
-  &quot;accession_number&quot;: &quot;0000895126-15-000082&quot;,
+  &quot;accession_number&quot;: &quot;0001696841-26-000014&quot;,
   &quot;form&quot;: &quot;4&quot;,
-  &quot;issuer_name&quot;: &quot;CHESAPEAKE ENERGY CORP&quot;,
-  &quot;issuer_cik&quot;: &quot;0000895126&quot;,
-  &quot;ticker&quot;: &quot;CHK&quot;,
-  &quot;insider_name&quot;: &quot;DUNHAM ARCHIE W&quot;,
-  &quot;insider_cik&quot;: &quot;0001192053&quot;,
-  &quot;insider_roles&quot;: [&quot;director&quot;],
-  &quot;officer_title&quot;: null,
+  &quot;issuer_name&quot;: &quot;NVIDIA CORP&quot;,
+  &quot;issuer_cik&quot;: &quot;0001045810&quot;,
+  &quot;ticker&quot;: &quot;NVDA&quot;,
+  &quot;insider_name&quot;: &quot;Teter Timothy S.&quot;,
+  &quot;insider_cik&quot;: &quot;0001696841&quot;,
+  &quot;insider_roles&quot;: [&quot;officer&quot;],
+  &quot;officer_title&quot;: &quot;EVP, General Counsel and Sec&quot;,
   &quot;owner_count&quot;: 1,
-  &quot;transaction_date&quot;: &quot;2015-03-27&quot;,
-  &quot;filing_date&quot;: &quot;2015-03-31&quot;,
-  &quot;usable_from&quot;: &quot;2015-04-01&quot;,
-  &quot;transaction_code&quot;: &quot;P&quot;,
-  &quot;transaction_type&quot;: &quot;Open-market or private purchase&quot;,
-  &quot;acquired_disposed&quot;: &quot;A&quot;,
-  &quot;shares&quot;: 1000000,
-  &quot;price&quot;: 13.98,
-  &quot;value_usd&quot;: 13980000.0,
-  &quot;shares_owned_after&quot;: 2635270,
-  &quot;ownership&quot;: &quot;direct&quot;,
-  &quot;plan_10b5_1&quot;: null,
-  &quot;cluster_insiders&quot;: 2,
-  &quot;cluster_value_usd&quot;: 14029455.0,
-  &quot;in_cluster&quot;: true,
-  &quot;cluster_date&quot;: &quot;2015-03-31&quot;,
-  &quot;filing_url&quot;: &quot;https://www.sec.gov/Archives/edgar/data/895126/000089512615000082/0000895126-15-000082-index.htm&quot;,
+  &quot;filing_date&quot;: &quot;2026-09-23&quot;,
+  &quot;usable_from&quot;: &quot;2026-09-24&quot;,
+  &quot;accepted_at&quot;: null,
+  &quot;filing_url&quot;: &quot;https://www.sec.gov/Archives/edgar/data/1045810/000169684126000014/0001696841-26-000014-index.htm&quot;,
   &quot;source&quot;: &quot;dera&quot;,
-  &quot;source_url&quot;: &quot;https://www.sec.gov/files/structureddata/data/insider-transactions-data-sets/2015q1_form345.zip&quot;,
-  &quot;retrieved_at&quot;: &quot;2026-11-05T16:15:49+00:00&quot;
+  &quot;transaction_date&quot;: &quot;2026-09-21&quot;,
+  &quot;transaction_code&quot;: &quot;S&quot;,
+  &quot;transaction_type&quot;: &quot;Open-market or private sale&quot;,
+  &quot;acquired_disposed&quot;: &quot;D&quot;,
+  &quot;shares&quot;: 4499,
+  &quot;price&quot;: 223.75,
+  &quot;value_usd&quot;: 1006651.25,
+  &quot;shares_owned_after&quot;: 2687660,
+  &quot;ownership&quot;: &quot;indirect&quot;,
+  &quot;plan_10b5_1&quot;: true,
+  &quot;security_title&quot;: &quot;Common Stock&quot;,
+  &quot;source_url&quot;: &quot;https://www.sec.gov/Archives/edgar/data/1045810/000169684126000014/0001696841-26-000014-index.htm&quot;,
+  &quot;cluster_insiders&quot;: null,
+  &quot;cluster_value_usd&quot;: null,
+  &quot;in_cluster&quot;: null,
+  &quot;cluster_date&quot;: null,
+  &quot;retrieved_at&quot;: &quot;2026-11-06T14:34:24+00:00&quot;
 }</code></pre></div></div>
 <div class="prose">
 <h2>What you get</h2>
@@ -167,7 +169,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <tr><td><code>accession_numbers</code></td><td>array | null</td><td>Cluster rows: the Form 4 filings in the cluster.</td></tr>
 <tr><td><code>filing_url</code></td><td>string</td><td>EDGAR filing index page.</td></tr>
 <tr><td><code>source</code></td><td>string</td><td>edgar-xml (parsed Form 4 XML), dera (SEC Insider Transactions Data Sets) or derived (cluster).</td></tr>
-<tr><td><code>source_url</code></td><td>string | null</td><td>The exact SEC file the row was read from.</td></tr>
+<tr><td><code>source_url</code></td><td>string | null</td><td>The SEC page to cite: the Form 4 filing (edgar-xml rows: the filing text; dera rows: the filing index page; see <code>source</code>).</td></tr>
 <tr><td><code>provided_by</code></td><td>string</td><td>Who compiled this row; cite together with source_url.</td></tr>
 <tr><td><code>retrieved_at</code></td><td>string</td><td>UTC time the row was produced.</td></tr>
 </tbody></table></div>
@@ -177,7 +179,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <pre><code>https://mcp.apify.com?tools=bosco_labs/sec-insider-trades</code></pre>
 <p>For &ldquo;Did any Tesla insiders buy shares in the last 90 days?&rdquo; the agent passes:</p>
 <pre><code>{&quot;tickers&quot;: [&quot;TSLA&quot;], &quot;transactionCodes&quot;: [&quot;P&quot;]}</code></pre>
-<p>stable, typed JSON, one row per Form 4 transaction (and one per cluster signal). Every row has <code>schema_version</code> and a <code>source_url</code> pointing to the exact SEC file the row came from (plus <code>filing_url</code> for the Form 4 itself), so the agent can cite its source.</p>
+<p>stable, typed JSON, one row per Form 4 transaction (and one per cluster signal). Every row has <code>schema_version</code> and a <code>source_url</code> pointing to the Form 4 on sec.gov that the row came from, so the agent can cite its source.</p>
 <p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~sec-insider-trades/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.0018 per transaction row and $0.02 per cluster signal.</p>
 <h2 id="http-api">HTTP API</h2>
 <p>Also on the Bosco Labs HTTP API (beta): same input and same rows as the Actor, <strong>$0.0002 per unit: a Form 4 transaction = 9 units ($0.0018), a cluster signal = 100 ($0.02)</strong> from prepaid credits (max 5 tickers/CIKs x 183 days, 200 rows (maxResults) per call). <a href="api.html#key">Get a key</a> with a $0.50 free trial; see <a href="api.html">prices and limits</a>.</p>

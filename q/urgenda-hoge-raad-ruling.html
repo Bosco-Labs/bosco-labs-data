@@ -85,19 +85,19 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="q/index.html">Questions</a> &rsaquo; <a href="dutch-case-law.html">Dutch Case Law API (Rechtspraak)</a></p>
 <article class="prose">
 <h1 style="margin-top:18px">What did the Hoge Raad decide in the Urgenda climate case?</h1>
-<div class="facts"><div class="fact"><b>Answered by</b><a href="dutch-case-law.html">Dutch Case Law API (Rechtspraak): ECLI lookup, uitspraken</a></div><div class="fact"><b>Price</b>$0.005 per decision returned</div><div class="fact"><b>Status</b><span class="badge soon">Coming soon to the Store</span></div></div>
+<div class="facts"><div class="fact"><b>Answered by</b><a href="dutch-case-law.html">Dutch Case Law API (Rechtspraak): ECLI lookup, uitspraken</a></div><div class="fact"><b>Price</b>$0.005 per court decision returned (HTTP API)</div><div class="fact"><b>Status</b><span class="badge live">On the HTTP API</span></div></div>
 <p>On 20 December 2019 the Hoge Raad upheld the order that the Dutch State must cut greenhouse gas emissions by at least 25% from 1990 levels by the end of 2020, based on articles 2 and 8 ECHR. The row is the English translation of the ruling (ECLI:NL:HR:2019:2007) from Rechtspraak Open Data, with summary, dates and a link; includeText adds the full text.</p>
 <h2>Tool input</h2>
 <pre><code>{
   &quot;ecli&quot;: &quot;ECLI:NL:HR:2019:2007&quot;
 }</code></pre>
 <h2>Ask it from an AI agent (MCP)</h2>
-<p>Add the Apify MCP server with this tool to your MCP client (Claude, Cursor, VS Code, ...); it signs you in with OAuth or <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is live on the Apify Store.</p>
+<p>Add the Apify MCP server with this tool to your MCP client (Claude, Cursor, VS Code, ...); it signs you in with OAuth or <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is listed on the Apify Store; until then use the HTTP API or the remote MCP server at https://api.boscolabs.dev/mcp.</p>
 <pre><code>https://mcp.apify.com?tools=bosco_labs/dutch-case-law</code></pre>
 <p>Then ask:</p>
 <pre><code>Use the bosco_labs/dutch-case-law tool to answer: What did the Hoge Raad decide in the Urgenda climate case?</code></pre>
 <h2>Call the Apify API</h2>
-<p>Runs the Actor and returns the rows in one request, billed to your Apify account ($0.005 per decision returned). It works once the Actor is live on the Apify Store.</p>
+<p>Runs the Actor and returns the rows in one request, billed to your Apify account ($0.005 per court decision returned (HTTP API)). It works once the Actor is listed on the Apify Store; until then use the HTTP API or the remote MCP server at https://api.boscolabs.dev/mcp.</p>
 <pre><code>curl https://api.apify.com/v2/acts/bosco_labs~dutch-case-law/run-sync-get-dataset-items \
   -H &quot;Authorization: Bearer $APIFY_TOKEN&quot; \
   -H &quot;Content-Type: application/json&quot; \
@@ -154,7 +154,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
     &quot;duration_seconds&quot;: 0.11
   }
 ]</code></pre>
-<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=Dutch Case Law API (Rechtspraak)">Ask for early access</a><a class="btn ghost" href="dutch-case-law.html">All fields and limits</a></div>
+<div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a><a class="btn ghost" href="dutch-case-law.html">All fields and limits</a></div>
 <h2>More questions for this tool</h2><ul class="qs"><li><a href="q/hoge-raad-tenancy-law-rulings-since-2024.html">Find Hoge Raad rulings on tenancy law (huurrecht) since 2024 and summarise what each one decided, with links.</a></li><li><a href="q/raad-van-state-nitrogen-rulings.html">Which Raad van State rulings on nitrogen (stikstof) were published since 2025?</a></li></ul>
 <p><a href="q/index.html">All questions</a></p>
 </article>

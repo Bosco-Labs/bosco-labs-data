@@ -22,8 +22,10 @@ claude mcp add bosco-labs-data -- uvx bosco-labs-data-mcp   # no token needed fo
 # ask: "Look up the LEI of ASML" -> lei_lookup {"query": "ASML"}
 ```
 
-Each result has a `next_step` field naming the paid tool below that gives the full picture
-(filings, insider trades or financials).
+Each result has a `next_steps` list: the paid call that gives the full picture (filings,
+insider trades or financials), with its `tool` and `arguments` on the remote MCP server
+(`https://api.boscolabs.dev/mcp`) and the HTTP API, and `stdio_tool` / `stdio_arguments` for
+this package.
 
 ## Paid tools
 

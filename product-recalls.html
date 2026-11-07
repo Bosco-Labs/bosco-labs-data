@@ -30,7 +30,7 @@
  "offers": {
   "@type": "Offer",
   "priceCurrency": "USD",
-  "description": "$0.005 per product checked",
+  "description": "$0.005 per product checked (every source answered) (HTTP API)",
   "availability": "https://schema.org/PreOrder"
  },
  "provider": {
@@ -81,12 +81,12 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <main class="wrap">
 <p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#compliance-law">Compliance &amp; law</a></p>
 <article>
-<div class="head"><img src="icons/product-recalls.svg" alt="" width="84" height="84"><div><h1>Product Recall Check API: CPSC, NHTSA, FDA &amp; EU Safety Gate</h1><span class="badge soon">Coming soon to the Store</span></div></div>
+<div class="head"><img src="icons/product-recalls.svg" alt="" width="84" height="84"><div><h1>Product Recall Check API: CPSC, NHTSA, FDA &amp; EU Safety Gate</h1><span class="badge live">On the HTTP API</span></div></div>
 <div class="prose">
 <p class="lead"><strong>Answers &quot;is this product recalled anywhere, and for what hazard?&quot;</strong> for a product name, brand, model, UPC/EAN barcode or VIN: one row per query with recalled yes/no, each recall&#x27;s date, hazard, remedy and official link, from US CPSC, NHTSA, FDA enforcement reports and the EU Safety Gate. Built for <strong>AI agents</strong> in e-commerce, resale, procurement and product compliance, and for people who want one sourced answer instead of four searches.</p>
-<div class="facts"><div class="fact"><b>Price</b>$0.005 per product checked</div><div class="fact"><b>Domain</b>Compliance &amp; law</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
+<div class="facts"><div class="fact"><b>Price</b>$0.005 per product checked (every source answered) (HTTP API)</div><div class="fact"><b>Domain</b>Compliance &amp; law</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
 <p><strong>Pricing (pay per event):</strong> $0.005 per product checked, recall found or not. A query where a source could not be checked is returned with a warning and costs nothing.</p>
-<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=Product Recall Check API">Ask for early access</a></div>
+<div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a></div>
 <h2>Questions agents ask</h2>
 <ul class="qs"><li>&ldquo;Before we list this used Peloton Bike+ and this 2012 Honda Accord for sale, check whether either has been recalled, for what hazard, and cite the source.&rdquo;</li></ul>
 </div>
@@ -150,12 +150,12 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 </tbody></table></div>
 
 <h2>Use with AI agents (MCP)</h2>
-<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is live on the Apify Store.</p>
+<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is listed on the Apify Store; until then use the HTTP API or the remote MCP server at https://api.boscolabs.dev/mcp.</p>
 <pre><code>https://mcp.apify.com?tools=bosco_labs/product-recalls</code></pre>
 <p>For &ldquo;Before we list this used Peloton Bike+ and this 2012 Honda Accord for sale, check whether either has been recalled, for what hazard, and cite the source.&rdquo; the agent passes:</p>
 <pre><code>{ &quot;queries&quot;: [&quot;Peloton Bike+&quot;, &quot;2012 Honda Accord&quot;] }</code></pre>
 <p>one row per query (typically 2-9 KB), stable <code>snake_case</code> fields, ISO dates, <code>null</code> for unknown. <code>summary</code> is one sentence the agent can repeat; <code>recalled</code> is the yes/no/unknown; <code>source_url</code> is the official record. A run takes about 12 seconds (measured on 2026-11-06 for the two queries above; most of it is reading the 52 weekly EU reports, which are read once per run however many queries you send).</p>
-<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~product-recalls/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.005 per product checked.</p>
+<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~product-recalls/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.005 per product checked (every source answered) (HTTP API).</p>
 <h2 id="http-api">HTTP API</h2>
 <p>Also on the Bosco Labs HTTP API (beta): same input and same rows as the Actor, <strong>$0.005 per product checked (every source answered)</strong> from prepaid credits (max 20 products per call). <a href="api.html#key">Get a key</a> with a $0.50 free trial; see <a href="api.html">prices and limits</a>.</p>
 <pre><code>curl https://api.boscolabs.dev/v1/product-recalls \
@@ -184,7 +184,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <p><strong>What is not covered?</strong> Car seats, tyres and other vehicle equipment (NHTSA equipment recalls), EU food alerts (RASFF), UK, Canadian, Australian and other national recall lists, USDA meat and poultry recalls, and recall photos. FDA enforcement reports can lag the press release by a few weeks.</p>
 <p><strong>How fresh is it?</strong> Every run queries the sources live. CPSC, NHTSA and openFDA update as the agencies publish; EU Safety Gate publishes a weekly report every Friday.</p>
 <p><strong>Attribution.</strong> Recall data: U.S. Consumer Product Safety Commission (CPSC); no endorsement by CPSC implied. Vehicle recall data: U.S. NHTSA (public information); no endorsement implied. FDA enforcement reports via openFDA (CC0); do not rely on openFDA to make decisions regarding medical care. Alerts from the Rapid Alert System for dangerous non-food products, published free of charge on the Safety Gate website (https://ec.europa.eu/safety-gate-alerts) © European Union, 2005-2026; shortened and reformatted, not otherwise changed. Reuse terms of each source, quoted: see <code>LEGAL.md</code>.</p>
-<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=Product Recall Check API">Ask for early access</a></div>
+<div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a></div>
 </div>
 </article>
 </main>

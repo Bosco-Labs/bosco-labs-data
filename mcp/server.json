@@ -2,8 +2,8 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.Bosco-Labs/bosco-labs-data",
   "title": "Bosco Labs data",
-  "description": "Free LEI & SEC company lookups; SEC insider trades & filings, House trades, DoD contracts, EU data",
-  "version": "0.2.2",
+  "description": "Sanctions screening, company checks, EU tenders and law, SEC filings, insider trades",
+  "version": "0.2.3",
   "repository": {
     "url": "https://github.com/Bosco-Labs/bosco-labs-data",
     "source": "github",
@@ -14,7 +14,7 @@
       "registryType": "pypi",
       "registryBaseUrl": "https://pypi.org",
       "identifier": "bosco-labs-data-mcp",
-      "version": "0.2.2",
+      "version": "0.2.3",
       "runtimeHint": "uvx",
       "transport": {
         "type": "stdio"
@@ -24,6 +24,24 @@
           "name": "APIFY_TOKEN",
           "description": "Your Apify API token for the paid tools (each row returned is billed to your Apify account); the free tools work without it",
           "isRequired": false,
+          "isSecret": true
+        }
+      ]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://api.boscolabs.dev/mcp/free"
+    },
+    {
+      "type": "streamable-http",
+      "url": "https://api.boscolabs.dev/mcp",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Bearer <Bosco Labs API key> (prepaid credits): https://boscolabs.dev/api.html",
+          "isRequired": true,
           "isSecret": true
         }
       ]

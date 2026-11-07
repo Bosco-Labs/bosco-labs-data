@@ -30,7 +30,7 @@
  "offers": {
   "@type": "Offer",
   "priceCurrency": "USD",
-  "description": "$0.0018 per row, plus $0.01 per \"who holds this stock\" search (13F or N-PORT data set)",
+  "description": "$0.0018 per holding, holder or filing row (one fund or company per call) (HTTP API)",
   "availability": "https://schema.org/PreOrder"
  },
  "provider": {
@@ -81,12 +81,12 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <main class="wrap">
 <p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#finance-sec">Finance &amp; SEC</a></p>
 <article>
-<div class="head"><img src="icons/sec-ownership.svg" alt="" width="84" height="84"><div><h1>SEC Ownership API: 13F, N-PORT Fund Holdings, 13D/13G, Form 144</h1><span class="badge soon">Coming soon to the Store</span></div></div>
+<div class="head"><img src="icons/sec-ownership.svg" alt="" width="84" height="84"><div><h1>SEC Ownership API: 13F, N-PORT Fund Holdings, 13D/13G, Form 144</h1><span class="badge live">On the HTTP API</span></div></div>
 <div class="prose">
 <p class="lead"><strong>Who owns a stock and who is about to sell it, from official SEC filings</strong>: what a fund such as Berkshire Hathaway holds (13F, with changes vs the previous quarter), what a mutual fund or ETF such as VOO or ARKK holds (N-PORT), which managers and funds hold a ticker, who filed a 5%+ stake (13D activist, 13G passive), and which insiders filed to sell (Form 144). For investors, analysts and AI agents.</p>
-<div class="facts"><div class="fact"><b>Price</b>$0.0018 per row, plus $0.01 per &quot;who holds this stock&quot; search (13F or N-PORT data set)</div><div class="fact"><b>Domain</b>Finance &amp; SEC</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
+<div class="facts"><div class="fact"><b>Price</b>$0.0018 per holding, holder or filing row (one fund or company per call) (HTTP API)</div><div class="fact"><b>Domain</b>Finance &amp; SEC</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
 <p><strong>Pricing (pay per event):</strong> $0.0018 per row ($1.80 per 1,000), plus $0.01 per &quot;who holds this stock&quot; search (13F or N-PORT data set), no start fee. Empty or failed runs cost nothing.</p>
-<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=SEC Ownership API">Ask for early access</a></div>
+<div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a></div>
 <h2>Questions agents ask</h2>
 <ul class="qs"><li>&ldquo;What did Berkshire Hathaway buy and sell last quarter?&rdquo;</li><li>&ldquo;Which funds hold the most Nvidia stock?&rdquo;</li><li>&ldquo;What are ARKK&#x27;s top holdings and what did it add last quarter?&rdquo;</li><li>&ldquo;Which ETFs and mutual funds hold Palantir?&rdquo;</li><li>&ldquo;Has anyone filed an activist 13D on Peraso?&rdquo;</li><li>&ldquo;Which insiders filed to sell more than $1 million of stock this week?&rdquo;</li></ul>
 </div>
@@ -181,12 +181,12 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 </tbody></table></div>
 
 <h2>Use with AI agents (MCP)</h2>
-<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is live on the Apify Store.</p>
+<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is listed on the Apify Store; until then use the HTTP API or the remote MCP server at https://api.boscolabs.dev/mcp.</p>
 <pre><code>https://mcp.apify.com?tools=bosco_labs/sec-ownership</code></pre>
 <p>For &ldquo;What did Berkshire Hathaway buy and sell last quarter?&rdquo; the agent passes:</p>
 <pre><code>{&quot;mode&quot;: &quot;holdings13f&quot;, &quot;filer&quot;: &quot;Berkshire Hathaway&quot;}</code></pre>
 <p>small, typed JSON, one row per position, holder or filing, with <code>schema_version</code>, a <code>source_url</code> pointing to the exact SEC file and a <code>filing_url</code> for the filing, so the agent can cite its source. Bad input fails within seconds with a status message that says what to fix and shows a valid input.</p>
-<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~sec-ownership/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.0018 per row, plus $0.01 per &quot;who holds this stock&quot; search (13F or N-PORT data set).</p>
+<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~sec-ownership/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.0018 per holding, holder or filing row (one fund or company per call) (HTTP API).</p>
 <h2 id="http-api">HTTP API</h2>
 <p>Also on the Bosco Labs HTTP API (beta): same input and same rows as the Actor, <strong>$0.0018 per holding, holder or filing row (one fund or company per call)</strong> from prepaid credits (max 200 rows (maxResults) per call). <a href="api.html#key">Get a key</a> with a $0.50 free trial; see <a href="api.html">prices and limits</a>.</p>
 <pre><code>curl https://api.boscolabs.dev/v1/sec-ownership \
@@ -221,7 +221,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <p><strong>13D vs 13G?</strong> A 13D is filed by a holder of more than 5% who may seek to influence the company (activist); a 13G by passive holders and institutions. <code>percent_of_class</code> is the highest among the filing&#x27;s reporting persons; all of them are in <code>reporting_persons</code>.</p>
 <p><strong>Form 144?</strong> A notice by an insider or affiliate of a planned sale of restricted or control stock, filed when the order is placed. It is not proof that the sale happened (Form 4 reports that: see our SEC Insider Trading Actor). Not every Form 144 is followed by a sale.</p>
 <p><strong>Legal basis?</strong> SEC filings are US government public records; see LEGAL.md. This is data, not investment advice.</p>
-<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=SEC Ownership API">Ask for early access</a></div>
+<div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a></div>
 </div>
 </article>
 </main>

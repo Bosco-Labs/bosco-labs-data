@@ -85,7 +85,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="q/index.html">Questions</a> &rsaquo; <a href="uk-new-companies.html">UK New Companies API</a></p>
 <article class="prose">
 <h1 style="margin-top:18px">Which new restaurants were registered as companies in Manchester recently?</h1>
-<div class="facts"><div class="fact"><b>Answered by</b><a href="uk-new-companies.html">UK New Companies API: daily Companies House incorporations</a></div><div class="fact"><b>Price</b>$0.002 per company</div><div class="fact"><b>Status</b><span class="badge soon">Coming soon to the Store</span></div></div>
+<div class="facts"><div class="fact"><b>Answered by</b><a href="uk-new-companies.html">UK New Companies API: daily Companies House incorporations</a></div><div class="fact"><b>Price</b>$0.002 per company returned (HTTP API)</div><div class="fact"><b>Status</b><span class="badge live">On the HTTP API</span></div></div>
 <p>SIC 56101 is licensed restaurants. The Actor returns newly incorporated companies with that code whose registered office is in Manchester, newest first, with company_number, name, type, incorporation_date, address and a source_url to Companies House. The registered office is not always the trading address, so treat location as a filter on the registered address only.</p>
 <h2>Tool input</h2>
 <pre><code>{
@@ -96,12 +96,12 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
   &quot;maxResults&quot;: 50
 }</code></pre>
 <h2>Ask it from an AI agent (MCP)</h2>
-<p>Add the Apify MCP server with this tool to your MCP client (Claude, Cursor, VS Code, ...); it signs you in with OAuth or <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is live on the Apify Store.</p>
+<p>Add the Apify MCP server with this tool to your MCP client (Claude, Cursor, VS Code, ...); it signs you in with OAuth or <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is listed on the Apify Store; until then use the HTTP API or the remote MCP server at https://api.boscolabs.dev/mcp.</p>
 <pre><code>https://mcp.apify.com?tools=bosco_labs/uk-new-companies</code></pre>
 <p>Then ask:</p>
 <pre><code>Use the bosco_labs/uk-new-companies tool to answer: Which new restaurants were registered as companies in Manchester recently?</code></pre>
 <h2>Call the Apify API</h2>
-<p>Runs the Actor and returns the rows in one request, billed to your Apify account ($0.002 per company). It works once the Actor is live on the Apify Store.</p>
+<p>Runs the Actor and returns the rows in one request, billed to your Apify account ($0.002 per company returned (HTTP API)). It works once the Actor is listed on the Apify Store; until then use the HTTP API or the remote MCP server at https://api.boscolabs.dev/mcp.</p>
 <pre><code>curl https://api.apify.com/v2/acts/bosco_labs~uk-new-companies/run-sync-get-dataset-items \
   -H &quot;Authorization: Bearer $APIFY_TOKEN&quot; \
   -H &quot;Content-Type: application/json&quot; \
@@ -140,7 +140,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
   &quot;api_url&quot;: &quot;https://api.company-information.service.gov.uk/company/16800001&quot;,
   &quot;retrieved_at&quot;: &quot;2026-11-05T07:00:00+00:00&quot;
 }</code></pre>
-<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=UK New Companies API">Ask for early access</a><a class="btn ghost" href="uk-new-companies.html">All fields and limits</a></div>
+<div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a><a class="btn ghost" href="uk-new-companies.html">All fields and limits</a></div>
 <h2>More questions for this tool</h2><ul class="qs"><li><a href="q/new-uk-it-companies-london.html">Which new UK IT companies were incorporated in London recently?</a></li><li><a href="q/new-uk-fintech-companies-this-week.html">Which new UK fintech companies were incorporated this week?</a></li></ul>
 <p><a href="q/index.html">All questions</a></p>
 </article>

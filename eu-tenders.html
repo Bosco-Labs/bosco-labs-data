@@ -103,29 +103,29 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 }</code></pre></div>
 <div><h3>Output</h3><pre><code>{
   &quot;schema_version&quot;: &quot;1&quot;,
-  &quot;notice_id&quot;: &quot;768694-2026&quot;,
-  &quot;notice_type&quot;: &quot;contract_award&quot;,
-  &quot;ted_notice_type&quot;: &quot;can-standard&quot;,
-  &quot;published&quot;: &quot;2026-11-05&quot;,
-  &quot;deadline&quot;: null,
-  &quot;title&quot;: &quot;Netherlands – Software package and information systems – Software Schuldhulpverlening&quot;,
+  &quot;notice_id&quot;: &quot;773181-2026&quot;,
+  &quot;notice_type&quot;: &quot;contract_notice&quot;,
+  &quot;ted_notice_type&quot;: &quot;cn-standard&quot;,
+  &quot;published&quot;: &quot;2026-11-06&quot;,
+  &quot;deadline&quot;: &quot;2026-11-20T14:00:00+01:00&quot;,
+  &quot;title&quot;: &quot;Spain – Disposable non-chemical medical consumables and haematological consumables – Suministro de material de curas (gasas textiles, apósitos de tejido no tejido y dispositivos de taponamiento nasal) para el Servicio Riojano de Salud.&quot;,
   &quot;title_language&quot;: &quot;eng&quot;,
-  &quot;description&quot;: &quot;De gemeente heeft als doel om op basis van deze Europese openbare aanbestedingsprocedure volgens de Aanbestedingswet 2012 te komen tot een overeenkomst met één partij voor het leveren van software als een dienst ten aanzien van Schuldhulpverlening. zie leidraad&quot;,
-  &quot;description_language&quot;: &quot;nld&quot;,
-  &quot;buyer_name&quot;: &quot;Gemeente Apeldoorn, team Inkoop&quot;,
-  &quot;buyer_country&quot;: &quot;NLD&quot;,
-  &quot;buyer_city&quot;: &quot;Apeldoorn&quot;,
-  &quot;cpv_codes&quot;: [&quot;48000000&quot;],
-  &quot;main_cpv&quot;: &quot;48000000&quot;,
-  &quot;estimated_value&quot;: 3000000,
-  &quot;awarded_value&quot;: 3600000,
+  &quot;description&quot;: &quot;Suministro de diversos tipos de gasas, apósitos y dispositivos de taponamiento nasal destinados a cubrir las necesidades asistenciales del Servicio Riojano de Salud. Este contrato se ha estructurado en nueve (9) lotes, que engloban gasas rectilíneas para uso en curas, gasas rectilíneas para uso quirúrgico, sondas de epistaxis con balón y doble balón y apósitos de taponamiento nasal.&quot;,
+  &quot;description_language&quot;: &quot;spa&quot;,
+  &quot;buyer_name&quot;: &quot;Servicio Riojano de Salud&quot;,
+  &quot;buyer_country&quot;: &quot;ESP&quot;,
+  &quot;buyer_city&quot;: &quot;Logroño&quot;,
+  &quot;cpv_codes&quot;: [&quot;33141000&quot;, &quot;33140000&quot;, &quot;33141110&quot;, &quot;33141114&quot;, &quot;33141210&quot;],
+  &quot;main_cpv&quot;: &quot;33141000&quot;,
+  &quot;estimated_value&quot;: 1845101.57,
+  &quot;awarded_value&quot;: null,
   &quot;currency&quot;: &quot;EUR&quot;,
-  &quot;winner_names&quot;: [&quot;Innovadis B.V.&quot;],
+  &quot;winner_names&quot;: null,
   &quot;procedure_type&quot;: &quot;open&quot;,
-  &quot;lots_count&quot;: 1,
-  &quot;ted_url&quot;: &quot;https://ted.europa.eu/en/notice/-/detail/768694-2026&quot;,
-  &quot;source_url&quot;: &quot;https://ted.europa.eu/en/notice/768694-2026/xml&quot;,
-  &quot;retrieved_at&quot;: &quot;2026-11-05T16:05:27+00:00&quot;
+  &quot;lots_count&quot;: 9,
+  &quot;ted_url&quot;: &quot;https://ted.europa.eu/en/notice/-/detail/773181-2026&quot;,
+  &quot;source_url&quot;: &quot;https://ted.europa.eu/en/notice/-/detail/773181-2026&quot;,
+  &quot;retrieved_at&quot;: &quot;2026-11-06T22:49:59+00:00&quot;
 }</code></pre></div></div>
 <div class="prose">
 <h2>What you get</h2>
@@ -152,7 +152,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <tr><td><code>procedure_type</code></td><td>string | null</td><td>Procedure type as coded by TED, e.g. open, restricted. Null when not given.</td></tr>
 <tr><td><code>lots_count</code></td><td>integer | null</td><td>Number of lots (eForms notices only).</td></tr>
 <tr><td><code>ted_url</code></td><td>string</td><td>Notice page on ted.europa.eu.</td></tr>
-<tr><td><code>source_url</code></td><td>string</td><td>Official XML of the notice on ted.europa.eu.</td></tr>
+<tr><td><code>source_url</code></td><td>string</td><td>The notice page on ted.europa.eu (official XML: same path with /xml).</td></tr>
 <tr><td><code>provided_by</code></td><td>string</td><td>Who compiled this row; cite together with source_url.</td></tr>
 <tr><td><code>retrieved_at</code></td><td>string</td><td>UTC time the notice was fetched from the TED API.</td></tr>
 </tbody></table></div>
@@ -162,7 +162,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <pre><code>https://mcp.apify.com?tools=bosco_labs/eu-tenders</code></pre>
 <p>For &ldquo;Find open IT tenders above 1 million euros in Germany and the Netherlands from the last two weeks and list their deadlines.&rdquo; the agent passes:</p>
 <pre><code>{&quot;countries&quot;: [&quot;DE&quot;, &quot;NL&quot;], &quot;cpvCodes&quot;: [&quot;72&quot;], &quot;minValueEur&quot;: 1000000, &quot;publishedFrom&quot;: &quot;2026-10-22&quot;}</code></pre>
-<p>stable, typed JSON, one row per notice. Every row has <code>schema_version</code> and a <code>source_url</code> pointing to the official notice XML on ted.europa.eu (plus <code>ted_url</code>, the notice page), so the agent can cite its source.</p>
+<p>stable, typed JSON, one row per notice. Every row has <code>schema_version</code> and a <code>source_url</code> pointing to the official notice page on ted.europa.eu, so the agent can cite its source.</p>
 <p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~eu-tenders/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.002 per notice.</p>
 <h2 id="http-api">HTTP API</h2>
 <p>Also on the Bosco Labs HTTP API (beta): same input and same rows as the Actor, <strong>$0.002 per TED notice</strong> from prepaid credits (max 200 notices (maxResults) per call). <a href="api.html#key">Get a key</a> with a $0.50 free trial; see <a href="api.html">prices and limits</a>.</p>

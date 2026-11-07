@@ -400,9 +400,14 @@ def test_lei_lookup_by_lei(web):
         "headquarters_country": "NL",
         "registered_as": "17085815",
         "source_url": f"https://search.gleif.org/#/record/{LEI}",
-        "next_step": "Audited financials if it is an EU/UK listed company: Bosco Labs "
-        "esef-annual-reports (paid; MCP tool eu_annual_report_financials in bosco-labs-data-mcp, "
-        f"or apify.com/bosco_labs/esef-annual-reports) with lei='{LEI}'.",
+        "next_steps": [{
+            "why": "Audited financials if it is an EU/UK listed company",
+            "tool": "esef_annual_reports", "arguments": {"leis": [LEI]},
+            "remote_mcp": "https://api.boscolabs.dev/mcp",
+            "http": "POST https://api.boscolabs.dev/v1/esef-annual-reports",
+            "stdio_tool": "eu_annual_report_financials", "stdio_arguments": {"lei": LEI},
+            "paid": True,
+        }],  # fmt: skip
     }
     assert len(web.seen) == 1  # no parent request when no parent is reported
 
@@ -410,9 +415,10 @@ def test_lei_lookup_by_lei(web):
 def test_lei_lookup_parent_and_uk_next_step(web):
     (row,) = call("lei_lookup", query=SUB_LEI)
     assert row["ultimate_parent"] == {"lei": LEI, "legal_name": "ASML Holding N.V."}
-    step = row["next_step"]
-    assert "Bosco Labs company-accounts" in step and "european_company_accounts" in step
-    assert "apify.com/bosco_labs/company-accounts) with uk_company_numbers=['03117531']" in step
+    (step,) = row["next_steps"]
+    assert step["tool"] == "company_accounts" and step["arguments"] == {"companyNumbers": ["03117531"]}
+    assert step["stdio_tool"] == "european_company_accounts"
+    assert step["stdio_arguments"] == {"uk_company_numbers": ["03117531"]}
 
 
 def test_lei_lookup_by_name_dedupes_and_keeps_rank_order(web):
@@ -456,8 +462,9 @@ def test_sec_lookup_by_ticker(web):
     assert row["cik"] == "320193" and row["name"] == "Apple Inc." and row["tickers"] == ["AAPL"]
     assert row["sic"] == "3571" and row["fiscal_year_end"] == "0926"
     assert row["source_url"] == "https://www.sec.gov/edgar/browse/?CIK=320193"
-    assert "sec-filings-feed" in row["next_step"] and "sec_insider_trades" in row["next_step"]
-    assert row["next_step"].endswith("with ciks=['320193'].")
+    steps = row["next_steps"]
+    assert [s["tool"] for s in steps] == ["sec_filings_feed", "sec_insider_trades"]
+    assert all(s["arguments"] == {"ciks": ["320193"]} for s in steps)
     assert "filings" not in row
     tickers_req, sub_req = web.seen
     assert sub_req.url.path == "/submissions/CIK0000320193.json"

@@ -28,12 +28,7 @@
   <url><loc>https://boscolabs.dev/clinical-trials.html</loc></url>
   <url><loc>https://boscolabs.dev/drug-safety.html</loc></url>
   <url><loc>https://boscolabs.dev/dutch-address-lookup.html</loc></url>
-  <url><loc>https://boscolabs.dev/weather-forecast.html</loc></url>
   <url><loc>https://boscolabs.dev/package-vulns.html</loc></url>
-  <url><loc>https://boscolabs.dev/pdf-to-data.html</loc></url>
-  <url><loc>https://boscolabs.dev/dataset-dedup.html</loc></url>
-  <url><loc>https://boscolabs.dev/dataset-change-monitor.html</loc></url>
-  <url><loc>https://boscolabs.dev/sheets-export.html</loc></url>
   <url><loc>https://boscolabs.dev/privacy.html</loc></url>
   <url><loc>https://boscolabs.dev/terms.html</loc></url>
   <url><loc>https://boscolabs.dev/q/index.html</loc></url>
@@ -84,12 +79,6 @@
   <url><loc>https://boscolabs.dev/q/recruiting-phase-3-obesity-trials-europe.html</loc></url>
   <url><loc>https://boscolabs.dev/q/damrak-1-amsterdam-address-check.html</loc></url>
   <url><loc>https://boscolabs.dev/q/dutch-postcode-house-number-lookup.html</loc></url>
-  <url><loc>https://boscolabs.dev/q/irs-wage-bracket-table-page-14.html</loc></url>
-  <url><loc>https://boscolabs.dev/q/pdf-first-pages-as-markdown.html</loc></url>
-  <url><loc>https://boscolabs.dev/q/merge-datasets-remove-duplicates-by-place-id.html</loc></url>
-  <url><loc>https://boscolabs.dev/q/remove-duplicate-urls-from-list.html</loc></url>
-  <url><loc>https://boscolabs.dev/q/price-changes-between-scraper-runs.html</loc></url>
-  <url><loc>https://boscolabs.dev/q/new-job-postings-since-last-check.html</loc></url>
   <url><loc>https://boscolabs.dev/q/rule-10b-5-text.html</loc></url>
   <url><loc>https://boscolabs.dev/q/fda-final-rules-federal-register-since-october.html</loc></url>
   <url><loc>https://boscolabs.dev/q/bis-entity-list-rules-2026.html</loc></url>

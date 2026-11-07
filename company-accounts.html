@@ -124,7 +124,8 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
   },
   &quot;registry_url&quot;: &quot;https://find-and-update.company-information.service.gov.uk/company/03117531/filing-history&quot;,
   &quot;source_document&quot;: &quot;Prod223_4344_03117531_20260331.html&quot;,
-  &quot;source_url&quot;: &quot;https://download.companieshouse.gov.uk/Accounts_Bulk_Data-2026-11-05.zip&quot;,
+  &quot;source_url&quot;: &quot;https://find-and-update.company-information.service.gov.uk/company/03117531/filing-history&quot;,
+  &quot;source_data_url&quot;: &quot;https://download.companieshouse.gov.uk/Accounts_Bulk_Data-2026-11-05.zip&quot;,
   &quot;retrieved_at&quot;: &quot;2026-11-05T15:23:16+00:00&quot;
 }</code></pre></div></div>
 <div class="prose">
@@ -159,12 +160,13 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <tr><td><code>noncurrent_liabilities</code></td><td>number | null</td><td>UK: creditors falling due after more than one year. DK: long-term liabilities other than provisions. NO: long-term debt. BE: amounts payable after more than one year.</td></tr>
 <tr><td><code>employees</code></td><td>number | null</td><td>Average number of employees during the year (BE: full-time equivalents). Not in the Norwegian data.</td></tr>
 <tr><td><code>metrics_found</code></td><td>integer</td><td>How many of the normalized metrics were found.</td></tr>
-<tr><td><code>sources</code></td><td>object</td><td>Per metric: concept, fact_id, context_ref, period, unit, decimals of the source fact, or {derived: formula}. NO: concept is the JSON path in the record at source_url; BE: the NBB rubric code.</td></tr>
+<tr><td><code>sources</code></td><td>object</td><td>Per metric: concept, fact_id, context_ref, period, unit, decimals of the source fact, or {derived: formula}. NO: concept is the JSON path in the record at source_data_url; BE: the NBB rubric code.</td></tr>
 <tr><td><code>published</code></td><td>string | null</td><td>GB: filing date (by company number) or date of the Companies House daily file (newest filings); DK: publication timestamp; BE: filing date; NO: null.</td></tr>
 <tr><td><code>report_url</code></td><td>string | null</td><td>GB (by company number): the accounts on the Companies House website; DK: the human-readable annual report (XHTML or PDF); NO: PDF copy of the filed accounts at Brønnøysund.</td></tr>
 <tr><td><code>registry_url</code></td><td>string | null</td><td>Company page in the official register (filing history / CVR).</td></tr>
 <tr><td><code>source_document</code></td><td>string | null</td><td>GB: Companies House filing transaction id (by company number) or file name of the accounts inside the daily bulk ZIP (newest filings).</td></tr>
-<tr><td><code>source_url</code></td><td>string</td><td>GB: the Companies House document (by company number, needs a key) or bulk ZIP (newest filings); DK: the XBRL file; NO: the Regnskapsregisteret JSON record; BE: the NBB accounting-data URL (needs a key).</td></tr>
+<tr><td><code>source_url</code></td><td>string</td><td>The page to cite: report_url when there is one, else registry_url.</td></tr>
+<tr><td><code>source_data_url</code></td><td>string</td><td>The machine-readable file the figures were read from. GB: the Companies House document (by company number, needs a key) or bulk ZIP (newest filings); DK: the XBRL file; NO: the Regnskapsregisteret JSON record; BE: the NBB accounting-data URL (needs a key).</td></tr>
 <tr><td><code>provided_by</code></td><td>string</td><td>Who compiled this row; cite together with source_url.</td></tr>
 <tr><td><code>retrieved_at</code></td><td>string</td><td>UTC time the source was fetched.</td></tr>
 </tbody></table></div>
@@ -174,7 +176,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <pre><code>https://mcp.apify.com?tools=bosco_labs/company-accounts</code></pre>
 <p>For &ldquo;What were Novo Nordisk&#x27;s revenue and equity in its latest Danish annual report?&rdquo; the agent passes:</p>
 <pre><code>{&quot;cvrNumbers&quot;: [&quot;24256790&quot;], &quot;maxResults&quot;: 1}</code></pre>
-<p>stable, typed JSON, one row per company per fiscal year. Every row has <code>schema_version</code> and a <code>source_url</code> pointing to the official filing or register record (plus <code>registry_url</code> and a <code>sources</code> entry per value), so the agent can cite its source. With registration numbers, only their countries are read, so a lookup never returns other companies; bad numbers fail at once with a valid example.</p>
+<p>stable, typed JSON, one row per company per fiscal year. Every row has <code>schema_version</code> and a <code>source_url</code> pointing to the filed accounts or the register page a person can open (plus <code>source_data_url</code>, the machine-readable file, and a <code>sources</code> entry per value), so the agent can cite its source. With registration numbers, only their countries are read, so a lookup never returns other companies; bad numbers fail at once with a valid example.</p>
 <p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~company-accounts/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.04 per company-year.</p>
 <h2 id="http-api">HTTP API</h2>
 <p>Also on the Bosco Labs HTTP API (beta): same input and same rows as the Actor, <strong>$0.04 per company-year</strong> from prepaid credits (max 5 companies, 10 years per country (maxResults) per call). <a href="api.html#key">Get a key</a> with a $0.50 free trial; see <a href="api.html">prices and limits</a>.</p>

@@ -166,6 +166,24 @@ async def get_json(url: str, source: str, params=None, headers=None):
 GLEIF_API = "https://api.gleif.org/api/v1"
 LEI_RE = re.compile(r"^[A-Z0-9]{18}[0-9]{2}$")
 ACCOUNTS_PARAM = {"GB": "uk_company_numbers", "DK": "dk_cvr_numbers", "NO": "no_org_numbers"}
+ACCOUNTS_FIELD = {"GB": "companyNumbers", "DK": "cvrNumbers", "NO": "orgNumbers"}  # API input
+API = "https://api.boscolabs.dev"
+
+
+def next_step(why: str, slug: str, arguments: dict, stdio_tool: str, stdio_args: dict) -> dict:
+    """The paid Bosco Labs call for the follow-up question, by every name it has: `tool` and
+    `arguments` on the remote MCP server (API/mcp, key or x402) and the HTTP API, and the tool
+    of this package (with APIFY_TOKEN), whose argument names differ."""
+    return {
+        "why": why,
+        "tool": slug.replace("-", "_"),
+        "arguments": arguments,
+        "remote_mcp": f"{API}/mcp",
+        "http": f"POST {API}/v1/{slug}",
+        "stdio_tool": stdio_tool,
+        "stdio_arguments": stdio_args,
+        "paid": True,
+    }
 LEI_KEYS = [
     "lei", "legal_name", "entity_status", "registration_status", "jurisdiction",
     "legal_address_country", "legal_address_city", "headquarters_country", "registered_as",
@@ -192,19 +210,18 @@ def lei_row(rec: dict, parent: dict | None) -> dict:
     }
     row = pick(full, LEI_KEYS)
     country = row.get("legal_address_country")
-    if country in ACCOUNTS_PARAM and row.get("registered_as"):
-        row["next_step"] = (
-            "Filed accounts (revenue, profit, equity): Bosco Labs company-accounts (paid; MCP "
-            "tool european_company_accounts in bosco-labs-data-mcp, or "
-            "apify.com/bosco_labs/company-accounts) with "
-            f"{ACCOUNTS_PARAM[country]}=['{row['registered_as']}']."
-        )
+    reg = row.get("registered_as")
+    if country in ACCOUNTS_PARAM and reg:
+        row["next_steps"] = [next_step(
+            "Filed accounts (revenue, profit, equity)", "company-accounts",
+            {ACCOUNTS_FIELD[country]: [reg]}, "european_company_accounts",
+            {ACCOUNTS_PARAM[country]: [reg]},
+        )]  # fmt: skip
     else:
-        row["next_step"] = (
-            "Audited financials if it is an EU/UK listed company: Bosco Labs esef-annual-reports "
-            "(paid; MCP tool eu_annual_report_financials in bosco-labs-data-mcp, or "
-            f"apify.com/bosco_labs/esef-annual-reports) with lei='{row['lei']}'."
-        )
+        row["next_steps"] = [next_step(
+            "Audited financials if it is an EU/UK listed company", "esef-annual-reports",
+            {"leis": [row["lei"]]}, "eu_annual_report_financials", {"lei": row["lei"]},
+        )]  # fmt: skip
     return row
 
 
@@ -246,7 +263,8 @@ async def lei_lookup(
     registration_status (ISSUED, LAPSED, ...), jurisdiction, legal_address_country,
     legal_address_city, headquarters_country, registered_as (local registry number),
     ultimate_parent (lei, legal_name; when reported), source_url (the GLEIF record; cite it)
-    and next_step (the paid Bosco Labs tool for this company's financials).
+    and next_steps (the paid Bosco Labs call for this company's financials: tool and
+    arguments on the remote MCP server and HTTP API, stdio_tool in this package).
     """
     q = query.strip()
     if LEI_RE.match(q.upper()):
@@ -289,7 +307,7 @@ SEC_TICKERS_URL = "https://www.sec.gov/files/company_tickers_exchange.json"
 SEC_TICKERS_TTL = 86400  # s; SEC refreshes the file daily
 SEC_KEYS = [
     "cik", "name", "tickers", "exchanges", "sic", "sic_description", "state_of_incorporation",
-    "fiscal_year_end", "source_url", "next_step",
+    "fiscal_year_end", "source_url", "next_steps",
 ]  # fmt: skip
 _sec_tickers: dict = {"rows": None, "at": 0.0}
 
@@ -355,7 +373,7 @@ async def sec_company_lookup(
 
     Returns one row per company: cik, name, tickers, exchanges, sic, sic_description,
     state_of_incorporation, fiscal_year_end (MMDD), source_url (the EDGAR company page; cite
-    it) and next_step (the paid Bosco Labs tools for its filings and insider trades).
+    it) and next_steps (the paid Bosco Labs calls for its filings and insider trades).
     """
     q = query.strip()
     ciks = [int(q)] if q.isdigit() and len(q) <= 10 else (await sec_ciks(q))[:max_results]
@@ -375,10 +393,12 @@ async def sec_company_lookup(
             "state_of_incorporation": sub.get("stateOfIncorporation"),
             "fiscal_year_end": sub.get("fiscalYearEnd"),
             "source_url": f"https://www.sec.gov/edgar/browse/?CIK={cik}",
-            "next_step": "Filings: Bosco Labs sec-filings-feed; insider buys and sells: Bosco Labs "
-            "sec-insider-trades (both paid; MCP tools sec_filings and sec_insider_trades in "
-            "bosco-labs-data-mcp, or apify.com/bosco_labs/sec-filings-feed and "
-            f"apify.com/bosco_labs/sec-insider-trades) with ciks=['{cik}'].",
+            "next_steps": [
+                next_step("Filings (8-K, 10-K, Form 4, ...)", "sec-filings-feed",
+                          {"ciks": [str(cik)]}, "sec_filings", {"ciks": [str(cik)]}),
+                next_step("Insider buys and sells (Form 4)", "sec-insider-trades",
+                          {"ciks": [str(cik)]}, "sec_insider_trades", {"ciks": [str(cik)]}),
+            ],  # fmt: skip
         }
         rows.append(pick(full, SEC_KEYS))
     if not rows:

@@ -30,7 +30,7 @@
  "offers": {
   "@type": "Offer",
   "priceCurrency": "USD",
-  "description": "$0.02 per dossier or $0.004 per single-section query",
+  "description": "$0.004 per sub-query; a full dossier = 5 units ($0.02); partial answers are free (HTTP API)",
   "availability": "https://schema.org/PreOrder"
  },
  "provider": {
@@ -81,12 +81,12 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <main class="wrap">
 <p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#macro-health-places">Macro, health &amp; places</a></p>
 <article>
-<div class="head"><img src="icons/drug-safety.svg" alt="" width="84" height="84"><div><h1>Drug Safety API: FDA label, FAERS, recalls, EMA status</h1><span class="badge soon">Coming soon to the Store</span></div></div>
+<div class="head"><img src="icons/drug-safety.svg" alt="" width="84" height="84"><div><h1>Drug Safety API: FDA label, FAERS, recalls, EMA status</h1><span class="badge live">On the HTTP API</span></div></div>
 <div class="prose">
 <p class="lead"><strong>Answers &quot;is this drug safe, and where does it stand with regulators?&quot; in one call</strong>: the FDA boxed warning and indications, the most reported FAERS adverse reactions (counts), US recalls and shortages, and EU authorisation, EPAR link and EU shortages, for one drug name, with a source link for every section. Built for <strong>AI agents</strong> and people in pharma, health tech, pharmacy, compliance and investing.</p>
-<div class="facts"><div class="fact"><b>Price</b>$0.02 per dossier or $0.004 per single-section query</div><div class="fact"><b>Domain</b>Macro, health &amp; places</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
+<div class="facts"><div class="fact"><b>Price</b>$0.004 per sub-query; a full dossier = 5 units ($0.02); partial answers are free (HTTP API)</div><div class="fact"><b>Domain</b>Macro, health &amp; places</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
 <p><strong>Pricing (pay per event):</strong> $0.02 per <code>dossier</code> (all five sections), or $0.004 per <code>drug-query</code> for one section. Invalid input, unknown drugs, empty answers and partial answers (a source failed) cost nothing.</p>
-<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=Drug Safety API">Ask for early access</a></div>
+<div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a></div>
 <h2>Questions agents ask</h2>
 <ul class="qs"><li>&ldquo;Does semaglutide have a boxed warning, what are its most reported adverse reactions, and is it authorised in the EU? Cite the sources.&rdquo;</li></ul>
 </div>
@@ -322,12 +322,12 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 </tbody></table></div>
 
 <h2>Use with AI agents (MCP)</h2>
-<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is live on the Apify Store.</p>
+<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is listed on the Apify Store; until then use the HTTP API or the remote MCP server at https://api.boscolabs.dev/mcp.</p>
 <pre><code>https://mcp.apify.com?tools=bosco_labs/drug-safety</code></pre>
 <p>For &ldquo;Does semaglutide have a boxed warning, what are its most reported adverse reactions, and is it authorised in the EU? Cite the sources.&rdquo; the agent passes:</p>
 <pre><code>{ &quot;drug&quot;: &quot;semaglutide&quot; }</code></pre>
 <p>one row, stable <code>snake_case</code> fields, ISO dates, numbers as numbers, <code>null</code> for unknown, a <code>source_url</code> per section, and a <code>notice</code> to pass on (not medical advice). The run&#x27;s status message is a one-line answer, e.g. &quot;semaglutide (semaglutide): boxed warning; 86,031 FAERS reports (top: NAUSEA, OFF LABEL USE); 57 US recalls; ...&quot;. Typical run: 1-3 seconds after start-up.</p>
-<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~drug-safety/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.02 per dossier or $0.004 per single-section query.</p>
+<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~drug-safety/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.004 per sub-query; a full dossier = 5 units ($0.02); partial answers are free (HTTP API).</p>
 <h2 id="http-api">HTTP API</h2>
 <p>Also on the Bosco Labs HTTP API (beta): same input and same rows as the Actor, <strong>$0.004 per sub-query; a full dossier = 5 units ($0.02); partial answers are free</strong> from prepaid credits (max 1 drug per call). <a href="api.html#key">Get a key</a> with a $0.50 free trial; see <a href="api.html">prices and limits</a>.</p>
 <pre><code>curl https://api.boscolabs.dev/v1/drug-safety \
@@ -352,7 +352,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <p><strong>Why did my run cost nothing?</strong> Unknown names, invalid input, sub-queries that find nothing (for example <code>recalls</code> for a drug that was never recalled) and partial answers (a source did not answer, see <code>failed_sections</code>) are not charged. The row is still saved so you can see the answer; run again later for a complete, charged one.</p>
 <p>US data from <a href="https://open.fda.gov">openFDA</a> (U.S. Food and Drug Administration). Under the <a href="https://open.fda.gov/terms/">openFDA terms</a> the drug data are public domain under CC0: &quot;You can copy, modify, distribute, and perform the work, even for commercial purposes, all without asking permission.&quot; Not endorsed by FDA. openFDA&#x27;s device data carry GMDN nomenclature that needs a licence from the GMDN Agency; this Actor reads only the drug endpoints, never device data.</p>
 <p>EU data from the European Medicines Agency&#x27;s public JSON data files (<a href="https://www.ema.europa.eu/en/documents/report/medicines-output-medicines_json-report_en.json">medicines</a>, <a href="https://www.ema.europa.eu/en/documents/report/shortages-output-json-report_en.json">shortages</a>). EMA&#x27;s <a href="https://www.ema.europa.eu/en/about-us/legal-notice">legal notice</a> allows reproduction &quot;for non-commercial and commercial purposes, provided that EMA is always acknowledged as the source of the material&quot;, and &quot;Such acknowledgement must be included in each copy of the material.&quot; Every row therefore carries an <code>attribution</code> that names EMA as the source with the URL and the month and year of access; keep it with any copy. EMA does not endorse Bosco Labs. Bosco Labs selects fields, shortens long texts (cut texts end with <code>[truncated]</code>) and returns FAERS as counts only.</p>
-<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=Drug Safety API">Ask for early access</a></div>
+<div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a></div>
 </div>
 </article>
 </main>

@@ -30,7 +30,7 @@
  "offers": {
   "@type": "Offer",
   "priceCurrency": "USD",
-  "description": "$0.01 per article or act returned",
+  "description": "$0.005 per article or act returned (HTTP API)",
   "availability": "https://schema.org/PreOrder"
  },
  "provider": {
@@ -81,12 +81,12 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <main class="wrap">
 <p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#compliance-law">Compliance &amp; law</a></p>
 <article>
-<div class="head"><img src="icons/national-law-lookup.svg" alt="" width="84" height="84"><div><h1>UK &amp; Dutch Law Lookup API: article text by date, in force</h1><span class="badge soon">Coming soon to the Store</span></div></div>
+<div class="head"><img src="icons/national-law-lookup.svg" alt="" width="84" height="84"><div><h1>UK &amp; Dutch Law Lookup API: article text by date, in force</h1><span class="badge live">On the HTTP API</span></div></div>
 <div class="prose">
 <p class="lead"><strong>One call answers &quot;what does section 172 of the Companies Act 2006 say?&quot; or &quot;wat zegt artikel 7:658 BW?&quot;</strong>: the section or article as plain text from the official consolidated version in force today (or on any date), whether it is in force, and what changed it. Built for <strong>AI agents</strong> doing legal and compliance work, and for people who want a sourced answer without XML.</p>
-<div class="facts"><div class="fact"><b>Price</b>$0.01 per article or act returned</div><div class="fact"><b>Domain</b>Compliance &amp; law</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
+<div class="facts"><div class="fact"><b>Price</b>$0.005 per article or act returned (HTTP API)</div><div class="fact"><b>Domain</b>Compliance &amp; law</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
 <p><strong>Pricing (pay per event):</strong> $0.01 per article or act returned (<code>act-lookup</code>). A citation that can&#x27;t be read, or an article that doesn&#x27;t exist, fails in seconds and costs nothing.</p>
-<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=UK &amp; Dutch Law Lookup API">Ask for early access</a></div>
+<div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a></div>
 <h2>Questions agents ask</h2>
 <ul class="qs"><li>&ldquo;What does article 13 of the Dutch Wet op de vennootschapsbelasting 1969 say as of 1 January 2025? Quote it and link the source.&rdquo;</li></ul>
 </div>
@@ -171,12 +171,12 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 </tbody></table></div>
 
 <h2>Use with AI agents (MCP)</h2>
-<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is live on the Apify Store.</p>
+<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is listed on the Apify Store; until then use the HTTP API or the remote MCP server at https://api.boscolabs.dev/mcp.</p>
 <pre><code>https://mcp.apify.com?tools=bosco_labs/national-law-lookup</code></pre>
 <p>For &ldquo;What does article 13 of the Dutch Wet op de vennootschapsbelasting 1969 say as of 1 January 2025? Quote it and link the source.&rdquo; the agent passes:</p>
 <pre><code>{ &quot;query&quot;: &quot;artikel 13 Wet Vpb 1969&quot;, &quot;asOf&quot;: &quot;2025-01-01&quot; }</code></pre>
 <p>small JSON rows (typically 3-15 KB), stable <code>snake_case</code> fields, ISO dates, <code>null</code> for unknown, a link to the exact version. <code>warnings</code> says in plain words when the text is not in force on <code>asOf</code>, a newer version is coming, or changes are not yet applied. A Dutch lookup takes under a second after start-up; a UK lookup about 1 second, plus 5 seconds per extra request (a short title that isn&#x27;t in our list, or each extra section), because legislation.gov.uk asks clients to wait 5 seconds between requests.</p>
-<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~national-law-lookup/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.01 per article or act returned.</p>
+<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~national-law-lookup/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.005 per article or act returned (HTTP API).</p>
 <h2 id="http-api">HTTP API</h2>
 <p>Also on the Bosco Labs HTTP API (beta): same input and same rows as the Actor, <strong>$0.005 per article or act returned</strong> from prepaid credits (max 5 articles per call). <a href="api.html#key">Get a key</a> with a $0.50 free trial; see <a href="api.html">prices and limits</a>.</p>
 <pre><code>curl https://api.boscolabs.dev/v1/national-law-lookup \
@@ -203,7 +203,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <p><strong>Points like 172(1)(a)?</strong> The subsection is returned whole; points are lines inside it.</p>
 <p><strong>Personal data?</strong> None is requested or returned beyond what the published legislation contains.</p>
 <p>Content: UK, contains public sector information licensed under the Open Government Licence v3.0 (© Crown and database right, legislation.gov.uk). NL, Basiswettenbestand (KOOP); Dutch legislation is not protected by copyright (Auteurswet art. 11). XML is converted to plain text and long texts are cut where <code>maxTextChars</code> says; nothing else is changed.</p>
-<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=UK &amp; Dutch Law Lookup API">Ask for early access</a></div>
+<div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a></div>
 </div>
 </article>
 </main>

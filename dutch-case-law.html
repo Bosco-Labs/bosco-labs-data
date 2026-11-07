@@ -30,7 +30,7 @@
  "offers": {
   "@type": "Offer",
   "priceCurrency": "USD",
-  "description": "$0.005 per decision returned",
+  "description": "$0.005 per court decision returned (HTTP API)",
   "availability": "https://schema.org/PreOrder"
  },
  "provider": {
@@ -81,12 +81,12 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <main class="wrap">
 <p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#compliance-law">Compliance &amp; law</a></p>
 <article>
-<div class="head"><img src="icons/dutch-case-law.svg" alt="" width="84" height="84"><div><h1>Dutch Case Law API (Rechtspraak): ECLI lookup, uitspraken</h1><span class="badge soon">Coming soon to the Store</span></div></div>
+<div class="head"><img src="icons/dutch-case-law.svg" alt="" width="84" height="84"><div><h1>Dutch Case Law API (Rechtspraak): ECLI lookup, uitspraken</h1><span class="badge live">On the HTTP API</span></div></div>
 <div class="prose">
 <p class="lead"><strong>Look up Dutch court decisions (uitspraken) by ECLI, or search them by court, legal area, date and keywords</strong>: court, decision and publication dates, case numbers, legal areas, procedure, the court&#x27;s own summary (inhoudsindicatie), appeal / cassation / Advocate-General relations, referenced laws, and optionally the full text. Built for <strong>AI agents</strong> doing legal and compliance research, and for people who want Rechtspraak data as clean JSON.</p>
-<div class="facts"><div class="fact"><b>Price</b>$0.005 per decision returned</div><div class="fact"><b>Domain</b>Compliance &amp; law</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
+<div class="facts"><div class="fact"><b>Price</b>$0.005 per court decision returned (HTTP API)</div><div class="fact"><b>Domain</b>Compliance &amp; law</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
 <p><strong>Pricing (pay per event):</strong> $0.005 per decision returned (<code>decision</code>). An unknown ECLI, bad input or an empty search costs nothing.</p>
-<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=Dutch Case Law API (Rechtspraak)">Ask for early access</a></div>
+<div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a></div>
 <h2>Questions agents ask</h2>
 <ul class="qs"><li>&ldquo;Find Hoge Raad rulings on tenancy law (huurrecht) since 2024 and summarise what each one decided, with links.&rdquo;</li></ul>
 </div>
@@ -187,12 +187,12 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 </tbody></table></div>
 
 <h2>Use with AI agents (MCP)</h2>
-<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is live on the Apify Store.</p>
+<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is listed on the Apify Store; until then use the HTTP API or the remote MCP server at https://api.boscolabs.dev/mcp.</p>
 <pre><code>https://mcp.apify.com?tools=bosco_labs/dutch-case-law</code></pre>
 <p>For &ldquo;Find Hoge Raad rulings on tenancy law (huurrecht) since 2024 and summarise what each one decided, with links.&rdquo; the agent passes:</p>
 <pre><code>{ &quot;query&quot;: &quot;huurrecht&quot;, &quot;courts&quot;: [&quot;HR&quot;], &quot;dateFrom&quot;: &quot;2024-01-01&quot;, &quot;maxResults&quot;: 20 }</code></pre>
 <p>stable <code>snake_case</code> fields, ISO dates, <code>null</code> for unknown, a rechtspraak.nl link per decision and per related decision. <code>warnings</code> says in plain words when text was cut, an ECLI has metadata only or was replaced, or a keyword scan hit its limit. An empty search ends with a status message saying why and what to try.</p>
-<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~dutch-case-law/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.005 per decision returned.</p>
+<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~dutch-case-law/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.005 per court decision returned (HTTP API).</p>
 <h2 id="http-api">HTTP API</h2>
 <p>Also on the Bosco Labs HTTP API (beta): same input and same rows as the Actor, <strong>$0.005 per court decision returned</strong> from prepaid credits (max 25 ECLIs + 25 search results (maxResults) per call). <a href="api.html#key">Get a key</a> with a $0.50 free trial; see <a href="api.html">prices and limits</a>.</p>
 <pre><code>curl https://api.boscolabs.dev/v1/dutch-case-law \
@@ -221,7 +221,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <p><strong>Is this legal advice?</strong> No. It returns published decisions and their metadata; it does not interpret them. English translations of some landmark decisions are unofficial (the courts say so in the summary); the Dutch text is authentic.</p>
 <p><strong>Limits:</strong> 100 ECLIs or 200 search results per run; no full-text search (see above); no filter by procedure type (the API has none; <code>procedures</code> is in every row); text cut at <code>maxTextChars</code>. Rechtspraak asks users to stay under 10 requests per second, so this Actor reads one decision at a time.</p>
 <p>Content: decisions of the Dutch courts via Rechtspraak Open Data, https://www.rechtspraak.nl/uitspraken/open-data (court decisions carry no copyright, art. 11 Auteurswet). Text is converted from XML to plain text and long texts are cut where <code>maxTextChars</code> says; nothing else is changed.</p>
-<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=Dutch Case Law API (Rechtspraak)">Ask for early access</a></div>
+<div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a></div>
 </div>
 </article>
 </main>

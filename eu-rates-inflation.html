@@ -30,7 +30,7 @@
  "offers": {
   "@type": "Offer",
   "priceCurrency": "USD",
-  "description": "$0.002 per series returned",
+  "description": "$0.002 per series returned (catalogue free) (HTTP API)",
   "availability": "https://schema.org/PreOrder"
  },
  "provider": {
@@ -81,12 +81,12 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <main class="wrap">
 <p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#macro-health-places">Macro, health &amp; places</a></p>
 <article>
-<div class="head"><img src="icons/eu-rates-inflation.svg" alt="" width="84" height="84"><div><h1>ECB Rates &amp; Euro Inflation API: policy rates, FX, €STR, HICP</h1><span class="badge soon">Coming soon to the Store</span></div></div>
+<div class="head"><img src="icons/eu-rates-inflation.svg" alt="" width="84" height="84"><div><h1>ECB Rates &amp; Euro Inflation API: policy rates, FX, €STR, HICP</h1><span class="badge live">On the HTTP API</span></div></div>
 <div class="prose">
 <p class="lead"><strong>Ask for euro-area rates by plain name and get the latest value, when it last changed, the change and the recent history.</strong> ECB policy rates, euro reference exchange rates, €STR, euro-area and national government bond yields, and Eurostat HICP inflation for every EU country, with no SDMX series keys to work out. Built for <strong>AI agents</strong> and for anyone who needs a quick, sourced number.</p>
-<div class="facts"><div class="fact"><b>Price</b>$0.002 per series returned</div><div class="fact"><b>Domain</b>Macro, health &amp; places</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
+<div class="facts"><div class="fact"><b>Price</b>$0.002 per series returned (catalogue free) (HTTP API)</div><div class="fact"><b>Domain</b>Macro, health &amp; places</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
 <p><strong>Pricing (pay per event):</strong> $0.002 per series returned ($2 per 1,000). A series with no data and the catalogue are free; an unknown name fails in a second and costs nothing. The same data is available free of charge from the ECB (data.ecb.europa.eu) and Eurostat; you pay for the plain-name lookup, the latest/previous/change summary and the hosted API.</p>
-<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=ECB Rates &amp; Euro Inflation API">Ask for early access</a></div>
+<div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a></div>
 <h2>Questions agents ask</h2>
 <ul class="qs"><li>&ldquo;What&#x27;s the ECB deposit rate now, when did it last change, and how does euro-area inflation compare? Cite the source.&rdquo;</li></ul>
 </div>
@@ -151,12 +151,12 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 </tbody></table></div>
 
 <h2>Use with AI agents (MCP)</h2>
-<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is live on the Apify Store.</p>
+<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is listed on the Apify Store; until then use the HTTP API or the remote MCP server at https://api.boscolabs.dev/mcp.</p>
 <pre><code>https://mcp.apify.com?tools=bosco_labs/eu-rates-inflation</code></pre>
 <p>For &ldquo;What&#x27;s the ECB deposit rate now, when did it last change, and how does euro-area inflation compare? Cite the source.&rdquo; the agent passes:</p>
 <pre><code>{ &quot;series&quot;: [&quot;ecb_deposit_rate&quot;, &quot;hicp:EA&quot;], &quot;last&quot;: 3 }</code></pre>
 <p>one small JSON item per series (1-2 KB with the default 12 observations), stable <code>snake_case</code> fields, numbers as numbers, ISO dates, <code>null</code> for unknown, a source link and the exact API call per series. Unknown names fail at once with &quot;did you mean&quot; suggestions. Fetching takes well under a second; each source has a 15-second limit with two retries.</p>
-<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~eu-rates-inflation/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.002 per series returned.</p>
+<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~eu-rates-inflation/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.002 per series returned (catalogue free) (HTTP API).</p>
 <h2 id="http-api">HTTP API</h2>
 <p>Also on the Bosco Labs HTTP API (beta): same input and same rows as the Actor, <strong>$0.002 per series returned (catalogue free)</strong> from prepaid credits (max 20 series per call). <a href="api.html#key">Get a key</a> with a $0.50 free trial; see <a href="api.html">prices and limits</a>.</p>
 <pre><code>curl https://api.boscolabs.dev/v1/eu-rates-inflation \
@@ -182,7 +182,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <p><strong>Euribor? Mortgage rates?</strong> Euribor is published by EMMI, not the ECB, and is not included. Bank lending rates (MIR) and any other ECB series can be fetched with <code>rawSeriesKey</code>.</p>
 <p><strong>Can I republish the values?</strong> Yes, with the attribution in each row: the ECB allows reuse if the ECB is quoted as the source, the statistics are not modified, and buyers are told the data is free from the ECB; Eurostat allows reuse with acknowledgement of the source. Our <code>change</code> field is marked as computed by Bosco Labs.</p>
 <p><strong>Personal data?</strong> None. These are aggregate statistics.</p>
-<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=ECB Rates &amp; Euro Inflation API">Ask for early access</a></div>
+<div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a></div>
 </div>
 </article>
 </main>

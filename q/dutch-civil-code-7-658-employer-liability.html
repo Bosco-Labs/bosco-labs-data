@@ -85,19 +85,19 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="q/index.html">Questions</a> &rsaquo; <a href="national-law-lookup.html">UK &amp; Dutch Law Lookup API</a></p>
 <article class="prose">
 <h1 style="margin-top:18px">What does article 7:658 of the Dutch Civil Code say about employer liability?</h1>
-<div class="facts"><div class="fact"><b>Answered by</b><a href="national-law-lookup.html">UK &amp; Dutch Law Lookup API: article text by date, in force</a></div><div class="fact"><b>Price</b>$0.01 per article or act returned</div><div class="fact"><b>Status</b><span class="badge soon">Coming soon to the Store</span></div></div>
+<div class="facts"><div class="fact"><b>Answered by</b><a href="national-law-lookup.html">UK &amp; Dutch Law Lookup API: article text by date, in force</a></div><div class="fact"><b>Price</b>$0.005 per article or act returned (HTTP API)</div><div class="fact"><b>Status</b><span class="badge live">On the HTTP API</span></div></div>
 <p>Article 7:658 BW makes the employer liable for damage an employee suffers at work, unless the employer shows it met its duty of care or the damage was largely caused by the employee&#x27;s intent or deliberate recklessness. The row quotes the current consolidated text from wetten.overheid.nl, in Dutch, with the version date and link.</p>
 <h2>Tool input</h2>
 <pre><code>{
   &quot;query&quot;: &quot;artikel 7:658 BW&quot;
 }</code></pre>
 <h2>Ask it from an AI agent (MCP)</h2>
-<p>Add the Apify MCP server with this tool to your MCP client (Claude, Cursor, VS Code, ...); it signs you in with OAuth or <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is live on the Apify Store.</p>
+<p>Add the Apify MCP server with this tool to your MCP client (Claude, Cursor, VS Code, ...); it signs you in with OAuth or <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is listed on the Apify Store; until then use the HTTP API or the remote MCP server at https://api.boscolabs.dev/mcp.</p>
 <pre><code>https://mcp.apify.com?tools=bosco_labs/national-law-lookup</code></pre>
 <p>Then ask:</p>
 <pre><code>Use the bosco_labs/national-law-lookup tool to answer: What does article 7:658 of the Dutch Civil Code say about employer liability?</code></pre>
 <h2>Call the Apify API</h2>
-<p>Runs the Actor and returns the rows in one request, billed to your Apify account ($0.01 per article or act returned). It works once the Actor is live on the Apify Store.</p>
+<p>Runs the Actor and returns the rows in one request, billed to your Apify account ($0.005 per article or act returned (HTTP API)). It works once the Actor is listed on the Apify Store; until then use the HTTP API or the remote MCP server at https://api.boscolabs.dev/mcp.</p>
 <pre><code>curl https://api.apify.com/v2/acts/bosco_labs~national-law-lookup/run-sync-get-dataset-items \
   -H &quot;Authorization: Bearer $APIFY_TOKEN&quot; \
   -H &quot;Content-Type: application/json&quot; \
@@ -156,7 +156,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
     &quot;duration_seconds&quot;: 0.4
   }
 ]</code></pre>
-<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=UK &amp; Dutch Law Lookup API">Ask for early access</a><a class="btn ghost" href="national-law-lookup.html">All fields and limits</a></div>
+<div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a><a class="btn ghost" href="national-law-lookup.html">All fields and limits</a></div>
 <h2>More questions for this tool</h2><ul class="qs"><li><a href="q/dutch-corporate-tax-act-article-13.html">What does article 13 of the Dutch Wet op de vennootschapsbelasting 1969 say as of 1 January 2025?</a></li><li><a href="q/uk-companies-act-section-172.html">What does section 172 of the UK Companies Act 2006 require of directors?</a></li><li><a href="q/uk-bribery-act-section-7.html">What does section 7 of the UK Bribery Act 2010 (failure to prevent bribery) say?</a></li></ul>
 <p><a href="q/index.html">All questions</a></p>
 </article>

@@ -30,7 +30,7 @@
  "offers": {
   "@type": "Offer",
   "priceCurrency": "USD",
-  "description": "$0.002 per company returned",
+  "description": "$0.002 per company returned (HTTP API)",
   "availability": "https://schema.org/PreOrder"
  },
  "provider": {
@@ -81,12 +81,12 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <main class="wrap">
 <p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#finance-sec">Finance &amp; SEC</a></p>
 <article>
-<div class="head"><img src="icons/sec-company-screen.svg" alt="" width="84" height="84"><div><h1>SEC Company Screener API: filter all US filers by financials</h1><span class="badge soon">Coming soon to the Store</span></div></div>
+<div class="head"><img src="icons/sec-company-screen.svg" alt="" width="84" height="84"><div><h1>SEC Company Screener API: filter all US filers by financials</h1><span class="badge live">On the HTTP API</span></div></div>
 <div class="prose">
 <p class="lead"><strong>Screen every US company that files with the SEC</strong> by revenue, profit, margins, cash flow and balance sheet for one calendar year or quarter: &quot;revenue over $10B and net margin above 20% in 2025&quot;, &quot;top 20 by operating cash flow&quot;. For analysts, finance apps and AI agents. Every value cites <strong>the XBRL tag and the SEC filing it came from</strong>.</p>
-<div class="facts"><div class="fact"><b>Price</b>$0.002 per company returned</div><div class="fact"><b>Domain</b>Finance &amp; SEC</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
+<div class="facts"><div class="fact"><b>Price</b>$0.002 per company returned (HTTP API)</div><div class="fact"><b>Domain</b>Finance &amp; SEC</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
 <p><strong>Pricing (pay per event):</strong> $0.002 per company returned ($2 per 1,000). A top 20 costs $0.04, the default 50 rows $0.10. <code>maxResults</code> caps the cost; screens that match nothing or fail are free.</p>
-<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=SEC Company Screener API">Ask for early access</a></div>
+<div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a></div>
 <h2>Questions agents ask</h2>
 <ul class="qs"><li>&ldquo;Which US companies had revenue over $10B and net margin above 20% in fiscal 2025?&rdquo;</li><li>&ldquo;Top 20 US companies by operating cash flow in 2025.&rdquo;</li><li>&ldquo;Which companies with a ticker had an operating margin above 30% in Q3 2025?&rdquo;</li></ul>
 </div>
@@ -218,12 +218,12 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 </tbody></table></div>
 
 <h2>Use with AI agents (MCP)</h2>
-<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is live on the Apify Store.</p>
+<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is listed on the Apify Store; until then use the HTTP API or the remote MCP server at https://api.boscolabs.dev/mcp.</p>
 <pre><code>https://mcp.apify.com?tools=bosco_labs/sec-company-screen</code></pre>
 <p>For &ldquo;Which US companies had revenue over $10B and net margin above 20% in fiscal 2025?&rdquo; the agent passes:</p>
 <pre><code>{&quot;period&quot;: &quot;CY2025&quot;, &quot;sortBy&quot;: &quot;operating_cash_flow&quot;, &quot;maxResults&quot;: 20, &quot;tickersOnly&quot;: true}</code></pre>
 <p>stable, typed JSON, one row per company, in rank order, each with <code>schema_version</code>, the company&#x27;s own <code>period_start</code>/<code>period_end</code>, and per value the XBRL tag and SEC filing URL to cite. A top 20 is about 11 KB with sources; 50 rows about 40 KB.</p>
-<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~sec-company-screen/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.002 per company returned.</p>
+<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~sec-company-screen/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.002 per company returned (HTTP API).</p>
 <h2 id="http-api">HTTP API</h2>
 <p>Also on the Bosco Labs HTTP API (beta): same input and same rows as the Actor, <strong>$0.002 per company returned</strong> from prepaid credits (max 200 companies (maxResults) per call). <a href="api.html#key">Get a key</a> with a $0.50 free trial; see <a href="api.html">prices and limits</a>.</p>
 <pre><code>curl https://api.boscolabs.dev/v1/sec-company-screen \
@@ -249,7 +249,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <p><strong>Fiscal year or calendar year?</strong> Calendar-aligned, see above: each company appears with the fiscal period that best fits the calendar period. For exact fiscal years and quarters of a given company, use the SEC Company Financials Actor.</p>
 <p><strong>What is not included?</strong> Market data (prices, market cap, P/E), revenue growth, segment figures, non-GAAP figures, forecasts, and anything before 2009.</p>
 <p><strong>Legal basis?</strong> SEC filings are US government public records. See LEGAL.md.</p>
-<div class="actions"><span class="badge soon">Coming soon to the Apify Store</span><a class="btn ghost" href="mailto:support@boscolabs.dev?subject=SEC Company Screener API">Ask for early access</a></div>
+<div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a></div>
 </div>
 </article>
 </main>
