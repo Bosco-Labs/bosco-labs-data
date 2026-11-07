@@ -120,6 +120,7 @@ const body = await r.json();
 if (!r.ok) throw new Error(body.error.message); // failed calls are never charged
 for (const row of body.rows) console.log(row.series, row.latest_value, row.source_url);</code></pre>
 <p>Every call is <code>POST /v1/&lt;tool&gt;</code> with the Actor's input object as JSON. A <code>200</code> answer is <code>{"tool", "rows": [...], "count", "warnings", "message", "charged_usd", "balance_usd", "duration_seconds"}</code>; the headers <code>X-Credits-Charged</code> and <code>X-Credits-Balance</code> repeat the charge. An empty result is <code>200</code> with <code>rows: []</code> and costs nothing. Check your balance with <code>GET /v1/me</code>; list tools, prices and input schemas with <code>GET /v1/tools</code> (free).</p>
+<p><strong>Not sure which tool?</strong> <code>POST /v1/plan</code> with <code>{"question": "..."}</code> (free, no key) returns the exact calls, their input and maximum price, and what is not covered; <code>GET /v1/tools/&lt;tool&gt;</code> describes one tool. <code>POST /v1/run</code> with that <code>plan_id</code> and a required <code>max_usd</code> runs all steps in parallel on your key, each charged like a direct call; nothing runs if the worst case is above <code>max_usd</code>.</p>
 </div>
 <h2 id="pricing">Tools and prices</h2>
 <p class="prose">You pay only for rows returned. Before a call we check that your balance covers the price times the most rows the input can return; afterwards we charge the rows actually delivered. 1 credit = $0.0001.</p>
