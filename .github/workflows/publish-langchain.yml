@@ -1,0 +1,33 @@
+# Publishes langchain-bosco/ to PyPI (trusted publishing, no token). One-time setup on PyPI:
+# a pending publisher for project langchain-bosco, owner Bosco-Labs, repository bosco-labs-data,
+# workflow publish-langchain.yml, environment pypi.
+name: Publish langchain-bosco
+
+on:
+  workflow_dispatch:
+  push:
+    tags: ["langchain-v*"] # must equal the version in langchain-bosco/pyproject.toml
+
+jobs:
+  pypi:
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/langchain-bosco
+    permissions:
+      id-token: write # PyPI trusted publishing
+      contents: read
+    defaults:
+      run:
+        working-directory: langchain-bosco
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+      - name: Run tests
+        run: uv run --isolated --no-project --with-editable . --with pytest pytest -q
+      - name: Build package
+        run: uv build
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: langchain-bosco/dist/
