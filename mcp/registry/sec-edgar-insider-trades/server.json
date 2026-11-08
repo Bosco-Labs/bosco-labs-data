@@ -1,0 +1,30 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.Bosco-Labs/sec-edgar-insider-trades",
+  "title": "SEC EDGAR data",
+  "description": "SEC EDGAR filings, Form 4 insider trades, 13F holdings and XBRL financials, with filing links",
+  "version": "1.0.0",
+  "websiteUrl": "https://boscolabs.dev/api.html",
+  "repository": {
+    "url": "https://github.com/Bosco-Labs/bosco-labs-data",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://api.boscolabs.dev/mcp/free"
+    },
+    {
+      "type": "streamable-http",
+      "url": "https://api.boscolabs.dev/mcp?tools=sec_filings_feed,sec_insider_trades,sec_ownership,sec_company_financials,sec_company_screen,plan_official_records_query",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Bearer <Bosco Labs API key> (prepaid credits, free trial): https://boscolabs.dev/api.html",
+          "isRequired": true,
+          "isSecret": true
+        }
+      ]
+    }
+  ]
+}

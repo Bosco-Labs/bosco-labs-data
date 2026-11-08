@@ -1,0 +1,30 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.Bosco-Labs/sanctions-screening",
+  "title": "Sanctions screening",
+  "description": "Screen names and crypto wallets against OFAC, UK, EU and UN sanctions lists, with list dates",
+  "version": "1.0.0",
+  "websiteUrl": "https://boscolabs.dev/api.html",
+  "repository": {
+    "url": "https://github.com/Bosco-Labs/bosco-labs-data",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://api.boscolabs.dev/mcp/free"
+    },
+    {
+      "type": "streamable-http",
+      "url": "https://api.boscolabs.dev/mcp?tools=sanctions_screening,counterparty_check,plan_official_records_query",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Bearer <Bosco Labs API key> (prepaid credits, free trial): https://boscolabs.dev/api.html",
+          "isRequired": true,
+          "isSecret": true
+        }
+      ]
+    }
+  ]
+}

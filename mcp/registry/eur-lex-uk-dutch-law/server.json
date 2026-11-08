@@ -1,0 +1,30 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.Bosco-Labs/eur-lex-uk-dutch-law",
+  "title": "EU, UK and Dutch law",
+  "description": "EU law (EUR-Lex), UK and Dutch legislation and Dutch case law, article by article, with sources",
+  "version": "1.0.0",
+  "websiteUrl": "https://boscolabs.dev/api.html",
+  "repository": {
+    "url": "https://github.com/Bosco-Labs/bosco-labs-data",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://api.boscolabs.dev/mcp/free"
+    },
+    {
+      "type": "streamable-http",
+      "url": "https://api.boscolabs.dev/mcp?tools=eu_law_lookup,national_law_lookup,dutch_case_law,plan_official_records_query",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Bearer <Bosco Labs API key> (prepaid credits, free trial): https://boscolabs.dev/api.html",
+          "isRequired": true,
+          "isSecret": true
+        }
+      ]
+    }
+  ]
+}
