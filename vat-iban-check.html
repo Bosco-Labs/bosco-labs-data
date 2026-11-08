@@ -30,14 +30,15 @@
  "offers": {
   "@type": "Offer",
   "priceCurrency": "USD",
-  "description": "$0.002 per definite check (VAT number answered by VIES, or a valid IBAN); malformed, failed and unverified are free (HTTP API)",
-  "availability": "https://schema.org/PreOrder"
+  "description": "$0.002 per check with a definite answer",
+  "url": "https://apify.com/bosco_labs/vat-iban-check"
  },
  "provider": {
   "@type": "Organization",
   "name": "Bosco Labs",
   "url": "https://boscolabs.dev/"
- }
+ },
+ "installUrl": "https://apify.com/bosco_labs/vat-iban-check"
 }
 </script>
 <style>:root{color-scheme:light dark;--head:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--body:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;--ink:#1D2721;--muted:#545F58;--bg:#F5F3EA;--surface:#EAE8DC;--line:#D6D3C3;--accent:#2E5A47;--accent-fg:#F5F3EA;--accent2:#8DA889;--accent2-text:#4A6646;--success:#36694A;--warn:#8E5D1C}
@@ -87,15 +88,16 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <main class="wrap" id="main">
 <p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#companies">Companies</a></p>
 <article>
-<div class="head"><img src="icons/vat-iban-check.svg" alt="" width="84" height="84"><div><h1>VAT Number &amp; IBAN Check API: EU VIES + IBAN validation</h1><span class="badge live">On the HTTP API</span></div></div>
+<div class="head"><img src="icons/vat-iban-check.svg" alt="" width="84" height="84"><div><h1>VAT Number &amp; IBAN Check API: EU VIES + IBAN validation</h1><span class="badge live">On Apify Store</span></div></div>
 <div class="prose">
 <p class="lead"><strong>Answers &quot;is this EU VAT number registered, to whom, and is this IBAN real?&quot;</strong> One row per VAT number, checked live against the European Commission&#x27;s VIES service (valid, registered name and address, a name match against the company you expect), and one row per IBAN, checked against ISO 13616 (check digits, length and layout per country, bank code, country match). Built for <strong>AI agents</strong> doing supplier onboarding, invoice checks and KYB, and for finance teams who want one sourced answer per number.</p>
-<div class="facts"><div class="fact"><b>Price</b>$0.002 per definite check (VAT number answered by VIES, or a valid IBAN); malformed, failed and unverified are free (HTTP API)</div><div class="fact"><b>Domain</b>Companies</div><div class="fact"><b>Get it on</b><a href="#where">HTTP API, MCP, x402</a></div></div>
+<div class="facts"><div class="fact"><b>Price</b>$0.002 per check with a definite answer</div><div class="fact"><b>Domain</b>Companies</div><div class="fact"><b>Get it on</b><a href="#where">Apify Store, HTTP API, MCP, x402</a></div></div>
 <p><strong>Pricing (pay per event):</strong> $0.002 per check with a definite answer (<code>check</code>): a VAT number VIES answered valid or not valid, or a valid IBAN. Malformed numbers and anything VIES could not answer (&quot;unverified&quot;) cost nothing.</p>
-<div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a></div>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/vat-iban-check">Run it on Apify Store &rarr;</a></div>
 <h2 id="where">Where to get it</h2>
 <p>The same data and the same rows on every channel; pick the one your agent or code already uses.</p>
 <div class="table"><table><thead><tr><th>Channel</th><th>How</th><th>Pay</th></tr></thead><tbody>
+<tr><td>Apify Store</td><td><a href="https://apify.com/bosco_labs/vat-iban-check">apify.com/bosco_labs/vat-iban-check</a>: run it in the Apify Console, by the Apify API or from Apify's MCP server (<code>https://mcp.apify.com?tools=bosco_labs/vat-iban-check</code>)</td><td>$0.002 per check with a definite answer, billed to your Apify account</td></tr>
 <tr><td>HTTP API</td><td><code>POST https://api.boscolabs.dev/v1/vat-iban-check</code> with your key (<a href="api.html#key">get a key</a>, $0.50 free trial)</td><td>$0.002 per definite check (VAT number answered by VIES, or a valid IBAN); malformed, failed and unverified are free, prepaid credits</td></tr>
 <tr><td>MCP</td><td><code>https://api.boscolabs.dev/mcp</code> (remote, same key) or <code>https://api.boscolabs.dev/mcp/free</code> (no key: find and plan) &middot; <a href="api.html#mcp">setup</a></td><td>$0.002 per definite check (VAT number answered by VIES, or a valid IBAN); malformed, failed and unverified are free, prepaid credits</td></tr>
 <tr><td>x402</td><td><code>POST https://api.boscolabs.dev/v1/vat-iban-check</code> without a key: pay per call, no account (<a href="api.html#x402">how</a>)</td><td>$0.002 per definite check (VAT number answered by VIES, or a valid IBAN); malformed, failed and unverified are free, in USDC on Base</td></tr>
@@ -198,12 +200,12 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 </tbody></table></div>
 
 <h2>Use with AI agents (MCP)</h2>
-<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is listed on the Apify Store; until then use the HTTP API or the remote MCP server at https://api.boscolabs.dev/mcp.</p>
+<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>.</p>
 <pre><code>https://mcp.apify.com?tools=bosco_labs/vat-iban-check</code></pre>
 <p>For &ldquo;Check that supplier VAT number IE6388047V belongs to Google Ireland and that IBAN NL91ABNA0417164300 is valid.&rdquo; the agent passes:</p>
 <pre><code>{&quot;vatNumbers&quot;: [&quot;IE6388047V&quot;], &quot;ibans&quot;: [&quot;NL91ABNA0417164300&quot;], &quot;expectedName&quot;: &quot;Google Ireland&quot;}</code></pre>
 <p>one small row per number (typically 1-3 KB), stable <code>snake_case</code> fields, a <code>checks</code> list with pass, fail or unverified per check and its source. VIES answers in about 1-3 seconds per VAT number (numbers are sent one at a time); IBANs are checked offline in milliseconds. <strong>Cost:</strong> $0.002 per check with a definite answer, billed to the Apify account the MCP server is signed in with.</p>
-<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~vat-iban-check/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.002 per definite check (VAT number answered by VIES, or a valid IBAN); malformed, failed and unverified are free (HTTP API).</p>
+<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~vat-iban-check/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.002 per check with a definite answer.</p>
 <h2 id="http-api">HTTP API</h2>
 <p>Also on the Bosco Labs HTTP API (beta): same input and same rows as the Actor, <strong>$0.002 per definite check (VAT number answered by VIES, or a valid IBAN); malformed, failed and unverified are free</strong> from prepaid credits (max 10 VAT numbers and 50 IBANs per call). <a href="api.html#key">Get a key</a> with a $0.50 free trial; see <a href="api.html">prices and limits</a>.</p>
 <pre><code>curl https://api.boscolabs.dev/v1/vat-iban-check \
@@ -227,7 +229,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <p><strong>Do you store the numbers or answers?</strong> No. VIES answers are returned to you only, not cached or reused, and numbers are not logged.</p>
 <p><strong>Which countries?</strong> VAT: the 27 EU member states and Northern Ireland (XI); not the UK (GB), Norway or Switzerland, which VIES does not cover. IBAN: all 89 countries in the SWIFT IBAN Registry.</p>
 <p><strong>Limits:</strong> 10 VAT numbers and 50 IBANs per run; about 1-3 seconds per VAT number.</p>
-<div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a></div>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/vat-iban-check">Run it on Apify Store &rarr;</a></div>
 </div>
 </article>
 </main>

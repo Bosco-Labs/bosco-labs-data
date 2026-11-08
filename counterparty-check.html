@@ -30,14 +30,15 @@
  "offers": {
   "@type": "Offer",
   "priceCurrency": "USD",
-  "description": "$0.05 per company checked; an ambiguous name (candidates) is free (HTTP API)",
-  "availability": "https://schema.org/PreOrder"
+  "description": "$0.05 per company checked",
+  "url": "https://apify.com/bosco_labs/counterparty-check"
  },
  "provider": {
   "@type": "Organization",
   "name": "Bosco Labs",
   "url": "https://boscolabs.dev/"
- }
+ },
+ "installUrl": "https://apify.com/bosco_labs/counterparty-check"
 }
 </script>
 <style>:root{color-scheme:light dark;--head:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--body:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;--ink:#1D2721;--muted:#545F58;--bg:#F5F3EA;--surface:#EAE8DC;--line:#D6D3C3;--accent:#2E5A47;--accent-fg:#F5F3EA;--accent2:#8DA889;--accent2-text:#4A6646;--success:#36694A;--warn:#8E5D1C}
@@ -87,15 +88,16 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <main class="wrap" id="main">
 <p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#companies">Companies</a></p>
 <article>
-<div class="head"><img src="icons/counterparty-check.svg" alt="" width="84" height="84"><div><h1>Counterparty Check API: KYB checklist from official registers</h1><span class="badge live">On the HTTP API</span></div></div>
+<div class="head"><img src="icons/counterparty-check.svg" alt="" width="84" height="84"><div><h1>Counterparty Check API: KYB checklist from official registers</h1><span class="badge live">On Apify Store</span></div></div>
 <div class="prose">
 <p class="lead"><strong>Can I do business with this company?</strong> One call checks a supplier, customer or partner against official sources and returns a <strong>checklist</strong>: pass, fail, review or unverified per check, each with its source link and time. Built for <strong>AI agents</strong> doing KYB, vendor onboarding or &quot;may I pay this party?&quot; checks, and for people who want a fast, sourced first screen.</p>
-<div class="facts"><div class="fact"><b>Price</b>$0.05 per company checked; an ambiguous name (candidates) is free (HTTP API)</div><div class="fact"><b>Domain</b>Companies</div><div class="fact"><b>Get it on</b><a href="#where">HTTP API, MCP, x402</a></div></div>
+<div class="facts"><div class="fact"><b>Price</b>$0.05 per company checked</div><div class="fact"><b>Domain</b>Companies</div><div class="fact"><b>Get it on</b><a href="#where">Apify Store, HTTP API, MCP, x402</a></div></div>
 <p><strong>Pricing (pay per event):</strong> $0.05 per company checked, on Apify and on the HTTP API, MCP and x402. An ambiguous name returns the candidates to pick from and costs nothing; so does a company no source knows.</p>
-<div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a></div>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/counterparty-check">Run it on Apify Store &rarr;</a></div>
 <h2 id="where">Where to get it</h2>
 <p>The same data and the same rows on every channel; pick the one your agent or code already uses.</p>
 <div class="table"><table><thead><tr><th>Channel</th><th>How</th><th>Pay</th></tr></thead><tbody>
+<tr><td>Apify Store</td><td><a href="https://apify.com/bosco_labs/counterparty-check">apify.com/bosco_labs/counterparty-check</a>: run it in the Apify Console, by the Apify API or from Apify's MCP server (<code>https://mcp.apify.com?tools=bosco_labs/counterparty-check</code>)</td><td>$0.05 per company checked, billed to your Apify account</td></tr>
 <tr><td>HTTP API</td><td><code>POST https://api.boscolabs.dev/v1/counterparty-check</code> with your key (<a href="api.html#key">get a key</a>, $0.50 free trial)</td><td>$0.05 per company checked; an ambiguous name (candidates) is free, prepaid credits</td></tr>
 <tr><td>MCP</td><td><code>https://api.boscolabs.dev/mcp</code> (remote, same key) or <code>https://api.boscolabs.dev/mcp/free</code> (no key: find and plan) &middot; <a href="api.html#mcp">setup</a></td><td>$0.05 per company checked; an ambiguous name (candidates) is free, prepaid credits</td></tr>
 <tr><td>x402</td><td><code>POST https://api.boscolabs.dev/v1/counterparty-check</code> without a key: pay per call, no account (<a href="api.html#x402">how</a>)</td><td>$0.05 per company checked; an ambiguous name (candidates) is free, in USDC on Base</td></tr>
@@ -266,7 +268,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <tr><td><code>people</code></td><td>object | null</td><td>UK officers and PSCs, or Polish board, proxies and shareholders.</td></tr>
 <tr><td><code>insolvency</code></td><td>object | null</td><td>UK Gazette notices or Polish KRS proceedings.</td></tr>
 <tr><td><code>us_listing</code></td><td>object | null</td><td>SEC registrant data when the company files with the SEC.</td></tr>
-<tr><td><code>sanctions</code></td><td>object</td><td>entity (the company&#x27;s screening row), people_with_matches, people_screened.</td></tr>
+<tr><td><code>sanctions</code></td><td>object</td><td>entity (the company&#x27;s screening row; <code>identifier_matches</code>: listings that carry the company&#x27;s own registration number or LEI), people_with_matches, people_screened.</td></tr>
 <tr><td><code>vat</code></td><td>object | null</td><td>VIES result for the VAT number.</td></tr>
 <tr><td><code>iban</code></td><td>object | null</td><td>IBAN structure and country result.</td></tr>
 <tr><td><code>wallets</code></td><td>array</td><td>Wallet address screening rows.</td></tr>
@@ -277,12 +279,12 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 </tbody></table></div>
 
 <h2>Use with AI agents (MCP)</h2>
-<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is listed on the Apify Store; until then use the HTTP API or the remote MCP server at https://api.boscolabs.dev/mcp.</p>
+<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>.</p>
 <pre><code>https://mcp.apify.com?tools=bosco_labs/counterparty-check</code></pre>
 <p>For &ldquo;Before we pay them: check supplier Novo Nordisk A/S (CVR 24256790), their VAT number DK24256790 and IBAN DK5000400440116243.&rdquo; the agent passes:</p>
 <pre><code>{&quot;query&quot;: &quot;24256790&quot;, &quot;country&quot;: &quot;DK&quot;, &quot;vatNumber&quot;: &quot;DK24256790&quot;, &quot;iban&quot;: &quot;DK5000400440116243&quot;}</code></pre>
 <p>one row (typically 10-20 KB) with stable <code>snake_case</code> fields; read <code>summary.needs_attention</code> and <code>checks</code> first. Usually 5-30 seconds (VIES and UK officer lookups are the slow parts). <strong>Cost:</strong> $0.05 per company checked, billed to the Apify account the MCP server is signed in with.</p>
-<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~counterparty-check/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.05 per company checked; an ambiguous name (candidates) is free (HTTP API).</p>
+<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~counterparty-check/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.05 per company checked.</p>
 <h2 id="http-api">HTTP API</h2>
 <p>Also on the Bosco Labs HTTP API (beta): same input and same rows as the Actor, <strong>$0.05 per company checked; an ambiguous name (candidates) is free</strong> from prepaid credits (max 1 company per call). <a href="api.html#key">Get a key</a> with a $0.50 free trial; see <a href="api.html">prices and limits</a>.</p>
 <pre><code>curl https://api.boscolabs.dev/v1/counterparty-check \
@@ -304,7 +306,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <p><strong>Does the IBAN check prove who holds the account?</strong> No. It checks that the number is well formed and in the expected country; no bank is contacted.</p>
 <p><strong>How fresh is it?</strong> Registers, GLEIF and VIES are read live. Sanctions lists are at most about an hour old (each list&#x27;s own date is in the detail). UK insolvency notices come from a nightly copy of The Gazette.</p>
 <p><strong>Personal data?</strong> Officer and owner names come from the public registers and are screened only against sanctions lists, for this check. Nothing about the people is stored. See <code>LEGAL.md</code>.</p>
-<div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a></div>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/counterparty-check">Run it on Apify Store &rarr;</a></div>
 </div>
 </article>
 </main>

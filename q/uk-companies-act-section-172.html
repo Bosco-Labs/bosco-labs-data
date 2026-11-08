@@ -91,7 +91,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="q/index.html">Questions</a> &rsaquo; <a href="national-law-lookup.html">UK &amp; Dutch Law Lookup API</a></p>
 <article class="prose">
 <h1 class="sub">What does section 172 of the UK Companies Act 2006 require of directors?</h1>
-<div class="facts"><div class="fact"><b>Answered by</b><a href="national-law-lookup.html">UK &amp; Dutch Law Lookup API: article text by date, in force</a></div><div class="fact"><b>Price</b>$0.005 per article or act returned (HTTP API)</div><div class="fact"><b>Status</b><span class="badge live">On the HTTP API</span></div></div>
+<div class="facts"><div class="fact"><b>Answered by</b><a href="national-law-lookup.html">UK &amp; Dutch Law Lookup API: article text by date, in force</a></div><div class="fact"><b>Price</b>$0.01 per article or act returned</div><div class="fact"><b>Status</b><span class="badge live">On Apify Store</span></div></div>
 <p>jurisdiction UK sends the query to legislation.gov.uk. The row holds the current text of section 172 (duty to promote the success of the company) as article_text, any pending_changes not yet applied to the text, and the act&#x27;s ELI and source_url. UK texts are Crown copyright under the Open Government Licence.</p>
 <h2>Tool input</h2>
 <pre><code>{
@@ -99,12 +99,12 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
   &quot;jurisdiction&quot;: &quot;UK&quot;
 }</code></pre>
 <h2>Ask it from an AI agent (MCP)</h2>
-<p>Add the Apify MCP server with this tool to your MCP client (Claude, Cursor, VS Code, ...); it signs you in with OAuth or <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is listed on the Apify Store; until then use the HTTP API or the remote MCP server at https://api.boscolabs.dev/mcp.</p>
+<p>Add the Apify MCP server with this tool to your MCP client (Claude, Cursor, VS Code, ...); it signs you in with OAuth or <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>.</p>
 <pre><code>https://mcp.apify.com?tools=bosco_labs/national-law-lookup</code></pre>
 <p>Then ask:</p>
 <pre><code>Use the bosco_labs/national-law-lookup tool to answer: What does section 172 of the UK Companies Act 2006 require of directors?</code></pre>
 <h2>Call the Apify API</h2>
-<p>Runs the Actor and returns the rows in one request, billed to your Apify account ($0.005 per article or act returned (HTTP API)). It works once the Actor is listed on the Apify Store; until then use the HTTP API or the remote MCP server at https://api.boscolabs.dev/mcp.</p>
+<p>Runs the Actor and returns the rows in one request, billed to your Apify account ($0.01 per article or act returned).</p>
 <pre><code>curl https://api.apify.com/v2/acts/bosco_labs~national-law-lookup/run-sync-get-dataset-items \
   -H &quot;Authorization: Bearer $APIFY_TOKEN&quot; \
   -H &quot;Content-Type: application/json&quot; \
@@ -154,7 +154,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
   &quot;retrieved_at&quot;: &quot;2026-11-05T22:54:33+00:00&quot;,
   &quot;duration_seconds&quot;: 0.1
 }</code></pre>
-<div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a><a class="btn ghost" href="national-law-lookup.html">All fields and limits</a></div>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/national-law-lookup">Run it on Apify Store &rarr;</a><a class="btn ghost" href="national-law-lookup.html">All fields and limits</a></div>
 <h2>More questions for this tool</h2><ul class="qs"><li><a href="q/dutch-corporate-tax-act-article-13.html">What does article 13 of the Dutch Wet op de vennootschapsbelasting 1969 say as of 1 January 2025?</a></li><li><a href="q/dutch-civil-code-7-658-employer-liability.html">What does article 7:658 of the Dutch Civil Code say about employer liability?</a></li><li><a href="q/uk-bribery-act-section-7.html">What does section 7 of the UK Bribery Act 2010 (failure to prevent bribery) say?</a></li></ul>
 <p><a href="q/index.html">All questions</a></p>
 </article>

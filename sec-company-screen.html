@@ -30,14 +30,15 @@
  "offers": {
   "@type": "Offer",
   "priceCurrency": "USD",
-  "description": "$0.002 per company returned (HTTP API)",
-  "availability": "https://schema.org/PreOrder"
+  "description": "$0.002 per company returned",
+  "url": "https://apify.com/bosco_labs/sec-company-screen"
  },
  "provider": {
   "@type": "Organization",
   "name": "Bosco Labs",
   "url": "https://boscolabs.dev/"
- }
+ },
+ "installUrl": "https://apify.com/bosco_labs/sec-company-screen"
 }
 </script>
 <style>:root{color-scheme:light dark;--head:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--body:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;--ink:#1D2721;--muted:#545F58;--bg:#F5F3EA;--surface:#EAE8DC;--line:#D6D3C3;--accent:#2E5A47;--accent-fg:#F5F3EA;--accent2:#8DA889;--accent2-text:#4A6646;--success:#36694A;--warn:#8E5D1C}
@@ -87,15 +88,16 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <main class="wrap" id="main">
 <p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#finance-sec">Finance &amp; SEC</a></p>
 <article>
-<div class="head"><img src="icons/sec-company-screen.svg" alt="" width="84" height="84"><div><h1>SEC Company Screener API: filter all US filers by financials</h1><span class="badge live">On the HTTP API</span></div></div>
+<div class="head"><img src="icons/sec-company-screen.svg" alt="" width="84" height="84"><div><h1>SEC Company Screener API: filter all US filers by financials</h1><span class="badge live">On Apify Store</span></div></div>
 <div class="prose">
 <p class="lead"><strong>Screen every US company that files with the SEC</strong> by revenue, profit, margins, cash flow and balance sheet for one calendar year or quarter: &quot;revenue over $10B and net margin above 20% in 2025&quot;, &quot;top 20 by operating cash flow&quot;. For analysts, finance apps and AI agents. Every value cites <strong>the XBRL tag and the SEC filing it came from</strong>.</p>
-<div class="facts"><div class="fact"><b>Price</b>$0.002 per company returned (HTTP API)</div><div class="fact"><b>Domain</b>Finance &amp; SEC</div><div class="fact"><b>Get it on</b><a href="#where">HTTP API, MCP, x402</a></div></div>
+<div class="facts"><div class="fact"><b>Price</b>$0.002 per company returned</div><div class="fact"><b>Domain</b>Finance &amp; SEC</div><div class="fact"><b>Get it on</b><a href="#where">Apify Store, HTTP API, MCP, x402</a></div></div>
 <p><strong>Pricing (pay per event):</strong> $0.002 per company returned ($2 per 1,000). A top 20 costs $0.04, the default 50 rows $0.10. <code>maxResults</code> caps the cost; screens that match nothing or fail are free.</p>
-<div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a></div>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/sec-company-screen">Run it on Apify Store &rarr;</a></div>
 <h2 id="where">Where to get it</h2>
 <p>The same data and the same rows on every channel; pick the one your agent or code already uses.</p>
 <div class="table"><table><thead><tr><th>Channel</th><th>How</th><th>Pay</th></tr></thead><tbody>
+<tr><td>Apify Store</td><td><a href="https://apify.com/bosco_labs/sec-company-screen">apify.com/bosco_labs/sec-company-screen</a>: run it in the Apify Console, by the Apify API or from Apify's MCP server (<code>https://mcp.apify.com?tools=bosco_labs/sec-company-screen</code>)</td><td>$0.002 per company returned, billed to your Apify account</td></tr>
 <tr><td>HTTP API</td><td><code>POST https://api.boscolabs.dev/v1/sec-company-screen</code> with your key (<a href="api.html#key">get a key</a>, $0.50 free trial)</td><td>$0.002 per company returned, prepaid credits</td></tr>
 <tr><td>MCP</td><td><code>https://api.boscolabs.dev/mcp</code> (remote, same key) or <code>https://api.boscolabs.dev/mcp/free</code> (no key: find and plan) &middot; <a href="api.html#mcp">setup</a></td><td>$0.002 per company returned, prepaid credits</td></tr>
 <tr><td>x402</td><td><code>POST https://api.boscolabs.dev/v1/sec-company-screen</code> without a key: pay per call, no account (<a href="api.html#x402">how</a>)</td><td>$0.002 per company returned, in USDC on Base</td></tr>
@@ -231,12 +233,12 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 </tbody></table></div>
 
 <h2>Use with AI agents (MCP)</h2>
-<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is listed on the Apify Store; until then use the HTTP API or the remote MCP server at https://api.boscolabs.dev/mcp.</p>
+<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>.</p>
 <pre><code>https://mcp.apify.com?tools=bosco_labs/sec-company-screen</code></pre>
 <p>For &ldquo;Which US companies had revenue over $10B and net margin above 20% in fiscal 2025?&rdquo; the agent passes:</p>
 <pre><code>{&quot;period&quot;: &quot;CY2025&quot;, &quot;sortBy&quot;: &quot;operating_cash_flow&quot;, &quot;maxResults&quot;: 20, &quot;tickersOnly&quot;: true}</code></pre>
 <p>stable, typed JSON, one row per company, in rank order, each with <code>schema_version</code>, the company&#x27;s own <code>period_start</code>/<code>period_end</code>, and per value the XBRL tag and SEC filing URL to cite. A top 20 is about 11 KB with sources; 50 rows about 40 KB.</p>
-<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~sec-company-screen/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.002 per company returned (HTTP API).</p>
+<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~sec-company-screen/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.002 per company returned.</p>
 <h2 id="http-api">HTTP API</h2>
 <p>Also on the Bosco Labs HTTP API (beta): same input and same rows as the Actor, <strong>$0.002 per company returned</strong> from prepaid credits (max 200 companies (maxResults) per call). <a href="api.html#key">Get a key</a> with a $0.50 free trial; see <a href="api.html">prices and limits</a>.</p>
 <pre><code>curl https://api.boscolabs.dev/v1/sec-company-screen \
@@ -262,7 +264,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <p><strong>Fiscal year or calendar year?</strong> Calendar-aligned, see above: each company appears with the fiscal period that best fits the calendar period. For exact fiscal years and quarters of a given company, use the SEC Company Financials Actor.</p>
 <p><strong>What is not included?</strong> Market data (prices, market cap, P/E), revenue growth, segment figures, non-GAAP figures, forecasts, and anything before 2009.</p>
 <p><strong>Legal basis?</strong> SEC filings are US government public records. See LEGAL.md.</p>
-<div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a></div>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/sec-company-screen">Run it on Apify Store &rarr;</a></div>
 </div>
 </article>
 </main>
