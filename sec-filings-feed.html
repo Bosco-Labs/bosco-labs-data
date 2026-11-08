@@ -98,7 +98,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <p>The same data and the same rows on every channel; pick the one your agent or code already uses.</p>
 <div class="table"><table><thead><tr><th>Channel</th><th>How</th><th>Pay</th></tr></thead><tbody>
 <tr><td>Apify Store</td><td><a href="https://apify.com/bosco_labs/sec-filings-feed">apify.com/bosco_labs/sec-filings-feed</a>: run it in the Apify Console, by the Apify API or from Apify's MCP server (<code>https://mcp.apify.com?tools=bosco_labs/sec-filings-feed</code>)</td><td>$0.001 per filing, billed to your Apify account</td></tr>
-<tr><td>HTTP API</td><td><code>POST https://api.boscolabs.dev/v1/sec-filings-feed</code> with your key (<a href="api.html#key">get a key</a>, $0.50 free trial)</td><td>$0.001 per filing, prepaid credits</td></tr>
+<tr><td>HTTP API</td><td><code>POST https://api.boscolabs.dev/v1/sec-filings-feed</code> with your key (<a href="api.html#key">get a key</a>, $5.00 free trial)</td><td>$0.001 per filing, prepaid credits</td></tr>
 <tr><td>MCP</td><td><code>https://api.boscolabs.dev/mcp</code> (remote, same key) or <code>https://api.boscolabs.dev/mcp/free</code> (no key: find and plan) &middot; <a href="api.html#mcp">setup</a></td><td>$0.001 per filing, prepaid credits</td></tr>
 <tr><td>x402</td><td><code>POST https://api.boscolabs.dev/v1/sec-filings-feed</code> without a key: pay per call, no account (<a href="api.html#x402">how</a>)</td><td>$0.001 per filing, in USDC on Base</td></tr>
 <tr><td>Local MCP server</td><td><code>uvx bosco-labs-data-mcp</code> with your <code>APIFY_TOKEN</code> (<a href="https://pypi.org/project/bosco-labs-data-mcp/">PyPI</a>)</td><td>Apify Store price, billed to your Apify account</td></tr>
@@ -159,7 +159,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <p>stable, typed JSON, one row per filing. Every row has <code>schema_version</code> and a <code>source_url</code> pointing to the SEC data it came from, plus <code>filing_index_url</code> and <code>primary_document_url</code> for the filing itself, so the agent can cite its source. For tickers or CIKs without dates, a run returns each company&#x27;s newest filings (no date needed for &quot;the latest 10-K&quot;); a whole-market run without dates reads the last 7 days. If nothing matches, the run&#x27;s status message says so and why.</p>
 <p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~sec-filings-feed/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.001 per filing.</p>
 <h2 id="http-api">HTTP API</h2>
-<p>Also on the Bosco Labs HTTP API (beta): same input and same rows as the Actor, <strong>$0.001 per filing</strong> from prepaid credits (max 200 filings (maxResults) per call). <a href="api.html#key">Get a key</a> with a $0.50 free trial; see <a href="api.html">prices and limits</a>.</p>
+<p>Also on the Bosco Labs HTTP API (beta): same input and same rows as the Actor, <strong>$0.001 per filing</strong> from prepaid credits (max 200 filings (maxResults) per call). <a href="api.html#key">Get a key</a> with a $5.00 free trial; see <a href="api.html">prices and limits</a>.</p>
 <pre><code>curl https://api.boscolabs.dev/v1/sec-filings-feed \
   -H &quot;Authorization: Bearer $BOSCO_API_KEY&quot; \
   -H &quot;Content-Type: application/json&quot; \

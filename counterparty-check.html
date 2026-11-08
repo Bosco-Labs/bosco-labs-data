@@ -98,7 +98,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <p>The same data and the same rows on every channel; pick the one your agent or code already uses.</p>
 <div class="table"><table><thead><tr><th>Channel</th><th>How</th><th>Pay</th></tr></thead><tbody>
 <tr><td>Apify Store</td><td><a href="https://apify.com/bosco_labs/counterparty-check">apify.com/bosco_labs/counterparty-check</a>: run it in the Apify Console, by the Apify API or from Apify's MCP server (<code>https://mcp.apify.com?tools=bosco_labs/counterparty-check</code>)</td><td>$0.05 per company checked, billed to your Apify account</td></tr>
-<tr><td>HTTP API</td><td><code>POST https://api.boscolabs.dev/v1/counterparty-check</code> with your key (<a href="api.html#key">get a key</a>, $0.50 free trial)</td><td>$0.05 per company checked; an ambiguous name (candidates) is free, prepaid credits</td></tr>
+<tr><td>HTTP API</td><td><code>POST https://api.boscolabs.dev/v1/counterparty-check</code> with your key (<a href="api.html#key">get a key</a>, $5.00 free trial)</td><td>$0.05 per company checked; an ambiguous name (candidates) is free, prepaid credits</td></tr>
 <tr><td>MCP</td><td><code>https://api.boscolabs.dev/mcp</code> (remote, same key) or <code>https://api.boscolabs.dev/mcp/free</code> (no key: find and plan) &middot; <a href="api.html#mcp">setup</a></td><td>$0.05 per company checked; an ambiguous name (candidates) is free, prepaid credits</td></tr>
 <tr><td>x402</td><td><code>POST https://api.boscolabs.dev/v1/counterparty-check</code> without a key: pay per call, no account (<a href="api.html#x402">how</a>)</td><td>$0.05 per company checked; an ambiguous name (candidates) is free, in USDC on Base</td></tr>
 </tbody></table></div>
@@ -286,7 +286,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <p>one row (typically 10-20 KB) with stable <code>snake_case</code> fields; read <code>summary.needs_attention</code> and <code>checks</code> first. Usually 5-30 seconds (VIES and UK officer lookups are the slow parts). <strong>Cost:</strong> $0.05 per company checked, billed to the Apify account the MCP server is signed in with.</p>
 <p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~counterparty-check/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.05 per company checked.</p>
 <h2 id="http-api">HTTP API</h2>
-<p>Also on the Bosco Labs HTTP API (beta): same input and same rows as the Actor, <strong>$0.05 per company checked; an ambiguous name (candidates) is free</strong> from prepaid credits (max 1 company per call). <a href="api.html#key">Get a key</a> with a $0.50 free trial; see <a href="api.html">prices and limits</a>.</p>
+<p>Also on the Bosco Labs HTTP API (beta): same input and same rows as the Actor, <strong>$0.05 per company checked; an ambiguous name (candidates) is free</strong> from prepaid credits (max 1 company per call). <a href="api.html#key">Get a key</a> with a $5.00 free trial; see <a href="api.html">prices and limits</a>.</p>
 <pre><code>curl https://api.boscolabs.dev/v1/counterparty-check \
   -H &quot;Authorization: Bearer $BOSCO_API_KEY&quot; \
   -H &quot;Content-Type: application/json&quot; \

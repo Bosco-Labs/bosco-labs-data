@@ -98,7 +98,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <p>The same data and the same rows on every channel; pick the one your agent or code already uses.</p>
 <div class="table"><table><thead><tr><th>Channel</th><th>How</th><th>Pay</th></tr></thead><tbody>
 <tr><td>Apify Store</td><td><a href="https://apify.com/bosco_labs/tariff-lookup">apify.com/bosco_labs/tariff-lookup</a>: run it in the Apify Console, by the Apify API or from Apify's MCP server (<code>https://mcp.apify.com?tools=bosco_labs/tariff-lookup</code>)</td><td>$0.005 per lookup or search, billed to your Apify account</td></tr>
-<tr><td>HTTP API</td><td><code>POST https://api.boscolabs.dev/v1/tariff-lookup</code> with your key (<a href="api.html#key">get a key</a>, $0.50 free trial)</td><td>$0.005 per code lookup or code search (US or UK), prepaid credits</td></tr>
+<tr><td>HTTP API</td><td><code>POST https://api.boscolabs.dev/v1/tariff-lookup</code> with your key (<a href="api.html#key">get a key</a>, $5.00 free trial)</td><td>$0.005 per code lookup or code search (US or UK), prepaid credits</td></tr>
 <tr><td>MCP</td><td><code>https://api.boscolabs.dev/mcp</code> (remote, same key) or <code>https://api.boscolabs.dev/mcp/free</code> (no key: find and plan) &middot; <a href="api.html#mcp">setup</a></td><td>$0.005 per code lookup or code search (US or UK), prepaid credits</td></tr>
 <tr><td>x402</td><td><code>POST https://api.boscolabs.dev/v1/tariff-lookup</code> without a key: pay per call, no account (<a href="api.html#x402">how</a>)</td><td>$0.005 per code lookup or code search (US or UK), in USDC on Base</td></tr>
 </tbody></table></div>
@@ -199,7 +199,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <p>one 2-5 KB JSON item per code, stable <code>snake_case</code> fields, rates exactly as published (strings like &quot;11%&quot;, &quot;Free&quot;, &quot;£26.00 / 100 litre (hl)&quot;), <code>null</code> for unknown, a source link, the API call, the licence notice and the disclaimer per row. A US lookup takes about 1 s; a search 1-3 s. Each request has a 20-second limit with two retries.</p>
 <p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~tariff-lookup/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.005 per lookup or search.</p>
 <h2 id="http-api">HTTP API</h2>
-<p>Also on the Bosco Labs HTTP API (beta): same input and same rows as the Actor, <strong>$0.005 per code lookup or code search (US or UK)</strong> from prepaid credits (max 1 code or 5 candidates per call). <a href="api.html#key">Get a key</a> with a $0.50 free trial; see <a href="api.html">prices and limits</a>.</p>
+<p>Also on the Bosco Labs HTTP API (beta): same input and same rows as the Actor, <strong>$0.005 per code lookup or code search (US or UK)</strong> from prepaid credits (max 1 code or 5 candidates per call). <a href="api.html#key">Get a key</a> with a $5.00 free trial; see <a href="api.html">prices and limits</a>.</p>
 <pre><code>curl https://api.boscolabs.dev/v1/tariff-lookup \
   -H &quot;Authorization: Bearer $BOSCO_API_KEY&quot; \
   -H &quot;Content-Type: application/json&quot; \
