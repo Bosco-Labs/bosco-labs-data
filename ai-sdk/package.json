@@ -1,0 +1,57 @@
+{
+  "name": "@bosco-labs/ai-sdk",
+  "version": "0.1.0",
+  "description": "Vercel AI SDK tools for Bosco Labs: counterparty (KYB) checks, a free query planner and any official-records tool (SEC EDGAR, company registers, sanctions lists, EU and national law).",
+  "license": "MIT",
+  "author": "Bosco Labs <support@boscolabs.dev>",
+  "homepage": "https://boscolabs.dev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bosco-Labs/bosco-labs-data.git",
+    "directory": "ai-sdk"
+  },
+  "bugs": {
+    "email": "support@boscolabs.dev"
+  },
+  "keywords": [
+    "ai-sdk",
+    "vercel-ai",
+    "ai",
+    "tools",
+    "kyb",
+    "sanctions",
+    "company-data",
+    "sec-edgar",
+    "agents"
+  ],
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "tsc && node test.mjs",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "ai": "^5.0.0 || ^6.0.0 || ^7.0.0",
+    "zod": "^3.25.76 || ^4.1.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "ai": "^7.0.0",
+    "typescript": "^5.6.0",
+    "zod": "^4.1.8"
+  }
+}
