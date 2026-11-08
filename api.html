@@ -214,6 +214,7 @@ asyncio.run(main())</code></pre>
 </tbody></table></div>
 <h2 id="mcp">MCP</h2>
 <p>Add <code>https://api.boscolabs.dev/mcp</code> (streamable HTTP) to your MCP client with the header <code>Authorization: Bearer &lt;key&gt;</code>. Each tool above is one MCP tool, at the same price.</p>
+<p id="claude"><b>In Claude</b> (claude.ai, Desktop and mobile): Settings → Connectors → Add custom connector, URL <code>https://api.boscolabs.dev/mcp/claude</code>. Claude opens our sign-in page once; paste your API key there to link it. Calls are billed to that key at the prices above, and replacing your key unlinks Claude. The planner tools are free on every call.</p>
 <h2 id="versioning">Versioning and changes</h2>
 <p>The API is in beta. What we aim for while it is:</p>
 <ul><li>Keep <code>/v1</code> backward compatible: we add tools and optional fields, and avoid renaming or removing fields.</li><li>A breaking change gets a new prefix (<code>/v2</code>), announced on this page in advance.</li><li>Every row has a <code>schema_version</code>; parse rows by field name and ignore fields you don't know.</li><li>Price changes are announced at least 14 days ahead; a call is charged the price shown in <code>GET /v1/tools</code> when it runs.</li></ul>

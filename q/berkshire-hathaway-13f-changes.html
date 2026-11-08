@@ -118,34 +118,40 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
   -d &#x27;{&quot;mode&quot;: &quot;holdings13f&quot;, &quot;filer&quot;: &quot;Berkshire Hathaway&quot;, &quot;maxResults&quot;: 50}&#x27;</code></pre>
 
 <h2>Example output</h2>
-<p class="muted">Example output from the tool&#x27;s documentation (not a run of this exact question).</p>
-<pre><code>{
-  &quot;record_type&quot;: &quot;holding&quot;,
-  &quot;filer_name&quot;: &quot;BERKSHIRE HATHAWAY INC&quot;,
-  &quot;filer_cik&quot;: &quot;0001067983&quot;,
-  &quot;period_of_report&quot;: &quot;2026-06-30&quot;,
-  &quot;form&quot;: &quot;13F-HR&quot;,
-  &quot;filing_date&quot;: &quot;2026-08-14&quot;,
-  &quot;issuer_name&quot;: &quot;ALPHABET INC&quot;,
-  &quot;title_of_class&quot;: &quot;CAP STK CL A&quot;,
-  &quot;cusip&quot;: &quot;02079K305&quot;,
-  &quot;ticker&quot;: &quot;GOOGL&quot;,
-  &quot;ticker_candidates&quot;: [],
-  &quot;put_call&quot;: null,
-  &quot;shares&quot;: 78791167,
-  &quot;share_type&quot;: &quot;SH&quot;,
-  &quot;value_usd&quot;: 28157599351,
-  &quot;portfolio_pct&quot;: 9.41,
-  &quot;previous_period&quot;: &quot;2026-03-31&quot;,
-  &quot;previous_shares&quot;: 54249798,
-  &quot;previous_value_usd&quot;: 15600071913,
-  &quot;shares_change&quot;: 24541369,
-  &quot;shares_change_pct&quot;: 45.24,
-  &quot;change&quot;: &quot;increased&quot;,
-  &quot;filing_url&quot;: &quot;https://www.sec.gov/Archives/edgar/data/1067983/000119312526352200/0001193125-26-352200-index.htm&quot;,
-  &quot;source&quot;: &quot;edgar-13f&quot;,
-  &quot;source_url&quot;: &quot;https://www.sec.gov/Archives/edgar/data/1067983/000119312526352200/56757.xml&quot;
-}</code></pre>
+<p class="muted">Snapshot taken 2026-11-08, source links in each row. First 1 of 5 rows (snapshot runs stop at 5 rows); long values shortened.</p>
+<pre><code>[
+  {
+    &quot;schema_version&quot;: &quot;1&quot;,
+    &quot;record_type&quot;: &quot;holding&quot;,
+    &quot;filer_name&quot;: &quot;BERKSHIRE HATHAWAY INC&quot;,
+    &quot;filer_cik&quot;: &quot;0001067983&quot;,
+    &quot;period_of_report&quot;: &quot;2026-06-30&quot;,
+    &quot;form&quot;: &quot;13F-HR&quot;,
+    &quot;accession_number&quot;: &quot;0001193125-26-352200&quot;,
+    &quot;filing_date&quot;: &quot;2026-08-14&quot;,
+    &quot;issuer_name&quot;: &quot;APPLE INC&quot;,
+    &quot;title_of_class&quot;: &quot;COM&quot;,
+    &quot;cusip&quot;: &quot;037833100&quot;,
+    &quot;ticker&quot;: &quot;AAPL&quot;,
+    &quot;ticker_candidates&quot;: [],
+    &quot;put_call&quot;: null,
+    &quot;shares&quot;: 227917808,
+    &quot;share_type&quot;: &quot;SH&quot;,
+    &quot;value_usd&quot;: 65950296923,
+    &quot;portfolio_pct&quot;: 22.04,
+    &quot;previous_period&quot;: &quot;2026-03-31&quot;,
+    &quot;previous_shares&quot;: 227917808,
+    &quot;previous_value_usd&quot;: 57843260493,
+    &quot;shares_change&quot;: 0,
+    &quot;shares_change_pct&quot;: 0,
+    &quot;change&quot;: &quot;unchanged&quot;,
+    &quot;filing_url&quot;: &quot;https://www.sec.gov/Archives/edgar/data/1067983/000119312526352200/0001193125-26-352200-index.htm&quot;,
+    &quot;source&quot;: &quot;edgar-13f&quot;,
+    &quot;source_url&quot;: &quot;https://www.sec.gov/Archives/edgar/data/1067983/000119312526352200/56757.xml&quot;,
+    &quot;provided_by&quot;: &quot;Bosco Labs (boscolabs.dev)&quot;,
+    &quot;retrieved_at&quot;: &quot;2026-11-08T13:51:02+00:00&quot;
+  }
+]</code></pre>
 <div class="actions"><a class="btn" href="https://apify.com/bosco_labs/sec-ownership">Run it on Apify Store &rarr;</a><a class="btn ghost" href="sec-ownership.html">All fields and limits</a></div>
 <h2>More questions for this tool</h2><ul class="qs"><li><a href="q/planned-insider-sales-form-144-over-1-million.html">Which insiders filed to sell more than $1 million of stock this week?</a></li><li><a href="q/arkk-top-holdings.html">What are the top holdings of the ARK Innovation ETF (ARKK)?</a></li><li><a href="q/pershing-square-13f-holdings.html">What stocks does Pershing Square own, and what did it change last quarter?</a></li><li><a href="q/who-owns-more-than-5-percent-apple.html">Who owns more than 5% of Apple stock, according to 13D and 13G filings?</a></li></ul>
 <p><a href="q/index.html">All questions</a></p>
