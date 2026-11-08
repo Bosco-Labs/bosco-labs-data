@@ -32,8 +32,8 @@ console.log(text);
 
 ## Auth
 
-Paid tools need a Bosco Labs API key (prepaid credits): get one at
-<https://boscolabs.dev/api.html> and set `BOSCO_API_KEY`, or pass it:
+Paid tools need a Bosco Labs API key (prepaid credits; a new key comes with $5 of free credit,
+no card): get one at <https://boscolabs.dev/api.html> and set `BOSCO_API_KEY`, or pass it:
 `counterpartyCheck({ apiKey: process.env.MY_KEY })`. Every factory also takes `baseUrl`.
 The planner needs no key.
 

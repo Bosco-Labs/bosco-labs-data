@@ -1,6 +1,6 @@
 {
   "name": "@bosco_labs/ai-sdk",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Vercel AI SDK tools for Bosco Labs: counterparty (KYB) checks, a free query planner and any official-records tool (SEC EDGAR, company registers, sanctions lists, EU and national law).",
   "license": "MIT",
   "author": "Bosco Labs <support@boscolabs.dev>",
