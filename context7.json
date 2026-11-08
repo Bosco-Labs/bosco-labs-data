@@ -1,0 +1,15 @@
+{
+  "$schema": "https://context7.com/schema/context7.json",
+  "projectTitle": "Bosco Labs data API",
+  "description": "Official-source data for AI agents over HTTP, MCP and x402: SEC EDGAR, company registers and accounts, counterparty (KYB) checks, sanctions lists, EU and national law, case law, ECB and Eurostat, FDA, recalls, CVEs, tenders. Every row carries its source URL. Free query planner; paid tools use prepaid credits.",
+  "branch": "main",
+  "excludeFolders": ["compare", "q", "icons", ".github"],
+  "rules": [
+    "Call POST https://api.boscolabs.dev/v1/plan with {\"question\": ...} first (free, no key): it returns the exact tool, input and maximum price of each call.",
+    "Send the API key as 'Authorization: Bearer bl_live_...' and read it from the BOSCO_API_KEY environment variable; never hard-code it.",
+    "Tool endpoints are POST https://api.boscolabs.dev/v1/<tool> with the tool input as the JSON body; the catalogue is GET /v1/tools?compact=true and one tool's schema is GET /v1/tools/<tool>.",
+    "Errors return {\"error\": {\"code\", \"message\"}} and are never charged; show the message to the user.",
+    "Cite each row's source_url when you show data to a user.",
+    "In Vercel AI SDK apps use the @bosco_labs/ai-sdk package; in LangChain apps use langchain-bosco."
+  ]
+}
