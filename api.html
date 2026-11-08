@@ -213,7 +213,7 @@ asyncio.run(main())</code></pre>
 <tr><td>504</td><td><code>timeout</code></td><td>The call exceeded 55 seconds. Nothing charged.</td></tr>
 </tbody></table></div>
 <h2 id="mcp">MCP</h2>
-<p>Add <code>https://api.boscolabs.dev/mcp</code> (streamable HTTP) to your MCP client with the header <code>Authorization: Bearer &lt;key&gt;</code>. Each tool above is one MCP tool, at the same price.</p>
+<p>Add <code>https://api.boscolabs.dev/mcp</code> (streamable HTTP) to your MCP client with the header <code>Authorization: Bearer &lt;key&gt;</code>. It lists three tools: <code>counterparty_check</code>, <code>plan_official_records_query</code> (free) and <code>run_official_records_plan</code>, which runs a plan or any tool above by name. To list each tool above as its own MCP tool, at the same price, use <code>https://api.boscolabs.dev/mcp?tools=all</code>; every tool can be called by name on either URL.</p>
 <p id="claude"><b>In Claude</b> (claude.ai, Desktop and mobile): Settings → Connectors → Add custom connector, URL <code>https://api.boscolabs.dev/mcp/claude</code>. Claude opens our sign-in page once; paste your API key there to link it. Calls are billed to that key at the prices above, and replacing your key unlinks Claude. The planner tools are free on every call.</p>
 <h2 id="versioning">Versioning and changes</h2>
 <p>The API is in beta. What we aim for while it is:</p>
