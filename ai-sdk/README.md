@@ -1,16 +1,16 @@
-# @bosco-labs/ai-sdk
+# @bosco_labs/ai-sdk
 
 [Vercel AI SDK](https://ai-sdk.dev) tools for [Bosco Labs](https://boscolabs.dev): answers from
 official records (company registers, SEC EDGAR, sanctions lists, EU and national law, ECB and
 Eurostat), each row with its source URL.
 
 ```bash
-npm install @bosco-labs/ai-sdk ai zod
+npm install @bosco_labs/ai-sdk ai zod
 ```
 
 ```ts
 import { generateText, isStepCount } from 'ai';
-import { counterpartyCheck, planOfficialRecordsQuery, callBoscoTool } from '@bosco-labs/ai-sdk';
+import { counterpartyCheck, planOfficialRecordsQuery, callBoscoTool } from '@bosco_labs/ai-sdk';
 
 const { text } = await generateText({
   model: 'openai/gpt-5-mini',

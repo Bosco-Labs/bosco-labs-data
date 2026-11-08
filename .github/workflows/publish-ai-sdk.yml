@@ -1,8 +1,8 @@
-# Publishes ai-sdk/ (@bosco-labs/ai-sdk) to npm with trusted publishing (GitHub OIDC, no token).
+# Publishes ai-sdk/ (@bosco_labs/ai-sdk) to npm with trusted publishing (GitHub OIDC, no token).
 # One-time setup on npmjs.com, after the first manual publish: package settings -> Trusted
 # publisher -> GitHub Actions, organization Bosco-Labs, repository bosco-labs-data, workflow
 # publish-ai-sdk.yml.
-name: Publish @bosco-labs/ai-sdk
+name: Publish @bosco_labs/ai-sdk
 
 on:
   workflow_dispatch:
