@@ -1,0 +1,29 @@
+[project]
+name = "bosco-vendor-check"
+version = "0.1.0"
+description = "Vendor onboarding check (KYB screening aid) on the Bosco Labs API. Standard library only."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+authors = [{ name = "Bosco Labs", email = "support@boscolabs.dev" }]
+dependencies = []
+
+[project.scripts]
+vendor-check = "vendor_check.__main__:main"
+bosco-vendor-check = "vendor_check.__main__:main"
+
+[project.urls]
+Homepage = "https://boscolabs.dev/counterparty-check.html"
+Documentation = "https://boscolabs.dev/api.html"
+Repository = "https://github.com/Bosco-Labs/bosco-labs-data/tree/main/examples/vendor-check"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["vendor_check"]  # the module keeps its short name
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

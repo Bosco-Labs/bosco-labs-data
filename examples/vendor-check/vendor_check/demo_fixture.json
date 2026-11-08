@@ -1,0 +1,675 @@
+{
+ "label": "recorded free API responses (POST /v1/plan, lei_lookup and sec_company_lookup on /mcp/free)",
+ "fetched_at": "2026-11-08",
+ "companies": [
+  {
+   "query": "Novo Nordisk A/S",
+   "country": "DK",
+   "plan": {
+    "plan_id": "p1.W3siaW5wdXQiOnsiY291bnRyeSI6IkRLIiwicXVlcnkiOiJOb3ZvIE5vcmRpc2sgQS9TIn0sInRvb2wiOiJjb3VudGVycGFydHktY2hlY2sifV0",
+    "interpreted_as": "Counterparty Check API: KYB checklist from official registers with {\"query\": \"Novo Nordisk A/S\", \"country\": \"DK\"}.",
+    "steps": [
+     {
+      "tool": "counterparty-check",
+      "mcp_name": "counterparty_check",
+      "input": {
+       "query": "Novo Nordisk A/S",
+       "country": "DK"
+      },
+      "why": "One KYB checklist: register status, LEI, insolvency, recent accounts, sanctions for the company and its officers, VAT and IBAN when given.",
+      "max_rows": 1,
+      "max_usd": 0.05
+     }
+    ],
+    "total_max_usd": 0.05,
+    "confidence": 0.88,
+    "entities_used": {
+     "from_caller": {
+      "company_names": [
+       "Novo Nordisk A/S"
+      ],
+      "countries": [
+       "DK"
+      ]
+     },
+     "from_question": {}
+    },
+    "missing": [],
+    "not_covered": [],
+    "run_with": {
+     "http": {
+      "method": "POST",
+      "url": "https://api.boscolabs.dev/v1/run",
+      "body": {
+       "plan_id": "p1.W3siaW5wdXQiOnsiY291bnRyeSI6IkRLIiwicXVlcnkiOiJOb3ZvIE5vcmRpc2sgQS9TIn0sInRvb2wiOiJjb3VudGVycGFydHktY2hlY2sifV0",
+       "max_usd": 0.05
+      }
+     },
+     "mcp_tool": "run_official_records_plan"
+    },
+    "direct_calls": [
+     {
+      "url": "https://api.boscolabs.dev/v1/counterparty-check",
+      "body": {
+       "query": "Novo Nordisk A/S",
+       "country": "DK"
+      }
+     }
+    ]
+   },
+   "lei_candidates": [
+    {
+     "lei": "549300DAQ1CVT6CXN342",
+     "legal_name": "NOVO NORDISK A/S",
+     "entity_status": "ACTIVE",
+     "registration_status": "ISSUED",
+     "jurisdiction": "DK",
+     "legal_address_country": "DK",
+     "legal_address_city": "Bagsværd",
+     "headquarters_country": "DK",
+     "registered_as": "24256790",
+     "source_url": "https://search.gleif.org/#/record/549300DAQ1CVT6CXN342",
+     "next_steps": [
+      {
+       "why": "Filed accounts (revenue, profit, equity)",
+       "tool": "company_accounts",
+       "arguments": {
+        "cvrNumbers": [
+         "24256790"
+        ]
+       },
+       "remote_mcp": "https://api.boscolabs.dev/mcp",
+       "http": "POST https://api.boscolabs.dev/v1/company-accounts",
+       "stdio_tool": "european_company_accounts",
+       "stdio_arguments": {
+        "dk_cvr_numbers": [
+         "24256790"
+        ]
+       },
+       "paid": true
+      }
+     ]
+    },
+    {
+     "lei": "894500G05T7MXFP5E425",
+     "legal_name": "NOVO NORDISK REGION EUROPE A/S",
+     "entity_status": "ACTIVE",
+     "registration_status": "LAPSED",
+     "jurisdiction": "DK",
+     "legal_address_country": "DK",
+     "legal_address_city": "Bagsværd",
+     "headquarters_country": "DK",
+     "registered_as": "26236266",
+     "ultimate_parent": {
+      "lei": "549300DAQ1CVT6CXN342",
+      "legal_name": "NOVO NORDISK A/S"
+     },
+     "source_url": "https://search.gleif.org/#/record/894500G05T7MXFP5E425",
+     "next_steps": [
+      {
+       "why": "Filed accounts (revenue, profit, equity)",
+       "tool": "company_accounts",
+       "arguments": {
+        "cvrNumbers": [
+         "26236266"
+        ]
+       },
+       "remote_mcp": "https://api.boscolabs.dev/mcp",
+       "http": "POST https://api.boscolabs.dev/v1/company-accounts",
+       "stdio_tool": "european_company_accounts",
+       "stdio_arguments": {
+        "dk_cvr_numbers": [
+         "26236266"
+        ]
+       },
+       "paid": true
+      }
+     ]
+    },
+    {
+     "lei": "5493008LMR0N66WCKM02",
+     "legal_name": "VELFÆRDSFONDEN FOR NOVO NORDISK A/S",
+     "entity_status": "ACTIVE",
+     "registration_status": "ISSUED",
+     "jurisdiction": "DK",
+     "legal_address_country": "DK",
+     "legal_address_city": "Bagsværd",
+     "headquarters_country": "DK",
+     "registered_as": "10582997",
+     "source_url": "https://search.gleif.org/#/record/5493008LMR0N66WCKM02",
+     "next_steps": [
+      {
+       "why": "Filed accounts (revenue, profit, equity)",
+       "tool": "company_accounts",
+       "arguments": {
+        "cvrNumbers": [
+         "10582997"
+        ]
+       },
+       "remote_mcp": "https://api.boscolabs.dev/mcp",
+       "http": "POST https://api.boscolabs.dev/v1/company-accounts",
+       "stdio_tool": "european_company_accounts",
+       "stdio_arguments": {
+        "dk_cvr_numbers": [
+         "10582997"
+        ]
+       },
+       "paid": true
+      }
+     ]
+    }
+   ],
+   "sec_matches": [],
+   "example_paid": {
+    "label": "example response shape, not live data (the documented example of GET /v1/tools/counterparty-check)",
+    "row": {
+     "schema_version": "1",
+     "query": "24256790",
+     "status": "checked",
+     "company": {
+      "legal_name": "NOVO NORDISK A/S",
+      "country": "DK",
+      "registration_number": "24256790",
+      "register": "Erhvervsstyrelsen (CVR)",
+      "lei": "549300DAQ1CVT6CXN342",
+      "lei_status": "ISSUED",
+      "status": "active",
+      "legal_form": "Aktieselskab",
+      "registered_address": "Novo Alle 1, 2880 Bagsværd, DK"
+     },
+     "checks": [
+      {
+       "check": "register_status",
+       "status": "pass",
+       "detail": "Register status: active.",
+       "source": "GLEIF",
+       "source_url": "https://api.gleif.org/api/v1/lei-records/549300DAQ1CVT6CXN342",
+       "checked_at": "2026-11-08T04:12:24+00:00"
+      },
+      {
+       "check": "lei_status",
+       "status": "pass",
+       "detail": "LEI 549300DAQ1CVT6CXN342 is ISSUED.",
+       "source": "GLEIF",
+       "source_url": "https://search.gleif.org/#/record/549300DAQ1CVT6CXN342",
+       "checked_at": "2026-11-08T04:12:24+00:00"
+      },
+      {
+       "check": "insolvency",
+       "status": "unverified",
+       "detail": "Insolvency covers the UK, Poland, France, Germany and the Netherlands (insolvency registers) and Norway, Finland and Estonia (register status).",
+       "source": null,
+       "source_url": null,
+       "checked_at": "2026-11-08T04:12:24+00:00"
+      },
+      {
+       "check": "accounts_recent",
+       "status": "pass",
+       "detail": "Newest annual accounts: year ending 2025-12-31 (11 months ago).",
+       "source": "filings.xbrl.org",
+       "source_url": "https://filings.xbrl.org/549300DAQ1CVT6CXN342/2025-12-31/ESEF/DK/0/NOVO-2025-12-31-1-en.json",
+       "checked_at": "2026-11-08T04:12:24+00:00"
+      },
+      {
+       "check": "sanctions_entity",
+       "status": "pass",
+       "detail": "No match. Checked: OFAC Consolidated (non-SDN) List 2026-11-04, UN Security Council Consolidated List 2026-11-08, UK Sanctions List 2026-11-03, EU Consolidated Financial Sanctions List 2026-10-23, US Consolidated Screening List (Commerce, State) 2026-11-08, OFAC SDN List 2026-11-06.",
+       "source": "OFAC, UN, UK, EU and US export lists",
+       "source_url": null,
+       "checked_at": "2026-11-08T04:12:24+00:00"
+      },
+      {
+       "check": "sanctions_people",
+       "status": "unverified",
+       "detail": "No officer or owner names known (UK and Polish registers list them; Polish names are masked).",
+       "source": null,
+       "source_url": null,
+       "checked_at": "2026-11-08T04:12:24+00:00"
+      },
+      {
+       "check": "vat_number",
+       "status": "unverified",
+       "detail": "VIES is not answering (SERVICE_UNAVAILABLE); try again later",
+       "source": "VIES (European Commission), answered by the national tax administration",
+       "source_url": "https://ec.europa.eu/taxation_customs/vies/#/vat-validation",
+       "checked_at": "2026-11-08T04:12:24+00:00"
+      },
+      {
+       "check": "iban",
+       "status": "pass",
+       "detail": "DK5000400440116243: structure and check digits valid. Bank code 0040; no bank was contacted.",
+       "source": "ISO 13616 check digits (mod 97) and the SWIFT IBAN Registry formats",
+       "source_url": "https://www.swift.com/standards/data-standards/iban-international-bank-account-number",
+       "checked_at": "2026-11-08T04:12:24+00:00"
+      },
+      {
+       "check": "iban_country_match",
+       "status": "pass",
+       "detail": "expected DK, number is DK",
+       "source": "ISO 13616 check digits (mod 97) and the SWIFT IBAN Registry formats",
+       "source_url": "https://www.swift.com/standards/data-standards/iban-international-bank-account-number",
+       "checked_at": "2026-11-08T04:12:24+00:00"
+      }
+     ],
+     "summary": {
+      "pass": 6,
+      "fail": 0,
+      "review": 0,
+      "unverified": 3,
+      "needs_attention": [],
+      "unverified_checks": [
+       "insolvency",
+       "sanctions_people",
+       "vat_number"
+      ]
+     },
+     "notice": "Screening aid built from official sources, not a compliance, credit or legal determination. 'unverified' means not checked, never 'safe'. Review every 'fail' and 'review' against the linked source before acting.",
+     "latest_financials": {
+      "basis": "Consolidated annual report of a listed company (ESEF, IFRS figures).",
+      "source": "filings.xbrl.org",
+      "period_end": "2025-12-31",
+      "currency": "DKK",
+      "revenue": 309064000000,
+      "net_income": 102434000000,
+      "total_assets": 542902000000,
+      "source_url": "https://filings.xbrl.org/549300DAQ1CVT6CXN342/2025-12-31/ESEF/DK/0/NOVO-2025-12-31-1-en.json"
+     },
+     "sanctions": {
+      "entity": {
+       "query": "NOVO NORDISK A/S",
+       "match_found": false,
+       "best_score": null,
+       "complete": true,
+       "summary": "No match >= 85 for 'NOVO NORDISK A/S'. Checked: OFAC Consolidated (non-SDN) List 2026-11-04, UN Security Council Consolidated List 2026-11-08, UK Sanctions List 2026-11-03, EU Consolidated Financial Sanctions List 2026-10-23, US Consolidated Screening List (Commerce, State) 2026-11-08, OFAC SDN List 2026-11-06."
+      },
+      "people_with_matches": [],
+      "people_screened": 0
+     },
+     "vat": {
+      "number": "DK24256790",
+      "status": "unverified",
+      "valid": null,
+      "registered_name": null,
+      "name_match": null,
+      "country_match": null,
+      "source_url": "https://ec.europa.eu/taxation_customs/vies/#/vat-validation"
+     },
+     "iban": {
+      "number": "DK5000400440116243",
+      "status": "pass",
+      "valid": true,
+      "bank_code": "0040",
+      "country_match": true,
+      "source": "ISO 13616 check digits (mod 97) and the SWIFT IBAN Registry formats"
+     },
+     "wallets": [],
+     "warnings": [
+      "EU Consolidated Financial Sanctions List: download failed (HTTP 500); used the copy fetched 2026-11-07T01:57 UTC (list dated 2026-10-23)."
+     ],
+     "source_url": "https://api.gleif.org/api/v1/lei-records/549300DAQ1CVT6CXN342",
+     "retrieved_at": "2026-11-08T04:12:24+00:00",
+     "duration_seconds": 28.5
+    }
+   }
+  },
+  {
+   "query": "Tesco PLC",
+   "country": "GB",
+   "plan": {
+    "plan_id": "p1.W3siaW5wdXQiOnsiY291bnRyeSI6IkdCIiwicXVlcnkiOiJUZXNjbyBQTEMifSwidG9vbCI6ImNvdW50ZXJwYXJ0eS1jaGVjayJ9XQ",
+    "interpreted_as": "Counterparty Check API: KYB checklist from official registers with {\"query\": \"Tesco PLC\", \"country\": \"GB\"}.",
+    "steps": [
+     {
+      "tool": "counterparty-check",
+      "mcp_name": "counterparty_check",
+      "input": {
+       "query": "Tesco PLC",
+       "country": "GB"
+      },
+      "why": "One KYB checklist: register status, LEI, insolvency, recent accounts, sanctions for the company and its officers, VAT and IBAN when given.",
+      "max_rows": 1,
+      "max_usd": 0.05
+     }
+    ],
+    "total_max_usd": 0.05,
+    "confidence": 0.92,
+    "entities_used": {
+     "from_caller": {
+      "company_names": [
+       "Tesco PLC"
+      ],
+      "countries": [
+       "GB"
+      ]
+     },
+     "from_question": {}
+    },
+    "missing": [],
+    "not_covered": [],
+    "run_with": {
+     "http": {
+      "method": "POST",
+      "url": "https://api.boscolabs.dev/v1/run",
+      "body": {
+       "plan_id": "p1.W3siaW5wdXQiOnsiY291bnRyeSI6IkdCIiwicXVlcnkiOiJUZXNjbyBQTEMifSwidG9vbCI6ImNvdW50ZXJwYXJ0eS1jaGVjayJ9XQ",
+       "max_usd": 0.05
+      }
+     },
+     "mcp_tool": "run_official_records_plan"
+    },
+    "direct_calls": [
+     {
+      "url": "https://api.boscolabs.dev/v1/counterparty-check",
+      "body": {
+       "query": "Tesco PLC",
+       "country": "GB"
+      }
+     }
+    ]
+   },
+   "lei_candidates": [
+    {
+     "lei": "2138002P5RNKC5W2JZ46",
+     "legal_name": "TESCO PLC",
+     "entity_status": "ACTIVE",
+     "registration_status": "ISSUED",
+     "jurisdiction": "GB",
+     "legal_address_country": "GB",
+     "legal_address_city": "WELWYN GARDEN CITY",
+     "headquarters_country": "GB",
+     "registered_as": "00445790",
+     "source_url": "https://search.gleif.org/#/record/2138002P5RNKC5W2JZ46",
+     "next_steps": [
+      {
+       "why": "Filed accounts (revenue, profit, equity)",
+       "tool": "company_accounts",
+       "arguments": {
+        "companyNumbers": [
+         "00445790"
+        ]
+       },
+       "remote_mcp": "https://api.boscolabs.dev/mcp",
+       "http": "POST https://api.boscolabs.dev/v1/company-accounts",
+       "stdio_tool": "european_company_accounts",
+       "stdio_arguments": {
+        "uk_company_numbers": [
+         "00445790"
+        ]
+       },
+       "paid": true
+      }
+     ]
+    },
+    {
+     "lei": "JL5Y1BHW3R0NH5H6C288",
+     "legal_name": "TESCO PLC PENSION SCHEME",
+     "entity_status": "ACTIVE",
+     "registration_status": "ISSUED",
+     "jurisdiction": "GB",
+     "legal_address_country": "GB",
+     "legal_address_city": "WELWYN GARDEN CITY",
+     "headquarters_country": "GB",
+     "source_url": "https://search.gleif.org/#/record/JL5Y1BHW3R0NH5H6C288",
+     "next_steps": [
+      {
+       "why": "Audited financials if it is an EU/UK listed company",
+       "tool": "esef_annual_reports",
+       "arguments": {
+        "leis": [
+         "JL5Y1BHW3R0NH5H6C288"
+        ]
+       },
+       "remote_mcp": "https://api.boscolabs.dev/mcp",
+       "http": "POST https://api.boscolabs.dev/v1/esef-annual-reports",
+       "stdio_tool": "eu_annual_report_financials",
+       "stdio_arguments": {
+        "lei": "JL5Y1BHW3R0NH5H6C288"
+       },
+       "paid": true
+      }
+     ]
+    },
+    {
+     "lei": "213800DJFYY7MSLDKD28",
+     "legal_name": "TESCO TREASURY SERVICES PLC",
+     "entity_status": "INACTIVE",
+     "registration_status": "RETIRED",
+     "jurisdiction": "GB",
+     "legal_address_country": "GB",
+     "legal_address_city": "WELWYN GARDEN CITY",
+     "headquarters_country": "GB",
+     "registered_as": "07656305",
+     "source_url": "https://search.gleif.org/#/record/213800DJFYY7MSLDKD28",
+     "next_steps": [
+      {
+       "why": "Filed accounts (revenue, profit, equity)",
+       "tool": "company_accounts",
+       "arguments": {
+        "companyNumbers": [
+         "07656305"
+        ]
+       },
+       "remote_mcp": "https://api.boscolabs.dev/mcp",
+       "http": "POST https://api.boscolabs.dev/v1/company-accounts",
+       "stdio_tool": "european_company_accounts",
+       "stdio_arguments": {
+        "uk_company_numbers": [
+         "07656305"
+        ]
+       },
+       "paid": true
+      }
+     ]
+    }
+   ],
+   "sec_matches": []
+  },
+  {
+   "query": "Apple Inc.",
+   "country": "US",
+   "plan": {
+    "plan_id": "p1.W3siaW5wdXQiOnsiY291bnRyeSI6IlVTIiwicXVlcnkiOiJBcHBsZSBJbmMuIn0sInRvb2wiOiJjb3VudGVycGFydHktY2hlY2sifV0",
+    "interpreted_as": "Counterparty Check API: KYB checklist from official registers with {\"query\": \"Apple Inc.\", \"country\": \"US\"}.",
+    "steps": [
+     {
+      "tool": "counterparty-check",
+      "mcp_name": "counterparty_check",
+      "input": {
+       "query": "Apple Inc.",
+       "country": "US"
+      },
+      "why": "One KYB checklist: register status, LEI, insolvency, recent accounts, sanctions for the company and its officers, VAT and IBAN when given.",
+      "max_rows": 1,
+      "max_usd": 0.05
+     }
+    ],
+    "total_max_usd": 0.05,
+    "confidence": 0.83,
+    "entities_used": {
+     "from_caller": {
+      "company_names": [
+       "Apple Inc."
+      ],
+      "countries": [
+       "US"
+      ]
+     },
+     "from_question": {
+      "tickers": [
+       "AAPL"
+      ]
+     }
+    },
+    "missing": [],
+    "not_covered": [],
+    "run_with": {
+     "http": {
+      "method": "POST",
+      "url": "https://api.boscolabs.dev/v1/run",
+      "body": {
+       "plan_id": "p1.W3siaW5wdXQiOnsiY291bnRyeSI6IlVTIiwicXVlcnkiOiJBcHBsZSBJbmMuIn0sInRvb2wiOiJjb3VudGVycGFydHktY2hlY2sifV0",
+       "max_usd": 0.05
+      }
+     },
+     "mcp_tool": "run_official_records_plan"
+    },
+    "direct_calls": [
+     {
+      "url": "https://api.boscolabs.dev/v1/counterparty-check",
+      "body": {
+       "query": "Apple Inc.",
+       "country": "US"
+      }
+     }
+    ]
+   },
+   "lei_candidates": [
+    {
+     "lei": "HWUPKR0MPOU8FGXBT394",
+     "legal_name": "Apple Inc.",
+     "entity_status": "ACTIVE",
+     "registration_status": "ISSUED",
+     "jurisdiction": "US-CA",
+     "legal_address_country": "US",
+     "legal_address_city": "Glendale",
+     "headquarters_country": "US",
+     "registered_as": "806592",
+     "source_url": "https://search.gleif.org/#/record/HWUPKR0MPOU8FGXBT394",
+     "next_steps": [
+      {
+       "why": "Audited financials if it is an EU/UK listed company",
+       "tool": "esef_annual_reports",
+       "arguments": {
+        "leis": [
+         "HWUPKR0MPOU8FGXBT394"
+        ]
+       },
+       "remote_mcp": "https://api.boscolabs.dev/mcp",
+       "http": "POST https://api.boscolabs.dev/v1/esef-annual-reports",
+       "stdio_tool": "eu_annual_report_financials",
+       "stdio_arguments": {
+        "lei": "HWUPKR0MPOU8FGXBT394"
+       },
+       "paid": true
+      }
+     ]
+    },
+    {
+     "lei": "549300CU34HQ0IZ6S698",
+     "legal_name": "New Apple, Inc.",
+     "entity_status": "ACTIVE",
+     "registration_status": "LAPSED",
+     "jurisdiction": "US-NC",
+     "legal_address_country": "US",
+     "legal_address_city": "Raleigh",
+     "headquarters_country": "US",
+     "registered_as": "0550255",
+     "source_url": "https://search.gleif.org/#/record/549300CU34HQ0IZ6S698",
+     "next_steps": [
+      {
+       "why": "Audited financials if it is an EU/UK listed company",
+       "tool": "esef_annual_reports",
+       "arguments": {
+        "leis": [
+         "549300CU34HQ0IZ6S698"
+        ]
+       },
+       "remote_mcp": "https://api.boscolabs.dev/mcp",
+       "http": "POST https://api.boscolabs.dev/v1/esef-annual-reports",
+       "stdio_tool": "eu_annual_report_financials",
+       "stdio_arguments": {
+        "lei": "549300CU34HQ0IZ6S698"
+       },
+       "paid": true
+      }
+     ]
+    },
+    {
+     "lei": "254900KZR24L5GN8TE52",
+     "legal_name": "Apple Ford, Inc.",
+     "entity_status": "ACTIVE",
+     "registration_status": "LAPSED",
+     "jurisdiction": "US-DE",
+     "legal_address_country": "US",
+     "legal_address_city": "WILMINGTON",
+     "headquarters_country": "US",
+     "registered_as": "2268351",
+     "source_url": "https://search.gleif.org/#/record/254900KZR24L5GN8TE52",
+     "next_steps": [
+      {
+       "why": "Audited financials if it is an EU/UK listed company",
+       "tool": "esef_annual_reports",
+       "arguments": {
+        "leis": [
+         "254900KZR24L5GN8TE52"
+        ]
+       },
+       "remote_mcp": "https://api.boscolabs.dev/mcp",
+       "http": "POST https://api.boscolabs.dev/v1/esef-annual-reports",
+       "stdio_tool": "eu_annual_report_financials",
+       "stdio_arguments": {
+        "lei": "254900KZR24L5GN8TE52"
+       },
+       "paid": true
+      }
+     ]
+    }
+   ],
+   "sec_matches": [
+    {
+     "cik": "320193",
+     "name": "Apple Inc.",
+     "tickers": [
+      "AAPL"
+     ],
+     "exchanges": [
+      "Nasdaq"
+     ],
+     "sic": "3571",
+     "sic_description": "Electronic Computers",
+     "state_of_incorporation": "CA",
+     "fiscal_year_end": "0926",
+     "source_url": "https://www.sec.gov/edgar/browse/?CIK=320193",
+     "next_steps": [
+      {
+       "why": "Filings (8-K, 10-K, Form 4, ...)",
+       "tool": "sec_filings_feed",
+       "arguments": {
+        "ciks": [
+         "320193"
+        ]
+       },
+       "remote_mcp": "https://api.boscolabs.dev/mcp",
+       "http": "POST https://api.boscolabs.dev/v1/sec-filings-feed",
+       "stdio_tool": "sec_filings",
+       "stdio_arguments": {
+        "ciks": [
+         "320193"
+        ]
+       },
+       "paid": true
+      },
+      {
+       "why": "Insider buys and sells (Form 4)",
+       "tool": "sec_insider_trades",
+       "arguments": {
+        "ciks": [
+         "320193"
+        ]
+       },
+       "remote_mcp": "https://api.boscolabs.dev/mcp",
+       "http": "POST https://api.boscolabs.dev/v1/sec-insider-trades",
+       "stdio_tool": "sec_insider_trades",
+       "stdio_arguments": {
+        "ciks": [
+         "320193"
+        ]
+       },
+       "paid": true
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

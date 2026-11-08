@@ -1,0 +1,33 @@
+# Publishes examples/vendor-check/ (bosco-vendor-check) to PyPI (trusted publishing, no token). One-time setup on PyPI:
+# a pending publisher for project bosco-vendor-check, owner Bosco-Labs, repository bosco-labs-data,
+# workflow publish-vendor-check.yml, environment pypi.
+name: Publish bosco-vendor-check
+
+on:
+  workflow_dispatch:
+  push:
+    tags: ["vendor-check-v*"] # must equal the version in examples/vendor-check/pyproject.toml
+
+jobs:
+  pypi:
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/bosco-vendor-check
+    permissions:
+      id-token: write # PyPI trusted publishing
+      contents: read
+    defaults:
+      run:
+        working-directory: examples/vendor-check
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+      - name: Run tests
+        run: uv run --isolated --no-project --with-editable . --with pytest pytest -q
+      - name: Build package
+        run: uv build
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: examples/vendor-check/dist/
