@@ -84,9 +84,16 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <div class="head"><img src="icons/package-vulns.svg" alt="" width="84" height="84"><div><h1>Package Vulnerability Check API: CVEs, CISA KEV, safe upgrade</h1><span class="badge live">On the HTTP API</span></div></div>
 <div class="prose">
 <p class="lead"><strong>Is this package version vulnerable, is any of it exploited in the wild, and which version is safe to upgrade to?</strong> One call answers it for npm, PyPI, Maven, Go, crates.io, NuGet, RubyGems and Packagist packages, or for one CVE/GHSA id, from OSV.dev and the CISA KEV catalog (a CVE lookup also shows NVD&#x27;s record). Built for <strong>coding agents</strong> and for developers who want a sourced answer instead of a scanner setup.</p>
-<div class="facts"><div class="fact"><b>Price</b>$0.005 per package version or CVE answered (HTTP API)</div><div class="fact"><b>Domain</b>Software security</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
+<div class="facts"><div class="fact"><b>Price</b>$0.005 per package version or CVE answered (HTTP API)</div><div class="fact"><b>Domain</b>Software security</div><div class="fact"><b>Get it on</b><a href="#where">HTTP API, MCP, x402</a></div></div>
 <p><strong>Pricing (pay per event):</strong> $0.005 per answer (<code>package-check</code>, $5 per 1,000). A clean &quot;no known vulnerabilities&quot; is a real answer and is charged once the package is confirmed to exist; bad input, a misspelled or unreleased package, an unknown id or a dead source fails in seconds and costs nothing.</p>
 <div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a></div>
+<h2 id="where">Where to get it</h2>
+<p>The same data and the same rows on every channel; pick the one your agent or code already uses.</p>
+<div class="table"><table><thead><tr><th>Channel</th><th>How</th><th>Pay</th></tr></thead><tbody>
+<tr><td>HTTP API</td><td><code>POST https://api.boscolabs.dev/v1/package-vulns</code> with your key (<a href="api.html#key">get a key</a>, $0.50 free trial)</td><td>$0.005 per package version or CVE answered, prepaid credits</td></tr>
+<tr><td>MCP</td><td><code>https://api.boscolabs.dev/mcp</code> (remote, same key) or <code>https://api.boscolabs.dev/mcp/free</code> (no key: find and plan) &middot; <a href="api.html#mcp">setup</a></td><td>$0.005 per package version or CVE answered, prepaid credits</td></tr>
+<tr><td>x402</td><td><code>POST https://api.boscolabs.dev/v1/package-vulns</code> without a key: pay per call, no account (<a href="api.html#x402">how</a>)</td><td>$0.005 per package version or CVE answered, in USDC on Base</td></tr>
+</tbody></table></div>
 <h2>Questions agents ask</h2>
 <ul class="qs"><li>&ldquo;Before I bump lodash in package.json: is 4.17.15 vulnerable, is anything exploited, and what is the lowest safe version? Cite the advisories.&rdquo;</li></ul>
 </div>

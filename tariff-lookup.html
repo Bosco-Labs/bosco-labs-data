@@ -22,7 +22,7 @@
  "@context": "https://schema.org",
  "@type": "SoftwareApplication",
  "name": "Tariff Code & Duty Lookup API: US HTS and UK Tariff",
- "description": "Duty rates for a US HTS or UK commodity code: official description hierarchy, general/MFN rate, preferential rates, US Chapter 99 references, UK VAT, units, source link. Or a product description in, 5 official candidate codes out. No binding ruling.",
+ "description": "Import duty rates for a US Harmonized Tariff Schedule (HTS) or UK commodity code: official description hierarchy, general/MFN rate, preferential rates, US Chapter 99 references, UK VAT, units, source link. Or a product description in, 5 official candidate codes out. No binding ruling.",
  "url": "https://boscolabs.dev/tariff-lookup.html",
  "image": "https://boscolabs.dev/icons/tariff-lookup.png",
  "applicationCategory": "DeveloperApplication",
@@ -85,9 +85,18 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <div class="head"><img src="icons/tariff-lookup.svg" alt="" width="84" height="84"><div><h1>Tariff Code &amp; Duty Lookup API: US HTS and UK Tariff</h1><span class="badge live">On Apify Store</span></div></div>
 <div class="prose">
 <p class="lead"><strong>Send a US HTS code and get the official description hierarchy, the general (MFN) duty rate, preferential rates, linked Chapter 99 references and units, with a source link.</strong> No code yet? Send a plain product description and get up to 5 candidate codes from the official USITC search. Built for <strong>AI agents</strong>, customs brokers and e-commerce teams who need a sourced duty rate, not a guess. <strong>UK Trade Tariff too:</strong> send a UK 10-digit commodity code (or a description) with <code>&quot;market&quot;: &quot;UK&quot;</code> for the UK duty, preferential rates, VAT and trade remedies, read live from HMRC.</p>
-<div class="facts"><div class="fact"><b>Price</b>$0.005 per lookup or search</div><div class="fact"><b>Domain</b>Compliance &amp; law</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
+<div class="facts"><div class="fact"><b>Price</b>$0.005 per lookup or search</div><div class="fact"><b>Domain</b>Compliance &amp; law</div><div class="fact"><b>Get it on</b><a href="#where">Apify Store, HTTP API, MCP, x402, Local MCP server</a></div></div>
 <p><strong>Pricing (pay per event):</strong> $0.005 per code lookup (<code>code-lookup</code>) and $0.005 per description search however many candidates it returns (<code>code-search</code>). Same price for US and UK. Bad input, unknown or non-declarable codes, searches without results and source outages fail in seconds and cost nothing. The data is free from USITC (hts.usitc.gov) and HMRC (trade-tariff.service.gov.uk); you pay for the one-call summary across both tariffs and the hosted API.</p>
 <div class="actions"><a class="btn" href="https://apify.com/bosco_labs/tariff-lookup">Run it on Apify Store &rarr;</a></div>
+<h2 id="where">Where to get it</h2>
+<p>The same data and the same rows on every channel; pick the one your agent or code already uses.</p>
+<div class="table"><table><thead><tr><th>Channel</th><th>How</th><th>Pay</th></tr></thead><tbody>
+<tr><td>Apify Store</td><td><a href="https://apify.com/bosco_labs/tariff-lookup">apify.com/bosco_labs/tariff-lookup</a>: run it in the Apify Console, by the Apify API or from Apify's MCP server (<code>https://mcp.apify.com?tools=bosco_labs/tariff-lookup</code>)</td><td>$0.005 per lookup or search, billed to your Apify account</td></tr>
+<tr><td>HTTP API</td><td><code>POST https://api.boscolabs.dev/v1/tariff-lookup</code> with your key (<a href="api.html#key">get a key</a>, $0.50 free trial)</td><td>$0.005 per code lookup or code search (US or UK), prepaid credits</td></tr>
+<tr><td>MCP</td><td><code>https://api.boscolabs.dev/mcp</code> (remote, same key) or <code>https://api.boscolabs.dev/mcp/free</code> (no key: find and plan) &middot; <a href="api.html#mcp">setup</a></td><td>$0.005 per code lookup or code search (US or UK), prepaid credits</td></tr>
+<tr><td>x402</td><td><code>POST https://api.boscolabs.dev/v1/tariff-lookup</code> without a key: pay per call, no account (<a href="api.html#x402">how</a>)</td><td>$0.005 per code lookup or code search (US or UK), in USDC on Base</td></tr>
+<tr><td>Local MCP server</td><td><code>uvx bosco-labs-data-mcp</code> with your <code>APIFY_TOKEN</code> (<a href="https://pypi.org/project/bosco-labs-data-mcp/">PyPI</a>)</td><td>Apify Store price, billed to your Apify account</td></tr>
+</tbody></table></div>
 <h2>Questions agents ask</h2>
 <ul class="qs"><li>&ldquo;What US import duty applies to kids&#x27; bicycles (wheels under 63.5 cm) from Vietnam? Give the HTS code and cite the source.&rdquo;</li></ul>
 </div>

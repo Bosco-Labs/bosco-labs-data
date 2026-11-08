@@ -76,7 +76,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <ul>
 <li>Every HTTP API tool only <strong>reads</strong> public, official sources (SEC EDGAR, company registers, the OFAC, UK and EU sanctions lists, EUR-Lex, TED and others) and writes nowhere. No tool asks you for a login, cookie or password for another service.</li>
 <li>Every result row links to the official source it came from. Each tool page names its sources and their licence terms; sources whose terms do not allow resale (for example OpenSanctions) are not used.</li>
-<li>The free planner (<code>POST https://api.boscolabs.dev/v1/plan</code>) is deterministic: rules and examples, no LLM. When it is not confident it returns <code>not_covered</code> and candidate tools instead of guessing. It is tested on a fixed set of compliance questions so that it does not screen a place, a role or a phrase from your question as if it were a name.</li>
+<li>The free planner (<code>POST https://api.boscolabs.dev/v1/plan</code>) works from rules and examples. Only when those are unsure and the caller passed no entities does one budget-capped AI step extract the names and identifiers from the question (the plan then says <code>assisted</code>); if that does not help it returns <code>not_covered</code> and candidate tools instead of guessing. It is tested on a fixed set of compliance questions so that it does not screen a place, a role or a phrase from your question as if it were a name.</li>
 </ul>
 <h2>Sanctions screening is a screening aid</h2>
 <ul>

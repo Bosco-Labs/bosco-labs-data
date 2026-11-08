@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sanctions Screening API: OFAC SDN, UK and EU lists</title>
-<meta name="description" content="Is this company, vessel or person sanctioned? Screen names against OFAC SDN, the US Consolidated Screening List, UK and EU sanctions lists.">
+<title>Sanctions Screening API: OFAC SDN, UN, UK and EU lists</title>
+<meta name="description" content="Is this company, vessel or person sanctioned? Screen names against OFAC SDN, the US Consolidated Screening List, UN, UK and EU sanctions lists.">
 <link rel="canonical" href="https://boscolabs.dev/sanctions-screening.html">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="logo.svg" type="image/svg+xml">
 <link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Bosco Labs">
-<meta property="og:title" content="Sanctions Screening API: OFAC SDN, UK and EU lists">
-<meta property="og:description" content="Is this company, vessel or person sanctioned? Screen names against OFAC SDN, the US Consolidated Screening List, UK and EU sanctions lists.">
+<meta property="og:title" content="Sanctions Screening API: OFAC SDN, UN, UK and EU lists">
+<meta property="og:description" content="Is this company, vessel or person sanctioned? Screen names against OFAC SDN, the US Consolidated Screening List, UN, UK and EU sanctions lists.">
 <meta property="og:url" content="https://boscolabs.dev/sanctions-screening.html">
 <meta property="og:image" content="https://boscolabs.dev/icons/sanctions-screening.png">
 <meta name="twitter:card" content="summary">
@@ -21,8 +21,8 @@
 {
  "@context": "https://schema.org",
  "@type": "SoftwareApplication",
- "name": "Sanctions Screening API: OFAC, UK, EU & US export lists",
- "description": "Is this company, vessel or person sanctioned? Returns per name: match yes/no, the listed entry, aliases, programs, listing date, identifiers and a source link, from the official OFAC SDN and non-SDN, US Consolidated Screening List, UK Sanctions List and EU lists, with each list's date.",
+ "name": "Sanctions Screening API: OFAC, UK, EU, UN & US lists",
+ "description": "Sanctions search: is this company, vessel, person or crypto wallet sanctioned? Per name or address: match yes/no, the listed entry, aliases, programs, listing date and a source link, from OFAC SDN and non-SDN, the US Consolidated Screening List, UK, EU and UN Security Council lists.",
  "url": "https://boscolabs.dev/sanctions-screening.html",
  "image": "https://boscolabs.dev/icons/sanctions-screening.png",
  "applicationCategory": "DeveloperApplication",
@@ -82,12 +82,21 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <main class="wrap">
 <p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#compliance-law">Compliance &amp; law</a></p>
 <article>
-<div class="head"><img src="icons/sanctions-screening.svg" alt="" width="84" height="84"><div><h1>Sanctions Screening API: OFAC, UK, EU &amp; US export lists</h1><span class="badge live">On Apify Store</span></div></div>
+<div class="head"><img src="icons/sanctions-screening.svg" alt="" width="84" height="84"><div><h1>Sanctions Screening API: OFAC, UK, EU, UN &amp; US lists</h1><span class="badge live">On Apify Store</span></div></div>
 <div class="prose">
-<p class="lead"><strong>Answers &quot;is this company, vessel or person sanctioned?&quot;</strong> for one or many names, against the official OFAC SDN and non-SDN lists, the US Consolidated Screening List (Commerce Entity List, Denied Persons, State lists), the UK Sanctions List and the EU financial sanctions list. Every answer says which lists were checked and how current they were, and every match links to its official source. Built for <strong>AI agents</strong> doing KYB, compliance or procurement checks, and for people who need a quick, sourced screen. It also checks <strong>crypto wallet addresses</strong> exactly against the addresses OFAC lists (XBT, ETH, USDT, TRX and more), e.g. before an agent pays.</p>
-<div class="facts"><div class="fact"><b>Price</b>$0.01 per name or wallet address screened</div><div class="fact"><b>Domain</b>Compliance &amp; law</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
+<p class="lead"><strong>Answers &quot;is this company, vessel or person sanctioned?&quot;</strong> for one or many names, against the official OFAC SDN and non-SDN lists, the US Consolidated Screening List (Commerce Entity List, Denied Persons, State lists), the UK Sanctions List, the EU financial sanctions list and the UN Security Council list. Every answer says which lists were checked and how current they were, and every match links to its official source. Built for <strong>AI agents</strong> doing KYB, compliance or procurement checks, and for people who need a quick, sourced screen. It also checks <strong>crypto wallet addresses</strong> exactly against the addresses OFAC lists (XBT, ETH, USDT, TRX and more), e.g. before an agent pays.</p>
+<div class="facts"><div class="fact"><b>Price</b>$0.01 per name or wallet address screened</div><div class="fact"><b>Domain</b>Compliance &amp; law</div><div class="fact"><b>Get it on</b><a href="#where">Apify Store, HTTP API, MCP, x402, Local MCP server</a></div></div>
 <p><strong>Pricing (pay per event):</strong> $0.01 per name or wallet address screened, match or no match. An address that none of the selected lists publishes wallets for is answered free, and a run that cannot load any list fails and costs nothing.</p>
 <div class="actions"><a class="btn" href="https://apify.com/bosco_labs/sanctions-screening">Run it on Apify Store &rarr;</a></div>
+<h2 id="where">Where to get it</h2>
+<p>The same data and the same rows on every channel; pick the one your agent or code already uses.</p>
+<div class="table"><table><thead><tr><th>Channel</th><th>How</th><th>Pay</th></tr></thead><tbody>
+<tr><td>Apify Store</td><td><a href="https://apify.com/bosco_labs/sanctions-screening">apify.com/bosco_labs/sanctions-screening</a>: run it in the Apify Console, by the Apify API or from Apify's MCP server (<code>https://mcp.apify.com?tools=bosco_labs/sanctions-screening</code>)</td><td>$0.01 per name or wallet address screened, billed to your Apify account</td></tr>
+<tr><td>HTTP API</td><td><code>POST https://api.boscolabs.dev/v1/sanctions-screening</code> with your key (<a href="api.html#key">get a key</a>, $0.50 free trial)</td><td>$0.01 per name or wallet address screened (an address no list could be checked against is free), prepaid credits</td></tr>
+<tr><td>MCP</td><td><code>https://api.boscolabs.dev/mcp</code> (remote, same key) or <code>https://api.boscolabs.dev/mcp/free</code> (no key: find and plan) &middot; <a href="api.html#mcp">setup</a></td><td>$0.01 per name or wallet address screened (an address no list could be checked against is free), prepaid credits</td></tr>
+<tr><td>x402</td><td><code>POST https://api.boscolabs.dev/v1/sanctions-screening</code> without a key: pay per call, no account (<a href="api.html#x402">how</a>)</td><td>$0.01 per name or wallet address screened (an address no list could be checked against is free), in USDC on Base</td></tr>
+<tr><td>Local MCP server</td><td><code>uvx bosco-labs-data-mcp</code> with your <code>APIFY_TOKEN</code> (<a href="https://pypi.org/project/bosco-labs-data-mcp/">PyPI</a>)</td><td>Apify Store price, billed to your Apify account</td></tr>
+</tbody></table></div>
 <h2>Questions agents ask</h2>
 <ul class="qs"><li>&ldquo;Before we sign with these suppliers, check whether Sovcomflot or Novo Nordisk A/S are on any sanctions list, and cite the lists you checked.&rdquo;</li></ul>
 </div>
@@ -179,7 +188,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <tr><td><code>country</code></td><td>string</td><td>Country of the party you are screening, as an ISO 3166 alpha-2 code or English name, e.g. &quot;RU&quot; or &quot;Russia&quot;. It never hides a match: listings that name other countries move to the end and get country_match false. Empty = no country ranking.</td></tr>
 <tr><td><code>entityType</code></td><td>string</td><td>Only return listings of this type, e.g. &quot;organization&quot;. Default &quot;any&quot;. Listings whose type the list does not state (the US Commerce and State lists) are always kept.</td></tr>
 <tr><td><code>minScore</code></td><td>integer</td><td>Lowest similarity score (0-100) that counts as a match, e.g. 85 (default). 100 = same name after normalisation; 90-99 = small spelling differences or the name inside a longer listed name; lower values find more variants and more false positives. Range 50-100.</td></tr>
-<tr><td><code>lists</code></td><td>array</td><td>Which lists to check, any of &quot;ofac_sdn&quot;, &quot;ofac_consolidated&quot;, &quot;us_csl&quot;, &quot;uk&quot;, &quot;eu&quot;, e.g. [&quot;ofac_sdn&quot;, &quot;uk&quot;]. Default (or empty) = all five. The price is the same for any number of lists.</td></tr>
+<tr><td><code>lists</code></td><td>array</td><td>Which lists to check, any of &quot;ofac_sdn&quot;, &quot;ofac_consolidated&quot;, &quot;us_csl&quot;, &quot;uk&quot;, &quot;eu&quot;, &quot;un&quot;, e.g. [&quot;ofac_sdn&quot;, &quot;uk&quot;]. Default (or empty) = all six. The price is the same for any number of lists.</td></tr>
 </tbody></table></div>
 <h2>Sources, licence and limits</h2>
 <p><strong>Is this legal advice or a compliance decision?</strong> No. It is a screening aid. Fuzzy name matching produces false positives (a namesake) and can miss a party listed under a spelling or script it doesn&#x27;t recognise. Review every match against the official entry (<code>source_url</code>) before acting, and use your own judgement or counsel for decisions. Only the official publications are authoritative (for the EU, the Official Journal).</p>
@@ -190,13 +199,14 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <tr><td><code>us_csl</code> Consolidated Screening List: Entity List, Denied Persons, Unverified, Military End User (Commerce/BIS); ITAR debarred, Nonproliferation (State)</td><td>US ITA</td><td>6,213</td></tr>
 <tr><td><code>uk</code> UK Sanctions List (replaced the OFSI list on 28 Jan 2026)</td><td>UK FCDO</td><td>6,420</td></tr>
 <tr><td><code>eu</code> EU Consolidated Financial Sanctions List</td><td>European Commission</td><td>6,269</td></tr>
+<tr><td><code>un</code> UN Security Council Consolidated List (added 2026-11-08)</td><td>United Nations</td><td>1,007</td></tr>
 </tbody></table></div>
 <p>The CSL&#x27;s Treasury sub-lists are skipped because the same entries come from OFAC directly.</p>
-<p><strong>What is not covered?</strong> The UN Security Council list is not used directly (its terms don&#x27;t allow redistribution), but UN designations are largely included in the UK and EU lists. National lists of other countries, PEPs (politically exposed persons), adverse media, ownership (the OFAC 50% rule: companies owned by listed parties are often not listed themselves) and EU sectoral or vessel annexes outside the financial sanctions list are not covered.</p>
+<p><strong>What is not covered?</strong> National lists of other countries, PEPs (politically exposed persons), adverse media, ownership (the OFAC 50% rule: companies owned by listed parties are often not listed themselves) and EU sectoral or vessel annexes outside the financial sanctions list are not covered.</p>
 <p><strong>How fresh is it?</strong> Each run uses the lists as published at most 1 hour earlier; older copies are downloaded again. <code>lists_checked</code> shows each list&#x27;s own publish date. Agencies publish on their own schedule (OFAC and the CSL often daily, the UK and EU when designations change).</p>
 <p><strong>Why is <code>listing_date</code> null for OFAC?</strong> OFAC&#x27;s standard XML doesn&#x27;t include designation dates (only its 110 MB &quot;enhanced&quot; file does). Check the OFAC entry page in <code>source_url</code>.</p>
 <p><strong>Personal data?</strong> The lists name individuals. This Actor serves only per-name screening results (at most 5 listings per name, no bulk export) for sanctions compliance, and keeps only the fields needed to confirm or rule out a match. See <code>LEGAL.md</code>.</p>
-<p><strong>Attribution.</strong> OFAC and CSL data are US government works. This product uses the International Trade Administration&#x27;s Data API but is not endorsed or certified by the International Trade Administration. Contains public sector information licensed under the Open Government Licence v3.0 (UK Sanctions List). EU data: European Commission, Consolidated list of persons, groups and entities subject to EU financial sanctions; reformatted for matching, names as published. No endorsement by any publisher is implied.</p>
+<p><strong>Attribution.</strong> OFAC and CSL data are US government works. This product uses the International Trade Administration&#x27;s Data API but is not endorsed or certified by the International Trade Administration. Contains public sector information licensed under the Open Government Licence v3.0 (UK Sanctions List). EU data: European Commission, Consolidated list of persons, groups and entities subject to EU financial sanctions; reformatted for matching, names as published. UN data: United Nations Security Council Consolidated List. No endorsement by any publisher is implied.</p>
 <div class="actions"><a class="btn" href="https://apify.com/bosco_labs/sanctions-screening">Run it on Apify Store &rarr;</a></div>
 </div>
 </article>

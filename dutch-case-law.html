@@ -84,9 +84,16 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <div class="head"><img src="icons/dutch-case-law.svg" alt="" width="84" height="84"><div><h1>Dutch Case Law API (Rechtspraak): ECLI lookup, uitspraken</h1><span class="badge live">On the HTTP API</span></div></div>
 <div class="prose">
 <p class="lead"><strong>Look up Dutch court decisions (uitspraken) by ECLI, or search them by court, legal area, date and keywords</strong>: court, decision and publication dates, case numbers, legal areas, procedure, the court&#x27;s own summary (inhoudsindicatie), appeal / cassation / Advocate-General relations, referenced laws, and optionally the full text. Built for <strong>AI agents</strong> doing legal and compliance research, and for people who want Rechtspraak data as clean JSON.</p>
-<div class="facts"><div class="fact"><b>Price</b>$0.005 per court decision returned (HTTP API)</div><div class="fact"><b>Domain</b>Compliance &amp; law</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
+<div class="facts"><div class="fact"><b>Price</b>$0.005 per court decision returned (HTTP API)</div><div class="fact"><b>Domain</b>Compliance &amp; law</div><div class="fact"><b>Get it on</b><a href="#where">HTTP API, MCP, x402</a></div></div>
 <p><strong>Pricing (pay per event):</strong> $0.005 per decision returned (<code>decision</code>). An unknown ECLI, bad input or an empty search costs nothing.</p>
 <div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a></div>
+<h2 id="where">Where to get it</h2>
+<p>The same data and the same rows on every channel; pick the one your agent or code already uses.</p>
+<div class="table"><table><thead><tr><th>Channel</th><th>How</th><th>Pay</th></tr></thead><tbody>
+<tr><td>HTTP API</td><td><code>POST https://api.boscolabs.dev/v1/dutch-case-law</code> with your key (<a href="api.html#key">get a key</a>, $0.50 free trial)</td><td>$0.005 per court decision returned, prepaid credits</td></tr>
+<tr><td>MCP</td><td><code>https://api.boscolabs.dev/mcp</code> (remote, same key) or <code>https://api.boscolabs.dev/mcp/free</code> (no key: find and plan) &middot; <a href="api.html#mcp">setup</a></td><td>$0.005 per court decision returned, prepaid credits</td></tr>
+<tr><td>x402</td><td><code>POST https://api.boscolabs.dev/v1/dutch-case-law</code> without a key: pay per call, no account (<a href="api.html#x402">how</a>)</td><td>$0.005 per court decision returned, in USDC on Base</td></tr>
+</tbody></table></div>
 <h2>Questions agents ask</h2>
 <ul class="qs"><li>&ldquo;Find Hoge Raad rulings on tenancy law (huurrecht) since 2024 and summarise what each one decided, with links.&rdquo;</li></ul>
 </div>

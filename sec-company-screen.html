@@ -84,9 +84,16 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <div class="head"><img src="icons/sec-company-screen.svg" alt="" width="84" height="84"><div><h1>SEC Company Screener API: filter all US filers by financials</h1><span class="badge live">On the HTTP API</span></div></div>
 <div class="prose">
 <p class="lead"><strong>Screen every US company that files with the SEC</strong> by revenue, profit, margins, cash flow and balance sheet for one calendar year or quarter: &quot;revenue over $10B and net margin above 20% in 2025&quot;, &quot;top 20 by operating cash flow&quot;. For analysts, finance apps and AI agents. Every value cites <strong>the XBRL tag and the SEC filing it came from</strong>.</p>
-<div class="facts"><div class="fact"><b>Price</b>$0.002 per company returned (HTTP API)</div><div class="fact"><b>Domain</b>Finance &amp; SEC</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
+<div class="facts"><div class="fact"><b>Price</b>$0.002 per company returned (HTTP API)</div><div class="fact"><b>Domain</b>Finance &amp; SEC</div><div class="fact"><b>Get it on</b><a href="#where">HTTP API, MCP, x402</a></div></div>
 <p><strong>Pricing (pay per event):</strong> $0.002 per company returned ($2 per 1,000). A top 20 costs $0.04, the default 50 rows $0.10. <code>maxResults</code> caps the cost; screens that match nothing or fail are free.</p>
 <div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a></div>
+<h2 id="where">Where to get it</h2>
+<p>The same data and the same rows on every channel; pick the one your agent or code already uses.</p>
+<div class="table"><table><thead><tr><th>Channel</th><th>How</th><th>Pay</th></tr></thead><tbody>
+<tr><td>HTTP API</td><td><code>POST https://api.boscolabs.dev/v1/sec-company-screen</code> with your key (<a href="api.html#key">get a key</a>, $0.50 free trial)</td><td>$0.002 per company returned, prepaid credits</td></tr>
+<tr><td>MCP</td><td><code>https://api.boscolabs.dev/mcp</code> (remote, same key) or <code>https://api.boscolabs.dev/mcp/free</code> (no key: find and plan) &middot; <a href="api.html#mcp">setup</a></td><td>$0.002 per company returned, prepaid credits</td></tr>
+<tr><td>x402</td><td><code>POST https://api.boscolabs.dev/v1/sec-company-screen</code> without a key: pay per call, no account (<a href="api.html#x402">how</a>)</td><td>$0.002 per company returned, in USDC on Base</td></tr>
+</tbody></table></div>
 <h2>Questions agents ask</h2>
 <ul class="qs"><li>&ldquo;Which US companies had revenue over $10B and net margin above 20% in fiscal 2025?&rdquo;</li><li>&ldquo;Top 20 US companies by operating cash flow in 2025.&rdquo;</li><li>&ldquo;Which companies with a ticker had an operating margin above 30% in Q3 2025?&rdquo;</li></ul>
 </div>

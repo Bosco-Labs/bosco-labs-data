@@ -85,9 +85,18 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <div class="head"><img src="icons/drug-safety.svg" alt="" width="84" height="84"><div><h1>Drug Safety API: FDA label, FAERS, recalls, EMA status</h1><span class="badge live">On Apify Store</span></div></div>
 <div class="prose">
 <p class="lead"><strong>Answers &quot;is this drug safe, and where does it stand with regulators?&quot; in one call</strong>: the FDA boxed warning and indications, the most reported FAERS adverse reactions (counts), US recalls and shortages, and EU authorisation, EPAR link and EU shortages, for one drug name, with a source link for every section. Built for <strong>AI agents</strong> and people in pharma, health tech, pharmacy, compliance and investing.</p>
-<div class="facts"><div class="fact"><b>Price</b>$0.02 per dossier or $0.004 per single-section query</div><div class="fact"><b>Domain</b>Macro, health &amp; places</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
+<div class="facts"><div class="fact"><b>Price</b>$0.02 per dossier or $0.004 per single-section query</div><div class="fact"><b>Domain</b>Macro, health &amp; places</div><div class="fact"><b>Get it on</b><a href="#where">Apify Store, HTTP API, MCP, x402, Local MCP server</a></div></div>
 <p><strong>Pricing (pay per event):</strong> $0.02 per <code>dossier</code> (all five sections), or $0.004 per <code>drug-query</code> for one section. Invalid input, unknown drugs, empty answers and partial answers (a source failed) cost nothing.</p>
 <div class="actions"><a class="btn" href="https://apify.com/bosco_labs/drug-safety">Run it on Apify Store &rarr;</a></div>
+<h2 id="where">Where to get it</h2>
+<p>The same data and the same rows on every channel; pick the one your agent or code already uses.</p>
+<div class="table"><table><thead><tr><th>Channel</th><th>How</th><th>Pay</th></tr></thead><tbody>
+<tr><td>Apify Store</td><td><a href="https://apify.com/bosco_labs/drug-safety">apify.com/bosco_labs/drug-safety</a>: run it in the Apify Console, by the Apify API or from Apify's MCP server (<code>https://mcp.apify.com?tools=bosco_labs/drug-safety</code>)</td><td>$0.02 per dossier or $0.004 per single-section query, billed to your Apify account</td></tr>
+<tr><td>HTTP API</td><td><code>POST https://api.boscolabs.dev/v1/drug-safety</code> with your key (<a href="api.html#key">get a key</a>, $0.50 free trial)</td><td>$0.004 per sub-query; a full dossier = 5 units ($0.02); partial answers are free, prepaid credits</td></tr>
+<tr><td>MCP</td><td><code>https://api.boscolabs.dev/mcp</code> (remote, same key) or <code>https://api.boscolabs.dev/mcp/free</code> (no key: find and plan) &middot; <a href="api.html#mcp">setup</a></td><td>$0.004 per sub-query; a full dossier = 5 units ($0.02); partial answers are free, prepaid credits</td></tr>
+<tr><td>x402</td><td><code>POST https://api.boscolabs.dev/v1/drug-safety</code> without a key: pay per call, no account (<a href="api.html#x402">how</a>)</td><td>$0.004 per sub-query; a full dossier = 5 units ($0.02); partial answers are free, in USDC on Base</td></tr>
+<tr><td>Local MCP server</td><td><code>uvx bosco-labs-data-mcp</code> with your <code>APIFY_TOKEN</code> (<a href="https://pypi.org/project/bosco-labs-data-mcp/">PyPI</a>)</td><td>Apify Store price, billed to your Apify account</td></tr>
+</tbody></table></div>
 <h2>Questions agents ask</h2>
 <ul class="qs"><li>&ldquo;Does semaglutide have a boxed warning, what are its most reported adverse reactions, and is it authorised in the EU? Cite the sources.&rdquo;</li></ul>
 </div>

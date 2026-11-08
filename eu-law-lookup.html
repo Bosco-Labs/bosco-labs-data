@@ -85,9 +85,18 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <div class="head"><img src="icons/eu-law-lookup.svg" alt="" width="84" height="84"><div><h1>EU Law Lookup API (EUR-Lex): article text, in force, amendments</h1><span class="badge live">On Apify Store</span></div></div>
 <div class="prose">
 <p class="lead"><strong>One call answers &quot;what does Article 50 of the AI Act say today, is it in force, and what amended it?&quot;</strong>: the article as plain text from the current consolidated version (or the one in force on any date), the act&#x27;s in-force status and dates, and the acts that amend, correct or repeal it. A second mode lists new acts in the Official Journal L series. Built for <strong>AI agents</strong> doing legal and compliance work, and for people who want a sourced answer without SPARQL.</p>
-<div class="facts"><div class="fact"><b>Price</b>$0.005 per act or article returned</div><div class="fact"><b>Domain</b>Compliance &amp; law</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
+<div class="facts"><div class="fact"><b>Price</b>$0.005 per act or article returned</div><div class="fact"><b>Domain</b>Compliance &amp; law</div><div class="fact"><b>Get it on</b><a href="#where">Apify Store, HTTP API, MCP, x402, Local MCP server</a></div></div>
 <p><strong>Pricing (pay per event):</strong> $0.005 per act or article returned (<code>act-lookup</code>). A citation that can&#x27;t be read, or an article that doesn&#x27;t exist, fails in seconds and costs nothing.</p>
 <div class="actions"><a class="btn" href="https://apify.com/bosco_labs/eu-law-lookup">Run it on Apify Store &rarr;</a></div>
+<h2 id="where">Where to get it</h2>
+<p>The same data and the same rows on every channel; pick the one your agent or code already uses.</p>
+<div class="table"><table><thead><tr><th>Channel</th><th>How</th><th>Pay</th></tr></thead><tbody>
+<tr><td>Apify Store</td><td><a href="https://apify.com/bosco_labs/eu-law-lookup">apify.com/bosco_labs/eu-law-lookup</a>: run it in the Apify Console, by the Apify API or from Apify's MCP server (<code>https://mcp.apify.com?tools=bosco_labs/eu-law-lookup</code>)</td><td>$0.005 per act or article returned, billed to your Apify account</td></tr>
+<tr><td>HTTP API</td><td><code>POST https://api.boscolabs.dev/v1/eu-law-lookup</code> with your key (<a href="api.html#key">get a key</a>, $0.50 free trial)</td><td>$0.005 per act or article returned, prepaid credits</td></tr>
+<tr><td>MCP</td><td><code>https://api.boscolabs.dev/mcp</code> (remote, same key) or <code>https://api.boscolabs.dev/mcp/free</code> (no key: find and plan) &middot; <a href="api.html#mcp">setup</a></td><td>$0.005 per act or article returned, prepaid credits</td></tr>
+<tr><td>x402</td><td><code>POST https://api.boscolabs.dev/v1/eu-law-lookup</code> without a key: pay per call, no account (<a href="api.html#x402">how</a>)</td><td>$0.005 per act or article returned, in USDC on Base</td></tr>
+<tr><td>Local MCP server</td><td><code>uvx bosco-labs-data-mcp</code> with your <code>APIFY_TOKEN</code> (<a href="https://pypi.org/project/bosco-labs-data-mcp/">PyPI</a>)</td><td>Apify Store price, billed to your Apify account</td></tr>
+</tbody></table></div>
 <h2>Questions agents ask</h2>
 <ul class="qs"><li>&ldquo;What does Article 50 of the AI Act require today, and has it been amended? Quote the text and link the source.&rdquo;</li></ul>
 </div>

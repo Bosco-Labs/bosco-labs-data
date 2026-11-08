@@ -22,7 +22,7 @@
  "@context": "https://schema.org",
  "@type": "SoftwareApplication",
  "name": "EU Public Tenders & Contract Awards API (TED procurement)",
- "description": "EU public procurement notices from TED, the EU's official tenders journal (EU, EEA and more, since 2016): open calls with deadlines, contract awards with winners and values, prior information. Filter by keyword, buyer country, CPV code, notice type, date and EUR value. Use for tender alerts.",
+ "description": "EU public procurement and government tenders from TED, the EU's official tenders journal (EU, EEA, since 2016): open calls with deadlines, contract awards with winners and values. Filter by keyword, buyer country, CPV code, notice type, date and EUR value. An API, no scraper to maintain.",
  "url": "https://boscolabs.dev/eu-tenders.html",
  "image": "https://boscolabs.dev/icons/eu-tenders.png",
  "applicationCategory": "DeveloperApplication",
@@ -85,9 +85,18 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <div class="head"><img src="icons/eu-tenders.svg" alt="" width="84" height="84"><div><h1>EU Public Tenders &amp; Contract Awards API (TED procurement)</h1><span class="badge live">On Apify Store</span></div></div>
 <div class="prose">
 <p class="lead">Get <strong>European public tenders and contract awards as clean, predictable JSON</strong> from TED, filtered by keyword, buyer country, CPV code, notice type, date and value: open calls for tenders with their deadline and estimated value, award notices with the winning companies and the awarded amount, and prior information notices about planned purchases. One row per notice, the same field names for every country and notice form. For bid teams, tender-alert services, market researchers and AI agents.</p>
-<div class="facts"><div class="fact"><b>Price</b>$0.002 per notice</div><div class="fact"><b>Domain</b>Government &amp; procurement</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
+<div class="facts"><div class="fact"><b>Price</b>$0.002 per notice</div><div class="fact"><b>Domain</b>Government &amp; procurement</div><div class="fact"><b>Get it on</b><a href="#where">Apify Store, HTTP API, MCP, x402, Local MCP server</a></div></div>
 <p><strong>Pricing (pay per event):</strong> $0.002 per notice ($2 per 1,000 notices), no start fee. You only pay for notices delivered, a notice is never charged twice in the same run, and the Actor stops at your max charge limit. With <code>onlyNewSinceLastRun</code>, scheduled runs only pay for notices you haven&#x27;t received yet.</p>
 <div class="actions"><a class="btn" href="https://apify.com/bosco_labs/eu-tenders">Run it on Apify Store &rarr;</a></div>
+<h2 id="where">Where to get it</h2>
+<p>The same data and the same rows on every channel; pick the one your agent or code already uses.</p>
+<div class="table"><table><thead><tr><th>Channel</th><th>How</th><th>Pay</th></tr></thead><tbody>
+<tr><td>Apify Store</td><td><a href="https://apify.com/bosco_labs/eu-tenders">apify.com/bosco_labs/eu-tenders</a>: run it in the Apify Console, by the Apify API or from Apify's MCP server (<code>https://mcp.apify.com?tools=bosco_labs/eu-tenders</code>)</td><td>$0.002 per notice, billed to your Apify account</td></tr>
+<tr><td>HTTP API</td><td><code>POST https://api.boscolabs.dev/v1/eu-tenders</code> with your key (<a href="api.html#key">get a key</a>, $0.50 free trial)</td><td>$0.002 per TED notice, prepaid credits</td></tr>
+<tr><td>MCP</td><td><code>https://api.boscolabs.dev/mcp</code> (remote, same key) or <code>https://api.boscolabs.dev/mcp/free</code> (no key: find and plan) &middot; <a href="api.html#mcp">setup</a></td><td>$0.002 per TED notice, prepaid credits</td></tr>
+<tr><td>x402</td><td><code>POST https://api.boscolabs.dev/v1/eu-tenders</code> without a key: pay per call, no account (<a href="api.html#x402">how</a>)</td><td>$0.002 per TED notice, in USDC on Base</td></tr>
+<tr><td>Local MCP server</td><td><code>uvx bosco-labs-data-mcp</code> with your <code>APIFY_TOKEN</code> (<a href="https://pypi.org/project/bosco-labs-data-mcp/">PyPI</a>)</td><td>Apify Store price, billed to your Apify account</td></tr>
+</tbody></table></div>
 <h2>Questions agents ask</h2>
 <ul class="qs"><li>&ldquo;Find open IT tenders above 1 million euros in Germany and the Netherlands from the last two weeks and list their deadlines.&rdquo;</li><li>&ldquo;Which companies won construction contracts from Polish buyers last month, and for how much?&rdquo;</li><li>&ldquo;Alert me to new cloud hosting tenders in the Nordics every morning.&rdquo;</li></ul>
 </div>

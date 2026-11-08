@@ -22,7 +22,7 @@
  "@context": "https://schema.org",
  "@type": "SoftwareApplication",
  "name": "SEC EDGAR Filings API: 8-K, 10-K, 10-Q feed since 1994",
- "description": "SEC EDGAR filings (8-K, 10-K, 10-Q, S-1, 13D, 13G, Form 4 and every other form) for any company or the whole market, live or back to 1994, from the SEC's own feeds. Filter by ticker, CIK, form, 8-K item and date; flags earnings releases (Item 2.02). Returns links to each filing, not its text.",
+ "description": "SEC EDGAR filings (8-K, 10-K, 10-Q, S-1, 13D, 13G, Form 4 and every other form) for any company or the whole market, live or back to 1994, from the SEC's own feeds: no scraper to maintain. Filter by ticker, CIK, form, 8-K item and date; flags earnings releases. Returns filing links, not text.",
  "url": "https://boscolabs.dev/sec-filings-feed.html",
  "image": "https://boscolabs.dev/icons/sec-filings-feed.png",
  "applicationCategory": "DeveloperApplication",
@@ -85,9 +85,18 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <div class="head"><img src="icons/sec-filings-feed.svg" alt="" width="84" height="84"><div><h1>SEC EDGAR Filings API: 8-K, 10-K, 10-Q feed since 1994</h1><span class="badge live">On Apify Store</span></div></div>
 <div class="prose">
 <p class="lead">Get <strong>SEC EDGAR filings as clean JSON</strong>: 8-K current reports, 10-K annual reports, 10-Q, S-1, 13D, 13G, Form 4, DEF 14A, 20-F and every other form, for one company, a watchlist or the whole market, from filings accepted minutes ago back to 1994. Each row has the company, CIK, ticker, form, filing date and exact acceptance time, the <strong>8-K item codes</strong> (2.02 earnings, 5.02 officer changes, 1.01 material agreements, ...) and direct links to the filing and its main document. For investors, news and alert services, compliance teams and AI agents.</p>
-<div class="facts"><div class="fact"><b>Price</b>$0.001 per filing</div><div class="fact"><b>Domain</b>Finance &amp; SEC</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
+<div class="facts"><div class="fact"><b>Price</b>$0.001 per filing</div><div class="fact"><b>Domain</b>Finance &amp; SEC</div><div class="fact"><b>Get it on</b><a href="#where">Apify Store, HTTP API, MCP, x402, Local MCP server</a></div></div>
 <p><strong>Pricing (pay per event):</strong> $0.001 per filing ($1 per 1,000). No start fee. You only pay for filings delivered, a scheduled feed never charges the same filing twice, and the Actor stops at your max charge limit.</p>
 <div class="actions"><a class="btn" href="https://apify.com/bosco_labs/sec-filings-feed">Run it on Apify Store &rarr;</a></div>
+<h2 id="where">Where to get it</h2>
+<p>The same data and the same rows on every channel; pick the one your agent or code already uses.</p>
+<div class="table"><table><thead><tr><th>Channel</th><th>How</th><th>Pay</th></tr></thead><tbody>
+<tr><td>Apify Store</td><td><a href="https://apify.com/bosco_labs/sec-filings-feed">apify.com/bosco_labs/sec-filings-feed</a>: run it in the Apify Console, by the Apify API or from Apify's MCP server (<code>https://mcp.apify.com?tools=bosco_labs/sec-filings-feed</code>)</td><td>$0.001 per filing, billed to your Apify account</td></tr>
+<tr><td>HTTP API</td><td><code>POST https://api.boscolabs.dev/v1/sec-filings-feed</code> with your key (<a href="api.html#key">get a key</a>, $0.50 free trial)</td><td>$0.001 per filing, prepaid credits</td></tr>
+<tr><td>MCP</td><td><code>https://api.boscolabs.dev/mcp</code> (remote, same key) or <code>https://api.boscolabs.dev/mcp/free</code> (no key: find and plan) &middot; <a href="api.html#mcp">setup</a></td><td>$0.001 per filing, prepaid credits</td></tr>
+<tr><td>x402</td><td><code>POST https://api.boscolabs.dev/v1/sec-filings-feed</code> without a key: pay per call, no account (<a href="api.html#x402">how</a>)</td><td>$0.001 per filing, in USDC on Base</td></tr>
+<tr><td>Local MCP server</td><td><code>uvx bosco-labs-data-mcp</code> with your <code>APIFY_TOKEN</code> (<a href="https://pypi.org/project/bosco-labs-data-mcp/">PyPI</a>)</td><td>Apify Store price, billed to your Apify account</td></tr>
+</tbody></table></div>
 <h2>Questions agents ask</h2>
 <ul class="qs"><li>&ldquo;When did Nvidia release its last four quarterly results, and was it before or after the market closed?&rdquo;</li><li>&ldquo;Which companies filed a 13D in the last 7 days, and who filed it?&rdquo;</li><li>&ldquo;Give me links to Apple&#x27;s 10-K annual reports since 2015.&rdquo;</li></ul>
 </div>

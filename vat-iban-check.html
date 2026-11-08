@@ -84,9 +84,16 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <div class="head"><img src="icons/vat-iban-check.svg" alt="" width="84" height="84"><div><h1>VAT Number &amp; IBAN Check API: EU VIES + IBAN validation</h1><span class="badge live">On the HTTP API</span></div></div>
 <div class="prose">
 <p class="lead"><strong>Answers &quot;is this EU VAT number registered, to whom, and is this IBAN real?&quot;</strong> One row per VAT number, checked live against the European Commission&#x27;s VIES service (valid, registered name and address, a name match against the company you expect), and one row per IBAN, checked against ISO 13616 (check digits, length and layout per country, bank code, country match). Built for <strong>AI agents</strong> doing supplier onboarding, invoice checks and KYB, and for finance teams who want one sourced answer per number.</p>
-<div class="facts"><div class="fact"><b>Price</b>$0.002 per definite check (VAT number answered by VIES, or a valid IBAN); malformed, failed and unverified are free (HTTP API)</div><div class="fact"><b>Domain</b>Companies</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
+<div class="facts"><div class="fact"><b>Price</b>$0.002 per definite check (VAT number answered by VIES, or a valid IBAN); malformed, failed and unverified are free (HTTP API)</div><div class="fact"><b>Domain</b>Companies</div><div class="fact"><b>Get it on</b><a href="#where">HTTP API, MCP, x402</a></div></div>
 <p><strong>Pricing (pay per event):</strong> $0.002 per check with a definite answer (<code>check</code>): a VAT number VIES answered valid or not valid, or a valid IBAN. Malformed numbers and anything VIES could not answer (&quot;unverified&quot;) cost nothing.</p>
 <div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a></div>
+<h2 id="where">Where to get it</h2>
+<p>The same data and the same rows on every channel; pick the one your agent or code already uses.</p>
+<div class="table"><table><thead><tr><th>Channel</th><th>How</th><th>Pay</th></tr></thead><tbody>
+<tr><td>HTTP API</td><td><code>POST https://api.boscolabs.dev/v1/vat-iban-check</code> with your key (<a href="api.html#key">get a key</a>, $0.50 free trial)</td><td>$0.002 per definite check (VAT number answered by VIES, or a valid IBAN); malformed, failed and unverified are free, prepaid credits</td></tr>
+<tr><td>MCP</td><td><code>https://api.boscolabs.dev/mcp</code> (remote, same key) or <code>https://api.boscolabs.dev/mcp/free</code> (no key: find and plan) &middot; <a href="api.html#mcp">setup</a></td><td>$0.002 per definite check (VAT number answered by VIES, or a valid IBAN); malformed, failed and unverified are free, prepaid credits</td></tr>
+<tr><td>x402</td><td><code>POST https://api.boscolabs.dev/v1/vat-iban-check</code> without a key: pay per call, no account (<a href="api.html#x402">how</a>)</td><td>$0.002 per definite check (VAT number answered by VIES, or a valid IBAN); malformed, failed and unverified are free, in USDC on Base</td></tr>
+</tbody></table></div>
 <h2>Questions agents ask</h2>
 <ul class="qs"><li>&ldquo;Check that supplier VAT number IE6388047V belongs to Google Ireland and that IBAN NL91ABNA0417164300 is valid.&rdquo;</li></ul>
 </div>

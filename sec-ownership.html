@@ -85,9 +85,18 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <div class="head"><img src="icons/sec-ownership.svg" alt="" width="84" height="84"><div><h1>SEC Ownership API: 13F, N-PORT Fund Holdings, 13D/13G, Form 144</h1><span class="badge live">On Apify Store</span></div></div>
 <div class="prose">
 <p class="lead"><strong>Who owns a stock and who is about to sell it, from official SEC filings</strong>: what a fund such as Berkshire Hathaway holds (13F, with changes vs the previous quarter), what a mutual fund or ETF such as VOO or ARKK holds (N-PORT), which managers and funds hold a ticker, who filed a 5%+ stake (13D activist, 13G passive), and which insiders filed to sell (Form 144). For investors, analysts and AI agents.</p>
-<div class="facts"><div class="fact"><b>Price</b>$0.0018 per row, plus $0.01 per &quot;who holds this stock&quot; search (13F or N-PORT data set)</div><div class="fact"><b>Domain</b>Finance &amp; SEC</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
+<div class="facts"><div class="fact"><b>Price</b>$0.0018 per row, plus $0.01 per &quot;who holds this stock&quot; search (13F or N-PORT data set)</div><div class="fact"><b>Domain</b>Finance &amp; SEC</div><div class="fact"><b>Get it on</b><a href="#where">Apify Store, HTTP API, MCP, x402, Local MCP server</a></div></div>
 <p><strong>Pricing (pay per event):</strong> $0.0018 per row ($1.80 per 1,000), plus $0.01 per &quot;who holds this stock&quot; search (13F or N-PORT data set), no start fee. Empty or failed runs cost nothing.</p>
 <div class="actions"><a class="btn" href="https://apify.com/bosco_labs/sec-ownership">Run it on Apify Store &rarr;</a></div>
+<h2 id="where">Where to get it</h2>
+<p>The same data and the same rows on every channel; pick the one your agent or code already uses.</p>
+<div class="table"><table><thead><tr><th>Channel</th><th>How</th><th>Pay</th></tr></thead><tbody>
+<tr><td>Apify Store</td><td><a href="https://apify.com/bosco_labs/sec-ownership">apify.com/bosco_labs/sec-ownership</a>: run it in the Apify Console, by the Apify API or from Apify's MCP server (<code>https://mcp.apify.com?tools=bosco_labs/sec-ownership</code>)</td><td>$0.0018 per row, plus $0.01 per &quot;who holds this stock&quot; search (13F or N-PORT data set), billed to your Apify account</td></tr>
+<tr><td>HTTP API</td><td><code>POST https://api.boscolabs.dev/v1/sec-ownership</code> with your key (<a href="api.html#key">get a key</a>, $0.50 free trial)</td><td>$0.0018 per holding, holder or filing row (one fund or company per call), prepaid credits</td></tr>
+<tr><td>MCP</td><td><code>https://api.boscolabs.dev/mcp</code> (remote, same key) or <code>https://api.boscolabs.dev/mcp/free</code> (no key: find and plan) &middot; <a href="api.html#mcp">setup</a></td><td>$0.0018 per holding, holder or filing row (one fund or company per call), prepaid credits</td></tr>
+<tr><td>x402</td><td><code>POST https://api.boscolabs.dev/v1/sec-ownership</code> without a key: pay per call, no account (<a href="api.html#x402">how</a>)</td><td>$0.0018 per holding, holder or filing row (one fund or company per call), in USDC on Base</td></tr>
+<tr><td>Local MCP server</td><td><code>uvx bosco-labs-data-mcp</code> with your <code>APIFY_TOKEN</code> (<a href="https://pypi.org/project/bosco-labs-data-mcp/">PyPI</a>)</td><td>Apify Store price, billed to your Apify account</td></tr>
+</tbody></table></div>
 <h2>Questions agents ask</h2>
 <ul class="qs"><li>&ldquo;What did Berkshire Hathaway buy and sell last quarter?&rdquo;</li><li>&ldquo;Which funds hold the most Nvidia stock?&rdquo;</li><li>&ldquo;What are ARKK&#x27;s top holdings and what did it add last quarter?&rdquo;</li><li>&ldquo;Which ETFs and mutual funds hold Palantir?&rdquo;</li><li>&ldquo;Has anyone filed an activist 13D on Peraso?&rdquo;</li><li>&ldquo;Which insiders filed to sell more than $1 million of stock this week?&rdquo;</li></ul>
 </div>

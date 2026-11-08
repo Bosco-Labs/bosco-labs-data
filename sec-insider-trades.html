@@ -85,15 +85,24 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <div class="head"><img src="icons/sec-insider-trades.svg" alt="" width="84" height="84"><div><h1>SEC Insider Trading API (Form 4): stock transactions since 2006</h1><span class="badge live">On Apify Store</span></div></div>
 <div class="prose">
 <p class="lead">Get <strong>every insider purchase and sale reported to the SEC on Form 4</strong>, from today&#x27;s filings back to 2006, as clean JSON rows: who traded (director, CEO, 10% owner), what, when, how many shares, at what price, and how many they hold afterwards. Plus <strong>cluster-buy and cluster-sell signals</strong>: the moment two or more directors or officers of the same company buy, or sell, their own stock within a few weeks. Filter by ticker, CIK, transaction code, insider role, value and date. For investors, fintech apps and AI agents.</p>
-<div class="facts"><div class="fact"><b>Price</b>$0.0018 per transaction row and $0.02 per cluster signal</div><div class="fact"><b>Domain</b>Finance &amp; SEC</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
+<div class="facts"><div class="fact"><b>Price</b>$0.0018 per transaction row and $0.02 per cluster signal</div><div class="fact"><b>Domain</b>Finance &amp; SEC</div><div class="fact"><b>Get it on</b><a href="#where">Apify Store, HTTP API, MCP, x402, Local MCP server</a></div></div>
 <p><strong>Pricing (pay per event):</strong> $0.0018 per transaction row ($1.80 per 1,000) and $0.02 per cluster signal. No start fee. You only pay for rows delivered, a transaction is never charged twice in a scheduled feed, and the Actor stops at your max charge limit.</p>
 <div class="actions"><a class="btn" href="https://apify.com/bosco_labs/sec-insider-trades">Run it on Apify Store &rarr;</a></div>
+<h2 id="where">Where to get it</h2>
+<p>The same data and the same rows on every channel; pick the one your agent or code already uses.</p>
+<div class="table"><table><thead><tr><th>Channel</th><th>How</th><th>Pay</th></tr></thead><tbody>
+<tr><td>Apify Store</td><td><a href="https://apify.com/bosco_labs/sec-insider-trades">apify.com/bosco_labs/sec-insider-trades</a>: run it in the Apify Console, by the Apify API or from Apify's MCP server (<code>https://mcp.apify.com?tools=bosco_labs/sec-insider-trades</code>)</td><td>$0.0018 per transaction row and $0.02 per cluster signal, billed to your Apify account</td></tr>
+<tr><td>HTTP API</td><td><code>POST https://api.boscolabs.dev/v1/sec-insider-trades</code> with your key (<a href="api.html#key">get a key</a>, $0.50 free trial)</td><td>$0.0002 per unit: a Form 4 transaction = 9 units ($0.0018), a cluster signal = 100 ($0.02), prepaid credits</td></tr>
+<tr><td>MCP</td><td><code>https://api.boscolabs.dev/mcp</code> (remote, same key) or <code>https://api.boscolabs.dev/mcp/free</code> (no key: find and plan) &middot; <a href="api.html#mcp">setup</a></td><td>$0.0002 per unit: a Form 4 transaction = 9 units ($0.0018), a cluster signal = 100 ($0.02), prepaid credits</td></tr>
+<tr><td>x402</td><td><code>POST https://api.boscolabs.dev/v1/sec-insider-trades</code> without a key: pay per call, no account (<a href="api.html#x402">how</a>)</td><td>$0.0002 per unit: a Form 4 transaction = 9 units ($0.0018), a cluster signal = 100 ($0.02), in USDC on Base</td></tr>
+<tr><td>Local MCP server</td><td><code>uvx bosco-labs-data-mcp</code> with your <code>APIFY_TOKEN</code> (<a href="https://pypi.org/project/bosco-labs-data-mcp/">PyPI</a>)</td><td>Apify Store price, billed to your Apify account</td></tr>
+</tbody></table></div>
 <h2>Questions agents ask</h2>
 <ul class="qs"><li>&ldquo;Did any Tesla insiders buy shares in the last 90 days?&rdquo;</li><li>&ldquo;Show insider cluster buys across the US market this month.&rdquo;</li><li>&ldquo;List Nvidia insider sales over $1 million filed in 2024, with links to the Form 4s.&rdquo;</li></ul>
 </div>
 <h2>Example</h2>
 <div class="two"><div><h3>Input</h3><pre><code>{ &quot;tickers&quot;: [&quot;NVDA&quot;, &quot;AAPL&quot;], &quot;transactionCodes&quot;: [&quot;P&quot;, &quot;S&quot;], &quot;minValueUsd&quot;: 100000,
-  &quot;dateFrom&quot;: &quot;2024-01-01&quot;, &quot;maxResults&quot;: 1000 }</code></pre></div>
+  &quot;dateFrom&quot;: &quot;2025-01-01&quot;, &quot;maxResults&quot;: 100 }</code></pre></div>
 <div><h3>Output</h3><pre><code>{
   &quot;record_type&quot;: &quot;transaction&quot;,
   &quot;accession_number&quot;: &quot;0001696841-26-000014&quot;,

@@ -85,9 +85,18 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <div class="head"><img src="icons/company-accounts.svg" alt="" width="84" height="84"><div><h1>Company Financials API: UK, Denmark &amp; Norway accounts + LEI</h1><span class="badge live">On Apify Store</span></div></div>
 <div class="prose">
 <p class="lead">Get <strong>normalized financials of UK, Danish and Norwegian companies, including private ones</strong>, straight from the official accounts they file with <strong>Companies House</strong> (UK), <strong>Erhvervsstyrelsen</strong> (Denmark) and the <strong>Brønnøysund Register of Company Accounts</strong> (Norway): revenue, gross profit, operating profit, net income, equity, net assets, current assets, cash, creditors and employees. Every number comes with <strong>the exact fact or field it was taken from</strong>, so you can audit any value. Each row also gets the company&#x27;s <strong>LEI</strong> from GLEIF when it has one. Look up companies by company number, CVR or organisation number, or get the newest filings. For credit checks, KYB, M&amp;A and lead research, and for AI agents.</p>
-<div class="facts"><div class="fact"><b>Price</b>$0.04 per company-year</div><div class="fact"><b>Domain</b>Companies</div><div class="fact"><b>Call it</b>Apify API, MCP or HTTP API</div></div>
+<div class="facts"><div class="fact"><b>Price</b>$0.04 per company-year</div><div class="fact"><b>Domain</b>Companies</div><div class="fact"><b>Get it on</b><a href="#where">Apify Store, HTTP API, MCP, x402, Local MCP server</a></div></div>
 <p><strong>Pricing (pay per event):</strong> $0.04 per company-year ($40 per 1,000 rows). Rows where the filing tags no figures at all (e.g. some dormant companies) are skipped and not charged. The Actor stops at your max charge limit.</p>
 <div class="actions"><a class="btn" href="https://apify.com/bosco_labs/company-accounts">Run it on Apify Store &rarr;</a></div>
+<h2 id="where">Where to get it</h2>
+<p>The same data and the same rows on every channel; pick the one your agent or code already uses.</p>
+<div class="table"><table><thead><tr><th>Channel</th><th>How</th><th>Pay</th></tr></thead><tbody>
+<tr><td>Apify Store</td><td><a href="https://apify.com/bosco_labs/company-accounts">apify.com/bosco_labs/company-accounts</a>: run it in the Apify Console, by the Apify API or from Apify's MCP server (<code>https://mcp.apify.com?tools=bosco_labs/company-accounts</code>)</td><td>$0.04 per company-year, billed to your Apify account</td></tr>
+<tr><td>HTTP API</td><td><code>POST https://api.boscolabs.dev/v1/company-accounts</code> with your key (<a href="api.html#key">get a key</a>, $0.50 free trial)</td><td>$0.04 per company-year, prepaid credits</td></tr>
+<tr><td>MCP</td><td><code>https://api.boscolabs.dev/mcp</code> (remote, same key) or <code>https://api.boscolabs.dev/mcp/free</code> (no key: find and plan) &middot; <a href="api.html#mcp">setup</a></td><td>$0.04 per company-year, prepaid credits</td></tr>
+<tr><td>x402</td><td><code>POST https://api.boscolabs.dev/v1/company-accounts</code> without a key: pay per call, no account (<a href="api.html#x402">how</a>)</td><td>$0.04 per company-year, in USDC on Base</td></tr>
+<tr><td>Local MCP server</td><td><code>uvx bosco-labs-data-mcp</code> with your <code>APIFY_TOKEN</code> (<a href="https://pypi.org/project/bosco-labs-data-mcp/">PyPI</a>)</td><td>Apify Store price, billed to your Apify account</td></tr>
+</tbody></table></div>
 <h2>Questions agents ask</h2>
 <ul class="qs"><li>&ldquo;What were Novo Nordisk&#x27;s revenue and equity in its latest Danish annual report?&rdquo;</li><li>&ldquo;Get the last three years of Equinor ASA&#x27;s own accounts from the Norwegian register.&rdquo;</li><li>&ldquo;What is the LEI and the latest net assets of UK company 03117531?&rdquo;</li></ul>
 </div>
