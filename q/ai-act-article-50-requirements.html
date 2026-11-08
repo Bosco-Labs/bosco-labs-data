@@ -50,7 +50,10 @@ body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--body)}h1
 a{color:var(--accent);text-underline-offset:2px}.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
 .site{border-bottom:1px solid var(--line)}.site .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;padding-top:12px;padding-bottom:12px}
 .brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-weight:650;letter-spacing:-.01em}.brand img{width:30px;height:30px}
-nav{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:.95rem}nav a{color:var(--muted);text-decoration:none}nav a:hover{color:var(--ink)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.skip{position:absolute;left:8px;top:-60px;z-index:9;background:var(--accent);color:var(--accent-fg);padding:10px 14px;border-radius:0 0 10px 10px;font-weight:650}.skip:focus{top:0}
+main,footer{overflow-wrap:break-word}.prose p,.prose li,.lead{max-width:75ch}h1.top{margin-top:40px}h1.sub{margin-top:18px}
+nav{display:flex;flex-wrap:wrap;gap:0 18px;font-size:.95rem}nav a{color:var(--muted);text-decoration:none}nav a:hover{color:var(--ink)}
 h1{font-size:clamp(1.65rem,4vw,2.4rem);line-height:1.2;letter-spacing:-.02em;margin:0 0 12px}
 h2{font-size:1.3rem;line-height:1.3;letter-spacing:-.01em;margin:44px 0 12px}h3{font-size:1.02rem;margin:20px 0 6px}
 .hero{padding:52px 0 8px;max-width:780px}.lead{font-size:1.13rem;color:var(--muted)}.muted{color:var(--muted)}
@@ -62,7 +65,7 @@ h2{font-size:1.3rem;line-height:1.3;letter-spacing:-.01em;margin:44px 0 12px}h3{
 .card p{margin:0;font-size:.92rem;color:var(--muted)}.card .row{margin-top:auto;padding-top:6px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-size:.88rem}
 .price{font-weight:600;color:var(--ink)}.badge{display:inline-block;font-size:.78rem;font-weight:600;line-height:1.5;padding:1px 9px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
 .badge.live{color:var(--success)}.badge.soon{color:var(--warn)}
-.btn{display:inline-block;background:var(--accent);color:var(--accent-fg);font-weight:650;padding:11px 18px;border-radius:10px;text-decoration:none}
+.btn{display:inline-block;min-height:44px;background:var(--accent);color:var(--accent-fg);font-weight:650;padding:11px 18px;border-radius:10px;text-decoration:none}
 .btn.ghost{background:none;color:var(--accent);border:1px solid var(--line)}.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0}
 .crumbs{font-size:.9rem;color:var(--muted);margin:22px 0 0}.crumbs a{color:var(--muted)}
 .head{display:flex;gap:20px;align-items:flex-start;margin:18px 0 0}.head img{width:84px;height:84px;flex:none}
@@ -72,19 +75,22 @@ h2{font-size:1.3rem;line-height:1.3;letter-spacing:-.01em;margin:44px 0 12px}h3{
 code{font:.86em var(--mono)}:not(pre)>code{overflow-wrap:anywhere}
 pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px;overflow:auto;max-height:520px;font-size:.84rem;line-height:1.45;margin:0}
 .table{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{text-align:left;vertical-align:top;padding:7px 8px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-weight:600}td:first-child{white-space:nowrap}
-details{border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:10px 0}summary{cursor:pointer;font-weight:600}
+details{border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:10px 0}summary{cursor:pointer;font-weight:600;min-height:44px;display:list-item;padding:10px 0}
 footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font-size:.9rem;color:var(--muted)}footer a{color:var(--muted)}
-form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:1 1 240px;min-width:0;font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}button.btn{border:0;cursor:pointer;font:inherit;font-weight:650}
+form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key label{flex-basis:100%}form.key input,form.key select{flex:1 1 240px;min-width:0;min-height:44px;font:inherit;font-size:max(1rem,16px);padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}form.key select{flex:0 1 auto}button.btn{border:0;cursor:pointer;font:inherit;font-weight:650}
 .note{border-left:3px solid var(--warn);background:var(--surface);border-radius:0 10px 10px 0;padding:10px 14px;margin:14px 0;font-size:.95rem}.notice{font-size:.88rem;color:var(--muted)}
+nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-items:center;min-height:44px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 @media (max-width:560px){.head{flex-direction:column;gap:12px}.head img{width:64px;height:64px}.hero{padding-top:32px}}</style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <header class="site"><div class="wrap"><a class="brand" href="index.html"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
-<nav><a href="index.html#tools">Tools</a><a href="api.html">API</a><a href="account.html">Account</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
-<main class="wrap">
+<nav aria-label="Main"><a href="index.html#tools">Tools</a><a href="api.html">API</a><a href="account.html">Account</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
+<main class="wrap" id="main">
 <p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="q/index.html">Questions</a> &rsaquo; <a href="eu-law-lookup.html">EU Law Lookup API (EUR-Lex)</a></p>
 <article class="prose">
-<h1 style="margin-top:18px">What does Article 50 of the AI Act require today, and has it been amended? Quote the text and link the source.</h1>
+<h1 class="sub">What does Article 50 of the AI Act require today, and has it been amended? Quote the text and link the source.</h1>
 <div class="facts"><div class="fact"><b>Answered by</b><a href="eu-law-lookup.html">EU Law Lookup API (EUR-Lex): article text, in force, amendments</a></div><div class="fact"><b>Price</b>$0.005 per act or article returned</div><div class="fact"><b>Status</b><span class="badge live">On Apify Store</span></div></div>
 <p>The Actor resolves &quot;AI Act&quot; to Regulation (EU) 2024/1689 on EUR-Lex and returns the article from the latest consolidated version: article_title, article_text, and article_amended_by if the article was changed. The act-level fields say whether it is in_force, its date_entry_into_force and the CELEX and ELI identifiers, with eur_lex_url and source_url. Consolidated texts are a documentation tool; only the Official Journal is authentic.</p>
 <h2>Tool input</h2>

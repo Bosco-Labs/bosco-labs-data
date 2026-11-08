@@ -1,6 +1,6 @@
 # Bosco Labs data APIs
 
-> Bosco Labs publishes data tools for AI agents and analysts (HTTP API, remote MCP, x402 and Apify Actors) that return clean, typed JSON from official sources: SEC filings, insider trades, 13F holdings and XBRL financials, US House STOCK Act trades, European ESEF annual reports, UK/Danish/Norwegian company accounts and registries, sanctions lists, EU, UK and Dutch law and case law, EU tenders, US federal and Pentagon contract awards, ECB rates and euro inflation, clinical trials, drug safety, recalls, tariffs, package vulnerabilities and Dutch addresses. 28 tools are live: all 28 HTTP API tools are plain HTTPS endpoints and remote MCP tools that an agent can call with a key (prepaid credits) or without an account, paying per call in USDC via x402 (https://api.boscolabs.dev/v1/<tool>, see API below); 15 of them are also Apify Actors on the Apify Store (pay per event). Data rows carry a source link.
+> Bosco Labs publishes data tools for AI agents and analysts (HTTP API, remote MCP, x402 and Apify Actors) that return clean, typed JSON from official sources: SEC filings, insider trades, 13F holdings and XBRL financials, US House STOCK Act trades, European ESEF annual reports, UK/Danish/Norwegian company accounts and registries, sanctions lists, EU, UK and Dutch law and case law, EU tenders, US federal and Pentagon contract awards, ECB rates and euro inflation, clinical trials, drug safety, recalls, tariffs, package vulnerabilities and Dutch addresses. 29 tools are live: all 29 HTTP API tools are plain HTTPS endpoints and remote MCP tools that an agent can call with a key (prepaid credits) or without an account, paying per call in USDC via x402 (https://api.boscolabs.dev/v1/<tool>, see API below); 15 of them are also Apify Actors on the Apify Store (pay per event). Data rows carry a source link.
 
 Apify Store profile: https://apify.com/bosco_labs
 Contact: support@boscolabs.dev
@@ -25,6 +25,7 @@ Contact: support@boscolabs.dev
 
 ## Companies
 
+- [Counterparty Check API: KYB checklist from official registers](https://boscolabs.dev/counterparty-check.html): KYB checklist per company: register status, LEI, insolvency, recent accounts, sanctions (OFAC, UN, UK, EU) on the company and officers, VAT (VIES), IBAN; pass, fail, review or unverified, each sourced. Officers: UK, PL, NO, FR only. Insolvency: UK, PL, FR, DE, NL, NO, FI, EE; elsewhere unverified. Price: $0.05 per company checked; an ambiguous name (candidates) is free (HTTP API). (HTTP API and MCP)
 - [Company Check API: identity, financials & SEC filings in 1 call](https://boscolabs.dev/company-check.html): Company lookup in one call: legal entity name, LEI, number, status, address, officers and owners, years of financials (revenue, profit, equity), SEC filings for US issuers; UK Companies House charges, appointments and Gazette insolvency. By name, LEI, UK/DK/NO/FR/FI/EE/PL number, ticker or CIK. Price: Apify Store $0.03 per report; HTTP API $0.03 per company report. ([Apify Store](https://apify.com/bosco_labs/company-check))
 - [VAT Number & IBAN Check API: EU VIES + IBAN validation](https://boscolabs.dev/vat-iban-check.html): Valid or not for EU VAT numbers (live from the official EU VIES service, with registered name, address and a name match) and IBANs (ISO 13616 check digits, length, bank code, country match). Pass, fail or unverified per check, with the source; unverified and malformed input are free. Price: $0.002 per definite check (VAT number answered by VIES, or a valid IBAN); malformed, failed and unverified are free (HTTP API). (HTTP API and MCP)
 - [Company Financials API: UK, Denmark & Norway accounts + LEI](https://boscolabs.dev/company-accounts.html): Financials (revenue, profit, equity, assets, cash, employees) of private and public companies from official accounts: UK Companies House, Denmark Erhvervsstyrelsen, Norway Brønnøysund; adds the LEI from GLEIF and a source per value. Price: Apify Store $0.04 per company-year; HTTP API $0.04 per company-year. ([Apify Store](https://apify.com/bosco_labs/company-accounts))
@@ -169,7 +170,7 @@ Contact: support@boscolabs.dev
 - Pricing: pay per event, billed to your own Apify account: you pay for rows delivered at the prices listed per Actor, and runs stop at your max charge limit.
 - Bosco Labs HTTP API: `POST https://api.boscolabs.dev/v1/<tool>` with `Authorization: Bearer <key>` for every tool listed with an API price (same input and rows as the Actors), prepaid credits, $0.50 free trial, or no key and pay per call in USDC via x402; remote MCP at `https://api.boscolabs.dev/mcp`. Keys, prices and limits: https://boscolabs.dev/api.html
 - Contact: support@boscolabs.dev (questions, data issues, custom data requests).
-- Bosco Labs MCP server: `bosco-labs-data-mcp` on PyPI (https://pypi.org/project/bosco-labs-data-mcp/) and the official MCP Registry (`io.github.Bosco-Labs/bosco-labs-data`): one MCP server for all data Actors. Run it with `uvx bosco-labs-data-mcp` and set `APIFY_TOKEN`; source in https://github.com/Bosco-Labs/bosco-labs-data/tree/main/mcp.
+- Bosco Labs MCP server: `bosco-labs-data-mcp` on PyPI (https://pypi.org/project/bosco-labs-data-mcp/) and the official MCP Registry (`io.github.Bosco-Labs/bosco-labs-data`): one MCP server for 7 of the data Actors (company-accounts, dod-contract-awards, esef-annual-reports, eu-tenders, sec-filings-feed, sec-insider-trades, us-house-trades) plus free LEI and SEC company lookups. Run it with `uvx bosco-labs-data-mcp` and set `APIFY_TOKEN`; source in https://github.com/Bosco-Labs/bosco-labs-data/tree/main/mcp.
 
 ## API (beta)
 
@@ -185,6 +186,7 @@ Contact: support@boscolabs.dev
 - [Terms](https://boscolabs.dev/terms.html): prepaid credits, 14-day refunds, data is information with a source link, not advice
 - [Trust](https://boscolabs.dev/security.html): read-only tools, sources and licences, sanctions screening limits, untrusted text in results
 - [Status](https://boscolabs.dev/status.html): daily check of every tool against its source and the version date of every sanctions list (JSON: https://s1uqkufag2x3nhpu.public.blob.vercel-storage.com/status/status.json)
+- `counterparty-check`: $0.05 per company checked; an ambiguous name (candidates) is free (max 1 company).
 - `company-check`: $0.03 per company report (max 1 report).
 - `vat-iban-check`: $0.002 per definite check (VAT number answered by VIES, or a valid IBAN); malformed, failed and unverified are free (max 10 VAT numbers and 50 IBANs). VAT answers: EU VIES (European Commission); IBAN layouts: SWIFT IBAN Registry.
 - `sec-company-financials`: $0.005 per company-period row (max 10 tickers/CIKs x 20 years).
@@ -864,6 +866,55 @@ Example questions:
 { "identifier": "US0378331005" }
 ```
 
+## Counterparty Check API: KYB checklist from official registers
+
+Docs: https://boscolabs.dev/counterparty-check.html
+Apify Store: not listed yet
+MCP: https://api.boscolabs.dev/mcp
+Price: $0.05 per company checked; an ambiguous name (candidates) is free (HTTP API)
+API: POST https://api.boscolabs.dev/v1/counterparty-check, $0.05 per company checked; an ambiguous name (candidates) is free (max 1 company)
+
+KYB checklist per company: register status, LEI, insolvency, recent accounts, sanctions (OFAC, UN, UK, EU) on the company and officers, VAT (VIES), IBAN; pass, fail, review or unverified, each sourced. Officers: UK, PL, NO, FR only. Insolvency: UK, PL, FR, DE, NL, NO, FI, EE; elsewhere unverified.
+
+Example questions:
+
+- Before we pay them: check supplier Novo Nordisk A/S (CVR 24256790), their VAT number DK24256790 and IBAN DK5000400440116243.
+
+### Input fields
+
+- `query` (string, required): The counterparty to check: a name (e.g. "Novo Nordisk") or an identifier: LEI (20 characters, e.g. "724500Y6DUVHQD6OXN27"), UK company number ("00445790", "SC123456"), Danish CVR ("24256790"), Norwegian org number ("923609016"), French SIREN (9 digits, "552032534") or SIRET (14 digits, "55203253400703"), Finnish Business ID with its dash ("0112038-9"), Estonian registry code (8 digits, "12417834"), US ticker in capitals or with $ ("AAPL", "$brk.b"; foreign companies listed in the US resolve to their home country), SEC CIK ("320193"). The type is detected from format and check digits; an 8-digit number valid in several registers (UK, Danish CVR, Estonian) is settled by asking them, and `country` decides when given. Required.
+- `country` (string): ISO 3166 alpha-2 country code to disambiguate, e.g. "DK", "GB", "NO", "FR", "FI", "EE", "NL", "US". With a name it limits the search to that country and, for NO, FR, FI and EE, also searches the national register (most companies there have no LEI); with a number it says which register the number belongs to (e.g. "GB" for a UK number without a leading zero, "EE" for an Estonian registry code, "FI" for a Business ID typed without its dash). Empty = detect from the query.
+- `vatNumber` (string): The VAT number the counterparty gave you, with its country prefix, e.g. "DK24256790". Checked live in VIES (valid or not, registered name) and matched against the register's name and country. Empty = the VAT number the register lists, if any (Estonia, Poland); otherwise the VAT check is unverified.
+- `iban` (string): The bank account the counterparty wants to be paid on, e.g. "DK5000400440116243". Checked offline: length, layout and ISO 13616 check digits, bank code, and whether its country matches the company's. No bank is contacted, so it does not prove who holds the account.
+- `walletAddresses` (array): Wallet addresses the counterparty wants to be paid on, e.g. ["0x7FF9cFad3877F21d41Da833E2F775dB0569eE3D9"]. Each is matched exactly against the addresses OFAC lists. At most 10.
+
+### Output fields
+
+- `query` (string): The input as given.
+- `status` (string): checked, or ambiguous (candidates returned, nothing charged).
+- `company` (object | null): Identity from the register and GLEIF, with a source URL per value.
+- `checks` (array): The checklist: check, status (pass, fail, review, unverified), detail, source, source_url, checked_at.
+- `summary` (object): Counts per status, needs_attention (fail and review checks) and unverified_checks.
+- `notice` (string): Screening aid, not a compliance, credit or legal determination.
+- `latest_financials` (object | null): Newest fiscal year's key figures with basis and source.
+- `people` (object | null): UK officers and PSCs, or Polish board, proxies and shareholders.
+- `insolvency` (object | null): UK Gazette notices or Polish KRS proceedings.
+- `us_listing` (object | null): SEC registrant data when the company files with the SEC.
+- `sanctions` (object): entity (the company's screening row), people_with_matches, people_screened.
+- `vat` (object | null): VIES result for the VAT number.
+- `iban` (object | null): IBAN structure and country result.
+- `wallets` (array): Wallet address screening rows.
+- `candidates` (array): Only when status is ambiguous: companies that fit the name.
+- `warnings` (array): Sources that failed or were partly read.
+- `source_url` (string | null): The main identity source.
+- `retrieved_at` (string): When the check ran (UTC).
+
+### Example input
+
+```json
+{ "query": "24256790", "country": "DK", "vatNumber": "DK24256790", "iban": "DK5000400440116243" }
+```
+
 ## Company Check API: identity, financials & SEC filings in 1 call
 
 Docs: https://boscolabs.dev/company-check.html
@@ -897,7 +948,7 @@ Example questions:
 - `bank` (object | null): US banks: the FDIC-insured bank of this company from the FDIC BankFind Suite (company level only). Filled for a US bank (found by FDIC certificate, LEI or name) and for a US bank holding company (its largest bank). Requested with the `us` section. null otherwise.
 - `people` (object | null): UK companies: current officers (directors, secretaries) and persons with significant control (owners) from Companies House, with only the fields a KYB check needs (no addresses). Requested with the `people` section. null for other countries.
 - `charges` (object | null): UK companies, with the `charges` section: charges (mortgages, debentures, other secured debt) registered at Companies House, newest first; an empty list means none registered. null when not requested or not UK.
-- `insolvency` (object | null): With the `insolvency` section (default for Polish companies). UK: corporate insolvency notices in The Gazette (winding-up orders and petitions, administration, liquidation, creditors' meetings) from our nightly copy since 2020 (`covers_from`, `covers_to`), matched by the company number in the notice or the exact registered name, newest first, in `notices`; notices under a former name without the number are not found; Open Government Licence v3.0. Poland: bankruptcy, restructuring, arrangement, liquidation, dissolution and receivership entries (KRS extract, Dział 6) in `proceedings` and enforced arrears (Dział 4) in `arrears`, read live; trustees and liquidators are not listed. An empty list means none found. null when not requested or for other countries.
+- `insolvency` (object | null): With the `insolvency` section (default for Polish companies). UK: corporate insolvency notices in The Gazette (winding-up orders and petitions, administration, liquidation, creditors' meetings) from our nightly copy since 2020 (`covers_from`, `covers_to`), matched by the company number in the notice or, when the notice gives no number, the exact registered name (`matched_on`), newest first, in `notices`; notices under a former name without the number are not found; Open Government Licence v3.0. Poland: bankruptcy, restructuring, arrangement, liquidation, dissolution and receivership entries (KRS extract, Dział 6) in `proceedings` and enforced arrears (Dział 4) in `arrears`, read live; trustees and liquidators are not listed. An empty list means none found. null when not requested or for other countries.
 - `candidates` (array): When a name (or a number valid in two registers) matches several companies: the top 3 (legal_name, country, lei, lei_status, registration_number, score 0-1). The report is for the first; re-run with its LEI or registration number (and country) to pick another. Empty when the match was clear.
 - `not_found` (array): Requested sections without data, each {section, reason} in plain words an agent can relay.
 - `warnings` (array): Sources that failed or timed out, and other caveats, in plain words. The rest of the report is still valid.

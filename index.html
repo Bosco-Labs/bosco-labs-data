@@ -86,120 +86,126 @@
     {
      "@type": "ListItem",
      "position": 9,
+     "url": "https://boscolabs.dev/counterparty-check.html",
+     "name": "Counterparty Check API: KYB checklist from official registers"
+    },
+    {
+     "@type": "ListItem",
+     "position": 10,
      "url": "https://boscolabs.dev/company-check.html",
      "name": "Company Check API: identity, financials & SEC filings in 1 call"
     },
     {
      "@type": "ListItem",
-     "position": 10,
+     "position": 11,
      "url": "https://boscolabs.dev/vat-iban-check.html",
      "name": "VAT Number & IBAN Check API: EU VIES + IBAN validation"
     },
     {
      "@type": "ListItem",
-     "position": 11,
+     "position": 12,
      "url": "https://boscolabs.dev/company-accounts.html",
      "name": "Company Financials API: UK, Denmark & Norway accounts + LEI"
     },
     {
      "@type": "ListItem",
-     "position": 12,
+     "position": 13,
      "url": "https://boscolabs.dev/uk-new-companies.html",
      "name": "UK New Companies API: daily Companies House incorporations"
     },
     {
      "@type": "ListItem",
-     "position": 13,
+     "position": 14,
      "url": "https://boscolabs.dev/company-hiring-signals.html",
      "name": "Company Hiring Signals API: open roles, departments, locations"
     },
     {
      "@type": "ListItem",
-     "position": 14,
+     "position": 15,
      "url": "https://boscolabs.dev/sanctions-screening.html",
      "name": "Sanctions Screening API: OFAC, UK, EU, UN & US lists"
     },
     {
      "@type": "ListItem",
-     "position": 15,
+     "position": 16,
      "url": "https://boscolabs.dev/eu-law-lookup.html",
      "name": "EU Law Lookup API (EUR-Lex): article text, in force, amendments"
     },
     {
      "@type": "ListItem",
-     "position": 16,
+     "position": 17,
      "url": "https://boscolabs.dev/national-law-lookup.html",
      "name": "UK & Dutch Law Lookup API: article text by date, in force"
     },
     {
      "@type": "ListItem",
-     "position": 17,
+     "position": 18,
      "url": "https://boscolabs.dev/dutch-case-law.html",
      "name": "Dutch Case Law API (Rechtspraak): ECLI lookup, uitspraken"
     },
     {
      "@type": "ListItem",
-     "position": 18,
+     "position": 19,
      "url": "https://boscolabs.dev/us-federal-rules.html",
      "name": "US Federal Rules API: CFR text as of a date + Federal Register"
     },
     {
      "@type": "ListItem",
-     "position": 19,
+     "position": 20,
      "url": "https://boscolabs.dev/product-recalls.html",
      "name": "Product Recall Check API: CPSC, NHTSA, FDA & EU Safety Gate"
     },
     {
      "@type": "ListItem",
-     "position": 20,
+     "position": 21,
      "url": "https://boscolabs.dev/tariff-lookup.html",
      "name": "Tariff Code & Duty Lookup API: US HTS and UK Tariff"
     },
     {
      "@type": "ListItem",
-     "position": 21,
+     "position": 22,
      "url": "https://boscolabs.dev/eu-tenders.html",
      "name": "EU Public Tenders & Contract Awards API (TED procurement)"
     },
     {
      "@type": "ListItem",
-     "position": 22,
+     "position": 23,
      "url": "https://boscolabs.dev/dod-contract-awards.html",
      "name": "Pentagon / DoD Contract Awards API: winners, amounts, tickers"
     },
     {
      "@type": "ListItem",
-     "position": 23,
+     "position": 24,
      "url": "https://boscolabs.dev/us-federal-awards.html",
      "name": "US Federal Awards API: contracts & grants, all agencies"
     },
     {
      "@type": "ListItem",
-     "position": 24,
+     "position": 25,
      "url": "https://boscolabs.dev/eu-rates-inflation.html",
      "name": "ECB Rates & Euro Inflation API: policy rates, FX, €STR, HICP"
     },
     {
      "@type": "ListItem",
-     "position": 25,
+     "position": 26,
      "url": "https://boscolabs.dev/clinical-trials.html",
      "name": "ClinicalTrials.gov API: trial search & NCT dossier"
     },
     {
      "@type": "ListItem",
-     "position": 26,
+     "position": 27,
      "url": "https://boscolabs.dev/drug-safety.html",
      "name": "Drug Safety API: FDA label, FAERS, recalls, EMA status"
     },
     {
      "@type": "ListItem",
-     "position": 27,
+     "position": 28,
      "url": "https://boscolabs.dev/dutch-address-lookup.html",
      "name": "Dutch Address Lookup API: BAG postcode, geocode & building data"
     },
     {
      "@type": "ListItem",
-     "position": 28,
+     "position": 29,
      "url": "https://boscolabs.dev/package-vulns.html",
      "name": "Package Vulnerability Check API: CVEs, CISA KEV, safe upgrade"
     }
@@ -215,7 +221,10 @@ body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--body)}h1
 a{color:var(--accent);text-underline-offset:2px}.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
 .site{border-bottom:1px solid var(--line)}.site .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;padding-top:12px;padding-bottom:12px}
 .brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-weight:650;letter-spacing:-.01em}.brand img{width:30px;height:30px}
-nav{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:.95rem}nav a{color:var(--muted);text-decoration:none}nav a:hover{color:var(--ink)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.skip{position:absolute;left:8px;top:-60px;z-index:9;background:var(--accent);color:var(--accent-fg);padding:10px 14px;border-radius:0 0 10px 10px;font-weight:650}.skip:focus{top:0}
+main,footer{overflow-wrap:break-word}.prose p,.prose li,.lead{max-width:75ch}h1.top{margin-top:40px}h1.sub{margin-top:18px}
+nav{display:flex;flex-wrap:wrap;gap:0 18px;font-size:.95rem}nav a{color:var(--muted);text-decoration:none}nav a:hover{color:var(--ink)}
 h1{font-size:clamp(1.65rem,4vw,2.4rem);line-height:1.2;letter-spacing:-.02em;margin:0 0 12px}
 h2{font-size:1.3rem;line-height:1.3;letter-spacing:-.01em;margin:44px 0 12px}h3{font-size:1.02rem;margin:20px 0 6px}
 .hero{padding:52px 0 8px;max-width:780px}.lead{font-size:1.13rem;color:var(--muted)}.muted{color:var(--muted)}
@@ -227,7 +236,7 @@ h2{font-size:1.3rem;line-height:1.3;letter-spacing:-.01em;margin:44px 0 12px}h3{
 .card p{margin:0;font-size:.92rem;color:var(--muted)}.card .row{margin-top:auto;padding-top:6px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-size:.88rem}
 .price{font-weight:600;color:var(--ink)}.badge{display:inline-block;font-size:.78rem;font-weight:600;line-height:1.5;padding:1px 9px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
 .badge.live{color:var(--success)}.badge.soon{color:var(--warn)}
-.btn{display:inline-block;background:var(--accent);color:var(--accent-fg);font-weight:650;padding:11px 18px;border-radius:10px;text-decoration:none}
+.btn{display:inline-block;min-height:44px;background:var(--accent);color:var(--accent-fg);font-weight:650;padding:11px 18px;border-radius:10px;text-decoration:none}
 .btn.ghost{background:none;color:var(--accent);border:1px solid var(--line)}.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0}
 .crumbs{font-size:.9rem;color:var(--muted);margin:22px 0 0}.crumbs a{color:var(--muted)}
 .head{display:flex;gap:20px;align-items:flex-start;margin:18px 0 0}.head img{width:84px;height:84px;flex:none}
@@ -237,20 +246,23 @@ h2{font-size:1.3rem;line-height:1.3;letter-spacing:-.01em;margin:44px 0 12px}h3{
 code{font:.86em var(--mono)}:not(pre)>code{overflow-wrap:anywhere}
 pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px;overflow:auto;max-height:520px;font-size:.84rem;line-height:1.45;margin:0}
 .table{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{text-align:left;vertical-align:top;padding:7px 8px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-weight:600}td:first-child{white-space:nowrap}
-details{border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:10px 0}summary{cursor:pointer;font-weight:600}
+details{border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:10px 0}summary{cursor:pointer;font-weight:600;min-height:44px;display:list-item;padding:10px 0}
 footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font-size:.9rem;color:var(--muted)}footer a{color:var(--muted)}
-form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:1 1 240px;min-width:0;font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}button.btn{border:0;cursor:pointer;font:inherit;font-weight:650}
+form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key label{flex-basis:100%}form.key input,form.key select{flex:1 1 240px;min-width:0;min-height:44px;font:inherit;font-size:max(1rem,16px);padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}form.key select{flex:0 1 auto}button.btn{border:0;cursor:pointer;font:inherit;font-weight:650}
 .note{border-left:3px solid var(--warn);background:var(--surface);border-radius:0 10px 10px 0;padding:10px 14px;margin:14px 0;font-size:.95rem}.notice{font-size:.88rem;color:var(--muted)}
+nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-items:center;min-height:44px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 @media (max-width:560px){.head{flex-direction:column;gap:12px}.head img{width:64px;height:64px}.hero{padding-top:32px}}</style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <header class="site"><div class="wrap"><a class="brand" href="index.html"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
-<nav><a href="index.html#tools">Tools</a><a href="api.html">API</a><a href="account.html">Account</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
-<main class="wrap">
+<nav aria-label="Main"><a href="index.html#tools">Tools</a><a href="api.html">API</a><a href="account.html">Account</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
+<main class="wrap" id="main">
 <section class="hero">
 <h1>Official-source data for AI agents and analysts</h1>
 <p class="lead">Clean, typed JSON from SEC EDGAR, Companies House, EUR-Lex, TED, USAspending, ClinicalTrials.gov and other official registers. Call each tool by API or from an AI agent over MCP, and pay per result. Every row links to its source.</p>
-<p class="muted">28 tools live &middot; 28 on the HTTP API, remote MCP and x402 &middot; 15 also on the Apify Store</p>
+<p class="muted">29 tools live &middot; 29 on the HTTP API, remote MCP and x402 &middot; 15 also on the Apify Store</p>
 <div class="actions"><a class="btn" href="#tools">Browse the tools</a><a class="btn ghost" href="q/index.html">Example questions</a><a class="btn ghost" href="llms.txt">For agents: llms.txt</a></div>
 <ul class="chips"><li><a href="#finance-sec">Finance &amp; SEC</a></li><li><a href="#companies">Companies</a></li><li><a href="#compliance-law">Compliance &amp; law</a></li><li><a href="#government-procurement">Government &amp; procurement</a></li><li><a href="#macro-health-places">Macro, health &amp; places</a></li><li><a href="#software-security">Software security</a></li></ul>
 </section>
@@ -271,6 +283,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <section id="companies">
 <h2>Companies</h2>
 <ul class="grid">
+<li class="card"><div class="card-top"><img src="icons/counterparty-check.svg" alt="" width="48" height="48"><h3><a href="counterparty-check.html">Counterparty Check API</a></h3></div><p>KYB counterparty check from official registers: company status, LEI, insolvency, sanctions on OFAC, UN, UK and EU lists, VIES VAT and IBAN, with sources.</p><div class="row"><span class="price">$0.05 per company checked; an ambiguous name (candidates) is free (HTTP API)</span><span class="badge live">On the HTTP API</span></div></li>
 <li class="card"><div class="card-top"><img src="icons/company-check.svg" alt="" width="48" height="48"><h3><a href="company-check.html">Company Check API</a></h3></div><p>One sourced company report per call: legal name, LEI, registration number, status, address, years of financials and SEC filings. For KYB and due diligence.</p><div class="row"><span class="price">$0.03 per report</span><a href="https://apify.com/bosco_labs/company-check">Apify Store</a> &middot; <a href="company-check.html#where">API</a></div></li>
 <li class="card"><div class="card-top"><img src="icons/vat-iban-check.svg" alt="" width="48" height="48"><h3><a href="vat-iban-check.html">VAT Number &amp; IBAN Check API</a></h3></div><p>Check EU VAT numbers live in VIES (valid, registered name, address, name match) and validate IBANs (check digits, length, bank code). Pay per answer.</p><div class="row"><span class="price">$0.002 per definite check (VAT number answered by VIES, or a valid IBAN); malformed, failed and unverified are free (HTTP API)</span><span class="badge live">On the HTTP API</span></div></li>
 <li class="card"><div class="card-top"><img src="icons/company-accounts.svg" alt="" width="48" height="48"><h3><a href="company-accounts.html">Company Financials API</a></h3></div><p>Annual accounts of UK, Danish (by CVR) and Norwegian companies, private ones too: revenue, profit, equity, cash, employees and LEI from official filings.</p><div class="row"><span class="price">$0.04 per company-year</span><a href="https://apify.com/bosco_labs/company-accounts">Apify Store</a> &middot; <a href="company-accounts.html#where">API</a></div></li>
@@ -325,6 +338,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <tr><td><a href="sec-company-screen.html#where">SEC Company Screener API</a></td><td></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
 <tr><td><a href="esef-annual-reports.html#where">EU Annual Reports API (ESEF)</a></td><td><a href="https://apify.com/bosco_labs/esef-annual-reports">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
 <tr><td><a href="identifier-resolver.html#where">ISIN, LEI, CIK, FIGI &amp; Ticker Resolver API (crosswalk)</a></td><td><a href="https://apify.com/bosco_labs/identifier-resolver">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
+<tr><td><a href="counterparty-check.html#where">Counterparty Check API</a></td><td></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
 <tr><td><a href="company-check.html#where">Company Check API</a></td><td><a href="https://apify.com/bosco_labs/company-check">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
 <tr><td><a href="vat-iban-check.html#where">VAT Number &amp; IBAN Check API</a></td><td></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
 <tr><td><a href="company-accounts.html#where">Company Financials API</a></td><td><a href="https://apify.com/bosco_labs/company-accounts">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
@@ -360,7 +374,7 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key input{flex:
 <li><strong>Pricing:</strong> pay per event, billed to your own Apify account: you pay for rows delivered at the prices listed per Actor, and runs stop at your max charge limit.</li>
 <li><strong>Bosco Labs HTTP API:</strong> <code>POST https://api.boscolabs.dev/v1/&lt;tool&gt;</code> with <code>Authorization: Bearer &lt;key&gt;</code> for every tool listed with an API price (same input and rows as the Actors), prepaid credits, $0.50 free trial, or no key and pay per call in USDC via x402; remote MCP at <code>https://api.boscolabs.dev/mcp</code>. Keys, prices and limits: https://boscolabs.dev/api.html</li>
 <li><strong>Contact:</strong> support@boscolabs.dev (questions, data issues, custom data requests).</li>
-<li><strong>Bosco Labs MCP server:</strong> <code>bosco-labs-data-mcp</code> on PyPI (https://pypi.org/project/bosco-labs-data-mcp/) and the official MCP Registry (<code>io.github.Bosco-Labs/bosco-labs-data</code>): one MCP server for all data Actors. Run it with <code>uvx bosco-labs-data-mcp</code> and set <code>APIFY_TOKEN</code>; source in https://github.com/Bosco-Labs/bosco-labs-data/tree/main/mcp.</li>
+<li><strong>Bosco Labs MCP server:</strong> <code>bosco-labs-data-mcp</code> on PyPI (https://pypi.org/project/bosco-labs-data-mcp/) and the official MCP Registry (<code>io.github.Bosco-Labs/bosco-labs-data</code>): one MCP server for 7 of the data Actors (company-accounts, dod-contract-awards, esef-annual-reports, eu-tenders, sec-filings-feed, sec-insider-trades, us-house-trades) plus free LEI and SEC company lookups. Run it with <code>uvx bosco-labs-data-mcp</code> and set <code>APIFY_TOKEN</code>; source in https://github.com/Bosco-Labs/bosco-labs-data/tree/main/mcp.</li>
 </ul>
 <p>Machine-readable index: <a href="llms.txt">llms.txt</a> (summary) and <a href="llms-full.txt">llms-full.txt</a> (all input and output fields). Live tools on the <a href="https://apify.com/bosco_labs">Bosco Labs Apify Store profile</a>.</p>
 </section>
