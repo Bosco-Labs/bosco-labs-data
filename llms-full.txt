@@ -11,6 +11,7 @@ Contact: support@boscolabs.dev
 - Compact catalogue (one line per tool, ~4 KB): https://api.boscolabs.dev/v1/tools?compact=true
 - Claude Code: `claude mcp add --transport http bosco-labs https://api.boscolabs.dev/mcp/free` (planner, tool descriptions, free LEI and SEC lookups); the paid tools are on https://api.boscolabs.dev/mcp with your key
 - Cursor: `{"mcpServers": {"bosco-labs": {"url": "https://api.boscolabs.dev/mcp/free"}}}` in `.cursor/mcp.json`
+- Paid tools: a key with $5.00 free credit (once per verified e-mail, no card): `curl -s -X POST https://api.boscolabs.dev/v1/keys/request -H 'content-type: application/json' -d '{"email": "you@example.com"}'` e-mails a one-time link; the page shows the key once. Send it as `Authorization: Bearer <key>` to the HTTP API or to https://api.boscolabs.dev/mcp
 
 ## Finance & SEC
 
