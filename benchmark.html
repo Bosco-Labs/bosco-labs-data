@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Counterparty check benchmark: web search vs API</title>
+<meta name="description" content="25 companies, two arms: a model with web search, and one counterparty-check call. Scores, cost, time, misses and limits, per company.">
+<link rel="canonical" href="https://boscolabs.dev/benchmark.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bosco Labs">
+<meta property="og:title" content="Counterparty check benchmark: web search vs API">
+<meta property="og:description" content="25 companies, two arms: a model with web search, and one counterparty-check call. Scores, cost, time, misses and limits, per company.">
+<meta property="og:url" content="https://boscolabs.dev/benchmark.html">
+<meta property="og:image" content="https://boscolabs.dev/logo-512.png">
+<meta name="twitter:card" content="summary">
+<script defer src="/_vercel/insights/script.js"></script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "WebPage",
+ "name": "Counterparty check benchmark: web search vs API",
+ "url": "https://boscolabs.dev/benchmark.html",
+ "dateModified": "2026-11-09",
+ "publisher": {
+  "@type": "Organization",
+  "name": "Bosco Labs",
+  "url": "https://boscolabs.dev/"
+ }
+}
+</script>
+<style>:root{color-scheme:light dark;--head:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--body:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;--ink:#1D2721;--muted:#545F58;--bg:#F5F3EA;--surface:#EAE8DC;--line:#D6D3C3;--accent:#2E5A47;--accent-fg:#F5F3EA;--accent2:#8DA889;--accent2-text:#4A6646;--success:#36694A;--warn:#8E5D1C}
+@media (prefers-color-scheme:dark){:root{--ink:#E5E8DE;--muted:#A3ADA4;--bg:#121914;--surface:#1B241E;--line:#2B372F;--accent:#9EC7B1;--accent-fg:#121914;--accent2:#B5C9A4;--accent2-text:#B5C9A4;--success:#93C7A0;--warn:#DDB070}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--body)}h1,h2,h3,.brand{font-family:var(--head)}
+a{color:var(--accent);text-underline-offset:2px}.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+.site{border-bottom:1px solid var(--line)}.site .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;padding-top:12px;padding-bottom:12px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-weight:650;letter-spacing:-.01em}.brand img{width:30px;height:30px}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.skip{position:absolute;left:8px;top:-60px;z-index:9;background:var(--accent);color:var(--accent-fg);padding:10px 14px;border-radius:0 0 10px 10px;font-weight:650}.skip:focus{top:0}
+main,footer{overflow-wrap:break-word}.prose p,.prose li,.lead{max-width:75ch}h1.top{margin-top:40px}h1.sub{margin-top:18px}
+nav{display:flex;flex-wrap:wrap;gap:0 18px;font-size:.95rem}nav a{color:var(--muted);text-decoration:none}nav a:hover{color:var(--ink)}
+h1{font-size:clamp(1.65rem,4vw,2.4rem);line-height:1.2;letter-spacing:-.02em;margin:0 0 12px}
+h2{font-size:1.3rem;line-height:1.3;letter-spacing:-.01em;margin:44px 0 12px}h3{font-size:1.02rem;margin:20px 0 6px}
+.hero{padding:52px 0 8px;max-width:780px}.lead{font-size:1.13rem;color:var(--muted)}.muted{color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}.chips a{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:.9rem;color:var(--ink);text-decoration:none}.chips a:hover{border-color:var(--accent)}
+.grid{list-style:none;padding:0;margin:0;display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.card-top{display:flex;gap:12px;align-items:center}.card img{width:48px;height:48px;flex:none}
+.card h3{margin:0;font-size:1rem;line-height:1.3}.card h3 a{color:var(--ink);text-decoration:none}.card h3 a:hover{text-decoration:underline}
+.card p{margin:0;font-size:.92rem;color:var(--muted)}.card .row{margin-top:auto;padding-top:6px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-size:.88rem}
+.price{font-weight:600;color:var(--ink)}.badge{display:inline-block;font-size:.78rem;font-weight:600;line-height:1.5;padding:1px 9px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.badge.live{color:var(--success)}.badge.soon{color:var(--warn)}
+.btn{display:inline-block;min-height:44px;background:var(--accent);color:var(--accent-fg);font-weight:650;padding:11px 18px;border-radius:10px;text-decoration:none}
+.btn.ghost{background:none;color:var(--accent);border:1px solid var(--line)}.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0}
+.crumbs{font-size:.9rem;color:var(--muted);margin:22px 0 0}.crumbs a{color:var(--muted)}
+.head{display:flex;gap:20px;align-items:flex-start;margin:18px 0 0}.head img{width:84px;height:84px;flex:none}
+.prose{max-width:800px}.facts{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));margin:22px 0}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:.95rem}.fact b{display:block;font-size:.75rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.qs{padding-left:20px}.qs li{margin:4px 0}.two{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}.two h3{margin-top:0}.two>div,.prose,main{min-width:0}
+code{font:.86em var(--mono)}:not(pre)>code{overflow-wrap:anywhere}
+pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px;overflow:auto;max-height:520px;font-size:.84rem;line-height:1.45;margin:0}
+.table{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{text-align:left;vertical-align:top;padding:7px 8px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-weight:600}td:first-child{white-space:nowrap}
+details{border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:10px 0}summary{cursor:pointer;font-weight:600;min-height:44px;display:list-item;padding:10px 0}
+footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font-size:.9rem;color:var(--muted)}footer a{color:var(--muted)}
+form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key label{flex-basis:100%}form.key input,form.key select{flex:1 1 240px;min-width:0;min-height:44px;font:inherit;font-size:max(1rem,16px);padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}form.key select{flex:0 1 auto}button.btn{border:0;cursor:pointer;font:inherit;font-weight:650}
+.note{border-left:3px solid var(--warn);background:var(--surface);border-radius:0 10px 10px 0;padding:10px 14px;margin:14px 0;font-size:.95rem}.notice{font-size:.88rem;color:var(--muted)}
+nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-items:center;min-height:44px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+@media (max-width:560px){.head{flex-direction:column;gap:12px}.head img{width:64px;height:64px}.hero{padding-top:32px}}</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site"><div class="wrap"><a class="brand" href="index.html"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav aria-label="Main"><a href="index.html#tools">Tools</a><a href="api.html">API</a><a href="account.html">Account</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
+<main class="wrap" id="main">
+<div class="prose">
+<p class="crumbs"><a href="counterparty-check.html">Counterparty Check</a> &rsaquo; Benchmark</p>
+<h1>Counterparty check benchmark</h1>
+<p class="lead">Can an AI agent tell whether a company is active, sanctioned or insolvent? We asked the same question about 25 companies twice: once to a model with web search, once to the same model with the result of one <a href="counterparty-check.html">counterparty-check</a> call. Run of 2026-11-09, one run per company.</p>
+<h2>Result</h2>
+<div class="table"><table><thead><tr><th></th><th>Web search</th><th>counterparty-check</th></tr></thead><tbody>
+<tr><td>All scored fields correct</td><td>19/25</td><td>20/25</td></tr>
+<tr><td>Register status correct</td><td>20/24</td><td>24/24</td></tr>
+<tr><td>Sanctioned correct</td><td>21/25</td><td>25/25</td></tr>
+<tr><td>Insolvent correct</td><td>20/25</td><td>20/25</td></tr>
+<tr><td>Sanctioned companies missed</td><td>2</td><td>0</td></tr>
+<tr><td>Clean companies flagged as sanctioned</td><td>0</td><td>0</td></tr>
+<tr><td>Fields wrong / unknown</td><td>1 / 12</td><td>0 / 5</td></tr>
+<tr><td>No usable answer</td><td>1</td><td>0</td></tr>
+<tr><td>Cost per company</td><td>$0.048</td><td>$0.069 ($0.05 our charge)</td></tr>
+<tr><td>Seconds per company</td><td>13</td><td>12</td></tr>
+<tr><td>Searches + fetches</td><td>34 + 17</td><td>0</td></tr>
+</tbody></table></div>
+<p>The 25 companies are hand-picked and lean towards hard cases: sanctioned, dissolved or in liquidation. A difference of one or two companies is noise, so the totals are a tie. The row we'd look at is sanctions. In this run the web arm did not flag 2 of the 6 sanctioned companies (it left one open and gave no usable answer on the other); the API arm flagged all 6. In the first run each arm missed one: the web arm called Rosneft Marine (UK) clean, and our API returned an error for Garantex Europe.</p>
+<p>On well-known companies the web arm is cheaper and faster, because the model answers from memory (9 of 25 without a single search). That says nothing about a supplier nobody has heard of. On the 12 hard cases both arms cost about the same per company.</p>
+<h2>The first run</h2>
+<p>The first run (2026-11-08) went the other way: web search 23/25, counterparty-check 17/25. It showed four bugs in our check. UK insolvency only read a window of Gazette notices. An Estonian company deleted from the register returned an error instead of a report. Companies in liquidation in France and Germany came back as active. And sanctions were matched on the name only, so a listed company that has since been renamed would slip through; a listing that carries the company's registration number now counts as a hit. We fixed all four and ran the same 25 companies again. The web arm went from 23 to 19 with nothing changed on its side, so the spread between two runs of a model with web search is about as large as the gap between the arms.</p>
+<h2>Where the API still says unknown</h2>
+<p>All 5 unknown answers in the API arm are about insolvency. Denmark and the US have no insolvency source we can use: the Danish CVR register refuses scripted requests unless you sign up for its system access, and US bankruptcy filings sit in PACER, which is paid per page. A company deleted from the Estonian register is no longer in its open data. In those cases the check says <code>unverified</code> and the model answers unknown, which we count as not correct.</p>
+<h2>What this does not show</h2>
+<ul>
+<li>We built the API arm and we wrote the ground truth. We checked every field by hand on official sources (dated, with URLs); where a register had no free access we used GLEIF, VIES or press, or left the field unscored.</li>
+<li>Both arms use one model (Claude Sonnet 5.5) at low effort, with at most 4 searches and 4 fetches for the web arm. A stronger setting costs more and may score differently.</li>
+<li>Some web-arm misses were the tool, not the model: a search that hit the cap, a run that ended mid-search, a fetch that errored. An agent in production hits those too, so they count.</li>
+<li>Scoring is an exact match on three fields of the JSON at the end of each answer. No model judges the answers.</li>
+<li>The API arm still needs a model to read the result, and its reading counts. For Wirecard the check said <code>review</code> (insolvency notices matched on the name only) and the model concluded winding up from them.</li>
+<li>One label is arguable. Camaïeu still shows as active in Sirene and BODACC has a liquidation with no closing notice, so we scored it winding up; the web arm found a page that says struck off.</li>
+</ul>
+<h2>Per company</h2>
+<p class="muted">Status, sanctioned, insolvent. n/s = not scored (the ground truth could not be verified); unknown = the answer left the field open.</p>
+<div class="table"><table><thead><tr><th>Company</th><th>Country</th><th>Ground truth</th><th>Web search</th><th>counterparty-check</th></tr></thead><tbody>
+<tr><td>Tesco PLC</td><td>GB</td><td>active, not sanctioned, not insolvent</td><td>ok, ok, ok</td><td>ok, ok, ok</td></tr>
+<tr><td>Novo Nordisk A/S</td><td>DK</td><td>active, not sanctioned, not insolvent</td><td>ok, ok, ok</td><td>ok, ok, unknown</td></tr>
+<tr><td>A.P. Møller - Mærsk A/S</td><td>DK</td><td>active, not sanctioned, not insolvent</td><td>ok, ok, ok</td><td>ok, ok, unknown</td></tr>
+<tr><td>Equinor ASA</td><td>NO</td><td>active, not sanctioned, not insolvent</td><td>ok, ok, ok</td><td>ok, ok, ok</td></tr>
+<tr><td>DNB Bank ASA</td><td>NO</td><td>active, not sanctioned, not insolvent</td><td>ok, ok, ok</td><td>ok, ok, ok</td></tr>
+<tr><td>TotalEnergies SE</td><td>FR</td><td>active, not sanctioned, not insolvent</td><td>ok, ok, ok</td><td>ok, ok, ok</td></tr>
+<tr><td>Nokia Oyj</td><td>FI</td><td>active, not sanctioned, not insolvent</td><td>ok, ok, ok</td><td>ok, ok, ok</td></tr>
+<tr><td>Bolt Technology OÜ</td><td>EE</td><td>active, not sanctioned, not insolvent</td><td>ok, ok, ok</td><td>ok, ok, ok</td></tr>
+<tr><td>ORLEN S.A.</td><td>PL</td><td>active, not sanctioned, not insolvent</td><td>ok, ok, ok</td><td>ok, ok, ok</td></tr>
+<tr><td>ASML Holding N.V.</td><td>NL</td><td>active, not sanctioned, not insolvent</td><td>ok, ok, ok</td><td>ok, ok, ok</td></tr>
+<tr><td>Siemens Aktiengesellschaft</td><td>DE</td><td>active, not sanctioned, not insolvent</td><td>ok, ok, ok</td><td>ok, ok, ok</td></tr>
+<tr><td>Apple Inc.</td><td>US</td><td>active, not sanctioned, not insolvent</td><td>ok, ok, ok</td><td>ok, ok, unknown</td></tr>
+<tr><td>JPMorgan Chase &amp; Co.</td><td>US</td><td>active, not sanctioned, not insolvent</td><td>ok, ok, ok</td><td>ok, ok, unknown</td></tr>
+<tr><td>Melli Bank PLC</td><td>GB</td><td>active, sanctioned, not insolvent</td><td>ok, ok, ok</td><td>ok, ok, ok</td></tr>
+<tr><td>Petropars UK Limited</td><td>GB</td><td>dissolved, sanctioned, not insolvent</td><td>unknown, unknown, unknown</td><td>ok, ok, ok</td></tr>
+<tr><td>Aeza International Ltd</td><td>GB</td><td>dissolved, sanctioned, not insolvent</td><td>ok, ok, ok</td><td>ok, ok, ok</td></tr>
+<tr><td>Rosneft Marine (UK) Limited</td><td>GB</td><td>winding up, sanctioned, not insolvent</td><td>ok, ok, ok</td><td>ok, ok, ok</td></tr>
+<tr><td>Garantex Europe OÜ (now Kihonzi Buzhaga OÜ)</td><td>EE</td><td>dissolved, sanctioned, not insolvent</td><td>ok, ok, unknown</td><td>ok, ok, unknown</td></tr>
+<tr><td>Europäisch-Iranische Handelsbank AG</td><td>DE</td><td>active, sanctioned, not insolvent</td><td>no answer</td><td>ok, ok, ok</td></tr>
+<tr><td>Carillion PLC</td><td>GB</td><td>winding up, not sanctioned, insolvent</td><td>ok, ok, ok</td><td>ok, ok, ok</td></tr>
+<tr><td>Cambridge Analytica (UK) Limited</td><td>GB</td><td>dissolved, not sanctioned, insolvent</td><td>unknown, unknown, unknown</td><td>ok, ok, ok</td></tr>
+<tr><td>Camaïeu International</td><td>FR</td><td>winding up, not sanctioned, insolvent</td><td><strong>wrong</strong>, ok, ok</td><td>ok, ok, ok</td></tr>
+<tr><td>Wirecard AG</td><td>DE</td><td>winding up, not sanctioned, insolvent</td><td>ok, ok, ok</td><td>ok, ok, ok</td></tr>
+<tr><td>Atlas Technologies B.V. (Lightyear)</td><td>NL</td><td>not scored, not sanctioned, insolvent</td><td>n/s, unknown, unknown</td><td>n/s, ok, ok</td></tr>
+<tr><td>Getin Noble Bank S.A. w upadłości</td><td>PL</td><td>winding up, not sanctioned, insolvent</td><td>ok, ok, ok</td><td>ok, ok, ok</td></tr>
+</tbody></table></div>
+<p class="muted">Ground truth checked 2026-11-08. Model claude-sonnet-5-5. Total spend of the run $2.92. The questions, ground truth with source URLs and both arms' full answers are on <a href="https://huggingface.co/datasets/BoscoLabs/counterparty-check-benchmark">Hugging Face</a>. Questions or a company you think we scored wrong: <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a>.</p>
+</div>
+</main>
+<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
+</body>
+</html>
