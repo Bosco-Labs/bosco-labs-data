@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<base href="../">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Validate EU VAT numbers with the VIES API in Python</title>
+<meta name="description" content="The official VIES REST endpoint, a small Python function around it, the errors you&#x27;ll hit, and what a valid VAT number does and doesn&#x27;t prove.">
+<link rel="canonical" href="https://boscolabs.dev/blog/vies-vat-check-api-python.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
+<link rel="alternate" type="application/atom+xml" href="blog/feed.xml" title="Bosco Labs blog">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Bosco Labs">
+<meta property="og:title" content="Validate EU VAT numbers with the VIES API in Python">
+<meta property="og:description" content="The official VIES REST endpoint, a small Python function around it, the errors you&#x27;ll hit, and what a valid VAT number does and doesn&#x27;t prove.">
+<meta property="og:url" content="https://boscolabs.dev/blog/vies-vat-check-api-python.html">
+<meta property="og:image" content="https://boscolabs.dev/logo-512.png">
+<meta name="twitter:card" content="summary">
+<script defer src="/_vercel/insights/script.js"></script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "BlogPosting",
+   "headline": "Validate EU VAT numbers with the VIES API in Python",
+   "description": "The official VIES REST endpoint, a small Python function around it, the errors you'll hit, and what a valid VAT number does and doesn't prove.",
+   "datePublished": "2026-11-09",
+   "dateModified": "2026-11-09",
+   "keywords": [
+    "vat",
+    "vies",
+    "python",
+    "kyb",
+    "invoices"
+   ],
+   "image": "https://boscolabs.dev/logo-512.png",
+   "author": {
+    "@type": "Organization",
+    "name": "Bosco Labs",
+    "url": "https://boscolabs.dev/",
+    "logo": "https://boscolabs.dev/logo-512.png"
+   },
+   "publisher": {
+    "@type": "Organization",
+    "name": "Bosco Labs",
+    "url": "https://boscolabs.dev/",
+    "logo": "https://boscolabs.dev/logo-512.png"
+   },
+   "mainEntityOfPage": "https://boscolabs.dev/blog/vies-vat-check-api-python.html",
+   "url": "https://boscolabs.dev/blog/vies-vat-check-api-python.html"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Blog",
+     "item": "https://boscolabs.dev/blog/index.html"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Validate EU VAT numbers with the VIES API in Python",
+     "item": "https://boscolabs.dev/blog/vies-vat-check-api-python.html"
+    }
+   ]
+  }
+ ]
+}
+</script>
+<style>:root{color-scheme:light dark;--head:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--body:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;--ink:#1D2721;--muted:#545F58;--bg:#F5F3EA;--surface:#EAE8DC;--line:#D6D3C3;--accent:#2E5A47;--accent-fg:#F5F3EA;--accent2:#8DA889;--accent2-text:#4A6646;--success:#36694A;--warn:#8E5D1C}
+@media (prefers-color-scheme:dark){:root{--ink:#E5E8DE;--muted:#A3ADA4;--bg:#121914;--surface:#1B241E;--line:#2B372F;--accent:#9EC7B1;--accent-fg:#121914;--accent2:#B5C9A4;--accent2-text:#B5C9A4;--success:#93C7A0;--warn:#DDB070}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--body)}h1,h2,h3,.brand{font-family:var(--head)}
+a{color:var(--accent);text-underline-offset:2px}.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+.site{border-bottom:1px solid var(--line)}.site .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;padding-top:12px;padding-bottom:12px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-weight:650;letter-spacing:-.01em}.brand img{width:30px;height:30px}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.skip{position:absolute;left:8px;top:-60px;z-index:9;background:var(--accent);color:var(--accent-fg);padding:10px 14px;border-radius:0 0 10px 10px;font-weight:650}.skip:focus{top:0}
+main,footer{overflow-wrap:break-word}.prose p,.prose li,.lead{max-width:75ch}h1.top{margin-top:40px}h1.sub{margin-top:18px}
+nav{display:flex;flex-wrap:wrap;gap:0 18px;font-size:.95rem}nav a{color:var(--muted);text-decoration:none}nav a:hover{color:var(--ink)}
+h1{font-size:clamp(1.65rem,4vw,2.4rem);line-height:1.2;letter-spacing:-.02em;margin:0 0 12px}
+h2{font-size:1.3rem;line-height:1.3;letter-spacing:-.01em;margin:44px 0 12px}h3{font-size:1.02rem;margin:20px 0 6px}
+.hero{padding:52px 0 8px;max-width:780px}.lead{font-size:1.13rem;color:var(--muted)}.muted{color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}.chips a{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:.9rem;color:var(--ink);text-decoration:none}.chips a:hover{border-color:var(--accent)}
+.grid{list-style:none;padding:0;margin:0;display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.card-top{display:flex;gap:12px;align-items:center}.card img{width:48px;height:48px;flex:none}
+.card h3{margin:0;font-size:1rem;line-height:1.3}.card h3 a{color:var(--ink);text-decoration:none}.card h3 a:hover{text-decoration:underline}
+.card p{margin:0;font-size:.92rem;color:var(--muted)}.card .row{margin-top:auto;padding-top:6px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-size:.88rem}
+.price{font-weight:600;color:var(--ink)}.badge{display:inline-block;font-size:.78rem;font-weight:600;line-height:1.5;padding:1px 9px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.badge.live{color:var(--success)}.badge.soon{color:var(--warn)}
+.btn{display:inline-block;min-height:44px;background:var(--accent);color:var(--accent-fg);font-weight:650;padding:11px 18px;border-radius:10px;text-decoration:none}
+.btn.ghost{background:none;color:var(--accent);border:1px solid var(--line)}.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0}
+.crumbs{font-size:.9rem;color:var(--muted);margin:22px 0 0}.crumbs a{color:var(--muted)}
+.head{display:flex;gap:20px;align-items:flex-start;margin:18px 0 0}.head img{width:84px;height:84px;flex:none}
+.prose{max-width:800px}.facts{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));margin:22px 0}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:.95rem}.fact b{display:block;font-size:.75rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.qs{padding-left:20px}.qs li{margin:4px 0}.two{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}.two h3{margin-top:0}.two>div,.prose,main{min-width:0}
+code{font:.86em var(--mono)}:not(pre)>code{overflow-wrap:anywhere}
+pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px;overflow:auto;max-height:520px;font-size:.84rem;line-height:1.45;margin:0}
+.table{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{text-align:left;vertical-align:top;padding:7px 8px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-weight:600}td:first-child{white-space:nowrap}
+details{border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:10px 0}summary{cursor:pointer;font-weight:600;min-height:44px;display:list-item;padding:10px 0}
+footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font-size:.9rem;color:var(--muted)}footer a{color:var(--muted)}
+form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key label{flex-basis:100%}form.key input,form.key select{flex:1 1 240px;min-width:0;min-height:44px;font:inherit;font-size:max(1rem,16px);padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}form.key select{flex:0 1 auto}button.btn{border:0;cursor:pointer;font:inherit;font-weight:650}
+.posts{list-style:none;padding:0}.posts h2{margin:32px 0 4px}.posts p{margin:4px 0}
+.note{border-left:3px solid var(--warn);background:var(--surface);border-radius:0 10px 10px 0;padding:10px 14px;margin:14px 0;font-size:.95rem}.notice{font-size:.88rem;color:var(--muted)}
+nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-items:center;min-height:44px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+@media (max-width:560px){.head{flex-direction:column;gap:12px}.head img{width:64px;height:64px}.hero{padding-top:32px}}</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site"><div class="wrap"><a class="brand" href="/"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav aria-label="Main"><a href="/#tools">Tools</a><a href="api.html">API</a><a href="account.html">Account</a><a href="blog/index.html">Blog</a><a href="/#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
+<main class="wrap" id="main">
+<article class="prose">
+<p class="crumbs"><a href="blog/index.html">Blog</a> &rsaquo; Validate EU VAT numbers with the VIES API in Python</p>
+<h1>Validate EU VAT numbers with the VIES API in Python</h1>
+<p class="muted">Bosco Labs · <time datetime="2026-11-09">9 November 2026</time></p>
+<p>Send a POST to the European Commission&#x27;s VIES REST endpoint with the country code and the number. No key, no account. You get back <code>valid</code>, and for most countries the registered name and address. When a member state&#x27;s system is down you get an error, and you should treat that as &quot;unknown&quot; and try again later. Never record it as invalid.</p>
+<pre><code>curl -s -X POST \
+  https://ec.europa.eu/taxation_customs/vies/rest-api/check-vat-number \
+  -H &#x27;Content-Type: application/json&#x27; \
+  -d &#x27;{&quot;countryCode&quot;: &quot;IE&quot;, &quot;vatNumber&quot;: &quot;6388047V&quot;}&#x27;</code></pre>
+<p>The response has <code>valid</code> (a boolean), <code>name</code>, <code>address</code>, <code>requestDate</code> and a few more fields. The Commission publishes the full schema as a Swagger file, and it&#x27;s worth a look because the field names differ from the old SOAP service that a lot of libraries still wrap.</p>
+<h2>A small Python function</h2>
+<p>Most of the VIES libraries on PyPI were written for the SOAP interface, and some haven&#x27;t been touched in years. The REST call is simple enough that you don&#x27;t need one.</p>
+<pre><code>import re
+import requests
+
+VIES = &quot;https://ec.europa.eu/taxation_customs/vies/rest-api/check-vat-number&quot;
+
+
+def check_vat(raw: str) -&gt; dict:
+    vat = re.sub(r&quot;[\s.\-]&quot;, &quot;&quot;, raw).upper()
+    country, number = vat[:2], vat[2:]
+    if country == &quot;GR&quot;:
+        country = &quot;EL&quot;  # VIES uses EL for Greece
+
+    try:
+        r = requests.post(
+            VIES,
+            json={&quot;countryCode&quot;: country, &quot;vatNumber&quot;: number},
+            timeout=20,
+        )
+        data = r.json()
+    except (requests.RequestException, ValueError) as exc:
+        return {&quot;vat&quot;: vat, &quot;status&quot;: &quot;unknown&quot;, &quot;error&quot;: str(exc)}
+
+    if &quot;valid&quot; not in data:
+        errors = [e.get(&quot;error&quot;) for e in data.get(&quot;errorWrappers&quot;, [])]
+        return {&quot;vat&quot;: vat, &quot;status&quot;: &quot;unknown&quot;, &quot;error&quot;: errors}
+
+    def shared(field):  # VIES sends &quot;---&quot; when the member state doesn&#x27;t share it
+        value = data.get(field)
+        return None if value in (None, &quot;&quot;, &quot;---&quot;) else value
+
+    return {
+        &quot;vat&quot;: vat,
+        &quot;status&quot;: &quot;valid&quot; if data[&quot;valid&quot;] else &quot;invalid&quot;,
+        &quot;name&quot;: shared(&quot;name&quot;),
+        &quot;address&quot;: shared(&quot;address&quot;),
+        &quot;checked_at&quot;: data.get(&quot;requestDate&quot;),
+    }
+
+
+print(check_vat(&quot;IE 6388047V&quot;))</code></pre>
+<p>Keep unknown as its own outcome in your data model, next to valid and invalid. If you collapse unknown into invalid, you&#x27;ll reject good suppliers every time a national system has a bad morning.</p>
+<h2>Things that will bite you</h2>
+<p>Greece is <code>EL</code> in VIES, even though its ISO code is <code>GR</code>. People type <code>GR</code> all the time, so map it.</p>
+<p>UK numbers aren&#x27;t in VIES any more. Since Brexit, a <code>GB</code> number has to be checked with HMRC&#x27;s own VAT API. Northern Ireland businesses trading goods with the EU have <code>XI</code> numbers, and those are in VIES.</p>
+<p>Some member states don&#x27;t share the name and address. Germany is the one you&#x27;ll notice first: the number comes back valid with <code>---</code> as the name and address. That means you can&#x27;t confirm the number belongs to the company that sent you the invoice, only that it&#x27;s a live number. If name matching matters to you, the VIES request also accepts the trader&#x27;s name and address, and some countries answer with a match result per field.</p>
+<p>VIES is a front for the national systems, so it&#x27;s only as available as they are. Errors such as <code>MS_UNAVAILABLE</code> (the member state isn&#x27;t answering) and <code>MS_MAX_CONCURRENT_REQ</code> (too many requests at once) are normal. Retry with a backoff, don&#x27;t fire hundreds of requests in parallel, and cache answers for a while. A VAT registration doesn&#x27;t change by the minute.</p>
+<p>Some countries also throttle identical repeated requests, so don&#x27;t re-check the same number in a loop to &quot;make sure&quot;.</p>
+<p>If you need proof that you checked, pass your own VAT number as <code>requesterMemberStateCode</code> and <code>requesterNumber</code>. The response then includes a <code>requestIdentifier</code>, a consultation number you can store with the invoice. Tax auditors in some countries ask for exactly that.</p>
+<h2>What &quot;valid&quot; proves</h2>
+<p>A valid result means the number is registered for intra-EU trade right now, in that country. That&#x27;s useful, and it&#x27;s also less than people assume.</p>
+<p>It doesn&#x27;t prove the company sending you the invoice is the company the number belongs to. Invoice fraud usually involves a real company&#x27;s details with someone else&#x27;s bank account. For that you need to match the VIES name against the company you expect, and you need to check the bank account separately.</p>
+<p>IBAN validation is offline arithmetic. It checks the country&#x27;s length and layout and the ISO 13616 check digits, and it can read out the bank code. It doesn&#x27;t tell you who holds the account. Verification of Payee is what ties a name to an account, and banks in the euro area have had to offer it for euro credit transfers since October 2025. If a supplier changes their bank details, call them on a number you already had.</p>
+<h2>The hosted version</h2>
+<p>Our VAT and IBAN check wraps all of this: VIES for VAT numbers, offline IBAN checks and a name match against the company you expect. Unknown answers come back as <code>unverified</code> with a reason, and they cost nothing.</p>
+<pre><code>import os
+import httpx
+
+r = httpx.post(
+    &quot;https://api.boscolabs.dev/v1/vat-iban-check&quot;,
+    headers={&quot;Authorization&quot;: f&quot;Bearer {os.environ[&#x27;BOSCO_API_KEY&#x27;]}&quot;},
+    json={
+        &quot;vatNumbers&quot;: [&quot;IE6388047V&quot;],
+        &quot;ibans&quot;: [&quot;NL91ABNA0417164300&quot;],
+        &quot;expectedName&quot;: &quot;Google Ireland&quot;,
+        &quot;expectedCountry&quot;: &quot;IE&quot;,
+    },
+    timeout=60,
+)
+r.raise_for_status()
+
+for row in r.json()[&quot;rows&quot;]:
+    print(row[&quot;check_type&quot;], row[&quot;number&quot;], row[&quot;status&quot;], row[&quot;reason&quot;])
+    for c in row[&quot;checks&quot;]:
+        print(&quot;   &quot;, c[&quot;check&quot;], c[&quot;status&quot;], c[&quot;detail&quot;])</code></pre>
+<p>In that example the VAT number passes and matches the name, and the IBAN is well formed but Dutch, so <code>country_match</code> fails against the expected Ireland. That&#x27;s the kind of thing you want a person to look at before paying. It costs $0.002 per definite answer, and malformed or unverified numbers are free. A key comes with $5 of free credit.</p>
+<p>If you&#x27;re onboarding a supplier, the VAT number is one check out of several. Our counterparty-check takes the company number, the VAT number and the IBAN together, then adds register status, insolvency and sanctions screening. That&#x27;s $0.05 per company. There&#x27;s a benchmark of it against web search if you want to see where it helps and where it doesn&#x27;t.</p>
+<p>Bosco Labs makes the VAT and IBAN check and counterparty-check.</p>
+<p class="muted">Bosco Labs: official-source data for AI agents, as an HTTP API, MCP server and Apify Actors. <a href="api.html">API docs</a>.</p>
+</article>
+</main>
+<footer><div class="wrap"><p><a href="/">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
+</body>
+</html>
