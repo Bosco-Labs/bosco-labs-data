@@ -69,6 +69,11 @@ Contact: support@boscolabs.dev
 - [EU public tenders (TED) data on Apify compared](https://boscolabs.dev/compare/eu-public-tenders.html): EU tenders tools compared with other Apify Store Actors (Store data, 2026-11-05)
 - [Sanctions screening tools on Apify compared](https://boscolabs.dev/compare/sanctions-lists.html): Sanctions screening tools compared with other Apify Store Actors (Store data, 2026-11-05)
 
+## Blog
+
+- [All posts](https://boscolabs.dev/blog/index.html), Atom feed: https://boscolabs.dev/blog/feed.xml
+- [We lost our own benchmark: web search vs. one API call](https://boscolabs.dev/blog/counterparty-check-benchmark.html) (2026-11-09): Web search vs. one counterparty-check API call on 25 companies: we lost the first run, found four bugs and reran it. Scores, cost, time and limits.
+
 ## How to call
 
 - Apify API (synchronous): POST `https://api.apify.com/v2/acts/bosco_labs~<actor>/run-sync-get-dataset-items` with header `Authorization: Bearer <APIFY_TOKEN>` and the Actor input as the JSON body; the response is the dataset items.

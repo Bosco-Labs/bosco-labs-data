@@ -164,6 +164,11 @@ Contact: support@boscolabs.dev
 - [Check Polish company KRS 0000028860: is it active, who is on the board, and is it in bankruptcy or restructuring?](https://boscolabs.dev/q/polish-company-krs-board-insolvency.html) -> `company-check` `{"query": "0000028860", "country": "PL"}`
 - [For UK company 00445790, list the registered charges and any insolvency notices in The Gazette.](https://boscolabs.dev/q/uk-company-charges-gazette-insolvency.html) -> `company-check` `{"query": "00445790", "country": "GB", "include": ["identity", "charges", "insolvency"]}`
 
+## Blog
+
+- [All posts](https://boscolabs.dev/blog/index.html), Atom feed: https://boscolabs.dev/blog/feed.xml
+- [We lost our own benchmark: web search vs. one API call](https://boscolabs.dev/blog/counterparty-check-benchmark.html) (2026-11-09): Web search vs. one counterparty-check API call on 25 companies: we lost the first run, found four bugs and reran it. Scores, cost, time and limits.
+
 ## How to call
 
 - Apify API (synchronous): POST `https://api.apify.com/v2/acts/bosco_labs~<actor>/run-sync-get-dataset-items` with header `Authorization: Bearer <APIFY_TOKEN>` and the Actor input as the JSON body; the response is the dataset items.

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title>Bosco Labs blog: official-source data for AI agents</title>
+<link href="https://boscolabs.dev/blog/feed.xml" rel="self"/>
+<link href="https://boscolabs.dev/blog/index.html"/>
+<id>https://boscolabs.dev/blog/index.html</id>
+<updated>2026-11-09T00:00:00Z</updated>
+<author><name>Bosco Labs</name></author>
+<entry><title>We lost our own benchmark: web search vs. one API call</title><link href="https://boscolabs.dev/blog/counterparty-check-benchmark.html"/><id>https://boscolabs.dev/blog/counterparty-check-benchmark.html</id><published>2026-11-09T00:00:00Z</published><updated>2026-11-09T00:00:00Z</updated><summary>Web search vs. one counterparty-check API call on 25 companies: we lost the first run, found four bugs and reran it. Scores, cost, time and limits.</summary></entry>
+</feed>

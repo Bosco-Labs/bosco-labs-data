@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<base href="../">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>We lost our own benchmark: web search vs. one API call</title>
+<meta name="description" content="Web search vs. one counterparty-check API call on 25 companies: we lost the first run, found four bugs and reran it. Scores, cost, time and limits.">
+<link rel="canonical" href="https://boscolabs.dev/blog/counterparty-check-benchmark.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
+<link rel="alternate" type="application/atom+xml" href="blog/feed.xml" title="Bosco Labs blog">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Bosco Labs">
+<meta property="og:title" content="We lost our own benchmark: web search vs. one API call">
+<meta property="og:description" content="Web search vs. one counterparty-check API call on 25 companies: we lost the first run, found four bugs and reran it. Scores, cost, time and limits.">
+<meta property="og:url" content="https://boscolabs.dev/blog/counterparty-check-benchmark.html">
+<meta property="og:image" content="https://boscolabs.dev/logo-512.png">
+<meta name="twitter:card" content="summary">
+<script defer src="/_vercel/insights/script.js"></script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "BlogPosting",
+   "headline": "We lost our own benchmark: web search vs. one API call",
+   "description": "Web search vs. one counterparty-check API call on 25 companies: we lost the first run, found four bugs and reran it. Scores, cost, time and limits.",
+   "datePublished": "2026-11-09",
+   "dateModified": "2026-11-09",
+   "keywords": [
+    "benchmark",
+    "ai-agents",
+    "kyb",
+    "sanctions",
+    "api"
+   ],
+   "image": "https://boscolabs.dev/logo-512.png",
+   "author": {
+    "@type": "Organization",
+    "name": "Bosco Labs",
+    "url": "https://boscolabs.dev/",
+    "logo": "https://boscolabs.dev/logo-512.png"
+   },
+   "publisher": {
+    "@type": "Organization",
+    "name": "Bosco Labs",
+    "url": "https://boscolabs.dev/",
+    "logo": "https://boscolabs.dev/logo-512.png"
+   },
+   "mainEntityOfPage": "https://boscolabs.dev/blog/counterparty-check-benchmark.html",
+   "url": "https://boscolabs.dev/blog/counterparty-check-benchmark.html"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Blog",
+     "item": "https://boscolabs.dev/blog/index.html"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "We lost our own benchmark: web search vs. one API call",
+     "item": "https://boscolabs.dev/blog/counterparty-check-benchmark.html"
+    }
+   ]
+  }
+ ]
+}
+</script>
+<style>:root{color-scheme:light dark;--head:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--body:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;--ink:#1D2721;--muted:#545F58;--bg:#F5F3EA;--surface:#EAE8DC;--line:#D6D3C3;--accent:#2E5A47;--accent-fg:#F5F3EA;--accent2:#8DA889;--accent2-text:#4A6646;--success:#36694A;--warn:#8E5D1C}
+@media (prefers-color-scheme:dark){:root{--ink:#E5E8DE;--muted:#A3ADA4;--bg:#121914;--surface:#1B241E;--line:#2B372F;--accent:#9EC7B1;--accent-fg:#121914;--accent2:#B5C9A4;--accent2-text:#B5C9A4;--success:#93C7A0;--warn:#DDB070}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--body)}h1,h2,h3,.brand{font-family:var(--head)}
+a{color:var(--accent);text-underline-offset:2px}.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+.site{border-bottom:1px solid var(--line)}.site .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;padding-top:12px;padding-bottom:12px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-weight:650;letter-spacing:-.01em}.brand img{width:30px;height:30px}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.skip{position:absolute;left:8px;top:-60px;z-index:9;background:var(--accent);color:var(--accent-fg);padding:10px 14px;border-radius:0 0 10px 10px;font-weight:650}.skip:focus{top:0}
+main,footer{overflow-wrap:break-word}.prose p,.prose li,.lead{max-width:75ch}h1.top{margin-top:40px}h1.sub{margin-top:18px}
+nav{display:flex;flex-wrap:wrap;gap:0 18px;font-size:.95rem}nav a{color:var(--muted);text-decoration:none}nav a:hover{color:var(--ink)}
+h1{font-size:clamp(1.65rem,4vw,2.4rem);line-height:1.2;letter-spacing:-.02em;margin:0 0 12px}
+h2{font-size:1.3rem;line-height:1.3;letter-spacing:-.01em;margin:44px 0 12px}h3{font-size:1.02rem;margin:20px 0 6px}
+.hero{padding:52px 0 8px;max-width:780px}.lead{font-size:1.13rem;color:var(--muted)}.muted{color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}.chips a{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:.9rem;color:var(--ink);text-decoration:none}.chips a:hover{border-color:var(--accent)}
+.grid{list-style:none;padding:0;margin:0;display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.card-top{display:flex;gap:12px;align-items:center}.card img{width:48px;height:48px;flex:none}
+.card h3{margin:0;font-size:1rem;line-height:1.3}.card h3 a{color:var(--ink);text-decoration:none}.card h3 a:hover{text-decoration:underline}
+.card p{margin:0;font-size:.92rem;color:var(--muted)}.card .row{margin-top:auto;padding-top:6px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-size:.88rem}
+.price{font-weight:600;color:var(--ink)}.badge{display:inline-block;font-size:.78rem;font-weight:600;line-height:1.5;padding:1px 9px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.badge.live{color:var(--success)}.badge.soon{color:var(--warn)}
+.btn{display:inline-block;min-height:44px;background:var(--accent);color:var(--accent-fg);font-weight:650;padding:11px 18px;border-radius:10px;text-decoration:none}
+.btn.ghost{background:none;color:var(--accent);border:1px solid var(--line)}.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0}
+.crumbs{font-size:.9rem;color:var(--muted);margin:22px 0 0}.crumbs a{color:var(--muted)}
+.head{display:flex;gap:20px;align-items:flex-start;margin:18px 0 0}.head img{width:84px;height:84px;flex:none}
+.prose{max-width:800px}.facts{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));margin:22px 0}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:.95rem}.fact b{display:block;font-size:.75rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.qs{padding-left:20px}.qs li{margin:4px 0}.two{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}.two h3{margin-top:0}.two>div,.prose,main{min-width:0}
+code{font:.86em var(--mono)}:not(pre)>code{overflow-wrap:anywhere}
+pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px;overflow:auto;max-height:520px;font-size:.84rem;line-height:1.45;margin:0}
+.table{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{text-align:left;vertical-align:top;padding:7px 8px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-weight:600}td:first-child{white-space:nowrap}
+details{border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:10px 0}summary{cursor:pointer;font-weight:600;min-height:44px;display:list-item;padding:10px 0}
+footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font-size:.9rem;color:var(--muted)}footer a{color:var(--muted)}
+form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key label{flex-basis:100%}form.key input,form.key select{flex:1 1 240px;min-width:0;min-height:44px;font:inherit;font-size:max(1rem,16px);padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}form.key select{flex:0 1 auto}button.btn{border:0;cursor:pointer;font:inherit;font-weight:650}
+.posts{list-style:none;padding:0}.posts h2{margin:32px 0 4px}.posts p{margin:4px 0}
+.note{border-left:3px solid var(--warn);background:var(--surface);border-radius:0 10px 10px 0;padding:10px 14px;margin:14px 0;font-size:.95rem}.notice{font-size:.88rem;color:var(--muted)}
+nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-items:center;min-height:44px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+@media (max-width:560px){.head{flex-direction:column;gap:12px}.head img{width:64px;height:64px}.hero{padding-top:32px}}</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site"><div class="wrap"><a class="brand" href="index.html"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav aria-label="Main"><a href="index.html#tools">Tools</a><a href="api.html">API</a><a href="account.html">Account</a><a href="blog/index.html">Blog</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
+<main class="wrap" id="main">
+<article class="prose">
+<p class="crumbs"><a href="blog/index.html">Blog</a> &rsaquo; We lost our own benchmark: web search vs. one API call</p>
+<h1>We lost our own benchmark: web search vs. one API call</h1>
+<p class="muted">Bosco Labs · <time datetime="2026-11-09">9 November 2026</time></p>
+<p>If you build an agent that onboards suppliers or customers, sooner or later it has to check that a company is still registered, and that it isn&#x27;t sanctioned or insolvent. We make an API that checks this against official registers, so we wanted to know if an agent needs it at all, or if a decent model with web search gets there by itself.</p>
+<p>So we ran a small benchmark, and the first run went badly for us: web search got 23 of 25 companies fully right, our API 17. This post covers how we measured it, the four bugs that run turned up, the rerun, and the cases where our API still answers &quot;unknown&quot;.</p>
+<h2>The setup</h2>
+<p>We picked 25 companies from 10 countries. Thirteen are large, healthy and well known (Tesco, Novo Nordisk, Apple, Siemens and so on). The other twelve are the cases a check exists for: six are on a sanctions list, and the rest are dissolved, in liquidation or bankrupt (Carillion, Wirecard, Cambridge Analytica&#x27;s UK company, Getin Noble Bank).</p>
+<p>For each company we wrote down three fields: register status (active, winding up or dissolved), sanctioned (on the UK, OFAC SDN or EU list) and insolvent. Each field was checked by hand against an official source, with the URL and the date. Where we couldn&#x27;t verify a field, it isn&#x27;t scored. That happened once, for the status of Lightyear&#x27;s Dutch entity, because the Dutch register has no free access.</p>
+<p>Both arms use the same model (Claude Sonnet 5.5, low effort) and get the same question:</p>
+<ul><li>The web arm has Anthropic&#x27;s server-side web search and web fetch, at most 4 of each, with our own domain blocked.</li><li>The API arm makes one POST to our <code>counterparty-check</code> endpoint with the registration number, LEI or name, and the model answers from the JSON it gets back.</li></ul>
+<p>Each answer ends with a small JSON object, and we compare the three fields with the ground truth by exact match. There&#x27;s no model acting as judge. &quot;Unknown&quot; counts as not correct.</p>
+<h2>Run 1: 23 to 17, and four bugs</h2>
+<p>The web arm won the first run clearly. When we went through our misses, four of them were plain bugs on our side.</p>
+<ul><li>UK insolvency only looked at The Gazette notices in our own copy, which starts in 2022. Cambridge Analytica (UK) Limited went into administration in 2018, so it came back with no insolvency at all. The check now reads the company&#x27;s full insolvency history from Companies House as well.</li><li>Garantex Europe, a sanctioned crypto exchange operator, has been deleted from the Estonian register. Our API answered its registry code with an HTTP 400, so the agent got nothing back, sanctions included. It now returns a report saying the company isn&#x27;t in the register, and still screens it.</li><li>Camaïeu in France and Wirecard in Germany came back as active, because Sirene and GLEIF still say active while a liquidation runs. An open liquidation notice that carries the company&#x27;s number is now a fail. Notices that only match on the name, which is all the German register gives you, are flagged for review.</li><li>Sanctions were matched on the name only. Garantex Europe has since been renamed, so its current name matches nothing, while the UK and OFAC entries both carry its Estonian registry code. A listing with the company&#x27;s registration number or LEI now counts as a hit even when the name differs.</li></ul>
+<p>Each fix got a regression test, and we ran the same 25 companies again.</p>
+<h2>Run 2: 19 to 20</h2>
+<div class="table"><table><thead><tr><th></th><th>Web search</th><th>counterparty-check</th></tr></thead><tbody>
+<tr><td>All three fields correct</td><td>19/25</td><td>20/25</td></tr>
+<tr><td>Register status correct</td><td>20/24</td><td>24/24</td></tr>
+<tr><td>Sanctioned correct</td><td>21/25</td><td>25/25</td></tr>
+<tr><td>Insolvent correct</td><td>20/25</td><td>20/25</td></tr>
+<tr><td>Sanctioned companies not flagged</td><td>2 of 6</td><td>0 of 6</td></tr>
+<tr><td>Wrong answers / unknown</td><td>1 / 12</td><td>0 / 5</td></tr>
+<tr><td>Cost per company</td><td>$0.048</td><td>$0.069 (of which $0.05 is our charge)</td></tr>
+<tr><td>Seconds per company</td><td>13</td><td>12</td></tr>
+</tbody></table></div>
+<p>20 against 19 is one company, and with 25 companies and one run each that&#x27;s noise. Our score went up because we fixed bugs. The web arm&#x27;s score went down by four with nothing changed on its side. For us that&#x27;s the most useful number in the whole exercise: on the same 25 companies, two runs of a model with web search were as far apart as the two arms.</p>
+<p>Sanctions is the row we&#x27;d look at. In run 2 the web arm didn&#x27;t flag two of the six sanctioned companies. For Petropars UK it ran into the search cap, a fetch was refused, and it answered unknown. For Europäisch-Iranische Handelsbank the run ended in the middle of a search with no answer. In run 1 it called Rosneft Marine (UK) not sanctioned. Over both runs it never flagged a clean company. Some of those misses come from the tools, and an agent in production runs into the same caps and errors, so we counted them.</p>
+<p>The score also hides how the web arm got there. In 11 of its 25 answers in run 2 the model said itself that it hadn&#x27;t checked the sanctions lists directly, and then answered from what it knew. That&#x27;s usually right for Tesco. It&#x27;s not something you can show an auditor. The API arm&#x27;s answers name the list entry and the list version, for example &quot;UK Sanctions List RUS1421, registration number 14850239&quot;.</p>
+<p>On cost and time it depends on the company. For the 13 well-known ones the web arm was cheaper, about $0.03 against $0.07, because the model mostly answers from memory: 9 of the 25 answers used no search at all. That works for Novo Nordisk and tells you nothing about a small supplier nobody has written about. On the 12 hard cases both arms cost about the same, $0.067 against $0.069, and the web arm took 19 seconds on average against 16, with a slowest answer of 40.</p>
+<h2>Where our API still says unknown</h2>
+<p>All five unknowns in the API arm are about insolvency: Novo Nordisk and Maersk (Denmark), Apple and JPMorgan (US), and Garantex Europe (Estonia).</p>
+<p>Denmark&#x27;s CVR register refuses scripted requests unless you sign up for its system access, so we take the Danish status from GLEIF and have no Danish insolvency source. The US has no national company register, and bankruptcy filings sit in PACER, which charges per page. An Estonian company that has been deleted drops out of the register&#x27;s open data, so there&#x27;s nothing left to read. In those cases the check returns <code>unverified</code> and the model says unknown. We&#x27;d rather it said that than guess &quot;no&quot;, and it costs us five points in the table.</p>
+<h2>What this doesn&#x27;t tell you</h2>
+<p>We built the API arm and we wrote the ground truth, the obvious problem with any vendor benchmark. Every field has its source URL and check date, so you can check our work. One label is arguable: Camaïeu still shows as active in Sirene and the liquidation has no closing notice, so we scored it as winding up, while the web arm found a page that says struck off.</p>
+<p>The set leans much harder on difficult cases than a normal supplier list would. Both arms ran one model at low effort with capped searches. A stronger setup would cost more and might score differently. The API arm still needs a model to read the result, and that reading counts: for Wirecard the check said &quot;review&quot; and the model concluded winding up from the notices.</p>
+<h2>Try it yourself</h2>
+<p>The full tables per company are on <a href="benchmark.html">our benchmark page</a>. The 25 questions, the ground truth with sources, and both arms&#x27; full answers for both runs are on Hugging Face: <a href="https://huggingface.co/datasets/BoscoLabs/counterparty-check-benchmark">huggingface.co/datasets/BoscoLabs/counterparty-check-benchmark</a>.</p>
+<p>To try the API arm on one company, Garantex Europe for example:</p>
+<pre><code>curl https://api.boscolabs.dev/v1/counterparty-check \
+  -H &quot;Authorization: Bearer $BOSCO_API_KEY&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{&quot;query&quot;: &quot;14850239&quot;, &quot;country&quot;: &quot;EE&quot;}&#x27;</code></pre>
+<p>Which countries are covered for what is on the <a href="counterparty-check.html">counterparty-check page</a>, and keys and limits are in the <a href="api.html">API docs</a>.</p>
+<p>If you&#x27;ve run something similar with a different model or more searches, we&#x27;d like to see the numbers, especially where they disagree with ours.</p>
+<p><em>Disclosure: this post is by Bosco Labs, which makes counterparty-check. We ran both arms, wrote the ground truth and paid for both runs ($2.78 and $2.92 in total).</em></p>
+<p class="muted">Bosco Labs: official-source data for AI agents, as an HTTP API, MCP server and Apify Actors. <a href="api.html">API docs</a>.</p>
+</article>
+</main>
+<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
+</body>
+</html>
