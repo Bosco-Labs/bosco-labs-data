@@ -85,13 +85,23 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <button class="btn" type="submit" id="acct-show" hidden>Show balance</button>
 <button class="btn ghost" type="button" id="acct-forget" hidden>Forget key</button>
 <h2 id="top-up" style="flex-basis:100%;margin:20px 0 0">Top up</h2>
-<div class="actions" style="margin:4px 0"><button class="btn" type="submit" name="pack" value="10">$10 · 100,000 credits</button><button class="btn" type="submit" name="pack" value="50">$50 · 500,000 credits</button><button class="btn" type="submit" name="pack" value="200">$200 · 2,000,000 credits</button></div>
+<div class="actions" style="margin:4px 0"><button class="btn" type="submit" name="pack" value="10">$10 = 100,000 credits</button><button class="btn" type="submit" name="pack" value="50">$50 = 550,000 credits (+10% bonus)</button><button class="btn" type="submit" name="pack" value="200">$200 = 2,400,000 credits (+20% bonus)</button></div>
+<label for="acct-auto" style="display:flex;gap:10px;align-items:flex-start;font-size:.92rem"><input id="acct-auto" type="checkbox" name="auto_topup" value="1" style="flex:none;min-height:0;width:20px;height:20px;margin:2px 0 0;padding:0"> Top up automatically: when this key&#x27;s balance drops below $2, we charge this card for the same pack. At most 3 times a day. Turn it off any time on the Account page.</label>
 </form>
 <p id="acct-status" role="status" class="muted"></p>
 <p class="notice">Your key stays in this browser tab only (sessionStorage, cleared when you close the tab) and is sent only to <code>api.boscolabs.dev</code>, never in a URL. Top-ups go to Stripe Checkout; prices are in US dollars and include any VAT; <a href="terms.html">terms</a>.</p>
 <section id="acct-data" hidden>
 <div class="facts"><div class="fact"><b>Balance</b><span id="bal"></span> <span id="bal-credits" class="muted"></span></div><div class="fact"><b>Spent today</b><span id="today">…</span><br><meter id="cap" min="0" max="1" value="0" style="width:100%" aria-label="Spent today against the daily cap"></meter></div><div class="fact"><b>Rate limit</b><span id="rate"></span></div></div>
 <p class="muted">The daily cap ($5 by default) protects you from a runaway agent; ask <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a> to raise it.</p>
+<h2>Automatic top-up</h2>
+<p id="auto-status" class="muted">Off. To turn it on, buy a pack above with "Top up automatically" ticked.</p>
+<form class="key" id="auto-form" hidden>
+<label class="muted" for="auto-threshold">Top up when the balance drops below (USD, 1 to 100)</label>
+<input id="auto-threshold" type="number" name="threshold_usd" min="1" max="100" step="0.5" required>
+<select id="auto-pack" name="pack" aria-label="Pack to buy"><option value="10">$10 = 100,000 credits</option><option value="50">$50 = 550,000 credits (+10% bonus)</option><option value="200">$200 = 2,400,000 credits (+20% bonus)</option></select>
+<button class="btn" type="submit">Save</button>
+<button class="btn ghost" type="button" id="auto-off">Turn off</button>
+</form>
 <h2>Recent activity</h2>
 <div class="table"><table><thead><tr><th>When</th><th>What</th><th>Credits</th><th>USD</th></tr></thead><tbody id="calls"></tbody></table></div>
 <p id="calls-empty" class="muted" hidden>No activity yet.</p>
@@ -118,7 +128,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <p role="status" class="muted"></p>
 </div>
 </div>
-<p class="muted">More: <a href="api.html">API docs, prices and limits</a> · <a href="privacy.html">privacy</a>. Agents read the same data with <code>GET /v1/me</code> and <code>GET /v1/me/usage</code>.</p>
+<p class="muted">More: <a href="api.html">API docs, prices and limits</a> · <a href="privacy.html">privacy</a>. Agents read the same data with <code>GET /v1/me</code>, <code>GET /v1/me/usage</code> and <code>GET /v1/me/auto-topup</code>.</p>
 </div>
 <script>
 (() => {
@@ -169,7 +179,27 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
       }
       $("calls-empty").hidden = u.recent.length > 0;
     } catch (e) { $("today").textContent = "not available right now"; }
+    try { showAuto(await api("/v1/me/auto-topup")); } catch (e) { $("auto-status").textContent = e.message; }
   }
+  function showAuto(a) {
+    $("auto-form").hidden = !a.enabled;
+    $("auto-status").textContent = a.enabled
+      ? "On: below " + usd(a.threshold_usd) + " we buy the $" + a.pack + " pack, at most " + a.max_per_day
+        + " times a day (" + a.charges_today + " today" + (a.pending ? ", one in progress" : "") + ")."
+      : 'Off. To turn it on, buy a pack above with "Top up automatically" ticked.';
+    if (a.enabled) { $("auto-threshold").value = a.threshold_usd; $("auto-pack").value = a.pack; }
+  }
+  async function setAuto(body) {
+    try {
+      showAuto(await api("/v1/me/auto-topup", {method: "POST",
+        headers: {"Content-Type": "application/json"}, body: JSON.stringify(body)}));
+    } catch (e) { $("auto-status").textContent = e.message; }
+  }
+  $("auto-form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    setAuto({threshold_usd: Number($("auto-threshold").value), pack: $("auto-pack").value});
+  });
+  $("auto-off").addEventListener("click", () => setAuto({enabled: false}));
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const b = e.submitter, pack = b && b.name === "pack" ? b.value : "";
@@ -178,7 +208,8 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
     say("Opening Stripe Checkout...");
     try {
       const j = await api("/v1/credits/checkout", {method: "POST",
-        headers: {"Content-Type": "application/json"}, body: JSON.stringify({pack})});
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({pack, auto_topup: $("acct-auto").checked})});
       store(input.value.trim());
       location.assign(j.url);
     } catch (err) { say(err.message); }
