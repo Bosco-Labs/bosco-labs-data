@@ -33,7 +33,7 @@
  },
  "about": {
   "@type": "SoftwareApplication",
-  "name": "Sanctions Screening API: OFAC, UK, EU, UN & US lists",
+  "name": "Sanctions List Screening API: OFAC, UK, EU, UN & US lists",
   "url": "https://boscolabs.dev/sanctions-screening.html"
  },
  "publisher": {
@@ -88,10 +88,10 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <header class="site"><div class="wrap"><a class="brand" href="index.html"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
 <nav aria-label="Main"><a href="index.html#tools">Tools</a><a href="api.html">API</a><a href="account.html">Account</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
 <main class="wrap" id="main">
-<p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="q/index.html">Questions</a> &rsaquo; <a href="sanctions-screening.html">Sanctions Screening API</a></p>
+<p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="q/index.html">Questions</a> &rsaquo; <a href="sanctions-screening.html">Sanctions List Screening API</a></p>
 <article class="prose">
 <h1 class="sub">Before we accept a USDT payment, is wallet 0x7FF9cFad3877F21d41Da833E2F775dB0569eE3D9 on a sanctions list?</h1>
-<div class="facts"><div class="fact"><b>Answered by</b><a href="sanctions-screening.html">Sanctions Screening API: OFAC, UK, EU, UN &amp; US lists</a></div><div class="fact"><b>Price</b>$0.01 per name or wallet address screened</div><div class="fact"><b>Status</b><span class="badge live">On Apify Store</span></div></div>
+<div class="facts"><div class="fact"><b>Answered by</b><a href="sanctions-screening.html">Sanctions List Screening API: OFAC, UK, EU, UN &amp; US lists</a></div><div class="fact"><b>Price</b>$0.01 per name or wallet address screened</div><div class="fact"><b>Status</b><span class="badge live">On Apify Store</span></div></div>
 <p>The address is matched exactly (EVM addresses ignore upper and lower case) against every wallet address the loaded lists publish; today OFAC SDN publishes them. A listed address returns the listed entity, its programs, the listing date and a link to the OFAC entry; an unlisted one returns match_found false with the lists and dates it was checked against. It is a list lookup, not blockchain analytics: funds that passed through a listed wallet are not traced.</p>
 <h2>Tool input</h2>
 <pre><code>{

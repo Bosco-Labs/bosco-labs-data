@@ -77,27 +77,46 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <main class="wrap" id="main">
 <div class="prose">
 <h1 class="top">Status</h1>
-<p class="lead">Once a day every API tool is called with its own example input (one row) against its official source. This page shows the latest check. Machine-readable: <a href="https://s1uqkufag2x3nhpu.public.blob.vercel-storage.com/status/status.json">status.json</a>.</p>
+<p class="lead">Once a day every API tool is called with its own example input (one row) against its official source. This page shows the latest check and the last 30 days. Machine-readable: <a href="https://s1uqkufag2x3nhpu.public.blob.vercel-storage.com/status/status.json">status.json</a> and <a href="https://s1uqkufag2x3nhpu.public.blob.vercel-storage.com/status/history.json">history.json</a>.</p>
 <p id="checked" class="muted">Loading the latest check…</p>
+<p id="uptime"></p>
 <h2>Tools</h2>
 <div id="tools"><noscript>Open <a href="https://s1uqkufag2x3nhpu.public.blob.vercel-storage.com/status/status.json">status.json</a> for the latest check.</noscript></div>
 <h2>Sanctions lists</h2>
 <div id="lists"></div>
-<p class="muted">"no rows" means the source answered but the example found nothing; "down" means the call failed; "probe error" means the check itself could not run, not the tool. Report a problem: <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a>. How we handle data: <a href="security.html">trust</a>.</p>
+<p class="muted">"no rows" means the source answered but the example found nothing (it counts as answered in the 30-day history); "down" means the call failed; "probe error" means the check itself could not run, not the tool. Report a problem: <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a>. How we handle data: <a href="security.html">trust</a>.</p>
 </div>
 <script>
 (async () => {
   const el = (id) => document.getElementById(id);
   const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"})[c]);
   try {
-    const s = await (await fetch("https://s1uqkufag2x3nhpu.public.blob.vercel-storage.com/status/status.json", {cache: "no-store"})).json();
+    const [s, h] = await Promise.all([
+      fetch("https://s1uqkufag2x3nhpu.public.blob.vercel-storage.com/status/status.json", {cache: "no-store"}).then((r) => r.json()),
+      fetch("https://s1uqkufag2x3nhpu.public.blob.vercel-storage.com/status/history.json", {cache: "no-store"}).then((r) => r.ok ? r.json() : null).catch(() => null),
+    ]);
+    // 30 calendar days up to the latest check; a day without a check stays grey
+    const end = Date.parse(s.checked_at.slice(0, 10) + "T00:00:00Z");
+    const dates = Array.from({length: 30}, (_, i) => new Date(end - (29 - i) * 864e5).toISOString().slice(0, 10));
+    const days = (h && h.days) || {};
+    let ok = 0, checks = 0;
+    const strip = (t) => {
+      const v = dates.map((d) => (days[d] || {})[t.tool]);
+      const n = v.filter(Boolean).length, up = v.filter((x) => x === "ok").length;
+      ok += up; checks += n;
+      const cell = (d, x) => `<span title="${d}: ${x || "no check"}" style="display:inline-block;width:5px;height:14px;margin-right:1px;border-radius:1px;background:var(--${x === "ok" ? "success" : x === "down" ? "warn" : "line"})"></span>`;
+      return `<span role="img" aria-label="${n ? `${up} of ${n} daily checks ok` : "no history yet"}" style="white-space:nowrap">${dates.map((d, i) => cell(d, v[i])).join("")}</span>`;
+    };
     const pages = new Set(["clinical-trials", "company-accounts", "company-check", "company-hiring-signals", "counterparty-check", "dod-contract-awards", "drug-safety", "dutch-address-lookup", "dutch-case-law", "esef-annual-reports", "eu-law-lookup", "eu-rates-inflation", "eu-tenders", "identifier-resolver", "national-law-lookup", "package-vulns", "product-recalls", "sanctions-screening", "sec-company-financials", "sec-company-screen", "sec-filings-feed", "sec-insider-trades", "sec-ownership", "tariff-lookup", "uk-new-companies", "us-federal-awards", "us-federal-rules", "us-house-trades", "vat-iban-check"]);  // tools with a page on this site
     const name = (t) => pages.has(t.tool) ? `<a href="${esc(t.tool)}.html">${esc(t.title)}</a>` : esc(t.title);
     const down = s.tools.filter((t) => t.status === "down").length;
     el("checked").textContent = `Last check ${s.checked_at} (UTC): ${s.tools.length} tools, ${down} down.`;
-    el("tools").innerHTML = "<div class='table'><table><thead><tr><th>Tool</th><th>Status</th><th>Seconds</th><th>Note</th></tr></thead><tbody>" +
-      s.tools.map((t) => `<tr><td>${name(t)}</td><td>${esc(t.status)}</td><td>${esc(t.seconds)}</td><td>${esc([t.note, ...(t.warnings || [])].filter(Boolean).join("; "))}</td></tr>`).join("") +
+    el("tools").innerHTML = "<div class='table'><table><thead><tr><th>Tool</th><th>Status</th><th>Last 30 days</th><th>Seconds</th><th>Note</th></tr></thead><tbody>" +
+      s.tools.map((t) => `<tr><td>${name(t)}</td><td>${esc(t.status)}</td><td>${strip(t)}</td><td>${esc(t.seconds)}</td><td>${esc([t.note, ...(t.warnings || [])].filter(Boolean).join("; "))}</td></tr>`).join("") +
       "</tbody></table></div>";
+    el("uptime").textContent = checks
+      ? `Last 30 days: ${(100 * ok / checks).toFixed(1)}% of daily tool checks answered (${ok} of ${checks}).`
+      : "The 30-day history starts with the next daily check.";
     el("lists").innerHTML = s.sanctions_lists.length
       ? "<div class='table'><table><thead><tr><th>List</th><th>Version date</th></tr></thead><tbody>" +
         s.sanctions_lists.map((l) => `<tr><td>${esc(l.list)}</td><td>${esc(l.version_date)}</td></tr>`).join("") + "</tbody></table></div>"

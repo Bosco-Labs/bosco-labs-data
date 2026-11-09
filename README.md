@@ -1,8 +1,9 @@
 # Bosco Labs data APIs
 
-Official-source data for AI agents, with a source link on every row. 27 tools over SEC EDGAR
-(filings, insider trades, 13F and N-PORT holdings, financials), company registers (UK, DK, NO,
-FR, FI, EE, US) and annual accounts, sanctions lists (OFAC, UK, EU, US export lists), EU and
+Official-source data for AI agents, with a source link on every row. 29 tools over SEC EDGAR
+(filings, insider trades, 13F and N-PORT holdings, financials), a counterparty (KYB) check for one
+company or a list of up to 10, company registers (UK, DK, NO, FR, FI, EE, PL, US) and annual
+accounts, VAT (VIES) and IBAN checks, sanctions lists (OFAC, UK, EU, UN, US export lists), EU and
 UK/Dutch law, Dutch case law, US federal rules (eCFR, Federal Register), openFDA drug safety,
 product recalls, CVEs, tariffs (US HTS, UK), clinical trials, EU tenders, US federal and DoD
 contract awards, ECB rates and more.

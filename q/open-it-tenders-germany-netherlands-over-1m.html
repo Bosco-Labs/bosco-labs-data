@@ -33,7 +33,7 @@
  },
  "about": {
   "@type": "SoftwareApplication",
-  "name": "EU Public Tenders & Contract Awards API (TED procurement)",
+  "name": "EU Tenders API (TED): public procurement & contract awards",
   "url": "https://boscolabs.dev/eu-tenders.html"
  },
  "publisher": {
@@ -88,10 +88,10 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <header class="site"><div class="wrap"><a class="brand" href="index.html"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
 <nav aria-label="Main"><a href="index.html#tools">Tools</a><a href="api.html">API</a><a href="account.html">Account</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
 <main class="wrap" id="main">
-<p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="q/index.html">Questions</a> &rsaquo; <a href="eu-tenders.html">EU Public Tenders &amp; Contract Awards API (TED procurement)</a></p>
+<p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="q/index.html">Questions</a> &rsaquo; <a href="eu-tenders.html">EU Tenders API (TED)</a></p>
 <article class="prose">
 <h1 class="sub">Find open IT tenders above 1 million euros in Germany and the Netherlands and list their deadlines.</h1>
-<div class="facts"><div class="fact"><b>Answered by</b><a href="eu-tenders.html">EU Public Tenders &amp; Contract Awards API (TED procurement)</a></div><div class="fact"><b>Price</b>$0.002 per notice</div><div class="fact"><b>Status</b><span class="badge live">On Apify Store</span></div></div>
+<div class="facts"><div class="fact"><b>Answered by</b><a href="eu-tenders.html">EU Tenders API (TED): public procurement &amp; contract awards</a></div><div class="fact"><b>Price</b>$0.002 per notice</div><div class="fact"><b>Status</b><span class="badge live">On Apify Store</span></div></div>
 <p>The Actor queries TED, the EU&#x27;s official journal for public procurement. CPV code 72 covers IT services; a prefix matches every code under it. The default notice type is contract_notice (open calls). Each row has notice_id, title, buyer_name and buyer_country, deadline, estimated_value and currency, cpv_codes and a ted_url to the notice. With publishedFrom left empty it searches notices published in the last 7 days. minValueEur uses TED&#x27;s total value of the notice; notices without a value, or stated in another currency, are left out when it is set.</p>
 <h2>Tool input</h2>
 <pre><code>{

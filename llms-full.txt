@@ -17,8 +17,8 @@ Contact: support@boscolabs.dev
 - [SEC Insider Trading API (Form 4): stock transactions since 2006](https://boscolabs.dev/sec-insider-trades.html): Every insider purchase and sale reported on SEC Form 4 (directors, officers, 10% owners), from official EDGAR filings, 2006 to today, with cluster-buy and cluster-sell signals; filter by ticker, CIK, transaction code, role, value and date. Price: Apify Store $0.0018 per transaction row and $0.02 per cluster signal; HTTP API $0.0002 per unit: a Form 4 transaction = 9 units ($0.0018), a cluster signal = 100 ($0.02). ([Apify Store](https://apify.com/bosco_labs/sec-insider-trades))
 - [SEC EDGAR Filings API: 8-K, 10-K, 10-Q feed since 1994](https://boscolabs.dev/sec-filings-feed.html): SEC EDGAR filings (8-K, 10-K, 10-Q, S-1, 13D, 13G, Form 4 and every other form) for any company or the whole market, live or back to 1994, from the SEC's own feeds; 8-K item codes and earnings releases (Item 2.02); links to each filing, not its text. Price: Apify Store $0.001 per filing; HTTP API $0.001 per filing. ([Apify Store](https://apify.com/bosco_labs/sec-filings-feed))
 - [Congress Stock Trades API: US House STOCK Act since 2014](https://boscolabs.dev/us-house-trades.html): Congress stock trades: stock, option, fund and bond trades that US House members disclose in STOCK Act Periodic Transaction Reports, from the Clerk of the House's official filings since January 2014 (no Senate); ticker, amount range, owner, days to disclose. Price: Apify Store $0.0018 per trade; HTTP API $0.0018 per PTR transaction. ([Apify Store](https://apify.com/bosco_labs/us-house-trades))
-- [SEC Ownership API: 13F, N-PORT Fund Holdings, 13D/13G, Form 144](https://boscolabs.dev/sec-ownership.html): Who owns a stock, from official SEC filings: a fund manager's 13F holdings, a mutual fund's or ETF's N-PORT holdings (with changes), the funds holding a ticker, 5%+ stakes (13D/13G) and Form 144 planned insider sales. One ticker or fund in, JSON out, a source link per row. Price: Apify Store $0.0018 per row, plus $0.01 per "who holds this stock" search (13F or N-PORT data set); HTTP API $0.0018 per holding, holder or filing row (one fund or company per call). ([Apify Store](https://apify.com/bosco_labs/sec-ownership))
-- [SEC Company Financials API: income, balance sheet, cash flow](https://boscolabs.dev/sec-company-financials.html): US company financial data from SEC EDGAR XBRL: revenue, profit, EPS, balance sheet, cash flow, free cash flow and margins per fiscal year or quarter, 2009 to today. By ticker or CIK, 10-K/10-Q and 20-F filers. Each value cites its XBRL tag and SEC filing. Q4 derived where not reported. Price: Apify Store $0.005 per company-period row; HTTP API $0.005 per company-period row. ([Apify Store](https://apify.com/bosco_labs/sec-company-financials))
+- [SEC 13F Holdings API: fund & ETF holdings, 13D/13G, Form 144](https://boscolabs.dev/sec-ownership.html): 13F institutional holdings and who owns a stock, from official SEC filings: a fund manager's 13F holdings with changes vs the previous quarter, a mutual fund's or ETF's N-PORT holdings, the funds holding a ticker, 5%+ stakes (13D/13G) and Form 144 planned insider sales. One ticker or fund in. Price: Apify Store $0.0018 per row, plus $0.01 per "who holds this stock" search (13F or N-PORT data set); HTTP API $0.0018 per holding, holder or filing row (one fund or company per call). ([Apify Store](https://apify.com/bosco_labs/sec-ownership))
+- [SEC Financial Statements API: income, balance sheet, cash flow](https://boscolabs.dev/sec-company-financials.html): Company financial statements from SEC EDGAR XBRL (10-K, 10-Q, 20-F): income statement (revenue, profit, EPS), balance sheet, cash flow, free cash flow and margins per fiscal year or quarter, 2009 to today, by ticker or CIK. Each value cites its XBRL tag and SEC filing. Q4 derived where not reported. Price: Apify Store $0.005 per company-period row; HTTP API $0.005 per company-period row. ([Apify Store](https://apify.com/bosco_labs/sec-company-financials))
 - [SEC Company Screener API: filter all US filers by financials](https://boscolabs.dev/sec-company-screen.html): US companies matching your filters for one calendar year or quarter: revenue, net income, margins, cash flow, assets and 30 more metrics from SEC XBRL frames, sorted and capped. Each value cites its XBRL tag and SEC filing. Same metrics as SEC Company Financials. Price: Apify Store $0.002 per company returned; HTTP API $0.002 per company returned. ([Apify Store](https://apify.com/bosco_labs/sec-company-screen))
 - [EU Annual Reports API (ESEF): XBRL financial statements](https://boscolabs.dev/esef-annual-reports.html): Normalized key financials (revenue, EBIT, EBITDA, net income, EPS, assets, equity, cash flows, margins, growth) of European listed companies from official ESEF annual reports via filings.xbrl.org; 28 countries; every value linked to its XBRL fact. Price: Apify Store $0.01 per run plus $0.05 per annual report; raw XBRL fact rows, if switched on, $0.0005 each; HTTP API $0.05 per annual report. ([Apify Store](https://apify.com/bosco_labs/esef-annual-reports))
 - [ISIN, LEI, CIK, FIGI & Ticker Resolver API (crosswalk)](https://boscolabs.dev/identifier-resolver.html): Issuer legal name, LEI, CIK, tickers, ISINs, FIGIs, CFI code and EU trading venues for one ISIN, LEI, CIK, ticker, FIGI or company name. Check digits validated first; a source URL per value. Data from GLEIF, OpenFIGI, SEC and ESMA FIRDS. Price: Apify Store $0.002 per resolved identifier; HTTP API $0.002 per identifier resolved. ([Apify Store](https://apify.com/bosco_labs/identifier-resolver))
@@ -26,25 +26,25 @@ Contact: support@boscolabs.dev
 ## Companies
 
 - [Counterparty Check API: KYB checklist from official registers](https://boscolabs.dev/counterparty-check.html): KYB checklist per company: register status, LEI, insolvency, recent accounts, sanctions (OFAC, UN, UK, EU) on the company and officers, VAT (VIES), IBAN; pass, fail, review or unverified, each sourced. Officers: UK, PL, NO, FR only. Insolvency: UK, PL, FR, DE, NL, NO, FI, EE; elsewhere unverified. Price: Apify Store $0.05 per company checked; HTTP API $0.05 per company checked; an ambiguous name (candidates) is free. ([Apify Store](https://apify.com/bosco_labs/counterparty-check))
-- [Company Check API: identity, financials & SEC filings in 1 call](https://boscolabs.dev/company-check.html): Company lookup in one call: legal entity name, LEI, number, status, address, officers and owners, years of financials (revenue, profit, equity), SEC filings for US issuers; UK Companies House charges, appointments and Gazette insolvency. By name, LEI, UK/DK/NO/FR/FI/EE/PL number, ticker or CIK. Price: Apify Store $0.03 per report; HTTP API $0.03 per company report. ([Apify Store](https://apify.com/bosco_labs/company-check))
+- [Company Check API: due diligence, LEI, financials & SEC filings](https://boscolabs.dev/company-check.html): Company due diligence lookup in one call: legal entity name, LEI, number, status, address, officers and owners, years of financials (revenue, profit, equity), SEC filings; UK Companies House charges, appointments and Gazette insolvency. By name, LEI, UK/DK/NO/FR/FI/EE/PL number, ticker or CIK. Price: Apify Store $0.03 per report; HTTP API $0.03 per company report. ([Apify Store](https://apify.com/bosco_labs/company-check))
 - [VAT Number & IBAN Check API: EU VIES + IBAN validation](https://boscolabs.dev/vat-iban-check.html): Valid or not for EU VAT numbers (live from the official EU VIES service, with registered name, address and a name match) and IBANs (ISO 13616 check digits, length, bank code, country match). Pass, fail or unverified per check, with the source; unverified and malformed input are free. Price: Apify Store $0.002 per check with a definite answer; HTTP API $0.002 per definite check (VAT number answered by VIES, or a valid IBAN); malformed, failed and unverified are free. ([Apify Store](https://apify.com/bosco_labs/vat-iban-check))
-- [Company Financials API: UK, Denmark & Norway accounts + LEI](https://boscolabs.dev/company-accounts.html): Financials (revenue, profit, equity, assets, cash, employees) of private and public companies from official accounts: UK Companies House, Denmark Erhvervsstyrelsen, Norway Brønnøysund; adds the LEI from GLEIF and a source per value. Price: Apify Store $0.04 per company-year; HTTP API $0.04 per company-year. ([Apify Store](https://apify.com/bosco_labs/company-accounts))
+- [Company Financials API: UK, Denmark (CVR), Norway accounts](https://boscolabs.dev/company-accounts.html): Financials (revenue, profit, equity, assets, cash, employees) of private and public companies from official accounts: UK Companies House, Denmark Erhvervsstyrelsen, Norway Brønnøysund; adds the LEI from GLEIF and a source per value. Price: Apify Store $0.04 per company-year; HTTP API $0.04 per company-year. ([Apify Store](https://apify.com/bosco_labs/company-accounts))
 - [UK New Companies API: daily Companies House incorporations](https://boscolabs.dev/uk-new-companies.html): New UK companies incorporated on any day (default: yesterday) from the official Companies House API: number, name, type, status, SIC codes with descriptions, registered office address and a register link. Filter by SIC prefix, location and type. No director data. Price: $0.002 per company returned (HTTP API). (HTTP API and MCP)
 - [Company Hiring Signals API: open roles, departments, locations](https://boscolabs.dev/company-hiring-signals.html): Is a company hiring? Open roles by department, location and remote share, newest and oldest posting dates and top titles, plus job rows with a link each. Read from the company's public Greenhouse, Lever or Ashby job board. Look up by name, domain or board URL. Price: $0.001 per unit: a company summary = 5 units ($0.005), a job row = 1 ($0.001); companies without a public job board are free (HTTP API). (HTTP API and MCP)
 
 ## Compliance & law
 
-- [Sanctions Screening API: OFAC, UK, EU, UN & US lists](https://boscolabs.dev/sanctions-screening.html): Sanctions search: is this company, vessel, person or crypto wallet sanctioned? Per name or address: match yes/no, the listed entry, aliases, programs, listing date and a source link, from OFAC SDN and non-SDN, the US Consolidated Screening List, UK, EU and UN Security Council lists. Price: Apify Store $0.01 per name or wallet address screened; HTTP API $0.01 per name or wallet address screened (an address no list could be checked against is free). ([Apify Store](https://apify.com/bosco_labs/sanctions-screening))
+- [Sanctions List Screening API: OFAC, UK, EU, UN & US lists](https://boscolabs.dev/sanctions-screening.html): Sanctions list screening and search: is this company, vessel, person or crypto wallet sanctioned? Per name or address: match yes/no, the listed entry, aliases, programs and a source link, from OFAC SDN and non-SDN, the US Consolidated Screening List, UK, EU and UN Security Council lists. Price: Apify Store $0.01 per name or wallet address screened; HTTP API $0.01 per name or wallet address screened (an address no list could be checked against is free). ([Apify Store](https://apify.com/bosco_labs/sanctions-screening))
 - [EU Law Lookup API (EUR-Lex): article text, in force, amendments](https://boscolabs.dev/eu-law-lookup.html): The text of an EU law article as in force today (or on a date), whether the act is in force, what amended it, plus new Official Journal acts. Ask by name (GDPR, AI Act), citation, CELEX or ELI; 24 languages. Official EUR-Lex/Cellar data with a source link per row. Price: Apify Store $0.005 per act or article returned; HTTP API $0.005 per act or article returned. ([Apify Store](https://apify.com/bosco_labs/eu-law-lookup))
 - [UK & Dutch Law Lookup API: article text by date, in force](https://boscolabs.dev/national-law-lookup.html): The text of a UK section or Dutch article as in force today (or on a date), whether it is in force and what changed it. Ask by citation: "Companies Act 2006 s 172", "BW 7:658", "artikel 13 Wet Vpb 1969". Official legislation.gov.uk and Dutch BWB data with a source link per row. Price: Apify Store $0.01 per article or act returned; HTTP API $0.005 per article or act returned. ([Apify Store](https://apify.com/bosco_labs/national-law-lookup))
 - [Dutch Case Law API (Rechtspraak): ECLI lookup, uitspraken](https://boscolabs.dev/dutch-case-law.html): Dutch court decisions (uitspraken) by ECLI or search: court, dates, case numbers, legal area, summary (inhoudsindicatie), appeal/cassation relations, law references and optional text. Hoge Raad, Raad van State, gerechtshoven, rechtbanken. Official Rechtspraak Open Data, source link per row. Price: Apify Store $0.005 per decision returned; HTTP API $0.005 per court decision returned. ([Apify Store](https://apify.com/bosco_labs/dutch-case-law))
-- [US Federal Rules API: CFR text as of a date + Federal Register](https://boscolabs.dev/us-federal-rules.html): The text of a CFR section as in force today or on any date, its amendment history and the Federal Register rules that changed it; what changed in a CFR part since a date; Federal Register documents by number or search. Official eCFR and FederalRegister.gov data, a source link per row. Price: Apify Store $0.005 per section, $0.002 per document; HTTP API $0.001 per unit: a CFR section with text = 5 units ($0.005), a Federal Register document = 2 ($0.002); rows without text are free. ([Apify Store](https://apify.com/bosco_labs/us-federal-rules))
+- [Federal Register & eCFR API: CFR text as of a date, changes](https://boscolabs.dev/us-federal-rules.html): Federal Register documents and Code of Federal Regulations (eCFR) text: a CFR section as in force today or on any date, its amendment history and the rules that changed it; what changed in a CFR part since a date; Federal Register search by agency or number. Official data, a source link per row. Price: Apify Store $0.005 per section, $0.002 per document; HTTP API $0.001 per unit: a CFR section with text = 5 units ($0.005), a Federal Register document = 2 ($0.002); rows without text are free. ([Apify Store](https://apify.com/bosco_labs/us-federal-rules))
 - [Product Recall Check API: CPSC, NHTSA, FDA & EU Safety Gate](https://boscolabs.dev/product-recalls.html): Recalled yes/no, with each recall's date, hazard, remedy and official link, for a product name, brand, model, UPC/EAN or VIN. Checks US CPSC, NHTSA vehicle recalls, FDA enforcement reports (food, drugs, devices) and EU Safety Gate in one call. Lists every source checked. Price: $0.005 per product checked (every source answered) (HTTP API). (HTTP API and MCP)
-- [Tariff Code & Duty Lookup API: US HTS and UK Tariff](https://boscolabs.dev/tariff-lookup.html): Import duty rates for a US Harmonized Tariff Schedule (HTS) or UK commodity code: official description hierarchy, general/MFN rate, preferential rates, US Chapter 99 references, UK VAT, units, source link. Or a product description in, 5 official candidate codes out. No binding ruling. Price: Apify Store $0.005 per lookup or search; HTTP API $0.005 per code lookup or code search (US or UK). ([Apify Store](https://apify.com/bosco_labs/tariff-lookup))
+- [HS Tariff Code & Duty Lookup API: US HTS and UK Tariff](https://boscolabs.dev/tariff-lookup.html): Import duty for an HS-based tariff code, US Harmonized Tariff Schedule (HTS) or UK commodity code: official description hierarchy, general/MFN rate, preferential rates, US Chapter 99 references, UK VAT, source link. Or a product description in, 5 official candidate codes out. No binding ruling. Price: Apify Store $0.005 per lookup or search; HTTP API $0.005 per code lookup or code search (US or UK). ([Apify Store](https://apify.com/bosco_labs/tariff-lookup))
 
 ## Government & procurement
 
-- [EU Public Tenders & Contract Awards API (TED procurement)](https://boscolabs.dev/eu-tenders.html): EU public procurement notices from TED (Tenders Electronic Daily), the EU's official tenders journal: open calls with deadlines, contract awards with winners and values, prior information; EU, EEA and more, since 2016; filter by keyword, country, CPV code, notice type, date, EUR value. Price: Apify Store $0.002 per notice; HTTP API $0.002 per TED notice. ([Apify Store](https://apify.com/bosco_labs/eu-tenders))
+- [EU Tenders API (TED): public procurement & contract awards](https://boscolabs.dev/eu-tenders.html): EU public procurement notices from TED (Tenders Electronic Daily), the EU's official tenders journal: open calls with deadlines, contract awards with winners and values, prior information; EU, EEA and more, since 2016; filter by keyword, country, CPV code, notice type, date, EUR value. Price: Apify Store $0.002 per notice; HTTP API $0.002 per TED notice. ([Apify Store](https://apify.com/bosco_labs/eu-tenders))
 - [Pentagon / DoD Contract Awards API: winners, amounts, tickers](https://boscolabs.dev/dod-contract-awards.html): US Department of Defense contract awards of $7.5M or more the same evening they are announced, plus USAspending.gov history since FY2008 (any federal agency); winner, amount, service, NAICS/PSC, matched to a US stock ticker with SEC shares outstanding. Price: $0.005 per award row (USAspending history) (HTTP API). (HTTP API and MCP)
 - [US Federal Awards API: contracts & grants, all agencies](https://boscolabs.dev/us-federal-awards.html): US federal contract, grant and loan awards from every agency (USAspending.gov): winner, UEI, parent company, stock ticker, agency, amounts, dates, NAICS/PSC/assistance listing, place of performance and a source link. Filter by company, ticker, agency, keyword, state, date. Price: $0.004 per award row (HTTP API). (HTTP API and MCP)
 
@@ -52,7 +52,7 @@ Contact: support@boscolabs.dev
 
 - [ECB Rates & Euro Inflation API: policy rates, FX, €STR, HICP](https://boscolabs.dev/eu-rates-inflation.html): Latest value, previous value, change and recent history of ECB policy rates, euro reference FX rates, €STR, euro-area and national bond yields, and Eurostat HICP inflation. Ask by plain name (ecb_deposit_rate, eur_fx:USD, hicp:NL), no SDMX keys. Official data, a source link per series. Price: $0.002 per series returned (catalogue free) (HTTP API). (HTTP API and MCP)
 - [ClinicalTrials.gov API: trial search & NCT dossier](https://boscolabs.dev/clinical-trials.html): Clinical trials as compact JSON rows: status, phase, sponsor, conditions, interventions, enrollment, start and primary completion dates, countries, outcomes and results. Look up NCT numbers or search by condition, drug, sponsor, phase, status, country and dates. Sourced, no contact data. Price: $0.004 per trial (HTTP API). (HTTP API and MCP)
-- [Drug Safety API: FDA label, FAERS, recalls, EMA status](https://boscolabs.dev/drug-safety.html): Drug safety dossier for one drug name as one sourced JSON row: FDA boxed warning and indications, top FAERS adverse reaction counts, US recalls and shortages (openFDA), EU authorisation, EPAR link and EU shortages (EMA). Or one cheaper sub-query. Not medical advice. Price: Apify Store $0.02 per dossier or $0.004 per single-section query; HTTP API $0.004 per sub-query; a full dossier = 5 units ($0.02); partial answers are free. ([Apify Store](https://apify.com/bosco_labs/drug-safety))
+- [Drug Safety API: FDA adverse events, label, recalls, EMA status](https://boscolabs.dev/drug-safety.html): Drug safety dossier for one drug name as one sourced JSON row: FDA adverse events (top FAERS reaction counts), boxed warning and indications, US recalls and shortages (openFDA), EU authorisation, EPAR link and EU shortages (EMA). Or one cheaper sub-query. Not medical advice. Price: Apify Store $0.02 per dossier or $0.004 per single-section query; HTTP API $0.004 per sub-query; a full dossier = 5 units ($0.02); partial answers are free. ([Apify Store](https://apify.com/bosco_labs/drug-safety))
 - [Dutch Address Lookup API: BAG postcode, geocode & building data](https://boscolabs.dev/dutch-address-lookup.html): Validates and geocodes Dutch addresses against the official BAG register (via PDOK): postcode, BAG ids, WGS84 + RD coordinates, construction year, use, floor area and building status. Free text, postcode + house number (or range) or BAG ids; up to 100 per run. Unmatched inputs are free. Price: $0.002 per address resolved (unresolved inputs are free) (HTTP API). (HTTP API and MCP)
 
 ## Software security
@@ -369,7 +369,7 @@ MCP: https://mcp.apify.com?tools=bosco_labs/us-house-trades
 Price: Apify Store $0.0018 per trade; HTTP API $0.0018 per PTR transaction
 API: POST https://api.boscolabs.dev/v1/us-house-trades, $0.0018 per PTR transaction (max 200 trades (maxResults))
 
-Congress stock trades: stock trading by US House members (politicians' trade disclosures under the STOCK Act), from the Clerk's official Periodic Transaction Reports since 2014 (no Senate). Each row: ticker, amount range, owner, disclosure delay. Filter by member, ticker, type, amount, date.
+Congress stock trades: congressional stock trading disclosures by US House members (politicians' Periodic Transaction Reports under the STOCK Act), from the House Clerk since 2014 (no Senate). Each row: ticker, amount range, owner, disclosure delay. Filter by member, ticker, type, amount, date.
 
 Coverage: Periodic Transaction Reports of House members filed online, from January 2014 to the latest update of the Clerk's index. Scanned paper PTRs are skipped (their PDF links are listed in the run's SUMMARY record). The Senate and annual financial disclosure reports are not included.
 
@@ -428,7 +428,7 @@ Example questions:
 { "members": ["Pelosi"], "years": ["2024", "2025"], "transactionTypes": ["purchase"], "maxResults": 500 }
 ```
 
-## SEC Ownership API: 13F, N-PORT Fund Holdings, 13D/13G, Form 144
+## SEC 13F Holdings API: fund & ETF holdings, 13D/13G, Form 144
 
 Docs: https://boscolabs.dev/sec-ownership.html
 Apify Store: https://apify.com/bosco_labs/sec-ownership
@@ -436,7 +436,7 @@ MCP: https://mcp.apify.com?tools=bosco_labs/sec-ownership
 Price: Apify Store $0.0018 per row, plus $0.01 per "who holds this stock" search (13F or N-PORT data set); HTTP API $0.0018 per holding, holder or filing row (one fund or company per call)
 API: POST https://api.boscolabs.dev/v1/sec-ownership, $0.0018 per holding, holder or filing row (one fund or company per call) (max 200 rows (maxResults))
 
-Who owns a stock, from official SEC filings: a fund manager's 13F holdings, a mutual fund's or ETF's N-PORT holdings (with changes), the funds holding a ticker, 5%+ stakes (13D/13G) and Form 144 planned insider sales. One ticker or fund in, JSON out, a source link per row.
+13F institutional holdings and who owns a stock, from official SEC filings: a fund manager's 13F holdings with changes vs the previous quarter, a mutual fund's or ETF's N-PORT holdings, the funds holding a ticker, 5%+ stakes (13D/13G) and Form 144 planned insider sales. One ticker or fund in.
 
 Example questions:
 
@@ -528,7 +528,7 @@ Example questions:
 {"mode": "holdings13f", "filer": "Berkshire Hathaway"}
 ```
 
-## SEC Company Financials API: income, balance sheet, cash flow
+## SEC Financial Statements API: income, balance sheet, cash flow
 
 Docs: https://boscolabs.dev/sec-company-financials.html
 Apify Store: https://apify.com/bosco_labs/sec-company-financials
@@ -536,7 +536,7 @@ MCP: https://mcp.apify.com?tools=bosco_labs/sec-company-financials
 Price: Apify Store $0.005 per company-period row; HTTP API $0.005 per company-period row
 API: POST https://api.boscolabs.dev/v1/sec-company-financials, $0.005 per company-period row (max 10 tickers/CIKs x 20 years)
 
-US company financial data from SEC EDGAR XBRL: revenue, profit, EPS, balance sheet, cash flow, free cash flow and margins per fiscal year or quarter, 2009 to today. By ticker or CIK, 10-K/10-Q and 20-F filers. Each value cites its XBRL tag and SEC filing. Q4 derived where not reported.
+Company financial statements from SEC EDGAR XBRL (10-K, 10-Q, 20-F): income statement (revenue, profit, EPS), balance sheet, cash flow, free cash flow and margins per fiscal year or quarter, 2009 to today, by ticker or CIK. Each value cites its XBRL tag and SEC filing. Q4 derived where not reported.
 
 Example questions:
 
@@ -917,7 +917,7 @@ Example questions:
 { "query": "24256790", "country": "DK", "vatNumber": "DK24256790", "iban": "DK5000400440116243" }
 ```
 
-## Company Check API: identity, financials & SEC filings in 1 call
+## Company Check API: due diligence, LEI, financials & SEC filings
 
 Docs: https://boscolabs.dev/company-check.html
 Apify Store: https://apify.com/bosco_labs/company-check
@@ -925,7 +925,7 @@ MCP: https://mcp.apify.com?tools=bosco_labs/company-check
 Price: Apify Store $0.03 per report; HTTP API $0.03 per company report
 API: POST https://api.boscolabs.dev/v1/company-check, $0.03 per company report (max 1 report)
 
-Company lookup in one call: legal entity name, LEI, number, status, address, officers and owners, years of financials (revenue, profit, equity), SEC filings for US issuers; UK Companies House charges, appointments and Gazette insolvency. By name, LEI, UK/DK/NO/FR/FI/EE/PL number, ticker or CIK.
+Company due diligence lookup in one call: legal entity name, LEI, number, status, address, officers and owners, years of financials (revenue, profit, equity), SEC filings; UK Companies House charges, appointments and Gazette insolvency. By name, LEI, UK/DK/NO/FR/FI/EE/PL number, ticker or CIK.
 
 Example questions:
 
@@ -1025,7 +1025,7 @@ Example questions:
 }
 ```
 
-## Company Financials API: UK, Denmark & Norway accounts + LEI
+## Company Financials API: UK, Denmark (CVR), Norway accounts
 
 Docs: https://boscolabs.dev/company-accounts.html
 Apify Store: https://apify.com/bosco_labs/company-accounts
@@ -1239,7 +1239,7 @@ Example questions:
 }
 ```
 
-## Sanctions Screening API: OFAC, UK, EU, UN & US lists
+## Sanctions List Screening API: OFAC, UK, EU, UN & US lists
 
 Docs: https://boscolabs.dev/sanctions-screening.html
 Apify Store: https://apify.com/bosco_labs/sanctions-screening
@@ -1247,7 +1247,7 @@ MCP: https://mcp.apify.com?tools=bosco_labs/sanctions-screening
 Price: Apify Store $0.01 per name or wallet address screened; HTTP API $0.01 per name or wallet address screened (an address no list could be checked against is free)
 API: POST https://api.boscolabs.dev/v1/sanctions-screening, $0.01 per name or wallet address screened (an address no list could be checked against is free) (max 50 names and 50 addresses)
 
-Sanctions search: is this company, vessel, person or crypto wallet sanctioned? Per name or address: match yes/no, the listed entry, aliases, programs, listing date and a source link, from OFAC SDN and non-SDN, the US Consolidated Screening List, UK, EU and UN Security Council lists.
+Sanctions list screening and search: is this company, vessel, person or crypto wallet sanctioned? Per name or address: match yes/no, the listed entry, aliases, programs and a source link, from OFAC SDN and non-SDN, the US Consolidated Screening List, UK, EU and UN Security Council lists.
 
 Example questions:
 
@@ -1512,7 +1512,7 @@ Example questions:
 { "query": "huurrecht", "courts": ["HR"], "dateFrom": "2024-01-01", "maxResults": 20 }
 ```
 
-## US Federal Rules API: CFR text as of a date + Federal Register
+## Federal Register & eCFR API: CFR text as of a date, changes
 
 Docs: https://boscolabs.dev/us-federal-rules.html
 Apify Store: https://apify.com/bosco_labs/us-federal-rules
@@ -1520,7 +1520,7 @@ MCP: https://mcp.apify.com?tools=bosco_labs/us-federal-rules
 Price: Apify Store $0.005 per section, $0.002 per document; HTTP API $0.001 per unit: a CFR section with text = 5 units ($0.005), a Federal Register document = 2 ($0.002); rows without text are free
 API: POST https://api.boscolabs.dev/v1/us-federal-rules, $0.001 per unit: a CFR section with text = 5 units ($0.005), a Federal Register document = 2 ($0.002); rows without text are free (max 10 CFR units or 50 documents)
 
-The text of a CFR section as in force today or on any date, its amendment history and the Federal Register rules that changed it; what changed in a CFR part since a date; Federal Register documents by number or search. Official eCFR and FederalRegister.gov data, a source link per row.
+Federal Register documents and Code of Federal Regulations (eCFR) text: a CFR section as in force today or on any date, its amendment history and the rules that changed it; what changed in a CFR part since a date; Federal Register search by agency or number. Official data, a source link per row.
 
 Example questions:
 
@@ -1637,7 +1637,7 @@ Example questions:
 { "queries": ["Peloton Bike+", "3418178586009", "1HGCP2F31CA000000"], "maxMatches": 10 }
 ```
 
-## Tariff Code & Duty Lookup API: US HTS and UK Tariff
+## HS Tariff Code & Duty Lookup API: US HTS and UK Tariff
 
 Docs: https://boscolabs.dev/tariff-lookup.html
 Apify Store: https://apify.com/bosco_labs/tariff-lookup
@@ -1645,7 +1645,7 @@ MCP: https://mcp.apify.com?tools=bosco_labs/tariff-lookup
 Price: Apify Store $0.005 per lookup or search; HTTP API $0.005 per code lookup or code search (US or UK)
 API: POST https://api.boscolabs.dev/v1/tariff-lookup, $0.005 per code lookup or code search (US or UK) (max 1 code or 5 candidates)
 
-Import duty rates for a US Harmonized Tariff Schedule (HTS) or UK commodity code: official description hierarchy, general/MFN rate, preferential rates, US Chapter 99 references, UK VAT, units, source link. Or a product description in, 5 official candidate codes out. No binding ruling.
+Import duty for an HS-based tariff code, US Harmonized Tariff Schedule (HTS) or UK commodity code: official description hierarchy, general/MFN rate, preferential rates, US Chapter 99 references, UK VAT, source link. Or a product description in, 5 official candidate codes out. No binding ruling.
 
 Example questions:
 
@@ -1698,7 +1698,7 @@ Example questions:
 { "code": "8712.00.15", "market": "US" }
 ```
 
-## EU Public Tenders & Contract Awards API (TED procurement)
+## EU Tenders API (TED): public procurement & contract awards
 
 Docs: https://boscolabs.dev/eu-tenders.html
 Apify Store: https://apify.com/bosco_labs/eu-tenders
@@ -1706,7 +1706,7 @@ MCP: https://mcp.apify.com?tools=bosco_labs/eu-tenders
 Price: Apify Store $0.002 per notice; HTTP API $0.002 per TED notice
 API: POST https://api.boscolabs.dev/v1/eu-tenders, $0.002 per TED notice (max 200 notices (maxResults))
 
-EU public procurement and government tenders from TED, the EU's official tenders journal (EU, EEA, since 2016): open calls with deadlines, contract awards with winners and values. Filter by keyword, buyer country, CPV code, notice type, date and EUR value. An API, no scraper to maintain.
+EU tenders and government procurement from TED, the EU's official public tenders journal (EU, EEA, since 2016): open calls with deadlines, contract awards with winners and values. Filter by keyword, buyer country (e.g. Germany), CPV code, notice type, date and EUR value. No scraper to maintain.
 
 Coverage: Every country that publishes on TED: the 27 EU member states, Norway, Iceland, Liechtenstein, Switzerland, candidate countries and EU-funded procurement abroad; about 22,000 notices a week. History from November 2016 (complete from 2017). New notices are available the day they are published.
 
@@ -2091,7 +2091,7 @@ Example questions:
 { "nctIds": ["NCT05813925", "NCT04368728"] }
 ```
 
-## Drug Safety API: FDA label, FAERS, recalls, EMA status
+## Drug Safety API: FDA adverse events, label, recalls, EMA status
 
 Docs: https://boscolabs.dev/drug-safety.html
 Apify Store: https://apify.com/bosco_labs/drug-safety
@@ -2099,7 +2099,7 @@ MCP: https://mcp.apify.com?tools=bosco_labs/drug-safety
 Price: Apify Store $0.02 per dossier or $0.004 per single-section query; HTTP API $0.004 per sub-query; a full dossier = 5 units ($0.02); partial answers are free
 API: POST https://api.boscolabs.dev/v1/drug-safety, $0.004 per sub-query; a full dossier = 5 units ($0.02); partial answers are free (max 1 drug)
 
-Drug safety dossier for one drug name as one sourced JSON row: FDA boxed warning and indications, top FAERS adverse reaction counts, US recalls and shortages (openFDA), EU authorisation, EPAR link and EU shortages (EMA). Or one cheaper sub-query. Not medical advice.
+Drug safety dossier for one drug name as one sourced JSON row: FDA adverse events (top FAERS reaction counts), boxed warning and indications, US recalls and shortages (openFDA), EU authorisation, EPAR link and EU shortages (EMA). Or one cheaper sub-query. Not medical advice.
 
 Example questions:
 

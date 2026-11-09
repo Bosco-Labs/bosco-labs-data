@@ -57,13 +57,13 @@
      "@type": "ListItem",
      "position": 4,
      "url": "https://boscolabs.dev/sec-ownership.html",
-     "name": "SEC Ownership API: 13F, N-PORT Fund Holdings, 13D/13G, Form 144"
+     "name": "SEC 13F Holdings API: fund & ETF holdings, 13D/13G, Form 144"
     },
     {
      "@type": "ListItem",
      "position": 5,
      "url": "https://boscolabs.dev/sec-company-financials.html",
-     "name": "SEC Company Financials API: income, balance sheet, cash flow"
+     "name": "SEC Financial Statements API: income, balance sheet, cash flow"
     },
     {
      "@type": "ListItem",
@@ -93,7 +93,7 @@
      "@type": "ListItem",
      "position": 10,
      "url": "https://boscolabs.dev/company-check.html",
-     "name": "Company Check API: identity, financials & SEC filings in 1 call"
+     "name": "Company Check API: due diligence, LEI, financials & SEC filings"
     },
     {
      "@type": "ListItem",
@@ -105,7 +105,7 @@
      "@type": "ListItem",
      "position": 12,
      "url": "https://boscolabs.dev/company-accounts.html",
-     "name": "Company Financials API: UK, Denmark & Norway accounts + LEI"
+     "name": "Company Financials API: UK, Denmark (CVR), Norway accounts"
     },
     {
      "@type": "ListItem",
@@ -123,7 +123,7 @@
      "@type": "ListItem",
      "position": 15,
      "url": "https://boscolabs.dev/sanctions-screening.html",
-     "name": "Sanctions Screening API: OFAC, UK, EU, UN & US lists"
+     "name": "Sanctions List Screening API: OFAC, UK, EU, UN & US lists"
     },
     {
      "@type": "ListItem",
@@ -147,7 +147,7 @@
      "@type": "ListItem",
      "position": 19,
      "url": "https://boscolabs.dev/us-federal-rules.html",
-     "name": "US Federal Rules API: CFR text as of a date + Federal Register"
+     "name": "Federal Register & eCFR API: CFR text as of a date, changes"
     },
     {
      "@type": "ListItem",
@@ -159,13 +159,13 @@
      "@type": "ListItem",
      "position": 21,
      "url": "https://boscolabs.dev/tariff-lookup.html",
-     "name": "Tariff Code & Duty Lookup API: US HTS and UK Tariff"
+     "name": "HS Tariff Code & Duty Lookup API: US HTS and UK Tariff"
     },
     {
      "@type": "ListItem",
      "position": 22,
      "url": "https://boscolabs.dev/eu-tenders.html",
-     "name": "EU Public Tenders & Contract Awards API (TED procurement)"
+     "name": "EU Tenders API (TED): public procurement & contract awards"
     },
     {
      "@type": "ListItem",
@@ -195,7 +195,7 @@
      "@type": "ListItem",
      "position": 27,
      "url": "https://boscolabs.dev/drug-safety.html",
-     "name": "Drug Safety API: FDA label, FAERS, recalls, EMA status"
+     "name": "Drug Safety API: FDA adverse events, label, recalls, EMA status"
     },
     {
      "@type": "ListItem",
@@ -273,8 +273,8 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <li class="card"><div class="card-top"><img src="icons/sec-insider-trades.svg" alt="" width="48" height="48"><h3><a href="sec-insider-trades.html">SEC Insider Trading API (Form 4)</a></h3></div><p>Every SEC Form 4 insider stock transaction (purchase or sale) since 2006 as JSON, with cluster-buy signals. Filter by ticker, role, value and date.</p><div class="row"><span class="price">$0.0018 per transaction row and $0.02 per cluster signal</span><a href="https://apify.com/bosco_labs/sec-insider-trades">Apify Store</a> &middot; <a href="sec-insider-trades.html#where">API</a></div></li>
 <li class="card"><div class="card-top"><img src="icons/sec-filings-feed.svg" alt="" width="48" height="48"><h3><a href="sec-filings-feed.html">SEC EDGAR Filings API</a></h3></div><p>SEC EDGAR filings as JSON for one company or the whole market, live or since 1994: 8-K items, earnings release times, filing links. No scraper setup.</p><div class="row"><span class="price">$0.001 per filing</span><a href="https://apify.com/bosco_labs/sec-filings-feed">Apify Store</a> &middot; <a href="sec-filings-feed.html#where">API</a></div></li>
 <li class="card"><div class="card-top"><img src="icons/us-house-trades.svg" alt="" width="48" height="48"><h3><a href="us-house-trades.html">Congress Stock Trades API</a></h3></div><p>Congress stock trading disclosures by US House members (politicians) under the STOCK Act since 2014, from official Clerk filings: ticker, amount, delay.</p><div class="row"><span class="price">$0.0018 per trade</span><a href="https://apify.com/bosco_labs/us-house-trades">Apify Store</a> &middot; <a href="us-house-trades.html#where">API</a></div></li>
-<li class="card"><div class="card-top"><img src="icons/sec-ownership.svg" alt="" width="48" height="48"><h3><a href="sec-ownership.html">SEC Ownership API</a></h3></div><p>Who owns a stock: 13F manager holdings, mutual fund and ETF N-PORT holdings with changes, funds holding a ticker, 13D/13G stakes and Form 144 sales.</p><div class="row"><span class="price">$0.0018 per row, plus $0.01 per &quot;who holds this stock&quot; search (13F or N-PORT data set)</span><a href="https://apify.com/bosco_labs/sec-ownership">Apify Store</a> &middot; <a href="sec-ownership.html#where">API</a></div></li>
-<li class="card"><div class="card-top"><img src="icons/sec-company-financials.svg" alt="" width="48" height="48"><h3><a href="sec-company-financials.html">SEC Company Financials API</a></h3></div><p>Income statement, balance sheet and cash flow of US-listed companies from SEC XBRL, per year or quarter since 2009, by ticker or CIK, each value sourced.</p><div class="row"><span class="price">$0.005 per company-period row</span><a href="https://apify.com/bosco_labs/sec-company-financials">Apify Store</a> &middot; <a href="sec-company-financials.html#where">API</a></div></li>
+<li class="card"><div class="card-top"><img src="icons/sec-ownership.svg" alt="" width="48" height="48"><h3><a href="sec-ownership.html">SEC 13F Holdings API</a></h3></div><p>Who owns a stock: 13F manager holdings, mutual fund and ETF N-PORT holdings with changes, funds holding a ticker, 13D/13G stakes and Form 144 sales.</p><div class="row"><span class="price">$0.0018 per row, plus $0.01 per &quot;who holds this stock&quot; search (13F or N-PORT data set)</span><a href="https://apify.com/bosco_labs/sec-ownership">Apify Store</a> &middot; <a href="sec-ownership.html#where">API</a></div></li>
+<li class="card"><div class="card-top"><img src="icons/sec-company-financials.svg" alt="" width="48" height="48"><h3><a href="sec-company-financials.html">SEC Financial Statements API</a></h3></div><p>Income statement, balance sheet and cash flow of US-listed companies from SEC XBRL, per year or quarter since 2009, by ticker or CIK, each value sourced.</p><div class="row"><span class="price">$0.005 per company-period row</span><a href="https://apify.com/bosco_labs/sec-company-financials">Apify Store</a> &middot; <a href="sec-company-financials.html#where">API</a></div></li>
 <li class="card"><div class="card-top"><img src="icons/sec-company-screen.svg" alt="" width="48" height="48"><h3><a href="sec-company-screen.html">SEC Company Screener API</a></h3></div><p>Screen all US SEC filers by revenue, net income, margins, cash flow and 30 more metrics for one year or quarter. Each value cites its SEC filing.</p><div class="row"><span class="price">$0.002 per company returned</span><a href="https://apify.com/bosco_labs/sec-company-screen">Apify Store</a> &middot; <a href="sec-company-screen.html#where">API</a></div></li>
 <li class="card"><div class="card-top"><img src="icons/esef-annual-reports.svg" alt="" width="48" height="48"><h3><a href="esef-annual-reports.html">EU Annual Reports API (ESEF)</a></h3></div><p>Revenue, operating income, net income, EPS, equity, cash flow from ESEF annual reports of EU listed companies in 28 countries, linked to the XBRL facts.</p><div class="row"><span class="price">$0.01 per run plus $0.05 per annual report; raw XBRL fact rows, if switched on, $0.0005 each</span><a href="https://apify.com/bosco_labs/esef-annual-reports">Apify Store</a> &middot; <a href="esef-annual-reports.html#where">API</a></div></li>
 <li class="card"><div class="card-top"><img src="icons/identifier-resolver.svg" alt="" width="48" height="48"><h3><a href="identifier-resolver.html">ISIN, LEI, CIK, FIGI &amp; Ticker Resolver API (crosswalk)</a></h3></div><p>Resolve an ISIN, LEI, CIK, ticker, FIGI or company name to issuer name, LEI, CIK, tickers, FIGIs, CFI code and EU trading venues, each with a source URL.</p><div class="row"><span class="price">$0.002 per resolved identifier</span><a href="https://apify.com/bosco_labs/identifier-resolver">Apify Store</a> &middot; <a href="identifier-resolver.html#where">API</a></div></li>
@@ -294,19 +294,19 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <section id="compliance-law">
 <h2>Compliance &amp; law</h2>
 <ul class="grid">
-<li class="card"><div class="card-top"><img src="icons/sanctions-screening.svg" alt="" width="48" height="48"><h3><a href="sanctions-screening.html">Sanctions Screening API</a></h3></div><p>Is this company, vessel or person sanctioned? Screen names against OFAC SDN, the US Consolidated Screening List, UN, UK and EU sanctions lists.</p><div class="row"><span class="price">$0.01 per name or wallet address screened</span><a href="https://apify.com/bosco_labs/sanctions-screening">Apify Store</a> &middot; <a href="sanctions-screening.html#where">API</a></div></li>
+<li class="card"><div class="card-top"><img src="icons/sanctions-screening.svg" alt="" width="48" height="48"><h3><a href="sanctions-screening.html">Sanctions List Screening API</a></h3></div><p>Is this company, vessel or person sanctioned? Screen names against OFAC SDN, the US Consolidated Screening List, UN, UK and EU sanctions lists.</p><div class="row"><span class="price">$0.01 per name or wallet address screened</span><a href="https://apify.com/bosco_labs/sanctions-screening">Apify Store</a> &middot; <a href="sanctions-screening.html#where">API</a></div></li>
 <li class="card"><div class="card-top"><img src="icons/eu-law-lookup.svg" alt="" width="48" height="48"><h3><a href="eu-law-lookup.html">EU Law Lookup API (EUR-Lex)</a></h3></div><p>The text of an EU law article as in force today or on a date, in-force status and amending acts. Ask by name (GDPR, AI Act), CELEX or ELI. From EUR-Lex.</p><div class="row"><span class="price">$0.005 per act or article returned</span><a href="https://apify.com/bosco_labs/eu-law-lookup">Apify Store</a> &middot; <a href="eu-law-lookup.html#where">API</a></div></li>
 <li class="card"><div class="card-top"><img src="icons/national-law-lookup.svg" alt="" width="48" height="48"><h3><a href="national-law-lookup.html">UK &amp; Dutch Law Lookup API</a></h3></div><p>Text of a UK section or Dutch article as in force today or on a date, whether it is in force and what changed it. From legislation.gov.uk and Dutch BWB.</p><div class="row"><span class="price">$0.01 per article or act returned</span><a href="https://apify.com/bosco_labs/national-law-lookup">Apify Store</a> &middot; <a href="national-law-lookup.html#where">API</a></div></li>
 <li class="card"><div class="card-top"><img src="icons/dutch-case-law.svg" alt="" width="48" height="48"><h3><a href="dutch-case-law.html">Dutch Case Law API (Rechtspraak)</a></h3></div><p>Dutch court decisions (uitspraken) by ECLI or search: court, dates, case numbers, legal area, summary, appeal relations, full text. Rechtspraak Open Data.</p><div class="row"><span class="price">$0.005 per decision returned</span><a href="https://apify.com/bosco_labs/dutch-case-law">Apify Store</a> &middot; <a href="dutch-case-law.html#where">API</a></div></li>
-<li class="card"><div class="card-top"><img src="icons/us-federal-rules.svg" alt="" width="48" height="48"><h3><a href="us-federal-rules.html">US Federal Rules API</a></h3></div><p>CFR section text as in force on any date, its amendment history and the Federal Register rules behind each change. Search FR documents by agency or number.</p><div class="row"><span class="price">$0.005 per section, $0.002 per document</span><a href="https://apify.com/bosco_labs/us-federal-rules">Apify Store</a> &middot; <a href="us-federal-rules.html#where">API</a></div></li>
+<li class="card"><div class="card-top"><img src="icons/us-federal-rules.svg" alt="" width="48" height="48"><h3><a href="us-federal-rules.html">Federal Register &amp; eCFR API</a></h3></div><p>CFR section text as in force on any date, its amendment history and the Federal Register rules behind each change. Search FR documents by agency or number.</p><div class="row"><span class="price">$0.005 per section, $0.002 per document</span><a href="https://apify.com/bosco_labs/us-federal-rules">Apify Store</a> &middot; <a href="us-federal-rules.html#where">API</a></div></li>
 <li class="card"><div class="card-top"><img src="icons/product-recalls.svg" alt="" width="48" height="48"><h3><a href="product-recalls.html">Product Recall Check API</a></h3></div><p>Is a product, UPC or VIN recalled? One call checks US CPSC, NHTSA, FDA and EU Safety Gate: hazard, remedy, date and official link per recall.</p><div class="row"><span class="price">$0.005 per product checked (every source answered) (HTTP API)</span><span class="badge live">On the HTTP API</span></div></li>
-<li class="card"><div class="card-top"><img src="icons/tariff-lookup.svg" alt="" width="48" height="48"><h3><a href="tariff-lookup.html">Tariff Code &amp; Duty Lookup API</a></h3></div><p>Duty rate for a US HTS or UK commodity code: MFN, preferential rates, Chapter 99, UK VAT, official source link. Or find candidate codes.</p><div class="row"><span class="price">$0.005 per lookup or search</span><a href="https://apify.com/bosco_labs/tariff-lookup">Apify Store</a> &middot; <a href="tariff-lookup.html#where">API</a></div></li>
+<li class="card"><div class="card-top"><img src="icons/tariff-lookup.svg" alt="" width="48" height="48"><h3><a href="tariff-lookup.html">HS Tariff Code &amp; Duty Lookup API</a></h3></div><p>Duty rate for a US HTS or UK commodity code: MFN, preferential rates, Chapter 99, UK VAT, official source link. Or find candidate codes.</p><div class="row"><span class="price">$0.005 per lookup or search</span><a href="https://apify.com/bosco_labs/tariff-lookup">Apify Store</a> &middot; <a href="tariff-lookup.html#where">API</a></div></li>
 </ul>
 </section>
 <section id="government-procurement">
 <h2>Government &amp; procurement</h2>
 <ul class="grid">
-<li class="card"><div class="card-top"><img src="icons/eu-tenders.svg" alt="" width="48" height="48"><h3><a href="eu-tenders.html">EU Public Tenders &amp; Contract Awards API (TED procurement)</a></h3></div><p>EU public tenders and contract awards from TED as JSON: deadlines, winners, awarded values and CPV codes, EU and EEA buyers since 2016. $2 per 1,000.</p><div class="row"><span class="price">$0.002 per notice</span><a href="https://apify.com/bosco_labs/eu-tenders">Apify Store</a> &middot; <a href="eu-tenders.html#where">API</a></div></li>
+<li class="card"><div class="card-top"><img src="icons/eu-tenders.svg" alt="" width="48" height="48"><h3><a href="eu-tenders.html">EU Tenders API (TED)</a></h3></div><p>EU public tenders and contract awards from TED as JSON: deadlines, winners, awarded values and CPV codes, EU and EEA buyers since 2016. $2 per 1,000.</p><div class="row"><span class="price">$0.002 per notice</span><a href="https://apify.com/bosco_labs/eu-tenders">Apify Store</a> &middot; <a href="eu-tenders.html#where">API</a></div></li>
 <li class="card"><div class="card-top"><img src="icons/dod-contract-awards.svg" alt="" width="48" height="48"><h3><a href="dod-contract-awards.html">Pentagon / DoD Contract Awards API</a></h3></div><p>Pentagon contract awards of $7.5M+ the same evening, plus USAspending.gov history since FY2008, with the winner&#x27;s stock ticker and SEC shares outstanding.</p><div class="row"><span class="price">$0.005 per award row (USAspending history) (HTTP API)</span><span class="badge live">On the HTTP API</span></div></li>
 <li class="card"><div class="card-top"><img src="icons/us-federal-awards.svg" alt="" width="48" height="48"><h3><a href="us-federal-awards.html">US Federal Awards API</a></h3></div><p>US federal contract, grant and loan awards from every agency via USAspending.gov: winner, parent company, stock ticker, agency, amount, NAICS/PSC, dates.</p><div class="row"><span class="price">$0.004 per award row (HTTP API)</span><span class="badge live">On the HTTP API</span></div></li>
 </ul>
@@ -333,8 +333,8 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <tr><td><a href="sec-insider-trades.html#where">SEC Insider Trading API (Form 4)</a></td><td><a href="https://apify.com/bosco_labs/sec-insider-trades">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
 <tr><td><a href="sec-filings-feed.html#where">SEC EDGAR Filings API</a></td><td><a href="https://apify.com/bosco_labs/sec-filings-feed">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
 <tr><td><a href="us-house-trades.html#where">Congress Stock Trades API</a></td><td><a href="https://apify.com/bosco_labs/us-house-trades">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
-<tr><td><a href="sec-ownership.html#where">SEC Ownership API</a></td><td><a href="https://apify.com/bosco_labs/sec-ownership">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
-<tr><td><a href="sec-company-financials.html#where">SEC Company Financials API</a></td><td><a href="https://apify.com/bosco_labs/sec-company-financials">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
+<tr><td><a href="sec-ownership.html#where">SEC 13F Holdings API</a></td><td><a href="https://apify.com/bosco_labs/sec-ownership">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
+<tr><td><a href="sec-company-financials.html#where">SEC Financial Statements API</a></td><td><a href="https://apify.com/bosco_labs/sec-company-financials">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
 <tr><td><a href="sec-company-screen.html#where">SEC Company Screener API</a></td><td><a href="https://apify.com/bosco_labs/sec-company-screen">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
 <tr><td><a href="esef-annual-reports.html#where">EU Annual Reports API (ESEF)</a></td><td><a href="https://apify.com/bosco_labs/esef-annual-reports">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
 <tr><td><a href="identifier-resolver.html#where">ISIN, LEI, CIK, FIGI &amp; Ticker Resolver API (crosswalk)</a></td><td><a href="https://apify.com/bosco_labs/identifier-resolver">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
@@ -344,14 +344,14 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <tr><td><a href="company-accounts.html#where">Company Financials API</a></td><td><a href="https://apify.com/bosco_labs/company-accounts">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
 <tr><td><a href="uk-new-companies.html#where">UK New Companies API</a></td><td></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
 <tr><td><a href="company-hiring-signals.html#where">Company Hiring Signals API</a></td><td></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
-<tr><td><a href="sanctions-screening.html#where">Sanctions Screening API</a></td><td><a href="https://apify.com/bosco_labs/sanctions-screening">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
+<tr><td><a href="sanctions-screening.html#where">Sanctions List Screening API</a></td><td><a href="https://apify.com/bosco_labs/sanctions-screening">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
 <tr><td><a href="eu-law-lookup.html#where">EU Law Lookup API (EUR-Lex)</a></td><td><a href="https://apify.com/bosco_labs/eu-law-lookup">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
 <tr><td><a href="national-law-lookup.html#where">UK &amp; Dutch Law Lookup API</a></td><td><a href="https://apify.com/bosco_labs/national-law-lookup">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
 <tr><td><a href="dutch-case-law.html#where">Dutch Case Law API (Rechtspraak)</a></td><td><a href="https://apify.com/bosco_labs/dutch-case-law">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
-<tr><td><a href="us-federal-rules.html#where">US Federal Rules API</a></td><td><a href="https://apify.com/bosco_labs/us-federal-rules">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
+<tr><td><a href="us-federal-rules.html#where">Federal Register &amp; eCFR API</a></td><td><a href="https://apify.com/bosco_labs/us-federal-rules">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
 <tr><td><a href="product-recalls.html#where">Product Recall Check API</a></td><td></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
-<tr><td><a href="tariff-lookup.html#where">Tariff Code &amp; Duty Lookup API</a></td><td><a href="https://apify.com/bosco_labs/tariff-lookup">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
-<tr><td><a href="eu-tenders.html#where">EU Public Tenders &amp; Contract Awards API (TED procurement)</a></td><td><a href="https://apify.com/bosco_labs/eu-tenders">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
+<tr><td><a href="tariff-lookup.html#where">HS Tariff Code &amp; Duty Lookup API</a></td><td><a href="https://apify.com/bosco_labs/tariff-lookup">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
+<tr><td><a href="eu-tenders.html#where">EU Tenders API (TED)</a></td><td><a href="https://apify.com/bosco_labs/eu-tenders">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
 <tr><td><a href="dod-contract-awards.html#where">Pentagon / DoD Contract Awards API</a></td><td></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
 <tr><td><a href="us-federal-awards.html#where">US Federal Awards API</a></td><td></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
 <tr><td><a href="eu-rates-inflation.html#where">ECB Rates &amp; Euro Inflation API</a></td><td></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
