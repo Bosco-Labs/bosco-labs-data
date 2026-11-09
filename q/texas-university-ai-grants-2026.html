@@ -94,7 +94,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <article class="prose">
 <h1 class="sub">Which grants for AI went to universities in Texas in 2026?</h1>
 <p class="lead">Federal grants in 2026 to universities in Texas whose description mentions AI, from USAspending.gov, with agency, assistance program and amount.</p>
-<div class="facts"><div class="fact"><b>Answered by</b><a href="us-federal-awards.html">US Federal Awards API: contracts &amp; grants, all agencies</a></div><div class="fact"><b>Price</b>$0.004 per award row (HTTP API)</div><div class="fact"><b>Status</b><span class="badge live">On the HTTP API</span></div></div>
+<div class="facts"><div class="fact"><b>Answered by</b><a href="us-federal-awards.html">US Federal Awards API: contracts &amp; grants, all agencies</a></div><div class="fact"><b>Price</b>$0.004 per award row</div><div class="fact"><b>Status</b><span class="badge live">On Apify Store</span></div></div>
 <p>awardTypes grants switches from contracts to grants; recipients matches part of the recipient name, keywords searches the award description and placeOfPerformanceStates limits to work performed in Texas. Each row has the recipient, awarding_agency, cfda_number and cfda_title (the assistance program), the amount and a source_url.</p>
 <h2>Tool input</h2>
 <pre><code>{
@@ -114,12 +114,12 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
   &quot;dateTo&quot;: &quot;2026-12-31&quot;
 }</code></pre>
 <h2>Ask it from an AI agent (MCP)</h2>
-<p>Add the Apify MCP server with this tool to your MCP client (Claude, Cursor, VS Code, ...); it signs you in with OAuth or <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is listed on the Apify Store; until then use the HTTP API or the remote MCP server at https://api.boscolabs.dev/mcp.</p>
+<p>Add the Apify MCP server with this tool to your MCP client (Claude, Cursor, VS Code, ...); it signs you in with OAuth or <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>.</p>
 <pre><code>https://mcp.apify.com?tools=bosco_labs/us-federal-awards</code></pre>
 <p>Then ask:</p>
 <pre><code>Use the bosco_labs/us-federal-awards tool to answer: Which grants for AI went to universities in Texas in 2026?</code></pre>
 <h2>Call the Apify API</h2>
-<p>Runs the Actor and returns the rows in one request, billed to your Apify account ($0.004 per award row (HTTP API)). It works once the Actor is listed on the Apify Store; until then use the HTTP API or the remote MCP server at https://api.boscolabs.dev/mcp.</p>
+<p>Runs the Actor and returns the rows in one request, billed to your Apify account ($0.004 per award row).</p>
 <pre><code>curl https://api.apify.com/v2/acts/bosco_labs~us-federal-awards/run-sync-get-dataset-items \
   -H &quot;Authorization: Bearer $APIFY_TOKEN&quot; \
   -H &quot;Content-Type: application/json&quot; \
@@ -177,7 +177,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
     &quot;retrieved_at&quot;: &quot;2026-11-09T07:33:44+00:00&quot;
   }
 ]</code></pre>
-<div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a><a class="btn ghost" href="us-federal-awards.html">All fields and limits</a></div>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/us-federal-awards">Run it on Apify Store &rarr;</a><a class="btn ghost" href="us-federal-awards.html">All fields and limits</a></div>
 <h2>More questions for this tool</h2><ul class="qs"><li><a href="q/palantir-federal-contracts-last-30-days.html">Which federal contracts did Palantir win in the last 30 days?</a></li><li><a href="q/largest-nasa-contracts-last-30-days.html">What were the largest NASA contracts in the last 30 days?</a></li><li><a href="q/dhs-largest-contracts-2026.html">Which companies won the largest Department of Homeland Security contracts in 2026?</a></li><li><a href="q/anduril-federal-contracts-2026.html">Which federal contracts did Anduril win in 2026?</a></li></ul>
 <p><a href="q/index.html">All questions</a></p>
 </article>

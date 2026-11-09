@@ -33,15 +33,16 @@
    "offers": {
     "@type": "Offer",
     "priceCurrency": "USD",
-    "description": "$0.004 per award row (HTTP API)",
+    "description": "$0.004 per award row",
     "price": "0.004",
-    "availability": "https://schema.org/PreOrder"
+    "url": "https://apify.com/bosco_labs/us-federal-awards"
    },
    "provider": {
     "@type": "Organization",
     "name": "Bosco Labs",
     "url": "https://boscolabs.dev/"
-   }
+   },
+   "installUrl": "https://apify.com/bosco_labs/us-federal-awards"
   },
   {
    "@type": "BreadcrumbList",
@@ -117,15 +118,16 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <main class="wrap" id="main">
 <p class="crumbs"><a href="/#tools">Tools</a> &rsaquo; <a href="/#government-procurement">Government &amp; procurement</a></p>
 <article>
-<div class="head"><img src="icons/us-federal-awards.svg" alt="" width="84" height="84"><div><h1>US Federal Awards API: contracts &amp; grants, all agencies</h1><span class="badge live">On the HTTP API</span></div></div>
+<div class="head"><img src="icons/us-federal-awards.svg" alt="" width="84" height="84"><div><h1>US Federal Awards API: contracts &amp; grants, all agencies</h1><span class="badge live">On Apify Store</span></div></div>
 <div class="prose">
 <p class="lead">Get <strong>US federal contracts, grants and loans from every agency</strong> (USAspending.gov): who won, which agency paid, how much, when, for what (NAICS, PSC, assistance listing), where, plus the winner&#x27;s <strong>parent company and US stock ticker</strong>. For sales intelligence, investors measuring government revenue exposure, and procurement or policy research.</p>
-<div class="facts"><div class="fact"><b>Price</b>$0.004 per award row (HTTP API)</div><div class="fact"><b>Domain</b>Government &amp; procurement</div><div class="fact"><b>Get it on</b><a href="#where">HTTP API, MCP, x402</a></div></div>
+<div class="facts"><div class="fact"><b>Price</b>$0.004 per award row</div><div class="fact"><b>Domain</b>Government &amp; procurement</div><div class="fact"><b>Get it on</b><a href="#where">Apify Store, HTTP API, MCP, x402</a></div></div>
 <p><strong>Pricing (pay per event):</strong> $0.004 per award row ($4 per 1,000). Nothing is charged for an empty or failed run, and the Actor stops at your max charge limit.</p>
-<div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a></div>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/us-federal-awards">Run it on Apify Store &rarr;</a></div>
 <h2 id="where">Where to get it</h2>
 <p>The same data and the same rows on every channel; pick the one your agent or code already uses.</p>
 <div class="table"><table><thead><tr><th>Channel</th><th>How</th><th>Pay</th></tr></thead><tbody>
+<tr><td>Apify Store</td><td><a href="https://apify.com/bosco_labs/us-federal-awards">apify.com/bosco_labs/us-federal-awards</a>: run it in the Apify Console, by the Apify API or from Apify's MCP server (<code>https://mcp.apify.com?tools=bosco_labs/us-federal-awards</code>)</td><td>$0.004 per award row, billed to your Apify account</td></tr>
 <tr><td>HTTP API</td><td><code>POST https://api.boscolabs.dev/v1/us-federal-awards</code> with your key (<a href="api.html#key">get a key</a>, $5.00 free trial)</td><td>$0.004 per award row, prepaid credits</td></tr>
 <tr><td>MCP</td><td><code>https://api.boscolabs.dev/mcp</code> (remote, same key) or <code>https://api.boscolabs.dev/mcp/free</code> (no key: find and plan) &middot; <a href="api.html#mcp">setup</a></td><td>$0.004 per award row, prepaid credits</td></tr>
 <tr><td>x402</td><td><code>POST https://api.boscolabs.dev/v1/us-federal-awards</code> without a key: pay per call, no account (<a href="api.html#x402">how</a>)</td><td>$0.004 per award row, in USDC on Base</td></tr>
@@ -213,12 +215,12 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 </tbody></table></div>
 
 <h2>Use with AI agents (MCP)</h2>
-<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is listed on the Apify Store; until then use the HTTP API or the remote MCP server at https://api.boscolabs.dev/mcp.</p>
+<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>.</p>
 <pre><code>https://mcp.apify.com?tools=bosco_labs/us-federal-awards</code></pre>
 <p>For &ldquo;Which federal contracts did Palantir win this quarter?&rdquo; the agent passes:</p>
 <pre><code>{&quot;tickers&quot;: [&quot;PLTR&quot;], &quot;dateFrom&quot;: &quot;2026-10-01&quot;}</code></pre>
 
-<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~us-federal-awards/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.004 per award row (HTTP API).</p>
+<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~us-federal-awards/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.004 per award row.</p>
 <h2 id="http-api">HTTP API</h2>
 <p>Also on the Bosco Labs HTTP API (beta): same input and same rows as the Actor, <strong>$0.004 per award row</strong> from prepaid credits (max 100 awards (maxResults) per call). <a href="api.html#key">Get a key</a> with a $5.00 free trial; see <a href="api.html">prices and limits</a>.</p>
 <pre><code>curl https://api.boscolabs.dev/v1/us-federal-awards \
@@ -253,7 +255,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <p><strong>Why does a keyword match an award whose description lacks it?</strong> USAspending&#x27;s keyword search covers more text fields than the description shown.</p>
 <p><strong>What is not included?</strong> Sub-awards, IDV vehicles themselves (their task orders are included), DUNS numbers, recipient street addresses and executive pay. Search history starts at 2007-10-01. A run scans at most 2,000 actions; narrow the filters for rare matches.</p>
 <p><strong>Legal basis?</strong> USAspending.gov data may be copied, redistributed and used commercially (see LEGAL.md in the source). Source: USAspending.gov, U.S. Department of the Treasury, Bureau of the Fiscal Service. Company names and locations may include data supplied by Dun &amp; Bradstreet, Inc. (D&amp;B); they are served per query, never as a bulk extract.</p>
-<div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a></div>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/us-federal-awards">Run it on Apify Store &rarr;</a></div>
 </div>
 </article>
 </main>

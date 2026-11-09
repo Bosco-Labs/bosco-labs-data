@@ -94,7 +94,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <article class="prose">
 <h1 class="sub">What&#x27;s the ECB deposit rate now, when did it last change, and how does euro-area inflation compare?</h1>
 <p class="lead">The ECB deposit facility rate, the date it last changed, and euro-area HICP inflation from Eurostat, each with recent observations and a source link.</p>
-<div class="facts"><div class="fact"><b>Answered by</b><a href="eu-rates-inflation.html">ECB Rates &amp; Euro Inflation API: policy rates, FX, €STR, HICP</a></div><div class="fact"><b>Price</b>$0.002 per series returned (catalogue free) (HTTP API)</div><div class="fact"><b>Status</b><span class="badge live">On the HTTP API</span></div></div>
+<div class="facts"><div class="fact"><b>Answered by</b><a href="eu-rates-inflation.html">ECB Rates &amp; Euro Inflation API: policy rates, FX, €STR, HICP</a></div><div class="fact"><b>Price</b>$0.002 per series returned</div><div class="fact"><b>Status</b><span class="badge live">On Apify Store</span></div></div>
 <p>One row per series. ecb_deposit_rate comes from the ECB and has one observation per rate change, so latest_date is the date of the last change; hicp:EA is euro-area annual HICP inflation from Eurostat. Each row has latest_value, previous_value, change, the last observations, unit, source_url and an attribution line to quote.</p>
 <h2>Tool input</h2>
 <pre><code>{
@@ -105,12 +105,12 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
   &quot;last&quot;: 3
 }</code></pre>
 <h2>Ask it from an AI agent (MCP)</h2>
-<p>Add the Apify MCP server with this tool to your MCP client (Claude, Cursor, VS Code, ...); it signs you in with OAuth or <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is listed on the Apify Store; until then use the HTTP API or the remote MCP server at https://api.boscolabs.dev/mcp.</p>
+<p>Add the Apify MCP server with this tool to your MCP client (Claude, Cursor, VS Code, ...); it signs you in with OAuth or <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>.</p>
 <pre><code>https://mcp.apify.com?tools=bosco_labs/eu-rates-inflation</code></pre>
 <p>Then ask:</p>
 <pre><code>Use the bosco_labs/eu-rates-inflation tool to answer: What&#x27;s the ECB deposit rate now, when did it last change, and how does euro-area inflation compare?</code></pre>
 <h2>Call the Apify API</h2>
-<p>Runs the Actor and returns the rows in one request, billed to your Apify account ($0.002 per series returned (catalogue free) (HTTP API)). It works once the Actor is listed on the Apify Store; until then use the HTTP API or the remote MCP server at https://api.boscolabs.dev/mcp.</p>
+<p>Runs the Actor and returns the rows in one request, billed to your Apify account ($0.002 per series returned).</p>
 <pre><code>curl https://api.apify.com/v2/acts/bosco_labs~eu-rates-inflation/run-sync-get-dataset-items \
   -H &quot;Authorization: Bearer $APIFY_TOKEN&quot; \
   -H &quot;Content-Type: application/json&quot; \
@@ -167,7 +167,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
     &quot;duration_seconds&quot;: 16.17
   }
 ]</code></pre>
-<div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a><a class="btn ghost" href="eu-rates-inflation.html">All fields and limits</a></div>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/eu-rates-inflation">Run it on Apify Store &rarr;</a><a class="btn ghost" href="eu-rates-inflation.html">All fields and limits</a></div>
 <h2>More questions for this tool</h2><ul class="qs"><li><a href="q/eur-usd-rate-on-a-date.html">What was the EUR/USD reference rate on 15 March 2026?</a></li><li><a href="q/german-italian-10-year-bond-yields.html">How have German and Italian 10-year government bond yields moved over the last 6 months?</a></li><li><a href="q/estr-rate-today.html">What is the euro short-term rate (€STR) today?</a></li></ul>
 <p><a href="q/index.html">All questions</a></p>
 </article>

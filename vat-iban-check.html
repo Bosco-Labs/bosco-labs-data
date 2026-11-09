@@ -181,7 +181,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
     &quot;country_code&quot;: &quot;NL&quot;,
     &quot;status&quot;: &quot;pass&quot;,
     &quot;valid&quot;: true,
-    &quot;reason&quot;: null,
+    &quot;reason&quot;: &quot;Valid, but country_match failed (expected IE, number is NL)&quot;,
     &quot;registered_name&quot;: null,
     &quot;registered_address&quot;: null,
     &quot;request_date&quot;: null,
@@ -211,7 +211,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <tr><td><code>country_code</code></td><td>string | null</td><td>Country of the number: VAT prefix (EL = Greece, XI = Northern Ireland) or IBAN country (ISO 3166 alpha-2); null if unreadable.</td></tr>
 <tr><td><code>status</code></td><td>string</td><td>pass = valid; fail = invalid (malformed, or VIES says not valid); unverified = VIES or the member state gave no answer (never means invalid; check again later).</td></tr>
 <tr><td><code>valid</code></td><td>boolean | null</td><td>true, false, or null when unverified.</td></tr>
-<tr><td><code>reason</code></td><td>string | null</td><td>Why the row failed or is unverified, in words an agent can act on; null on pass.</td></tr>
+<tr><td><code>reason</code></td><td>string | null</td><td>Why the row failed or is unverified, in words an agent can act on. On a pass row: null, or which name or country check failed (&quot;Valid, but country_match failed (...)&quot;).</td></tr>
 <tr><td><code>registered_name</code></td><td>string | null</td><td>Name registered with the VAT number, as VIES returns it; null when the member state does not share it (e.g. DE) or the number is not valid.</td></tr>
 <tr><td><code>registered_address</code></td><td>string | null</td><td>Registered address as VIES returns it (lines joined with commas); null when not shared.</td></tr>
 <tr><td><code>request_date</code></td><td>string | null</td><td>VIES request date-time (ISO 8601, UTC) of the answer; null for IBANs and unanswered requests.</td></tr>
