@@ -187,7 +187,7 @@ Contact: support@boscolabs.dev
 - [Terms](https://boscolabs.dev/terms.html): prepaid credits, 14-day refunds, data is information with a source link, not advice
 - [Trust](https://boscolabs.dev/security.html): read-only tools, sources and licences, sanctions screening limits, untrusted text in results
 - [Status](https://boscolabs.dev/status.html): daily check of every tool against its source and the version date of every sanctions list (JSON: https://s1uqkufag2x3nhpu.public.blob.vercel-storage.com/status/status.json)
-- `counterparty-check`: $0.05 per company checked; an ambiguous name (candidates) is free (max 1 company).
+- `counterparty-check`: $0.05 per company checked; an ambiguous name (candidates) is free (max 10 companies (companies)).
 - `company-check`: $0.03 per company report (max 1 report).
 - `vat-iban-check`: $0.002 per definite check (VAT number answered by VIES, or a valid IBAN); malformed, failed and unverified are free (max 10 VAT numbers and 50 IBANs). VAT answers: EU VIES (European Commission); IBAN layouts: SWIFT IBAN Registry.
 - `sec-company-financials`: $0.005 per company-period row (max 10 tickers/CIKs x 20 years).
@@ -873,7 +873,7 @@ Docs: https://boscolabs.dev/counterparty-check.html
 Apify Store: https://apify.com/bosco_labs/counterparty-check
 MCP: https://mcp.apify.com?tools=bosco_labs/counterparty-check
 Price: Apify Store $0.05 per company checked; HTTP API $0.05 per company checked; an ambiguous name (candidates) is free
-API: POST https://api.boscolabs.dev/v1/counterparty-check, $0.05 per company checked; an ambiguous name (candidates) is free (max 1 company)
+API: POST https://api.boscolabs.dev/v1/counterparty-check, $0.05 per company checked; an ambiguous name (candidates) is free (max 10 companies (companies))
 
 KYB checklist per company: register status, LEI, insolvency, recent accounts, sanctions (OFAC, UN, UK, EU) on the company and officers, VAT (VIES), IBAN; pass, fail, review or unverified, each sourced. Officers: UK, PL, NO, FR only. Insolvency: UK, PL, FR, DE, NL, NO, FI, EE; elsewhere unverified.
 
@@ -883,11 +883,12 @@ Example questions:
 
 ### Input fields
 
-- `query` (string, required): The counterparty to check: a name (e.g. "Novo Nordisk") or an identifier: LEI (20 characters, e.g. "724500Y6DUVHQD6OXN27"), UK company number ("00445790", "SC123456"), Danish CVR ("24256790"), Norwegian org number ("923609016"), French SIREN (9 digits, "552032534") or SIRET (14 digits, "55203253400703"), Finnish Business ID with its dash ("0112038-9"), Estonian registry code (8 digits, "12417834"), US ticker in capitals or with $ ("AAPL", "$brk.b"; foreign companies listed in the US resolve to their home country), SEC CIK ("320193"). The type is detected from format and check digits; an 8-digit number valid in several registers (UK, Danish CVR, Estonian) is settled by asking them, and `country` decides when given. Required.
+- `query` (string): The counterparty to check: a name (e.g. "Novo Nordisk") or an identifier: LEI (20 characters, e.g. "724500Y6DUVHQD6OXN27"), UK company number ("00445790", "SC123456"), Danish CVR ("24256790"), Norwegian org number ("923609016"), French SIREN (9 digits, "552032534") or SIRET (14 digits, "55203253400703"), Finnish Business ID with its dash ("0112038-9"), Estonian registry code (8 digits, "12417834"), US ticker in capitals or with $ ("AAPL", "$brk.b"; foreign companies listed in the US resolve to their home country), SEC CIK ("320193"). The type is detected from format and check digits; an 8-digit number valid in several registers (UK, Danish CVR, Estonian) is settled by asking them, and `country` decides when given. Required, unless you give a `companies` list instead.
 - `country` (string): ISO 3166 alpha-2 country code to disambiguate, e.g. "DK", "GB", "NO", "FR", "FI", "EE", "NL", "US". With a name it limits the search to that country and, for NO, FR, FI and EE, also searches the national register (most companies there have no LEI); with a number it says which register the number belongs to (e.g. "GB" for a UK number without a leading zero, "EE" for an Estonian registry code, "FI" for a Business ID typed without its dash). Empty = detect from the query.
 - `vatNumber` (string): The VAT number the counterparty gave you, with its country prefix, e.g. "DK24256790". Checked live in VIES (valid or not, registered name) and matched against the register's name and country. Empty = the VAT number the register lists, if any (Estonia, Poland); otherwise the VAT check is unverified.
 - `iban` (string): The bank account the counterparty wants to be paid on, e.g. "DK5000400440116243". Checked offline: length, layout and ISO 13616 check digits, bank code, and whether its country matches the company's. No bank is contacted, so it does not prove who holds the account.
 - `walletAddresses` (array): Wallet addresses the counterparty wants to be paid on, e.g. ["0x7FF9cFad3877F21d41Da833E2F775dB0569eE3D9"]. Each is matched exactly against the addresses OFAC lists. At most 10.
+- `companies` (array): Check a list of companies in one run instead of `query`: up to 10 objects with the fields above, e.g. [{"query": "Novo Nordisk A/S", "country": "DK", "vatNumber": "DK24256790"}, {"query": "00445790", "country": "GB"}]. One row per company, priced like a single check ($0.05 per company checked); an ambiguous name, or a company no source knows or that does not answer in time, is a row that costs nothing. Leave `query` empty when you use this.
 
 ### Output fields
 

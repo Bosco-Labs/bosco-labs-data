@@ -92,7 +92,7 @@ Contact: support@boscolabs.dev
 - [Terms](https://boscolabs.dev/terms.html): prepaid credits, 14-day refunds, data is information with a source link, not advice
 - [Trust](https://boscolabs.dev/security.html): read-only tools, sources and licences, sanctions screening limits, untrusted text in results
 - [Status](https://boscolabs.dev/status.html): daily check of every tool against its source and the version date of every sanctions list (JSON: https://s1uqkufag2x3nhpu.public.blob.vercel-storage.com/status/status.json)
-- `counterparty-check`: $0.05 per company checked; an ambiguous name (candidates) is free (max 1 company).
+- `counterparty-check`: $0.05 per company checked; an ambiguous name (candidates) is free (max 10 companies (companies)).
 - `company-check`: $0.03 per company report (max 1 report).
 - `vat-iban-check`: $0.002 per definite check (VAT number answered by VIES, or a valid IBAN); malformed, failed and unverified are free (max 10 VAT numbers and 50 IBANs). VAT answers: EU VIES (European Commission); IBAN layouts: SWIFT IBAN Registry.
 - `sec-company-financials`: $0.005 per company-period row (max 10 tickers/CIKs x 20 years).
