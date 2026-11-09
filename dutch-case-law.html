@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dutch Case Law API: Rechtspraak decisions by ECLI</title>
-<meta name="description" content="Dutch court decisions (uitspraken) by ECLI or search: court, dates, case numbers, legal area, summary, appeal relations, full text. Rechtspraak Open Data.">
+<title>Dutch Case Law API: Rechtspraak court rulings by ECLI</title>
+<meta name="description" content="Dutch court rulings (uitspraken), incl. Hoge Raad (Supreme Court), by ECLI or keyword: court, case numbers, summary, full text. Rechtspraak Open Data.">
 <link rel="canonical" href="https://boscolabs.dev/dutch-case-law.html">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="logo.svg" type="image/svg+xml">
@@ -12,8 +12,8 @@
 <link rel="alternate" type="application/atom+xml" href="blog/feed.xml" title="Bosco Labs blog">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Bosco Labs">
-<meta property="og:title" content="Dutch Case Law API: Rechtspraak decisions by ECLI">
-<meta property="og:description" content="Dutch court decisions (uitspraken) by ECLI or search: court, dates, case numbers, legal area, summary, appeal relations, full text. Rechtspraak Open Data.">
+<meta property="og:title" content="Dutch Case Law API: Rechtspraak court rulings by ECLI">
+<meta property="og:description" content="Dutch court rulings (uitspraken), incl. Hoge Raad (Supreme Court), by ECLI or keyword: court, case numbers, summary, full text. Rechtspraak Open Data.">
 <meta property="og:url" content="https://boscolabs.dev/dutch-case-law.html">
 <meta property="og:image" content="https://boscolabs.dev/icons/dutch-case-law.png">
 <meta name="twitter:card" content="summary">
@@ -24,8 +24,8 @@
  "@graph": [
   {
    "@type": "SoftwareApplication",
-   "name": "Dutch Case Law API (Rechtspraak): ECLI lookup, uitspraken",
-   "description": "Dutch court decisions (uitspraken) by ECLI or search: court, dates, case numbers, legal area, summary (inhoudsindicatie), appeal/cassation relations, law references and optional text. Hoge Raad, Raad van State, gerechtshoven, rechtbanken. Official Rechtspraak Open Data, source link per row.",
+   "name": "Dutch Case Law API (Rechtspraak): court rulings by ECLI",
+   "description": "Dutch court rulings (uitspraken) by ECLI or by keyword, court and date: case numbers, legal area, summary (inhoudsindicatie), appeal/cassation links, law references, full text on request. Hoge Raad (Supreme Court), Raad van State, appeal and district courts. Official Rechtspraak Open Data, sourced.",
    "url": "https://boscolabs.dev/dutch-case-law.html",
    "image": "https://boscolabs.dev/icons/dutch-case-law.png",
    "applicationCategory": "DeveloperApplication",
@@ -62,7 +62,7 @@
     {
      "@type": "ListItem",
      "position": 3,
-     "name": "Dutch Case Law API (Rechtspraak): ECLI lookup, uitspraken",
+     "name": "Dutch Case Law API (Rechtspraak): court rulings by ECLI",
      "item": "https://boscolabs.dev/dutch-case-law.html"
     }
    ]
@@ -118,7 +118,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <main class="wrap" id="main">
 <p class="crumbs"><a href="/#tools">Tools</a> &rsaquo; <a href="/#compliance-law">Compliance &amp; law</a></p>
 <article>
-<div class="head"><img src="icons/dutch-case-law.svg" alt="" width="84" height="84"><div><h1>Dutch Case Law API (Rechtspraak): ECLI lookup, uitspraken</h1><span class="badge live">On Apify Store</span></div></div>
+<div class="head"><img src="icons/dutch-case-law.svg" alt="" width="84" height="84"><div><h1>Dutch Case Law API (Rechtspraak): court rulings by ECLI</h1><span class="badge live">On Apify Store</span></div></div>
 <div class="prose">
 <p class="lead"><strong>Look up Dutch court decisions (uitspraken) by ECLI, or search them by court, legal area, date and keywords</strong>: court, decision and publication dates, case numbers, legal areas, procedure, the court&#x27;s own summary (inhoudsindicatie), appeal / cassation / Advocate-General relations, referenced laws, and optionally the full text. Built for <strong>AI agents</strong> doing legal and compliance research, and for people who want Rechtspraak data as clean JSON.</p>
 <div class="facts"><div class="fact"><b>Price</b>$0.005 per decision returned</div><div class="fact"><b>Domain</b>Compliance &amp; law</div><div class="fact"><b>Get it on</b><a href="#where">Apify Store, HTTP API, MCP, x402</a></div></div>
