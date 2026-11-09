@@ -96,7 +96,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <h2>Automatic top-up</h2>
 <p id="auto-status" class="muted">Off. To turn it on, buy a pack above with "Top up automatically" ticked.</p>
 <form class="key" id="auto-form" hidden>
-<label class="muted" for="auto-threshold">Top up when the balance drops below (USD, 1 to 100)</label>
+<label class="muted" for="auto-threshold">Top up when the balance drops below (USD, 1 up to the pack's price, at most 100)</label>
 <input id="auto-threshold" type="number" name="threshold_usd" min="1" max="100" step="0.5" required>
 <select id="auto-pack" name="pack" aria-label="Pack to buy"><option value="10">$10 = 100,000 credits</option><option value="50">$50 = 550,000 credits (+10% bonus)</option><option value="200">$200 = 2,400,000 credits (+20% bonus)</option></select>
 <button class="btn" type="submit">Save</button>
