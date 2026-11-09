@@ -3,7 +3,7 @@
   "name": "io.github.Bosco-Labs/eur-lex-uk-dutch-law",
   "title": "EU, UK and Dutch law",
   "description": "EU law (EUR-Lex), UK and Dutch legislation and Dutch case law, article by article, with sources",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "websiteUrl": "https://boscolabs.dev/api.html",
   "repository": {
     "url": "https://github.com/Bosco-Labs/bosco-labs-data",
@@ -12,15 +12,11 @@
   "remotes": [
     {
       "type": "streamable-http",
-      "url": "https://api.boscolabs.dev/mcp/free"
-    },
-    {
-      "type": "streamable-http",
       "url": "https://api.boscolabs.dev/mcp?tools=eu_law_lookup,national_law_lookup,dutch_case_law,plan_official_records_query",
       "headers": [
         {
           "name": "Authorization",
-          "description": "Bearer <Bosco Labs API key> (prepaid credits, free trial): https://boscolabs.dev/api.html",
+          "description": "Bearer <Bosco Labs API key>. New keys come with $5 free credit, once per verified e-mail, no card: https://boscolabs.dev/api.html#key",
           "isRequired": true,
           "isSecret": true
         }

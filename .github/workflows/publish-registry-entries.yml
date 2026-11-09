@@ -1,5 +1,5 @@
 # Publishes the topical MCP Registry entries in mcp/registry/*/server.json (remote-only: each
-# points at api.boscolabs.dev/mcp with ?tools= for its topic, plus the free keyless server).
+# points at api.boscolabs.dev/mcp with ?tools= for its topic; the free keyless server is in the main entry).
 # Login via GitHub OIDC for the io.github.Bosco-Labs namespace. Bump an entry's version to update it.
 name: Publish MCP Registry topical entries
 
