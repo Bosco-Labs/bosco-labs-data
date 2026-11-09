@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <base href="../">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>A new supplier sent VAT number IE6388047V and IBAN…</title>
-<meta name="description" content="The VAT number is checked live in the European Commission&#x27;s VIES service: valid or not, the registered name and address when the member state shares…">
+<title>Check a supplier&#x27;s VAT number and IBAN</title>
+<meta name="description" content="VAT number IE6388047V checked live in VIES with a name match against Google Ireland, and IBAN NL91ABNA0417164300 checked against ISO 13616.">
 <link rel="canonical" href="https://boscolabs.dev/q/supplier-vat-number-and-iban-check.html">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="logo.svg" type="image/svg+xml">
@@ -13,8 +13,8 @@
 <link rel="alternate" type="application/atom+xml" href="blog/feed.xml" title="Bosco Labs blog">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Bosco Labs">
-<meta property="og:title" content="A new supplier sent VAT number IE6388047V and IBAN…">
-<meta property="og:description" content="The VAT number is checked live in the European Commission&#x27;s VIES service: valid or not, the registered name and address when the member state shares…">
+<meta property="og:title" content="Check a supplier&#x27;s VAT number and IBAN">
+<meta property="og:description" content="VAT number IE6388047V checked live in VIES with a name match against Google Ireland, and IBAN NL91ABNA0417164300 checked against ISO 13616.">
 <meta property="og:url" content="https://boscolabs.dev/q/supplier-vat-number-and-iban-check.html">
 <meta property="og:image" content="https://boscolabs.dev/logo-512.png">
 <meta name="twitter:card" content="summary">
@@ -29,7 +29,7 @@
   "name": "A new supplier sent VAT number IE6388047V and IBAN NL91ABNA0417164300 for Google Ireland. Are both real, and does the VAT number belong to them?",
   "acceptedAnswer": {
    "@type": "Answer",
-   "text": "The VAT number is checked live in the European Commission's VIES service: valid or not, the registered name and address when the member state shares them, and a name match against the company you expect. The IBAN is checked offline against ISO 13616: check digits, length and layout for its country, the bank code and the country. Each check is pass, fail or unverified with its source; VIES being down gives unverified, never invalid, and costs nothing."
+   "text": "VAT number IE6388047V checked live in VIES with a name match against Google Ireland, and IBAN NL91ABNA0417164300 checked against ISO 13616."
   }
  },
  "about": {
@@ -87,14 +87,16 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="site"><div class="wrap"><a class="brand" href="index.html"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
-<nav aria-label="Main"><a href="index.html#tools">Tools</a><a href="api.html">API</a><a href="account.html">Account</a><a href="blog/index.html">Blog</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
+<header class="site"><div class="wrap"><a class="brand" href="/"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav aria-label="Main"><a href="/#tools">Tools</a><a href="api.html">API</a><a href="account.html">Account</a><a href="blog/index.html">Blog</a><a href="/#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
 <main class="wrap" id="main">
-<p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="q/index.html">Questions</a> &rsaquo; <a href="vat-iban-check.html">VAT Number &amp; IBAN Check API</a></p>
+<p class="crumbs"><a href="/#tools">Tools</a> &rsaquo; <a href="q/index.html">Questions</a> &rsaquo; <a href="vat-iban-check.html">VAT Number &amp; IBAN Check API</a></p>
 <article class="prose">
 <h1 class="sub">A new supplier sent VAT number IE6388047V and IBAN NL91ABNA0417164300 for Google Ireland. Are both real, and does the VAT number belong to them?</h1>
+<p class="lead">VAT number IE6388047V checked live in VIES with a name match against Google Ireland, and IBAN NL91ABNA0417164300 checked against ISO 13616.</p>
 <div class="facts"><div class="fact"><b>Answered by</b><a href="vat-iban-check.html">VAT Number &amp; IBAN Check API: EU VIES + IBAN validation</a></div><div class="fact"><b>Price</b>$0.002 per check with a definite answer</div><div class="fact"><b>Status</b><span class="badge live">On Apify Store</span></div></div>
 <p>The VAT number is checked live in the European Commission&#x27;s VIES service: valid or not, the registered name and address when the member state shares them, and a name match against the company you expect. The IBAN is checked offline against ISO 13616: check digits, length and layout for its country, the bank code and the country. Each check is pass, fail or unverified with its source; VIES being down gives unverified, never invalid, and costs nothing.</p>
+<p>To check register status, insolvency, sanctions, VAT number and IBAN of a company in one call, use <a href="counterparty-check.html">Counterparty Check</a>.</p>
 <h2>Tool input</h2>
 <pre><code>{
   &quot;vatNumbers&quot;: [
@@ -124,7 +126,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
   -d &#x27;{&quot;vatNumbers&quot;: [&quot;IE6388047V&quot;], &quot;ibans&quot;: [&quot;NL91ABNA0417164300&quot;], &quot;expectedName&quot;: &quot;Google Ireland&quot;}&#x27;</code></pre>
 <p class="notice">VAT answers: EU VIES (European Commission); IBAN layouts: SWIFT IBAN Registry.</p>
 <h2>Example output</h2>
-<p class="muted">Example output from the tool&#x27;s documentation (not a run of this exact question).</p>
+<p class="muted">Snapshot taken 2026-11-09, source links in each row. First 1 of 2 rows (snapshot runs stop at 5 rows); long values shortened.</p>
 <pre><code>[
   {
     &quot;schema_version&quot;: &quot;1&quot;,
@@ -137,50 +139,37 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
     &quot;reason&quot;: null,
     &quot;registered_name&quot;: &quot;GOOGLE IRELAND LIMITED&quot;,
     &quot;registered_address&quot;: &quot;3RD FLOOR, GORDON HOUSE, BARROW STREET, DUBLIN 4&quot;,
-    &quot;request_date&quot;: &quot;2026-11-07T16:05:31.393Z&quot;,
+    &quot;request_date&quot;: &quot;2026-11-09T07:35:01.909Z&quot;,
     &quot;consultation_number&quot;: null,
     &quot;bank_code&quot;: null,
     &quot;sepa_country&quot;: null,
-    &quot;expected_name&quot;: &quot;Google Ireland Ltd&quot;,
+    &quot;expected_name&quot;: &quot;Google Ireland&quot;,
     &quot;name_match&quot;: true,
-    &quot;expected_country&quot;: &quot;IE&quot;,
-    &quot;country_match&quot;: true,
+    &quot;expected_country&quot;: null,
+    &quot;country_match&quot;: null,
     &quot;checks&quot;: [
-      {&quot;check&quot;: &quot;vat_format&quot;, &quot;status&quot;: &quot;pass&quot;, &quot;detail&quot;: &quot;IE VAT number format&quot;, &quot;source&quot;: &quot;VIES FAQ format table&quot;},
-      {&quot;check&quot;: &quot;vies_registration&quot;, &quot;status&quot;: &quot;pass&quot;, &quot;detail&quot;: &quot;valid&quot;, &quot;source&quot;: &quot;VIES (European Commission), answered by the national tax administration&quot;},
-      {&quot;check&quot;: &quot;name_match&quot;, &quot;status&quot;: &quot;pass&quot;, &quot;detail&quot;: &quot;expected &#x27;Google Ireland Ltd&#x27;, registered &#x27;GOOGLE IRELAND LIMITED&#x27; (case, accents, punctuation and legal forms ignored)&quot;, &quot;source&quot;: &quot;VIES (European Commission), answered by the national tax administration&quot;},
-      {&quot;check&quot;: &quot;country_match&quot;, &quot;status&quot;: &quot;pass&quot;, &quot;detail&quot;: &quot;expected IE, number is IE&quot;, &quot;source&quot;: &quot;VIES (European Commission), answered by the national tax administration&quot;}
+      {
+        &quot;check&quot;: &quot;vat_format&quot;,
+        &quot;status&quot;: &quot;pass&quot;,
+        &quot;detail&quot;: &quot;IE VAT number format&quot;,
+        &quot;source&quot;: &quot;VIES FAQ format table&quot;
+      },
+      {
+        &quot;check&quot;: &quot;vies_registration&quot;,
+        &quot;status&quot;: &quot;pass&quot;,
+        &quot;detail&quot;: &quot;valid&quot;,
+        &quot;source&quot;: &quot;VIES (European Commission), answered by the national tax administration&quot;
+      },
+      {
+        &quot;check&quot;: &quot;name_match&quot;,
+        &quot;status&quot;: &quot;pass&quot;,
+        &quot;detail&quot;: &quot;expected &#x27;Google Ireland&#x27;, registered &#x27;GOOGLE IRELAND LIMITED&#x27; (case, accents, punctuation and legal forms ignored)&quot;,
+        &quot;source&quot;: &quot;VIES (European Commission), answered by the national tax administration&quot;
+      }
     ],
     &quot;source&quot;: &quot;VIES (European Commission), answered by the national tax administration&quot;,
     &quot;source_url&quot;: &quot;https://ec.europa.eu/taxation_customs/vies/#/vat-validation&quot;,
-    &quot;checked_at&quot;: &quot;2026-11-07T16:05:31Z&quot;
-  },
-  {
-    &quot;schema_version&quot;: &quot;1&quot;,
-    &quot;query&quot;: &quot;NL91 ABNA 0417 1643 00&quot;,
-    &quot;check_type&quot;: &quot;iban&quot;,
-    &quot;number&quot;: &quot;NL91ABNA0417164300&quot;,
-    &quot;country_code&quot;: &quot;NL&quot;,
-    &quot;status&quot;: &quot;pass&quot;,
-    &quot;valid&quot;: true,
-    &quot;reason&quot;: null,
-    &quot;registered_name&quot;: null,
-    &quot;registered_address&quot;: null,
-    &quot;request_date&quot;: null,
-    &quot;consultation_number&quot;: null,
-    &quot;bank_code&quot;: &quot;ABNA&quot;,
-    &quot;sepa_country&quot;: true,
-    &quot;expected_name&quot;: null,
-    &quot;name_match&quot;: null,
-    &quot;expected_country&quot;: &quot;IE&quot;,
-    &quot;country_match&quot;: false,
-    &quot;checks&quot;: [
-      {&quot;check&quot;: &quot;iban_structure&quot;, &quot;status&quot;: &quot;pass&quot;, &quot;detail&quot;: &quot;NL length 18, layout and check digits&quot;, &quot;source&quot;: &quot;ISO 13616 check digits (mod 97) and the SWIFT IBAN Registry formats&quot;},
-      {&quot;check&quot;: &quot;country_match&quot;, &quot;status&quot;: &quot;fail&quot;, &quot;detail&quot;: &quot;expected IE, number is NL&quot;, &quot;source&quot;: &quot;ISO 13616 check digits (mod 97) and the SWIFT IBAN Registry formats&quot;}
-    ],
-    &quot;source&quot;: &quot;ISO 13616 check digits (mod 97) and the SWIFT IBAN Registry formats&quot;,
-    &quot;source_url&quot;: &quot;https://www.swift.com/standards/data-standards/iban-international-bank-account-number&quot;,
-    &quot;checked_at&quot;: &quot;2026-11-07T16:05:32Z&quot;
+    &quot;checked_at&quot;: &quot;2026-11-09T07:35:01Z&quot;
   }
 ]</code></pre>
 <div class="actions"><a class="btn" href="https://apify.com/bosco_labs/vat-iban-check">Run it on Apify Store &rarr;</a><a class="btn ghost" href="vat-iban-check.html">All fields and limits</a></div>
@@ -188,7 +177,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <p><a href="q/index.html">All questions</a></p>
 </article>
 </main>
-<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<footer><div class="wrap"><p><a href="/">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
 <p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
 </body>
 </html>

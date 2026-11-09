@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <base href="../">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>How have German and Italian 10-year government bond yields…</title>
-<meta name="description" content="gov_bond_10y:&lt;country&gt; is the ECB&#x27;s monthly 10-year government bond yield for an EU country, the series used for the euro convergence criteria. last 6…">
+<title>German and Italian 10-year bond yields, 6 months</title>
+<meta name="description" content="Monthly 10-year government bond yields for Germany and Italy over the last 6 months from the ECB, so the spread between the two can be read off.">
 <link rel="canonical" href="https://boscolabs.dev/q/german-italian-10-year-bond-yields.html">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="logo.svg" type="image/svg+xml">
@@ -13,8 +13,8 @@
 <link rel="alternate" type="application/atom+xml" href="blog/feed.xml" title="Bosco Labs blog">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Bosco Labs">
-<meta property="og:title" content="How have German and Italian 10-year government bond yields…">
-<meta property="og:description" content="gov_bond_10y:&lt;country&gt; is the ECB&#x27;s monthly 10-year government bond yield for an EU country, the series used for the euro convergence criteria. last 6…">
+<meta property="og:title" content="German and Italian 10-year bond yields, 6 months">
+<meta property="og:description" content="Monthly 10-year government bond yields for Germany and Italy over the last 6 months from the ECB, so the spread between the two can be read off.">
 <meta property="og:url" content="https://boscolabs.dev/q/german-italian-10-year-bond-yields.html">
 <meta property="og:image" content="https://boscolabs.dev/logo-512.png">
 <meta name="twitter:card" content="summary">
@@ -29,7 +29,7 @@
   "name": "How have German and Italian 10-year government bond yields moved over the last 6 months?",
   "acceptedAnswer": {
    "@type": "Answer",
-   "text": "gov_bond_10y:<country> is the ECB's monthly 10-year government bond yield for an EU country, the series used for the euro convergence criteria. last 6 returns six monthly observations per series, so the spread between Italy and Germany can be computed from the two rows. Values are in percent per year."
+   "text": "Monthly 10-year government bond yields for Germany and Italy over the last 6 months from the ECB, so the spread between the two can be read off."
   }
  },
  "about": {
@@ -87,12 +87,13 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="site"><div class="wrap"><a class="brand" href="index.html"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
-<nav aria-label="Main"><a href="index.html#tools">Tools</a><a href="api.html">API</a><a href="account.html">Account</a><a href="blog/index.html">Blog</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
+<header class="site"><div class="wrap"><a class="brand" href="/"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav aria-label="Main"><a href="/#tools">Tools</a><a href="api.html">API</a><a href="account.html">Account</a><a href="blog/index.html">Blog</a><a href="/#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
 <main class="wrap" id="main">
-<p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="q/index.html">Questions</a> &rsaquo; <a href="eu-rates-inflation.html">ECB Rates &amp; Euro Inflation API</a></p>
+<p class="crumbs"><a href="/#tools">Tools</a> &rsaquo; <a href="q/index.html">Questions</a> &rsaquo; <a href="eu-rates-inflation.html">ECB Rates &amp; Euro Inflation API</a></p>
 <article class="prose">
 <h1 class="sub">How have German and Italian 10-year government bond yields moved over the last 6 months?</h1>
+<p class="lead">Monthly 10-year government bond yields for Germany and Italy over the last 6 months from the ECB, so the spread between the two can be read off.</p>
 <div class="facts"><div class="fact"><b>Answered by</b><a href="eu-rates-inflation.html">ECB Rates &amp; Euro Inflation API: policy rates, FX, €STR, HICP</a></div><div class="fact"><b>Price</b>$0.002 per series returned (catalogue free) (HTTP API)</div><div class="fact"><b>Status</b><span class="badge live">On the HTTP API</span></div></div>
 <p>gov_bond_10y:&lt;country&gt; is the ECB&#x27;s monthly 10-year government bond yield for an EU country, the series used for the euro convergence criteria. last 6 returns six monthly observations per series, so the spread between Italy and Germany can be computed from the two rows. Values are in percent per year.</p>
 <h2>Tool input</h2>
@@ -122,42 +123,57 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
   -d &#x27;{&quot;series&quot;: [&quot;gov_bond_10y:DE&quot;, &quot;gov_bond_10y:IT&quot;], &quot;last&quot;: 6}&#x27;</code></pre>
 <p class="notice">Source: ECB statistics (data.ecb.europa.eu). The data are free of charge from the ECB; we charge for processing and delivery, not for the data. Eurostat HICP: © European Union, free of charge from Eurostat. The change field is computed by Bosco Labs.</p>
 <h2>Example output</h2>
-<p class="muted">Example output from the tool&#x27;s documentation (not a run of this exact question).</p>
-<pre><code>{
-  &quot;schema_version&quot;: &quot;1&quot;,
-  &quot;series&quot;: &quot;ecb_deposit_rate&quot;,
-  &quot;title&quot;: &quot;Deposit facility - date of changes (raw data) - Level&quot;,
-  &quot;description&quot;: &quot;One observation per rate change; latest_date = when the current rate took effect.&quot;,
-  &quot;source&quot;: &quot;ECB&quot;,
-  &quot;dataset&quot;: &quot;FM&quot;,
-  &quot;series_key&quot;: &quot;FM.B.U2.EUR.4F.KR.DFR.LEV&quot;,
-  &quot;frequency&quot;: &quot;changes&quot;,
-  &quot;unit&quot;: &quot;percent per annum&quot;,
-  &quot;latest_date&quot;: &quot;2026-09-16&quot;,
-  &quot;latest_value&quot;: 2.5,
-  &quot;previous_date&quot;: &quot;2026-06-17&quot;,
-  &quot;previous_value&quot;: 2.25,
-  &quot;change&quot;: 0.25,
-  &quot;observations&quot;: [
-    { &quot;date&quot;: &quot;2025-06-11&quot;, &quot;value&quot;: 2.0, &quot;status&quot;: null },
-    { &quot;date&quot;: &quot;2026-06-17&quot;, &quot;value&quot;: 2.25, &quot;status&quot;: null },
-    { &quot;date&quot;: &quot;2026-09-16&quot;, &quot;value&quot;: 2.5, &quot;status&quot;: null }
-  ],
-  &quot;observation_count&quot;: 12,
-  &quot;source_url&quot;: &quot;https://data.ecb.europa.eu/data/datasets/FM/FM.B.U2.EUR.4F.KR.DFR.LEV&quot;,
-  &quot;api_url&quot;: &quot;https://data-api.ecb.europa.eu/service/data/FM/B.U2.EUR.4F.KR.DFR.LEV?format=csvdata&amp;lastNObservations=13&quot;,
-  &quot;attribution&quot;: &quot;Source: ECB statistics (ECB Data Portal, data.ecb.europa.eu). Values and metadata are reproduced unmodified and are available free of charge from the ECB. The `change` field is computed by Bosco Labs (latest_value - previous_value) and is not an ECB figure.&quot;,
-  &quot;warnings&quot;: [],
-  &quot;error&quot;: null,
-  &quot;retrieved_at&quot;: &quot;2026-11-05T22:01:42+00:00&quot;,
-  &quot;duration_seconds&quot;: 0.16
-}</code></pre>
+<p class="muted">Snapshot taken 2026-11-09, source links in each row. First 1 of 2 rows (snapshot runs stop at 5 rows); long values shortened.</p>
+<pre><code>[
+  {
+    &quot;schema_version&quot;: &quot;1&quot;,
+    &quot;series&quot;: &quot;gov_bond_10y:DE&quot;,
+    &quot;title&quot;: &quot;Long-term interest rate for convergence purposes - Euro&quot;,
+    &quot;description&quot;: &quot;DE 10-year government bond yield, monthly average (EU convergence criterion).&quot;,
+    &quot;source&quot;: &quot;ECB&quot;,
+    &quot;dataset&quot;: &quot;IRS&quot;,
+    &quot;series_key&quot;: &quot;IRS.M.DE.L.L40.CI.0000.EUR.N.Z&quot;,
+    &quot;frequency&quot;: &quot;monthly&quot;,
+    &quot;unit&quot;: &quot;percent per annum&quot;,
+    &quot;latest_date&quot;: &quot;2026-09&quot;,
+    &quot;latest_value&quot;: 3.473,
+    &quot;previous_date&quot;: &quot;2026-08&quot;,
+    &quot;previous_value&quot;: 3.185,
+    &quot;change&quot;: 0.288,
+    &quot;observations&quot;: [
+      {
+        &quot;date&quot;: &quot;2026-04&quot;,
+        &quot;value&quot;: 3.0,
+        &quot;status&quot;: null
+      },
+      {
+        &quot;date&quot;: &quot;2026-05&quot;,
+        &quot;value&quot;: 3.045,
+        &quot;status&quot;: null
+      },
+      {
+        &quot;date&quot;: &quot;2026-06&quot;,
+        &quot;value&quot;: 2.964,
+        &quot;status&quot;: null
+      },
+      &quot;... 3 more&quot;
+    ],
+    &quot;observation_count&quot;: 6,
+    &quot;source_url&quot;: &quot;https://data.ecb.europa.eu/data/datasets/IRS/IRS.M.DE.L.L40.CI.0000.EUR.N.Z&quot;,
+    &quot;api_url&quot;: &quot;https://data-api.ecb.europa.eu/service/data/IRS/M.DE.L.L40.CI.0000.EUR.N.Z?format=csvdata&amp;lastNObservations=7&quot;,
+    &quot;attribution&quot;: &quot;Source: ECB statistics (ECB Data Portal, data.ecb.europa.eu). Values and metadata are reproduced unmodified and are available free of charge from the ECB. Th...&quot;,
+    &quot;warnings&quot;: [],
+    &quot;error&quot;: null,
+    &quot;retrieved_at&quot;: &quot;2026-11-09T07:35:00+00:00&quot;,
+    &quot;duration_seconds&quot;: 30.34
+  }
+]</code></pre>
 <div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a><a class="btn ghost" href="eu-rates-inflation.html">All fields and limits</a></div>
 <h2>More questions for this tool</h2><ul class="qs"><li><a href="q/ecb-deposit-rate-vs-euro-inflation.html">What&#x27;s the ECB deposit rate now, when did it last change, and how does euro-area inflation compare?</a></li><li><a href="q/eur-usd-rate-on-a-date.html">What was the EUR/USD reference rate on 15 March 2026?</a></li><li><a href="q/estr-rate-today.html">What is the euro short-term rate (€STR) today?</a></li></ul>
 <p><a href="q/index.html">All questions</a></p>
 </article>
 </main>
-<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<footer><div class="wrap"><p><a href="/">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
 <p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
 </body>
 </html>

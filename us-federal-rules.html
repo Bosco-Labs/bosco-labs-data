@@ -21,25 +21,53 @@
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
- "@type": "SoftwareApplication",
- "name": "Federal Register & eCFR API: CFR text as of a date, changes",
- "description": "Federal Register documents and Code of Federal Regulations (eCFR) text: a CFR section as in force today or on any date, its amendment history and the rules that changed it; what changed in a CFR part since a date; Federal Register search by agency or number. Official data, a source link per row.",
- "url": "https://boscolabs.dev/us-federal-rules.html",
- "image": "https://boscolabs.dev/icons/us-federal-rules.png",
- "applicationCategory": "DeveloperApplication",
- "operatingSystem": "Web (Apify platform)",
- "offers": {
-  "@type": "Offer",
-  "priceCurrency": "USD",
-  "description": "$0.005 per section, $0.002 per document",
-  "url": "https://apify.com/bosco_labs/us-federal-rules"
- },
- "provider": {
-  "@type": "Organization",
-  "name": "Bosco Labs",
-  "url": "https://boscolabs.dev/"
- },
- "installUrl": "https://apify.com/bosco_labs/us-federal-rules"
+ "@graph": [
+  {
+   "@type": "SoftwareApplication",
+   "name": "Federal Register & eCFR API: CFR text as of a date, changes",
+   "description": "Federal Register documents and Code of Federal Regulations (eCFR) text: a CFR section as in force today or on any date, its amendment history and the rules that changed it; what changed in a CFR part since a date; Federal Register search by agency or number. Official data, a source link per row.",
+   "url": "https://boscolabs.dev/us-federal-rules.html",
+   "image": "https://boscolabs.dev/icons/us-federal-rules.png",
+   "applicationCategory": "DeveloperApplication",
+   "operatingSystem": "Web (Apify platform)",
+   "offers": {
+    "@type": "Offer",
+    "priceCurrency": "USD",
+    "description": "$0.005 per section, $0.002 per document",
+    "price": "0.005",
+    "url": "https://apify.com/bosco_labs/us-federal-rules"
+   },
+   "provider": {
+    "@type": "Organization",
+    "name": "Bosco Labs",
+    "url": "https://boscolabs.dev/"
+   },
+   "installUrl": "https://apify.com/bosco_labs/us-federal-rules"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Tools",
+     "item": "https://boscolabs.dev/#tools"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Compliance & law",
+     "item": "https://boscolabs.dev/#compliance-law"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Federal Register & eCFR API: CFR text as of a date, changes",
+     "item": "https://boscolabs.dev/us-federal-rules.html"
+    }
+   ]
+  }
+ ]
 }
 </script>
 <style>:root{color-scheme:light dark;--head:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--body:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;--ink:#1D2721;--muted:#545F58;--bg:#F5F3EA;--surface:#EAE8DC;--line:#D6D3C3;--accent:#2E5A47;--accent-fg:#F5F3EA;--accent2:#8DA889;--accent2-text:#4A6646;--success:#36694A;--warn:#8E5D1C}
@@ -85,10 +113,10 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="site"><div class="wrap"><a class="brand" href="index.html"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
-<nav aria-label="Main"><a href="index.html#tools">Tools</a><a href="api.html">API</a><a href="account.html">Account</a><a href="blog/index.html">Blog</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
+<header class="site"><div class="wrap"><a class="brand" href="/"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav aria-label="Main"><a href="/#tools">Tools</a><a href="api.html">API</a><a href="account.html">Account</a><a href="blog/index.html">Blog</a><a href="/#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
 <main class="wrap" id="main">
-<p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#compliance-law">Compliance &amp; law</a></p>
+<p class="crumbs"><a href="/#tools">Tools</a> &rsaquo; <a href="/#compliance-law">Compliance &amp; law</a></p>
 <article>
 <div class="head"><img src="icons/us-federal-rules.svg" alt="" width="84" height="84"><div><h1>Federal Register &amp; eCFR API: CFR text as of a date, changes</h1><span class="badge live">On Apify Store</span></div></div>
 <div class="prose">
@@ -105,7 +133,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <tr><td>x402</td><td><code>POST https://api.boscolabs.dev/v1/us-federal-rules</code> without a key: pay per call, no account (<a href="api.html#x402">how</a>)</td><td>$0.001 per unit: a CFR section with text = 5 units ($0.005), a Federal Register document = 2 ($0.002); rows without text are free, in USDC on Base</td></tr>
 </tbody></table></div>
 <h2>Questions agents ask</h2>
-<ul class="qs"><li>&ldquo;What changed in the Export Administration Regulations part 744 since August, and which Federal Register notices did it? Link the sources.&rdquo;</li></ul>
+<ul class="qs"><li>&ldquo;What changed in the Export Administration Regulations part 744 since August, and which Federal Register notices did it? Link the sources.&rdquo;</li><li><a href="q/rule-10b-5-text.html">What does SEC Rule 10b-5 (17 CFR 240.10b-5) say?</a></li><li><a href="q/fda-final-rules-federal-register-since-october.html">Which final rules has the FDA published in the Federal Register since October 2026?</a></li><li><a href="q/bis-entity-list-rules-2026.html">Which Entity List rules did BIS publish in the Federal Register in 2026?</a></li></ul>
 </div>
 <h2>Example</h2>
 <div class="two"><div><h3>Input</h3><pre><code>{ &quot;citation&quot;: &quot;21 CFR 101.9&quot;, &quot;asOf&quot;: &quot;2024-01-01&quot; }</code></pre></div>
@@ -262,7 +290,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 </div>
 </article>
 </main>
-<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<footer><div class="wrap"><p><a href="/">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
 <p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
 </body>
 </html>

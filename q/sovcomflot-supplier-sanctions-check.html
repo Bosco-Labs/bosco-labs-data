@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <base href="../">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Before we sign with these suppliers, check whether…</title>
-<meta name="description" content="Each name is screened against the OFAC SDN and non-SDN lists, the US Consolidated Screening List, the UK Sanctions List and the EU financial sanctions…">
+<title>Are Sovcomflot or Novo Nordisk on a sanctions list?</title>
+<meta name="description" content="Sovcomflot is listed by OFAC (SDN), the UK and the EU; Novo Nordisk A/S matched no list. Screened 2026-11-09 against OFAC, US, UK, EU and UN lists.">
 <link rel="canonical" href="https://boscolabs.dev/q/sovcomflot-supplier-sanctions-check.html">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="logo.svg" type="image/svg+xml">
@@ -13,8 +13,8 @@
 <link rel="alternate" type="application/atom+xml" href="blog/feed.xml" title="Bosco Labs blog">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Bosco Labs">
-<meta property="og:title" content="Before we sign with these suppliers, check whether…">
-<meta property="og:description" content="Each name is screened against the OFAC SDN and non-SDN lists, the US Consolidated Screening List, the UK Sanctions List and the EU financial sanctions…">
+<meta property="og:title" content="Are Sovcomflot or Novo Nordisk on a sanctions list?">
+<meta property="og:description" content="Sovcomflot is listed by OFAC (SDN), the UK and the EU; Novo Nordisk A/S matched no list. Screened 2026-11-09 against OFAC, US, UK, EU and UN lists.">
 <meta property="og:url" content="https://boscolabs.dev/q/sovcomflot-supplier-sanctions-check.html">
 <meta property="og:image" content="https://boscolabs.dev/logo-512.png">
 <meta name="twitter:card" content="summary">
@@ -29,7 +29,7 @@
   "name": "Before we sign with these suppliers, check whether Sovcomflot or Novo Nordisk A/S are on any sanctions list, and cite the lists you checked.",
   "acceptedAnswer": {
    "@type": "Answer",
-   "text": "Each name is screened against the OFAC SDN and non-SDN lists, the US Consolidated Screening List, the UK Sanctions List and the EU financial sanctions list. One row per name: match_found, match_count, best_score, the matches with the listed name, program and list, and lists_checked with the date of each list. minScore (default 85) sets how close a fuzzy match must be. A name with no match is still a result: \"not listed on these lists\" is the answer."
+   "text": "Sovcomflot is listed by OFAC (SDN), the UK and the EU; Novo Nordisk A/S matched no list. Screened 2026-11-09 against OFAC, US, UK, EU and UN lists."
   }
  },
  "about": {
@@ -87,14 +87,16 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="site"><div class="wrap"><a class="brand" href="index.html"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
-<nav aria-label="Main"><a href="index.html#tools">Tools</a><a href="api.html">API</a><a href="account.html">Account</a><a href="blog/index.html">Blog</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
+<header class="site"><div class="wrap"><a class="brand" href="/"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav aria-label="Main"><a href="/#tools">Tools</a><a href="api.html">API</a><a href="account.html">Account</a><a href="blog/index.html">Blog</a><a href="/#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
 <main class="wrap" id="main">
-<p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="q/index.html">Questions</a> &rsaquo; <a href="sanctions-screening.html">Sanctions List Screening API</a></p>
+<p class="crumbs"><a href="/#tools">Tools</a> &rsaquo; <a href="q/index.html">Questions</a> &rsaquo; <a href="sanctions-screening.html">Sanctions List Screening API</a></p>
 <article class="prose">
 <h1 class="sub">Before we sign with these suppliers, check whether Sovcomflot or Novo Nordisk A/S are on any sanctions list, and cite the lists you checked.</h1>
+<p class="lead">Sovcomflot is listed by OFAC (SDN), the UK and the EU; Novo Nordisk A/S matched no list. Screened 2026-11-09 against OFAC, US, UK, EU and UN lists.</p>
 <div class="facts"><div class="fact"><b>Answered by</b><a href="sanctions-screening.html">Sanctions List Screening API: OFAC, UK, EU, UN &amp; US lists</a></div><div class="fact"><b>Price</b>$0.01 per name or wallet address screened</div><div class="fact"><b>Status</b><span class="badge live">On Apify Store</span></div></div>
 <p>Each name is screened against the OFAC SDN and non-SDN lists, the US Consolidated Screening List, the UK Sanctions List and the EU financial sanctions list. One row per name: match_found, match_count, best_score, the matches with the listed name, program and list, and lists_checked with the date of each list. minScore (default 85) sets how close a fuzzy match must be. A name with no match is still a result: &quot;not listed on these lists&quot; is the answer.</p>
+<p>To check register status, insolvency, sanctions, VAT number and IBAN of a company in one call, use <a href="counterparty-check.html">Counterparty Check</a>.</p>
 <h2>Tool input</h2>
 <pre><code>{
   &quot;names&quot;: [
@@ -121,56 +123,27 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
   -d &#x27;{&quot;names&quot;: [&quot;Sovcomflot&quot;, &quot;Novo Nordisk A/S&quot;]}&#x27;</code></pre>
 <p class="notice">This product uses the International Trade Administration&#x27;s Data API but is not endorsed or certified by the International Trade Administration. OFAC and CSL data are US government works. UK Sanctions List: contains public sector information licensed under the Open Government Licence v3.0. EU list: European Commission, names as published. No endorsement by any publisher is implied.</p>
 <h2>Example output</h2>
-<p class="muted">Example output from the tool&#x27;s documentation (not a run of this exact question).</p>
-<pre><code>{
-  &quot;schema_version&quot;: &quot;1&quot;,
-  &quot;query&quot;: &quot;Sovcomflot&quot;,
-  &quot;match_found&quot;: true,
-  &quot;match_count&quot;: 3,
-  &quot;best_score&quot;: 100,
-  &quot;summary&quot;: &quot;3 possible match(es) &gt;= 85; best 100 &#x27;JOINT STOCK COMPANY SOVCOMFLOT&#x27; on the OFAC SDN List. A name match alone does not confirm identity: compare countries, identifiers and dates before acting.&quot;,
-  &quot;complete&quot;: true,
-  &quot;lists_not_checked&quot;: [],
-  &quot;notice&quot;: &quot;Screening aid on official sanctions and export lists only (no PEP or adverse-media lists). Neither a match nor no match is a compliance determination.&quot;,
-  &quot;matches&quot;: [
-    {
-      &quot;list&quot;: &quot;ofac_sdn&quot;,
-      &quot;list_name&quot;: &quot;OFAC SDN List&quot;,
-      &quot;entry_id&quot;: &quot;34741&quot;,
-      &quot;listed_name&quot;: &quot;JOINT STOCK COMPANY SOVCOMFLOT&quot;,
-      &quot;matched_name&quot;: &quot;JOINT STOCK COMPANY SOVCOMFLOT&quot;,
-      &quot;matched_alias&quot;: false,
-      &quot;match_type&quot;: &quot;exact&quot;,
-      &quot;score&quot;: 100,
-      &quot;aliases&quot;: [&quot;PAO SOVCOMFLOT&quot;, &quot;JSC SOVCOMFLOT&quot;, &quot;SCF GROUP&quot;, &quot;SCF&quot;],
-      &quot;entity_type&quot;: &quot;organization&quot;,
-      &quot;programs&quot;: [&quot;RUSSIA-EO14024&quot;, &quot;UKRAINE-EO13662&quot;],
-      &quot;listing_date&quot;: null,
-      &quot;end_date&quot;: null,
-      &quot;countries&quot;: [&quot;RU&quot;],
-      &quot;country_match&quot;: null,
-      &quot;identifiers&quot;: [
-        {&quot;type&quot;: &quot;Tax ID No.&quot;, &quot;value&quot;: &quot;7702060116&quot;},
-        {&quot;type&quot;: &quot;Registration Number&quot;, &quot;value&quot;: &quot;1027739028712&quot;},
-        {&quot;type&quot;: &quot;Legal Entity Number&quot;, &quot;value&quot;: &quot;253400DYLWR5A6YAWJ69&quot;}
-      ],
-      &quot;birth_dates&quot;: [],
-      &quot;source_url&quot;: &quot;https://sanctionssearch.ofac.treas.gov/Details.aspx?id=34741&quot;,
-      &quot;list_version_date&quot;: &quot;2026-11-05&quot;
-    }
-  ],
-  &quot;warnings&quot;: [],
-  &quot;min_score&quot;: 85,
-  &quot;entity_type&quot;: &quot;any&quot;,
-  &quot;country&quot;: null,
-  &quot;checked_at&quot;: &quot;2026-11-05T21:47:49+00:00&quot;
-}</code></pre>
+<p class="muted">Snapshot taken 2026-11-09, source links in each row. First 1 of 2 rows (snapshot runs stop at 5 rows); long values shortened.</p>
+<pre><code>[
+  {
+    &quot;schema_version&quot;: &quot;1&quot;,
+    &quot;query&quot;: &quot;Sovcomflot&quot;,
+    &quot;match_found&quot;: true,
+    &quot;match_count&quot;: 3,
+    &quot;best_score&quot;: 100,
+    &quot;summary&quot;: &quot;3 possible match(es) &gt;= 85; best 100 &#x27;PUBLIC JOINT STOCK COMPANY SOVCOMFLOT&#x27; on the UK Sanctions List. A name match alone does not confirm identity: compare ...&quot;,
+    &quot;complete&quot;: true,
+    &quot;lists_not_checked&quot;: [],
+    &quot;notice&quot;: &quot;Screening aid on official sanctions and export lists only (no PEP or adverse-media lists). Neither a match nor no match is a compliance determination.&quot;,
+    &quot;...&quot;: &quot;8 more fields&quot;
+  }
+]</code></pre>
 <div class="actions"><a class="btn" href="https://apify.com/bosco_labs/sanctions-screening">Run it on Apify Store &rarr;</a><a class="btn ghost" href="sanctions-screening.html">All fields and limits</a></div>
 <h2>More questions for this tool</h2><ul class="qs"><li><a href="q/rosneft-eu-uk-sanctions-check.html">Is Rosneft on the EU or UK sanctions list?</a></li><li><a href="q/huawei-us-consolidated-screening-list.html">Is Huawei on the US Consolidated Screening List (Entity List)?</a></li><li><a href="q/crypto-wallet-ofac-sanctions-check.html">Before we accept a USDT payment, is wallet 0x7FF9cFad3877F21d41Da833E2F775dB0569eE3D9 on a sanctions list?</a></li></ul>
 <p><a href="q/index.html">All questions</a></p>
 </article>
 </main>
-<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<footer><div class="wrap"><p><a href="/">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
 <p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
 </body>
 </html>

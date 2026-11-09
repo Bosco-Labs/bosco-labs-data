@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <base href="../">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Which US stocks had insider cluster buys in the last 30…</title>
-<meta name="description" content="A cluster buy is at least two different directors or officers buying the same stock on the open market within the cluster window, for a combined value of…">
+<title>US insider cluster buys in the last 30 days</title>
+<meta name="description" content="US stocks where two or more insiders bought on the open market within a short window, worth $100,000 or more together, from SEC Form 4 filings.">
 <link rel="canonical" href="https://boscolabs.dev/q/insider-cluster-buys-last-30-days.html">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="logo.svg" type="image/svg+xml">
@@ -13,8 +13,8 @@
 <link rel="alternate" type="application/atom+xml" href="blog/feed.xml" title="Bosco Labs blog">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Bosco Labs">
-<meta property="og:title" content="Which US stocks had insider cluster buys in the last 30…">
-<meta property="og:description" content="A cluster buy is at least two different directors or officers buying the same stock on the open market within the cluster window, for a combined value of…">
+<meta property="og:title" content="US insider cluster buys in the last 30 days">
+<meta property="og:description" content="US stocks where two or more insiders bought on the open market within a short window, worth $100,000 or more together, from SEC Form 4 filings.">
 <meta property="og:url" content="https://boscolabs.dev/q/insider-cluster-buys-last-30-days.html">
 <meta property="og:image" content="https://boscolabs.dev/logo-512.png">
 <meta name="twitter:card" content="summary">
@@ -29,7 +29,7 @@
   "name": "Which US stocks had insider cluster buys in the last 30 days?",
   "acceptedAnswer": {
    "@type": "Answer",
-   "text": "A cluster buy is at least two different directors or officers buying the same stock on the open market within the cluster window, for a combined value of at least $100,000. clusterBuysOnly returns the purchases that belong to a cluster plus one signal row per cluster (record_type cluster) with cluster_insiders, cluster_value_usd, cluster_date and the insider_names and accession_numbers behind it. Signal rows are priced separately from transaction rows (see the price above)."
+   "text": "US stocks where two or more insiders bought on the open market within a short window, worth $100,000 or more together, from SEC Form 4 filings."
   }
  },
  "about": {
@@ -87,12 +87,13 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="site"><div class="wrap"><a class="brand" href="index.html"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
-<nav aria-label="Main"><a href="index.html#tools">Tools</a><a href="api.html">API</a><a href="account.html">Account</a><a href="blog/index.html">Blog</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
+<header class="site"><div class="wrap"><a class="brand" href="/"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav aria-label="Main"><a href="/#tools">Tools</a><a href="api.html">API</a><a href="account.html">Account</a><a href="blog/index.html">Blog</a><a href="/#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
 <main class="wrap" id="main">
-<p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="q/index.html">Questions</a> &rsaquo; <a href="sec-insider-trades.html">SEC Insider Trading API (Form 4)</a></p>
+<p class="crumbs"><a href="/#tools">Tools</a> &rsaquo; <a href="q/index.html">Questions</a> &rsaquo; <a href="sec-insider-trades.html">SEC Insider Trading API (Form 4)</a></p>
 <article class="prose">
 <h1 class="sub">Which US stocks had insider cluster buys in the last 30 days?</h1>
+<p class="lead">US stocks where two or more insiders bought on the open market within a short window, worth $100,000 or more together, from SEC Form 4 filings.</p>
 <div class="facts"><div class="fact"><b>Answered by</b><a href="sec-insider-trades.html">SEC Insider Trading API (Form 4): stock transactions since 2006</a></div><div class="fact"><b>Price</b>$0.0018 per transaction row and $0.02 per cluster signal</div><div class="fact"><b>Status</b><span class="badge live">On Apify Store</span></div></div>
 <p>A cluster buy is at least two different directors or officers buying the same stock on the open market within the cluster window, for a combined value of at least $100,000. clusterBuysOnly returns the purchases that belong to a cluster plus one signal row per cluster (record_type cluster) with cluster_insiders, cluster_value_usd, cluster_date and the insider_names and accession_numbers behind it. Signal rows are priced separately from transaction rows (see the price above).</p>
 <h2>Tool input</h2>
@@ -183,7 +184,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <p><a href="q/index.html">All questions</a></p>
 </article>
 </main>
-<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<footer><div class="wrap"><p><a href="/">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
 <p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
 </body>
 </html>

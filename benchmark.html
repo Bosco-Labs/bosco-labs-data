@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Counterparty check benchmark: web search vs API</title>
-<meta name="description" content="25 companies, two arms: a model with web search, and one counterparty-check call. Scores, cost, time, misses and limits, per company.">
+<title>Counterparty check benchmark data: results per company</title>
+<meta name="description" content="Data tables of the counterparty-check benchmark: 25 companies, web search vs one API call. Totals, ground truth and both arms&#x27; scores per company.">
 <link rel="canonical" href="https://boscolabs.dev/benchmark.html">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="logo.svg" type="image/svg+xml">
@@ -12,8 +12,8 @@
 <link rel="alternate" type="application/atom+xml" href="blog/feed.xml" title="Bosco Labs blog">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Bosco Labs">
-<meta property="og:title" content="Counterparty check benchmark: web search vs API">
-<meta property="og:description" content="25 companies, two arms: a model with web search, and one counterparty-check call. Scores, cost, time, misses and limits, per company.">
+<meta property="og:title" content="Counterparty check benchmark data: results per company">
+<meta property="og:description" content="Data tables of the counterparty-check benchmark: 25 companies, web search vs one API call. Totals, ground truth and both arms&#x27; scores per company.">
 <meta property="og:url" content="https://boscolabs.dev/benchmark.html">
 <meta property="og:image" content="https://boscolabs.dev/logo-512.png">
 <meta name="twitter:card" content="summary">
@@ -22,7 +22,7 @@
 {
  "@context": "https://schema.org",
  "@type": "WebPage",
- "name": "Counterparty check benchmark: web search vs API",
+ "name": "Counterparty check benchmark data: results per company",
  "url": "https://boscolabs.dev/benchmark.html",
  "dateModified": "2026-11-09",
  "publisher": {
@@ -75,14 +75,14 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="site"><div class="wrap"><a class="brand" href="index.html"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
-<nav aria-label="Main"><a href="index.html#tools">Tools</a><a href="api.html">API</a><a href="account.html">Account</a><a href="blog/index.html">Blog</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
+<header class="site"><div class="wrap"><a class="brand" href="/"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav aria-label="Main"><a href="/#tools">Tools</a><a href="api.html">API</a><a href="account.html">Account</a><a href="blog/index.html">Blog</a><a href="/#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
 <main class="wrap" id="main">
 <div class="prose">
 <p class="crumbs"><a href="counterparty-check.html">Counterparty Check</a> &rsaquo; Benchmark</p>
-<h1>Counterparty check benchmark</h1>
+<h1>Counterparty check benchmark: data tables</h1>
 <p class="lead">Can an AI agent tell whether a company is active, sanctioned or insolvent? We asked the same question about 25 companies twice: once to a model with web search, once to the same model with the result of one <a href="counterparty-check.html">counterparty-check</a> call. Run of 2026-11-09, one run per company.</p>
-<p>How we ran it, the four bugs the first run found, and the rerun: <a href="blog/counterparty-check-benchmark.html">We lost our own benchmark the first time</a>.</p>
+<p>This page holds the tables. How we ran it, the four bugs the first run found and the rerun are on the blog: <a href="blog/counterparty-check-benchmark.html">We lost our own benchmark</a>.</p>
 <h2>Result</h2>
 <div class="table"><table><thead><tr><th></th><th>Web search</th><th>counterparty-check</th></tr></thead><tbody>
 <tr><td>All scored fields correct</td><td>19/25</td><td>20/25</td></tr>
@@ -144,7 +144,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <p class="muted">Ground truth checked 2026-11-08. Model claude-sonnet-5-5. Total spend of the run $2.92. The questions, ground truth with source URLs and both arms' full answers are on <a href="https://huggingface.co/datasets/BoscoLabs/counterparty-check-benchmark">Hugging Face</a>. Questions or a company you think we scored wrong: <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a>.</p>
 </div>
 </main>
-<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<footer><div class="wrap"><p><a href="/">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
 <p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
 </body>
 </html>

@@ -21,25 +21,53 @@
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
- "@type": "SoftwareApplication",
- "name": "SEC Financial Statements API: income, balance sheet, cash flow",
- "description": "Company financial statements from SEC EDGAR XBRL (10-K, 10-Q, 20-F): income statement (revenue, profit, EPS), balance sheet, cash flow, free cash flow and margins per fiscal year or quarter, 2009 to today, by ticker or CIK. Each value cites its XBRL tag and SEC filing. Q4 derived where not reported.",
- "url": "https://boscolabs.dev/sec-company-financials.html",
- "image": "https://boscolabs.dev/icons/sec-company-financials.png",
- "applicationCategory": "DeveloperApplication",
- "operatingSystem": "Web (Apify platform)",
- "offers": {
-  "@type": "Offer",
-  "priceCurrency": "USD",
-  "description": "$0.005 per company-period row",
-  "url": "https://apify.com/bosco_labs/sec-company-financials"
- },
- "provider": {
-  "@type": "Organization",
-  "name": "Bosco Labs",
-  "url": "https://boscolabs.dev/"
- },
- "installUrl": "https://apify.com/bosco_labs/sec-company-financials"
+ "@graph": [
+  {
+   "@type": "SoftwareApplication",
+   "name": "SEC Financial Statements API: income, balance sheet, cash flow",
+   "description": "Company financial statements from SEC EDGAR XBRL (10-K, 10-Q, 20-F): income statement (revenue, profit, EPS), balance sheet, cash flow, free cash flow and margins per fiscal year or quarter, 2009 to today, by ticker or CIK. Each value cites its XBRL tag and SEC filing. Q4 derived where not reported.",
+   "url": "https://boscolabs.dev/sec-company-financials.html",
+   "image": "https://boscolabs.dev/icons/sec-company-financials.png",
+   "applicationCategory": "DeveloperApplication",
+   "operatingSystem": "Web (Apify platform)",
+   "offers": {
+    "@type": "Offer",
+    "priceCurrency": "USD",
+    "description": "$0.005 per company-period row",
+    "price": "0.005",
+    "url": "https://apify.com/bosco_labs/sec-company-financials"
+   },
+   "provider": {
+    "@type": "Organization",
+    "name": "Bosco Labs",
+    "url": "https://boscolabs.dev/"
+   },
+   "installUrl": "https://apify.com/bosco_labs/sec-company-financials"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Tools",
+     "item": "https://boscolabs.dev/#tools"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Finance & SEC",
+     "item": "https://boscolabs.dev/#finance-sec"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "SEC Financial Statements API: income, balance sheet, cash flow",
+     "item": "https://boscolabs.dev/sec-company-financials.html"
+    }
+   ]
+  }
+ ]
 }
 </script>
 <style>:root{color-scheme:light dark;--head:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--body:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;--ink:#1D2721;--muted:#545F58;--bg:#F5F3EA;--surface:#EAE8DC;--line:#D6D3C3;--accent:#2E5A47;--accent-fg:#F5F3EA;--accent2:#8DA889;--accent2-text:#4A6646;--success:#36694A;--warn:#8E5D1C}
@@ -85,10 +113,10 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="site"><div class="wrap"><a class="brand" href="index.html"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
-<nav aria-label="Main"><a href="index.html#tools">Tools</a><a href="api.html">API</a><a href="account.html">Account</a><a href="blog/index.html">Blog</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
+<header class="site"><div class="wrap"><a class="brand" href="/"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav aria-label="Main"><a href="/#tools">Tools</a><a href="api.html">API</a><a href="account.html">Account</a><a href="blog/index.html">Blog</a><a href="/#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
 <main class="wrap" id="main">
-<p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#finance-sec">Finance &amp; SEC</a></p>
+<p class="crumbs"><a href="/#tools">Tools</a> &rsaquo; <a href="/#finance-sec">Finance &amp; SEC</a></p>
 <article>
 <div class="head"><img src="icons/sec-company-financials.svg" alt="" width="84" height="84"><div><h1>SEC Financial Statements API: income, balance sheet, cash flow</h1><span class="badge live">On Apify Store</span></div></div>
 <div class="prose">
@@ -105,7 +133,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <tr><td>x402</td><td><code>POST https://api.boscolabs.dev/v1/sec-company-financials</code> without a key: pay per call, no account (<a href="api.html#x402">how</a>)</td><td>$0.005 per company-period row, in USDC on Base</td></tr>
 </tbody></table></div>
 <h2>Questions agents ask</h2>
-<ul class="qs"><li>&ldquo;How did Microsoft&#x27;s revenue, net income and free cash flow develop over the last 8 quarters?&rdquo;</li><li>&ldquo;Compare Nvidia, AMD and Intel on operating margin for the last 5 fiscal years.&rdquo;</li><li>&ldquo;What was JPMorgan&#x27;s net income in 2024, and which filing is it from?&rdquo;</li></ul>
+<ul class="qs"><li><a href="q/microsoft-quarterly-revenue-net-income-fcf.html">&ldquo;How did Microsoft&#x27;s revenue, net income and free cash flow develop over the last 8 quarters?&rdquo;</a></li><li><a href="q/nvidia-amd-intel-operating-margin-5-years.html">&ldquo;Compare Nvidia, AMD and Intel on operating margin for the last 5 fiscal years.&rdquo;</a></li><li>&ldquo;What was JPMorgan&#x27;s net income in 2024, and which filing is it from?&rdquo;</li><li><a href="q/apple-free-cash-flow-5-years.html">What was Apple&#x27;s free cash flow in each of the last 5 fiscal years?</a></li><li><a href="q/tesla-cash-and-debt-last-4-quarters.html">How much cash and long-term debt did Tesla have over the last 4 quarters?</a></li></ul>
 </div>
 <h2>Example</h2>
 <div class="two"><div><h3>Input</h3><pre><code>{ &quot;tickers&quot;: [&quot;AAPL&quot;, &quot;MSFT&quot;], &quot;period&quot;: &quot;quarterly&quot;, &quot;years&quot;: 2, &quot;metrics&quot;: [&quot;revenue&quot;, &quot;net_income&quot;, &quot;free_cash_flow&quot;] }</code></pre></div>
@@ -253,7 +281,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 </div>
 </article>
 </main>
-<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<footer><div class="wrap"><p><a href="/">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
 <p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
 </body>
 </html>

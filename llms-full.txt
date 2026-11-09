@@ -62,7 +62,7 @@ Contact: support@boscolabs.dev
 
 ## Questions and comparisons
 
-- [Questions agents ask](https://boscolabs.dev/q/index.html): 94 questions, each with the exact Actor input, an MCP prompt, the API call and an example output
+- [Questions agents ask](https://boscolabs.dev/q/index.html): 96 questions, each with the exact Actor input, an MCP prompt, the API call and an example output
 - [SEC insider trading data on Apify: tools compared](https://boscolabs.dev/compare/insider-trades.html): Insider trades tools compared with other Apify Store Actors (Store data, 2026-11-05)
 - [SEC EDGAR filings and financials on Apify compared](https://boscolabs.dev/compare/sec-edgar.html): SEC filings and financials tools compared with other Apify Store Actors (Store data, 2026-11-05)
 - [Company check and KYB data on Apify compared](https://boscolabs.dev/compare/company-data.html): Company check (KYB) tools compared with other Apify Store Actors (Store data, 2026-11-05)
@@ -163,6 +163,8 @@ Contact: support@boscolabs.dev
 - [Before we accept a USDT payment, is wallet 0x7FF9cFad3877F21d41Da833E2F775dB0569eE3D9 on a sanctions list?](https://boscolabs.dev/q/crypto-wallet-ofac-sanctions-check.html) -> `sanctions-screening` `{"addresses": ["0x7FF9cFad3877F21d41Da833E2F775dB0569eE3D9"]}`
 - [Check Polish company KRS 0000028860: is it active, who is on the board, and is it in bankruptcy or restructuring?](https://boscolabs.dev/q/polish-company-krs-board-insolvency.html) -> `company-check` `{"query": "0000028860", "country": "PL"}`
 - [For UK company 00445790, list the registered charges and any insolvency notices in The Gazette.](https://boscolabs.dev/q/uk-company-charges-gazette-insolvency.html) -> `company-check` `{"query": "00445790", "country": "GB", "include": ["identity", "charges", "insolvency"]}`
+- [Before we pay them: check supplier Novo Nordisk A/S (CVR 24256790), their VAT number DK24256790 and IBAN DK5000400440116243.](https://boscolabs.dev/q/novo-nordisk-supplier-vat-iban-check.html) -> `counterparty-check` `{"query": "24256790", "country": "DK", "vatNumber": "DK24256790", "iban": "DK5000400440116243"}`
+- [Is Estonian company 14850239 still in the register, and is it on a sanctions list?](https://boscolabs.dev/q/estonian-company-14850239-sanctions-register-check.html) -> `counterparty-check` `{"query": "14850239", "country": "EE"}`
 
 ## Blog
 

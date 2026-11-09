@@ -589,6 +589,18 @@
    "position": 94,
    "url": "https://boscolabs.dev/q/uk-company-charges-gazette-insolvency.html",
    "name": "For UK company 00445790, list the registered charges and any insolvency notices in The Gazette."
+  },
+  {
+   "@type": "ListItem",
+   "position": 95,
+   "url": "https://boscolabs.dev/q/novo-nordisk-supplier-vat-iban-check.html",
+   "name": "Before we pay them: check supplier Novo Nordisk A/S (CVR 24256790), their VAT number DK24256790 and IBAN DK5000400440116243."
+  },
+  {
+   "@type": "ListItem",
+   "position": 96,
+   "url": "https://boscolabs.dev/q/estonian-company-14850239-sanctions-register-check.html",
+   "name": "Is Estonian company 14850239 still in the register, and is it on a sanctions list?"
   }
  ]
 }
@@ -636,12 +648,12 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="site"><div class="wrap"><a class="brand" href="index.html"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
-<nav aria-label="Main"><a href="index.html#tools">Tools</a><a href="api.html">API</a><a href="account.html">Account</a><a href="blog/index.html">Blog</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
+<header class="site"><div class="wrap"><a class="brand" href="/"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav aria-label="Main"><a href="/#tools">Tools</a><a href="api.html">API</a><a href="account.html">Account</a><a href="blog/index.html">Blog</a><a href="/#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
 <main class="wrap" id="main">
 <section class="hero">
 <h1>Questions agents ask</h1>
-<p class="lead">94 real questions and the tool call that answers each one: the exact input, a prompt for MCP clients, the Apify API call and an example of the rows you get back, with a source link in every row.</p>
+<p class="lead">96 real questions and the tool call that answers each one: the exact input, a prompt for MCP clients, the Apify API call and an example of the rows you get back, with a source link in every row.</p>
 </section>
 <div class="prose">
 <h2>Finance &amp; SEC</h2>
@@ -654,6 +666,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <h3><a href="esef-annual-reports.html">EU Annual Reports API (ESEF)</a> &middot; <span class="muted">$0.01 per run plus $0.05 per annual report; raw XBRL fact rows, if switched on, $0.0005 each</span></h3><ul class="qs"><li><a href="q/heineken-revenue-growth-operating-margin.html">What were Heineken&#x27;s latest revenue growth and operating margin, from its annual report?</a></li><li><a href="q/belgian-listed-companies-net-income-2024.html">Compare net income and equity of Belgian listed companies for fiscal years ending in 2024.</a></li><li><a href="q/asml-revenue-net-profit-annual-report.html">What were ASML&#x27;s revenue and net profit in its latest annual report?</a></li></ul>
 <h3><a href="identifier-resolver.html">ISIN, LEI, CIK, FIGI &amp; Ticker Resolver API (crosswalk)</a> &middot; <span class="muted">$0.002 per resolved identifier</span></h3><ul class="qs"><li><a href="q/isin-us0378331005-to-ticker-cik-lei.html">Convert ISIN US0378331005 to its ticker, CIK and LEI.</a></li><li><a href="q/nvidia-cik-number.html">What is Nvidia&#x27;s SEC CIK number, and what are its ISIN and LEI?</a></li><li><a href="q/lei-lookup-company-name.html">Which company does LEI 549300GKFG0RYRRQ1414 belong to?</a></li></ul>
 <h2>Companies</h2>
+<h3><a href="counterparty-check.html">Counterparty Check API</a> &middot; <span class="muted">$0.05 per company checked</span></h3><ul class="qs"><li><a href="q/novo-nordisk-supplier-vat-iban-check.html">Before we pay them: check supplier Novo Nordisk A/S (CVR 24256790), their VAT number DK24256790 and IBAN DK5000400440116243.</a></li><li><a href="q/estonian-company-14850239-sanctions-register-check.html">Is Estonian company 14850239 still in the register, and is it on a sanctions list?</a></li></ul>
 <h3><a href="company-check.html">Company Check API</a> &middot; <span class="muted">$0.03 per report</span></h3><ul class="qs"><li><a href="q/novo-nordisk-company-check.html">Who is Novo Nordisk legally, and what were its revenue and net income in the last three years? Cite your sources.</a></li><li><a href="q/uk-company-03117531-check.html">Who is UK company 03117531, is it still active, and what do its latest accounts show?</a></li><li><a href="q/equinor-company-check.html">Is Equinor ASA an active company, and what were its revenue and profit in the last 3 years?</a></li><li><a href="q/nokia-oyj-business-id.html">What is Nokia Oyj&#x27;s business ID and LEI, and is it still active?</a></li><li><a href="q/polish-company-krs-board-insolvency.html">Check Polish company KRS 0000028860: is it active, who is on the board, and is it in bankruptcy or restructuring?</a></li><li><a href="q/uk-company-charges-gazette-insolvency.html">For UK company 00445790, list the registered charges and any insolvency notices in The Gazette.</a></li></ul>
 <h3><a href="vat-iban-check.html">VAT Number &amp; IBAN Check API</a> &middot; <span class="muted">$0.002 per check with a definite answer</span></h3><ul class="qs"><li><a href="q/supplier-vat-number-and-iban-check.html">A new supplier sent VAT number IE6388047V and IBAN NL91ABNA0417164300 for Google Ireland. Are both real, and does the VAT number belong to them?</a></li></ul>
 <h3><a href="company-accounts.html">Company Financials API</a> &middot; <span class="muted">$0.04 per company-year</span></h3><ul class="qs"><li><a href="q/novo-nordisk-danish-annual-report-figures.html">What were Novo Nordisk&#x27;s revenue and equity in its latest Danish annual report?</a></li><li><a href="q/equinor-norwegian-accounts-3-years.html">Get the last three years of Equinor ASA&#x27;s own accounts from the Norwegian register.</a></li></ul>
@@ -680,7 +693,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <h3><a href="package-vulns.html">Package Vulnerability Check API</a> &middot; <span class="muted">$0.005 per package version or CVE answered (HTTP API)</span></h3><ul class="qs"><li><a href="q/log4j-core-2-14-1-log4shell.html">Is log4j-core 2.14.1 vulnerable to Log4Shell, and which version fixes it?</a></li><li><a href="q/requests-2-25-0-vulnerabilities.html">Does Python requests 2.25.0 have known vulnerabilities?</a></li><li><a href="q/cve-2024-3094-xz-affected-versions.html">What is CVE-2024-3094 (the xz backdoor) and which versions are affected?</a></li></ul>
 </div>
 </main>
-<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<footer><div class="wrap"><p><a href="/">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
 <p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
 </body>
 </html>

@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <base href="../">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>How did Microsoft&#x27;s revenue, net income and free cash flow…</title>
-<meta name="description" content="The Actor reads the SEC XBRL company facts that every US filer reports in its 10-K and 10-Q. period quarterly with years 2 gives one row per fiscal…">
+<title>Microsoft revenue, net income and FCF, 8 quarters</title>
+<meta name="description" content="Microsoft revenue, net income and free cash flow for each of the last 8 fiscal quarters, from its 10-Q and 10-K XBRL data at the SEC, with sources.">
 <link rel="canonical" href="https://boscolabs.dev/q/microsoft-quarterly-revenue-net-income-fcf.html">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="logo.svg" type="image/svg+xml">
@@ -13,8 +13,8 @@
 <link rel="alternate" type="application/atom+xml" href="blog/feed.xml" title="Bosco Labs blog">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Bosco Labs">
-<meta property="og:title" content="How did Microsoft&#x27;s revenue, net income and free cash flow…">
-<meta property="og:description" content="The Actor reads the SEC XBRL company facts that every US filer reports in its 10-K and 10-Q. period quarterly with years 2 gives one row per fiscal…">
+<meta property="og:title" content="Microsoft revenue, net income and FCF, 8 quarters">
+<meta property="og:description" content="Microsoft revenue, net income and free cash flow for each of the last 8 fiscal quarters, from its 10-Q and 10-K XBRL data at the SEC, with sources.">
 <meta property="og:url" content="https://boscolabs.dev/q/microsoft-quarterly-revenue-net-income-fcf.html">
 <meta property="og:image" content="https://boscolabs.dev/logo-512.png">
 <meta name="twitter:card" content="summary">
@@ -29,7 +29,7 @@
   "name": "How did Microsoft's revenue, net income and free cash flow develop over the last 8 quarters?",
   "acceptedAnswer": {
    "@type": "Answer",
-   "text": "The Actor reads the SEC XBRL company facts that every US filer reports in its 10-K and 10-Q. period quarterly with years 2 gives one row per fiscal quarter over the last two years; metrics limits the columns to the three you asked for. Each row has fiscal_year, fiscal_period, period_end, the form and filed date it comes from, and source_url to that filing, so every number can be checked."
+   "text": "Microsoft revenue, net income and free cash flow for each of the last 8 fiscal quarters, from its 10-Q and 10-K XBRL data at the SEC, with sources."
   }
  },
  "about": {
@@ -87,12 +87,13 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="site"><div class="wrap"><a class="brand" href="index.html"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
-<nav aria-label="Main"><a href="index.html#tools">Tools</a><a href="api.html">API</a><a href="account.html">Account</a><a href="blog/index.html">Blog</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
+<header class="site"><div class="wrap"><a class="brand" href="/"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav aria-label="Main"><a href="/#tools">Tools</a><a href="api.html">API</a><a href="account.html">Account</a><a href="blog/index.html">Blog</a><a href="/#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
 <main class="wrap" id="main">
-<p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="q/index.html">Questions</a> &rsaquo; <a href="sec-company-financials.html">SEC Financial Statements API</a></p>
+<p class="crumbs"><a href="/#tools">Tools</a> &rsaquo; <a href="q/index.html">Questions</a> &rsaquo; <a href="sec-company-financials.html">SEC Financial Statements API</a></p>
 <article class="prose">
 <h1 class="sub">How did Microsoft&#x27;s revenue, net income and free cash flow develop over the last 8 quarters?</h1>
+<p class="lead">Microsoft revenue, net income and free cash flow for each of the last 8 fiscal quarters, from its 10-Q and 10-K XBRL data at the SEC, with sources.</p>
 <div class="facts"><div class="fact"><b>Answered by</b><a href="sec-company-financials.html">SEC Financial Statements API: income, balance sheet, cash flow</a></div><div class="fact"><b>Price</b>$0.005 per company-period row</div><div class="fact"><b>Status</b><span class="badge live">On Apify Store</span></div></div>
 <p>The Actor reads the SEC XBRL company facts that every US filer reports in its 10-K and 10-Q. period quarterly with years 2 gives one row per fiscal quarter over the last two years; metrics limits the columns to the three you asked for. Each row has fiscal_year, fiscal_period, period_end, the form and filed date it comes from, and source_url to that filing, so every number can be checked.</p>
 <h2>Tool input</h2>
@@ -127,61 +128,53 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
   -d &#x27;{&quot;tickers&quot;: [&quot;MSFT&quot;], &quot;period&quot;: &quot;quarterly&quot;, &quot;years&quot;: 2, &quot;metrics&quot;: [&quot;revenue&quot;, &quot;net_income&quot;, &quot;free_cash_flow&quot;]}&#x27;</code></pre>
 
 <h2>Example output</h2>
-<p class="muted">Example output from the tool&#x27;s documentation (not a run of this exact question).</p>
-<pre><code>{
-  &quot;ticker&quot;: &quot;AAPL&quot;,
-  &quot;cik&quot;: &quot;0000320193&quot;,
-  &quot;company_name&quot;: &quot;Apple Inc.&quot;,
-  &quot;fiscal_year&quot;: 2025,
-  &quot;fiscal_period&quot;: &quot;FY&quot;,
-  &quot;period_start&quot;: &quot;2024-09-29&quot;,
-  &quot;period_end&quot;: &quot;2025-09-27&quot;,
-  &quot;form&quot;: &quot;10-K&quot;,
-  &quot;filed&quot;: &quot;2025-10-31&quot;,
-  &quot;accession_number&quot;: &quot;0000320193-25-000079&quot;,
-  &quot;source_url&quot;: &quot;https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/0000320193-25-000079-index.htm&quot;,
-  &quot;currency&quot;: &quot;USD&quot;,
-  &quot;revenue&quot;: 416161000000,
-  &quot;gross_profit&quot;: 195201000000,
-  &quot;operating_profit&quot;: 133050000000,
-  &quot;net_income&quot;: 112010000000,
-  &quot;eps_diluted&quot;: 7.46,
-  &quot;total_assets&quot;: 359241000000,
-  &quot;cash_and_equivalents&quot;: 35934000000,
-  &quot;long_term_debt&quot;: 78328000000,
-  &quot;total_equity&quot;: 73733000000,
-  &quot;operating_cash_flow&quot;: 111482000000,
-  &quot;capex&quot;: 12715000000,
-  &quot;free_cash_flow&quot;: 98767000000,
-  &quot;gross_margin&quot;: 0.4691,
-  &quot;operating_margin&quot;: 0.3197,
-  &quot;net_margin&quot;: 0.2692,
-  &quot;revenue_growth&quot;: 0.0643,
-  &quot;metrics_found&quot;: 29,
-  &quot;sources&quot;: {
-    &quot;revenue&quot;: {
-      &quot;tag&quot;: &quot;us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax&quot;,
-      &quot;accession&quot;: &quot;0000320193-25-000079&quot;
+<p class="muted">Snapshot taken 2026-11-09, source links in each row. First 1 of 5 rows (snapshot runs stop at 5 rows); long values shortened.</p>
+<pre><code>[
+  {
+    &quot;schema_version&quot;: &quot;1&quot;,
+    &quot;ticker&quot;: &quot;MSFT&quot;,
+    &quot;cik&quot;: &quot;0000789019&quot;,
+    &quot;company_name&quot;: &quot;MICROSOFT CORP&quot;,
+    &quot;fiscal_year&quot;: 2027,
+    &quot;fiscal_period&quot;: &quot;Q1&quot;,
+    &quot;period_start&quot;: &quot;2026-07-01&quot;,
+    &quot;period_end&quot;: &quot;2026-09-30&quot;,
+    &quot;form&quot;: &quot;10-Q&quot;,
+    &quot;filed&quot;: &quot;2026-10-28&quot;,
+    &quot;accession_number&quot;: &quot;0001193125-26-436133&quot;,
+    &quot;source_url&quot;: &quot;https://www.sec.gov/Archives/edgar/data/789019/000119312526436133/0001193125-26-436133-index.htm&quot;,
+    &quot;currency&quot;: &quot;USD&quot;,
+    &quot;revenue&quot;: 92279000000,
+    &quot;net_income&quot;: 36629000000,
+    &quot;free_cash_flow&quot;: 18633000000,
+    &quot;metrics_found&quot;: 2,
+    &quot;sources&quot;: {
+      &quot;revenue&quot;: {
+        &quot;tag&quot;: &quot;us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax&quot;,
+        &quot;accession&quot;: &quot;0001193125-26-436133&quot;
+      },
+      &quot;net_income&quot;: {
+        &quot;tag&quot;: &quot;us-gaap:NetIncomeLoss&quot;,
+        &quot;accession&quot;: &quot;0001193125-26-436133&quot;
+      }
     },
-    &quot;...&quot;: &quot;one entry per reported metric&quot;
-  },
-  &quot;filings&quot;: {
-    &quot;0000320193-25-000079&quot;: {
-      &quot;form&quot;: &quot;10-K&quot;,
-      &quot;filed&quot;: &quot;2025-10-31&quot;,
-      &quot;url&quot;: &quot;https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/0000320193-25-000079-index.htm&quot;
-    }
-  },
-  &quot;warnings&quot;: [],
-  &quot;schema_version&quot;: &quot;1&quot;,
-  &quot;retrieved_at&quot;: &quot;2026-11-05T21:38:54+00:00&quot;
-}</code></pre>
+    &quot;filings&quot;: {
+      &quot;0001193125-26-436133&quot;: {
+        &quot;form&quot;: &quot;10-Q&quot;,
+        &quot;filed&quot;: &quot;2026-10-28&quot;,
+        &quot;url&quot;: &quot;https://www.sec.gov/Archives/edgar/data/789019/000119312526436133/0001193125-26-436133-index.htm&quot;
+      }
+    },
+    &quot;warnings&quot;: [],
+    &quot;retrieved_at&quot;: &quot;2026-11-09T07:30:05+00:00&quot;
+  }
+]</code></pre>
 <div class="actions"><a class="btn" href="https://apify.com/bosco_labs/sec-company-financials">Run it on Apify Store &rarr;</a><a class="btn ghost" href="sec-company-financials.html">All fields and limits</a></div>
 <h2>More questions for this tool</h2><ul class="qs"><li><a href="q/nvidia-amd-intel-operating-margin-5-years.html">Compare Nvidia, AMD and Intel on operating margin for the last 5 fiscal years.</a></li><li><a href="q/apple-free-cash-flow-5-years.html">What was Apple&#x27;s free cash flow in each of the last 5 fiscal years?</a></li><li><a href="q/tesla-cash-and-debt-last-4-quarters.html">How much cash and long-term debt did Tesla have over the last 4 quarters?</a></li></ul>
 <p><a href="q/index.html">All questions</a></p>
 </article>
 </main>
-<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<footer><div class="wrap"><p><a href="/">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
 <p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
 </body>
 </html>

@@ -21,25 +21,53 @@
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
- "@type": "SoftwareApplication",
- "name": "ISIN, LEI, CIK, FIGI & Ticker Resolver API (crosswalk)",
- "description": "Issuer legal name, LEI, CIK, tickers, ISINs, FIGIs, CFI code and EU trading venues for one ISIN, LEI, CIK, ticker, FIGI or company name. Check digits validated first; a source URL per value. Data from GLEIF, OpenFIGI, SEC and ESMA FIRDS.",
- "url": "https://boscolabs.dev/identifier-resolver.html",
- "image": "https://boscolabs.dev/icons/identifier-resolver.png",
- "applicationCategory": "DeveloperApplication",
- "operatingSystem": "Web (Apify platform)",
- "offers": {
-  "@type": "Offer",
-  "priceCurrency": "USD",
-  "description": "$0.002 per resolved identifier",
-  "url": "https://apify.com/bosco_labs/identifier-resolver"
- },
- "provider": {
-  "@type": "Organization",
-  "name": "Bosco Labs",
-  "url": "https://boscolabs.dev/"
- },
- "installUrl": "https://apify.com/bosco_labs/identifier-resolver"
+ "@graph": [
+  {
+   "@type": "SoftwareApplication",
+   "name": "ISIN, LEI, CIK, FIGI & Ticker Resolver API (crosswalk)",
+   "description": "Issuer legal name, LEI, CIK, tickers, ISINs, FIGIs, CFI code and EU trading venues for one ISIN, LEI, CIK, ticker, FIGI or company name. Check digits validated first; a source URL per value. Data from GLEIF, OpenFIGI, SEC and ESMA FIRDS.",
+   "url": "https://boscolabs.dev/identifier-resolver.html",
+   "image": "https://boscolabs.dev/icons/identifier-resolver.png",
+   "applicationCategory": "DeveloperApplication",
+   "operatingSystem": "Web (Apify platform)",
+   "offers": {
+    "@type": "Offer",
+    "priceCurrency": "USD",
+    "description": "$0.002 per resolved identifier",
+    "price": "0.002",
+    "url": "https://apify.com/bosco_labs/identifier-resolver"
+   },
+   "provider": {
+    "@type": "Organization",
+    "name": "Bosco Labs",
+    "url": "https://boscolabs.dev/"
+   },
+   "installUrl": "https://apify.com/bosco_labs/identifier-resolver"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Tools",
+     "item": "https://boscolabs.dev/#tools"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Finance & SEC",
+     "item": "https://boscolabs.dev/#finance-sec"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "ISIN, LEI, CIK, FIGI & Ticker Resolver API (crosswalk)",
+     "item": "https://boscolabs.dev/identifier-resolver.html"
+    }
+   ]
+  }
+ ]
 }
 </script>
 <style>:root{color-scheme:light dark;--head:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--body:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;--ink:#1D2721;--muted:#545F58;--bg:#F5F3EA;--surface:#EAE8DC;--line:#D6D3C3;--accent:#2E5A47;--accent-fg:#F5F3EA;--accent2:#8DA889;--accent2-text:#4A6646;--success:#36694A;--warn:#8E5D1C}
@@ -85,10 +113,10 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="site"><div class="wrap"><a class="brand" href="index.html"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
-<nav aria-label="Main"><a href="index.html#tools">Tools</a><a href="api.html">API</a><a href="account.html">Account</a><a href="blog/index.html">Blog</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
+<header class="site"><div class="wrap"><a class="brand" href="/"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav aria-label="Main"><a href="/#tools">Tools</a><a href="api.html">API</a><a href="account.html">Account</a><a href="blog/index.html">Blog</a><a href="/#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
 <main class="wrap" id="main">
-<p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#finance-sec">Finance &amp; SEC</a></p>
+<p class="crumbs"><a href="/#tools">Tools</a> &rsaquo; <a href="/#finance-sec">Finance &amp; SEC</a></p>
 <article>
 <div class="head"><img src="icons/identifier-resolver.svg" alt="" width="84" height="84"><div><h1>ISIN, LEI, CIK, FIGI &amp; Ticker Resolver API (crosswalk)</h1><span class="badge live">On Apify Store</span></div></div>
 <div class="prose">
@@ -105,7 +133,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <tr><td>x402</td><td><code>POST https://api.boscolabs.dev/v1/identifier-resolver</code> without a key: pay per call, no account (<a href="api.html#x402">how</a>)</td><td>$0.002 per identifier resolved, in USDC on Base</td></tr>
 </tbody></table></div>
 <h2>Questions agents ask</h2>
-<ul class="qs"><li>&ldquo;What is the LEI, CIK and home-market FIGI of ISIN NL0010273215, and on how many EU venues does it trade? Cite the sources.&rdquo;</li></ul>
+<ul class="qs"><li>&ldquo;What is the LEI, CIK and home-market FIGI of ISIN NL0010273215, and on how many EU venues does it trade? Cite the sources.&rdquo;</li><li><a href="q/isin-us0378331005-to-ticker-cik-lei.html">Convert ISIN US0378331005 to its ticker, CIK and LEI.</a></li><li><a href="q/nvidia-cik-number.html">What is Nvidia&#x27;s SEC CIK number, and what are its ISIN and LEI?</a></li><li><a href="q/lei-lookup-company-name.html">Which company does LEI 549300GKFG0RYRRQ1414 belong to?</a></li></ul>
 </div>
 <h2>Example</h2>
 <div class="two"><div><h3>Input</h3><pre><code>{ &quot;identifier&quot;: &quot;US0378331005&quot; }</code></pre></div>
@@ -239,7 +267,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 </div>
 </article>
 </main>
-<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<footer><div class="wrap"><p><a href="/">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
 <p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
 </body>
 </html>

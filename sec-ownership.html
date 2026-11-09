@@ -21,25 +21,53 @@
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
- "@type": "SoftwareApplication",
- "name": "SEC 13F Holdings API: fund & ETF holdings, 13D/13G, Form 144",
- "description": "13F institutional holdings and who owns a stock, from official SEC filings: a fund manager's 13F holdings with changes vs the previous quarter, a mutual fund's or ETF's N-PORT holdings, the funds holding a ticker, 5%+ stakes (13D/13G) and Form 144 planned insider sales. One ticker or fund in.",
- "url": "https://boscolabs.dev/sec-ownership.html",
- "image": "https://boscolabs.dev/icons/sec-ownership.png",
- "applicationCategory": "DeveloperApplication",
- "operatingSystem": "Web (Apify platform)",
- "offers": {
-  "@type": "Offer",
-  "priceCurrency": "USD",
-  "description": "$0.0018 per row, plus $0.01 per \"who holds this stock\" search (13F or N-PORT data set)",
-  "url": "https://apify.com/bosco_labs/sec-ownership"
- },
- "provider": {
-  "@type": "Organization",
-  "name": "Bosco Labs",
-  "url": "https://boscolabs.dev/"
- },
- "installUrl": "https://apify.com/bosco_labs/sec-ownership"
+ "@graph": [
+  {
+   "@type": "SoftwareApplication",
+   "name": "SEC 13F Holdings API: fund & ETF holdings, 13D/13G, Form 144",
+   "description": "13F institutional holdings and who owns a stock, from official SEC filings: a fund manager's 13F holdings with changes vs the previous quarter, a mutual fund's or ETF's N-PORT holdings, the funds holding a ticker, 5%+ stakes (13D/13G) and Form 144 planned insider sales. One ticker or fund in.",
+   "url": "https://boscolabs.dev/sec-ownership.html",
+   "image": "https://boscolabs.dev/icons/sec-ownership.png",
+   "applicationCategory": "DeveloperApplication",
+   "operatingSystem": "Web (Apify platform)",
+   "offers": {
+    "@type": "Offer",
+    "priceCurrency": "USD",
+    "description": "$0.0018 per row, plus $0.01 per \"who holds this stock\" search (13F or N-PORT data set)",
+    "price": "0.0018",
+    "url": "https://apify.com/bosco_labs/sec-ownership"
+   },
+   "provider": {
+    "@type": "Organization",
+    "name": "Bosco Labs",
+    "url": "https://boscolabs.dev/"
+   },
+   "installUrl": "https://apify.com/bosco_labs/sec-ownership"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Tools",
+     "item": "https://boscolabs.dev/#tools"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Finance & SEC",
+     "item": "https://boscolabs.dev/#finance-sec"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "SEC 13F Holdings API: fund & ETF holdings, 13D/13G, Form 144",
+     "item": "https://boscolabs.dev/sec-ownership.html"
+    }
+   ]
+  }
+ ]
 }
 </script>
 <style>:root{color-scheme:light dark;--head:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--body:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;--ink:#1D2721;--muted:#545F58;--bg:#F5F3EA;--surface:#EAE8DC;--line:#D6D3C3;--accent:#2E5A47;--accent-fg:#F5F3EA;--accent2:#8DA889;--accent2-text:#4A6646;--success:#36694A;--warn:#8E5D1C}
@@ -85,10 +113,10 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="site"><div class="wrap"><a class="brand" href="index.html"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
-<nav aria-label="Main"><a href="index.html#tools">Tools</a><a href="api.html">API</a><a href="account.html">Account</a><a href="blog/index.html">Blog</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
+<header class="site"><div class="wrap"><a class="brand" href="/"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav aria-label="Main"><a href="/#tools">Tools</a><a href="api.html">API</a><a href="account.html">Account</a><a href="blog/index.html">Blog</a><a href="/#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
 <main class="wrap" id="main">
-<p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#finance-sec">Finance &amp; SEC</a></p>
+<p class="crumbs"><a href="/#tools">Tools</a> &rsaquo; <a href="/#finance-sec">Finance &amp; SEC</a></p>
 <article>
 <div class="head"><img src="icons/sec-ownership.svg" alt="" width="84" height="84"><div><h1>SEC 13F Holdings API: fund &amp; ETF holdings, 13D/13G, Form 144</h1><span class="badge live">On Apify Store</span></div></div>
 <div class="prose">
@@ -105,7 +133,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <tr><td>x402</td><td><code>POST https://api.boscolabs.dev/v1/sec-ownership</code> without a key: pay per call, no account (<a href="api.html#x402">how</a>)</td><td>$0.0018 per holding, holder or filing row (one fund or company per call), in USDC on Base</td></tr>
 </tbody></table></div>
 <h2>Questions agents ask</h2>
-<ul class="qs"><li>&ldquo;What did Berkshire Hathaway buy and sell last quarter?&rdquo;</li><li>&ldquo;Which funds hold the most Nvidia stock?&rdquo;</li><li>&ldquo;What are ARKK&#x27;s top holdings and what did it add last quarter?&rdquo;</li><li>&ldquo;Which ETFs and mutual funds hold Palantir?&rdquo;</li><li>&ldquo;Has anyone filed an activist 13D on Peraso?&rdquo;</li><li>&ldquo;Which insiders filed to sell more than $1 million of stock this week?&rdquo;</li></ul>
+<ul class="qs"><li><a href="q/berkshire-hathaway-13f-changes.html">&ldquo;What did Berkshire Hathaway buy and sell last quarter?&rdquo;</a></li><li>&ldquo;Which funds hold the most Nvidia stock?&rdquo;</li><li>&ldquo;What are ARKK&#x27;s top holdings and what did it add last quarter?&rdquo;</li><li>&ldquo;Which ETFs and mutual funds hold Palantir?&rdquo;</li><li>&ldquo;Has anyone filed an activist 13D on Peraso?&rdquo;</li><li><a href="q/planned-insider-sales-form-144-over-1-million.html">&ldquo;Which insiders filed to sell more than $1 million of stock this week?&rdquo;</a></li><li><a href="q/arkk-top-holdings.html">What are the top holdings of the ARK Innovation ETF (ARKK)?</a></li><li><a href="q/pershing-square-13f-holdings.html">What stocks does Pershing Square own, and what did it change last quarter?</a></li><li><a href="q/who-owns-more-than-5-percent-apple.html">Who owns more than 5% of Apple stock, according to 13D and 13G filings?</a></li></ul>
 </div>
 <h2>Example</h2>
 <div class="two"><div><h3>Input</h3><pre><code>{&quot;mode&quot;: &quot;holdings13f&quot;, &quot;filer&quot;: &quot;Berkshire Hathaway&quot;}</code></pre></div>
@@ -242,7 +270,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 </div>
 </article>
 </main>
-<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<footer><div class="wrap"><p><a href="/">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
 <p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
 </body>
 </html>

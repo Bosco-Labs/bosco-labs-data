@@ -21,25 +21,53 @@
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
- "@type": "SoftwareApplication",
- "name": "UK & Dutch Law Lookup API: article text by date, in force",
- "description": "The text of a UK section or Dutch article as in force today (or on a date), whether it is in force and what changed it. Ask by citation: \"Companies Act 2006 s 172\", \"BW 7:658\", \"artikel 13 Wet Vpb 1969\". Official legislation.gov.uk and Dutch BWB data with a source link per row.",
- "url": "https://boscolabs.dev/national-law-lookup.html",
- "image": "https://boscolabs.dev/icons/national-law-lookup.png",
- "applicationCategory": "DeveloperApplication",
- "operatingSystem": "Web (Apify platform)",
- "offers": {
-  "@type": "Offer",
-  "priceCurrency": "USD",
-  "description": "$0.01 per article or act returned",
-  "url": "https://apify.com/bosco_labs/national-law-lookup"
- },
- "provider": {
-  "@type": "Organization",
-  "name": "Bosco Labs",
-  "url": "https://boscolabs.dev/"
- },
- "installUrl": "https://apify.com/bosco_labs/national-law-lookup"
+ "@graph": [
+  {
+   "@type": "SoftwareApplication",
+   "name": "UK & Dutch Law Lookup API: article text by date, in force",
+   "description": "The text of a UK section or Dutch article as in force today (or on a date), whether it is in force and what changed it. Ask by citation: \"Companies Act 2006 s 172\", \"BW 7:658\", \"artikel 13 Wet Vpb 1969\". Official legislation.gov.uk and Dutch BWB data with a source link per row.",
+   "url": "https://boscolabs.dev/national-law-lookup.html",
+   "image": "https://boscolabs.dev/icons/national-law-lookup.png",
+   "applicationCategory": "DeveloperApplication",
+   "operatingSystem": "Web (Apify platform)",
+   "offers": {
+    "@type": "Offer",
+    "priceCurrency": "USD",
+    "description": "$0.01 per article or act returned",
+    "price": "0.01",
+    "url": "https://apify.com/bosco_labs/national-law-lookup"
+   },
+   "provider": {
+    "@type": "Organization",
+    "name": "Bosco Labs",
+    "url": "https://boscolabs.dev/"
+   },
+   "installUrl": "https://apify.com/bosco_labs/national-law-lookup"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Tools",
+     "item": "https://boscolabs.dev/#tools"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Compliance & law",
+     "item": "https://boscolabs.dev/#compliance-law"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "UK & Dutch Law Lookup API: article text by date, in force",
+     "item": "https://boscolabs.dev/national-law-lookup.html"
+    }
+   ]
+  }
+ ]
 }
 </script>
 <style>:root{color-scheme:light dark;--head:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--body:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;--ink:#1D2721;--muted:#545F58;--bg:#F5F3EA;--surface:#EAE8DC;--line:#D6D3C3;--accent:#2E5A47;--accent-fg:#F5F3EA;--accent2:#8DA889;--accent2-text:#4A6646;--success:#36694A;--warn:#8E5D1C}
@@ -85,10 +113,10 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="site"><div class="wrap"><a class="brand" href="index.html"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
-<nav aria-label="Main"><a href="index.html#tools">Tools</a><a href="api.html">API</a><a href="account.html">Account</a><a href="blog/index.html">Blog</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
+<header class="site"><div class="wrap"><a class="brand" href="/"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav aria-label="Main"><a href="/#tools">Tools</a><a href="api.html">API</a><a href="account.html">Account</a><a href="blog/index.html">Blog</a><a href="/#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
 <main class="wrap" id="main">
-<p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#compliance-law">Compliance &amp; law</a></p>
+<p class="crumbs"><a href="/#tools">Tools</a> &rsaquo; <a href="/#compliance-law">Compliance &amp; law</a></p>
 <article>
 <div class="head"><img src="icons/national-law-lookup.svg" alt="" width="84" height="84"><div><h1>UK &amp; Dutch Law Lookup API: article text by date, in force</h1><span class="badge live">On Apify Store</span></div></div>
 <div class="prose">
@@ -105,7 +133,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <tr><td>x402</td><td><code>POST https://api.boscolabs.dev/v1/national-law-lookup</code> without a key: pay per call, no account (<a href="api.html#x402">how</a>)</td><td>$0.005 per article or act returned, in USDC on Base</td></tr>
 </tbody></table></div>
 <h2>Questions agents ask</h2>
-<ul class="qs"><li>&ldquo;What does article 13 of the Dutch Wet op de vennootschapsbelasting 1969 say as of 1 January 2025? Quote it and link the source.&rdquo;</li></ul>
+<ul class="qs"><li>&ldquo;What does article 13 of the Dutch Wet op de vennootschapsbelasting 1969 say as of 1 January 2025? Quote it and link the source.&rdquo;</li><li><a href="q/dutch-corporate-tax-act-article-13.html">What does article 13 of the Dutch Wet op de vennootschapsbelasting 1969 say as of 1 January 2025?</a></li><li><a href="q/uk-companies-act-section-172.html">What does section 172 of the UK Companies Act 2006 require of directors?</a></li><li><a href="q/dutch-civil-code-7-658-employer-liability.html">What does article 7:658 of the Dutch Civil Code say about employer liability?</a></li><li><a href="q/uk-bribery-act-section-7.html">What does section 7 of the UK Bribery Act 2010 (failure to prevent bribery) say?</a></li></ul>
 </div>
 <h2>Example</h2>
 <div class="two"><div><h3>Input</h3><pre><code>{ &quot;query&quot;: &quot;Wet op de vennootschapsbelasting 1969 artikel 13&quot;, &quot;asOf&quot;: &quot;2025-01-01&quot; }</code></pre></div>
@@ -224,7 +252,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 </div>
 </article>
 </main>
-<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<footer><div class="wrap"><p><a href="/">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
 <p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
 </body>
 </html>

@@ -21,25 +21,53 @@
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
- "@type": "SoftwareApplication",
- "name": "Congress Stock Trades API: US House STOCK Act since 2014",
- "description": "Congress stock trades: congressional stock trading disclosures by US House members (politicians' Periodic Transaction Reports under the STOCK Act), from the House Clerk since 2014 (no Senate). Each row: ticker, amount range, owner, disclosure delay. Filter by member, ticker, type, amount, date.",
- "url": "https://boscolabs.dev/us-house-trades.html",
- "image": "https://boscolabs.dev/icons/us-house-trades.png",
- "applicationCategory": "DeveloperApplication",
- "operatingSystem": "Web (Apify platform)",
- "offers": {
-  "@type": "Offer",
-  "priceCurrency": "USD",
-  "description": "$0.0018 per trade",
-  "url": "https://apify.com/bosco_labs/us-house-trades"
- },
- "provider": {
-  "@type": "Organization",
-  "name": "Bosco Labs",
-  "url": "https://boscolabs.dev/"
- },
- "installUrl": "https://apify.com/bosco_labs/us-house-trades"
+ "@graph": [
+  {
+   "@type": "SoftwareApplication",
+   "name": "Congress Stock Trades API: US House STOCK Act since 2014",
+   "description": "Congress stock trades: congressional stock trading disclosures by US House members (politicians' Periodic Transaction Reports under the STOCK Act), from the House Clerk since 2014 (no Senate). Each row: ticker, amount range, owner, disclosure delay. Filter by member, ticker, type, amount, date.",
+   "url": "https://boscolabs.dev/us-house-trades.html",
+   "image": "https://boscolabs.dev/icons/us-house-trades.png",
+   "applicationCategory": "DeveloperApplication",
+   "operatingSystem": "Web (Apify platform)",
+   "offers": {
+    "@type": "Offer",
+    "priceCurrency": "USD",
+    "description": "$0.0018 per trade",
+    "price": "0.0018",
+    "url": "https://apify.com/bosco_labs/us-house-trades"
+   },
+   "provider": {
+    "@type": "Organization",
+    "name": "Bosco Labs",
+    "url": "https://boscolabs.dev/"
+   },
+   "installUrl": "https://apify.com/bosco_labs/us-house-trades"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Tools",
+     "item": "https://boscolabs.dev/#tools"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Finance & SEC",
+     "item": "https://boscolabs.dev/#finance-sec"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Congress Stock Trades API: US House STOCK Act since 2014",
+     "item": "https://boscolabs.dev/us-house-trades.html"
+    }
+   ]
+  }
+ ]
 }
 </script>
 <style>:root{color-scheme:light dark;--head:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--body:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;--ink:#1D2721;--muted:#545F58;--bg:#F5F3EA;--surface:#EAE8DC;--line:#D6D3C3;--accent:#2E5A47;--accent-fg:#F5F3EA;--accent2:#8DA889;--accent2-text:#4A6646;--success:#36694A;--warn:#8E5D1C}
@@ -85,10 +113,10 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="site"><div class="wrap"><a class="brand" href="index.html"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
-<nav aria-label="Main"><a href="index.html#tools">Tools</a><a href="api.html">API</a><a href="account.html">Account</a><a href="blog/index.html">Blog</a><a href="index.html#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
+<header class="site"><div class="wrap"><a class="brand" href="/"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav aria-label="Main"><a href="/#tools">Tools</a><a href="api.html">API</a><a href="account.html">Account</a><a href="blog/index.html">Blog</a><a href="/#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
 <main class="wrap" id="main">
-<p class="crumbs"><a href="index.html#tools">Tools</a> &rsaquo; <a href="index.html#finance-sec">Finance &amp; SEC</a></p>
+<p class="crumbs"><a href="/#tools">Tools</a> &rsaquo; <a href="/#finance-sec">Finance &amp; SEC</a></p>
 <article>
 <div class="head"><img src="icons/us-house-trades.svg" alt="" width="84" height="84"><div><h1>Congress Stock Trades API: US House STOCK Act since 2014</h1><span class="badge live">On Apify Store</span></div></div>
 <div class="prose">
@@ -106,7 +134,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <tr><td>Local MCP server</td><td><code>uvx bosco-labs-data-mcp</code> with your <code>APIFY_TOKEN</code> (<a href="https://pypi.org/project/bosco-labs-data-mcp/">PyPI</a>)</td><td>Apify Store price, billed to your Apify account</td></tr>
 </tbody></table></div>
 <h2>Questions agents ask</h2>
-<ul class="qs"><li>&ldquo;Which options did Nancy Pelosi&#x27;s household trade in 2025, and how many days after the trade were they disclosed?&rdquo;</li><li>&ldquo;Which House members disclosed NVDA trades in the last 30 days?&rdquo;</li><li>&ldquo;List House trades over $1 million filed in 2024.&rdquo;</li></ul>
+<ul class="qs"><li>&ldquo;Which options did Nancy Pelosi&#x27;s household trade in 2025, and how many days after the trade were they disclosed?&rdquo;</li><li>&ldquo;Which House members disclosed NVDA trades in the last 30 days?&rdquo;</li><li>&ldquo;List House trades over $1 million filed in 2024.&rdquo;</li><li><a href="q/house-members-nvda-trades-2026.html">Which House members disclosed NVDA trades in 2026?</a></li><li><a href="q/house-trades-over-1-million-2025.html">Which House trades over $1 million were filed in 2025?</a></li></ul>
 </div>
 <h2>Example</h2>
 <div class="two"><div><h3>Input</h3><pre><code>{ &quot;members&quot;: [&quot;Pelosi&quot;], &quot;years&quot;: [&quot;2024&quot;, &quot;2025&quot;], &quot;transactionTypes&quot;: [&quot;purchase&quot;], &quot;maxResults&quot;: 500 }</code></pre></div>
@@ -212,7 +240,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 </div>
 </article>
 </main>
-<footer><div class="wrap"><p><a href="index.html">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<footer><div class="wrap"><p><a href="/">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
 <p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
 </body>
 </html>
