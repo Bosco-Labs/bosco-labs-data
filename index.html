@@ -207,6 +207,12 @@
     {
      "@type": "ListItem",
      "position": 29,
+     "url": "https://boscolabs.dev/weather-forecast.html",
+     "name": "Weather Forecast API: hourly + daily by city or lat/lon"
+    },
+    {
+     "@type": "ListItem",
+     "position": 30,
      "url": "https://boscolabs.dev/package-vulns.html",
      "name": "Package Vulnerability Check API: CVEs, CISA KEV, safe upgrade"
     }
@@ -264,7 +270,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <section class="hero">
 <h1>Official-source data for AI agents and analysts</h1>
 <p class="lead">Clean, typed JSON from SEC EDGAR, Companies House, EUR-Lex, TED, USAspending, ClinicalTrials.gov and other official registers. Call each tool by API or from an AI agent over MCP, and pay per result. Every row links to its source.</p>
-<p class="muted">29 tools live &middot; 29 on the HTTP API, remote MCP and x402 &middot; 25 also on the Apify Store</p>
+<p class="muted">30 tools live &middot; 29 on the HTTP API, remote MCP and x402 &middot; 30 also on the Apify Store</p>
 <p class="muted"><b>Try it free:</b> <a href="api.html#key">a key by e-mail with $5.00 of credit</a>, or no sign-up at all: the MCP server <code>https://api.boscolabs.dev/mcp/free</code> (query planner, LEI and SEC company lookups), <code>uvx bosco-vendor-check --demo</code>, or <code>POST https://api.boscolabs.dev/v1/plan</code> with your question.</p>
 <div class="actions"><a class="btn" href="#tools">Browse the tools</a><a class="btn ghost" href="q/index.html">Example questions</a><a class="btn ghost" href="llms.txt">For agents: llms.txt</a></div>
 <p>Can an agent check a supplier with web search alone? See the <a href="benchmark.html">counterparty check benchmark</a> (25 companies, web search vs one API call) and <a href="blog/index.html">the blog</a> for how we ran it.</p>
@@ -291,8 +297,8 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <li class="card"><div class="card-top"><img src="icons/company-check.svg" alt="" width="48" height="48"><h3><a href="company-check.html">Company Check API</a></h3></div><p>One sourced company report per call: legal name, LEI, registration number, status, address, years of financials and SEC filings. For KYB and due diligence.</p><div class="row"><span class="price">$0.03 per report</span><a href="https://apify.com/bosco_labs/company-check">Apify Store</a> &middot; <a href="company-check.html#where">API</a></div></li>
 <li class="card"><div class="card-top"><img src="icons/vat-iban-check.svg" alt="" width="48" height="48"><h3><a href="vat-iban-check.html">VAT Number &amp; IBAN Check API</a></h3></div><p>Check EU VAT numbers live in VIES (valid, registered name, address, name match) and validate IBANs (check digits, length, bank code). Pay per answer.</p><div class="row"><span class="price">$0.002 per check with a definite answer</span><a href="https://apify.com/bosco_labs/vat-iban-check">Apify Store</a> &middot; <a href="vat-iban-check.html#where">API</a></div></li>
 <li class="card"><div class="card-top"><img src="icons/company-accounts.svg" alt="" width="48" height="48"><h3><a href="company-accounts.html">Company Financials API</a></h3></div><p>Annual accounts of UK, Danish (by CVR) and Norwegian companies, private ones too: revenue, profit, equity, cash, employees and LEI from official filings.</p><div class="row"><span class="price">$0.04 per company-year</span><a href="https://apify.com/bosco_labs/company-accounts">Apify Store</a> &middot; <a href="company-accounts.html#where">API</a></div></li>
-<li class="card"><div class="card-top"><img src="icons/uk-new-companies.svg" alt="" width="48" height="48"><h3><a href="uk-new-companies.html">UK New Companies API</a></h3></div><p>Every new UK company incorporated yesterday or on any date, from the Companies House API: name, number, SIC codes, registered address. No director data.</p><div class="row"><span class="price">$0.002 per company returned (HTTP API)</span><span class="badge live">On the HTTP API</span></div></li>
-<li class="card"><div class="card-top"><img src="icons/company-hiring-signals.svg" alt="" width="48" height="48"><h3><a href="company-hiring-signals.html">Company Hiring Signals API</a></h3></div><p>Is a company hiring? Open roles by department, location and remote share, plus job rows with links, from public Greenhouse, Lever and Ashby job boards.</p><div class="row"><span class="price">$0.001 per unit: a company summary = 5 units ($0.005), a job row = 1 ($0.001); companies without a public job board are free (HTTP API)</span><span class="badge live">On the HTTP API</span></div></li>
+<li class="card"><div class="card-top"><img src="icons/uk-new-companies.svg" alt="" width="48" height="48"><h3><a href="uk-new-companies.html">UK New Companies API</a></h3></div><p>Every new UK company incorporated yesterday or on any date, from the Companies House API: name, number, SIC codes, registered address. No director data.</p><div class="row"><span class="price">$0.002 per company</span><a href="https://apify.com/bosco_labs/uk-new-companies">Apify Store</a> &middot; <a href="uk-new-companies.html#where">API</a></div></li>
+<li class="card"><div class="card-top"><img src="icons/company-hiring-signals.svg" alt="" width="48" height="48"><h3><a href="company-hiring-signals.html">Company Hiring Signals API</a></h3></div><p>Is a company hiring? Open roles by department, location and remote share, plus job rows with links, from public Greenhouse, Lever and Ashby job boards.</p><div class="row"><span class="price">$0.005 per company found plus $0.001 per job row</span><a href="https://apify.com/bosco_labs/company-hiring-signals">Apify Store</a> &middot; <a href="company-hiring-signals.html#where">API</a></div></li>
 </ul>
 </section>
 <section id="compliance-law">
@@ -319,9 +325,10 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <h2>Macro, health &amp; places</h2>
 <ul class="grid">
 <li class="card"><div class="card-top"><img src="icons/eu-rates-inflation.svg" alt="" width="48" height="48"><h3><a href="eu-rates-inflation.html">ECB Rates &amp; Euro Inflation API</a></h3></div><p>Latest value, change and history of ECB policy rates, euro FX reference rates, €STR, bond yields and Eurostat HICP inflation, by plain name.</p><div class="row"><span class="price">$0.002 per series returned</span><a href="https://apify.com/bosco_labs/eu-rates-inflation">Apify Store</a> &middot; <a href="eu-rates-inflation.html#where">API</a></div></li>
-<li class="card"><div class="card-top"><img src="icons/clinical-trials.svg" alt="" width="48" height="48"><h3><a href="clinical-trials.html">ClinicalTrials.gov API</a></h3></div><p>Clinical trials as compact JSON: status, phase, sponsor, conditions, interventions, enrollment, dates, countries, results. Search or look up NCT numbers.</p><div class="row"><span class="price">$0.004 per trial (HTTP API)</span><span class="badge live">On the HTTP API</span></div></li>
+<li class="card"><div class="card-top"><img src="icons/clinical-trials.svg" alt="" width="48" height="48"><h3><a href="clinical-trials.html">ClinicalTrials.gov API</a></h3></div><p>Clinical trials as compact JSON: status, phase, sponsor, conditions, interventions, enrollment, dates, countries, results. Search or look up NCT numbers.</p><div class="row"><span class="price">$0.004 per trial</span><a href="https://apify.com/bosco_labs/clinical-trials">Apify Store</a> &middot; <a href="clinical-trials.html#where">API</a></div></li>
 <li class="card"><div class="card-top"><img src="icons/drug-safety.svg" alt="" width="48" height="48"><h3><a href="drug-safety.html">Drug Safety API</a></h3></div><p>Boxed warning, top FAERS adverse reactions, US recalls and shortages plus EU authorisation for any drug name. Sourced JSON for AI agents. $0.02.</p><div class="row"><span class="price">$0.02 per dossier or $0.004 per single-section query</span><a href="https://apify.com/bosco_labs/drug-safety">Apify Store</a> &middot; <a href="drug-safety.html#where">API</a></div></li>
-<li class="card"><div class="card-top"><img src="icons/dutch-address-lookup.svg" alt="" width="48" height="48"><h3><a href="dutch-address-lookup.html">Dutch Address Lookup API</a></h3></div><p>Validate and geocode Dutch addresses against the official BAG register: postcode, BAG ids, WGS84 and RD coordinates, construction year, use and floor area.</p><div class="row"><span class="price">$0.002 per address resolved (unresolved inputs are free) (HTTP API)</span><span class="badge live">On the HTTP API</span></div></li>
+<li class="card"><div class="card-top"><img src="icons/dutch-address-lookup.svg" alt="" width="48" height="48"><h3><a href="dutch-address-lookup.html">Dutch Address Lookup API</a></h3></div><p>Validate and geocode Dutch addresses against the official BAG register: postcode, BAG ids, WGS84 and RD coordinates, construction year, use and floor area.</p><div class="row"><span class="price">$0.002 per resolved address</span><a href="https://apify.com/bosco_labs/dutch-address-lookup">Apify Store</a> &middot; <a href="dutch-address-lookup.html#where">API</a></div></li>
+<li class="card"><div class="card-top"><img src="icons/weather-forecast.svg" alt="" width="48" height="48"><h3><a href="weather-forecast.html">Weather Forecast API</a></h3></div><p>Hourly and 10-day weather forecasts for any city or coordinates: temperature, rain, wind, gusts, clouds, humidity, from MET Norway, sourced.</p><div class="row"><span class="price">$0.0015 per location forecast</span><a href="https://apify.com/bosco_labs/weather-forecast">On Apify Store</a></div></li>
 </ul>
 </section>
 <section id="software-security">
@@ -332,7 +339,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 </section>
 <section id="where" class="prose">
 <h2>Where to get the data</h2>
-<p>Every tool is on the Bosco Labs API (key with prepaid credits, remote MCP, or x402 without an account); 25 are also on the Apify Store, billed to your Apify account. Same input and same rows everywhere.</p>
+<p>Every tool is on the Bosco Labs API (key with prepaid credits, remote MCP, or x402 without an account); 30 are also on the Apify Store, billed to your Apify account. Same input and same rows everywhere.</p>
 <div class="table"><table><thead><tr><th>Tool</th><th>Apify</th><th>Bosco Labs API</th></tr></thead><tbody>
 <tr><td><a href="sec-insider-trades.html#where">SEC Insider Trading API (Form 4)</a></td><td><a href="https://apify.com/bosco_labs/sec-insider-trades">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
 <tr><td><a href="sec-filings-feed.html#where">SEC EDGAR Filings API</a></td><td><a href="https://apify.com/bosco_labs/sec-filings-feed">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
@@ -346,8 +353,8 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <tr><td><a href="company-check.html#where">Company Check API</a></td><td><a href="https://apify.com/bosco_labs/company-check">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
 <tr><td><a href="vat-iban-check.html#where">VAT Number &amp; IBAN Check API</a></td><td><a href="https://apify.com/bosco_labs/vat-iban-check">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
 <tr><td><a href="company-accounts.html#where">Company Financials API</a></td><td><a href="https://apify.com/bosco_labs/company-accounts">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
-<tr><td><a href="uk-new-companies.html#where">UK New Companies API</a></td><td></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
-<tr><td><a href="company-hiring-signals.html#where">Company Hiring Signals API</a></td><td></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
+<tr><td><a href="uk-new-companies.html#where">UK New Companies API</a></td><td><a href="https://apify.com/bosco_labs/uk-new-companies">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
+<tr><td><a href="company-hiring-signals.html#where">Company Hiring Signals API</a></td><td><a href="https://apify.com/bosco_labs/company-hiring-signals">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
 <tr><td><a href="sanctions-screening.html#where">Sanctions List Screening API</a></td><td><a href="https://apify.com/bosco_labs/sanctions-screening">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
 <tr><td><a href="eu-law-lookup.html#where">EU Law Lookup API (EUR-Lex)</a></td><td><a href="https://apify.com/bosco_labs/eu-law-lookup">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
 <tr><td><a href="national-law-lookup.html#where">UK &amp; Dutch Law Lookup API</a></td><td><a href="https://apify.com/bosco_labs/national-law-lookup">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
@@ -359,9 +366,10 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <tr><td><a href="dod-contract-awards.html#where">Pentagon / DoD Contract Awards API</a></td><td><a href="https://apify.com/bosco_labs/dod-contract-awards">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
 <tr><td><a href="us-federal-awards.html#where">US Federal Awards API</a></td><td><a href="https://apify.com/bosco_labs/us-federal-awards">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
 <tr><td><a href="eu-rates-inflation.html#where">ECB Rates &amp; Euro Inflation API</a></td><td><a href="https://apify.com/bosco_labs/eu-rates-inflation">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
-<tr><td><a href="clinical-trials.html#where">ClinicalTrials.gov API</a></td><td></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
+<tr><td><a href="clinical-trials.html#where">ClinicalTrials.gov API</a></td><td><a href="https://apify.com/bosco_labs/clinical-trials">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
 <tr><td><a href="drug-safety.html#where">Drug Safety API</a></td><td><a href="https://apify.com/bosco_labs/drug-safety">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
-<tr><td><a href="dutch-address-lookup.html#where">Dutch Address Lookup API</a></td><td></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
+<tr><td><a href="dutch-address-lookup.html#where">Dutch Address Lookup API</a></td><td><a href="https://apify.com/bosco_labs/dutch-address-lookup">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
+<tr><td><a href="weather-forecast.html#where">Weather Forecast API</a></td><td><a href="https://apify.com/bosco_labs/weather-forecast">Apify Store</a></td><td></td></tr>
 <tr><td><a href="package-vulns.html#where">Package Vulnerability Check API</a></td><td><a href="https://apify.com/bosco_labs/package-vulns">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
 </tbody></table></div>
 </section>

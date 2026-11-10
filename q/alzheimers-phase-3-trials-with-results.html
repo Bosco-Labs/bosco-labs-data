@@ -94,7 +94,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <article class="prose">
 <h1 class="sub">Which phase 3 Alzheimer&#x27;s trials posted results with a primary completion since 2024?</h1>
 <p class="lead">Phase 3 Alzheimer&#x27;s trials on ClinicalTrials.gov that posted results and reached primary completion since 2024, with sponsor, dates and outcomes.</p>
-<div class="facts"><div class="fact"><b>Answered by</b><a href="clinical-trials.html">ClinicalTrials.gov API: trial search &amp; NCT dossier</a></div><div class="fact"><b>Price</b>$0.004 per trial (HTTP API)</div><div class="fact"><b>Status</b><span class="badge live">On the HTTP API</span></div></div>
+<div class="facts"><div class="fact"><b>Answered by</b><a href="clinical-trials.html">ClinicalTrials.gov API: trial search &amp; NCT dossier</a></div><div class="fact"><b>Price</b>$0.004 per trial</div><div class="fact"><b>Status</b><span class="badge live">On Apify Store</span></div></div>
 <p>ClinicalTrials.gov lists phase 3 Alzheimer&#x27;s trials that have posted results and reached primary completion since 2024. Each row has the NCT number, title, status, sponsor, enrollment, start and primary completion dates, countries and primary outcomes, with a link to the trial record.</p>
 <h2>Tool input</h2>
 <pre><code>{
@@ -107,12 +107,12 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
   &quot;maxResults&quot;: 20
 }</code></pre>
 <h2>Ask it from an AI agent (MCP)</h2>
-<p>Add the Apify MCP server with this tool to your MCP client (Claude, Cursor, VS Code, ...); it signs you in with OAuth or <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is listed on the Apify Store; until then use the HTTP API or the remote MCP server at https://api.boscolabs.dev/mcp.</p>
+<p>Add the Apify MCP server with this tool to your MCP client (Claude, Cursor, VS Code, ...); it signs you in with OAuth or <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>.</p>
 <pre><code>https://mcp.apify.com?tools=bosco_labs/clinical-trials</code></pre>
 <p>Then ask:</p>
 <pre><code>Use the bosco_labs/clinical-trials tool to answer: Which phase 3 Alzheimer&#x27;s trials posted results with a primary completion since 2024?</code></pre>
 <h2>Call the Apify API</h2>
-<p>Runs the Actor and returns the rows in one request, billed to your Apify account ($0.004 per trial (HTTP API)). It works once the Actor is listed on the Apify Store; until then use the HTTP API or the remote MCP server at https://api.boscolabs.dev/mcp.</p>
+<p>Runs the Actor and returns the rows in one request, billed to your Apify account ($0.004 per trial).</p>
 <pre><code>curl https://api.apify.com/v2/acts/bosco_labs~clinical-trials/run-sync-get-dataset-items \
   -H &quot;Authorization: Bearer $APIFY_TOKEN&quot; \
   -H &quot;Content-Type: application/json&quot; \
@@ -190,7 +190,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
     &quot;...&quot;: &quot;4 more fields&quot;
   }
 ]</code></pre>
-<div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a><a class="btn ghost" href="clinical-trials.html">All fields and limits</a></div>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/clinical-trials">Run it on Apify Store &rarr;</a> <a class="btn ghost" href="api.html#key">Try the API: $5.00 free credit</a><a class="btn ghost" href="clinical-trials.html">All fields and limits</a></div>
 <h2>More questions for this tool</h2><ul class="qs"><li><a href="q/nct05813925-status-completion-date.html">What is the status and primary completion date of NCT05813925?</a></li><li><a href="q/recruiting-phase-3-obesity-trials-europe.html">Which phase 3 obesity trials of semaglutide or tirzepatide are recruiting in Europe?</a></li><li><a href="q/novo-nordisk-obesity-trials-recruiting.html">Which obesity trials is Novo Nordisk running right now?</a></li></ul>
 <p><a href="q/index.html">All questions</a></p>
 </article>

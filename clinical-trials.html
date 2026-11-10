@@ -33,15 +33,16 @@
    "offers": {
     "@type": "Offer",
     "priceCurrency": "USD",
-    "description": "$0.004 per trial (HTTP API)",
+    "description": "$0.004 per trial",
     "price": "0.004",
-    "availability": "https://schema.org/PreOrder"
+    "url": "https://apify.com/bosco_labs/clinical-trials"
    },
    "provider": {
     "@type": "Organization",
     "name": "Bosco Labs",
     "url": "https://boscolabs.dev/"
-   }
+   },
+   "installUrl": "https://apify.com/bosco_labs/clinical-trials"
   },
   {
    "@type": "BreadcrumbList",
@@ -117,15 +118,16 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <main class="wrap" id="main">
 <p class="crumbs"><a href="/#tools">Tools</a> &rsaquo; <a href="/#macro-health-places">Macro, health &amp; places</a></p>
 <article>
-<div class="head"><img src="icons/clinical-trials.svg" alt="" width="84" height="84"><div><h1>ClinicalTrials.gov API: trial search &amp; NCT dossier</h1><span class="badge live">On the HTTP API</span></div></div>
+<div class="head"><img src="icons/clinical-trials.svg" alt="" width="84" height="84"><div><h1>ClinicalTrials.gov API: trial search &amp; NCT dossier</h1><span class="badge live">On Apify Store</span></div></div>
 <div class="prose">
 <p class="lead"><strong>Answers &quot;which trials?&quot; and &quot;where does this trial stand?&quot; in one call</strong>: status, phase, sponsor, conditions, drugs, enrollment, start and primary completion dates, site countries, primary outcomes and whether results are posted, as one compact JSON row per trial with a link to its ClinicalTrials.gov record. Built for <strong>AI agents</strong> and people in pharma, biotech, health research and investing.</p>
-<div class="facts"><div class="fact"><b>Price</b>$0.004 per trial (HTTP API)</div><div class="fact"><b>Domain</b>Macro, health &amp; places</div><div class="fact"><b>Get it on</b><a href="#where">HTTP API, MCP, x402</a></div></div>
+<div class="facts"><div class="fact"><b>Price</b>$0.004 per trial</div><div class="fact"><b>Domain</b>Macro, health &amp; places</div><div class="fact"><b>Get it on</b><a href="#where">Apify Store, HTTP API, MCP, x402</a></div></div>
 <p><strong>Pricing (pay per event):</strong> $0.004 per trial returned. Invalid input, unknown NCT numbers and empty searches cost nothing.</p>
-<div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a></div>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/clinical-trials">Run it on Apify Store &rarr;</a> <a class="btn ghost" href="api.html#key">Try the API: $5.00 free credit</a></div>
 <h2 id="where">Where to get it</h2>
 <p>The same data and the same rows on every channel; pick the one your agent or code already uses.</p>
 <div class="table"><table><thead><tr><th>Channel</th><th>How</th><th>Pay</th></tr></thead><tbody>
+<tr><td>Apify Store</td><td><a href="https://apify.com/bosco_labs/clinical-trials">apify.com/bosco_labs/clinical-trials</a>: run it in the Apify Console, by the Apify API or from Apify's MCP server (<code>https://mcp.apify.com?tools=bosco_labs/clinical-trials</code>)</td><td>$0.004 per trial, billed to your Apify account</td></tr>
 <tr><td>HTTP API</td><td><code>POST https://api.boscolabs.dev/v1/clinical-trials</code> with your key (<a href="api.html#key">get a key</a>, $5.00 free trial)</td><td>$0.004 per trial, prepaid credits</td></tr>
 <tr><td>MCP</td><td><code>https://api.boscolabs.dev/mcp</code> (remote, same key) or <code>https://api.boscolabs.dev/mcp/free</code> (no key: find and plan) &middot; <a href="api.html#mcp">setup</a></td><td>$0.004 per trial, prepaid credits</td></tr>
 <tr><td>x402</td><td><code>POST https://api.boscolabs.dev/v1/clinical-trials</code> without a key: pay per call, no account (<a href="api.html#x402">how</a>)</td><td>$0.004 per trial, in USDC on Base</td></tr>
@@ -225,12 +227,12 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 </tbody></table></div>
 
 <h2>Use with AI agents (MCP)</h2>
-<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is listed on the Apify Store; until then use the HTTP API or the remote MCP server at https://api.boscolabs.dev/mcp.</p>
+<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>.</p>
 <pre><code>https://mcp.apify.com?tools=bosco_labs/clinical-trials</code></pre>
 <p>For &ldquo;What is the status and primary completion date of NCT05813925? Cite the ClinicalTrials.gov record.&rdquo; the agent passes:</p>
 <pre><code>{ &quot;nctIds&quot;: [&quot;NCT05813925&quot;] }</code></pre>
 <p>one row per trial (about 2-3 KB in summary mode), stable <code>snake_case</code> fields, ISO dates, numbers as numbers, <code>null</code> for unknown, a <code>source_url</code> per row. The run&#x27;s status message says how many trials matched in total (e.g. &quot;20 of 131 matching trials&quot;), which NCT numbers were not found, or why a search was empty. Typical run: under 5 seconds including start-up.</p>
-<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~clinical-trials/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.004 per trial (HTTP API).</p>
+<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~clinical-trials/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.004 per trial.</p>
 <h2 id="http-api">HTTP API</h2>
 <p>Also on the Bosco Labs HTTP API (beta): same input and same rows as the Actor, <strong>$0.004 per trial</strong> from prepaid credits (max 100 trials (maxResults) or 100 NCT numbers per call). <a href="api.html#key">Get a key</a> with a $5.00 free trial; see <a href="api.html">prices and limits</a>.</p>
 <pre><code>curl https://api.boscolabs.dev/v1/clinical-trials \
@@ -264,7 +266,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <p><strong>Coverage?</strong> Everything on ClinicalTrials.gov (over 500,000 studies worldwide, US and non-US). Trials registered only elsewhere (EU CTIS, ISRCTN, jRCT, ...) are not included.</p>
 <p><strong>Not medical advice.</strong> This is registry data for research; patients should talk to their doctor and the study team listed on ClinicalTrials.gov.</p>
 <p>Data from ClinicalTrials.gov, a database of the U.S. National Library of Medicine (U.S. Government); not endorsed by NLM or NIH. Following the <a href="https://clinicaltrials.gov/about-site/terms-conditions">ClinicalTrials.gov Terms and Conditions</a>, every row credits ClinicalTrials.gov, shows the date ClinicalTrials.gov processed the data (<code>data_processed_at</code>) and the retrieval date, and states the modifications: only the fields above are kept, personal contact details are removed, and long texts and lists are shortened (cut texts end with <code>[truncated]</code>; the caps are listed above). No proprietary rights are claimed. Don&#x27;t use any contact information from ClinicalTrials.gov for marketing. Some data may be subject to third-party copyright; keep data you store current.</p>
-<div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a></div>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/clinical-trials">Run it on Apify Store &rarr;</a> <a class="btn ghost" href="api.html#key">Try the API: $5.00 free credit</a></div>
 </div>
 </article>
 </main>

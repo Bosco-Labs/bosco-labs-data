@@ -33,15 +33,16 @@
    "offers": {
     "@type": "Offer",
     "priceCurrency": "USD",
-    "description": "$0.002 per address resolved (unresolved inputs are free) (HTTP API)",
+    "description": "$0.002 per resolved address",
     "price": "0.002",
-    "availability": "https://schema.org/PreOrder"
+    "url": "https://apify.com/bosco_labs/dutch-address-lookup"
    },
    "provider": {
     "@type": "Organization",
     "name": "Bosco Labs",
     "url": "https://boscolabs.dev/"
-   }
+   },
+   "installUrl": "https://apify.com/bosco_labs/dutch-address-lookup"
   },
   {
    "@type": "BreadcrumbList",
@@ -117,15 +118,16 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <main class="wrap" id="main">
 <p class="crumbs"><a href="/#tools">Tools</a> &rsaquo; <a href="/#macro-health-places">Macro, health &amp; places</a></p>
 <article>
-<div class="head"><img src="icons/dutch-address-lookup.svg" alt="" width="84" height="84"><div><h1>Dutch Address Lookup API: BAG postcode, geocode &amp; building data</h1><span class="badge live">On the HTTP API</span></div></div>
+<div class="head"><img src="icons/dutch-address-lookup.svg" alt="" width="84" height="84"><div><h1>Dutch Address Lookup API: BAG postcode, geocode &amp; building data</h1><span class="badge live">On Apify Store</span></div></div>
 <div class="prose">
 <p class="lead"><strong>Checks and geocodes Dutch addresses against the BAG</strong>, the official Dutch register of addresses and buildings (Kadaster, served by PDOK). Each address comes back normalised with its postcode, BAG ids, WGS84 and RD coordinates, and building details: construction year, use, floor area, status and number of units. Built for <strong>AI agents</strong> doing real estate, logistics, KYC/KYB, insurance or local-business tasks, and for people cleaning address lists.</p>
-<div class="facts"><div class="fact"><b>Price</b>$0.002 per address resolved (unresolved inputs are free) (HTTP API)</div><div class="fact"><b>Domain</b>Macro, health &amp; places</div><div class="fact"><b>Get it on</b><a href="#where">HTTP API, MCP, x402</a></div></div>
+<div class="facts"><div class="fact"><b>Price</b>$0.002 per resolved address</div><div class="fact"><b>Domain</b>Macro, health &amp; places</div><div class="fact"><b>Get it on</b><a href="#where">Apify Store, HTTP API, MCP, x402</a></div></div>
 <p><strong>Pricing (pay per event):</strong> $0.002 per resolved address. Inputs that don&#x27;t resolve to one address (ambiguous, not found, invalid) are returned too, free of charge.</p>
-<div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a></div>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/dutch-address-lookup">Run it on Apify Store &rarr;</a> <a class="btn ghost" href="api.html#key">Try the API: $5.00 free credit</a></div>
 <h2 id="where">Where to get it</h2>
 <p>The same data and the same rows on every channel; pick the one your agent or code already uses.</p>
 <div class="table"><table><thead><tr><th>Channel</th><th>How</th><th>Pay</th></tr></thead><tbody>
+<tr><td>Apify Store</td><td><a href="https://apify.com/bosco_labs/dutch-address-lookup">apify.com/bosco_labs/dutch-address-lookup</a>: run it in the Apify Console, by the Apify API or from Apify's MCP server (<code>https://mcp.apify.com?tools=bosco_labs/dutch-address-lookup</code>)</td><td>$0.002 per resolved address, billed to your Apify account</td></tr>
 <tr><td>HTTP API</td><td><code>POST https://api.boscolabs.dev/v1/dutch-address-lookup</code> with your key (<a href="api.html#key">get a key</a>, $5.00 free trial)</td><td>$0.002 per address resolved (unresolved inputs are free), prepaid credits</td></tr>
 <tr><td>MCP</td><td><code>https://api.boscolabs.dev/mcp</code> (remote, same key) or <code>https://api.boscolabs.dev/mcp/free</code> (no key: find and plan) &middot; <a href="api.html#mcp">setup</a></td><td>$0.002 per address resolved (unresolved inputs are free), prepaid credits</td></tr>
 <tr><td>x402</td><td><code>POST https://api.boscolabs.dev/v1/dutch-address-lookup</code> without a key: pay per call, no account (<a href="api.html#x402">how</a>)</td><td>$0.002 per address resolved (unresolved inputs are free), in USDC on Base</td></tr>
@@ -208,12 +210,12 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 </tbody></table></div>
 
 <h2>Use with AI agents (MCP)</h2>
-<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is listed on the Apify Store; until then use the HTTP API or the remote MCP server at https://api.boscolabs.dev/mcp.</p>
+<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>.</p>
 <pre><code>https://mcp.apify.com?tools=bosco_labs/dutch-address-lookup</code></pre>
 <p>For &ldquo;Is &#x27;Damrak 1 Amsterdam&#x27; a valid address? Give me its postcode, building year, use and floor area, with the source.&rdquo; the agent passes:</p>
 <pre><code>{ &quot;addresses&quot;: [&quot;Damrak 1 Amsterdam&quot;] }</code></pre>
 
-<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~dutch-address-lookup/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.002 per address resolved (unresolved inputs are free) (HTTP API).</p>
+<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~dutch-address-lookup/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.002 per resolved address.</p>
 <h2 id="http-api">HTTP API</h2>
 <p>Also on the Bosco Labs HTTP API (beta): same input and same rows as the Actor, <strong>$0.002 per address resolved (unresolved inputs are free)</strong> from prepaid credits (max 50 addresses/BAG ids or 1 postcode (100 addresses) per call). <a href="api.html#key">Get a key</a> with a $5.00 free trial; see <a href="api.html">prices and limits</a>.</p>
 <pre><code>curl https://api.boscolabs.dev/v1/dutch-address-lookup \
@@ -242,7 +244,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <p><strong>Limits?</strong></p>
 <ul><li>100 addresses + BAG ids per run, and up to 100 addresses per postcode query. A larger postcode result says so in <code>warnings</code>; narrow the house number range.</li><li>PDOK is a free best-effort service. If it does not answer, rows are marked <code>source_error</code> and not charged.</li></ul>
 <p><strong>Licence and attribution.</strong> BAG data: Kadaster, Public Domain Mark 1.0, served by PDOK. No endorsement by Kadaster or PDOK is implied. See <code>LEGAL.md</code>.</p>
-<div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a></div>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/dutch-address-lookup">Run it on Apify Store &rarr;</a> <a class="btn ghost" href="api.html#key">Try the API: $5.00 free credit</a></div>
 </div>
 </article>
 </main>

@@ -94,7 +94,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <article class="prose">
 <h1 class="sub">Is Notion hiring engineers? How many roles, where, and since when? Link the postings.</h1>
 <p class="lead">Notion&#x27;s open engineering roles from its public job board: how many, in which departments and locations, when they were posted, with a link to each.</p>
-<div class="facts"><div class="fact"><b>Answered by</b><a href="company-hiring-signals.html">Company Hiring Signals API: open roles, departments, locations</a></div><div class="fact"><b>Price</b>$0.001 per unit: a company summary = 5 units ($0.005), a job row = 1 ($0.001); companies without a public job board are free (HTTP API)</div><div class="fact"><b>Status</b><span class="badge live">On the HTTP API</span></div></div>
+<div class="facts"><div class="fact"><b>Answered by</b><a href="company-hiring-signals.html">Company Hiring Signals API: open roles, departments, locations</a></div><div class="fact"><b>Price</b>$0.005 per company found plus $0.001 per job row</div><div class="fact"><b>Status</b><span class="badge live">On Apify Store</span></div></div>
 <p>The Actor finds the company&#x27;s public job board (Greenhouse, Lever, Ashby and similar) from its domain or name. It returns a company summary row (row_type company_summary) with total_open_roles, matching_roles, counts by_department, by_location and by_country, remote_share and posted_last_30_days, then up to maxJobsPerCompany job rows with title, location, posted_at and a link to each posting.</p>
 <h2>Tool input</h2>
 <pre><code>{
@@ -107,12 +107,12 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
   &quot;maxJobsPerCompany&quot;: 10
 }</code></pre>
 <h2>Ask it from an AI agent (MCP)</h2>
-<p>Add the Apify MCP server with this tool to your MCP client (Claude, Cursor, VS Code, ...); it signs you in with OAuth or <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>. It works once the Actor is listed on the Apify Store; until then use the HTTP API or the remote MCP server at https://api.boscolabs.dev/mcp.</p>
+<p>Add the Apify MCP server with this tool to your MCP client (Claude, Cursor, VS Code, ...); it signs you in with OAuth or <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>.</p>
 <pre><code>https://mcp.apify.com?tools=bosco_labs/company-hiring-signals</code></pre>
 <p>Then ask:</p>
 <pre><code>Use the bosco_labs/company-hiring-signals tool to answer: Is Notion hiring engineers? How many roles, where, and since when? Link the postings.</code></pre>
 <h2>Call the Apify API</h2>
-<p>Runs the Actor and returns the rows in one request, billed to your Apify account ($0.001 per unit: a company summary = 5 units ($0.005), a job row = 1 ($0.001); companies without a public job board are free (HTTP API)). It works once the Actor is listed on the Apify Store; until then use the HTTP API or the remote MCP server at https://api.boscolabs.dev/mcp.</p>
+<p>Runs the Actor and returns the rows in one request, billed to your Apify account ($0.005 per company found plus $0.001 per job row).</p>
 <pre><code>curl https://api.apify.com/v2/acts/bosco_labs~company-hiring-signals/run-sync-get-dataset-items \
   -H &quot;Authorization: Bearer $APIFY_TOKEN&quot; \
   -H &quot;Content-Type: application/json&quot; \
@@ -215,7 +215,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
     &quot;retrieved_at&quot;: &quot;2026-11-09T07:30:09Z&quot;
   }
 ]</code></pre>
-<div class="actions"><a class="btn" href="#http-api">Call it on the HTTP API &rarr;</a><a class="btn ghost" href="company-hiring-signals.html">All fields and limits</a></div>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/company-hiring-signals">Run it on Apify Store &rarr;</a> <a class="btn ghost" href="api.html#key">Try the API: $5.00 free credit</a><a class="btn ghost" href="company-hiring-signals.html">All fields and limits</a></div>
 <h2>More questions for this tool</h2><ul class="qs"><li><a href="q/stripe-hiring-summary.html">How many open roles does Stripe have, and in which departments and countries?</a></li><li><a href="q/is-openai-hiring-in-london.html">Is OpenAI hiring in London, and for which roles?</a></li><li><a href="q/cloudflare-sales-roles-last-30-days.html">Which sales roles has Cloudflare posted in the last 30 days?</a></li></ul>
 <p><a href="q/index.html">All questions</a></p>
 </article>
