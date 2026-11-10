@@ -7,7 +7,6 @@
 <title>Largest NASA contracts in the last 30 days</title>
 <meta name="description" content="The largest NASA contract actions of the last 30 days from USAspending.gov: recipient, parent company, amount, description and place of performance.">
 <link rel="canonical" href="https://boscolabs.dev/q/largest-nasa-contracts-last-30-days.html">
-<meta name="robots" content="noindex,follow">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="logo.svg" type="image/svg+xml">
 <link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
@@ -122,33 +121,53 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
   -d &#x27;{&quot;agencies&quot;: [&quot;NASA&quot;]}&#x27;</code></pre>
 
 <h2>Example output</h2>
-<p class="muted">Example output from the tool&#x27;s documentation (not a run of this exact question).</p>
-<pre><code>{
-  &quot;award_id&quot;: &quot;NNM16AA02C&quot;,
-  &quot;award_type_group&quot;: &quot;contracts&quot;,
-  &quot;award_type&quot;: &quot;DEFINITIVE CONTRACT&quot;,
-  &quot;recipient_name&quot;: &quot;AEROJET ROCKETDYNE OF DE, INC&quot;,
-  &quot;recipient_uei&quot;: &quot;JCZYYYQ7JGF5&quot;,
-  &quot;parent_name&quot;: &quot;L3HARRIS TECHNOLOGIES, INC&quot;,
-  &quot;ticker&quot;: &quot;LHX&quot;,
-  &quot;matched_on&quot;: &quot;parent&quot;,
-  &quot;awarding_agency&quot;: &quot;National Aeronautics and Space Administration&quot;,
-  &quot;action_date&quot;: &quot;2026-10-29&quot;,
-  &quot;action_amount_usd&quot;: 53422103.0,
-  &quot;modification_number&quot;: &quot;174&quot;,
-  &quot;total_obligated_usd&quot;: 3438289825.36,
-  &quot;total_value_usd&quot;: 4143466817.0,
-  &quot;award_date_signed&quot;: &quot;2015-11-19&quot;,
-  &quot;end_date&quot;: &quot;2029-09-30&quot;,
-  &quot;description&quot;: &quot;IGF::CT::IGF  RS-25 PRODUCTION RESTART TO BE UNDERTAKEN BY THE CONTRACTOR IN SUPPORT OF PROVIDING SIX RS-25 ENGINES ...&quot;,
-  &quot;naics_code&quot;: &quot;541712&quot;,
-  &quot;psc_code&quot;: &quot;1675&quot;,
-  &quot;psc_description&quot;: &quot;SPACE VEHICLE COMPONENTS&quot;,
-  &quot;performance_state&quot;: &quot;CA&quot;,
-  &quot;source_url&quot;: &quot;https://www.usaspending.gov/award/CONT_AWD_NNM16AA02C_8000_-NONE-_-NONE-&quot;,
-  &quot;schema_version&quot;: &quot;1&quot;
-}</code></pre>
-<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/us-federal-awards">Run it on Apify Store &rarr;</a><a class="btn ghost" href="us-federal-awards.html">All fields and limits</a></div>
+<p class="muted">Snapshot taken 2026-11-10, source links in each row. First 1 of 5 rows (snapshot runs stop at 5 rows); long values shortened.</p>
+<pre><code>[
+  {
+    &quot;schema_version&quot;: &quot;1&quot;,
+    &quot;award_id&quot;: &quot;80MSFC20C0052&quot;,
+    &quot;award_key&quot;: &quot;CONT_AWD_80MSFC20C0052_8000_-NONE-_-NONE-&quot;,
+    &quot;award_type_group&quot;: &quot;contracts&quot;,
+    &quot;award_type&quot;: &quot;DEFINITIVE CONTRACT&quot;,
+    &quot;award_type_code&quot;: &quot;D&quot;,
+    &quot;parent_award_id&quot;: null,
+    &quot;recipient_name&quot;: &quot;THE BOEING COMPANY&quot;,
+    &quot;recipient_uei&quot;: &quot;SML4NN2CT556&quot;,
+    &quot;parent_name&quot;: &quot;THE BOEING COMPANY&quot;,
+    &quot;parent_uei&quot;: &quot;NU2UC8MX6NK1&quot;,
+    &quot;recipient_city&quot;: &quot;HUNTSVILLE&quot;,
+    &quot;recipient_state&quot;: &quot;AL&quot;,
+    &quot;recipient_country&quot;: &quot;UNITED STATES&quot;,
+    &quot;ticker&quot;: &quot;BA&quot;,
+    &quot;matched_on&quot;: &quot;recipient&quot;,
+    &quot;awarding_agency&quot;: &quot;National Aeronautics and Space Administration&quot;,
+    &quot;awarding_sub_agency&quot;: &quot;National Aeronautics and Space Administration&quot;,
+    &quot;funding_agency&quot;: &quot;National Aeronautics and Space Administration&quot;,
+    &quot;action_date&quot;: &quot;2026-10-28&quot;,
+    &quot;action_amount_usd&quot;: 91000000,
+    &quot;modification_number&quot;: &quot;P00179&quot;,
+    &quot;total_obligated_usd&quot;: 2844683081,
+    &quot;total_value_usd&quot;: 3888612168,
+    &quot;award_date_signed&quot;: &quot;2019-10-16&quot;,
+    &quot;start_date&quot;: &quot;2019-10-16&quot;,
+    &quot;end_date&quot;: &quot;2029-02-28&quot;,
+    &quot;description&quot;: &quot;SPACE LAUNCH SYSTEM (SLS) STAGES PRODUCTION AND EVOLUTION CONTRACT (SPEC)&quot;,
+    &quot;naics_code&quot;: &quot;336414&quot;,
+    &quot;naics_description&quot;: &quot;GUIDED MISSILE AND SPACE VEHICLE MANUFACTURING&quot;,
+    &quot;psc_code&quot;: &quot;AR11&quot;,
+    &quot;psc_description&quot;: &quot;SPACE R&amp;D SERVICES; SPACE FLIGHT, RESEARCH AND SUPPORTING ACTIVITIES; BASIC RESEARCH&quot;,
+    &quot;cfda_number&quot;: null,
+    &quot;cfda_title&quot;: null,
+    &quot;performance_city&quot;: &quot;HUNTSVILLE&quot;,
+    &quot;performance_state&quot;: &quot;AL&quot;,
+    &quot;performance_country&quot;: &quot;UNITED STATES&quot;,
+    &quot;source_url&quot;: &quot;https://www.usaspending.gov/award/CONT_AWD_80MSFC20C0052_8000_-NONE-_-NONE-&quot;,
+    &quot;provided_by&quot;: &quot;Bosco Labs (boscolabs.dev)&quot;,
+    &quot;api_url&quot;: &quot;https://api.usaspending.gov/api/v2/awards/CONT_AWD_80MSFC20C0052_8000_-NONE-_-NONE-/&quot;,
+    &quot;retrieved_at&quot;: &quot;2026-11-10T15:17:04+00:00&quot;
+  }
+]</code></pre>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/us-federal-awards">Run it on Apify Store &rarr;</a> <a class="btn ghost" href="api.html#key">Try the API: $5.00 free credit</a><a class="btn ghost" href="us-federal-awards.html">All fields and limits</a></div>
 <h2>More questions for this tool</h2><ul class="qs"><li><a href="q/palantir-federal-contracts-last-30-days.html">Which federal contracts did Palantir win in the last 30 days?</a></li><li><a href="q/texas-university-ai-grants-2026.html">Which grants for AI went to universities in Texas in 2026?</a></li><li><a href="q/dhs-largest-contracts-2026.html">Which companies won the largest Department of Homeland Security contracts in 2026?</a></li><li><a href="q/anduril-federal-contracts-2026.html">Which federal contracts did Anduril win in 2026?</a></li></ul>
 <p><a href="q/index.html">All questions</a></p>
 </article>
