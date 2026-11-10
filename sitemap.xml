@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://boscolabs.dev/</loc><lastmod>2026-11-09</lastmod></url>
+  <url><loc>https://boscolabs.dev/</loc><lastmod>2026-11-10</lastmod></url>
   <url><loc>https://boscolabs.dev/api.html</loc><lastmod>2026-11-09</lastmod></url>
   <url><loc>https://boscolabs.dev/sec-insider-trades.html</loc><lastmod>2026-11-08</lastmod></url>
-  <url><loc>https://boscolabs.dev/sec-filings-feed.html</loc><lastmod>2026-11-08</lastmod></url>
+  <url><loc>https://boscolabs.dev/sec-filings-feed.html</loc><lastmod>2026-11-09</lastmod></url>
   <url><loc>https://boscolabs.dev/us-house-trades.html</loc><lastmod>2026-11-09</lastmod></url>
-  <url><loc>https://boscolabs.dev/sec-ownership.html</loc><lastmod>2026-11-09</lastmod></url>
+  <url><loc>https://boscolabs.dev/sec-ownership.html</loc><lastmod>2026-11-10</lastmod></url>
   <url><loc>https://boscolabs.dev/sec-company-financials.html</loc><lastmod>2026-11-09</lastmod></url>
-  <url><loc>https://boscolabs.dev/sec-company-screen.html</loc><lastmod>2026-11-07</lastmod></url>
+  <url><loc>https://boscolabs.dev/sec-company-screen.html</loc><lastmod>2026-11-09</lastmod></url>
   <url><loc>https://boscolabs.dev/esef-annual-reports.html</loc><lastmod>2026-11-06</lastmod></url>
   <url><loc>https://boscolabs.dev/identifier-resolver.html</loc><lastmod>2026-11-07</lastmod></url>
   <url><loc>https://boscolabs.dev/counterparty-check.html</loc><lastmod>2026-11-09</lastmod></url>
@@ -16,10 +16,10 @@
   <url><loc>https://boscolabs.dev/company-accounts.html</loc><lastmod>2026-11-09</lastmod></url>
   <url><loc>https://boscolabs.dev/uk-new-companies.html</loc><lastmod>2026-11-06</lastmod></url>
   <url><loc>https://boscolabs.dev/company-hiring-signals.html</loc><lastmod>2026-11-06</lastmod></url>
-  <url><loc>https://boscolabs.dev/sanctions-screening.html</loc><lastmod>2026-11-09</lastmod></url>
+  <url><loc>https://boscolabs.dev/sanctions-screening.html</loc><lastmod>2026-11-10</lastmod></url>
   <url><loc>https://boscolabs.dev/eu-law-lookup.html</loc><lastmod>2026-11-06</lastmod></url>
   <url><loc>https://boscolabs.dev/national-law-lookup.html</loc><lastmod>2026-11-06</lastmod></url>
-  <url><loc>https://boscolabs.dev/dutch-case-law.html</loc><lastmod>2026-11-06</lastmod></url>
+  <url><loc>https://boscolabs.dev/dutch-case-law.html</loc><lastmod>2026-11-09</lastmod></url>
   <url><loc>https://boscolabs.dev/us-federal-rules.html</loc><lastmod>2026-11-09</lastmod></url>
   <url><loc>https://boscolabs.dev/product-recalls.html</loc><lastmod>2026-11-06</lastmod></url>
   <url><loc>https://boscolabs.dev/tariff-lookup.html</loc><lastmod>2026-11-09</lastmod></url>

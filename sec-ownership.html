@@ -178,7 +178,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <tr><td><code>issuer_name</code></td><td>string | null</td><td>Company whose securities are held, owned or to be sold, as written in the filing (13F names are often abbreviated).</td></tr>
 <tr><td><code>issuer_cik</code></td><td>string | null</td><td>stake/form144: SEC CIK (10 digits) of the issuer.</td></tr>
 <tr><td><code>title_of_class</code></td><td>string | null</td><td>13F rows: class of the security as filed, e.g. COM, CL A, CAP STK CL C.</td></tr>
-<tr><td><code>cusip</code></td><td>string</td><td>13F rows: 9-character CUSIP of the security.</td></tr>
+<tr><td><code>cusip</code></td><td>string | null</td><td>13F rows: 9-character CUSIP of the security.</td></tr>
 <tr><td><code>cusips</code></td><td>array</td><td>stake: the issuer CUSIP(s) on the cover page.</td></tr>
 <tr><td><code>ticker</code></td><td>string | null</td><td>Ticker of this security from the SEC&#x27;s ticker list: the issuer by CIK or name, the share class by CUSIP or the class in title_of_class (GOOG for Alphabet class C). Null when unknown, or when the issuer has several share classes and the class can&#x27;t be told (see ticker_candidates).</td></tr>
 <tr><td><code>ticker_candidates</code></td><td>array</td><td>When ticker is null because the issuer has several listed share classes: the issuer&#x27;s tickers, main first (e.g. [&quot;BRK-B&quot;, &quot;BRK-A&quot;]). Empty otherwise. Ticker filters match these too.</td></tr>
