@@ -53,7 +53,7 @@ Contact: support@boscolabs.dev
 
 - [ECB Rates & Euro Inflation API: policy rates, FX, €STR, HICP](https://boscolabs.dev/eu-rates-inflation.html): Latest value, previous value, change and recent history of ECB policy rates, euro reference FX rates, €STR, euro-area and national bond yields, and Eurostat HICP inflation. Ask by plain name (ecb_deposit_rate, eur_fx:USD, hicp:NL), no SDMX keys. Official data, a source link per series. Price: Apify Store $0.002 per series returned; HTTP API $0.002 per series returned (catalogue free). ([Apify Store](https://apify.com/bosco_labs/eu-rates-inflation))
 - [ClinicalTrials.gov API: trial search & NCT dossier](https://boscolabs.dev/clinical-trials.html): Clinical trials as compact JSON rows: status, phase, sponsor, conditions, interventions, enrollment, start and primary completion dates, countries, outcomes and results. Look up NCT numbers or search by condition, drug, sponsor, phase, status, country and dates. Sourced, no contact data. Price: $0.004 per trial (HTTP API). (HTTP API and MCP)
-- [Drug Safety API: FDA adverse events, label, recalls, EMA status](https://boscolabs.dev/drug-safety.html): Drug safety dossier for one drug name as one sourced JSON row: FDA adverse events (top FAERS reaction counts), boxed warning and indications, US recalls and shortages (openFDA), EU authorisation, EPAR link and EU shortages (EMA). Or one cheaper sub-query. Not medical advice. Price: Apify Store $0.02 per dossier or $0.004 per single-section query; HTTP API $0.004 per sub-query; a full dossier = 5 units ($0.02); partial answers are free. ([Apify Store](https://apify.com/bosco_labs/drug-safety))
+- [Drug Safety API: FDA adverse events, label, recalls, EMA status](https://boscolabs.dev/drug-safety.html): Drug safety dossier for one drug name as one sourced JSON row: FDA adverse events (top FAERS reaction counts), boxed warning, indications, US recalls and shortages (openFDA), EU authorisation, EPAR and EU shortages (EMA). Dossier (default) $0.02 = 5 queries; one section $0.004. Not medical advice. Price: Apify Store $0.02 per dossier or $0.004 per single-section query; HTTP API $0.004 per sub-query; a full dossier = 5 units ($0.02); partial answers are free. ([Apify Store](https://apify.com/bosco_labs/drug-safety))
 - [Dutch Address Lookup API: BAG postcode, geocode & building data](https://boscolabs.dev/dutch-address-lookup.html): Validates and geocodes Dutch addresses against the official BAG register (via PDOK): postcode, BAG ids, WGS84 + RD coordinates, construction year, use, floor area and building status. Free text, postcode + house number (or range) or BAG ids; up to 100 per run. Unmatched inputs are free. Price: $0.002 per address resolved (unresolved inputs are free) (HTTP API). (HTTP API and MCP)
 
 ## Software security
@@ -704,6 +704,7 @@ Example questions:
 - `net_margin` (number | null): Derived: net_income / revenue (0.25 = 25%). Only present when asked (sortBy, filters, metrics) or needed for a derived field.
 - `return_on_equity` (number | null): Derived: net_income / total_equity (0.25 = 25%). Calendar-year periods only. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
 - `equity_ratio` (number | null): Derived: total_equity / total_assets (0.25 = 25%). Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `source_url` (string): EDGAR index page of the filing most of the row's values come from.
 - `sources` (object): Only with includeSources: per metric {tag: XBRL concept used, accession: SEC filing the value comes from (the latest filing that reported it, or for re-checked values the first 10-K/10-Q that did), url: its EDGAR index page}, or {derived: formula} for derived values.
 - `warnings` (array): Notes on this row: a value from a proxy statement replaced by the 10-K/10-Q figure, a value that could not be checked, or a metric left out because it was reported for a different period than the row's.
 - `retrieved_at` (string): UTC time the row was produced.
@@ -920,6 +921,7 @@ Example questions:
 - `iban` (object | null): IBAN structure and country result.
 - `wallets` (array): Wallet address screening rows.
 - `candidates` (array): Only when status is ambiguous: companies that fit the name.
+- `sanctions_hits` (array): Only when no single company was resolved (ambiguous or failed rows): sanctions listings matching the name asked for or a candidate's name (screened_name, listed_name, list_name, entry_id, score 0-100, source_url), screened free. Empty when none matched.
 - `warnings` (array): Sources that failed or were partly read.
 - `source_url` (string | null): The main identity source.
 - `retrieved_at` (string): When the check ran (UTC).
@@ -1687,10 +1689,10 @@ Example questions:
 - `rate_line` (string | null): The line that carries general_rate (US 10-digit statistical lines inherit the rate of their 8-digit line).
 - `column_2_rate` (string | null): US column 2 rate (goods of Cuba, North Korea, Belarus, Russia). null for UK.
 - `special_rates_text` (string | null): US column 1 Special text as published, e.g. "Free (A+,AU,...) 5.5% (JP)". null for UK.
-- `preferential_rates` (array): Preferential rates. US: [{rate, applies_to: [program codes]}] parsed from special_rates_text. UK: [{rate, applies_to: [area], measure_type, quota_order_number}] for tariff preferences, preferential quotas, suspensions and other non-general duty measures. Filtered when originCountry is given; UK without originCountry lists at most 10 (see preferential_rates_total).
+- `preferential_rates` (array): Preferential rates. US: [{rate, applies_to: [program codes]}] parsed from special_rates_text. UK: [{rate, applies_to: [area], measure_type, quota_order_number}] for tariff preferences and preferential quotas/suspensions (erga omnes and end-use suspensions are in temporary_reductions). Filtered when originCountry is given; UK without originCountry lists at most 10 (see preferential_rates_total).
 - `preferential_rates_total` (integer): How many preferential rates apply before the 10-row cap (UK without originCountry); equals the list length otherwise.
 - `additional_duties` (array): [{reference, type, rate, applies_to, additional_code, description}]. US: Chapter 99 references from footnotes and Chapter 99 lines whose text names this code (9903 additional duties; 9902 reductions are in temporary_reductions). UK: anti-dumping, countervailing, additional duties and excise measures, with additional codes (e.g. company-specific anti-dumping). rate null = depends on conditions; see source_url.
-- `temporary_reductions` (array): US only: HTS 9902 temporary duty reductions whose text names this code, [{reference, rate, description}]. Each applies only to the narrower goods it describes, within its effective dates; check eligibility before using its rate. Empty for UK.
+- `temporary_reductions` (array): [{reference, rate, description}]. US: HTS 9902 temporary duty reductions whose text names this code. UK: erga omnes and end-use suspensions and non-preferential quotas (reference = quota order number), the condition in description. Each applies only to the narrower goods or use it describes; check eligibility before using its rate.
 - `vat` (array): UK VAT measures [{rate, additional_code, description}] (e.g. 20.00%, or 0.00% with additional code VATZ). Empty for US.
 - `units` (array): Units of quantity: US units (e.g. "No.", "kg"); UK supplementary unit (e.g. "items (p/st)").
 - `origin_country` (string | null): The originCountry used for filtering (ISO alpha-2), or null.
@@ -1986,7 +1988,7 @@ Example questions:
 
 ### Input fields
 
-- `series` (array): Which series to fetch, by plain name (case-insensitive), up to 20 per run, e.g. ["ecb_deposit_rate", "eur_fx:USD", "hicp:EA"]. Names: ecb_deposit_rate, ecb_main_refi_rate, ecb_marginal_lending_rate (one observation per rate change), estr (€STR), eur_fx:<CUR> (ECB reference rate, CUR per 1 EUR, e.g. eur_fx:GBP), euro_area_yield_curve:<maturity> (AAA spot yield, e.g. 10Y, 3M, 1Y6M; add :all for all government bonds), gov_bond_10y:<country> (monthly 10-year yield, e.g. gov_bond_10y:IT), hicp:<geo>[:<variant>] (Eurostat inflation; geo EA, EU or NL, DE, ...; variant annual (default), monthly, index, core, energy, food, services, goods, or an ECOICOP 2 code like CP01). An unknown name fails at once with suggestions and costs nothing. Empty (with no rawSeriesKey) = list the catalogue for free.
+- `series` (array): Which series to fetch, by plain name (case-insensitive), up to 20 per run, e.g. ["ecb_deposit_rate", "eur_fx:USD", "hicp:EA"]. Names: ecb_deposit_rate, ecb_main_refi_rate, ecb_marginal_lending_rate (one observation per rate change), estr (€STR), eur_fx:<CUR> (ECB reference rate, CUR per 1 EUR, e.g. eur_fx:GBP), euro_area_yield_curve:<maturity> (AAA spot yield, e.g. 10Y, 3M, 1Y6M; add :all for all government bonds), gov_bond_10y:<country> (monthly average 10-year yield, about 6 weeks behind, e.g. gov_bond_10y:IT), hicp:<geo>[:<variant>] (Eurostat inflation; geo EA, EU or NL, DE, ...; variant annual (default), monthly, index, core, energy, food, services, goods, or an ECOICOP 2 code like CP01). An unknown name fails at once with suggestions and costs nothing. Empty (with no rawSeriesKey) = list the catalogue for free.
 - `last` (integer): How many of the newest observations to return per series, e.g. 12 (the last 12 months of a monthly series). Empty = 12, or with dateFrom every observation in the window (up to 1000). latest_value, previous_value and change are always filled. The price is the same for any number.
 - `dateFrom` (string): First date of the window, YYYY-MM-DD, e.g. "2026-01-01". For monthly series the month holding the date counts. Empty = no lower bound (only `last` limits).
 - `dateTo` (string): Last date of the window, YYYY-MM-DD, e.g. "2026-03-15". With last = 1 you get the value on that date or the last one before it (weekends and holidays have no FX value). Empty = up to the latest published value.
@@ -2112,7 +2114,7 @@ MCP: https://mcp.apify.com?tools=bosco_labs/drug-safety
 Price: Apify Store $0.02 per dossier or $0.004 per single-section query; HTTP API $0.004 per sub-query; a full dossier = 5 units ($0.02); partial answers are free
 API: POST https://api.boscolabs.dev/v1/drug-safety, $0.004 per sub-query; a full dossier = 5 units ($0.02); partial answers are free (max 1 drug)
 
-Drug safety dossier for one drug name as one sourced JSON row: FDA adverse events (top FAERS reaction counts), boxed warning and indications, US recalls and shortages (openFDA), EU authorisation, EPAR link and EU shortages (EMA). Or one cheaper sub-query. Not medical advice.
+Drug safety dossier for one drug name as one sourced JSON row: FDA adverse events (top FAERS reaction counts), boxed warning, indications, US recalls and shortages (openFDA), EU authorisation, EPAR and EU shortages (EMA). Dossier (default) $0.02 = 5 queries; one section $0.004. Not medical advice.
 
 Example questions:
 
@@ -2121,7 +2123,7 @@ Example questions:
 ### Input fields
 
 - `drug` (string, required): One drug: generic name, active ingredient or brand, e.g. "semaglutide", "metformin" or "Ozempic". Case does not matter. Brand names are resolved to the active ingredient for FAERS, recalls, shortages and EMA. An unknown or misspelled name fails in seconds with close names to try (nothing charged). Required.
-- `mode` (string): "dossier" (default) fills all five sections in one call (one `dossier` event). The other values fill one section only and cost one `drug-query` event: "label", "adverse_events_top", "recalls", "shortages" or "eu_status". Sections not asked for are null. Empty = dossier.
+- `mode` (string): "dossier" (default) fills all five sections in one call and costs $0.02 (one `dossier` event; on the API 5 drug-queries of $0.004). The other values fill one section only and cost one `drug-query` event ($0.004): "label", "adverse_events_top", "recalls", "shortages" or "eu_status". Sections not asked for are null. Empty = dossier.
 - `maxItems` (integer): Cap on each list in the row: top FAERS reactions, recalls (newest first), US shortage records, EU products and EU shortages, e.g. 10. Default 10, maximum 50. Totals are always reported in full. Does not change the price.
 
 ### Output fields

@@ -25,7 +25,7 @@
   {
    "@type": "SoftwareApplication",
    "name": "Drug Safety API: FDA adverse events, label, recalls, EMA status",
-   "description": "Drug safety dossier for one drug name as one sourced JSON row: FDA adverse events (top FAERS reaction counts), boxed warning and indications, US recalls and shortages (openFDA), EU authorisation, EPAR link and EU shortages (EMA). Or one cheaper sub-query. Not medical advice.",
+   "description": "Drug safety dossier for one drug name as one sourced JSON row: FDA adverse events (top FAERS reaction counts), boxed warning, indications, US recalls and shortages (openFDA), EU authorisation, EPAR and EU shortages (EMA). Dossier (default) $0.02 = 5 queries; one section $0.004. Not medical advice.",
    "url": "https://boscolabs.dev/drug-safety.html",
    "image": "https://boscolabs.dev/icons/drug-safety.png",
    "applicationCategory": "DeveloperApplication",
@@ -120,7 +120,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <article>
 <div class="head"><img src="icons/drug-safety.svg" alt="" width="84" height="84"><div><h1>Drug Safety API: FDA adverse events, label, recalls, EMA status</h1><span class="badge live">On Apify Store</span></div></div>
 <div class="prose">
-<p class="lead"><strong>Answers &quot;is this drug safe, and where does it stand with regulators?&quot; in one call</strong>: the FDA boxed warning and indications, the most reported FAERS adverse reactions (counts), US recalls and shortages, and EU authorisation, EPAR link and EU shortages, for one drug name, with a source link for every section. Built for <strong>AI agents</strong> and people in pharma, health tech, pharmacy, compliance and investing.</p>
+<p class="lead"><strong>Answers &quot;is this drug safe, and where does it stand with regulators?&quot; in one call</strong>: the FDA boxed warning and indications, the most reported FAERS adverse reactions (counts), US recalls and shortages, and EU authorisation, EPAR link and EU shortages, for one drug name, with a source link for every section. Built for <strong>AI agents</strong> and people in pharma, health tech, pharmacy, compliance and investing. A full dossier (the default) costs $0.02 (5 drug-queries); one section costs $0.004.</p>
 <div class="facts"><div class="fact"><b>Price</b>$0.02 per dossier or $0.004 per single-section query</div><div class="fact"><b>Domain</b>Macro, health &amp; places</div><div class="fact"><b>Get it on</b><a href="#where">Apify Store, HTTP API, MCP, x402</a></div></div>
 <p><strong>Pricing (pay per event):</strong> $0.02 per <code>dossier</code> (all five sections), or $0.004 per <code>drug-query</code> for one section. Invalid input, unknown drugs, empty answers and partial answers (a source failed) cost nothing.</p>
 <div class="actions"><a class="btn" href="https://apify.com/bosco_labs/drug-safety">Run it on Apify Store &rarr;</a> <a class="btn ghost" href="api.html#key">Try the API: $5.00 free credit</a></div>
@@ -373,7 +373,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <h2>Input fields</h2>
 <div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
 <tr><td><code>drug</code></td><td>string (required)</td><td>One drug: generic name, active ingredient or brand, e.g. &quot;semaglutide&quot;, &quot;metformin&quot; or &quot;Ozempic&quot;. Case does not matter. Brand names are resolved to the active ingredient for FAERS, recalls, shortages and EMA. An unknown or misspelled name fails in seconds with close names to try (nothing charged). Required.</td></tr>
-<tr><td><code>mode</code></td><td>string</td><td>&quot;dossier&quot; (default) fills all five sections in one call (one <code>dossier</code> event). The other values fill one section only and cost one <code>drug-query</code> event: &quot;label&quot;, &quot;adverse_events_top&quot;, &quot;recalls&quot;, &quot;shortages&quot; or &quot;eu_status&quot;. Sections not asked for are null. Empty = dossier.</td></tr>
+<tr><td><code>mode</code></td><td>string</td><td>&quot;dossier&quot; (default) fills all five sections in one call and costs $0.02 (one <code>dossier</code> event; on the API 5 drug-queries of $0.004). The other values fill one section only and cost one <code>drug-query</code> event ($0.004): &quot;label&quot;, &quot;adverse_events_top&quot;, &quot;recalls&quot;, &quot;shortages&quot; or &quot;eu_status&quot;. Sections not asked for are null. Empty = dossier.</td></tr>
 <tr><td><code>maxItems</code></td><td>integer</td><td>Cap on each list in the row: top FAERS reactions, recalls (newest first), US shortage records, EU products and EU shortages, e.g. 10. Default 10, maximum 50. Totals are always reported in full. Does not change the price.</td></tr>
 </tbody></table></div>
 <h2>Sources, licence and limits</h2>

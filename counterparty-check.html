@@ -304,6 +304,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <tr><td><code>iban</code></td><td>object | null</td><td>IBAN structure and country result.</td></tr>
 <tr><td><code>wallets</code></td><td>array</td><td>Wallet address screening rows.</td></tr>
 <tr><td><code>candidates</code></td><td>array</td><td>Only when status is ambiguous: companies that fit the name.</td></tr>
+<tr><td><code>sanctions_hits</code></td><td>array</td><td>Only when no single company was resolved (ambiguous or failed rows): sanctions listings matching the name asked for or a candidate&#x27;s name (screened_name, listed_name, list_name, entry_id, score 0-100, source_url), screened free. Empty when none matched.</td></tr>
 <tr><td><code>warnings</code></td><td>array</td><td>Sources that failed or were partly read.</td></tr>
 <tr><td><code>source_url</code></td><td>string | null</td><td>The main identity source.</td></tr>
 <tr><td><code>retrieved_at</code></td><td>string</td><td>When the check ran (UTC).</td></tr>

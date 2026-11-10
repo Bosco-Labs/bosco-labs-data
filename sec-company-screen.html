@@ -256,6 +256,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <tr><td><code>net_margin</code></td><td>number | null</td><td>Derived: net_income / revenue (0.25 = 25%). Only present when asked (sortBy, filters, metrics) or needed for a derived field.</td></tr>
 <tr><td><code>return_on_equity</code></td><td>number | null</td><td>Derived: net_income / total_equity (0.25 = 25%). Calendar-year periods only. Only present when asked (sortBy, filters, metrics) or needed for a derived field.</td></tr>
 <tr><td><code>equity_ratio</code></td><td>number | null</td><td>Derived: total_equity / total_assets (0.25 = 25%). Only present when asked (sortBy, filters, metrics) or needed for a derived field.</td></tr>
+<tr><td><code>source_url</code></td><td>string</td><td>EDGAR index page of the filing most of the row&#x27;s values come from.</td></tr>
 <tr><td><code>sources</code></td><td>object</td><td>Only with includeSources: per metric {tag: XBRL concept used, accession: SEC filing the value comes from (the latest filing that reported it, or for re-checked values the first 10-K/10-Q that did), url: its EDGAR index page}, or {derived: formula} for derived values.</td></tr>
 <tr><td><code>warnings</code></td><td>array</td><td>Notes on this row: a value from a proxy statement replaced by the 10-K/10-Q figure, a value that could not be checked, or a metric left out because it was reported for a different period than the row&#x27;s.</td></tr>
 <tr><td><code>retrieved_at</code></td><td>string</td><td>UTC time the row was produced.</td></tr>
