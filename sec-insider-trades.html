@@ -184,7 +184,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <tr><td><code>form</code></td><td>string</td><td>4, or 4/A for an amendment.</td></tr>
 <tr><td><code>issuer_name</code></td><td>string</td><td>Company whose shares were traded, as filed.</td></tr>
 <tr><td><code>issuer_cik</code></td><td>string</td><td>SEC CIK of the issuer (10 digits).</td></tr>
-<tr><td><code>ticker</code></td><td>string | null</td><td>Issuer trading symbol as written in the filing.</td></tr>
+<tr><td><code>ticker</code></td><td>string | null</td><td>Trading symbol as filed, or the listed ticker of the row&#x27;s share class (BRK.B for Class B shares filed as BRK.A); null if that class has none.</td></tr>
 <tr><td><code>insider_name</code></td><td>string</td><td>Reporting person (the first one in a joint filing).</td></tr>
 <tr><td><code>insider_cik</code></td><td>string | null</td><td>SEC CIK of the reporting person.</td></tr>
 <tr><td><code>insider_roles</code></td><td>array</td><td>director, officer, ten_percent_owner, other (combined over all joint filers).</td></tr>

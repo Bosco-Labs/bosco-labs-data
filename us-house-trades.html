@@ -182,6 +182,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <tr><td><code>notification_date</code></td><td>string</td><td>Date the member was notified of the trade, as reported (YYYY-MM-DD).</td></tr>
 <tr><td><code>days_to_disclose</code></td><td>integer</td><td>filing_date - transaction_date in days. For amendments this counts to the amendment, not the first filing.</td></tr>
 <tr><td><code>owner</code></td><td>string | null</td><td>Owner code as filed: SP = spouse, JT = joint, DC = dependent child, null = the member.</td></tr>
+<tr><td><code>account</code></td><td>string | null</td><td>Account the trade was in, as filed (Subholding Of), e.g. UBS IRA Account; null when not given.</td></tr>
 <tr><td><code>ticker</code></td><td>string | null</td><td>Ticker as filed in parentheses in the asset text, upper-cased; null when the filing gives none.</td></tr>
 <tr><td><code>asset_description</code></td><td>string</td><td>Asset text as filed (older PDFs garble upper/lower case).</td></tr>
 <tr><td><code>asset_type</code></td><td>string | null</td><td>From asset_type_code: ST = stock, OP = option, EF/MF = fund, GS/CS = bond, other codes = other. Filings before ~2018 have no code: option if the description says so, else null.</td></tr>

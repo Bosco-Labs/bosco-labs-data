@@ -274,7 +274,7 @@ Example questions:
 - `form` (string): 4, or 4/A for an amendment.
 - `issuer_name` (string): Company whose shares were traded, as filed.
 - `issuer_cik` (string): SEC CIK of the issuer (10 digits).
-- `ticker` (string | null): Issuer trading symbol as written in the filing.
+- `ticker` (string | null): Trading symbol as filed, or the listed ticker of the row's share class (BRK.B for Class B shares filed as BRK.A); null if that class has none.
 - `insider_name` (string): Reporting person (the first one in a joint filing).
 - `insider_cik` (string | null): SEC CIK of the reporting person.
 - `insider_roles` (array): director, officer, ten_percent_owner, other (combined over all joint filers).
@@ -418,6 +418,7 @@ Example questions:
 - `notification_date` (string): Date the member was notified of the trade, as reported (YYYY-MM-DD).
 - `days_to_disclose` (integer): filing_date - transaction_date in days. For amendments this counts to the amendment, not the first filing.
 - `owner` (string | null): Owner code as filed: SP = spouse, JT = joint, DC = dependent child, null = the member.
+- `account` (string | null): Account the trade was in, as filed (Subholding Of), e.g. UBS IRA Account; null when not given.
 - `ticker` (string | null): Ticker as filed in parentheses in the asset text, upper-cased; null when the filing gives none.
 - `asset_description` (string): Asset text as filed (older PDFs garble upper/lower case).
 - `asset_type` (string | null): From asset_type_code: ST = stock, OP = option, EF/MF = fund, GS/CS = bond, other codes = other. Filings before ~2018 have no code: option if the description says so, else null.
@@ -1217,8 +1218,8 @@ Example questions:
 - `matching_roles` (integer | null): Summary rows: open roles matching departments, locations, keywords and postedSince. All counts below are over these.
 - `filters` (object | null): Summary rows: the filters applied (lower-cased), null if none.
 - `by_department` (array): Summary rows: top 15 departments as {name, count}, largest first. Roles without a department are not listed.
-- `by_location` (array): Summary rows: top 15 primary locations as written by the company, as {name, count}.
-- `by_country` (array): Summary rows: top 15 countries as {name, count}: ISO codes for Lever, country names for Ashby, empty for Greenhouse (no country field).
+- `by_location` (array): Summary rows: top 15 primary locations as {name, count}; spelling variants (US-Remote, US Remote) and a bare city with its City, Country form count as one.
+- `by_country` (array): Summary rows: top 15 countries as {name, count}: ISO codes for Lever, country names for Ashby; for Greenhouse (no country field) names read from the location text.
 - `remote_share` (number | null): Summary rows: share of matching roles marked remote, 0-1. Greenhouse: roles whose location text says remote. null when no roles match.
 - `posted_last_30_days` (integer | null): Summary rows: matching roles posted in the 30 days before retrieved_at.
 - `newest_posted_at` (string | null): Summary rows: newest posting date among matching roles (ISO 8601 UTC).
@@ -1939,6 +1940,7 @@ Example questions:
 - `funding_agency` (string | null): Top-tier funding agency (can differ from the awarding agency).
 - `action_date` (string | null): Date (YYYY-MM-DD) of the award's action shown in this row: its largest action in the date window (sortBy amount) or its latest (sortBy date).
 - `action_amount_usd` (number | null): Federal obligation of that action in USD (negative = de-obligation; 0 for administrative modifications and loans).
+- `is_admin_change` (boolean | null): True for a $0 action: an administrative change to an existing award, not new money. Null for loans.
 - `modification_number` (string | null): Modification number of that action ("0" or empty = the base award).
 - `total_obligated_usd` (number | null): Total obligated on the award so far, all actions since signing, in USD.
 - `total_value_usd` (number | null): Contracts: potential total value including all options (base_and_all_options), USD. Loans: loan face value. Null for other assistance.
