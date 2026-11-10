@@ -756,8 +756,8 @@ Example questions:
 
 - `schema_version` (string): Output schema version.
 - `record_type` (string): summary = one row per annual report; fact = one raw XBRL fact (only with includeRawFacts).
-- `lei` (string): Legal Entity Identifier of the filer.
-- `company_name` (string): Registered name.
+- `lei` (string | null): Legal Entity Identifier of the filer.
+- `company_name` (string | null): Registered name (null when filings.xbrl.org has none).
 - `country` (string): Filing country (ISO 3166 alpha-2).
 - `period_end` (string): Fiscal year end (YYYY-MM-DD), taken from the report facts.
 - `fiscal_year_start` (string | null): Fiscal year start (YYYY-MM-DD).
@@ -1141,10 +1141,10 @@ Example questions:
 
 - `schema_version` (string): Output schema version.
 - `company_number` (string): Companies House company number, 8 characters, e.g. 16812345 or SC812345.
-- `company_name` (string): Registered company name.
-- `company_type` (string): Companies House company type code, e.g. ltd, plc, llp.
+- `company_name` (string | null): Registered company name.
+- `company_type` (string | null): Companies House company type code, e.g. ltd, plc, llp.
 - `company_subtype` (string | null): Subtype when set: community-interest-company or private-fund-limited-partnership.
-- `company_status` (string): Company status code, e.g. active.
+- `company_status` (string | null): Company status code, e.g. active.
 - `incorporation_date` (string): Date of incorporation (YYYY-MM-DD).
 - `sic_codes` (array): SIC 2007 codes the company declared (up to four, 5 digits).
 - `sic_descriptions` (array): Description of each SIC code from the Companies House condensed SIC list, in the same order as sic_codes; null for a code not on that list.
