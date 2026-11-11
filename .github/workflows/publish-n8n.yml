@@ -15,8 +15,8 @@
 # nodes/BoscoLabs/request.ts to the same number on main. A push to main that changes package.json
 # or this file publishes that version if npm does not have it yet; so does a run by hand or the
 # tag n8n-v<version>. A version npm already has is skipped, so a second run does no harm.
-# Pull requests that touch the package run every step with `npm publish --dry-run`: nothing is
-# published and no secret is read.
+# Pull requests that touch the package run every step with `npm publish --dry-run` (`npm pack
+# --dry-run` when npm already has the version): nothing is published and no secret is read.
 name: Publish n8n-nodes-boscolabs
 
 on:
@@ -80,9 +80,15 @@ jobs:
         run: |
           npm run lint
           npm run build
-          npm publish --dry-run
+          if [ "$PUBLISHED" = "true" ]; then
+            # npm refuses even a dry run of a version it already has: only build the tarball
+            npm pack --dry-run
+          else
+            npm publish --dry-run
+          fi
         env:
           RELEASE_MODE: "true"
+          PUBLISHED: ${{ steps.npm.outputs.published }}
       - name: The first release needs the NPM_TOKEN secret
         if: github.event_name != 'pull_request' && steps.npm.outputs.first == 'true'
         run: |
