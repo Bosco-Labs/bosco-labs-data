@@ -1,0 +1,10 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/registers/:country(at|be|de|dk|es|nl|se).html",
+      "destination": "/registers/index.html",
+      "permanent": false
+    }
+  ]
+}
