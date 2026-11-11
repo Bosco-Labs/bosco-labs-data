@@ -1,0 +1,18 @@
+{
+	"node": "n8n-nodes-boscolabs",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["Finance & Accounting", "Data & Storage"],
+	"resources": {
+		"credentialDocumentation": [
+			{
+				"url": "https://boscolabs.dev/api.html#key"
+			}
+		],
+		"primaryDocumentation": [
+			{
+				"url": "https://github.com/Bosco-Labs/bosco-labs-data/tree/main/n8n-nodes-boscolabs#readme"
+			}
+		]
+	}
+}

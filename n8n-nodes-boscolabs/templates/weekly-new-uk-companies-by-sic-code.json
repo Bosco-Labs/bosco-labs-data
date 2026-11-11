@@ -1,0 +1,158 @@
+{
+  "name": "Weekly list of newly registered UK companies by SIC code",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## Weekly list of new UK companies by SIC code\n\nEvery Monday at 08:00 this lists the companies incorporated in the UK in the last 7 days for your SIC codes, from the Companies House register: number, name, type, incorporation date, SIC codes, registered office and a link to the register page. No director data.\n\n### Setup\n1. Install the community node **n8n-nodes-boscolabs** (nodes panel, or Settings > Community Nodes).\n2. Get a Bosco Labs API key at [boscolabs.dev/api.html](https://boscolabs.dev/api.html#key) and save it as a **Bosco Labs API** credential.\n3. Pick that credential in each Bosco Labs node.\n4. In **Get New UK Companies**, set **SIC Codes** (a prefix matches every code below it: `62` is IT and software, `68` real estate, `56101` licensed restaurants). Add **Location** under Additional Fields to narrow to a town or postcode area.\n5. Connect a spreadsheet, CRM or e-mail node after **Keep List Columns**.\n\n### Cost and limit\n$0.002 per company returned, so at most $0.40 per run. One call returns at most 200 companies. When a week holds more, the node shows a hint that the limit was reached: narrow the SIC code or location, or change the schedule to daily and leave both dates empty (the default is yesterday).\n\nDates are UTC. Company types default to Ltd, PLC and LLP.",
+        "height": 620,
+        "width": 420,
+        "color": 4
+      },
+      "id": "98a1f8f5-5fc3-5d9a-8d12-7f7ea72e3258",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -440,
+        -160
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "weeksInterval": 1,
+              "triggerAtDay": [
+                1
+              ],
+              "triggerAtHour": 8,
+              "triggerAtMinute": 0
+            }
+          ]
+        }
+      },
+      "id": "984f7301-8abf-553a-89a4-029f06dab154",
+      "name": "Every Monday 08:00",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        40,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "company",
+        "operation": "getNewUk",
+        "sicCodes": "62",
+        "incorporatedFrom": "={{ $now.minus({ days: 7 }).toFormat('yyyy-MM-dd') }}",
+        "incorporatedTo": "={{ $now.minus({ days: 1 }).toFormat('yyyy-MM-dd') }}",
+        "maxResults": 200,
+        "additionalFields": {},
+        "simplify": true,
+        "options": {}
+      },
+      "id": "fca854ac-9d6e-57c6-8501-ff22c8027e6a",
+      "name": "Get New UK Companies",
+      "type": "n8n-nodes-boscolabs.boscoLabs",
+      "typeVersion": 1,
+      "position": [
+        260,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b9d019e6-7811-5dbb-9724-89117f65ea4e",
+              "name": "company_number",
+              "value": "={{ $json.company_number }}",
+              "type": "string"
+            },
+            {
+              "id": "ef92c05e-3b7e-50bf-80e6-6aca01f9d9e8",
+              "name": "company_name",
+              "value": "={{ $json.company_name }}",
+              "type": "string"
+            },
+            {
+              "id": "d7142bf5-812a-58da-b8c4-9ce1f9fa1516",
+              "name": "incorporation_date",
+              "value": "={{ $json.incorporation_date }}",
+              "type": "string"
+            },
+            {
+              "id": "59094011-1d66-5683-aac5-965fdda9c33f",
+              "name": "sic_codes",
+              "value": "={{ $json.sic_codes.join(', ') }}",
+              "type": "string"
+            },
+            {
+              "id": "9bfdb722-c4cb-5d48-8f8e-37e0ed46278f",
+              "name": "sic_descriptions",
+              "value": "={{ $json.sic_descriptions.join('; ') }}",
+              "type": "string"
+            },
+            {
+              "id": "c80e54dd-5c07-5890-bfed-c2eb38537fd4",
+              "name": "registered_office_address",
+              "value": "={{ $json.registered_office_address }}",
+              "type": "string"
+            },
+            {
+              "id": "ca81e390-dd6f-56ed-8ee6-76d97b787306",
+              "name": "source_url",
+              "value": "={{ $json.source_url }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b4215f1b-f9a1-570d-8802-85ea5e5fd5d7",
+      "name": "Keep List Columns",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        480,
+        120
+      ]
+    }
+  ],
+  "connections": {
+    "Every Monday 08:00": {
+      "main": [
+        [
+          {
+            "node": "Get New UK Companies",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get New UK Companies": {
+      "main": [
+        [
+          {
+            "node": "Keep List Columns",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": false
+  }
+}
