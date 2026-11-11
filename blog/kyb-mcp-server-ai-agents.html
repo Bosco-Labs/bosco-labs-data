@@ -28,7 +28,7 @@
    "headline": "A KYB MCP server for AI agents: setup and limits",
    "description": "Connect a remote MCP server that checks register status, insolvency and sanctions in one tool call, and teach your agent what 'unverified' means.",
    "datePublished": "2026-11-09",
-   "dateModified": "2026-11-09",
+   "dateModified": "2026-11-11",
    "keywords": [
     "mcp",
     "kyb",
@@ -147,7 +147,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <article class="prose">
 <p class="crumbs"><a href="blog/index.html">Blog</a> &rsaquo; A KYB MCP server for AI agents: setup and limits</p>
 <h1>A KYB MCP server for AI agents: setup and limits</h1>
-<p class="muted">Bosco Labs · <time datetime="2026-11-09">9 November 2026</time></p>
+<p class="muted">Bosco Labs · <time datetime="2026-11-09">9 November 2026</time>, updated <time datetime="2026-11-11">11 November 2026</time></p>
 <p>Add <code>https://api.boscolabs.dev/mcp</code> to your MCP client with an API key in the <code>Authorization</code> header. Your agent gets a <code>counterparty_check</code> tool that takes a company name or number and returns a checklist from official sources. If you want to look around before getting a key, <code>https://api.boscolabs.dev/mcp/free</code> works without one and gives the agent our planner and tool descriptions, plus free LEI and SEC company lookups.</p>
 <p>The rest of this post covers setup in a few clients, what the agent gets back, and how to stop it from reading a missing answer as a clean one.</p>
 <h2>Setup</h2>
@@ -188,7 +188,7 @@ Never describe a company as clear if any check is fail, review or unverified.
 A sanctions name match is a candidate until a person compares it with the official entry.</code></pre>
 <p>With that in place, the agent&#x27;s answer for the Novo Nordisk example reads more like &quot;everything passed except insolvency and the sanctions check on officers, which weren&#x27;t verified for a Danish company&quot; than &quot;Novo Nordisk checks out&quot;.</p>
 <h2>Why a tool instead of web search</h2>
-<p>A model with web search can answer &quot;is this company active&quot; surprisingly often. In our test it slipped more on sanctions, because the lists are big structured files that search engines don&#x27;t index well. Insolvency was hard for both. We wrote up a small benchmark of counterparty-check against a model using web search on 25 companies, including the cases where our tool still answered unknown and the bugs we fixed along the way.</p>
+<p>A model with web search can answer &quot;is this company active&quot; surprisingly often. In our test it mostly answered the sanctions question from memory, without opening a list. Insolvency was hard for both. We wrote up a small benchmark of counterparty-check against a model using web search on 25 companies, including the cases where our tool still answered unknown and the bugs we fixed along the way.</p>
 <p>The other difference is that every check carries a source link and a timestamp. When a compliance person asks why the agent said what it said, there&#x27;s something to click.</p>
 <h2>Limits</h2>
 <p>A check takes 5 to 30 seconds, because it waits on several registers and VIES. Agents usually cope fine with that, but some clients have short tool timeouts.</p>

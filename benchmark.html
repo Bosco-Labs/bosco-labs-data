@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Counterparty check benchmark data: results per company</title>
-<meta name="description" content="Data tables of the counterparty-check benchmark: 25 companies, web search vs one API call. Totals, ground truth and both arms&#x27; scores per company.">
+<meta name="description" content="Counterparty-check benchmark, 25 companies: one API call against web search. 20 and 19 right in the second run, 17 and 23 in the first. Per-company tables.">
 <link rel="canonical" href="https://boscolabs.dev/benchmark.html">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="logo.svg" type="image/svg+xml">
@@ -13,7 +13,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Bosco Labs">
 <meta property="og:title" content="Counterparty check benchmark data: results per company">
-<meta property="og:description" content="Data tables of the counterparty-check benchmark: 25 companies, web search vs one API call. Totals, ground truth and both arms&#x27; scores per company.">
+<meta property="og:description" content="Counterparty-check benchmark, 25 companies: one API call against web search. 20 and 19 right in the second run, 17 and 23 in the first. Per-company tables.">
 <meta property="og:url" content="https://boscolabs.dev/benchmark.html">
 <meta property="og:image" content="https://boscolabs.dev/logo-512.png">
 <meta name="twitter:card" content="summary">
@@ -106,41 +106,71 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <main class="wrap" id="main">
 <div class="prose">
 <p class="crumbs"><a href="counterparty-check.html">Counterparty Check</a> &rsaquo; Benchmark</p>
-<h1>Counterparty check benchmark: data tables</h1>
-<p class="lead">Can an AI agent tell whether a company is active, sanctioned or insolvent? We asked the same question about 25 companies twice: once to a model with web search, once to the same model with the result of one <a href="counterparty-check.html">counterparty-check</a> call. Run of 2026-11-09, one run per company.</p>
-<p>This page holds the tables. How we ran it, the four bugs the first run found and the rerun are on the blog: <a href="blog/counterparty-check-benchmark.html">We lost our own benchmark</a>.</p>
-<h2>Result</h2>
-<div class="table"><table><thead><tr><th></th><th>Web search</th><th>counterparty-check</th></tr></thead><tbody>
-<tr><td>All scored fields correct</td><td>19/25</td><td>20/25</td></tr>
-<tr><td>Register status correct</td><td>20/24</td><td>24/24</td></tr>
-<tr><td>Sanctioned correct</td><td>21/25</td><td>25/25</td></tr>
-<tr><td>Insolvent correct</td><td>20/25</td><td>20/25</td></tr>
-<tr><td>Sanctioned companies missed</td><td>2</td><td>0</td></tr>
-<tr><td>Clean companies flagged as sanctioned</td><td>0</td><td>0</td></tr>
-<tr><td>Fields wrong / unknown</td><td>1 / 12</td><td>0 / 5</td></tr>
-<tr><td>No usable answer</td><td>1</td><td>0</td></tr>
-<tr><td>Cost per company</td><td>$0.048</td><td>$0.069 ($0.05 our charge)</td></tr>
-<tr><td>Seconds per company</td><td>13</td><td>12</td></tr>
-<tr><td>Searches + fetches</td><td>34 + 17</td><td>0</td></tr>
-</tbody></table></div>
-<p>The 25 companies are hand-picked and lean towards hard cases: sanctioned, dissolved or in liquidation. A difference of one or two companies is noise, so the totals are a tie. The row we'd look at is sanctions. In this run the web arm did not flag 2 of the 6 sanctioned companies (it left one open and gave no usable answer on the other); the API arm flagged all 6. In the first run each arm missed one: the web arm called Rosneft Marine (UK) clean, and our API returned an error for Garantex Europe.</p>
-<p>On well-known companies the web arm is cheaper and faster, because the model answers from memory (9 of 25 without a single search). That says nothing about a supplier nobody has heard of. On the 12 hard cases both arms cost about the same per company.</p>
-<h2>The first run</h2>
-<p>The first run (2026-11-08) went the other way: web search 23/25, counterparty-check 17/25. It showed four bugs in our check. UK insolvency only read a window of Gazette notices. An Estonian company deleted from the register returned an error instead of a report. Companies in liquidation in France and Germany came back as active. And sanctions were matched on the name only, so a listed company that has since been renamed would slip through; a listing that carries the company's registration number now counts as a hit. We fixed all four and ran the same 25 companies again. The web arm went from 23 to 19 with nothing changed on its side, so the spread between two runs of a model with web search is about as large as the gap between the arms.</p>
-<h2>Where the API still says unknown</h2>
-<p>All 5 unknown answers in the API arm are about insolvency. Denmark and the US have no insolvency source we can use: the Danish CVR register refuses scripted requests unless you sign up for its system access, and US bankruptcy filings sit in PACER, which is paid per page. A company deleted from the Estonian register is no longer in its open data. In those cases the check says <code>unverified</code> and the model answers unknown, which we count as not correct.</p>
-<h2>What this does not show</h2>
+<h1>Counterparty check benchmark: one API call against web search</h1>
+<p class="lead">Is a company still on the register, is it sanctioned, is it insolvent? We asked one model about 25 companies twice: once with web search, once with the result of one <a href="counterparty-check.html">counterparty-check</a> call. Counting the companies with every scored field right, the result is a tie: 20 of 25 with the call, 19 of 25 with web search.</p>
+<p>That is the second run, of 2026-11-09. The first run, a day earlier, went to web search, 23 to 17. We then fixed four bugs in our check on these same 25 companies, so the second run is not a fresh test of it: see <a href="#lost">where the API lost</a>.</p>
+<p>In the second run the tie splits two ways. On the 12 hard cases (companies that are sanctioned, insolvent, in liquidation or dissolved) the call got 11 right and web search 6. On the other 13, large companies that are active, not sanctioned and not insolvent (the well-known companies below), web search got 13 right and the call 9. Only the second half held in both runs: in the first run web search led on the hard cases too, 10 against 7.</p>
+<h2>What one call returned that the web search answer did not</h2>
 <ul>
-<li>We built the API arm and we wrote the ground truth. We checked every field by hand on official sources (dated, with URLs); where a register had no free access we used GLEIF, VIES or press, or left the field unscored.</li>
-<li>Both arms use one model (Claude Sonnet 5.5) at low effort, with at most 4 searches and 4 fetches for the web arm. A stronger setting costs more and may score differently.</li>
-<li>Some web-arm misses were the tool, not the model: a search that hit the cap, a run that ended mid-search, a fetch that errored. An agent in production hits those too, so they count.</li>
-<li>Scoring is an exact match on three fields of the JSON at the end of each answer. No model judges the answers.</li>
-<li>The API arm still needs a model to read the result, and its reading counts. For Wirecard the check said <code>review</code> (insolvency notices matched on the name only) and the model concluded winding up from them.</li>
-<li>One label is arguable. Camaïeu still shows as active in Sirene and BODACC has a liquidation with no closing notice, so we scored it winding up; the web arm found a page that says struck off.</li>
+<li><strong>A sanctions answer read from the lists, for every company.</strong> The sanctions check on the company itself came back as pass or fail for all 25 companies and flagged all 6 that are sanctioned. For each of the 6 the answer names the list entry, for example UK Sanctions List RUS1421 and OFAC SDN 36025 for Garantex Europe. The second sanctions check, on officers and owners, was unverified for 14 of the 25, and the EU list was read from a stored copy (see <a href="#limits">the limits</a>). Web search flagged 4 of the 6 and gave no sanctions answer for the other 2: it called no sanctioned company clean in this run, and it had flagged both of those the day before. In 17 of its 25 answers web search answered that the company is not sanctioned. All 17 were right, and each of them says in its own text that it did not check the sanctions lists or ran no search at all; 9 of them made no search or fetch.</li>
+<li><strong>A result for every company, in this run.</strong> The call returned a result for all 25 companies (24 in the first run). Web search left every field open for 4 of the 12 hard cases. None of the 4 is a wrong answer. For Petropars UK and Atlas Technologies it reached the limit of 4 searches that we set. For Europäisch-Iranische Handelsbank the run stopped in the middle of a search and our script did not resume it. For Cambridge Analytica (UK) the model reports that every search and fetch returned an error. The day before, with the same settings, web search got all 4 of these companies right. We count them as not correct because the answer was not there; a loop that retries would probably recover some. With the 2 runs that broke off scored as they went the day before, the result is 20 against 21 overall and 11 against 8 on the hard cases.</li>
+<li><strong>A verdict for each check, and unverified where there is no source.</strong> Each call returned 7 checks (register status, LEI, insolvency, recent accounts, sanctions on the company, sanctions on its officers and owners, VAT number), each as pass, fail, review or unverified. Of the 175 verdicts 82 were pass, 19 fail, 12 review and 62 unverified: VAT number 25 (the benchmark sent no VAT number), sanctions on its officers and owners 14, recent accounts 12, LEI 6, insolvency 5. On the 74 scored fields the model that read the result was right on 69 and left 5 open. Web search was right on 61, left 12 open and gave 1 answer that differs from our label (Camaïeu, see the limits).</li>
+<li><strong>One step, at a nearly fixed cost.</strong> One call per company at $0.05, which comes to $0.064 to $0.074 with the model that reads the result. Web search took 0 to 8 searches and fetches per company (51 in total), reached the limit of 4 searches on 6 companies and cost $0.021 to $0.109. On average web search is cheaper: $0.048 against $0.069 per company. On the 6 sanctioned companies it cost more: 5.2 searches and fetches, 26 seconds and $0.088 per company, against 14 seconds and $0.069 for the call. One of those 6 web search runs broke off after 1 search; over the 5 that ended with an answer it is 6.0 searches and fetches, 31 seconds and $0.098.</li>
 </ul>
+<h2>The measured comparison</h2>
+<div class="table"><table><thead><tr><th></th><th>Web search</th><th>One counterparty-check call</th></tr></thead><tbody>
+<tr><td>Companies with every scored field right, of 25</td><td>19</td><td>20</td></tr>
+<tr><td>of the 12 hard cases</td><td>6</td><td>11</td></tr>
+<tr><td>of the 13 well-known companies</td><td>13</td><td>9</td></tr>
+<tr><td>Companies with every scored field left open, of 25</td><td>4</td><td>0</td></tr>
+<tr><td>Sanctioned companies flagged, of 6</td><td>4</td><td>6</td></tr>
+<tr><td>Sanctioned companies called not sanctioned, of 6</td><td>0</td><td>0</td></tr>
+<tr><td>Companies not on a list but flagged as sanctioned, of 19</td><td>0</td><td>0</td></tr>
+<tr><td>Register status right</td><td>20/24</td><td>24/24</td></tr>
+<tr><td>Sanctioned right</td><td>21/25</td><td>25/25</td></tr>
+<tr><td>Insolvent right</td><td>20/25</td><td>20/25</td></tr>
+<tr><td>Scored fields right / left open / wrong, of 74</td><td>61 / 12 / 1</td><td>69 / 5 / 0</td></tr>
+<tr><td>Steps per company</td><td>2.0 searches and fetches (0 to 8)</td><td>1 API call</td></tr>
+<tr><td>Cost per company</td><td>$0.048 ($0.021 to $0.109)</td><td>$0.069 ($0.064 to $0.074), of which $0.05 is our charge</td></tr>
+<tr><td>Cost per company: well-known / hard cases</td><td>$0.030 / $0.067</td><td>$0.069 / $0.069</td></tr>
+<tr><td>Seconds per company</td><td>13 (4 to 40)</td><td>12 (4 to 26)</td></tr>
+</tbody></table></div>
+<p class="muted">Run of 2026-11-09. In brackets: the range over single companies. 25 hand-picked companies and one run each, so a difference of one or two companies is noise. The 11 against 6 on the 12 hard cases is not solid either: web search scored 10 on the same 12 a day earlier.</p>
+<h2 id="lost">Where the API lost, and why</h2>
+<div class="table"><table><thead><tr><th></th><th>Web search, 2026-11-08</th><th>One call, 2026-11-08</th><th>Web search, 2026-11-09</th><th>One call, 2026-11-09</th></tr></thead><tbody>
+<tr><td>Every scored field right, of 25</td><td>23</td><td>17</td><td>19</td><td>20</td></tr>
+<tr><td>of the 12 hard cases</td><td>10</td><td>7</td><td>6</td><td>11</td></tr>
+<tr><td>of the 13 well-known companies</td><td>13</td><td>10</td><td>13</td><td>9</td></tr>
+<tr><td>Every scored field left open, of 25</td><td>0</td><td>1</td><td>4</td><td>0</td></tr>
+<tr><td>Sanctioned companies flagged, of 6</td><td>5</td><td>5</td><td>4</td><td>6</td></tr>
+<tr><td>Sanctioned companies called not sanctioned, of 6</td><td>1</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>Register status right</td><td>23/24</td><td>21/24</td><td>20/24</td><td>24/24</td></tr>
+<tr><td>Sanctioned right</td><td>24/25</td><td>24/25</td><td>21/25</td><td>25/25</td></tr>
+<tr><td>Insolvent right</td><td>25/25</td><td>18/25</td><td>20/25</td><td>20/25</td></tr>
+<tr><td>Scored fields right / left open / wrong, of 74</td><td>72 / 0 / 2</td><td>63 / 9 / 2</td><td>61 / 12 / 1</td><td>69 / 5 / 0</td></tr>
+</tbody></table></div>
+<p class="muted">Over both runs together web search got 42 of 50 answers fully right and the call 37; on scored fields it is 133 against 132 of 148.</p>
+<p><strong>The first run: 17 against 23.</strong> It showed four bugs in our check. UK insolvency only read a window of Gazette notices. An Estonian company deleted from the register returned an error instead of a report. Companies in liquidation in France and Germany came back as active. And sanctions were matched on the name only, so a listed company that has since been renamed would slip through; a listing that carries the company's registration number now counts as a hit. Of the 8 companies the call did not get fully right in that run, 5 scored better after the fixes (Rosneft Marine (UK), Cambridge Analytica (UK), Garantex Europe, Camaïeu and Wirecard; for the last two the answer was wrong, active for a company in liquidation). The other 3 are the missing insolvency sources below. The name-only matching cost no point in that run: the 5 sanctioned companies that returned a result came back as review and the model flagged all 5. Each arm missed one sanctioned company in that run: web search called Rosneft Marine (UK) clean, and our API returned an error for Garantex Europe.</p>
+<p><strong>The second run is not a fresh test of the call.</strong> We fixed all four bugs and ran the same 25 companies again. The fixes were made after we saw these companies fail, against a ground truth we wrote. A fair test needs companies we have not looked at, and we have not run one yet.</p>
+<p><strong>The second run is one run.</strong> Web search went from 23 to 19 with nothing changed on its side, and on the hard cases from 10 to 6: 6 of the 12 hard cases changed their web search result between the two days. That spread is about as large as the gap between the arms, so it can explain most or all of the 11 against 6: against web search's first-run 10, the gap is 1 company. Our own arm has one run since the fixes.</p>
+<p><strong>The well-known companies: 9 against 13.</strong> All 5 fields the call left open are about insolvency: Novo Nordisk and Maersk (Denmark), Apple and JPMorgan (US), and Garantex Europe (Estonia). Denmark and the US have no insolvency source we can use: the Danish CVR register refuses scripted requests unless you sign up for its system access, and US bankruptcy filings sit in PACER, which is paid per page. A company deleted from the Estonian register is no longer in its open data. In those cases the check says <code>unverified</code> and the model answers unknown, which we count as not correct. That follows from the instructions: the call arm is told to answer only from the result and to say unknown where it is silent, and the web arm may answer from what the model knows. Web search answered that the four large companies are not insolvent, 3 of the 4 without a search or fetch, and was right. On insolvency the arms are level, 20/25 and 20/25.</p>
+<p><strong>Cost and time.</strong> Web search costs less per company: $0.048 against $0.069 over all 25, and $0.030 against $0.069 on the 13 well-known companies, where it answered 7 of the 13 without a search or fetch. On the 12 hard cases the cost is $0.067 against $0.069. Time is about level: 13 and 12 seconds per company.</p>
+<p><strong>A model still reads the result, and its reading counts.</strong> The scores of the call arm are the model's answers after it read the check, not the check's own verdicts; the run files hold the 7 verdicts per company but not the full response, so the check cannot be scored without the model. For Wirecard the check said <code>review</code> on register status and on insolvency (GLEIF still says active, and the insolvency notices match on the name only) and the model concluded winding up from the notices. For Novo Nordisk the insolvency check said <code>unverified</code> in both runs; the model answered that it is not insolvent in the first run and unknown in the second.</p>
+<h2 id="limits">Method and limits</h2>
+<ul>
+<li>Both arms use one model (Claude Sonnet 5.5) at low effort and get the same question. The system prompts differ: the call arm is told to answer only from the result and to say unknown where it is silent; the web arm is told to prefer official primary sources and is free to answer without a search. Web search is the model's server-side web search and web fetch, at most 4 of each, each fetched page cut at 10,000 tokens, with boscolabs.dev blocked. The script does not retry an error and does not resume a run that stops for a tool call. The call arm makes one request with the registration number, LEI, ticker or name, and the model answers from the JSON it gets back. We ran this one setting only, so we do not know how web search scores with more searches or higher effort; a stronger setting costs more and may score differently.</li>
+<li>Scoring is an exact match on three fields of the JSON at the end of each answer: register status, sanctioned, insolvent. No model judges the answers. Unknown counts as not correct. One field has no verified ground truth and is not scored, which leaves 74.</li>
+<li>We built the call arm and we wrote the ground truth. We checked every field by hand on official sources (dated, with URLs); where a register had no free access we used GLEIF, VIES or press, or left the field unscored. For some fields the label rests on the same source the check reads (GLEIF for the register status of Europäisch-Iranische Handelsbank, the same sanctions list files), so a match there shows that the check read its source, not that the source is right.</li>
+<li>We picked the 25 companies by hand, after the check was built, from 10 countries. 12 of them are hard cases, a larger share than in a normal supplier list, and 6 of the 12 hard cases (4 of the 6 sanctioned companies) are UK companies, where the register is open data.</li>
+<li>One label is arguable, and it is the one-company margin of the tie. Camaïeu still shows as active in Sirene and BODACC has a liquidation with no closing notice, so we scored it winding up; web search found a page that says struck off. With that field left unscored the result is 20 against 20. If struck off is right, it is 19 against 20 for web search, and 10 against 7 on the hard cases. Since the fixes our check applies the same rule as our label (an open liquidation notice that carries the company's number is a fail), so the two agree by construction.</li>
+<li>The EU sanctions list was read from a stored copy. In both runs the download of the EU list failed with an error from the EU's server (16 of the 25 answers in the second run name it as HTTP 500), and the check used the copy it had. The list's own date is 2026-10-23, which all 25 answers of the call arm give; 18 of them also give the day the copy was fetched, 2026-11-07, 1 and 2 days before the runs. It changed no score: the 3 companies on the EU list were returned with their EU entry. We checked the ground truth against the same list version, so this benchmark cannot show what an older copy would cost.</li>
+<li>The run files hold the full answers, but no URLs of the pages web search read, so a web search answer cannot be traced to its source page. The script that ran both arms is not public; the question and the scoring rule are on the dataset card.</li>
+<li>Cost is list-price tokens plus $0.01 per search for web search, and our charge plus the model's tokens for the call. Seconds include the model's answer.</li>
+</ul>
+<p>How we ran it and what the first run taught us is on the blog: <a href="blog/counterparty-check-benchmark.html">We lost our own benchmark</a>. The questions, the ground truth with source URLs and the full answers of both runs are on <a href="https://huggingface.co/datasets/BoscoLabs/counterparty-check-benchmark">Hugging Face</a>.</p>
 <h2>Per company</h2>
-<p class="muted">Status, sanctioned, insolvent. n/s = not scored (the ground truth could not be verified); unknown = the answer left the field open.</p>
-<div class="table"><table><thead><tr><th>Company</th><th>Country</th><th>Ground truth</th><th>Web search</th><th>counterparty-check</th></tr></thead><tbody>
+<p class="muted">Status, sanctioned, insolvent. n/s = not scored (the ground truth could not be verified); unknown = the answer left the field open; no answer = the run ended without an answer, and its three fields count as left open.</p>
+<div class="table"><table><thead><tr><th>Company</th><th>Country</th><th>Ground truth</th><th>Web search</th><th>One call</th></tr></thead><tbody>
 <tr><td>Tesco PLC</td><td>GB</td><td>active, not sanctioned, not insolvent</td><td>ok, ok, ok</td><td>ok, ok, ok</td></tr>
 <tr><td>Novo Nordisk A/S</td><td>DK</td><td>active, not sanctioned, not insolvent</td><td>ok, ok, ok</td><td>ok, ok, unknown</td></tr>
 <tr><td>A.P. Møller - Mærsk A/S</td><td>DK</td><td>active, not sanctioned, not insolvent</td><td>ok, ok, ok</td><td>ok, ok, unknown</td></tr>
@@ -167,7 +197,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <tr><td>Atlas Technologies B.V. (Lightyear)</td><td>NL</td><td>not scored, not sanctioned, insolvent</td><td>n/s, unknown, unknown</td><td>n/s, ok, ok</td></tr>
 <tr><td>Getin Noble Bank S.A. w upadłości</td><td>PL</td><td>winding up, not sanctioned, insolvent</td><td>ok, ok, ok</td><td>ok, ok, ok</td></tr>
 </tbody></table></div>
-<p class="muted">Ground truth checked 2026-11-08. Model claude-sonnet-5-5. Total spend of the run $2.92. The questions, ground truth with source URLs and both arms' full answers are on <a href="https://huggingface.co/datasets/BoscoLabs/counterparty-check-benchmark">Hugging Face</a>. Questions or a company you think we scored wrong: <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a>.</p>
+<p class="muted">Ground truth checked 2026-11-08. Model claude-sonnet-5-5. Total spend of the run $2.92. Questions or a company you think we scored wrong: <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a>.</p>
 </div>
 </main>
 <footer><div class="wrap"><p><a href="/">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="registers/index.html">Registers</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
