@@ -251,7 +251,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
     s.textContent = "Sending...";
     try {
       const r = await fetch(f.action, {method: "POST", headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({email: f.email.value, source: new URLSearchParams(location.search).get("src") || ""})});
+        body: JSON.stringify({email: f.email.value, source: (function(){var q=new URLSearchParams(location.search),s=q.get("src")||q.get("utm_source"),r="";try{r=document.referrer?new URL(document.referrer).hostname:"";}catch(e){}if(!s&&r&&!/(^|\.)boscolabs\.dev$/.test(r))s=r;return(s||"").toLowerCase().replace(/[^a-z0-9._-]/g,"").slice(0,40);})()})});
       const j = await r.json().catch(() => ({}));
       s.textContent = j.message || (j.error && j.error.message) || "That did not work (HTTP " + r.status + "). Try again later.";
     } catch (err) { f.submit(); }
