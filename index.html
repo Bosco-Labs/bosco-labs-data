@@ -300,8 +300,8 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <p class="lead">Register status, insolvency, filed accounts, VAT number, IBAN and six official sanctions lists, read from the official sources. Each check comes back as pass, fail, review or unverified, with a link to the register behind it and the date of every list checked.</p>
 <div class="actions"><a class="btn" href="api.html#key">Get a key: $5.00 free, no card</a><a class="btn ghost" href="#ask">Try it without a key</a></div>
 <ul class="ticks">
-<li><b>9 national registers read directly:</b> UK, Poland, Norway, France, Finland, Estonia, Ireland, Czech Republic, Latvia. Other countries come from the LEI record, and the answer says so.</li>
-<li><b>"Unverified" never means safe.</b> A check we could not make is reported as not made.</li>
+<li><b>9 national registers read directly:</b> UK, Poland, Norway, France, Finland, Estonia, Ireland, Czech Republic, Latvia.</li>
+<li><b>A source on every check:</b> the link to the register and the date of every list checked.</li>
 <li><b>Pay per result:</b> $0.05 per company checked. Empty and failed calls are free.</li>
 <li><b>Made for agents:</b> HTTP, <a href="api.html#mcp">remote MCP</a>, <a href="api.html#x402">x402 without an account</a>, <a href="llms.txt">llms.txt</a>.</li>
 </ul>
@@ -722,7 +722,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 </section>
 <section class="band" id="ask">
 <h2>Ask in plain words, without a key</h2>
-<p class="lead">The planner is free. It answers with the exact call and its highest possible price, or tells you it does not cover the question. It never guesses.</p>
+<p class="lead">The planner is free. It answers with the exact call and its highest possible price.</p>
 <div class="ask">
 <div id="ask-live" hidden>
 <form class="key" id="ask-form" action="https://api.boscolabs.dev/v1/plan" method="post">
@@ -730,7 +730,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <input id="ask-q" name="question" maxlength="300" required value="Is Carillion plc still active, and is it on a sanctions list?">
 <button class="btn" type="submit">Plan it</button>
 </form>
-<ul class="chips"><li><button type="button" data-q="Is Carillion plc still active, and is it on a sanctions list?">Is Carillion plc still active, and is it on a sanctions list?</button></li><li><button type="button" data-q="Validate VAT number NL004495445B01">Validate VAT number NL004495445B01</button></li><li><button type="button" data-q="Latest filed accounts of Equinor ASA">Latest filed accounts of Equinor ASA</button></li><li><button type="button" data-q="What is the weather in Paris?">What is the weather in Paris?</button></li></ul>
+<ul class="chips"><li><button type="button" data-q="Is Carillion plc still active, and is it on a sanctions list?">Is Carillion plc still active, and is it on a sanctions list?</button></li><li><button type="button" data-q="Validate VAT number NL004495445B01">Validate VAT number NL004495445B01</button></li><li><button type="button" data-q="Latest filed accounts of Equinor ASA">Latest filed accounts of Equinor ASA</button></li><li><button type="button" data-q="New companies registered in Manchester this week">New companies registered in Manchester this week</button></li></ul>
 <div id="ask-out" role="status"></div>
 </div>
 <details><summary>The same question with curl</summary><pre><code>curl -s -X POST https://api.boscolabs.dev/v1/plan \
@@ -740,21 +740,18 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 </section>
 <section class="band" id="coverage">
 <h2>Coverage, country by country</h2>
-<p class="lead">What one counterparty check reads, and where it stops. Sanctions on the company, the LEI, VAT numbers and IBANs work for every country.</p>
-<div class="table"><table><thead><tr><th>Country</th><th>Register status</th><th>Officers screened</th><th>Insolvency</th></tr></thead><tbody>
-<tr><td>UK</td><td>Companies House</td><td>directors and owners (PSCs)</td><td>The Gazette</td></tr>
-<tr><td>Poland</td><td>KRS</td><td>board (names the register shows in full)</td><td>KRS</td></tr>
-<tr><td>Norway</td><td>Brønnøysund</td><td>CEO and board</td><td>register status (bankrupt, winding up)</td></tr>
-<tr><td>France</td><td>Sirene</td><td>directors (RNE)</td><td>BODACC</td></tr>
-<tr><td>Finland, Estonia</td><td>national register</td><td>no open source</td><td>register status</td></tr>
-<tr><td>Ireland</td><td>Companies Registration Office (CRO) open data</td><td>not read</td><td>CRO status (liquidation, examinership, administration; receiverships are not in the open data)</td></tr>
-<tr><td>Czech Republic</td><td>ARES</td><td>not read</td><td>ARES status: in liquidation, or the Insolvency Register holds the company (the stage of the case is not shown)</td></tr>
-<tr><td>Latvia</td><td>Enterprise Register open data</td><td>not read</td><td>the register&#x27;s insolvency and liquidation open data</td></tr>
-<tr><td>Germany</td><td>GLEIF</td><td>no open source</td><td>insolvenzbekanntmachungen.de</td></tr>
-<tr><td>Netherlands</td><td>GLEIF</td><td>no open source</td><td>Centraal Insolventieregister</td></tr>
-<tr><td>Denmark, US, others</td><td>GLEIF, SEC</td><td>no</td><td>unverified</td></tr>
+<p class="lead">What one counterparty check reads in each country. Sanctions screening of the company, the LEI and IBANs work for every country, VAT numbers for the whole EU.</p>
+<div class="table"><table><thead><tr><th>Country</th><th>What one check reads from the national sources</th></tr></thead><tbody>
+<tr><td>UK</td><td>Status: Companies House; insolvency: The Gazette; screened against the sanctions lists: directors and owners (PSCs)</td></tr>
+<tr><td>Poland</td><td>Status: KRS; insolvency: KRS; screened against the sanctions lists: board (names the register shows in full)</td></tr>
+<tr><td>Norway</td><td>Status: Brønnøysund; insolvency: register status (bankrupt, winding up); screened against the sanctions lists: CEO and board</td></tr>
+<tr><td>France</td><td>Status: Sirene; insolvency: BODACC; screened against the sanctions lists: directors (RNE)</td></tr>
+<tr><td>Finland, Estonia</td><td>Status: national register; insolvency: register status</td></tr>
+<tr><td>Ireland</td><td>Status: Companies Registration Office (CRO) open data; insolvency: CRO status (liquidation, examinership, administration)</td></tr>
+<tr><td>Czech Republic</td><td>Status: ARES; insolvency: ARES status: in liquidation, or the Insolvency Register holds the company</td></tr>
+<tr><td>Latvia</td><td>Status: Enterprise Register open data; insolvency: the register&#x27;s insolvency and liquidation open data</td></tr>
 </tbody></table></div>
-<p class="notice">More registers are being added. If you need a country that is not here, <a href="mailto:support@boscolabs.dev">tell us</a>: requests decide the order. The official route per country, and where it gets hard: <a href="registers/index.html">company registers by country</a>.</p>
+<p class="notice">More registers are being added. If you need a country that is not here, <a href="mailto:support@boscolabs.dev">tell us</a>: requests decide the order. The official route per country: <a href="registers/index.html">company registers by country</a>.</p>
 </section>
 <section class="band codes" id="call">
 <h2>Call it from your stack</h2>
@@ -943,7 +940,7 @@ function render(j){out.textContent="";var steps=j.steps||[];
 steps.forEach(function(s){var box=el("div",null,"step"),h=el("p"),a=el("a","POST /v1/"+s.tool);a.href=s.tool+".html";
 h.appendChild(a);h.appendChild(el("span"," \u00b7 at most $"+s.max_usd,"muted"));box.appendChild(h);
 box.appendChild(el("pre",JSON.stringify(s.input,null,1)));out.appendChild(box);});
-(j.not_covered||[]).forEach(function(n){out.appendChild(el("p","Not covered: "+n.request+". "+n.reason,"note"));});
+(j.not_covered||[]).forEach(function(n){out.appendChild(el("p","Not on this API: "+n.request+". "+n.reason+(n.alternative?" Instead: "+n.alternative:""),"note"));});
 (j.missing||[]).forEach(function(m){out.appendChild(el("p","Missing: "+m,"note"));});
 if(steps.length){var p=el("p","Planning is free. This would cost at most $"+j.total_max_usd+" to run; empty and failed calls cost nothing. ","notice");
 var k=el("a","Get a key and run it");k.href="api.html#key";p.appendChild(k);out.appendChild(p);}

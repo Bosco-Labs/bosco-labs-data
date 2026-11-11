@@ -138,7 +138,9 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
     const pages = new Set(["clinical-trials", "company-accounts", "company-check", "company-hiring-signals", "counterparty-check", "dod-contract-awards", "drug-safety", "dutch-address-lookup", "dutch-case-law", "esef-annual-reports", "eu-law-lookup", "eu-rates-inflation", "eu-tenders", "identifier-resolver", "national-law-lookup", "package-vulns", "product-recalls", "sanctions-screening", "sec-company-financials", "sec-company-screen", "sec-filings-feed", "sec-insider-trades", "sec-ownership", "tariff-lookup", "uk-new-companies", "us-federal-awards", "us-federal-rules", "us-house-trades", "vat-iban-check", "weather-forecast"]);  // tools with a page on this site
     const name = (t) => pages.has(t.tool) ? `<a href="${esc(t.tool)}.html">${esc(t.title)}</a>` : esc(t.title);
     const down = s.tools.filter((t) => t.status === "down").length;
-    el("checked").textContent = `Last check ${s.checked_at} (UTC): ${s.tools.length} tools, ${down} down.`;
+    const age = Math.floor((Date.now() - Date.parse(s.checked_at)) / 86400000);
+    el("checked").textContent = `Last check ${s.checked_at} (UTC): ${s.tools.length} tools, ${down} down.` +
+      (age >= 2 ? ` The daily check has not run for ${age} days, so this page is out of date.` : "");
     el("tools").innerHTML = "<div class='table'><table><thead><tr><th>Tool</th><th>Status</th><th>Last 30 days</th><th>Seconds</th><th>Note</th></tr></thead><tbody>" +
       s.tools.map((t) => `<tr><td>${name(t)}</td><td>${esc(t.status)}</td><td>${strip(t)}</td><td>${esc(t.seconds)}</td><td>${esc([t.note, ...(t.warnings || [])].filter(Boolean).join("; "))}</td></tr>`).join("") +
       "</tbody></table></div>";

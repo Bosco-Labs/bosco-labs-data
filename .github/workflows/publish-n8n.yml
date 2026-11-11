@@ -12,14 +12,29 @@
 #      workflow filename publish-n8n.yml. Leave NPM_TOKEN unset.
 #
 # Release: set "version" in n8n-nodes-boscolabs/package.json and VERSION in
-# nodes/BoscoLabs/request.ts to the same number on main, then run this workflow by hand or push
-# the tag n8n-v<version>.
+# nodes/BoscoLabs/request.ts to the same number on main. A push to main that changes package.json
+# or this file publishes that version if npm does not have it yet; so does a run by hand or the
+# tag n8n-v<version>. A version npm already has is skipped, so a second run does no harm.
+# Pull requests that touch the package run every step with `npm publish --dry-run`: nothing is
+# published and no secret is read.
 name: Publish n8n-nodes-boscolabs
 
 on:
   workflow_dispatch: # Actions > Publish n8n-nodes-boscolabs > Run workflow (publishes the version in package.json)
   push:
+    branches: [main]
     tags: ["n8n-v*"] # must equal the version in n8n-nodes-boscolabs/package.json
+    paths: # branch pushes only; tag pushes ignore this filter
+      - n8n-nodes-boscolabs/package.json
+      - .github/workflows/publish-n8n.yml
+  pull_request:
+    paths:
+      - n8n-nodes-boscolabs/**
+      - .github/workflows/publish-n8n.yml
+
+concurrency:
+  group: publish-n8n-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   npm:
@@ -38,7 +53,7 @@ jobs:
           cache: npm
           cache-dependency-path: n8n-nodes-boscolabs/package-lock.json
       - name: The tag must equal the package version
-        if: github.event_name == 'push'
+        if: github.ref_type == 'tag'
         run: |
           version="$(node -p "require('./package.json').version")"
           if [ "$GITHUB_REF_NAME" != "n8n-v$version" ]; then
@@ -48,7 +63,38 @@ jobs:
       - run: npm ci --no-audit --no-fund
       - run: npm test # build + offline tests (mocked HTTP), incl. VERSION == package.json
       - run: npm install -g npm@latest # trusted publishing needs npm 11.5.1 or later
+      - name: Is this version on npm already?
+        id: npm
+        run: |
+          version="$(node -p "require('./package.json').version")"
+          if npm view "n8n-nodes-boscolabs@$version" version >/dev/null 2>&1; then
+            echo "n8n-nodes-boscolabs@$version is on npm already, nothing to publish"
+            echo "published=true" >> "$GITHUB_OUTPUT"
+          elif npm view n8n-nodes-boscolabs name >/dev/null 2>&1; then
+            echo "first=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "first=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Dry run (pull requests publish nothing)
+        if: github.event_name == 'pull_request'
+        run: |
+          npm run lint
+          npm run build
+          npm publish --dry-run
+        env:
+          RELEASE_MODE: "true"
+      - name: The first release needs the NPM_TOKEN secret
+        if: github.event_name != 'pull_request' && steps.npm.outputs.first == 'true'
+        run: |
+          if [ -z "$NPM_TOKEN" ]; then
+            echo "The package is not on npm yet and the repository secret NPM_TOKEN is not set." >&2
+            echo "Add a granular npm token (read and write, all packages) as NPM_TOKEN, then run again." >&2
+            exit 1
+          fi
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Lint, build and publish with provenance
+        if: github.event_name != 'pull_request' && steps.npm.outputs.published != 'true'
         run: |
           if [ -n "$NPM_TOKEN" ]; then
             npm config set //registry.npmjs.org/:_authToken "$NPM_TOKEN"

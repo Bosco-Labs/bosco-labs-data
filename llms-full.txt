@@ -180,13 +180,6 @@ Contact: support@boscolabs.dev
 - [Norway: Brønnøysund registers (Enhetsregisteret)](https://boscolabs.dev/registers/no.html) (read from the national register): How to check a Norwegian company with the open Brønnøysund API, which needs no key, where it stops, and one call that covers it.
 - [Poland: National Court Register (KRS)](https://boscolabs.dev/registers/pl.html) (read from the national register): How to check a Polish company with the open KRS API, which needs no token, what has no API at all, and one call for a full check.
 - [United Kingdom: Companies House](https://boscolabs.dev/registers/gb.html) (read from the national register): How to check a UK company with the free Companies House API, what The Gazette adds for insolvency, and one call that reads both.
-- [Denmark: CVR (Erhvervsstyrelsen)](https://boscolabs.dev/registers/dk.html) (partly covered): Denmark's filed accounts are open without a key while the CVR register itself needs an access application, and one call covers part today.
-- [Germany: Handelsregister (register portal of the federal states)](https://boscolabs.dev/registers/de.html) (partly covered): Germany has no open company register API, the portal caps lookups at 60 an hour and accounts sit behind a CAPTCHA, yet one call covers part.
-- [Netherlands: Handelsregister (KVK) and Centraal Insolventieregister](https://boscolabs.dev/registers/nl.html) (partly covered): The Dutch trade register (KVK) is a paid API whose data you may not pass on, and insolvency sits in a separate register that one call can read.
-- [Austria: Firmenbuch](https://boscolabs.dev/registers/at.html) (not covered yet): Austria's Firmenbuch has a free API after an application in JustizOnline, and Bosco Labs does not read it yet because of its reuse terms.
-- [Belgium: KBO/BCE enterprise register and NBB Central Balance Sheet Office](https://boscolabs.dev/registers/be.html) (not covered yet): Belgian company accounts are free from the National Bank after a manual approval, and Bosco Labs has no key yet, so here is what works today.
-- [Spain: BORME gazette (BOE); Registradores by agreement only](https://boscolabs.dev/registers/es.html) (not covered yet): Spain's open company data is BORME, a daily gazette with no lookup per company, so it cannot give a status, and here is what works today.
-- [Sweden: Bolagsverket](https://boscolabs.dev/registers/se.html) (not covered yet): Bolagsverket has a free API behind a sign-up form that Bosco Labs does not read yet, so here is what we found and what works for Sweden today.
 ## Blog
 
 - [All posts](https://boscolabs.dev/blog/index.html), Atom feed: https://boscolabs.dev/blog/feed.xml
