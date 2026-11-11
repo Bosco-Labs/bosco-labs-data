@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bosco Labs: KYB, sanctions and SEC data for AI agents</title>
-<meta name="description" content="Data tools for AI agents and analysts: SEC filings, insider trades, company accounts, sanctions, EU law, tenders, contracts. Sourced JSON, pay per result.">
+<title>Bosco Labs: company checks from official registers, by API</title>
+<meta name="description" content="One API call checks a company in the UK, France, Poland and 6 more countries: register status, insolvency, accounts, VAT, IBAN and sanctions, with sources.">
 <link rel="canonical" href="https://boscolabs.dev/">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="logo.svg" type="image/svg+xml">
@@ -12,8 +12,8 @@
 <link rel="alternate" type="application/atom+xml" href="blog/feed.xml" title="Bosco Labs blog">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Bosco Labs">
-<meta property="og:title" content="Bosco Labs: KYB, sanctions and SEC data for AI agents">
-<meta property="og:description" content="Data tools for AI agents and analysts: SEC filings, insider trades, company accounts, sanctions, EU law, tenders, contracts. Sourced JSON, pay per result.">
+<meta property="og:title" content="Bosco Labs: company checks from official registers, by API">
+<meta property="og:description" content="One API call checks a company in the UK, France, Poland and 6 more countries: register status, insolvency, accounts, VAT, IBAN and sanctions, with sources.">
 <meta property="og:url" content="https://boscolabs.dev/">
 <meta property="og:image" content="https://boscolabs.dev/logo-512.png">
 <meta name="twitter:card" content="summary">
@@ -39,128 +39,128 @@
     {
      "@type": "ListItem",
      "position": 1,
-     "url": "https://boscolabs.dev/sec-insider-trades.html",
-     "name": "SEC Insider Trading API (Form 4): stock transactions since 2006"
-    },
-    {
-     "@type": "ListItem",
-     "position": 2,
-     "url": "https://boscolabs.dev/sec-filings-feed.html",
-     "name": "SEC EDGAR Filings API: 8-K, 10-K, 10-Q feed since 1994"
-    },
-    {
-     "@type": "ListItem",
-     "position": 3,
-     "url": "https://boscolabs.dev/us-house-trades.html",
-     "name": "Congress Stock Trades API: US House STOCK Act since 2014"
-    },
-    {
-     "@type": "ListItem",
-     "position": 4,
-     "url": "https://boscolabs.dev/sec-ownership.html",
-     "name": "SEC 13F Holdings API: fund & ETF holdings, 13D/13G, Form 144"
-    },
-    {
-     "@type": "ListItem",
-     "position": 5,
-     "url": "https://boscolabs.dev/sec-company-financials.html",
-     "name": "SEC Financial Statements API: income, balance sheet, cash flow"
-    },
-    {
-     "@type": "ListItem",
-     "position": 6,
-     "url": "https://boscolabs.dev/sec-company-screen.html",
-     "name": "SEC Company Screener API: filter all US filers by financials"
-    },
-    {
-     "@type": "ListItem",
-     "position": 7,
-     "url": "https://boscolabs.dev/esef-annual-reports.html",
-     "name": "EU Annual Reports API (ESEF): XBRL financial statements"
-    },
-    {
-     "@type": "ListItem",
-     "position": 8,
-     "url": "https://boscolabs.dev/identifier-resolver.html",
-     "name": "ISIN, LEI, CIK, FIGI & Ticker Resolver API (crosswalk)"
-    },
-    {
-     "@type": "ListItem",
-     "position": 9,
      "url": "https://boscolabs.dev/counterparty-check.html",
      "name": "Counterparty Check API: KYB checklist from official registers"
     },
     {
      "@type": "ListItem",
-     "position": 10,
+     "position": 2,
      "url": "https://boscolabs.dev/company-check.html",
      "name": "Company Check API: due diligence, LEI, financials & SEC filings"
     },
     {
      "@type": "ListItem",
-     "position": 11,
+     "position": 3,
      "url": "https://boscolabs.dev/vat-iban-check.html",
      "name": "VAT Number & IBAN Check API: EU VIES + IBAN validation"
     },
     {
      "@type": "ListItem",
-     "position": 12,
+     "position": 4,
      "url": "https://boscolabs.dev/company-accounts.html",
      "name": "Company Financials API: UK, Denmark (CVR), Norway accounts"
     },
     {
      "@type": "ListItem",
-     "position": 13,
+     "position": 5,
      "url": "https://boscolabs.dev/uk-new-companies.html",
      "name": "UK New Companies API: daily Companies House incorporations"
     },
     {
      "@type": "ListItem",
-     "position": 14,
+     "position": 6,
      "url": "https://boscolabs.dev/company-hiring-signals.html",
      "name": "Company Hiring Signals API: open roles, departments, locations"
     },
     {
      "@type": "ListItem",
-     "position": 15,
+     "position": 7,
      "url": "https://boscolabs.dev/sanctions-screening.html",
      "name": "Sanctions List Screening API: OFAC, UK, EU, UN & US lists"
     },
     {
      "@type": "ListItem",
-     "position": 16,
+     "position": 8,
      "url": "https://boscolabs.dev/eu-law-lookup.html",
      "name": "EU Law Lookup API (EUR-Lex): article text, in force, amendments"
     },
     {
      "@type": "ListItem",
-     "position": 17,
+     "position": 9,
      "url": "https://boscolabs.dev/national-law-lookup.html",
      "name": "UK & Dutch Law Lookup API: article text by date, in force"
     },
     {
      "@type": "ListItem",
-     "position": 18,
+     "position": 10,
      "url": "https://boscolabs.dev/dutch-case-law.html",
      "name": "Dutch Case Law API (Rechtspraak): court rulings by ECLI"
     },
     {
      "@type": "ListItem",
-     "position": 19,
+     "position": 11,
      "url": "https://boscolabs.dev/us-federal-rules.html",
      "name": "Federal Register & eCFR API: CFR text as of a date, changes"
     },
     {
      "@type": "ListItem",
-     "position": 20,
+     "position": 12,
      "url": "https://boscolabs.dev/product-recalls.html",
      "name": "Product Recall Check API: CPSC, NHTSA, FDA & EU Safety Gate"
     },
     {
      "@type": "ListItem",
-     "position": 21,
+     "position": 13,
      "url": "https://boscolabs.dev/tariff-lookup.html",
      "name": "HS Tariff Code & Duty Lookup API: US HTS and UK Tariff"
+    },
+    {
+     "@type": "ListItem",
+     "position": 14,
+     "url": "https://boscolabs.dev/sec-insider-trades.html",
+     "name": "SEC Insider Trading API (Form 4): stock transactions since 2006"
+    },
+    {
+     "@type": "ListItem",
+     "position": 15,
+     "url": "https://boscolabs.dev/sec-filings-feed.html",
+     "name": "SEC EDGAR Filings API: 8-K, 10-K, 10-Q feed since 1994"
+    },
+    {
+     "@type": "ListItem",
+     "position": 16,
+     "url": "https://boscolabs.dev/us-house-trades.html",
+     "name": "Congress Stock Trades API: US House STOCK Act since 2014"
+    },
+    {
+     "@type": "ListItem",
+     "position": 17,
+     "url": "https://boscolabs.dev/sec-ownership.html",
+     "name": "SEC 13F Holdings API: fund & ETF holdings, 13D/13G, Form 144"
+    },
+    {
+     "@type": "ListItem",
+     "position": 18,
+     "url": "https://boscolabs.dev/sec-company-financials.html",
+     "name": "SEC Financial Statements API: income, balance sheet, cash flow"
+    },
+    {
+     "@type": "ListItem",
+     "position": 19,
+     "url": "https://boscolabs.dev/sec-company-screen.html",
+     "name": "SEC Company Screener API: filter all US filers by financials"
+    },
+    {
+     "@type": "ListItem",
+     "position": 20,
+     "url": "https://boscolabs.dev/esef-annual-reports.html",
+     "name": "EU Annual Reports API (ESEF): XBRL financial statements"
+    },
+    {
+     "@type": "ListItem",
+     "position": 21,
+     "url": "https://boscolabs.dev/identifier-resolver.html",
+     "name": "ISIN, LEI, CIK, FIGI & Ticker Resolver API (crosswalk)"
     },
     {
      "@type": "ListItem",
@@ -221,8 +221,8 @@
  ]
 }
 </script>
-<style>:root{color-scheme:light dark;--head:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--body:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;--ink:#1D2721;--muted:#545F58;--bg:#F5F3EA;--surface:#EAE8DC;--line:#D6D3C3;--accent:#2E5A47;--accent-fg:#F5F3EA;--accent2:#8DA889;--accent2-text:#4A6646;--success:#36694A;--warn:#8E5D1C}
-@media (prefers-color-scheme:dark){:root{--ink:#E5E8DE;--muted:#A3ADA4;--bg:#121914;--surface:#1B241E;--line:#2B372F;--accent:#9EC7B1;--accent-fg:#121914;--accent2:#B5C9A4;--accent2-text:#B5C9A4;--success:#93C7A0;--warn:#DDB070}}
+<style>:root{color-scheme:light dark;--head:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--body:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;--ink:#1D2721;--muted:#545F58;--bg:#F5F3EA;--surface:#EAE8DC;--line:#D6D3C3;--accent:#2E5A47;--accent-fg:#F5F3EA;--accent2:#8DA889;--accent2-text:#4A6646;--success:#36694A;--warn:#8E5D1C;--danger:#9B2C2C}
+@media (prefers-color-scheme:dark){:root{--ink:#E5E8DE;--muted:#A3ADA4;--bg:#121914;--surface:#1B241E;--line:#2B372F;--accent:#9EC7B1;--accent-fg:#121914;--accent2:#B5C9A4;--accent2-text:#B5C9A4;--success:#93C7A0;--warn:#DDB070;--danger:#F0A29A}}
 *{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--body)}h1,h2,h3,.brand{font-family:var(--head)}
 a{color:var(--accent);text-underline-offset:2px}.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
@@ -260,35 +260,548 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key label{flex-
 .note{border-left:3px solid var(--warn);background:var(--surface);border-radius:0 10px 10px 0;padding:10px 14px;margin:14px 0;font-size:.95rem}.notice{font-size:.88rem;color:var(--muted)}
 nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-items:center;min-height:44px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
-@media (max-width:560px){.head{flex-direction:column;gap:12px}.head img{width:64px;height:64px}.hero{padding-top:32px}}</style>
+@media (max-width:560px){.head{flex-direction:column;gap:12px}.head img{width:64px;height:64px}.hero{padding-top:32px}}
+.navcta{background:var(--accent);color:var(--accent-fg)!important;font-weight:650;padding:0 14px;border-radius:9px}
+.eyebrow{font-size:.8rem;font-weight:650;letter-spacing:.07em;text-transform:uppercase;color:var(--accent2-text);margin:0 0 14px}
+.hero2{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:44px;align-items:start;padding:54px 0 12px}
+.hero2 h1{font-size:clamp(2rem,4.4vw,3.05rem);line-height:1.08;letter-spacing:-.03em;margin-bottom:18px}.hero2 .lead{font-size:1.15rem}
+.ticks{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:11px;font-size:.96rem;color:var(--muted)}.ticks li{padding-left:27px;position:relative}.ticks b{color:var(--ink)}
+.ticks li::before{content:"";position:absolute;left:2px;top:.48em;width:12px;height:7px;border-left:2.5px solid var(--success);border-bottom:2.5px solid var(--success);transform:rotate(-45deg)}
+.demo{background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:0 1px 2px rgb(0 0 0/.05),0 18px 40px -18px rgb(0 0 0/.28);overflow:hidden;min-width:0}
+.demo-top{display:flex;align-items:center;gap:9px;margin:0;padding:11px 16px;font-size:.82rem;color:var(--muted);border-bottom:1px solid var(--line)}
+.live{width:8px;height:8px;border-radius:50%;background:var(--success);flex:none}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;padding:10px 12px;border-bottom:1px solid var(--line)}
+.tabs button{flex:none;min-height:40px;font:inherit;font-size:.86rem;padding:6px 13px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--ink);cursor:pointer}
+.tabs button:hover{border-color:var(--accent)}.tabs button[aria-selected=true]{background:var(--accent);color:var(--accent-fg);border-color:var(--accent)}
+.panel{padding:14px 16px 8px}.panel+.panel{border-top:1px solid var(--line)}.demo.js .panel{height:590px;overflow:auto;border-top:0}
+.req{background:var(--bg);font-size:.8rem;margin-bottom:14px;white-space:pre-wrap;overflow-wrap:anywhere}.co{margin:0 0 10px;line-height:1.4}.co+.checks{margin-bottom:16px}
+.checks{list-style:none;margin:0;padding:0;display:grid;gap:9px;font-size:.88rem;line-height:1.45}.checks li{display:grid;grid-template-columns:88px minmax(0,1fr);gap:10px;align-items:start}.checks b{font-weight:650}
+.pill{display:inline-block;text-align:center;font-size:.7rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;line-height:1.5;padding:1px 7px;border-radius:6px;border:1px solid currentColor;background:var(--bg)}
+.pill.pass{color:var(--success)}.pill.fail{color:var(--danger)}.pill.review{color:var(--warn)}.pill.unverified{color:var(--muted)}
+.tally{font-size:.86rem;font-weight:650;margin:14px 0 4px}.panel details{background:var(--bg)}.panel details pre{max-height:320px;border:0;padding:0 0 10px;background:none}.panel .table{margin-bottom:8px}.panel td:last-child,.panel th:last-child{text-align:right;font-variant-numeric:tabular-nums}
+@keyframes arrive{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}.panel.run .req{animation:arrive .22s ease both}.panel.run .read{animation:arrive .42s .14s ease both}
+.band{margin-top:60px}.band>h2{font-size:1.55rem;margin:0 0 8px}.band>p.lead{margin:0 0 18px}
+.jobs{list-style:none;padding:0;margin:0;display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,235px),1fr))}.jobs li{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px}.jobs h3{margin:0 0 6px;font-size:1.05rem}.jobs p{margin:0 0 8px;font-size:.93rem;color:var(--muted)}.jobs a{font-size:.92rem}
+.ask{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px}.ask form.key{margin-top:0}.ask form.key input{background:var(--bg)}.ask .chips{margin:6px 0 0}.ask .chips button{min-height:40px;font:inherit;font-size:.88rem;border:1px solid var(--line);border-radius:999px;padding:4px 12px;background:var(--bg);color:var(--ink);cursor:pointer}.ask .chips button:hover{border-color:var(--accent)}
+#ask-out{margin-top:14px}#ask-out:empty{margin:0}.step{border-top:1px solid var(--line);padding:12px 0}.step p{margin:0 0 8px}.step pre{background:var(--bg)}
+.codes h3{margin:0 0 8px}.codes pre{font-size:.8rem}
+@media (max-width:900px){.hero2{grid-template-columns:1fr;gap:30px;padding-top:30px}.demo.js .panel{height:auto;max-height:560px}}
+@media (max-width:560px){.checks li{grid-template-columns:1fr;gap:4px}.pill{justify-self:start}}</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site"><div class="wrap"><a class="brand" href="/"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
-<nav aria-label="Main"><a href="/#tools">Tools</a><a href="api.html">API</a><a href="account.html">Account</a><a href="blog/index.html">Blog</a><a href="/#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
+<nav aria-label="Main"><a href="/#demo">Company checks</a><a href="/#tools">All tools</a><a href="api.html">API and prices</a><a href="blog/index.html">Blog</a><a href="llms.txt">llms.txt</a><a href="account.html">Account</a><a class="navcta" href="api.html#key">Get a key</a></nav></div></header>
 <main class="wrap" id="main">
-<section class="hero">
-<h1>Official-source data for AI agents and analysts</h1>
-<p class="lead">Clean, typed JSON from SEC EDGAR, Companies House, EUR-Lex, TED, USAspending, ClinicalTrials.gov and other official registers. Call each tool by API or from an AI agent over MCP, and pay per result. Every row links to its source.</p>
-<p class="muted">30 tools live &middot; 29 on the HTTP API, remote MCP and x402 &middot; 30 also on the Apify Store</p>
-<p class="muted"><b>Try it free:</b> <a href="api.html#key">a key by e-mail with $5.00 of credit</a>, or no sign-up at all: the MCP server <code>https://api.boscolabs.dev/mcp/free</code> (query planner, LEI and SEC company lookups), <code>uvx bosco-vendor-check --demo</code>, or <code>POST https://api.boscolabs.dev/v1/plan</code> with your question.</p>
-<div class="actions"><a class="btn" href="#tools">Browse the tools</a><a class="btn ghost" href="q/index.html">Example questions</a><a class="btn ghost" href="llms.txt">For agents: llms.txt</a></div>
-<p>Can an agent check a supplier with web search alone? See the <a href="benchmark.html">counterparty check benchmark</a> (25 companies, web search vs one API call) and <a href="blog/index.html">the blog</a> for how we ran it.</p>
-<ul class="chips"><li><a href="#finance-sec">Finance &amp; SEC</a></li><li><a href="#companies">Companies</a></li><li><a href="#compliance-law">Compliance &amp; law</a></li><li><a href="#government-procurement">Government &amp; procurement</a></li><li><a href="#macro-health-places">Macro, health &amp; places</a></li><li><a href="#software-security">Software security</a></li></ul>
-</section>
-<span id="tools"></span>
-<section id="finance-sec">
-<h2>Finance &amp; SEC</h2>
-<ul class="grid">
-<li class="card"><div class="card-top"><img src="icons/sec-insider-trades.svg" alt="" width="48" height="48"><h3><a href="sec-insider-trades.html">SEC Insider Trading API (Form 4)</a></h3></div><p>Every SEC Form 4 insider stock transaction (purchase or sale) since 2006 as JSON, with cluster-buy signals. Filter by ticker, role, value and date.</p><div class="row"><span class="price">$0.0018 per transaction row and $0.02 per cluster signal</span><a href="https://apify.com/bosco_labs/sec-insider-trades">Apify Store</a> &middot; <a href="sec-insider-trades.html#where">API</a></div></li>
-<li class="card"><div class="card-top"><img src="icons/sec-filings-feed.svg" alt="" width="48" height="48"><h3><a href="sec-filings-feed.html">SEC EDGAR Filings API</a></h3></div><p>SEC EDGAR filings as JSON for one company or the whole market, latest live or since 1994: 8-K items, earnings releases, filing links. No scraper setup.</p><div class="row"><span class="price">$0.001 per filing</span><a href="https://apify.com/bosco_labs/sec-filings-feed">Apify Store</a> &middot; <a href="sec-filings-feed.html#where">API</a></div></li>
-<li class="card"><div class="card-top"><img src="icons/us-house-trades.svg" alt="" width="48" height="48"><h3><a href="us-house-trades.html">Congress Stock Trades API</a></h3></div><p>Congress stock trading disclosures by US House members (politicians) under the STOCK Act since 2014, from official Clerk filings: ticker, amount, delay.</p><div class="row"><span class="price">$0.0018 per trade</span><a href="https://apify.com/bosco_labs/us-house-trades">Apify Store</a> &middot; <a href="us-house-trades.html#where">API</a></div></li>
-<li class="card"><div class="card-top"><img src="icons/sec-ownership.svg" alt="" width="48" height="48"><h3><a href="sec-ownership.html">SEC 13F Holdings API</a></h3></div><p>Who owns a stock: 13F manager holdings, mutual fund and ETF N-PORT holdings with changes, funds holding a ticker, 13D/13G stakes and Form 144 sales.</p><div class="row"><span class="price">$0.0018 per row, plus $0.01 per &quot;who holds this stock&quot; search (13F or N-PORT data set)</span><a href="https://apify.com/bosco_labs/sec-ownership">Apify Store</a> &middot; <a href="sec-ownership.html#where">API</a></div></li>
-<li class="card"><div class="card-top"><img src="icons/sec-company-financials.svg" alt="" width="48" height="48"><h3><a href="sec-company-financials.html">SEC Financial Statements API</a></h3></div><p>Income statement, balance sheet and cash flow of US-listed companies from SEC XBRL, per year or quarter since 2009, by ticker or CIK, each value sourced.</p><div class="row"><span class="price">$0.005 per company-period row</span><a href="https://apify.com/bosco_labs/sec-company-financials">Apify Store</a> &middot; <a href="sec-company-financials.html#where">API</a></div></li>
-<li class="card"><div class="card-top"><img src="icons/sec-company-screen.svg" alt="" width="48" height="48"><h3><a href="sec-company-screen.html">SEC Company Screener API</a></h3></div><p>Screen all US SEC filers by revenue, net income, margins, cash flow and 30 more metrics for one year or quarter. Each value cites its SEC filing.</p><div class="row"><span class="price">$0.002 per company returned</span><a href="https://apify.com/bosco_labs/sec-company-screen">Apify Store</a> &middot; <a href="sec-company-screen.html#where">API</a></div></li>
-<li class="card"><div class="card-top"><img src="icons/esef-annual-reports.svg" alt="" width="48" height="48"><h3><a href="esef-annual-reports.html">EU Annual Reports API (ESEF)</a></h3></div><p>Revenue, operating income, net income, EPS, equity, cash flow from ESEF annual reports of EU listed companies in 28 countries, linked to the XBRL facts.</p><div class="row"><span class="price">$0.01 per run plus $0.05 per annual report; raw XBRL fact rows, if switched on, $0.0005 each</span><a href="https://apify.com/bosco_labs/esef-annual-reports">Apify Store</a> &middot; <a href="esef-annual-reports.html#where">API</a></div></li>
-<li class="card"><div class="card-top"><img src="icons/identifier-resolver.svg" alt="" width="48" height="48"><h3><a href="identifier-resolver.html">ISIN, LEI, CIK, FIGI &amp; Ticker Resolver API (crosswalk)</a></h3></div><p>Resolve an ISIN, LEI, CIK, ticker, FIGI or company name to issuer name, LEI, CIK, tickers, FIGIs, CFI code and EU trading venues, each with a source URL.</p><div class="row"><span class="price">$0.002 per resolved identifier</span><a href="https://apify.com/bosco_labs/identifier-resolver">Apify Store</a> &middot; <a href="identifier-resolver.html#where">API</a></div></li>
+<section class="hero2">
+<div>
+<p class="eyebrow">Official company data for AI agents</p>
+<h1>Check a company against the official registers, in one API call</h1>
+<p class="lead">Register status, insolvency, filed accounts, VAT number, IBAN and six official sanctions lists, read from the official sources. Each check comes back as pass, fail, review or unverified, with a link to the register behind it and the date of every list checked.</p>
+<div class="actions"><a class="btn" href="api.html#key">Get a key: $5.00 free, no card</a><a class="btn ghost" href="#ask">Try it without a key</a></div>
+<ul class="ticks">
+<li><b>9 national registers read directly:</b> UK, Poland, Norway, France, Finland, Estonia, Ireland, Czech Republic, Latvia. Other countries come from the LEI record, and the answer says so.</li>
+<li><b>"Unverified" never means safe.</b> A check we could not make is reported as not made.</li>
+<li><b>Pay per result:</b> $0.05 per company checked. Empty and failed calls are free.</li>
+<li><b>Made for agents:</b> HTTP, <a href="api.html#mcp">remote MCP</a>, <a href="api.html#x402">x402 without an account</a>, <a href="llms.txt">llms.txt</a>.</li>
 </ul>
+</div>
+<div class="demo" id="demo">
+<p class="demo-top"><span class="live" aria-hidden="true"></span>Real answers, recorded from the live API on 10 November 2026</p>
+<div class="tabs" role="tablist" aria-label="Recorded examples"><button type="button" role="tab" id="t-liquidation" aria-controls="p-liquidation" aria-selected="true">UK company in liquidation</button><button type="button" role="tab" id="t-active-fr" aria-controls="p-active-fr" aria-selected="false">Active French company</button><button type="button" role="tab" id="t-sanctioned" aria-controls="p-sanctioned" aria-selected="false">Sanctioned company</button><button type="button" role="tab" id="t-vat-iban" aria-controls="p-vat-iban" aria-selected="false">VAT number and IBAN</button><button type="button" role="tab" id="t-accounts" aria-controls="p-accounts" aria-selected="false">Filed accounts</button></div>
+<div class="panel" role="tabpanel" id="p-liquidation" aria-labelledby="t-liquidation">
+<pre class="req"><code>POST /v1/counterparty-check
+{&quot;query&quot;: &quot;Carillion plc&quot;, &quot;country&quot;: &quot;GB&quot;}</code></pre>
+<div class="read"><p class="co"><b>CARILLION PLC</b><br><span class="muted">GB &middot; Companies House &middot; no. 03782379</span></p><ul class="checks"><li><span class="pill fail">fail</span><div><b>register status:</b> Register status: liquidation. <a href="https://find-and-update.company-information.service.gov.uk/company/03782379">Companies House</a></div></li><li><span class="pill review">review</span><div><b>lei status:</b> LEI 6SNZTEXLR1M5211YYB89 is LAPSED (not renewed: data may be stale). <a href="https://search.gleif.org/#/record/6SNZTEXLR1M5211YYB89">GLEIF</a></div></li><li><span class="pill fail">fail</span><div><b>insolvency:</b> Companies House insolvency record: compulsory-liquidation (petitioned-on 2018-01-15, wound-up-on 2018-01-15). Company status: liquidation. <a href="https://find-and-update.company-information.service.gov.uk/company/03782379/insolvency">Companies House</a></div></li><li><span class="pill review">review</span><div><b>accounts recent:</b> Newest annual accounts filed: year ending 2016-12-31 (119 months ago), as PDF only: the figures were not read. Older than 24 months: overdue or no longer filing? <a href="https://find-and-update.company-information.service.gov.uk/company/03782379/filing-history">Companies House</a></div></li><li><span class="pill pass">pass</span><div><b>sanctions entity:</b> No match. Checked: UN Security Council Consolidated List 2026-11-10, OFAC Consolidated (non-SDN) List 2026-11-04, US Consolidated Screening List (Commerce, State) 2026-11-10, UK Sanctions List 2026-11-10, EU Consolidated Financial Sanctions List 2026-10-23, OFAC SDN List 2026-11-09. <span class="muted">(OFAC, UN, UK, EU and US export lists)</span></div></li><li><span class="pill pass">pass</span><div><b>sanctions people:</b> No match for 7 officer/owner name(s). <span class="muted">(OFAC, UN, UK, EU and US export lists)</span></div></li><li><span class="pill unverified">unverified</span><div><b>vat number:</b> No VAT number given or found in the register; pass `vatNumber` to check one.</div></li></ul><p class="tally">2 pass &middot; 2 fail &middot; 2 review &middot; 1 unverified</p></div>
+<details><summary>The JSON an agent gets</summary><pre><code>{
+ &quot;query&quot;: &quot;Carillion plc&quot;,
+ &quot;status&quot;: &quot;checked&quot;,
+ &quot;company&quot;: {
+  &quot;legal_name&quot;: &quot;CARILLION PLC&quot;,
+  &quot;country&quot;: &quot;GB&quot;,
+  &quot;registration_number&quot;: &quot;03782379&quot;,
+  &quot;register&quot;: &quot;Companies House&quot;,
+  &quot;status&quot;: &quot;liquidation&quot;,
+  &quot;legal_form&quot;: &quot;plc&quot;,
+  &quot;registered_address&quot;: &quot;Central Square 8th Floor, 29 Wellington Street, LS1 4DL Leeds&quot;,
+  &quot;lei&quot;: &quot;6SNZTEXLR1M5211YYB89&quot;,
+  &quot;lei_status&quot;: &quot;LAPSED&quot;
+ },
+ &quot;checks&quot;: [
+  {
+   &quot;check&quot;: &quot;register_status&quot;,
+   &quot;status&quot;: &quot;fail&quot;,
+   &quot;detail&quot;: &quot;Register status: liquidation.&quot;,
+   &quot;source&quot;: &quot;Companies House&quot;,
+   &quot;source_url&quot;: &quot;https://find-and-update.company-information.service.gov.uk/company/03782379&quot;,
+   &quot;checked_at&quot;: &quot;2026-11-10T23:28:32+00:00&quot;
+  },
+  {
+   &quot;check&quot;: &quot;lei_status&quot;,
+   &quot;status&quot;: &quot;review&quot;,
+   &quot;detail&quot;: &quot;LEI 6SNZTEXLR1M5211YYB89 is LAPSED (not renewed: data may be stale).&quot;,
+   &quot;source&quot;: &quot;GLEIF&quot;,
+   &quot;source_url&quot;: &quot;https://search.gleif.org/#/record/6SNZTEXLR1M5211YYB89&quot;,
+   &quot;checked_at&quot;: &quot;2026-11-10T23:28:32+00:00&quot;
+  },
+  {
+   &quot;check&quot;: &quot;insolvency&quot;,
+   &quot;status&quot;: &quot;fail&quot;,
+   &quot;detail&quot;: &quot;Companies House insolvency record: compulsory-liquidation (petitioned-on 2018-01-15, wound-up-on 2018-01-15). Company status: liquidation.&quot;,
+   &quot;source&quot;: &quot;Companies House&quot;,
+   &quot;source_url&quot;: &quot;https://find-and-update.company-information.service.gov.uk/company/03782379/insolvency&quot;,
+   &quot;checked_at&quot;: &quot;2026-11-10T23:28:32+00:00&quot;
+  },
+  {
+   &quot;check&quot;: &quot;accounts_recent&quot;,
+   &quot;status&quot;: &quot;review&quot;,
+   &quot;detail&quot;: &quot;Newest annual accounts filed: year ending 2016-12-31 (119 months ago), as PDF only: the figures were not read. Older than 24 months: overdue or no longer filing?&quot;,
+   &quot;source&quot;: &quot;Companies House&quot;,
+   &quot;source_url&quot;: &quot;https://find-and-update.company-information.service.gov.uk/company/03782379/filing-history&quot;,
+   &quot;checked_at&quot;: &quot;2026-11-10T23:28:32+00:00&quot;
+  },
+  {
+   &quot;check&quot;: &quot;sanctions_entity&quot;,
+   &quot;status&quot;: &quot;pass&quot;,
+   &quot;detail&quot;: &quot;No match. Checked: UN Security Council Consolidated List 2026-11-10, OFAC Consolidated (non-SDN) List 2026-11-04, US Consolidated Screening List (Commerce, State) 2026-11-10, UK Sanctions List 2026-11-10, EU Consolidated Financial Sanctions List 2026-10-23, OFAC SDN List 2026-11-09.&quot;,
+   &quot;source&quot;: &quot;OFAC, UN, UK, EU and US export lists&quot;,
+   &quot;source_url&quot;: null,
+   &quot;checked_at&quot;: &quot;2026-11-10T23:28:32+00:00&quot;
+  },
+  {
+   &quot;check&quot;: &quot;sanctions_people&quot;,
+   &quot;status&quot;: &quot;pass&quot;,
+   &quot;detail&quot;: &quot;No match for 7 officer/owner name(s).&quot;,
+   &quot;source&quot;: &quot;OFAC, UN, UK, EU and US export lists&quot;,
+   &quot;source_url&quot;: null,
+   &quot;checked_at&quot;: &quot;2026-11-10T23:28:32+00:00&quot;
+  },
+  {
+   &quot;check&quot;: &quot;vat_number&quot;,
+   &quot;status&quot;: &quot;unverified&quot;,
+   &quot;detail&quot;: &quot;No VAT number given or found in the register; pass `vatNumber` to check one.&quot;,
+   &quot;source&quot;: null,
+   &quot;source_url&quot;: null,
+   &quot;checked_at&quot;: &quot;2026-11-10T23:28:32+00:00&quot;
+  }
+ ],
+ &quot;summary&quot;: {
+  &quot;pass&quot;: 2,
+  &quot;fail&quot;: 2,
+  &quot;review&quot;: 2,
+  &quot;unverified&quot;: 1,
+  &quot;needs_attention&quot;: [
+   &quot;register_status&quot;,
+   &quot;lei_status&quot;,
+   &quot;insolvency&quot;,
+   &quot;accounts_recent&quot;
+  ],
+  &quot;unverified_checks&quot;: [
+   &quot;vat_number&quot;
+  ]
+ },
+ &quot;notice&quot;: &quot;Screening aid built from official sources, not a compliance, credit or legal determination. &#x27;unverified&#x27; means not checked, never &#x27;safe&#x27;. Review every &#x27;fail&#x27; and &#x27;review&#x27; against the linked source before acting.&quot;,
+ &quot;source_url&quot;: &quot;https://find-and-update.company-information.service.gov.uk/company/03782379&quot;,
+ &quot;retrieved_at&quot;: &quot;2026-11-10T23:28:32+00:00&quot;
+}</code></pre></details>
+<p class="notice">$0.05 &middot; <a href="counterparty-check.html">all fields, limits and sources</a> &middot; left out of this sample: officer names, the per-list sanctions detail and the per-field source links.</p>
+</div>
+<div class="panel" role="tabpanel" id="p-active-fr" aria-labelledby="t-active-fr">
+<pre class="req"><code>POST /v1/counterparty-check
+{&quot;query&quot;: &quot;Doctolib&quot;, &quot;country&quot;: &quot;FR&quot;}</code></pre>
+<div class="read"><p class="co"><b>DOCTOLIB</b><br><span class="muted">FR &middot; Sirene (INSEE) &middot; no. 794598813</span></p><ul class="checks"><li><span class="pill pass">pass</span><div><b>register status:</b> Register status: active. <a href="https://recherche-entreprises.api.gouv.fr/search?q=794598813">Sirene (INSEE)</a></div></li><li><span class="pill pass">pass</span><div><b>lei status:</b> LEI 969500BPSLCSC039UV67 is ISSUED. <a href="https://search.gleif.org/#/record/969500BPSLCSC039UV67">GLEIF</a></div></li><li><span class="pill pass">pass</span><div><b>insolvency:</b> No insolvency notice or open proceeding found. <a href="https://www.bodacc.fr/pages/annonces-commerciales/?q.registre=794598813">BODACC (DILA), Licence Ouverte 2.0</a></div></li><li><span class="pill unverified">unverified</span><div><b>accounts recent:</b> French figures cover listed companies (ESEF) only: INPI&#x27;s annual-accounts API needs an account, and the open INPI-derived &#x27;Ratios financiers&#x27; dataset files figures under the wrong fiscal year, so it is not used.</div></li><li><span class="pill pass">pass</span><div><b>sanctions entity:</b> No match. Checked: UK Sanctions List 2026-11-10, US Consolidated Screening List (Commerce, State) 2026-11-10, OFAC Consolidated (non-SDN) List 2026-11-04, UN Security Council Consolidated List 2026-11-10, EU Consolidated Financial Sanctions List 2026-10-23, OFAC SDN List 2026-11-09. <span class="muted">(OFAC, UN, UK, EU and US export lists)</span></div></li><li><span class="pill pass">pass</span><div><b>sanctions people:</b> No match for 3 officer/owner name(s). <span class="muted">(OFAC, UN, UK, EU and US export lists)</span></div></li><li><span class="pill unverified">unverified</span><div><b>vat number:</b> No VAT number given or found in the register; pass `vatNumber` to check one.</div></li></ul><p class="tally">5 pass &middot; 2 unverified</p></div>
+<details><summary>The JSON an agent gets</summary><pre><code>{
+ &quot;query&quot;: &quot;Doctolib&quot;,
+ &quot;status&quot;: &quot;checked&quot;,
+ &quot;company&quot;: {
+  &quot;legal_name&quot;: &quot;DOCTOLIB&quot;,
+  &quot;country&quot;: &quot;FR&quot;,
+  &quot;registration_number&quot;: &quot;794598813&quot;,
+  &quot;register&quot;: &quot;Sirene (INSEE)&quot;,
+  &quot;status&quot;: &quot;active&quot;,
+  &quot;legal_form&quot;: &quot;SAS, société par actions simplifiée&quot;,
+  &quot;registered_address&quot;: &quot;54 QUAI CHARLES PASQUA 92300 LEVALLOIS-PERRET, FR&quot;,
+  &quot;registration_date&quot;: &quot;2013-07-15&quot;,
+  &quot;industry_code&quot;: &quot;62.01Z&quot;,
+  &quot;industry_description&quot;: &quot;Programmation informatique&quot;,
+  &quot;employees_band&quot;: &quot;1000-1999 employees (2024)&quot;,
+  &quot;lei&quot;: &quot;969500BPSLCSC039UV67&quot;,
+  &quot;lei_status&quot;: &quot;ISSUED&quot;
+ },
+ &quot;checks&quot;: [
+  {
+   &quot;check&quot;: &quot;register_status&quot;,
+   &quot;status&quot;: &quot;pass&quot;,
+   &quot;detail&quot;: &quot;Register status: active.&quot;,
+   &quot;source&quot;: &quot;Sirene (INSEE)&quot;,
+   &quot;source_url&quot;: &quot;https://recherche-entreprises.api.gouv.fr/search?q=794598813&quot;,
+   &quot;checked_at&quot;: &quot;2026-11-10T23:28:31+00:00&quot;
+  },
+  {
+   &quot;check&quot;: &quot;lei_status&quot;,
+   &quot;status&quot;: &quot;pass&quot;,
+   &quot;detail&quot;: &quot;LEI 969500BPSLCSC039UV67 is ISSUED.&quot;,
+   &quot;source&quot;: &quot;GLEIF&quot;,
+   &quot;source_url&quot;: &quot;https://search.gleif.org/#/record/969500BPSLCSC039UV67&quot;,
+   &quot;checked_at&quot;: &quot;2026-11-10T23:28:31+00:00&quot;
+  },
+  {
+   &quot;check&quot;: &quot;insolvency&quot;,
+   &quot;status&quot;: &quot;pass&quot;,
+   &quot;detail&quot;: &quot;No insolvency notice or open proceeding found.&quot;,
+   &quot;source&quot;: &quot;BODACC (DILA), Licence Ouverte 2.0&quot;,
+   &quot;source_url&quot;: &quot;https://www.bodacc.fr/pages/annonces-commerciales/?q.registre=794598813&quot;,
+   &quot;checked_at&quot;: &quot;2026-11-10T23:28:31+00:00&quot;
+  },
+  {
+   &quot;check&quot;: &quot;accounts_recent&quot;,
+   &quot;status&quot;: &quot;unverified&quot;,
+   &quot;detail&quot;: &quot;French figures cover listed companies (ESEF) only: INPI&#x27;s annual-accounts API needs an account, and the open INPI-derived &#x27;Ratios financiers&#x27; dataset files figures under the wrong fiscal year, so it is not used.&quot;,
+   &quot;source&quot;: null,
+   &quot;source_url&quot;: null,
+   &quot;checked_at&quot;: &quot;2026-11-10T23:28:31+00:00&quot;
+  },
+  {
+   &quot;check&quot;: &quot;sanctions_entity&quot;,
+   &quot;status&quot;: &quot;pass&quot;,
+   &quot;detail&quot;: &quot;No match. Checked: UK Sanctions List 2026-11-10, US Consolidated Screening List (Commerce, State) 2026-11-10, OFAC Consolidated (non-SDN) List 2026-11-04, UN Security Council Consolidated List 2026-11-10, EU Consolidated Financial Sanctions List 2026-10-23, OFAC SDN List 2026-11-09.&quot;,
+   &quot;source&quot;: &quot;OFAC, UN, UK, EU and US export lists&quot;,
+   &quot;source_url&quot;: null,
+   &quot;checked_at&quot;: &quot;2026-11-10T23:28:31+00:00&quot;
+  },
+  {
+   &quot;check&quot;: &quot;sanctions_people&quot;,
+   &quot;status&quot;: &quot;pass&quot;,
+   &quot;detail&quot;: &quot;No match for 3 officer/owner name(s).&quot;,
+   &quot;source&quot;: &quot;OFAC, UN, UK, EU and US export lists&quot;,
+   &quot;source_url&quot;: null,
+   &quot;checked_at&quot;: &quot;2026-11-10T23:28:31+00:00&quot;
+  },
+  {
+   &quot;check&quot;: &quot;vat_number&quot;,
+   &quot;status&quot;: &quot;unverified&quot;,
+   &quot;detail&quot;: &quot;No VAT number given or found in the register; pass `vatNumber` to check one.&quot;,
+   &quot;source&quot;: null,
+   &quot;source_url&quot;: null,
+   &quot;checked_at&quot;: &quot;2026-11-10T23:28:31+00:00&quot;
+  }
+ ],
+ &quot;summary&quot;: {
+  &quot;pass&quot;: 5,
+  &quot;fail&quot;: 0,
+  &quot;review&quot;: 0,
+  &quot;unverified&quot;: 2,
+  &quot;needs_attention&quot;: [],
+  &quot;unverified_checks&quot;: [
+   &quot;accounts_recent&quot;,
+   &quot;vat_number&quot;
+  ]
+ },
+ &quot;notice&quot;: &quot;Screening aid built from official sources, not a compliance, credit or legal determination. &#x27;unverified&#x27; means not checked, never &#x27;safe&#x27;. Review every &#x27;fail&#x27; and &#x27;review&#x27; against the linked source before acting.&quot;,
+ &quot;source_url&quot;: &quot;https://recherche-entreprises.api.gouv.fr/search?q=794598813&quot;,
+ &quot;retrieved_at&quot;: &quot;2026-11-10T23:28:31+00:00&quot;
+}</code></pre></details>
+<p class="notice">$0.05 &middot; <a href="counterparty-check.html">all fields, limits and sources</a> &middot; left out of this sample: officer names, the per-list sanctions detail and the per-field source links.</p>
+</div>
+<div class="panel" role="tabpanel" id="p-sanctioned" aria-labelledby="t-sanctioned">
+<pre class="req"><code>POST /v1/counterparty-check
+{&quot;query&quot;: &quot;Rosneft Oil Company&quot;, &quot;country&quot;: &quot;RU&quot;}</code></pre>
+<div class="read"><p class="co"><b>публичное акционерное общество &quot;Нефтяная компания &quot;Роснефть&quot;</b><br><span class="muted">RU &middot; GLEIF registration authority RA000499 &middot; no. 1027700043502</span></p><ul class="checks"><li><span class="pill pass">pass</span><div><b>register status:</b> Register status: active. From the LEI record (renewed yearly); the national register was not read. <a href="https://api.gleif.org/api/v1/lei-records/253400JT3MQWNDKMJE44">GLEIF</a></div></li><li><span class="pill pass">pass</span><div><b>lei status:</b> LEI 253400JT3MQWNDKMJE44 is ISSUED. <a href="https://search.gleif.org/#/record/253400JT3MQWNDKMJE44">GLEIF</a></div></li><li><span class="pill unverified">unverified</span><div><b>insolvency:</b> Insolvency covers the UK, Poland, France, Germany and the Netherlands (insolvency registers) and Norway, Finland, Estonia, Ireland, the Czech Republic and Latvia (register status).</div></li><li><span class="pill unverified">unverified</span><div><b>accounts recent:</b> No machine-readable annual accounts found (filings.xbrl.org (ESEF)).</div></li><li><span class="pill fail">fail</span><div><b>sanctions entity:</b> Listed: OPEN JOINT-STOCK COMPANY ROSNEFT OIL COMPANY on OFAC Consolidated (non-SDN) List (entry 17022) with Registration ID &#x27;1027700043502&#x27;, this company&#x27;s registration number. <a href="https://sanctionssearch.ofac.treas.gov/Details.aspx?id=17022">OFAC Consolidated (non-SDN) List</a></div></li><li><span class="pill unverified">unverified</span><div><b>sanctions people:</b> No officer or owner names known (the UK, Polish, Norwegian and French registers list them; Polish names are masked).</div></li><li><span class="pill unverified">unverified</span><div><b>vat number:</b> No VAT number given or found in the register; pass `vatNumber` to check one.</div></li></ul><p class="tally">2 pass &middot; 1 fail &middot; 4 unverified</p></div>
+<details><summary>The JSON an agent gets</summary><pre><code>{
+ &quot;query&quot;: &quot;Rosneft Oil Company&quot;,
+ &quot;status&quot;: &quot;checked&quot;,
+ &quot;company&quot;: {
+  &quot;legal_name&quot;: &quot;публичное акционерное общество \&quot;Нефтяная компания \&quot;Роснефть\&quot;&quot;,
+  &quot;country&quot;: &quot;RU&quot;,
+  &quot;registration_number&quot;: &quot;1027700043502&quot;,
+  &quot;register&quot;: &quot;GLEIF registration authority RA000499&quot;,
+  &quot;status&quot;: &quot;active&quot;,
+  &quot;legal_form&quot;: &quot;Publichnyye aktsionernyye obshchestva&quot;,
+  &quot;registered_address&quot;: &quot;набережная Софийская, дом 26/1, 115035 Москва, RU&quot;,
+  &quot;other_names&quot;: [
+   &quot;Rosneft&quot;,
+   &quot;Rosneft Oil Company&quot;,
+   &quot;ПАО \&quot;НК \&quot;Роснефть\&quot;&quot;
+  ],
+  &quot;lei&quot;: &quot;253400JT3MQWNDKMJE44&quot;,
+  &quot;lei_status&quot;: &quot;ISSUED&quot;
+ },
+ &quot;checks&quot;: [
+  {
+   &quot;check&quot;: &quot;register_status&quot;,
+   &quot;status&quot;: &quot;pass&quot;,
+   &quot;detail&quot;: &quot;Register status: active. From the LEI record (renewed yearly); the national register was not read.&quot;,
+   &quot;source&quot;: &quot;GLEIF&quot;,
+   &quot;source_url&quot;: &quot;https://api.gleif.org/api/v1/lei-records/253400JT3MQWNDKMJE44&quot;,
+   &quot;checked_at&quot;: &quot;2026-11-10T23:28:31+00:00&quot;
+  },
+  {
+   &quot;check&quot;: &quot;lei_status&quot;,
+   &quot;status&quot;: &quot;pass&quot;,
+   &quot;detail&quot;: &quot;LEI 253400JT3MQWNDKMJE44 is ISSUED.&quot;,
+   &quot;source&quot;: &quot;GLEIF&quot;,
+   &quot;source_url&quot;: &quot;https://search.gleif.org/#/record/253400JT3MQWNDKMJE44&quot;,
+   &quot;checked_at&quot;: &quot;2026-11-10T23:28:31+00:00&quot;
+  },
+  {
+   &quot;check&quot;: &quot;insolvency&quot;,
+   &quot;status&quot;: &quot;unverified&quot;,
+   &quot;detail&quot;: &quot;Insolvency covers the UK, Poland, France, Germany and the Netherlands (insolvency registers) and Norway, Finland, Estonia, Ireland, the Czech Republic and Latvia (register status).&quot;,
+   &quot;source&quot;: null,
+   &quot;source_url&quot;: null,
+   &quot;checked_at&quot;: &quot;2026-11-10T23:28:31+00:00&quot;
+  },
+  {
+   &quot;check&quot;: &quot;accounts_recent&quot;,
+   &quot;status&quot;: &quot;unverified&quot;,
+   &quot;detail&quot;: &quot;No machine-readable annual accounts found (filings.xbrl.org (ESEF)).&quot;,
+   &quot;source&quot;: null,
+   &quot;source_url&quot;: null,
+   &quot;checked_at&quot;: &quot;2026-11-10T23:28:31+00:00&quot;
+  },
+  {
+   &quot;check&quot;: &quot;sanctions_entity&quot;,
+   &quot;status&quot;: &quot;fail&quot;,
+   &quot;detail&quot;: &quot;Listed: OPEN JOINT-STOCK COMPANY ROSNEFT OIL COMPANY on OFAC Consolidated (non-SDN) List (entry 17022) with Registration ID &#x27;1027700043502&#x27;, this company&#x27;s registration number.&quot;,
+   &quot;source&quot;: &quot;OFAC Consolidated (non-SDN) List&quot;,
+   &quot;source_url&quot;: &quot;https://sanctionssearch.ofac.treas.gov/Details.aspx?id=17022&quot;,
+   &quot;checked_at&quot;: &quot;2026-11-10T23:28:31+00:00&quot;
+  },
+  {
+   &quot;check&quot;: &quot;sanctions_people&quot;,
+   &quot;status&quot;: &quot;unverified&quot;,
+   &quot;detail&quot;: &quot;No officer or owner names known (the UK, Polish, Norwegian and French registers list them; Polish names are masked).&quot;,
+   &quot;source&quot;: null,
+   &quot;source_url&quot;: null,
+   &quot;checked_at&quot;: &quot;2026-11-10T23:28:31+00:00&quot;
+  },
+  {
+   &quot;check&quot;: &quot;vat_number&quot;,
+   &quot;status&quot;: &quot;unverified&quot;,
+   &quot;detail&quot;: &quot;No VAT number given or found in the register; pass `vatNumber` to check one.&quot;,
+   &quot;source&quot;: null,
+   &quot;source_url&quot;: null,
+   &quot;checked_at&quot;: &quot;2026-11-10T23:28:31+00:00&quot;
+  }
+ ],
+ &quot;summary&quot;: {
+  &quot;pass&quot;: 2,
+  &quot;fail&quot;: 1,
+  &quot;review&quot;: 0,
+  &quot;unverified&quot;: 4,
+  &quot;needs_attention&quot;: [
+   &quot;sanctions_entity&quot;
+  ],
+  &quot;unverified_checks&quot;: [
+   &quot;insolvency&quot;,
+   &quot;accounts_recent&quot;,
+   &quot;sanctions_people&quot;,
+   &quot;vat_number&quot;
+  ]
+ },
+ &quot;notice&quot;: &quot;Screening aid built from official sources, not a compliance, credit or legal determination. &#x27;unverified&#x27; means not checked, never &#x27;safe&#x27;. Review every &#x27;fail&#x27; and &#x27;review&#x27; against the linked source before acting.&quot;,
+ &quot;source_url&quot;: &quot;https://api.gleif.org/api/v1/lei-records/253400JT3MQWNDKMJE44&quot;,
+ &quot;retrieved_at&quot;: &quot;2026-11-10T23:28:31+00:00&quot;
+}</code></pre></details>
+<p class="notice">$0.05 &middot; <a href="counterparty-check.html">all fields, limits and sources</a> &middot; left out of this sample: the 13 possible name matches, the per-list sanctions detail and the per-field source links.</p>
+</div>
+<div class="panel" role="tabpanel" id="p-vat-iban" aria-labelledby="t-vat-iban">
+<pre class="req"><code>POST /v1/vat-iban-check
+{&quot;vatNumbers&quot;: [&quot;IE6388047V&quot;], &quot;expectedName&quot;: &quot;Google Ireland Ltd&quot;, &quot;ibans&quot;: [&quot;NL91ABNA0417164300&quot;]}</code></pre>
+<div class="read"><p class="co"><b>VAT number IE6388047V</b> <span class="pill pass">pass</span><br><span class="muted">GOOGLE IRELAND LIMITED, 3RD FLOOR, GORDON HOUSE, BARROW STREET, DUBLIN 4</span></p><ul class="checks"><li><span class="pill pass">pass</span><div><b>vat format:</b> IE VAT number format <span class="muted">(VIES FAQ format table)</span></div></li><li><span class="pill pass">pass</span><div><b>vies registration:</b> valid <span class="muted">(VIES (European Commission), answered by the national tax administration)</span></div></li><li><span class="pill pass">pass</span><div><b>name match:</b> expected &#x27;Google Ireland Ltd&#x27;, registered &#x27;GOOGLE IRELAND LIMITED&#x27; (case, accents, punctuation and legal forms ignored) <span class="muted">(VIES (European Commission), answered by the national tax administration)</span></div></li></ul><p class="co"><b>IBAN NL91ABNA0417164300</b> <span class="pill pass">pass</span><br><span class="muted">bank code ABNA</span></p><ul class="checks"><li><span class="pill pass">pass</span><div><b>iban structure:</b> NL length 18, layout and check digits <span class="muted">(ISO 13616 check digits (mod 97) and the SWIFT IBAN Registry formats)</span></div></li></ul></div>
+<details><summary>The JSON an agent gets</summary><pre><code>[
+ {
+  &quot;query&quot;: &quot;IE6388047V&quot;,
+  &quot;check_type&quot;: &quot;vat&quot;,
+  &quot;country_code&quot;: &quot;IE&quot;,
+  &quot;status&quot;: &quot;pass&quot;,
+  &quot;valid&quot;: true,
+  &quot;registered_name&quot;: &quot;GOOGLE IRELAND LIMITED&quot;,
+  &quot;registered_address&quot;: &quot;3RD FLOOR, GORDON HOUSE, BARROW STREET, DUBLIN 4&quot;,
+  &quot;expected_name&quot;: &quot;Google Ireland Ltd&quot;,
+  &quot;name_match&quot;: true,
+  &quot;checks&quot;: [
+   {
+    &quot;check&quot;: &quot;vat_format&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;detail&quot;: &quot;IE VAT number format&quot;,
+    &quot;source&quot;: &quot;VIES FAQ format table&quot;
+   },
+   {
+    &quot;check&quot;: &quot;vies_registration&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;detail&quot;: &quot;valid&quot;,
+    &quot;source&quot;: &quot;VIES (European Commission), answered by the national tax administration&quot;
+   },
+   {
+    &quot;check&quot;: &quot;name_match&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;detail&quot;: &quot;expected &#x27;Google Ireland Ltd&#x27;, registered &#x27;GOOGLE IRELAND LIMITED&#x27; (case, accents, punctuation and legal forms ignored)&quot;,
+    &quot;source&quot;: &quot;VIES (European Commission), answered by the national tax administration&quot;
+   }
+  ],
+  &quot;source&quot;: &quot;VIES (European Commission), answered by the national tax administration&quot;,
+  &quot;source_url&quot;: &quot;https://ec.europa.eu/taxation_customs/vies/#/vat-validation&quot;,
+  &quot;checked_at&quot;: &quot;2026-11-10T23:28:17Z&quot;
+ },
+ {
+  &quot;query&quot;: &quot;NL91ABNA0417164300&quot;,
+  &quot;check_type&quot;: &quot;iban&quot;,
+  &quot;country_code&quot;: &quot;NL&quot;,
+  &quot;status&quot;: &quot;pass&quot;,
+  &quot;valid&quot;: true,
+  &quot;bank_code&quot;: &quot;ABNA&quot;,
+  &quot;sepa_country&quot;: true,
+  &quot;checks&quot;: [
+   {
+    &quot;check&quot;: &quot;iban_structure&quot;,
+    &quot;status&quot;: &quot;pass&quot;,
+    &quot;detail&quot;: &quot;NL length 18, layout and check digits&quot;,
+    &quot;source&quot;: &quot;ISO 13616 check digits (mod 97) and the SWIFT IBAN Registry formats&quot;
+   }
+  ],
+  &quot;source&quot;: &quot;ISO 13616 check digits (mod 97) and the SWIFT IBAN Registry formats&quot;,
+  &quot;source_url&quot;: &quot;https://www.swift.com/standards/data-standards/iban-international-bank-account-number&quot;,
+  &quot;checked_at&quot;: &quot;2026-11-10T23:28:18Z&quot;
+ }
+]</code></pre></details>
+<p class="notice">$0.002 per number &middot; <a href="vat-iban-check.html">all fields, limits and sources</a> &middot; left out of this sample: fields that are empty for this input.</p>
+</div>
+<div class="panel" role="tabpanel" id="p-accounts" aria-labelledby="t-accounts">
+<pre class="req"><code>POST /v1/company-accounts
+{&quot;orgNumbers&quot;: [&quot;923609016&quot;], &quot;countries&quot;: [&quot;NO&quot;], &quot;maxResults&quot;: 1}</code></pre>
+<div class="read"><p class="co"><b>EQUINOR ASA</b><br><span class="muted">NO &middot; no. 923609016 &middot; year 2025-01-01 to 2025-12-31</span></p><div class="table"><table><thead><tr><th></th><th>USD</th></tr></thead><tbody>
+<tr><td>Revenue</td><td>61,999,000,000</td></tr>
+<tr><td>Operating profit</td><td>5,563,000,000</td></tr>
+<tr><td>Profit before tax</td><td>6,124,000,000</td></tr>
+<tr><td>Net income</td><td>5,731,000,000</td></tr>
+<tr><td>Total assets</td><td>103,432,000,000</td></tr>
+<tr><td>Total equity</td><td>39,182,000,000</td></tr>
+<tr><td>Cash and equivalents</td><td>17,651,000,000</td></tr>
+<tr><td>Total liabilities</td><td>64,249,000,000</td></tr>
+</tbody></table></div><p class="tally">12 figures, each with the register field it was read from &middot; <a href="https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/923609016/2025">the filed accounts</a></p></div>
+<details><summary>The JSON an agent gets</summary><pre><code>{
+ &quot;country&quot;: &quot;NO&quot;,
+ &quot;org_number&quot;: &quot;923609016&quot;,
+ &quot;company_name&quot;: &quot;EQUINOR ASA&quot;,
+ &quot;lei&quot;: &quot;OW6OFBNCKXC4US5C7523&quot;,
+ &quot;lei_status&quot;: &quot;ISSUED&quot;,
+ &quot;period_end&quot;: &quot;2025-12-31&quot;,
+ &quot;fiscal_year_start&quot;: &quot;2025-01-01&quot;,
+ &quot;currency&quot;: &quot;USD&quot;,
+ &quot;revenue&quot;: 61999000000,
+ &quot;operating_profit&quot;: 5563000000,
+ &quot;profit_before_tax&quot;: 6124000000,
+ &quot;net_income&quot;: 5731000000,
+ &quot;total_assets&quot;: 103432000000,
+ &quot;fixed_assets&quot;: 70906000000,
+ &quot;current_assets&quot;: 32526000000,
+ &quot;cash_and_equivalents&quot;: 17651000000,
+ &quot;total_equity&quot;: 39182000000,
+ &quot;total_liabilities&quot;: 64249000000,
+ &quot;current_liabilities&quot;: 36924000000,
+ &quot;noncurrent_liabilities&quot;: 27325000000,
+ &quot;metrics_found&quot;: 12,
+ &quot;report_url&quot;: &quot;https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/923609016/2025&quot;,
+ &quot;registry_url&quot;: &quot;https://virksomhet.brreg.no/nb/oppslag/enheter/923609016&quot;,
+ &quot;source_url&quot;: &quot;https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi/923609016/2025&quot;,
+ &quot;retrieved_at&quot;: &quot;2026-11-10T23:28:18+00:00&quot;
+}</code></pre></details>
+<p class="notice">$0.04 per company-year &middot; <a href="company-accounts.html">all fields, limits and sources</a> &middot; left out of this sample: empty fields and the per-value source references (the register field each number was read from).</p>
+</div>
+</div>
+</section>
+<section class="band" id="jobs">
+<h2>What people and agents use it for</h2>
+<ul class="jobs">
+<li><h3>Verify</h3><p>Before you pay a supplier or onboard a customer: does the company exist, is it active, is it insolvent, does the VAT number belong to it?</p><a href="counterparty-check.html">Counterparty check</a> &middot; <a href="vat-iban-check.html">VAT and IBAN</a></li>
+<li><h3>Enrich</h3><p>Fill a company record with what it filed: revenue, profit, equity and employees from the accounts, legal form, address and industry from the register.</p><a href="company-accounts.html">Company accounts</a> &middot; <a href="company-check.html">Company report</a></li>
+<li><h3>Screen</h3><p>Names and wallet addresses against the OFAC, UN, UK, EU and US export lists, with the date of every list checked.</p><a href="sanctions-screening.html">Sanctions screening</a></li>
+<li><h3>Find</h3><p>Companies registered in the UK this week, by industry code and place, for sales and research.</p><a href="uk-new-companies.html">New UK companies</a></li>
+</ul>
+</section>
+<section class="band" id="ask">
+<h2>Ask in plain words, without a key</h2>
+<p class="lead">The planner is free. It answers with the exact call and its highest possible price, or tells you it does not cover the question. It never guesses.</p>
+<div class="ask">
+<div id="ask-live" hidden>
+<form class="key" id="ask-form" action="https://api.boscolabs.dev/v1/plan" method="post">
+<label for="ask-q">Your question</label>
+<input id="ask-q" name="question" maxlength="300" required value="Is Carillion plc still active, and is it on a sanctions list?">
+<button class="btn" type="submit">Plan it</button>
+</form>
+<ul class="chips"><li><button type="button" data-q="Is Carillion plc still active, and is it on a sanctions list?">Is Carillion plc still active, and is it on a sanctions list?</button></li><li><button type="button" data-q="Validate VAT number NL004495445B01">Validate VAT number NL004495445B01</button></li><li><button type="button" data-q="Latest filed accounts of Equinor ASA">Latest filed accounts of Equinor ASA</button></li><li><button type="button" data-q="What is the weather in Paris?">What is the weather in Paris?</button></li></ul>
+<div id="ask-out" role="status"></div>
+</div>
+<details><summary>The same question with curl</summary><pre><code>curl -s -X POST https://api.boscolabs.dev/v1/plan \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{&quot;question&quot;: &quot;Is Carillion plc still active, and is it on a sanctions list?&quot;}&#x27;</code></pre></details>
+</div>
+</section>
+<section class="band" id="coverage">
+<h2>Coverage, country by country</h2>
+<p class="lead">What one counterparty check reads, and where it stops. Sanctions on the company, the LEI, VAT numbers and IBANs work for every country.</p>
+<div class="table"><table><thead><tr><th>Country</th><th>Register status</th><th>Officers screened</th><th>Insolvency</th></tr></thead><tbody>
+<tr><td>UK</td><td>Companies House</td><td>directors and owners (PSCs)</td><td>The Gazette</td></tr>
+<tr><td>Poland</td><td>KRS</td><td>board (names the register shows in full)</td><td>KRS</td></tr>
+<tr><td>Norway</td><td>Brønnøysund</td><td>CEO and board</td><td>register status (bankrupt, winding up)</td></tr>
+<tr><td>France</td><td>Sirene</td><td>directors (RNE)</td><td>BODACC</td></tr>
+<tr><td>Finland, Estonia</td><td>national register</td><td>no open source</td><td>register status</td></tr>
+<tr><td>Ireland</td><td>Companies Registration Office (CRO) open data</td><td>not read</td><td>CRO status (liquidation, examinership, administration; receiverships are not in the open data)</td></tr>
+<tr><td>Czech Republic</td><td>ARES</td><td>not read</td><td>ARES status: in liquidation, or the Insolvency Register holds the company (the stage of the case is not shown)</td></tr>
+<tr><td>Latvia</td><td>Enterprise Register open data</td><td>not read</td><td>the register&#x27;s insolvency and liquidation open data</td></tr>
+<tr><td>Germany</td><td>GLEIF</td><td>no open source</td><td>insolvenzbekanntmachungen.de</td></tr>
+<tr><td>Netherlands</td><td>GLEIF</td><td>no open source</td><td>Centraal Insolventieregister</td></tr>
+<tr><td>Denmark, US, others</td><td>GLEIF, SEC</td><td>no</td><td>unverified</td></tr>
+</tbody></table></div>
+<p class="notice">More registers are being added. If you need a country that is not here, <a href="mailto:support@boscolabs.dev">tell us</a>: requests decide the order. The official route per country, and where it gets hard: <a href="registers/index.html">company registers by country</a>.</p>
+</section>
+<section class="band codes" id="call">
+<h2>Call it from your stack</h2>
+<div class="two">
+<div><h3>curl</h3><pre><code>curl https://api.boscolabs.dev/v1/counterparty-check \
+  -H &quot;Authorization: Bearer $BOSCO_API_KEY&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{&quot;query&quot;: &quot;Carillion plc&quot;, &quot;country&quot;: &quot;GB&quot;}&#x27;</code></pre></div>
+<div><h3>Python</h3><pre><code>import os, requests
+
+r = requests.post(
+    &quot;https://api.boscolabs.dev/v1/counterparty-check&quot;,
+    headers={&quot;Authorization&quot;: &quot;Bearer &quot; + os.environ[&quot;BOSCO_API_KEY&quot;]},
+    json={&quot;query&quot;: &quot;Carillion plc&quot;, &quot;country&quot;: &quot;GB&quot;},
+)
+for check in r.json()[&quot;rows&quot;][0][&quot;checks&quot;]:
+    print(check[&quot;status&quot;], check[&quot;check&quot;], check[&quot;source_url&quot;])</code></pre></div>
+<div><h3>MCP: Claude, Cursor, any client</h3><pre><code># Claude Code, free tools (planner, LEI and SEC lookups), no key
+claude mcp add --transport http bosco-labs https://api.boscolabs.dev/mcp/free
+
+# every tool, with your key
+claude mcp add --transport http bosco-labs https://api.boscolabs.dev/mcp \
+  --header &quot;Authorization: Bearer $BOSCO_API_KEY&quot;</code></pre></div>
+<div><h3>No account: an agent pays per call (x402)</h3><pre><code>curl -i -X POST https://api.boscolabs.dev/v1/counterparty-check \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#x27;{&quot;query&quot;: &quot;Carillion plc&quot;, &quot;country&quot;: &quot;GB&quot;}&#x27;
+# -&gt; HTTP 402 with the price and where to pay.
+# An x402 client pays in USDC on Base and repeats the call.
+# No account, no key.</code></pre></div>
+</div>
+<p class="notice">Keys, prices, limits and errors: <a href="api.html">API and prices</a>. OpenAPI: <a href="https://api.boscolabs.dev/openapi.json">https://api.boscolabs.dev/openapi.json</a>.</p>
+</section>
+<section class="band" id="agents">
+<h2>Ready for agents that find and pay for tools themselves</h2>
+<p class="lead">Most agents today use what their builder wired in. More of them will choose and pay on their own, and everything here already works that way.</p>
+<div class="facts">
+<div class="fact"><b>Find</b>One line per tool in <a href="llms.txt">llms.txt</a> and a compact catalogue at <code>https://api.boscolabs.dev/v1/tools?compact=true</code>. The planner turns a question into a call.</div>
+<div class="fact"><b>Call</b>The same tools over plain HTTPS, <a href="api.html#mcp">remote MCP</a> and as Apify Actors. One required field per tool, errors that say how to fix the input.</div>
+<div class="fact"><b>Pay</b>Prepaid credits on a key, or no account at all: <a href="api.html#x402">x402</a> settles each call in USDC, and only for rows that were delivered.</div>
+<div class="fact"><b>Trust</b>A source link and a time on every row. Refuses instead of guessing. <a href="status.html">Status</a>, <a href="security.html">sources and licences</a>, <a href="benchmark.html">benchmark</a>.</div>
+</div>
+</section>
+<section class="band" id="tools">
+<h2>The full catalogue</h2>
+<p class="lead">30 tools live &middot; 29 on the HTTP API, remote MCP and x402 &middot; 30 also on the Apify Store. Company data first; filings, law, tenders, health and more below.</p>
+<ul class="chips"><li><a href="#companies">Companies</a></li><li><a href="#compliance-law">Compliance &amp; law</a></li><li><a href="#finance-sec">Finance &amp; SEC</a></li><li><a href="#government-procurement">Government &amp; procurement</a></li><li><a href="#macro-health-places">Macro, health &amp; places</a></li><li><a href="#software-security">Software security</a></li></ul>
+<p>Can an agent check a supplier with web search alone? See the <a href="benchmark.html">counterparty check benchmark</a> (25 companies, web search vs one API call) and <a href="blog/index.html">the blog</a> for how we ran it.</p>
 </section>
 <section id="companies">
 <h2>Companies</h2>
@@ -311,6 +824,19 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <li class="card"><div class="card-top"><img src="icons/us-federal-rules.svg" alt="" width="48" height="48"><h3><a href="us-federal-rules.html">Federal Register &amp; eCFR API</a></h3></div><p>CFR section text as in force on any date, its amendment history and the Federal Register rules behind each change. Search FR documents by agency or number.</p><div class="row"><span class="price">$0.005 per section, $0.002 per document</span><a href="https://apify.com/bosco_labs/us-federal-rules">Apify Store</a> &middot; <a href="us-federal-rules.html#where">API</a></div></li>
 <li class="card"><div class="card-top"><img src="icons/product-recalls.svg" alt="" width="48" height="48"><h3><a href="product-recalls.html">Product Recall Check API</a></h3></div><p>Is a product, UPC or VIN recalled? One call checks US CPSC, NHTSA, FDA and EU Safety Gate: hazard, remedy, date and official link per recall.</p><div class="row"><span class="price">$0.005 per product checked</span><a href="https://apify.com/bosco_labs/product-recalls">Apify Store</a> &middot; <a href="product-recalls.html#where">API</a></div></li>
 <li class="card"><div class="card-top"><img src="icons/tariff-lookup.svg" alt="" width="48" height="48"><h3><a href="tariff-lookup.html">HS Tariff Code &amp; Duty Lookup API</a></h3></div><p>Duty rate for a US HTS or UK commodity code: MFN, preferential rates, Chapter 99, UK VAT, official source link. Or find candidate codes.</p><div class="row"><span class="price">$0.005 per lookup or search</span><a href="https://apify.com/bosco_labs/tariff-lookup">Apify Store</a> &middot; <a href="tariff-lookup.html#where">API</a></div></li>
+</ul>
+</section>
+<section id="finance-sec">
+<h2>Finance &amp; SEC</h2>
+<ul class="grid">
+<li class="card"><div class="card-top"><img src="icons/sec-insider-trades.svg" alt="" width="48" height="48"><h3><a href="sec-insider-trades.html">SEC Insider Trading API (Form 4)</a></h3></div><p>Every SEC Form 4 insider stock transaction (purchase or sale) since 2006 as JSON, with cluster-buy signals. Filter by ticker, role, value and date.</p><div class="row"><span class="price">$0.0018 per transaction row and $0.02 per cluster signal</span><a href="https://apify.com/bosco_labs/sec-insider-trades">Apify Store</a> &middot; <a href="sec-insider-trades.html#where">API</a></div></li>
+<li class="card"><div class="card-top"><img src="icons/sec-filings-feed.svg" alt="" width="48" height="48"><h3><a href="sec-filings-feed.html">SEC EDGAR Filings API</a></h3></div><p>SEC EDGAR filings as JSON for one company or the whole market, latest live or since 1994: 8-K items, earnings releases, filing links. No scraper setup.</p><div class="row"><span class="price">$0.001 per filing</span><a href="https://apify.com/bosco_labs/sec-filings-feed">Apify Store</a> &middot; <a href="sec-filings-feed.html#where">API</a></div></li>
+<li class="card"><div class="card-top"><img src="icons/us-house-trades.svg" alt="" width="48" height="48"><h3><a href="us-house-trades.html">Congress Stock Trades API</a></h3></div><p>Congress stock trading disclosures by US House members (politicians) under the STOCK Act since 2014, from official Clerk filings: ticker, amount, delay.</p><div class="row"><span class="price">$0.0018 per trade</span><a href="https://apify.com/bosco_labs/us-house-trades">Apify Store</a> &middot; <a href="us-house-trades.html#where">API</a></div></li>
+<li class="card"><div class="card-top"><img src="icons/sec-ownership.svg" alt="" width="48" height="48"><h3><a href="sec-ownership.html">SEC 13F Holdings API</a></h3></div><p>Who owns a stock: 13F manager holdings, mutual fund and ETF N-PORT holdings with changes, funds holding a ticker, 13D/13G stakes and Form 144 sales.</p><div class="row"><span class="price">$0.0018 per row, plus $0.01 per &quot;who holds this stock&quot; search (13F or N-PORT data set)</span><a href="https://apify.com/bosco_labs/sec-ownership">Apify Store</a> &middot; <a href="sec-ownership.html#where">API</a></div></li>
+<li class="card"><div class="card-top"><img src="icons/sec-company-financials.svg" alt="" width="48" height="48"><h3><a href="sec-company-financials.html">SEC Financial Statements API</a></h3></div><p>Income statement, balance sheet and cash flow of US-listed companies from SEC XBRL, per year or quarter since 2009, by ticker or CIK, each value sourced.</p><div class="row"><span class="price">$0.005 per company-period row</span><a href="https://apify.com/bosco_labs/sec-company-financials">Apify Store</a> &middot; <a href="sec-company-financials.html#where">API</a></div></li>
+<li class="card"><div class="card-top"><img src="icons/sec-company-screen.svg" alt="" width="48" height="48"><h3><a href="sec-company-screen.html">SEC Company Screener API</a></h3></div><p>Screen all US SEC filers by revenue, net income, margins, cash flow and 30 more metrics for one year or quarter. Each value cites its SEC filing.</p><div class="row"><span class="price">$0.002 per company returned</span><a href="https://apify.com/bosco_labs/sec-company-screen">Apify Store</a> &middot; <a href="sec-company-screen.html#where">API</a></div></li>
+<li class="card"><div class="card-top"><img src="icons/esef-annual-reports.svg" alt="" width="48" height="48"><h3><a href="esef-annual-reports.html">EU Annual Reports API (ESEF)</a></h3></div><p>Revenue, operating income, net income, EPS, equity, cash flow from ESEF annual reports of EU listed companies in 28 countries, linked to the XBRL facts.</p><div class="row"><span class="price">$0.01 per run plus $0.05 per annual report; raw XBRL fact rows, if switched on, $0.0005 each</span><a href="https://apify.com/bosco_labs/esef-annual-reports">Apify Store</a> &middot; <a href="esef-annual-reports.html#where">API</a></div></li>
+<li class="card"><div class="card-top"><img src="icons/identifier-resolver.svg" alt="" width="48" height="48"><h3><a href="identifier-resolver.html">ISIN, LEI, CIK, FIGI &amp; Ticker Resolver API (crosswalk)</a></h3></div><p>Resolve an ISIN, LEI, CIK, ticker, FIGI or company name to issuer name, LEI, CIK, tickers, FIGIs, CFI code and EU trading venues, each with a source URL.</p><div class="row"><span class="price">$0.002 per resolved identifier</span><a href="https://apify.com/bosco_labs/identifier-resolver">Apify Store</a> &middot; <a href="identifier-resolver.html#where">API</a></div></li>
 </ul>
 </section>
 <section id="government-procurement">
@@ -341,14 +867,6 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <h2>Where to get the data</h2>
 <p>Every tool is on the Bosco Labs API (key with prepaid credits, remote MCP, or x402 without an account); 30 are also on the Apify Store, billed to your Apify account. Same input and same rows everywhere.</p>
 <div class="table"><table><thead><tr><th>Tool</th><th>Apify</th><th>Bosco Labs API</th></tr></thead><tbody>
-<tr><td><a href="sec-insider-trades.html#where">SEC Insider Trading API (Form 4)</a></td><td><a href="https://apify.com/bosco_labs/sec-insider-trades">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
-<tr><td><a href="sec-filings-feed.html#where">SEC EDGAR Filings API</a></td><td><a href="https://apify.com/bosco_labs/sec-filings-feed">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
-<tr><td><a href="us-house-trades.html#where">Congress Stock Trades API</a></td><td><a href="https://apify.com/bosco_labs/us-house-trades">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
-<tr><td><a href="sec-ownership.html#where">SEC 13F Holdings API</a></td><td><a href="https://apify.com/bosco_labs/sec-ownership">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
-<tr><td><a href="sec-company-financials.html#where">SEC Financial Statements API</a></td><td><a href="https://apify.com/bosco_labs/sec-company-financials">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
-<tr><td><a href="sec-company-screen.html#where">SEC Company Screener API</a></td><td><a href="https://apify.com/bosco_labs/sec-company-screen">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
-<tr><td><a href="esef-annual-reports.html#where">EU Annual Reports API (ESEF)</a></td><td><a href="https://apify.com/bosco_labs/esef-annual-reports">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
-<tr><td><a href="identifier-resolver.html#where">ISIN, LEI, CIK, FIGI &amp; Ticker Resolver API (crosswalk)</a></td><td><a href="https://apify.com/bosco_labs/identifier-resolver">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
 <tr><td><a href="counterparty-check.html#where">Counterparty Check API</a></td><td><a href="https://apify.com/bosco_labs/counterparty-check">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
 <tr><td><a href="company-check.html#where">Company Check API</a></td><td><a href="https://apify.com/bosco_labs/company-check">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
 <tr><td><a href="vat-iban-check.html#where">VAT Number &amp; IBAN Check API</a></td><td><a href="https://apify.com/bosco_labs/vat-iban-check">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
@@ -362,6 +880,14 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <tr><td><a href="us-federal-rules.html#where">Federal Register &amp; eCFR API</a></td><td><a href="https://apify.com/bosco_labs/us-federal-rules">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
 <tr><td><a href="product-recalls.html#where">Product Recall Check API</a></td><td><a href="https://apify.com/bosco_labs/product-recalls">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
 <tr><td><a href="tariff-lookup.html#where">HS Tariff Code &amp; Duty Lookup API</a></td><td><a href="https://apify.com/bosco_labs/tariff-lookup">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
+<tr><td><a href="sec-insider-trades.html#where">SEC Insider Trading API (Form 4)</a></td><td><a href="https://apify.com/bosco_labs/sec-insider-trades">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
+<tr><td><a href="sec-filings-feed.html#where">SEC EDGAR Filings API</a></td><td><a href="https://apify.com/bosco_labs/sec-filings-feed">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
+<tr><td><a href="us-house-trades.html#where">Congress Stock Trades API</a></td><td><a href="https://apify.com/bosco_labs/us-house-trades">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
+<tr><td><a href="sec-ownership.html#where">SEC 13F Holdings API</a></td><td><a href="https://apify.com/bosco_labs/sec-ownership">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
+<tr><td><a href="sec-company-financials.html#where">SEC Financial Statements API</a></td><td><a href="https://apify.com/bosco_labs/sec-company-financials">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
+<tr><td><a href="sec-company-screen.html#where">SEC Company Screener API</a></td><td><a href="https://apify.com/bosco_labs/sec-company-screen">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
+<tr><td><a href="esef-annual-reports.html#where">EU Annual Reports API (ESEF)</a></td><td><a href="https://apify.com/bosco_labs/esef-annual-reports">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
+<tr><td><a href="identifier-resolver.html#where">ISIN, LEI, CIK, FIGI &amp; Ticker Resolver API (crosswalk)</a></td><td><a href="https://apify.com/bosco_labs/identifier-resolver">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
 <tr><td><a href="eu-tenders.html#where">EU Tenders API (TED)</a></td><td><a href="https://apify.com/bosco_labs/eu-tenders">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
 <tr><td><a href="dod-contract-awards.html#where">Pentagon / DoD Contract Awards API</a></td><td><a href="https://apify.com/bosco_labs/dod-contract-awards">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
 <tr><td><a href="us-federal-awards.html#where">US Federal Awards API</a></td><td><a href="https://apify.com/bosco_labs/us-federal-awards">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
@@ -391,7 +917,44 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <p>Machine-readable index: <a href="llms.txt">llms.txt</a> (summary) and <a href="llms-full.txt">llms-full.txt</a> (all input and output fields). Live tools on the <a href="https://apify.com/bosco_labs">Bosco Labs Apify Store profile</a>.</p>
 </section>
 </main>
-<footer><div class="wrap"><p><a href="/">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<footer><div class="wrap"><p><a href="/">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="registers/index.html">Registers</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
 <p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
+<script>
+(function(){try{var q=new URLSearchParams(location.search),s=q.get("src")||q.get("utm_source"),r=document.referrer?new URL(document.referrer).hostname:"";
+if(!s&&r&&!/(^|\.)boscolabs\.dev$/.test(r))s=r;s=(s||"").toLowerCase().replace(/[^a-z0-9._-]/g,"").slice(0,40);if(!s)return;
+document.querySelectorAll("a[href]").forEach(function(a){var h=a.getAttribute("href");
+if(!/^(\/(#.*)?$|[\w./-]*\.html([?#]|$))/.test(h)||/^https?:/.test(h)||h.indexOf("src=")>=0)return;
+var p=h.split("#");a.setAttribute("href",p[0]+(p[0].indexOf("?")<0?"?":"&")+"src="+encodeURIComponent(s)+(p.length>1?"#"+p[1]:""));});
+}catch(e){}})();
+</script><script>
+(function(){var d=document.getElementById("demo");if(!d)return;d.classList.add("js");
+var tabs=[].slice.call(d.querySelectorAll("[role=tab]")),panels=[].slice.call(d.querySelectorAll(".panel"));
+var quiet=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+function show(i,focus){tabs.forEach(function(t,j){t.setAttribute("aria-selected",j===i?"true":"false");t.tabIndex=j===i?0:-1;});
+panels.forEach(function(p,j){p.hidden=j!==i;p.classList.remove("run");});panels[i].scrollTop=0;
+if(!quiet){void panels[i].offsetWidth;panels[i].classList.add("run");}if(focus)tabs[i].focus();}
+tabs.forEach(function(t,i){t.addEventListener("click",function(){show(i);});
+t.addEventListener("keydown",function(e){var n=e.key==="ArrowRight"?i+1:e.key==="ArrowLeft"?i-1:null;
+if(n===null)return;e.preventDefault();show((n+tabs.length)%tabs.length,true);});});show(0);})();
+(function(){var f=document.getElementById("ask-form"),out=document.getElementById("ask-out");if(!f)return;
+document.getElementById("ask-live").hidden=false;
+function el(tag,text,cls){var e=document.createElement(tag);if(text!=null)e.textContent=text;if(cls)e.className=cls;return e;}
+function render(j){out.textContent="";var steps=j.steps||[];
+steps.forEach(function(s){var box=el("div",null,"step"),h=el("p"),a=el("a","POST /v1/"+s.tool);a.href=s.tool+".html";
+h.appendChild(a);h.appendChild(el("span"," \u00b7 at most $"+s.max_usd,"muted"));box.appendChild(h);
+box.appendChild(el("pre",JSON.stringify(s.input,null,1)));out.appendChild(box);});
+(j.not_covered||[]).forEach(function(n){out.appendChild(el("p","Not covered: "+n.request+". "+n.reason,"note"));});
+(j.missing||[]).forEach(function(m){out.appendChild(el("p","Missing: "+m,"note"));});
+if(steps.length){var p=el("p","Planning is free. This would cost at most $"+j.total_max_usd+" to run; empty and failed calls cost nothing. ","notice");
+var k=el("a","Get a key and run it");k.href="api.html#key";p.appendChild(k);out.appendChild(p);}
+else if(!out.firstChild){out.appendChild(el("p","No tool matched that question.","note"));}}
+f.addEventListener("submit",function(e){e.preventDefault();out.textContent="Planning...";
+fetch(f.action,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({question:f.question.value})})
+.then(function(r){return r.json().then(function(j){return {ok:r.ok,j:j};});})
+.then(function(x){if(x.ok)render(x.j);else out.textContent=(x.j.error&&x.j.error.message)||"The planner refused that question.";})
+.catch(function(){out.textContent="This page could not reach the planner. The curl command below asks the same question.";});});
+[].forEach.call(document.querySelectorAll("#ask-live [data-q]"),function(b){b.addEventListener("click",function(){
+f.question.value=b.getAttribute("data-q");f.dispatchEvent(new Event("submit",{cancelable:true}));});});})();
+</script>
 </body>
 </html>

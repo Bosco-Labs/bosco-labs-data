@@ -44,8 +44,8 @@
  }
 }
 </script>
-<style>:root{color-scheme:light dark;--head:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--body:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;--ink:#1D2721;--muted:#545F58;--bg:#F5F3EA;--surface:#EAE8DC;--line:#D6D3C3;--accent:#2E5A47;--accent-fg:#F5F3EA;--accent2:#8DA889;--accent2-text:#4A6646;--success:#36694A;--warn:#8E5D1C}
-@media (prefers-color-scheme:dark){:root{--ink:#E5E8DE;--muted:#A3ADA4;--bg:#121914;--surface:#1B241E;--line:#2B372F;--accent:#9EC7B1;--accent-fg:#121914;--accent2:#B5C9A4;--accent2-text:#B5C9A4;--success:#93C7A0;--warn:#DDB070}}
+<style>:root{color-scheme:light dark;--head:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--body:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;--ink:#1D2721;--muted:#545F58;--bg:#F5F3EA;--surface:#EAE8DC;--line:#D6D3C3;--accent:#2E5A47;--accent-fg:#F5F3EA;--accent2:#8DA889;--accent2-text:#4A6646;--success:#36694A;--warn:#8E5D1C;--danger:#9B2C2C}
+@media (prefers-color-scheme:dark){:root{--ink:#E5E8DE;--muted:#A3ADA4;--bg:#121914;--surface:#1B241E;--line:#2B372F;--accent:#9EC7B1;--accent-fg:#121914;--accent2:#B5C9A4;--accent2-text:#B5C9A4;--success:#93C7A0;--warn:#DDB070;--danger:#F0A29A}}
 *{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--body)}h1,h2,h3,.brand{font-family:var(--head)}
 a{color:var(--accent);text-underline-offset:2px}.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
@@ -83,12 +83,38 @@ form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key label{flex-
 .note{border-left:3px solid var(--warn);background:var(--surface);border-radius:0 10px 10px 0;padding:10px 14px;margin:14px 0;font-size:.95rem}.notice{font-size:.88rem;color:var(--muted)}
 nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-items:center;min-height:44px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
-@media (max-width:560px){.head{flex-direction:column;gap:12px}.head img{width:64px;height:64px}.hero{padding-top:32px}}</style>
+@media (max-width:560px){.head{flex-direction:column;gap:12px}.head img{width:64px;height:64px}.hero{padding-top:32px}}
+.navcta{background:var(--accent);color:var(--accent-fg)!important;font-weight:650;padding:0 14px;border-radius:9px}
+.eyebrow{font-size:.8rem;font-weight:650;letter-spacing:.07em;text-transform:uppercase;color:var(--accent2-text);margin:0 0 14px}
+.hero2{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:44px;align-items:start;padding:54px 0 12px}
+.hero2 h1{font-size:clamp(2rem,4.4vw,3.05rem);line-height:1.08;letter-spacing:-.03em;margin-bottom:18px}.hero2 .lead{font-size:1.15rem}
+.ticks{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:11px;font-size:.96rem;color:var(--muted)}.ticks li{padding-left:27px;position:relative}.ticks b{color:var(--ink)}
+.ticks li::before{content:"";position:absolute;left:2px;top:.48em;width:12px;height:7px;border-left:2.5px solid var(--success);border-bottom:2.5px solid var(--success);transform:rotate(-45deg)}
+.demo{background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:0 1px 2px rgb(0 0 0/.05),0 18px 40px -18px rgb(0 0 0/.28);overflow:hidden;min-width:0}
+.demo-top{display:flex;align-items:center;gap:9px;margin:0;padding:11px 16px;font-size:.82rem;color:var(--muted);border-bottom:1px solid var(--line)}
+.live{width:8px;height:8px;border-radius:50%;background:var(--success);flex:none}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;padding:10px 12px;border-bottom:1px solid var(--line)}
+.tabs button{flex:none;min-height:40px;font:inherit;font-size:.86rem;padding:6px 13px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--ink);cursor:pointer}
+.tabs button:hover{border-color:var(--accent)}.tabs button[aria-selected=true]{background:var(--accent);color:var(--accent-fg);border-color:var(--accent)}
+.panel{padding:14px 16px 8px}.panel+.panel{border-top:1px solid var(--line)}.demo.js .panel{height:590px;overflow:auto;border-top:0}
+.req{background:var(--bg);font-size:.8rem;margin-bottom:14px;white-space:pre-wrap;overflow-wrap:anywhere}.co{margin:0 0 10px;line-height:1.4}.co+.checks{margin-bottom:16px}
+.checks{list-style:none;margin:0;padding:0;display:grid;gap:9px;font-size:.88rem;line-height:1.45}.checks li{display:grid;grid-template-columns:88px minmax(0,1fr);gap:10px;align-items:start}.checks b{font-weight:650}
+.pill{display:inline-block;text-align:center;font-size:.7rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;line-height:1.5;padding:1px 7px;border-radius:6px;border:1px solid currentColor;background:var(--bg)}
+.pill.pass{color:var(--success)}.pill.fail{color:var(--danger)}.pill.review{color:var(--warn)}.pill.unverified{color:var(--muted)}
+.tally{font-size:.86rem;font-weight:650;margin:14px 0 4px}.panel details{background:var(--bg)}.panel details pre{max-height:320px;border:0;padding:0 0 10px;background:none}.panel .table{margin-bottom:8px}.panel td:last-child,.panel th:last-child{text-align:right;font-variant-numeric:tabular-nums}
+@keyframes arrive{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}.panel.run .req{animation:arrive .22s ease both}.panel.run .read{animation:arrive .42s .14s ease both}
+.band{margin-top:60px}.band>h2{font-size:1.55rem;margin:0 0 8px}.band>p.lead{margin:0 0 18px}
+.jobs{list-style:none;padding:0;margin:0;display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,235px),1fr))}.jobs li{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px}.jobs h3{margin:0 0 6px;font-size:1.05rem}.jobs p{margin:0 0 8px;font-size:.93rem;color:var(--muted)}.jobs a{font-size:.92rem}
+.ask{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px}.ask form.key{margin-top:0}.ask form.key input{background:var(--bg)}.ask .chips{margin:6px 0 0}.ask .chips button{min-height:40px;font:inherit;font-size:.88rem;border:1px solid var(--line);border-radius:999px;padding:4px 12px;background:var(--bg);color:var(--ink);cursor:pointer}.ask .chips button:hover{border-color:var(--accent)}
+#ask-out{margin-top:14px}#ask-out:empty{margin:0}.step{border-top:1px solid var(--line);padding:12px 0}.step p{margin:0 0 8px}.step pre{background:var(--bg)}
+.codes h3{margin:0 0 8px}.codes pre{font-size:.8rem}
+@media (max-width:900px){.hero2{grid-template-columns:1fr;gap:30px;padding-top:30px}.demo.js .panel{height:auto;max-height:560px}}
+@media (max-width:560px){.checks li{grid-template-columns:1fr;gap:4px}.pill{justify-self:start}}</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site"><div class="wrap"><a class="brand" href="/"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
-<nav aria-label="Main"><a href="/#tools">Tools</a><a href="api.html">API</a><a href="account.html">Account</a><a href="blog/index.html">Blog</a><a href="/#how-to-call">How to call</a><a href="llms.txt">llms.txt</a><a href="mailto:support@boscolabs.dev">Contact</a></nav></div></header>
+<nav aria-label="Main"><a href="/#demo">Company checks</a><a href="/#tools">All tools</a><a href="api.html">API and prices</a><a href="blog/index.html">Blog</a><a href="llms.txt">llms.txt</a><a href="account.html">Account</a><a class="navcta" href="api.html#key">Get a key</a></nav></div></header>
 <main class="wrap" id="main">
 <p class="crumbs"><a href="/#tools">Tools</a> &rsaquo; <a href="q/index.html">Questions</a> &rsaquo; <a href="product-recalls.html">Product Recall Check API</a></p>
 <article class="prose">
@@ -143,7 +169,15 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <p><a href="q/index.html">All questions</a></p>
 </article>
 </main>
-<footer><div class="wrap"><p><a href="/">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<footer><div class="wrap"><p><a href="/">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="registers/index.html">Registers</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
 <p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
+<script>
+(function(){try{var q=new URLSearchParams(location.search),s=q.get("src")||q.get("utm_source"),r=document.referrer?new URL(document.referrer).hostname:"";
+if(!s&&r&&!/(^|\.)boscolabs\.dev$/.test(r))s=r;s=(s||"").toLowerCase().replace(/[^a-z0-9._-]/g,"").slice(0,40);if(!s)return;
+document.querySelectorAll("a[href]").forEach(function(a){var h=a.getAttribute("href");
+if(!/^(\/(#.*)?$|[\w./-]*\.html([?#]|$))/.test(h)||/^https?:/.test(h)||h.indexOf("src=")>=0)return;
+var p=h.split("#");a.setAttribute("href",p[0]+(p[0].indexOf("?")<0?"?":"&")+"src="+encodeURIComponent(s)+(p.length>1?"#"+p[1]:""));});
+}catch(e){}})();
+</script>
 </body>
 </html>
