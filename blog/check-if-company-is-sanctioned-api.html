@@ -28,7 +28,7 @@
    "headline": "How to check if a company is sanctioned, with an API",
    "description": "Screen a company name against the OFAC, UK, EU and UN sanctions lists from code, read a match properly, and know what a name check can't catch.",
    "datePublished": "2026-11-09",
-   "dateModified": "2026-11-09",
+   "dateModified": "2026-11-11",
    "keywords": [
     "sanctions",
     "ofac",
@@ -147,7 +147,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <article class="prose">
 <p class="crumbs"><a href="blog/index.html">Blog</a> &rsaquo; How to check if a company is sanctioned, with an API</p>
 <h1>How to check if a company is sanctioned, with an API</h1>
-<p class="muted">Bosco Labs · <time datetime="2026-11-09">9 November 2026</time></p>
+<p class="muted">Bosco Labs · <time datetime="2026-11-09">9 November 2026</time>, updated <time datetime="2026-11-11">11 November 2026</time></p>
 <p>Check the name against the official lists that apply to you, then have a person look at every hit. For most businesses trading in Europe or with the US, that means OFAC&#x27;s SDN list, the UK Sanctions List, the EU&#x27;s consolidated financial sanctions list and the UN Security Council list. All of them are free. Most of the work goes into matching names well and knowing what a &quot;no match&quot; actually covers.</p>
 <h2>Where the official lists are</h2>
 <p>OFAC publishes the SDN list and its non-SDN lists through the Sanctions List Service. The full SDN file is at <code>https://sanctionslistservice.ofac.treas.gov/api/PublicationPreview/exports/SDN.XML</code>. No key needed, and it changes most weekdays.</p>
@@ -196,7 +196,7 @@ for row in r.json()[&quot;rows&quot;]:
   -H &quot;Content-Type: application/json&quot; \
   -d &#x27;{&quot;query&quot;: &quot;00445790&quot;, &quot;country&quot;: &quot;GB&quot;}&#x27;</code></pre>
 <p>Look at the <code>sanctions_entity</code> and <code>sanctions_people</code> checks in the result. People are screened where the register publishes their names: the UK, Norway and France. Poland lists officers too, but masks the names. Everywhere else <code>sanctions_people</code> comes back <code>unverified</code>, and the detail says why. Please don&#x27;t read <code>unverified</code> as clear. It costs $0.05 per company and also covers register status and insolvency.</p>
-<p>In our own benchmark against a model doing web search, sanctions was where the difference showed up. The write-up has the per-company results and the cases where we got it wrong.</p>
+<p>In our own benchmark against a model doing web search, the model with web search answered &quot;not sanctioned&quot; in 17 of 25 answers and wrote in the same answer that it had not checked the lists or had run no search. It was right each time. The write-up has the per-company results and the cases where we got it wrong.</p>
 <h2>What a sanctions check doesn&#x27;t cover</h2>
 <p>Name screening against official lists isn&#x27;t the same as a compliance program. It doesn&#x27;t cover politically exposed persons or adverse media. It won&#x27;t find companies caught only by ownership rules. It doesn&#x27;t cover national lists from other countries. And neither a match nor a no-match is a legal determination. Every result from us carries a notice saying so, and a link to the official entry so the person reviewing it can check the source.</p>
 <p>If you need PEPs and adverse media, that&#x27;s a job for a dedicated screening vendor. If what you need is a quick, sourced answer to &quot;is this name on an official list right now&quot;, an API call is a reasonable way to get it.</p>

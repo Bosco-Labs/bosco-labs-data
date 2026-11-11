@@ -791,14 +791,14 @@ claude mcp add --transport http bosco-labs https://api.boscolabs.dev/mcp \
 <div class="fact"><b>Find</b>One line per tool in <a href="llms.txt">llms.txt</a> and a compact catalogue at <code>https://api.boscolabs.dev/v1/tools?compact=true</code>. The planner turns a question into a call.</div>
 <div class="fact"><b>Call</b>The same tools over plain HTTPS, <a href="api.html#mcp">remote MCP</a> and as Apify Actors. One required field per tool, errors that say how to fix the input.</div>
 <div class="fact"><b>Pay</b>Prepaid credits on a key, or no account at all: <a href="api.html#x402">x402</a> settles each call in USDC, and only for rows that were delivered.</div>
-<div class="fact"><b>Trust</b>A source link and a time on every row. Refuses instead of guessing. <a href="status.html">Status</a>, <a href="security.html">sources and licences</a>, <a href="benchmark.html">benchmark</a>.</div>
+<div class="fact"><b>Trust</b>A source link and a time on every row. Refuses instead of guessing: in the latest <a href="benchmark.html">benchmark</a> run a model that answered from counterparty-check results left 5 of 74 scored fields open and got none wrong; in the first run, before we fixed four bugs, it got 2 wrong. <a href="status.html">Status</a>, <a href="security.html">sources and licences</a>.</div>
 </div>
 </section>
 <section class="band" id="tools">
 <h2>The full catalogue</h2>
 <p class="lead">30 tools live &middot; 29 on the HTTP API, remote MCP and x402 &middot; 30 also on the Apify Store. Company data first; filings, law, tenders, health and more below.</p>
 <ul class="chips"><li><a href="#companies">Companies</a></li><li><a href="#compliance-law">Compliance &amp; law</a></li><li><a href="#finance-sec">Finance &amp; SEC</a></li><li><a href="#government-procurement">Government &amp; procurement</a></li><li><a href="#macro-health-places">Macro, health &amp; places</a></li><li><a href="#software-security">Software security</a></li></ul>
-<p>Can an agent check a supplier with web search alone? See the <a href="benchmark.html">counterparty check benchmark</a> (25 companies, web search vs one API call) and <a href="blog/index.html">the blog</a> for how we ran it.</p>
+<p><strong>Benchmark on 25 companies, two runs.</strong> One model was asked about each company twice: with web search, and with one counterparty-check call. In the run of 2026-11-09 the result over all 25 is a tie, 20 against 19, and web search costs less per company ($0.048 against $0.069). The first run, before we fixed four bugs in the check, went to web search, 23 against 17. In the second run the call flagged all 6 sanctioned companies; web search flagged 4 of the 6 and gave no sanctions answer for the other 2. On the 12 companies that are sanctioned, insolvent, in liquidation or dissolved the call got every field right for 11 and web search for 6; in the first run it was 7 and 10. <a href="benchmark.html">The tables and where the API lost</a> &middot; <a href="blog/counterparty-check-benchmark.html">how we ran it</a>.</p>
 </section>
 <section id="companies">
 <h2>Companies</h2>
