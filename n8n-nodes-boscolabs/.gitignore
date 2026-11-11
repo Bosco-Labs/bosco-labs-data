@@ -1,0 +1,8 @@
+# Dependencies and build output. dist/ is not committed: the publish workflow builds it from
+# the tagged commit, so the npm package always matches the source its provenance points at.
+node_modules/
+dist/
+*.tsbuildinfo
+*.tgz
+.eslintcache
+npm-debug.log*

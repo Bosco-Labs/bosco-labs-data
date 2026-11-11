@@ -1,0 +1,340 @@
+{
+  "name": "Screen a new supplier: register status, insolvency and sanctions, alert on fail or review",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## Screen a new supplier\n\nRuns one counterparty check on a supplier and builds an alert when a check fails or needs review: register status, insolvency, recent accounts, and sanctions lists (OFAC, UN, UK, EU, US export lists) for the company and, where the register publishes them, its officers.\n\n### Setup\n1. Install the community node **n8n-nodes-boscolabs** (nodes panel, or Settings > Community Nodes).\n2. Get a Bosco Labs API key at [boscolabs.dev/api.html](https://boscolabs.dev/api.html#key) and save it as a **Bosco Labs API** credential.\n3. Pick that credential in each Bosco Labs node.\n4. Replace **New Supplier** with your own trigger (procurement form, ERP, spreadsheet row). A registration number or LEI in `supplier` avoids name mix-ups; `country` is optional.\n5. Connect Slack, e-mail or a ticket after **Build Alert**, and your onboarding step after **Supplier Clear**.\n\n### Cost per supplier\n$0.05 per company checked. A name that fits several companies returns candidates and costs nothing (see **Pick the Right Company**).\n\n### Coverage\nInsolvency sources exist for the UK, Poland, France, Germany, the Netherlands, Norway, Finland, Estonia, Ireland, the Czech Republic and Latvia. For other countries that check is `unverified`, which means not checked, not safe. The alert lists `unverified` checks too. This is a screening aid, not a compliance decision: review every fail and review.",
+        "height": 680,
+        "width": 420,
+        "color": 4
+      },
+      "id": "54dd422b-756f-5600-b81b-46e3065810c7",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -440,
+        -180
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "cdf135ab-a262-58c4-a087-3b7cbd3f7462",
+      "name": "When clicking 'Execute workflow'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        40,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "035acd2e-351a-5314-bbda-2966c082e0cc",
+              "name": "supplier",
+              "value": "Carillion plc",
+              "type": "string"
+            },
+            {
+              "id": "fb7096be-7198-5863-9a22-a0664a021bf6",
+              "name": "country",
+              "value": "GB",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "98f9f6e7-2f09-552c-9816-d2278dce4e43",
+      "name": "New Supplier",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        260,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "company",
+        "operation": "checkCounterparty",
+        "query": "={{ $json.supplier }}",
+        "additionalFields": {
+          "country": "={{ $json.country }}"
+        },
+        "simplify": true,
+        "options": {}
+      },
+      "id": "c8f59aac-11b0-5dab-befc-6822c0ee53ef",
+      "name": "Check Supplier",
+      "type": "n8n-nodes-boscolabs.boscoLabs",
+      "typeVersion": 1,
+      "position": [
+        480,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "cfae5041-b3ef-520d-9adc-910e82a02ede",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "checked",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "a5bab573-151d-5843-95a9-cab9589a6fd2",
+      "name": "Company Identified?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        700,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "6b202798-8157-5aae-9a22-114acd13fb33",
+              "leftValue": "={{ $json.summary.fail }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            },
+            {
+              "id": "47f1a149-6c80-522c-96b8-7fc92ef8d91c",
+              "leftValue": "={{ $json.summary.review }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "id": "c7327a24-2d92-5115-a8ba-0d8290065d14",
+      "name": "Fail or Review?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        920,
+        20
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c3876bb2-8426-50e1-90cc-165571ed1fec",
+              "name": "alert",
+              "value": "={{ 'Supplier check needs attention: ' + $json.company.legal_name + ' (' + $json.summary.fail + ' fail, ' + $json.summary.review + ' review)' }}",
+              "type": "string"
+            },
+            {
+              "id": "d23d5050-2712-5147-8117-a2c533c5f315",
+              "name": "details",
+              "value": "={{ $json.checks.filter(c => ['fail', 'review'].includes(c.status)).map(c => c.check + ': ' + c.status + '. ' + c.detail + (c.source_url ? ' Source: ' + c.source_url : '')).join('\\n') }}",
+              "type": "string"
+            },
+            {
+              "id": "b65930bf-bdb5-5ecb-8bd1-f660b7fe5a82",
+              "name": "unverified_checks",
+              "value": "={{ $json.summary.unverified_checks.join(', ') }}",
+              "type": "string"
+            },
+            {
+              "id": "2148c3f2-147e-56a3-9dba-9d15e4663fb7",
+              "name": "source_url",
+              "value": "={{ $json.source_url }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ec73d197-73e9-5716-96b3-7764873e16e1",
+      "name": "Build Alert",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1140,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c107d668-4fcb-5985-82b6-1aec8126620b",
+              "name": "result",
+              "value": "={{ 'No fail or review for ' + $json.company.legal_name }}",
+              "type": "string"
+            },
+            {
+              "id": "b65930bf-bdb5-5ecb-8bd1-f660b7fe5a82",
+              "name": "unverified_checks",
+              "value": "={{ $json.summary.unverified_checks.join(', ') }}",
+              "type": "string"
+            },
+            {
+              "id": "2148c3f2-147e-56a3-9dba-9d15e4663fb7",
+              "name": "source_url",
+              "value": "={{ $json.source_url }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c1c09151-7d2f-5132-8572-eb712c626774",
+      "name": "Supplier Clear",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1140,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c107d668-4fcb-5985-82b6-1aec8126620b",
+              "name": "result",
+              "value": "={{ $json.message ?? 'Several companies fit this name. Run the check again with a registration number or LEI.' }}",
+              "type": "string"
+            },
+            {
+              "id": "4f5815e1-b5d9-56a4-b2e7-920bffb0cd16",
+              "name": "candidates",
+              "value": "={{ ($json.candidates ?? []).map(c => [c.legal_name, c.country, c.registration_number ?? c.lei].filter(Boolean).join(' / ')).join('\\n') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ea74f6a3-73df-5fe5-9cc7-3eedb2177063",
+      "name": "Pick the Right Company",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        920,
+        280
+      ]
+    }
+  ],
+  "connections": {
+    "When clicking 'Execute workflow'": {
+      "main": [
+        [
+          {
+            "node": "New Supplier",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "New Supplier": {
+      "main": [
+        [
+          {
+            "node": "Check Supplier",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Supplier": {
+      "main": [
+        [
+          {
+            "node": "Company Identified?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Company Identified?": {
+      "main": [
+        [
+          {
+            "node": "Fail or Review?",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Pick the Right Company",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fail or Review?": {
+      "main": [
+        [
+          {
+            "node": "Build Alert",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Supplier Clear",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": false
+  }
+}

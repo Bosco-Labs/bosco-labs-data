@@ -1,0 +1,63 @@
+{
+	"name": "n8n-nodes-boscolabs",
+	"version": "0.1.0",
+	"description": "n8n community node for the Bosco Labs API: counterparty (KYB) checks, company reports and accounts, EU VAT and IBAN validation, sanctions screening and new UK companies, from official registers with a source URL on every row.",
+	"license": "MIT",
+	"homepage": "https://boscolabs.dev",
+	"keywords": [
+		"n8n-community-node-package",
+		"n8n",
+		"kyb",
+		"company-data",
+		"sanctions",
+		"vat",
+		"iban",
+		"companies-house",
+		"due-diligence"
+	],
+	"author": {
+		"name": "Bosco Labs",
+		"email": "support@boscolabs.dev"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Bosco-Labs/bosco-labs-data.git",
+		"directory": "n8n-nodes-boscolabs"
+	},
+	"bugs": {
+		"email": "support@boscolabs.dev"
+	},
+	"scripts": {
+		"build": "n8n-node build",
+		"build:watch": "tsc --watch",
+		"dev": "n8n-node dev",
+		"lint": "n8n-node lint",
+		"lint:fix": "n8n-node lint --fix",
+		"test": "n8n-node build && node --test \"test/*.test.js\"",
+		"release": "n8n-node release",
+		"prepublishOnly": "n8n-node prerelease"
+	},
+	"files": [
+		"dist"
+	],
+	"n8n": {
+		"n8nNodesApiVersion": 1,
+		"strict": true,
+		"credentials": [
+			"dist/credentials/BoscoLabsApi.credentials.js"
+		],
+		"nodes": [
+			"dist/nodes/BoscoLabs/BoscoLabs.node.js"
+		]
+	},
+	"devDependencies": {
+		"@n8n/node-cli": "^0.56.1",
+		"eslint": "9.39.4",
+		"prettier": "3.8.3",
+		"release-it": "20.2.0",
+		"typescript": "5.9.3"
+	},
+	"peerDependencies": {
+		"n8n-workflow": "*"
+	}
+}

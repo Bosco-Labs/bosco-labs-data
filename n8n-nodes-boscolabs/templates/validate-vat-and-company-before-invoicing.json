@@ -1,0 +1,403 @@
+{
+  "name": "Validate a new customer's VAT number and company before invoicing",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## Validate a new customer before invoicing\n\nChecks the customer's EU VAT number live in VIES (with the name you expect), then runs a counterparty check on the company: register status, insolvency, sanctions and whether the VAT number belongs to that company.\n\n### Setup\n1. Install the community node **n8n-nodes-boscolabs** (nodes panel, or Settings > Community Nodes).\n2. Get a Bosco Labs API key at [boscolabs.dev/api.html](https://boscolabs.dev/api.html#key) and save it as a **Bosco Labs API** credential.\n3. Pick that credential in each Bosco Labs node.\n4. Replace **New Customer** with your own trigger (CRM, form, webhook) that gives `customer_name`, `vat_number` and `country`.\n5. Connect your invoicing step after **OK to Invoice** and a message to your team after the other two outcomes.\n\n### Cost per customer\n$0.002 for the VAT check, plus $0.05 for the counterparty check when the VAT number is valid. Calls that return nothing are free.\n\n### Read the result with care\n`unverified` means a check could not be made (for example VIES was down, or the country has no open insolvency register). It does not mean the company is safe. The checks are a screening aid, not a compliance, credit or legal decision.",
+        "height": 640,
+        "width": 400,
+        "color": 4
+      },
+      "id": "bbcf0a24-ce7e-5a4a-bd19-4648f67b2752",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -420,
+        -160
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "d4ec4f5e-457a-519e-a0c4-9e9ffd558f60",
+      "name": "When clicking 'Execute workflow'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        40,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "1541a712-98f2-519f-868e-fceaf6fac8d7",
+              "name": "customer_name",
+              "value": "Novo Nordisk A/S",
+              "type": "string"
+            },
+            {
+              "id": "4d13c2b4-1df2-5085-88d9-2d4b8012207a",
+              "name": "vat_number",
+              "value": "DK24256790",
+              "type": "string"
+            },
+            {
+              "id": "e212656b-29ce-5b45-94c2-4a9ae8fbd030",
+              "name": "country",
+              "value": "DK",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "62430b60-f25a-553f-acf3-e0fcded220c2",
+      "name": "New Customer",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        260,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "vatIban",
+        "operation": "check",
+        "vatNumbers": "={{ $json.vat_number }}",
+        "ibans": "",
+        "additionalFields": {
+          "expectedName": "={{ $json.customer_name }}",
+          "expectedCountry": "={{ $json.country }}"
+        },
+        "simplify": true,
+        "options": {}
+      },
+      "id": "450475f9-9086-50f7-914c-9379da3856c8",
+      "name": "Check VAT Number",
+      "type": "n8n-nodes-boscolabs.boscoLabs",
+      "typeVersion": 1,
+      "position": [
+        480,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "370cc31a-6433-51c2-affc-c74601fa2da6",
+              "leftValue": "={{ $json.valid === true }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "397081e0-942f-5066-bf81-2700056cf2c8",
+      "name": "VAT Number Valid?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        700,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "company",
+        "operation": "checkCounterparty",
+        "query": "={{ $('New Customer').item.json.customer_name }}",
+        "additionalFields": {
+          "country": "={{ $('New Customer').item.json.country }}",
+          "vatNumber": "={{ $('New Customer').item.json.vat_number }}"
+        },
+        "simplify": true,
+        "options": {}
+      },
+      "id": "18e5d835-66de-578f-b0dd-012928be7a5a",
+      "name": "Check Company",
+      "type": "n8n-nodes-boscolabs.boscoLabs",
+      "typeVersion": 1,
+      "position": [
+        920,
+        20
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "9eac91d9-6347-5cfe-a49e-4fab32cf7ca6",
+              "leftValue": "={{ $json.status === 'checked' && $json.summary.fail === 0 && $json.summary.review === 0 }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "2e0a8b68-18a0-5abb-8d42-32917aaa1f40",
+      "name": "Company Clear?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1140,
+        20
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e06d3fc4-420d-5751-830c-68e4c2b776e5",
+              "name": "decision",
+              "value": "ok_to_invoice",
+              "type": "string"
+            },
+            {
+              "id": "54932678-6af4-5e05-ad7b-11203c35f7ed",
+              "name": "customer",
+              "value": "={{ $json.company.legal_name }}",
+              "type": "string"
+            },
+            {
+              "id": "94bbdd5e-ac37-51b7-82ce-225382fba55d",
+              "name": "registration_number",
+              "value": "={{ $json.company.registration_number }}",
+              "type": "string"
+            },
+            {
+              "id": "f7daebf4-208b-5dc2-8dc0-c1bb932eff7d",
+              "name": "unverified_checks",
+              "value": "={{ $json.summary.unverified_checks.join(', ') }}",
+              "type": "string"
+            },
+            {
+              "id": "c1fb9158-96cf-5c9c-843c-573e37cadd83",
+              "name": "source_url",
+              "value": "={{ $json.source_url }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b4f999d8-bcaf-5b92-b225-a7df84a2fcf7",
+      "name": "OK to Invoice",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1360,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e06d3fc4-420d-5751-830c-68e4c2b776e5",
+              "name": "decision",
+              "value": "review_before_invoicing",
+              "type": "string"
+            },
+            {
+              "id": "54932678-6af4-5e05-ad7b-11203c35f7ed",
+              "name": "customer",
+              "value": "={{ $('New Customer').item.json.customer_name }}",
+              "type": "string"
+            },
+            {
+              "id": "1c15209b-3411-5527-9987-15199a0b5c7e",
+              "name": "reason",
+              "value": "={{ $json.status === 'checked' ? 'Needs attention: ' + $json.summary.needs_attention.join(', ') : 'Several companies fit this name: run the check again with a registration number' }}",
+              "type": "string"
+            },
+            {
+              "id": "c1fb9158-96cf-5c9c-843c-573e37cadd83",
+              "name": "source_url",
+              "value": "={{ $json.source_url ?? '' }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8425749b-80b4-5fc8-b03a-745199b834be",
+      "name": "Review Before Invoicing",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1360,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e06d3fc4-420d-5751-830c-68e4c2b776e5",
+              "name": "decision",
+              "value": "vat_number_not_confirmed",
+              "type": "string"
+            },
+            {
+              "id": "54932678-6af4-5e05-ad7b-11203c35f7ed",
+              "name": "customer",
+              "value": "={{ $('New Customer').item.json.customer_name }}",
+              "type": "string"
+            },
+            {
+              "id": "90ce0778-8740-5340-b773-7334b640880b",
+              "name": "vat_status",
+              "value": "={{ $json.status }}",
+              "type": "string"
+            },
+            {
+              "id": "1c15209b-3411-5527-9987-15199a0b5c7e",
+              "name": "reason",
+              "value": "={{ $json.reason ?? '' }}",
+              "type": "string"
+            },
+            {
+              "id": "c1fb9158-96cf-5c9c-843c-573e37cadd83",
+              "name": "source_url",
+              "value": "={{ $json.source_url }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b594b3b0-4e8d-50b6-a8bf-7f2811e5494e",
+      "name": "Do Not Invoice Yet",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        920,
+        280
+      ]
+    }
+  ],
+  "connections": {
+    "When clicking 'Execute workflow'": {
+      "main": [
+        [
+          {
+            "node": "New Customer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "New Customer": {
+      "main": [
+        [
+          {
+            "node": "Check VAT Number",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check VAT Number": {
+      "main": [
+        [
+          {
+            "node": "VAT Number Valid?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "VAT Number Valid?": {
+      "main": [
+        [
+          {
+            "node": "Check Company",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Do Not Invoice Yet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Company": {
+      "main": [
+        [
+          {
+            "node": "Company Clear?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Company Clear?": {
+      "main": [
+        [
+          {
+            "node": "OK to Invoice",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Review Before Invoicing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": false
+  }
+}

@@ -1,0 +1,275 @@
+{
+	"_comment": "Snapshot of the input schemas, caps and prices of the six company tools as the Bosco Labs API publishes them at GET https://api.boscolabs.dev/v1/tools (taken from the API source on 2026-11-11, descriptions left out). The tests check every request the node builds against it. Refresh it when a tool's schema or price changes.",
+	"tools": {
+		"counterparty-check": {
+			"event": "counterparty-check",
+			"price_usd_per_row": 0.05,
+			"caps": {
+				"companies": 10
+			},
+			"required": [],
+			"properties": {
+				"query": {
+					"type": "string"
+				},
+				"country": {
+					"type": "string"
+				},
+				"vatNumber": {
+					"type": "string"
+				},
+				"iban": {
+					"type": "string"
+				},
+				"walletAddresses": {
+					"type": "array",
+					"maxItems": 10
+				},
+				"companies": {
+					"type": "array",
+					"maxItems": 10
+				}
+			}
+		},
+		"company-check": {
+			"event": "company-report",
+			"price_usd_per_row": 0.03,
+			"caps": {},
+			"required": [
+				"query"
+			],
+			"properties": {
+				"query": {
+					"type": "string"
+				},
+				"country": {
+					"type": "string"
+				},
+				"maxYears": {
+					"type": "integer",
+					"default": 3,
+					"minimum": 1,
+					"maximum": 10
+				},
+				"include": {
+					"type": "array",
+					"default": [
+						"identity",
+						"financials",
+						"us",
+						"people"
+					],
+					"itemSuggested": [
+						"identity",
+						"financials",
+						"us",
+						"people",
+						"charges",
+						"appointments",
+						"insolvency"
+					]
+				}
+			}
+		},
+		"company-accounts": {
+			"event": "company-year",
+			"price_usd_per_row": 0.04,
+			"caps": {
+				"maxResults": 10,
+				"companyNumbers": 5,
+				"cvrNumbers": 5,
+				"orgNumbers": 5
+			},
+			"required": [],
+			"properties": {
+				"countries": {
+					"type": "array",
+					"default": [
+						"GB",
+						"DK",
+						"NO"
+					],
+					"itemEnum": [
+						"GB",
+						"DK",
+						"NO",
+						"BE"
+					]
+				},
+				"companyNumbers": {
+					"type": "array",
+					"maxItems": 5
+				},
+				"cvrNumbers": {
+					"type": "array",
+					"maxItems": 5
+				},
+				"orgNumbers": {
+					"type": "array",
+					"maxItems": 5
+				},
+				"enterpriseNumbers": {
+					"type": "array"
+				},
+				"enrichLei": {
+					"type": "boolean",
+					"default": true
+				},
+				"maxResults": {
+					"type": "integer",
+					"default": 5,
+					"minimum": 1,
+					"maximum": 10
+				}
+			}
+		},
+		"vat-iban-check": {
+			"event": "check",
+			"price_usd_per_row": 0.002,
+			"caps": {
+				"vatNumbers": 10,
+				"ibans": 50
+			},
+			"required": [],
+			"properties": {
+				"vatNumbers": {
+					"type": "array",
+					"maxItems": 10
+				},
+				"ibans": {
+					"type": "array",
+					"maxItems": 50
+				},
+				"expectedName": {
+					"type": "string"
+				},
+				"expectedCountry": {
+					"type": "string"
+				},
+				"requesterVatNumber": {
+					"type": "string"
+				}
+			}
+		},
+		"sanctions-screening": {
+			"event": "name-screened",
+			"price_usd_per_row": 0.01,
+			"caps": {
+				"names": 50,
+				"addresses": 50
+			},
+			"required": [],
+			"properties": {
+				"names": {
+					"type": "array",
+					"maxItems": 50
+				},
+				"addresses": {
+					"type": "array",
+					"maxItems": 50
+				},
+				"country": {
+					"type": "string"
+				},
+				"entityType": {
+					"type": "string",
+					"default": "any",
+					"enum": [
+						"any",
+						"organization",
+						"person",
+						"vessel"
+					]
+				},
+				"minScore": {
+					"type": "integer",
+					"default": 85,
+					"minimum": 50,
+					"maximum": 100
+				},
+				"lists": {
+					"type": "array",
+					"itemEnum": [
+						"ofac_sdn",
+						"ofac_consolidated",
+						"us_csl",
+						"uk",
+						"eu",
+						"un"
+					]
+				}
+			}
+		},
+		"uk-new-companies": {
+			"event": "company",
+			"price_usd_per_row": 0.002,
+			"caps": {
+				"maxResults": 200
+			},
+			"required": [],
+			"properties": {
+				"incorporatedFrom": {
+					"type": "string"
+				},
+				"incorporatedTo": {
+					"type": "string"
+				},
+				"sicCodes": {
+					"type": "array"
+				},
+				"location": {
+					"type": "string"
+				},
+				"companyTypes": {
+					"type": "array",
+					"default": [
+						"ltd",
+						"plc",
+						"llp"
+					],
+					"itemSuggested": [
+						"private-unlimited",
+						"ltd",
+						"plc",
+						"old-public-company",
+						"private-limited-guarant-nsc-limited-exemption",
+						"limited-partnership",
+						"private-limited-guarant-nsc",
+						"converted-or-closed",
+						"private-unlimited-nsc",
+						"private-limited-shares-section-30-exemption",
+						"protected-cell-company",
+						"assurance-company",
+						"oversea-company",
+						"eeig",
+						"icvc-securities",
+						"icvc-warrant",
+						"icvc-umbrella",
+						"registered-society-non-jurisdictional",
+						"industrial-and-provident-society",
+						"northern-ireland",
+						"northern-ireland-other",
+						"royal-charter",
+						"investment-company-with-variable-capital",
+						"unregistered-company",
+						"llp",
+						"other",
+						"european-public-limited-liability-company-se",
+						"uk-establishment",
+						"scottish-partnership",
+						"charitable-incorporated-organisation",
+						"scottish-charitable-incorporated-organisation",
+						"further-education-or-sixth-form-college-corporation",
+						"registered-overseas-entity"
+					]
+				},
+				"maxResults": {
+					"type": "integer",
+					"default": 100,
+					"minimum": 1,
+					"maximum": 200
+				}
+			}
+		}
+	}
+}
