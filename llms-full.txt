@@ -1,6 +1,6 @@
 # Bosco Labs data APIs
 
-> Bosco Labs publishes data tools for AI agents and analysts (HTTP API, remote MCP, x402 and Apify Actors) that return clean, typed JSON from official sources: SEC filings, insider trades, 13F holdings and XBRL financials, US House STOCK Act trades, European ESEF annual reports, UK/Danish/Norwegian company accounts and registries, sanctions lists, EU, UK and Dutch law and case law, EU tenders, US federal and Pentagon contract awards, ECB rates and euro inflation, clinical trials, drug safety, recalls, tariffs, package vulnerabilities and Dutch addresses. 30 tools are live: all 29 HTTP API tools are plain HTTPS endpoints and remote MCP tools that an agent can call with a key (prepaid credits) or without an account, paying per call in USDC via x402 (https://api.boscolabs.dev/v1/<tool>, see API below); 30 of them are also Apify Actors on the Apify Store (pay per event). Data rows carry a source link.
+> Bosco Labs publishes data tools for AI agents and analysts (HTTP API, remote MCP, x402 and Apify Actors) that return clean, typed JSON from official sources. The lead use is checking a company against the official registers in one call (national registers of the UK, France, Poland, Norway, Finland, Estonia, Ireland, the Czech Republic and Latvia; other countries from the LEI record): register status, insolvency, filed accounts, VAT number, IBAN and official sanctions lists, each check with its source link (counterparty-check, company-check, company-accounts, vat-iban-check, sanctions-screening). Also: SEC filings, insider trades, 13F holdings and XBRL financials, US House STOCK Act trades, European ESEF annual reports, EU, UK and Dutch law and case law, EU tenders, US federal and Pentagon contract awards, ECB rates and euro inflation, clinical trials, drug safety, recalls, tariffs, package vulnerabilities and Dutch addresses. 30 tools are live: all 29 HTTP API tools are plain HTTPS endpoints and remote MCP tools that an agent can call with a key (prepaid credits) or without an account, paying per call in USDC via x402 (https://api.boscolabs.dev/v1/<tool>, see API below); 30 of them are also Apify Actors on the Apify Store (pay per event). Data rows carry a source link.
 
 Apify Store profile: https://apify.com/bosco_labs
 Contact: support@boscolabs.dev
@@ -12,17 +12,6 @@ Contact: support@boscolabs.dev
 - Claude Code: `claude mcp add --transport http bosco-labs https://api.boscolabs.dev/mcp/free` (planner, tool descriptions, free LEI and SEC lookups); the paid tools are on https://api.boscolabs.dev/mcp with your key
 - Cursor: `{"mcpServers": {"bosco-labs": {"url": "https://api.boscolabs.dev/mcp/free"}}}` in `.cursor/mcp.json`
 - Paid tools: a key with $5.00 free credit (once per verified e-mail, no card): `curl -s -X POST https://api.boscolabs.dev/v1/keys/request -H 'content-type: application/json' -d '{"email": "you@example.com"}'` e-mails a one-time link; the page shows the key once. Send it as `Authorization: Bearer <key>` to the HTTP API or to https://api.boscolabs.dev/mcp
-
-## Finance & SEC
-
-- [SEC Insider Trading API (Form 4): stock transactions since 2006](https://boscolabs.dev/sec-insider-trades.html): Every insider purchase and sale reported on SEC Form 4 (directors, officers, 10% owners), from official EDGAR filings, 2006 to today, with cluster-buy and cluster-sell signals; filter by ticker, CIK, transaction code, role, value and date. Price: Apify Store $0.0018 per transaction row and $0.02 per cluster signal; HTTP API $0.0002 per unit: a Form 4 transaction = 9 units ($0.0018), a cluster signal = 100 ($0.02). ([Apify Store](https://apify.com/bosco_labs/sec-insider-trades))
-- [SEC EDGAR Filings API: 8-K, 10-K, 10-Q feed since 1994](https://boscolabs.dev/sec-filings-feed.html): SEC EDGAR filings (8-K, 10-K, 10-Q, S-1, 13D, 13G, Form 4 and every other form) for any company or the whole market, live or back to 1994, from the SEC's own feeds; 8-K item codes and earnings releases (Item 2.02); links to each filing, not its text. Price: Apify Store $0.001 per filing; HTTP API $0.001 per filing. ([Apify Store](https://apify.com/bosco_labs/sec-filings-feed))
-- [Congress Stock Trades API: US House STOCK Act since 2014](https://boscolabs.dev/us-house-trades.html): Congress stock trades: stock, option, fund and bond trades that US House members disclose in STOCK Act Periodic Transaction Reports, from the Clerk of the House's official filings since January 2014 (no Senate); ticker, amount range, owner, days to disclose. Price: Apify Store $0.0018 per trade; HTTP API $0.0018 per PTR transaction. ([Apify Store](https://apify.com/bosco_labs/us-house-trades))
-- [SEC 13F Holdings API: fund & ETF holdings, 13D/13G, Form 144](https://boscolabs.dev/sec-ownership.html): 13F institutional holdings and who owns a stock, from official SEC filings: a fund manager's 13F positions (new, increased, decreased or closed vs last quarter), mutual fund/ETF N-PORT holdings, funds holding a ticker, 5%+ stakes (13D/13G) and Form 144 planned insider sales. One ticker or fund in. Price: Apify Store $0.0018 per row, plus $0.01 per "who holds this stock" search (13F or N-PORT data set); HTTP API $0.0018 per holding, holder or filing row (one fund or company per call). ([Apify Store](https://apify.com/bosco_labs/sec-ownership))
-- [SEC Financial Statements API: income, balance sheet, cash flow](https://boscolabs.dev/sec-company-financials.html): Company financial statements from SEC EDGAR XBRL (10-K, 10-Q, 20-F): income statement (revenue, profit, EPS), balance sheet, cash flow, free cash flow and margins per fiscal year or quarter, 2009 to date, by stock ticker or CIK. Each value cites its XBRL tag and filing. Q4 derived if not reported. Price: Apify Store $0.005 per company-period row; HTTP API $0.005 per company-period row. ([Apify Store](https://apify.com/bosco_labs/sec-company-financials))
-- [SEC Company Screener API: filter all US filers by financials](https://boscolabs.dev/sec-company-screen.html): Stock screener on SEC EDGAR data. US companies matching your filters for one calendar year or quarter: revenue, net income, margins, cash flow, assets and 30 more metrics from SEC XBRL frames, sorted and capped. Each value cites its XBRL tag and SEC filing. Same metrics as SEC Company Financials. Price: Apify Store $0.002 per company returned; HTTP API $0.002 per company returned. ([Apify Store](https://apify.com/bosco_labs/sec-company-screen))
-- [EU Annual Reports API (ESEF): XBRL financial statements](https://boscolabs.dev/esef-annual-reports.html): Normalized key financials (revenue, EBIT, EBITDA, net income, EPS, assets, equity, cash flows, margins, growth) of European listed companies from official ESEF annual reports via filings.xbrl.org; 28 countries; every value linked to its XBRL fact. Price: Apify Store $0.01 per run plus $0.05 per annual report; raw XBRL fact rows, if switched on, $0.0005 each; HTTP API $0.05 per annual report. ([Apify Store](https://apify.com/bosco_labs/esef-annual-reports))
-- [ISIN, LEI, CIK, FIGI & Ticker Resolver API (crosswalk)](https://boscolabs.dev/identifier-resolver.html): Issuer legal name, LEI, CIK, tickers, ISINs, FIGIs, CFI code and EU trading venues for one ISIN, LEI, CIK, ticker, FIGI or company name. Check digits validated first; a source URL per value. Data from GLEIF, OpenFIGI, SEC and ESMA FIRDS. Price: Apify Store $0.002 per resolved identifier; HTTP API $0.002 per identifier resolved. ([Apify Store](https://apify.com/bosco_labs/identifier-resolver))
 
 ## Companies
 
@@ -42,6 +31,17 @@ Contact: support@boscolabs.dev
 - [Federal Register & eCFR API: CFR text as of a date, changes](https://boscolabs.dev/us-federal-rules.html): Federal Register documents and Code of Federal Regulations (eCFR) text: a CFR section as in force today or on any date, its amendment history and the rules that changed it; what changed in a CFR part since a date; Federal Register search by agency or number. Official data, a source link per row. Price: Apify Store $0.005 per section, $0.002 per document; HTTP API $0.001 per unit: a CFR section with text = 5 units ($0.005), a Federal Register document = 2 ($0.002); rows without text are free. ([Apify Store](https://apify.com/bosco_labs/us-federal-rules))
 - [Product Recall Check API: CPSC, NHTSA, FDA & EU Safety Gate](https://boscolabs.dev/product-recalls.html): Recalled yes/no, with each recall's date, hazard, remedy and official link, for a product name, brand, model, UPC/EAN or VIN. Checks US CPSC, NHTSA vehicle recalls, FDA enforcement reports (food, drugs, devices) and EU Safety Gate in one call. Lists every source checked. Price: Apify Store $0.005 per product checked; HTTP API $0.005 per product checked (every source answered). ([Apify Store](https://apify.com/bosco_labs/product-recalls))
 - [HS Tariff Code & Duty Lookup API: US HTS and UK Tariff](https://boscolabs.dev/tariff-lookup.html): Import duty for an HS-based tariff code, US Harmonized Tariff Schedule (HTS) or UK commodity code: description hierarchy, general (MFN), special (preferential) and column 2 rates, US Chapter 99 references, UK VAT, source link. Or a product description in, 5 candidate codes out. No binding ruling. Price: Apify Store $0.005 per lookup or search; HTTP API $0.005 per code lookup or code search (US or UK). ([Apify Store](https://apify.com/bosco_labs/tariff-lookup))
+
+## Finance & SEC
+
+- [SEC Insider Trading API (Form 4): stock transactions since 2006](https://boscolabs.dev/sec-insider-trades.html): Every insider purchase and sale reported on SEC Form 4 (directors, officers, 10% owners), from official EDGAR filings, 2006 to today, with cluster-buy and cluster-sell signals; filter by ticker, CIK, transaction code, role, value and date. Price: Apify Store $0.0018 per transaction row and $0.02 per cluster signal; HTTP API $0.0002 per unit: a Form 4 transaction = 9 units ($0.0018), a cluster signal = 100 ($0.02). ([Apify Store](https://apify.com/bosco_labs/sec-insider-trades))
+- [SEC EDGAR Filings API: 8-K, 10-K, 10-Q feed since 1994](https://boscolabs.dev/sec-filings-feed.html): SEC EDGAR filings (8-K, 10-K, 10-Q, S-1, 13D, 13G, Form 4 and every other form) for any company or the whole market, live or back to 1994, from the SEC's own feeds; 8-K item codes and earnings releases (Item 2.02); links to each filing, not its text. Price: Apify Store $0.001 per filing; HTTP API $0.001 per filing. ([Apify Store](https://apify.com/bosco_labs/sec-filings-feed))
+- [Congress Stock Trades API: US House STOCK Act since 2014](https://boscolabs.dev/us-house-trades.html): Congress stock trades: stock, option, fund and bond trades that US House members disclose in STOCK Act Periodic Transaction Reports, from the Clerk of the House's official filings since January 2014 (no Senate); ticker, amount range, owner, days to disclose. Price: Apify Store $0.0018 per trade; HTTP API $0.0018 per PTR transaction. ([Apify Store](https://apify.com/bosco_labs/us-house-trades))
+- [SEC 13F Holdings API: fund & ETF holdings, 13D/13G, Form 144](https://boscolabs.dev/sec-ownership.html): 13F institutional holdings and who owns a stock, from official SEC filings: a fund manager's 13F positions (new, increased, decreased or closed vs last quarter), mutual fund/ETF N-PORT holdings, funds holding a ticker, 5%+ stakes (13D/13G) and Form 144 planned insider sales. One ticker or fund in. Price: Apify Store $0.0018 per row, plus $0.01 per "who holds this stock" search (13F or N-PORT data set); HTTP API $0.0018 per holding, holder or filing row (one fund or company per call). ([Apify Store](https://apify.com/bosco_labs/sec-ownership))
+- [SEC Financial Statements API: income, balance sheet, cash flow](https://boscolabs.dev/sec-company-financials.html): Company financial statements from SEC EDGAR XBRL (10-K, 10-Q, 20-F): income statement (revenue, profit, EPS), balance sheet, cash flow, free cash flow and margins per fiscal year or quarter, 2009 to date, by stock ticker or CIK. Each value cites its XBRL tag and filing. Q4 derived if not reported. Price: Apify Store $0.005 per company-period row; HTTP API $0.005 per company-period row. ([Apify Store](https://apify.com/bosco_labs/sec-company-financials))
+- [SEC Company Screener API: filter all US filers by financials](https://boscolabs.dev/sec-company-screen.html): Stock screener on SEC EDGAR data. US companies matching your filters for one calendar year or quarter: revenue, net income, margins, cash flow, assets and 30 more metrics from SEC XBRL frames, sorted and capped. Each value cites its XBRL tag and SEC filing. Same metrics as SEC Company Financials. Price: Apify Store $0.002 per company returned; HTTP API $0.002 per company returned. ([Apify Store](https://apify.com/bosco_labs/sec-company-screen))
+- [EU Annual Reports API (ESEF): XBRL financial statements](https://boscolabs.dev/esef-annual-reports.html): Normalized key financials (revenue, EBIT, EBITDA, net income, EPS, assets, equity, cash flows, margins, growth) of European listed companies from official ESEF annual reports via filings.xbrl.org; 28 countries; every value linked to its XBRL fact. Price: Apify Store $0.01 per run plus $0.05 per annual report; raw XBRL fact rows, if switched on, $0.0005 each; HTTP API $0.05 per annual report. ([Apify Store](https://apify.com/bosco_labs/esef-annual-reports))
+- [ISIN, LEI, CIK, FIGI & Ticker Resolver API (crosswalk)](https://boscolabs.dev/identifier-resolver.html): Issuer legal name, LEI, CIK, tickers, ISINs, FIGIs, CFI code and EU trading venues for one ISIN, LEI, CIK, ticker, FIGI or company name. Check digits validated first; a source URL per value. Data from GLEIF, OpenFIGI, SEC and ESMA FIRDS. Price: Apify Store $0.002 per resolved identifier; HTTP API $0.002 per identifier resolved. ([Apify Store](https://apify.com/bosco_labs/identifier-resolver))
 
 ## Government & procurement
 
@@ -167,6 +167,26 @@ Contact: support@boscolabs.dev
 - [Before we pay them: check supplier Novo Nordisk A/S (CVR 24256790), their VAT number DK24256790 and IBAN DK5000400440116243.](https://boscolabs.dev/q/novo-nordisk-supplier-vat-iban-check.html) -> `counterparty-check` `{"query": "24256790", "country": "DK", "vatNumber": "DK24256790", "iban": "DK5000400440116243"}`
 - [Is Estonian company 14850239 still in the register, and is it on a sanctions list?](https://boscolabs.dev/q/estonian-company-14850239-sanctions-register-check.html) -> `counterparty-check` `{"query": "14850239", "country": "EE"}`
 
+
+## Company registers by country
+
+- [All countries](https://boscolabs.dev/registers/index.html): the free official route, where it gets hard, and the call that covers it
+- [Czech Republic: ARES (Ministry of Finance)](https://boscolabs.dev/registers/cz.html) (read from the national register): How to check a Czech company with the free, keyless ARES API, which has no status field and no named licence, and one call that derives it.
+- [Estonia: e-Business Register (RIK)](https://boscolabs.dev/registers/ee.html) (read from the national register): How to check an Estonian company with RIK's public autocomplete service and free bulk files, since the per-company API needs a contract.
+- [Finland: PRH Trade Register (YTJ)](https://boscolabs.dev/registers/fi.html) (read from the national register): How to check a Finnish company with PRH's two keyless open APIs under CC BY 4.0, and why only about 5% of accounts are in them.
+- [France: Sirene (INSEE) and RNE (INPI)](https://boscolabs.dev/registers/fr.html) (read from the national register): How to check a French company with the keyless Recherche d'entreprises API and BODACC insolvency notices, and where the gaps are.
+- [Ireland: Companies Registration Office (CRO)](https://boscolabs.dev/registers/ie.html) (read from the national register): How to check an Irish company with the CRO's open data and its keyless API, what the daily snapshot holds, and what is missing from it.
+- [Latvia: Enterprise Register of Latvia (Uzņēmumu reģistrs)](https://boscolabs.dev/registers/lv.html) (read from the national register): How to check a Latvian company with the Enterprise Register's CC0 open data, where status takes three datasets, and what we leave out.
+- [Norway: Brønnøysund registers (Enhetsregisteret)](https://boscolabs.dev/registers/no.html) (read from the national register): How to check a Norwegian company with the open Brønnøysund API, which needs no key, where it stops, and one call that covers it.
+- [Poland: National Court Register (KRS)](https://boscolabs.dev/registers/pl.html) (read from the national register): How to check a Polish company with the open KRS API, which needs no token, what has no API at all, and one call for a full check.
+- [United Kingdom: Companies House](https://boscolabs.dev/registers/gb.html) (read from the national register): How to check a UK company with the free Companies House API, what The Gazette adds for insolvency, and one call that reads both.
+- [Denmark: CVR (Erhvervsstyrelsen)](https://boscolabs.dev/registers/dk.html) (partly covered): Denmark's filed accounts are open without a key while the CVR register itself needs an access application, and one call covers part today.
+- [Germany: Handelsregister (register portal of the federal states)](https://boscolabs.dev/registers/de.html) (partly covered): Germany has no open company register API, the portal caps lookups at 60 an hour and accounts sit behind a CAPTCHA, yet one call covers part.
+- [Netherlands: Handelsregister (KVK) and Centraal Insolventieregister](https://boscolabs.dev/registers/nl.html) (partly covered): The Dutch trade register (KVK) is a paid API whose data you may not pass on, and insolvency sits in a separate register that one call can read.
+- [Austria: Firmenbuch](https://boscolabs.dev/registers/at.html) (not covered yet): Austria's Firmenbuch has a free API after an application in JustizOnline, and Bosco Labs does not read it yet because of its reuse terms.
+- [Belgium: KBO/BCE enterprise register and NBB Central Balance Sheet Office](https://boscolabs.dev/registers/be.html) (not covered yet): Belgian company accounts are free from the National Bank after a manual approval, and Bosco Labs has no key yet, so here is what works today.
+- [Spain: BORME gazette (BOE); Registradores by agreement only](https://boscolabs.dev/registers/es.html) (not covered yet): Spain's open company data is BORME, a daily gazette with no lookup per company, so it cannot give a status, and here is what works today.
+- [Sweden: Bolagsverket](https://boscolabs.dev/registers/se.html) (not covered yet): Bolagsverket has a free API behind a sign-up form that Bosco Labs does not read yet, so here is what we found and what works for Sweden today.
 ## Blog
 
 - [All posts](https://boscolabs.dev/blog/index.html), Atom feed: https://boscolabs.dev/blog/feed.xml
@@ -230,658 +250,6 @@ Contact: support@boscolabs.dev
 - `esef-annual-reports`: $0.05 per annual report (max 10 reports (maxFilings)).
 - `sec-ownership`: $0.0018 per holding, holder or filing row (one fund or company per call) (max 200 rows (maxResults)).
 - `tariff-lookup`: $0.005 per code lookup or code search (US or UK) (max 1 code or 5 candidates).
-
-## SEC Insider Trading API (Form 4): stock transactions since 2006
-
-Docs: https://boscolabs.dev/sec-insider-trades.html
-Apify Store: https://apify.com/bosco_labs/sec-insider-trades
-MCP: https://mcp.apify.com?tools=bosco_labs/sec-insider-trades
-Price: Apify Store $0.0018 per transaction row and $0.02 per cluster signal; HTTP API $0.0002 per unit: a Form 4 transaction = 9 units ($0.0018), a cluster signal = 100 ($0.02)
-API: POST https://api.boscolabs.dev/v1/sec-insider-trades, $0.0002 per unit: a Form 4 transaction = 9 units ($0.0018), a cluster signal = 100 ($0.02) (max 5 tickers/CIKs x 183 days, 200 rows (maxResults))
-
-Insider trading data from SEC Form 4: every insider stock transaction (buy or sell) by directors, officers and 10% owners, from official EDGAR filings, 2006 to today. Filter by ticker, CIK, transaction code, role, value and date; adds cluster-buy and cluster-sell signals.
-
-Coverage: Today's filings from the EDGAR live feed, minutes after the SEC accepts them; recent quarters from the EDGAR indexes and Form 4 XML; history from 2006 from the SEC's quarterly Insider Transactions Data Sets. Non-derivative table only: options and other derivatives are not included.
-
-Example questions:
-
-- Did any Tesla insiders buy shares in the last 90 days?
-- Show insider cluster buys across the US market this month.
-- List Nvidia insider sales over $1 million filed in 2024, with links to the Form 4s.
-
-### Input fields
-
-- `lookbackDays` (integer): Used only when `dateFrom` is empty: read filings from this many days back until today, e.g. 30. Empty = 90 days when `tickers` or `ciks` are set, 7 days for the whole market. Handy for schedules.
-- `dateFrom` (string): Earliest filing date, YYYY-MM-DD, e.g. "2024-01-01". Data starts 2006-01-01. Empty = `lookbackDays` days before today (90 for tickers/CIKs, 7 for the whole market).
-- `dateTo` (string): Latest filing date, YYYY-MM-DD, e.g. "2024-12-31". Empty = today, including today's filings from the live EDGAR feed.
-- `clusterBuysOnly` (boolean): true = only open-market purchases that are part of a cluster: at least 2 different directors or officers of the same company buying, filed within `clusterWindowDays`, together worth at least $100,000. Default false. Also reads the window before the date range.
-- `clusterSellsOnly` (boolean): true = only open-market sales that are part of a cluster (same rule as cluster buys, for sales). Pre-planned 10b5-1 plan sales are left out (filings flag them since April 2023). Default false. Can be combined with `clusterBuysOnly`.
-- `includeClusterSignals` (boolean): true (default) = also output one row per cluster signal (record_type = "cluster"): the day a company's insider buying or selling first met the cluster rule, with the insiders and total value. Charged as a separate, higher-priced event. false = transaction rows only.
-- `clusterWindowDays` (integer): How many days of filings count as one cluster of insider buying or selling, e.g. 14. Default 30.
-- `transactionCodes` (array): Form 4 transaction codes to return, e.g. ["P"] for open-market purchases only. Default ["P", "S"] (open-market purchases and sales). Pass [] for all codes, including awards (A), tax withholding (F) and option exercises (M).
-- `insiderRoles` (array): Only insiders with one of these roles: director, officer, ten_percent_owner, other, e.g. ["director", "officer"]. Empty = all roles.
-- `minValueUsd` (integer): Minimum transaction value in USD (shares x price), e.g. 100000. Default 0 = no minimum. Transactions without a price count as 0.
-- `maxResults` (integer): Maximum transaction rows, newest first, e.g. 500. Default 100, up to 200,000 per run (split bigger exports by date range). The run stops reading once it has this many, and returns at most this many cluster signals.
-- `onlyNewSinceLastRun` (boolean): true = skip (and don't charge for) transactions and signals an earlier run with the same filters already delivered. For scheduled runs. Default false. Remembered in a named key-value store in your account. E.g. `true` for a daily scheduled run.
-- `tickers` (array): Optional: issuer stock tickers, e.g. ["AAPL", "TSLA"]. Leave empty to scan the whole market (the usual use: insider buying anywhere). Mapped to the company's CIK with the SEC's ticker list; history is also matched on the ticker as written in the filing.
-- `ciks` (array): Issuer SEC Central Index Keys as digits, leading zeros optional, e.g. ["320193"] for Apple. Use for delisted or renamed companies the SEC's ticker list no longer has. Empty = no CIK filter.
-
-### Output fields
-
-- `schema_version` (string): Output schema version.
-- `record_type` (string): transaction = one Form 4 transaction; cluster = one cluster-buy or cluster-sell signal.
-- `cluster_side` (string | null): Cluster rows only: buy = insiders buying together, sell = insiders selling together (10b5-1 plan sales excluded).
-- `accession_number` (string): SEC accession number of the Form 4 filing.
-- `form` (string): 4, or 4/A for an amendment.
-- `issuer_name` (string): Company whose shares were traded, as filed.
-- `issuer_cik` (string): SEC CIK of the issuer (10 digits).
-- `ticker` (string | null): Trading symbol as filed, or the listed ticker of the row's share class (BRK.B for Class B shares filed as BRK.A); null if that class has none.
-- `insider_name` (string): Reporting person (the first one in a joint filing).
-- `insider_cik` (string | null): SEC CIK of the reporting person.
-- `insider_roles` (array): director, officer, ten_percent_owner, other (combined over all joint filers).
-- `officer_title` (string | null): Officer title, e.g. Chief Executive Officer.
-- `owner_count` (integer): Number of reporting persons on the filing (joint filings > 1).
-- `transaction_date` (string | null): Date of the transaction (YYYY-MM-DD).
-- `filing_date` (string): Date the SEC received the filing (YYYY-MM-DD). For cluster rows: the day the cluster rule was first met.
-- `usable_from` (string): First weekday after filing_date: the earliest day a backtest may act on this row (Form 4s can be filed until 22:00 New York time, after the close). Trade at the first market open on or after this date.
-- `accepted_at` (string | null): EDGAR acceptance time with New York offset (live EDGAR rows only).
-- `transaction_code` (string): Form 4 code: P purchase, S sale, A award, M option exercise, F tax withholding, G gift, ...
-- `transaction_type` (string | null): Plain-English meaning of the transaction code.
-- `acquired_disposed` (string | null): A = acquired, D = disposed.
-- `shares` (number | null): Number of shares.
-- `price` (number | null): Price per share in USD (null when the filing gives none).
-- `value_usd` (number | null): shares x price.
-- `shares_owned_after` (number | null): Shares owned after the transaction.
-- `ownership` (string | null): direct or indirect (e.g. through a trust or fund).
-- `plan_10b5_1` (boolean | null): Made under a Rule 10b5-1 trading plan: true/false from the Form 4 checkbox (filings from 2023-04-01), true when a footnote says so, null when the filing predates the checkbox and no footnote mentions a plan (unknown, not 'no plan'). The box is optional for plans adopted before 2023-02-27, so false can still be such a plan.
-- `security_title` (string | null): Security, e.g. Common Stock.
-- `cluster_insiders` (integer | null): Transactions: distinct directors/officers buying this issuer in the cluster window up to this filing date (null for non-buys or when the window reaches before the data read). Clusters: insiders in the cluster.
-- `cluster_value_usd` (number | null): Total open-market purchase value of those insiders in the window.
-- `in_cluster` (boolean | null): Purchases only: part of a cluster signal.
-- `cluster_date` (string | null): Purchases in a cluster: the date of that cluster signal.
-- `first_filing_date` (string | null): Cluster rows: filing date of the first buy in the cluster.
-- `cluster_window_days` (integer | null): Cluster rows: the window used.
-- `insider_names` (array | null): Cluster rows: the buying insiders.
-- `accession_numbers` (array | null): Cluster rows: the Form 4 filings in the cluster.
-- `filing_url` (string): EDGAR filing index page.
-- `source` (string): edgar-xml (parsed Form 4 XML), dera (SEC Insider Transactions Data Sets) or derived (cluster).
-- `source_url` (string | null): The SEC page to cite: the Form 4 filing (edgar-xml rows: the filing text; dera rows: the filing index page; see `source`).
-- `provided_by` (string): Who compiled this row; cite together with source_url.
-- `retrieved_at` (string): UTC time the row was produced.
-
-### Example input
-
-```json
-{ "tickers": ["NVDA", "AAPL"], "transactionCodes": ["P", "S"], "minValueUsd": 100000,
-  "dateFrom": "2025-01-01", "maxResults": 100 }
-```
-
-## SEC EDGAR Filings API: 8-K, 10-K, 10-Q feed since 1994
-
-Docs: https://boscolabs.dev/sec-filings-feed.html
-Apify Store: https://apify.com/bosco_labs/sec-filings-feed
-MCP: https://mcp.apify.com?tools=bosco_labs/sec-filings-feed
-Price: Apify Store $0.001 per filing; HTTP API $0.001 per filing
-API: POST https://api.boscolabs.dev/v1/sec-filings-feed, $0.001 per filing (max 200 filings (maxResults))
-
-SEC EDGAR filings (8-K, 10-K, 10-Q, S-1, 13D, 13G, Form 4, any form) for any company or the whole market, latest filings live or back to 1994, from the SEC's own feeds: no scraper to maintain. Filter by ticker, CIK, form, 8-K item and date; flags earnings releases. Returns filing links, not text.
-
-Coverage: All EDGAR forms. Companies: the SEC submissions API, complete history back to 1994. Whole market: the live feed, then the EDGAR daily and quarterly indexes back to 1993. 8-K item codes exist since August 2004. Rows hold links to the filing and its main document, not the document text.
-
-Example questions:
-
-- When did Nvidia release its last four quarterly results, and was it before or after the market closed?
-- Which companies filed a 13D in the last 7 days, and who filed it?
-- Give me links to Apple's 10-K annual reports since 2015.
-
-### Input fields
-
-- `formTypes` (array): EDGAR form types, exact match, e.g. ["8-K", "10-K", "10-Q"]; also S-1, 13D, 13G, 4, DEF 14A, 20-F, 6-K and any other form. Add "10-K/A" etc. for amendments. 13D and 13G also match the SC 13D and SCHEDULE 13D names. Empty = every form.
-- `tickers` (array): Company tickers, e.g. ["AAPL", "MSFT"]. Mapped to the CIK with the SEC's own company_tickers.json. Empty (and `ciks` empty) = the whole market.
-- `ciks` (array): SEC Central Index Keys as digits, leading zeros optional, e.g. ["320193"] for Apple. Use for delisted companies, funds and filers without a ticker. Empty = no CIK filter.
-- `earningsReleasesOnly` (boolean): true = only 8-Ks with Item 2.02 (Results of Operations and Financial Condition): the dates and exact times companies released earnings. Overrides `formTypes` and `itemCodes`. Default false.
-- `itemCodes` (array): Only 8-Ks reporting at least one of these items, as strings, e.g. ["5.02"] (director/officer change), "1.01" (material agreement), "2.01" (acquisition), "1.05" (cybersecurity incident). Without `formTypes`, reads 8-K and 8-K/A. Empty = no item filter.
-- `dateFrom` (string): Earliest filing date, YYYY-MM-DD, e.g. "2020-01-01". EDGAR's index goes back to 1993. Empty = `lookbackDays` days before today (or, for tickers/CIKs without `lookbackDays`, the company's newest filings).
-- `dateTo` (string): Latest filing date, YYYY-MM-DD. Empty = today, including filings accepted minutes ago (live EDGAR feed). E.g. "2026-03-31".
-- `lookbackDays` (integer): Used only when `dateFrom` is empty: read filings from this many days back until today, e.g. 365. Empty = 7 days for the whole market; for `tickers`/`ciks`, empty = each company's newest filings (its last 1,000), so "latest 10-K of AAPL" needs no dates.
-- `maxResults` (integer): Maximum filings, newest first, e.g. 10 for a company's latest 10 filings. Default 100. The run stops once it has this many; you pay per filing returned.
-- `onlyNewSinceLastRun` (boolean): true = skip (and don't charge for) filings an earlier run with the same filters already delivered. For scheduled runs. Default false. Remembered in a named key-value store in your account. E.g. `true` for a daily scheduled run.
-
-### Output fields
-
-- `schema_version` (string): Output schema version.
-- `accession_number` (string): SEC accession number (unique per filing).
-- `form` (string): EDGAR form type as filed, e.g. 8-K, 10-K, SC 13D.
-- `company_name` (string): Company the filing is about (issuer or subject; the filer otherwise).
-- `cik` (string): SEC CIK of that company (10 digits).
-- `ticker` (string | null): Its main ticker in the SEC's current ticker list (null if none).
-- `filing_date` (string): Filing date (YYYY-MM-DD).
-- `accepted_at` (string | null): EDGAR acceptance time, New York time with offset.
-- `market_timing` (string | null): before_open, market_hours or after_close (New York regular session), closed on weekends.
-- `report_date` (string | null): Period of report (YYYY-MM-DD), e.g. the quarter end of a 10-Q or the event date of an 8-K.
-- `items` (array): 8-K item codes, e.g. ["2.02", "9.01"]. Empty for other forms.
-- `item_descriptions` (array): Names of those items, same order.
-- `parties` (array | null): All companies and people on the filing with their role (Filer, Issuer, Subject, Filed by, Reporting). Null for company searches.
-- `filing_index_url` (string): EDGAR filing index page (all documents and exhibits).
-- `primary_document_url` (string | null): The main document (HTML/iXBRL, text or XML).
-- `source` (string): submissions-api, full-index, daily-index or live-feed.
-- `source_url` (string): The SEC page or file the row was read from.
-- `provided_by` (string): Who compiled this row; cite together with source_url.
-- `retrieved_at` (string): UTC time the row was produced.
-
-### Example input
-
-```json
-{ "tickers": ["AAPL", "MSFT", "NVDA"], "formTypes": ["8-K", "10-Q", "10-K"], "dateFrom": "2020-01-01", "maxResults": 1000 }
-```
-
-## Congress Stock Trades API: US House STOCK Act since 2014
-
-Docs: https://boscolabs.dev/us-house-trades.html
-Apify Store: https://apify.com/bosco_labs/us-house-trades
-MCP: https://mcp.apify.com?tools=bosco_labs/us-house-trades
-Price: Apify Store $0.0018 per trade; HTTP API $0.0018 per PTR transaction
-API: POST https://api.boscolabs.dev/v1/us-house-trades, $0.0018 per PTR transaction (max 200 trades (maxResults))
-
-Congress stock trades: congressional stock trading disclosures by US House members (politicians' Periodic Transaction Reports under the STOCK Act), from the House Clerk since 2014 (no Senate). Each row: ticker, amount range, owner, disclosure delay. Filter by member, ticker, type, amount, date.
-
-Coverage: Periodic Transaction Reports of House members filed online, from January 2014 to the latest update of the Clerk's index. Scanned paper PTRs are skipped (their PDF links are listed in the run's SUMMARY record). The Senate and annual financial disclosure reports are not included.
-
-Example questions:
-
-- Which options did Nancy Pelosi's household trade in 2025, and how many days after the trade were they disclosed?
-- Which House members disclosed NVDA trades in the last 30 days?
-- List House trades over $1 million filed in 2024.
-
-### Input fields
-
-- `members` (array): Case-insensitive part of the member's name as listed by the Clerk, e.g. ["Pelosi"] or ["Josh Gottheimer"]. Empty = all House members.
-- `tickers` (array): Only trades whose filing names one of these tickers, e.g. ["NVDA", "MSFT", "BRK.B"]. Trades without a ticker in the filing are left out when this is set. Empty = all.
-- `transactionTypes` (array): Any of purchase, sale (full or partial), exchange, e.g. ["purchase"]. Default all three.
-- `filedFrom` (string): Earliest filing date (when the trade became public), YYYY-MM-DD, e.g. "2025-01-01". Empty = 365 days ago when `members` is set, else 30 days ago; ignored when `years` is set without dates.
-- `filedTo` (string): Latest filing date, YYYY-MM-DD, e.g. "2025-12-31". Empty = today.
-- `years` (array): Whole filing years to load, as strings, e.g. ["2024", "2025"] (one Clerk index per year; online PTRs start in 2014). Without dates, returns those whole years. Use this or `filedFrom` for history.
-- `minAmountUsd` (integer): Only trades whose reported range starts at or above this USD amount, e.g. 15001 leaves out the smallest $1,001 - $15,000 range, 1000001 keeps trades over $1 million. Empty = no minimum.
-- `maxResults` (integer): Maximum trades, newest filings first, e.g. 500. Default 100. You pay per trade returned.
-- `onlyNewSinceLastRun` (boolean): true = skip (and don't charge for) trades an earlier run with the same filters already delivered. For scheduled runs. Default false. Remembered in a named key-value store in your account. E.g. `true` for a daily scheduled run.
-
-### Output fields
-
-- `schema_version` (string): Output schema version.
-- `transaction_id` (string): doc_id + position of the transaction in the PTR, e.g. 20035553-1. Stable across runs.
-- `member_name` (string): First name, last name and suffix as listed in the Clerk's index.
-- `first_name` (string): First name as listed in the Clerk's index.
-- `last_name` (string): Last name as listed in the Clerk's index.
-- `state_district` (string | null): State and district as listed in the index, e.g. CA11.
-- `state` (string | null): Two-letter state code, the first two characters of state_district.
-- `filing_date` (string): Date the PTR was filed (YYYY-MM-DD): when the trade became public.
-- `transaction_date` (string): Trade date as reported (YYYY-MM-DD).
-- `notification_date` (string): Date the member was notified of the trade, as reported (YYYY-MM-DD).
-- `days_to_disclose` (integer): filing_date - transaction_date in days. For amendments this counts to the amendment, not the first filing.
-- `owner` (string | null): Owner code as filed: SP = spouse, JT = joint, DC = dependent child, null = the member.
-- `account` (string | null): Account the trade was in, as filed (Subholding Of), e.g. UBS IRA Account; null when not given.
-- `ticker` (string | null): Ticker as filed in parentheses in the asset text, upper-cased; null when the filing gives none.
-- `asset_description` (string): Asset text as filed (older PDFs garble upper/lower case).
-- `asset_type` (string | null): From asset_type_code: ST = stock, OP = option, EF/MF = fund, GS/CS = bond, other codes = other. Filings before ~2018 have no code: option if the description says so, else null.
-- `asset_type_code` (string | null): The Clerk's asset type code in square brackets, e.g. ST, OP, EF, GS (see fd.house.gov/reference/asset-type-codes.aspx).
-- `option_type` (string | null): call or put, from the transaction description, for options only.
-- `transaction_type` (string): P = purchase, S / S (partial) = sale, E = exchange.
-- `is_partial` (boolean): True for a partial sale (S (partial)).
-- `amount_min` (number | null): Lower bound of the reported value range in USD, e.g. 15001; the value itself when the filer reported an exact amount (e.g. 318.74).
-- `amount_max` (number | null): Upper bound of the reported value range in USD; null for 'Over $50,000,000' and 'Spouse/DC Over $1,000,000'.
-- `amount_text` (string): The value range (or exact value) as filed, e.g. $15,001 - $50,000.
-- `is_amendment` (boolean): True when the transaction's filing status is Amended: the filing date is then not when the trade first became public.
-- `doc_id` (string): The Clerk's document (filing) ID.
-- `pdf_url` (string): The PTR PDF on disclosures-clerk.house.gov.
-- `source_url` (string): Where the row was extracted from (the PTR PDF).
-- `provided_by` (string): Who compiled this row; cite together with source_url.
-- `retrieved_at` (string): UTC time the PDF was fetched and parsed.
-
-### Example input
-
-```json
-{ "members": ["Pelosi"], "years": ["2024", "2025"], "transactionTypes": ["purchase"], "maxResults": 500 }
-```
-
-## SEC 13F Holdings API: fund & ETF holdings, 13D/13G, Form 144
-
-Docs: https://boscolabs.dev/sec-ownership.html
-Apify Store: https://apify.com/bosco_labs/sec-ownership
-MCP: https://mcp.apify.com?tools=bosco_labs/sec-ownership
-Price: Apify Store $0.0018 per row, plus $0.01 per "who holds this stock" search (13F or N-PORT data set); HTTP API $0.0018 per holding, holder or filing row (one fund or company per call)
-API: POST https://api.boscolabs.dev/v1/sec-ownership, $0.0018 per holding, holder or filing row (one fund or company per call) (max 200 rows (maxResults))
-
-13F institutional holdings and who owns a stock, from official SEC filings: a fund manager's 13F positions (new, increased, decreased or closed vs last quarter), mutual fund/ETF N-PORT holdings, funds holding a ticker, 5%+ stakes (13D/13G) and Form 144 planned insider sales. One ticker or fund in.
-
-Example questions:
-
-- What did Berkshire Hathaway buy and sell last quarter?
-- Which funds hold the most Nvidia stock?
-- What are ARKK's top holdings and what did it add last quarter?
-- Which ETFs and mutual funds hold Palantir?
-- Has anyone filed an activist 13D on Peraso?
-- Which insiders filed to sell more than $1 million of stock this week?
-
-### Input fields
-
-- `mode` (string): holdings13f = Form 13F: pass `filer` for a fund manager's holdings (with changes vs the previous quarter), or `ticker`/`cusip` for the managers holding a stock. holdingsNport = Form N-PORT: pass `fund` (a mutual fund or ETF ticker) for its holdings (with changes vs its previous report), or `ticker`/`cusip` for the mutual funds and ETFs holding a stock. stakes13dg = Schedule 13D/13G filings about `ticker`, or new 13D filings market-wide. planned144 = Form 144 notices of planned insider sales for `ticker`, or market-wide. Default holdings13f.
-- `filer` (string): holdings13f only: the fund manager's name or SEC CIK, e.g. "Berkshire Hathaway" or "1067983". A name is matched with EDGAR's company search (the first match that files 13F reports); a CIK is exact. Empty = look up the holders of `ticker`/`cusip` instead.
-- `fund` (string): holdingsNport only: the fund's ticker (any share class), e.g. "VOO" or "ARKK"; its SEC series ID, e.g. "S000002839"; or its name, e.g. "Vanguard 500 Index Fund" (matched with the SEC's series and class list; the fund picked and up to 3 close alternatives are named in the status message). Letters, digits, spaces and . , & ' ( ) / + -, up to 100 characters. Empty = look up the funds holding `ticker`/`cusip` instead.
-- `ticker` (string): The company the shares are in, as a current US ticker, e.g. "AAPL". holdings13f/holdingsNport: the managers or funds holding it (or, with `filer`/`fund`, only that position). stakes13dg / planned144: filings about it. Empty = whole market (stakes13dg, planned144).
-- `issuerCik` (string): Instead of `ticker`: the company's SEC CIK as digits, e.g. "320193" for Apple. Use for delisted or renamed companies. Empty = use `ticker`.
-- `cusip` (string): holdings13f/holdingsNport only: the 9-character CUSIP of one share class, e.g. "037833100" (Apple common stock). Most precise way to ask which managers or funds hold a security. Empty = CUSIPs found in the company's recent Schedule 13D/13G filings (all its share classes).
-- `quarter` (string): holdings13f/holdingsNport only: the quarter of the holdings, as "2026Q2" or the quarter end "2026-06-30". Empty = the newest: the filer's or fund's latest report, or for holders of a stock the newest SEC data set (13F reports are due 45 days after quarter end; N-PORT reports are public 60 days after a fund's fiscal quarter end, so a fund's report can fall in any month of the quarter).
-- `stakeForms` (array): stakes13dg only: which forms, e.g. ["13D"] for new activist stakes only. Empty = all four for a ticker; 13D and 13D/A for the whole market (activist alerts).
-- `minValueUsd` (integer): Minimum value in US dollars, e.g. 1000000. planned144: the notice's aggregate market value; holdings13f/holdingsNport: the position value. Default 0 = no minimum. Not used by stakes13dg.
-- `dateFrom` (string): stakes13dg / planned144: earliest filing date, YYYY-MM-DD, e.g. "2026-10-01". Structured 13D/13G start 2024-12-18. Empty = `lookbackDays` before today.
-- `dateTo` (string): stakes13dg / planned144: latest filing date, YYYY-MM-DD, e.g. "2026-10-31". Empty = today, including today's filings from the EDGAR live feed.
-- `lookbackDays` (integer): stakes13dg / planned144, used when `dateFrom` is empty: filings from this many days back until today, e.g. 30. Empty = 365 days for a ticker's 13D/13G, 90 for a ticker's Form 144, 7 for the whole market.
-- `maxResults` (integer): Maximum rows (one charged event each), e.g. 200. Default 50: a fund's largest positions, a stock's largest holders, or the newest filings.
-
-### Output fields
-
-- `schema_version` (string): Output schema version.
-- `record_type` (string): holding = a position in one 13F filer's portfolio; holder = one 13F filer holding the asked stock (SEC Form 13F data set); fund_holding = a position in one mutual fund's or ETF's portfolio (Form N-PORT); fund_holder = one fund holding the asked stock (SEC Form N-PORT data set); stake = one Schedule 13D/13G filing; form144 = one Form 144 notice.
-- `form` (string): Form as filed: 13F-HR or 13F-HR/A; 13D, 13D/A, 13G or 13G/A (Schedule); 144 or 144/A.
-- `filer_name` (string | null): holding/holder: the 13F manager. fund_holding/fund_holder: the fund (series) name. stake: the first reporting person on the filing.
-- `filer_cik` (string | null): SEC CIK (10 digits) of the 13F manager, of the fund's registrant (trust), of the 13D/13G filer, or of the person filing the Form 144.
-- `period_of_report` (string): 13F rows: the quarter end the holdings are reported for (YYYY-MM-DD). N-PORT rows: the date the fund's holdings are reported as of (a fund's fiscal quarter end, YYYY-MM-DD).
-- `accession_number` (string): SEC accession number of the filing the row comes from.
-- `filing_date` (string): Date the SEC received the filing (YYYY-MM-DD).
-- `issuer_name` (string | null): Company whose securities are held, owned or to be sold, as written in the filing (13F names are often abbreviated).
-- `issuer_cik` (string | null): stake/form144: SEC CIK (10 digits) of the issuer.
-- `title_of_class` (string | null): 13F rows: class of the security as filed, e.g. COM, CL A, CAP STK CL C.
-- `cusip` (string | null): 13F rows: 9-character CUSIP of the security.
-- `cusips` (array): stake: the issuer CUSIP(s) on the cover page.
-- `ticker` (string | null): Ticker of this security from the SEC's ticker list: the issuer by CIK or name, the share class by CUSIP or the class in title_of_class (GOOG for Alphabet class C). Null when unknown, or when the issuer has several share classes and the class can't be told (see ticker_candidates).
-- `ticker_candidates` (array): When ticker is null because the issuer has several listed share classes: the issuer's tickers, main first (e.g. ["BRK-B", "BRK-A"]). Empty otherwise. Ticker filters match these too.
-- `put_call` (string | null): 13F rows: PUT or CALL for option positions (value = the underlying), null for shares and bonds.
-- `shares` (number | null): 13F rows: shares (or principal amount when share_type is PRN) held at quarter end, summed over the filing's lines; 0 for a closed position. stake: shares beneficially owned by the reporting person with the highest percent.
-- `share_type` (string | null): 13F and N-PORT rows: SH (shares) or PRN (principal amount); N-PORT also NC (contracts) or OU (other units).
-- `value_usd` (number | null): 13F rows: market value in US dollars at quarter end as reported (filings before 2023-01-03 reported $1,000s and are multiplied by 1,000).
-- `portfolio_pct` (number | null): holding: value as a percentage of the filing's total reported value. fund_holding/fund_holder: value as a percentage of the fund's net assets, as filed (closed positions 0).
-- `previous_period` (string | null): holding: the previous quarter end the change is measured against.
-- `previous_shares` (number | null): holding: shares at the previous quarter end (0 = not held then, null = no 13F for that quarter).
-- `previous_value_usd` (number | null): holding: value at the previous quarter end, in US dollars.
-- `shares_change` (number | null): holding: shares minus previous_shares.
-- `shares_change_pct` (number | null): holding: shares_change as a percentage of previous_shares (null when not held before).
-- `change` (string | null): holding: new, increased, decreased, unchanged or closed (sold out) vs the previous quarter; null when unknown.
-- `series_id` (string | null): N-PORT rows: the fund's SEC series ID, e.g. S000002839 (Vanguard 500 Index Fund).
-- `registrant_name` (string | null): N-PORT rows: the registered investment company (trust) the fund belongs to, e.g. VANGUARD INDEX FUNDS.
-- `fund_net_assets_usd` (number | null): N-PORT rows: the fund's net assets in US dollars at period_of_report.
-- `payoff_profile` (string | null): N-PORT rows: Long, Short or N/A as filed.
-- `isin` (string | null): fund_holding: the security's ISIN when the fund reported one, e.g. US0378331005.
-- `issuer_lei` (string | null): fund_holding: the issuer's LEI when the fund reported one.
-- `asset_category` (string | null): fund_holding: the N-PORT asset category, e.g. EC (common equity), EP (preferred), DBT (debt), STIV (short-term investment vehicle), DE/DIR/DCR (derivatives).
-- `currency` (string | null): fund_holding: the currency the security is denominated in (ISO 4217); value_usd is always in US dollars.
-- `country` (string | null): fund_holding: the investment's country (ISO 3166 alpha-2) as filed.
-- `stake_type` (string | null): stake: activist (Schedule 13D: may seek to influence control) or passive (Schedule 13G).
-- `amendment_no` (integer | null): stake: amendment number on the cover page (null for an original filing).
-- `security_class` (string | null): stake/form144: class of securities as filed, e.g. Common Stock.
-- `percent_of_class` (number | null): stake: percent of the class beneficially owned, the highest among the reporting persons (group members usually report the same aggregate).
-- `reporting_persons` (array): stake: every reporting person on the cover pages: name, cik (null if none), percent_of_class, shares, person_type (SEC codes like IA, IN, PN, CO).
-- `event_date` (string | null): stake: date of the event that required the filing (YYYY-MM-DD).
-- `seller_name` (string | null): form144: the person for whose account the securities are to be sold, as filed.
-- `relationships` (array): form144: relationship to the issuer as filed, e.g. Director, Officer, 10% Securityholder.
-- `shares_to_be_sold` (number | null): form144: number of shares (units) to be sold, summed over the notice's lines.
-- `aggregate_market_value_usd` (number | null): form144: aggregate market value of the shares to be sold, in US dollars, as filed.
-- `shares_outstanding` (number | null): form144: shares of the class outstanding, as filed.
-- `approx_sale_date` (string | null): form144: approximate date of sale (YYYY-MM-DD; the earliest if several).
-- `exchanges` (array): form144: exchange(s) where the shares are to be sold.
-- `broker_names` (array): form144: broker(s) or market maker(s) handling the sale.
-- `plan_adoption_dates` (array): form144: adoption dates of the Rule 10b5-1 trading plan, if the sale is under one (YYYY-MM-DD).
-- `notice_date` (string | null): form144: date of the notice (YYYY-MM-DD).
-- `filing_url` (string): EDGAR index page of the filing.
-- `source` (string): edgar-13f (the filing's information table), sec-13f-data-set (SEC Form 13F data set), edgar-nport (the fund's N-PORT-P XML), sec-nport-data-set (SEC Form N-PORT data set) or edgar-xml (the filing's XML).
-- `source_url` (string): The exact SEC file the row was read from.
-- `provided_by` (string): Who compiled this row; cite together with source_url.
-- `retrieved_at` (string): UTC time the row was produced.
-
-### Example input
-
-```json
-{"mode": "holdings13f", "filer": "Berkshire Hathaway"}
-```
-
-## SEC Financial Statements API: income, balance sheet, cash flow
-
-Docs: https://boscolabs.dev/sec-company-financials.html
-Apify Store: https://apify.com/bosco_labs/sec-company-financials
-MCP: https://mcp.apify.com?tools=bosco_labs/sec-company-financials
-Price: Apify Store $0.005 per company-period row; HTTP API $0.005 per company-period row
-API: POST https://api.boscolabs.dev/v1/sec-company-financials, $0.005 per company-period row (max 10 tickers/CIKs x 20 years)
-
-Company financial statements from SEC EDGAR XBRL (10-K, 10-Q, 20-F): income statement (revenue, profit, EPS), balance sheet, cash flow, free cash flow and margins per fiscal year or quarter, 2009 to date, by stock ticker or CIK. Each value cites its XBRL tag and filing. Q4 derived if not reported.
-
-Example questions:
-
-- How did Microsoft's revenue, net income and free cash flow develop over the last 8 quarters?
-- Compare Nvidia, AMD and Intel on operating margin for the last 5 fiscal years.
-- What was JPMorgan's net income in 2024, and which filing is it from?
-
-### Input fields
-
-- `tickers` (array): US tickers as listed by the SEC, e.g. ["AAPL", "MSFT"]; share classes with a dash or dot, e.g. "BRK-B". Foreign companies filing 20-F/40-F work too, e.g. "NVO". Mapped to the CIK with the SEC's company_tickers.json; an unknown ticker is skipped with suggestions in the status message. Empty = use `ciks`.
-- `ciks` (array): SEC Central Index Keys as digits, leading zeros optional, e.g. ["320193"] for Apple. Use for delisted companies and filers without a ticker. Empty = use `tickers`; at least one of the two is required.
-- `period` (string): "annual" = one row per fiscal year (FY). "quarterly" = one row per fiscal quarter, Q1-Q4, each a discrete 3-month period (Q4 and year-to-date-only cash flows are derived, see `warnings`). Companies without quarterly XBRL data (most 20-F filers) return fiscal years instead. Default "annual".
-- `years` (integer): How many of the latest fiscal years to return per company, e.g. 5 (5 rows annual, up to 20 rows quarterly; 2 with quarterly = the last 8 quarters). XBRL data starts in 2009-2011. Default 5, max 20.
-- `metrics` (array): Only these output fields, e.g. ["revenue", "net_income", "free_cash_flow", "operating_margin"]. Valid: revenue, cost_of_revenue, gross_profit, research_and_development, selling_general_and_administrative, operating_profit, profit_before_tax, net_income, net_income_attributable_to_parent, eps_basic, eps_diluted, weighted_average_shares_basic, weighted_average_shares_diluted, depreciation_amortisation, total_assets, current_assets, cash_and_equivalents, total_liabilities, current_liabilities, noncurrent_liabilities, long_term_debt, total_equity, equity_attributable_to_parent, shares_outstanding, operating_cash_flow, investing_cash_flow, financing_cash_flow, capex, dividends_paid, free_cash_flow, ebitda, gross_margin, operating_margin, net_margin, return_on_equity, equity_ratio, revenue_growth. Empty = all of them.
-- `includeSources` (boolean): true = each row has `sources` (per value: the XBRL tag and the SEC accession number it came from, plus how it was derived) and `filings` (form, filing date and URL of each filing cited). false = values only, about 3x smaller rows. Default true.
-
-### Output fields
-
-- `schema_version` (string): Output schema version.
-- `ticker` (string | null): Main ticker in the SEC's current ticker list (null if none).
-- `cik` (string): SEC CIK, 10 digits.
-- `company_name` (string): Company name as in SEC companyfacts.
-- `fiscal_year` (integer): Fiscal year as the company names it (Apple's year ending September 2025 = 2025).
-- `fiscal_period` (string): FY for a fiscal year, Q1-Q4 for a discrete 3-month fiscal quarter.
-- `period_start` (string | null): First day of the period (YYYY-MM-DD).
-- `period_end` (string): Last day of the period = balance-sheet date (YYYY-MM-DD).
-- `form` (string | null): Form of the main filing for this period: 10-K, 10-Q, 20-F, 40-F, 6-K or an /A amendment.
-- `filed` (string | null): Filing date of that filing (YYYY-MM-DD).
-- `accession_number` (string | null): SEC accession number of the filing most values come from.
-- `source_url` (string | null): EDGAR index page of that filing.
-- `provided_by` (string): Who compiled this row; cite together with source_url.
-- `currency` (string): Reporting currency of all money values (ISO 4217, e.g. USD, EUR, DKK). Values are in full units, not thousands.
-- `revenue` (number | null): Total revenue / net sales (for banks: total net revenue). In `currency`.
-- `cost_of_revenue` (number | null): Cost of revenue / cost of goods and services sold. In `currency`.
-- `gross_profit` (number | null): Gross profit; when not tagged, revenue - cost_of_revenue (sources says derived). In `currency`.
-- `research_and_development` (number | null): Research and development expense. In `currency`.
-- `selling_general_and_administrative` (number | null): Selling, general and administrative expense (null when the company reports sales/marketing and G&A separately). In `currency`.
-- `operating_profit` (number | null): Operating income (loss). Null for most banks and insurers. In `currency`.
-- `profit_before_tax` (number | null): Income from continuing operations before income taxes. In `currency`.
-- `net_income` (number | null): Net income including noncontrolling interests (ProfitLoss), else net income attributable to the parent; as in the esef-annual-reports Actor. In `currency`.
-- `net_income_attributable_to_parent` (number | null): Net income attributable to the parent's shareholders (the US 'net income' headline). In `currency`.
-- `eps_basic` (number | null): Basic earnings per share, in currency per share. Never derived (null for Q4 unless reported).
-- `eps_diluted` (number | null): Diluted earnings per share, in currency per share. Never derived.
-- `weighted_average_shares_basic` (number | null): Weighted average shares outstanding, basic. Never derived.
-- `weighted_average_shares_diluted` (number | null): Weighted average shares outstanding, diluted. Never derived.
-- `depreciation_amortisation` (number | null): Depreciation, depletion and amortization (cash flow statement). In `currency`.
-- `total_assets` (number | null): Total assets at period end. In `currency`.
-- `current_assets` (number | null): Total current assets at period end. Null for banks and insurers (unclassified balance sheet). In `currency`.
-- `cash_and_equivalents` (number | null): Cash and cash equivalents at period end (banks: cash and due from banks). In `currency`.
-- `total_liabilities` (number | null): Total liabilities; when not tagged, total_assets - total_equity (sources says derived). In `currency`.
-- `current_liabilities` (number | null): Total current liabilities. Null for banks and insurers. In `currency`.
-- `noncurrent_liabilities` (number | null): Total non-current liabilities, when tagged. In `currency`.
-- `long_term_debt` (number | null): Long-term debt, non-current portion where tagged, else total long-term debt; sources shows the tag. In `currency`.
-- `total_equity` (number | null): Total equity including noncontrolling interests, else stockholders' equity. In `currency`.
-- `equity_attributable_to_parent` (number | null): Stockholders' equity attributable to the parent. In `currency`.
-- `shares_outstanding` (number | null): Common shares outstanding at the balance-sheet date.
-- `operating_cash_flow` (number | null): Net cash from operating activities. In `currency`.
-- `investing_cash_flow` (number | null): Net cash from investing activities. In `currency`.
-- `financing_cash_flow` (number | null): Net cash from financing activities. In `currency`.
-- `capex` (number | null): Capital expenditure: payments for property, plant and equipment, as a positive number. Null for most banks. In `currency`.
-- `dividends_paid` (number | null): Dividends paid in cash, as a positive number. In `currency`.
-- `free_cash_flow` (number | null): Derived: operating_cash_flow - capex.
-- `ebitda` (number | null): Derived: operating_profit + depreciation_amortisation.
-- `gross_margin` (number | null): Derived: gross_profit / revenue (0.25 = 25%).
-- `operating_margin` (number | null): Derived: operating_profit / revenue.
-- `net_margin` (number | null): Derived: net_income / revenue.
-- `return_on_equity` (number | null): Derived: net_income / total_equity, fiscal-year rows only.
-- `equity_ratio` (number | null): Derived: total_equity / total_assets.
-- `revenue_growth` (number | null): Derived: revenue / revenue of the same fiscal period one year earlier - 1 (year over year, also for quarters).
-- `metrics_found` (integer): How many of the reported metrics (not the derived ones) have a value.
-- `sources` (object): Only with includeSources: per metric {tag: XBRL concept used, accession: filing it came from, derived: how a quarter value was computed (e.g. 'fiscal year - 9-month YTD') or the formula for gross_profit/total_liabilities fallbacks}.
-- `filings` (object): Only with includeSources: per accession number cited in sources, its form, filing date and EDGAR URL.
-- `warnings` (array): Notes on this row: quarter values derived from year-to-date figures, restated values (latest filing used), quarterly data missing.
-- `retrieved_at` (string): UTC time the row was produced.
-
-### Example input
-
-```json
-{ "tickers": ["AAPL", "MSFT"], "period": "quarterly", "years": 2, "metrics": ["revenue", "net_income", "free_cash_flow"] }
-```
-
-## SEC Company Screener API: filter all US filers by financials
-
-Docs: https://boscolabs.dev/sec-company-screen.html
-Apify Store: https://apify.com/bosco_labs/sec-company-screen
-MCP: https://mcp.apify.com?tools=bosco_labs/sec-company-screen
-Price: Apify Store $0.002 per company returned; HTTP API $0.002 per company returned
-API: POST https://api.boscolabs.dev/v1/sec-company-screen, $0.002 per company returned (max 200 companies (maxResults))
-
-Stock screener on SEC EDGAR data. US companies matching your filters for one calendar year or quarter: revenue, net income, margins, cash flow, assets and 30 more metrics from SEC XBRL frames, sorted and capped. Each value cites its XBRL tag and SEC filing. Same metrics as SEC Company Financials.
-
-Example questions:
-
-- Which US companies had revenue over $10B and net margin above 20% in fiscal 2025?
-- Top 20 US companies by operating cash flow in 2025.
-- Which companies with a ticker had an operating margin above 30% in Q3 2025?
-
-### Input fields
-
-- `period` (string, required): Calendar period in SEC frames format: "CY2025" = annual figures, "CY2025Q3" = 3-month quarter figures. Required, 2009 to the current year. Calendar-aligned: each company comes with its own fiscal period that best fits it (e.g. CY2025 holds Apple's fiscal year to Sep 2025, Microsoft's to Jun 2025, Walmart's to Jan 2026), shown in period_start/period_end. Balance-sheet metrics are taken at each company's period end.
-- `filters` (array): Conditions every company must meet, as a list of {metric, min, max} (either bound optional, both inclusive), e.g. [{"metric": "revenue", "min": 10000000000}, {"metric": "net_margin", "min": 0.2}] = revenue of at least $10B and net margin of at least 20%. Money in full USD (10000000000 = $10B), ratios as fractions (0.2 = 20%), EPS in USD per share. A company without a value for a filter metric is left out. Metrics: see sortBy. Empty = no filter (all companies with a sortBy value).
-- `sortBy` (string): Metric to rank by, e.g. "operating_cash_flow". Same names as the SEC Company Financials Actor; the last seven (free_cash_flow to equity_ratio) are derived from two reported metrics. Companies without a value for it are left out. Empty = the first filter's metric, else revenue.
-- `sortOrder` (string): "desc" = largest first (top N), "asc" = smallest first (e.g. the lowest net margin). Default "desc".
-- `maxResults` (integer): Most companies to return (and charge for), e.g. 20 for a top 20. The status message says how many matched in total. Default 50, max 1000.
-- `metrics` (array): More fields to show per company besides the sortBy and filter metrics, e.g. ["operating_cash_flow", "total_assets"]. Same names as sortBy. Each adds a few SEC requests. Empty = only the sortBy and filter metrics (plus the inputs of derived ones).
-- `tickersOnly` (boolean): true = skip companies without a ticker in the SEC's company_tickers.json (delisted companies, private issuers of public debt, subsidiaries). Default false. E.g. `true`.
-- `includeSources` (boolean): true = each row has `sources`: per value the XBRL tag, the SEC accession number and the filing URL (or the formula for derived values). false = values only, about 3x smaller rows. Default true.
-
-### Output fields
-
-- `schema_version` (string): Output schema version.
-- `ticker` (string | null): Main ticker in the SEC's current ticker list (null if the company has none, e.g. delisted or private debt issuers).
-- `cik` (string): SEC CIK, 10 digits.
-- `company_name` (string | null): Company name as in the SEC frame.
-- `period` (string): The calendar period screened, e.g. CY2025 or CY2025Q3. SEC frames are calendar-aligned: each company appears with its own fiscal period that best fits this calendar period (Apple's year to 27 Sep 2025, Microsoft's to 30 Jun 2025 and Walmart's to 31 Jan 2026 are all in CY2025). See period_start/period_end.
-- `period_start` (string | null): First day of the company's own fiscal period that SEC assigned to this calendar period (YYYY-MM-DD); null when the company reported no duration value (income, cash flow or EPS) for it.
-- `period_end` (string | null): Last day of that fiscal period (YYYY-MM-DD); balance-sheet values are as of this date (when period_start is null: the balance-sheet date nearest the calendar period's end).
-- `currency` (string): Always USD: frames are screened in USD (companies reporting in other currencies are not included). Values are in full dollars, not thousands.
-- `revenue` (number | null): Total revenue / net sales (for banks: total net revenue). In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
-- `cost_of_revenue` (number | null): Cost of revenue / cost of goods and services sold. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
-- `gross_profit` (number | null): Gross profit; when not tagged, revenue - cost_of_revenue (sources says derived). In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
-- `research_and_development` (number | null): Research and development expense. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
-- `selling_general_and_administrative` (number | null): Selling, general and administrative expense (null when the company reports sales/marketing and G&A separately). In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
-- `operating_profit` (number | null): Operating income (loss). Null for most banks and insurers. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
-- `profit_before_tax` (number | null): Income from continuing operations before income taxes. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
-- `net_income` (number | null): Net income including noncontrolling interests (ProfitLoss), else net income attributable to the parent; as in the esef-annual-reports Actor. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
-- `net_income_attributable_to_parent` (number | null): Net income attributable to the parent's shareholders (the US 'net income' headline). In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
-- `eps_basic` (number | null): Basic earnings per share, in USD per share. Never derived (null for Q4 unless reported). Only present when asked (sortBy, filters, metrics) or needed for a derived field.
-- `eps_diluted` (number | null): Diluted earnings per share, in USD per share. Never derived. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
-- `weighted_average_shares_basic` (number | null): Weighted average shares outstanding, basic. Never derived. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
-- `weighted_average_shares_diluted` (number | null): Weighted average shares outstanding, diluted. Never derived. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
-- `depreciation_amortisation` (number | null): Depreciation, depletion and amortization (cash flow statement). In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
-- `total_assets` (number | null): Total assets at period end. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
-- `current_assets` (number | null): Total current assets at period end. Null for banks and insurers (unclassified balance sheet). In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
-- `cash_and_equivalents` (number | null): Cash and cash equivalents at period end (banks: cash and due from banks). In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
-- `total_liabilities` (number | null): Total liabilities; when not tagged, total_assets - total_equity (sources says derived). In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
-- `current_liabilities` (number | null): Total current liabilities. Null for banks and insurers. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
-- `noncurrent_liabilities` (number | null): Total non-current liabilities, when tagged. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
-- `long_term_debt` (number | null): Long-term debt, non-current portion where tagged, else total long-term debt; sources shows the tag. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
-- `total_equity` (number | null): Total equity including noncontrolling interests, else stockholders' equity. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
-- `equity_attributable_to_parent` (number | null): Stockholders' equity attributable to the parent. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
-- `shares_outstanding` (number | null): Common shares outstanding at the balance-sheet date. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
-- `operating_cash_flow` (number | null): Net cash from operating activities. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
-- `investing_cash_flow` (number | null): Net cash from investing activities. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
-- `financing_cash_flow` (number | null): Net cash from financing activities. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
-- `capex` (number | null): Capital expenditure: payments for property, plant and equipment, as a positive number. Null for most banks. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
-- `dividends_paid` (number | null): Dividends paid in cash, as a positive number. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
-- `free_cash_flow` (number | null): Derived: operating_cash_flow - capex. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
-- `ebitda` (number | null): Derived: operating_profit + depreciation_amortisation. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
-- `gross_margin` (number | null): Derived: gross_profit / revenue (0.25 = 25%). Only present when asked (sortBy, filters, metrics) or needed for a derived field.
-- `operating_margin` (number | null): Derived: operating_profit / revenue (0.25 = 25%). Only present when asked (sortBy, filters, metrics) or needed for a derived field.
-- `net_margin` (number | null): Derived: net_income / revenue (0.25 = 25%). Only present when asked (sortBy, filters, metrics) or needed for a derived field.
-- `return_on_equity` (number | null): Derived: net_income / total_equity (0.25 = 25%). Calendar-year periods only. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
-- `equity_ratio` (number | null): Derived: total_equity / total_assets (0.25 = 25%). Only present when asked (sortBy, filters, metrics) or needed for a derived field.
-- `source_url` (string): EDGAR index page of the filing most of the row's values come from.
-- `sources` (object): Only with includeSources: per metric {tag: XBRL concept used, accession: SEC filing the value comes from (the latest filing that reported it, or for re-checked values the first 10-K/10-Q that did), url: its EDGAR index page}, or {derived: formula} for derived values.
-- `warnings` (array): Notes on this row: a value from a proxy statement replaced by the 10-K/10-Q figure, a value that could not be checked, or a metric left out because it was reported for a different period than the row's.
-- `retrieved_at` (string): UTC time the row was produced.
-- `provided_by` (string): Who compiled this row; cite together with source_url.
-
-### Example input
-
-```json
-{
-  "period": "CY2025",
-  "filters": [
-    { "metric": "revenue", "min": 10000000000 },
-    { "metric": "net_margin", "min": 0.2 }
-  ],
-  "sortBy": "revenue",
-  "maxResults": 50
-}
-```
-
-## EU Annual Reports API (ESEF): XBRL financial statements
-
-Docs: https://boscolabs.dev/esef-annual-reports.html
-Apify Store: https://apify.com/bosco_labs/esef-annual-reports
-MCP: https://mcp.apify.com?tools=bosco_labs/esef-annual-reports
-Price: Apify Store $0.01 per run plus $0.05 per annual report; raw XBRL fact rows, if switched on, $0.0005 each; HTTP API $0.05 per annual report
-API: POST https://api.boscolabs.dev/v1/esef-annual-reports, $0.05 per annual report (max 10 reports (maxFilings))
-
-Key financials (revenue, operating income/EBIT, net income, EPS, assets, equity, cash flows, margins, growth) from the ESEF annual reports of European listed companies in 28 countries, via filings.xbrl.org. Each value links to its XBRL fact. Filter by LEI, company name, country, fiscal year.
-
-Coverage: ESEF annual reports collected by filings.xbrl.org: 27,626 reports from 28 countries (counted 2026-11-05; largest: UA, GB, DK, SE, NO, FR, FI). Germany is not in the index. Reports appear a few days to a few weeks after publication, once filings.xbrl.org has processed them. All values are in full currency units.
-
-Example questions:
-
-- Get Heineken's latest revenue growth and operating margin from its annual report.
-- Compare net income and equity of Belgian listed companies for fiscal years ending in 2024.
-- Which XBRL fact does ASML's reported revenue come from?
-
-### Input fields
-
-- `leis` (array): Legal Entity Identifiers (20 letters/digits), e.g. ["724500Y6DUVHQD6OXN27"] for ASML: the most precise lookup, any country. Empty = no LEI filter.
-- `companyName` (string): Case-insensitive part of the registered company name, e.g. "heineken" or "lvmh"; can match several companies, so check `company_name` in the output. Empty = no name filter.
-- `countries` (array): Filing countries as ISO 3166 alpha-2 codes, e.g. ["NL", "BE", "FR"]; also SE, DK, FI, NO, IT, ES, GB and others. Empty = all 28 countries in the index (Germany is not in it).
-- `periodFrom` (string): Fiscal year ending on or after this date, YYYY-MM-DD, e.g. "2024-01-01". Empty = no lower limit.
-- `periodTo` (string): Fiscal year ending on or before this date, YYYY-MM-DD, e.g. "2024-12-31". Empty = no upper limit.
-- `maxFilings` (integer): Maximum annual reports, newest fiscal period first, e.g. 1 for a company's latest report. Default 10. One report per company per fiscal year, with the prior year nested in each row.
-- `includeRawFacts` (boolean): true = also output every tagged XBRL fact of each report as its own row (record_type = "fact"), charged per fact row. Default false (one summary row per report).
-- `onlyNewSinceLastRun` (boolean): true = skip (and don't charge for) reports an earlier run with the same filters already delivered. For scheduled runs. Default false. Remembered in a named key-value store in your account. E.g. `true` for a daily scheduled run.
-
-### Output fields
-
-- `schema_version` (string): Output schema version.
-- `record_type` (string): summary = one row per annual report; fact = one raw XBRL fact (only with includeRawFacts).
-- `lei` (string | null): Legal Entity Identifier of the filer.
-- `company_name` (string | null): Registered name (null when filings.xbrl.org has none).
-- `country` (string): Filing country (ISO 3166 alpha-2).
-- `period_end` (string): Fiscal year end (YYYY-MM-DD), taken from the report facts.
-- `fiscal_year_start` (string | null): Fiscal year start (YYYY-MM-DD).
-- `currency` (string | null): ISO 4217 currency of the monetary values.
-- `revenue` (number | null): revenue for the fiscal year; source concept: ifrs-full:Revenue or ifrs-full:RevenueFromContractsWithCustomers
-- `gross_profit` (number | null): gross_profit for the fiscal year; source concept: ifrs-full:GrossProfit
-- `operating_profit` (number | null): operating_profit for the fiscal year; source concept: ifrs-full:ProfitLossFromOperatingActivities
-- `profit_before_tax` (number | null): profit_before_tax for the fiscal year; source concept: ifrs-full:ProfitLossBeforeTax
-- `net_income` (number | null): net_income for the fiscal year; source concept: ifrs-full:ProfitLoss
-- `net_income_attributable_to_parent` (number | null): net_income_attributable_to_parent for the fiscal year; source concept: ifrs-full:ProfitLossAttributableToOwnersOfParent
-- `eps_basic` (number | null): eps_basic for the fiscal year; source concept: ifrs-full:BasicEarningsLossPerShare
-- `eps_diluted` (number | null): eps_diluted for the fiscal year; source concept: ifrs-full:DilutedEarningsLossPerShare
-- `total_assets` (number | null): total_assets for the fiscal year; source concept: ifrs-full:Assets
-- `current_assets` (number | null): current_assets for the fiscal year; source concept: ifrs-full:CurrentAssets
-- `cash_and_equivalents` (number | null): cash_and_equivalents for the fiscal year; source concept: ifrs-full:CashAndCashEquivalents
-- `total_equity` (number | null): total_equity for the fiscal year; source concept: ifrs-full:Equity
-- `equity_attributable_to_parent` (number | null): equity_attributable_to_parent for the fiscal year; source concept: ifrs-full:EquityAttributableToOwnersOfParent
-- `total_liabilities` (number | null): total_liabilities for the fiscal year; source concept: ifrs-full:Liabilities
-- `current_liabilities` (number | null): current_liabilities for the fiscal year; source concept: ifrs-full:CurrentLiabilities
-- `noncurrent_liabilities` (number | null): noncurrent_liabilities for the fiscal year; source concept: ifrs-full:NoncurrentLiabilities
-- `operating_cash_flow` (number | null): operating_cash_flow for the fiscal year; source concept: ifrs-full:CashFlowsFromUsedInOperatingActivities
-- `investing_cash_flow` (number | null): investing_cash_flow for the fiscal year; source concept: ifrs-full:CashFlowsFromUsedInInvestingActivities
-- `financing_cash_flow` (number | null): financing_cash_flow for the fiscal year; source concept: ifrs-full:CashFlowsFromUsedInFinancingActivities
-- `depreciation_amortisation` (number | null): depreciation_amortisation for the fiscal year; source concept: ifrs-full:DepreciationAndAmortisationExpense or ifrs-full:AdjustmentsForDepreciationAndAmortisationExpense or ifrs-full:DepreciationAmortisationAndImpairmentLossReversalOfImpairmentLossRecognisedInProfitOrLoss or ifrs-full:AdjustmentsForDepreciationAndAmortisationExpenseAndImpairmentLossReversalOfImpairmentLossRecognisedInProfitOrLoss
-- `employee_benefits_expense` (number | null): employee_benefits_expense for the fiscal year; source concept: ifrs-full:EmployeeBenefitsExpense
-- `dividends_paid` (number | null): dividends_paid for the fiscal year; source concept: ifrs-full:DividendsPaidClassifiedAsFinancingActivities or ifrs-full:DividendsPaid
-- `dividend_per_share` (number | null): dividend_per_share for the fiscal year; source concept: ifrs-full:DividendsRecognisedAsDistributionsToOwnersPerShare
-- `dividend_proposed_per_share` (number | null): dividend_proposed_per_share for the fiscal year; source concept: ifrs-full:DividendsProposedOrDeclaredBeforeFinancialStatementsAuthorisedForIssueButNotRecognisedAsDistributionToOwnersPerShare
-- `shares_outstanding` (number | null): shares_outstanding for the fiscal year; source concept: ifrs-full:NumberOfSharesOutstanding
-- `metrics_found` (integer): How many of the reported metrics were found.
-- `ebitda` (number | null): Derived: operating_profit + depreciation_amortisation.
-- `operating_margin` (number | null): Derived: operating_profit / revenue.
-- `net_margin` (number | null): Derived: net_income / revenue.
-- `return_on_equity` (number | null): Derived: net_income / total_equity.
-- `equity_ratio` (number | null): Derived: total_equity / total_assets.
-- `revenue_growth` (number | null): Derived: revenue / prior_year.revenue - 1.
-- `sources` (object): Per field: concept, fact_id, period, unit, decimals of the source fact, or {derived: formula}.
-- `prior_year` (object | null): Comparative fiscal year from the same report: period_end, fiscal_year_start, currency, the same metrics and derived fields, metrics_found and sources.
-- `fact_id` (string): XBRL fact id inside the report.
-- `concept` (string): XBRL concept, e.g. ifrs-full:Revenue.
-- `value` (string | null): Raw fact value as reported (canonical form).
-- `unit` (string | null): XBRL unit, e.g. iso4217:EUR.
-- `period` (string | null): XBRL period (instant or start/end).
-- `decimals` (integer | null): XBRL decimals (precision).
-- `dimensions` (object): Extra XBRL dimensions (axes/members) of the fact.
-- `filing_id` (string): filings.xbrl.org filing id.
-- `published` (string | null): Publication timestamp of the filing.
-- `viewer_url` (string | null): Inline XBRL viewer of the annual report.
-- `report_url` (string | null): The iXBRL (XHTML) annual report.
-- `source_url` (string): xBRL-JSON the row was extracted from.
-- `provided_by` (string): Who compiled this row; cite together with source_url.
-- `retrieved_at` (string): UTC time the source was fetched.
-
-### Example input
-
-```json
-{ "countries": ["NL", "BE", "FR"], "periodFrom": "2025-01-01", "maxFilings": 50 }
-```
-
-## ISIN, LEI, CIK, FIGI & Ticker Resolver API (crosswalk)
-
-Docs: https://boscolabs.dev/identifier-resolver.html
-Apify Store: https://apify.com/bosco_labs/identifier-resolver
-MCP: https://mcp.apify.com?tools=bosco_labs/identifier-resolver
-Price: Apify Store $0.002 per resolved identifier; HTTP API $0.002 per identifier resolved
-API: POST https://api.boscolabs.dev/v1/identifier-resolver, $0.002 per identifier resolved (max 1 identifier)
-
-Issuer legal name, LEI, CIK, tickers, ISINs, FIGIs, CFI code and EU trading venues for one ISIN, LEI, CIK, ticker, FIGI or company name. Check digits validated first; a source URL per value. Data from GLEIF, OpenFIGI, SEC and ESMA FIRDS.
-
-Example questions:
-
-- What is the LEI, CIK and home-market FIGI of ISIN NL0010273215, and on how many EU venues does it trade? Cite the sources.
-
-### Input fields
-
-- `identifier` (string, required): ONE identifier of a security or company: an ISIN ("US0378331005"), an LEI ("HWUPKR0MPOU8FGXBT394"), an SEC CIK ("320193"), a ticker ("AAPL", "BRK.B"; add exchange for non-US markets), a FIGI ("BBG000B9XRY4") or a company name ("Siemens AG"). The type is detected automatically; ISIN, LEI and FIGI check digits are verified before any lookup, and a bad one fails in seconds with the correct digit, at no charge. Required.
-- `idType` (string): What the identifier is. Default "auto": digits only = CIK, 20 characters = LEI, 12 characters = ISIN or FIGI (by check digit), up to 6 characters without spaces = ticker (read as a name if no US ticker matches), anything else = company name. Set it for short names; numeric tickers just need exchange ("7203" with "JT").
-- `exchange` (string): Only for a ticker outside the US: a Bloomberg exchange code ("LN" London, "GR" Germany, "NA" Amsterdam, "FP" Paris, "JT" Tokyo, "SW" Swiss) or a 4-letter MIC ("XLON", "XAMS"). Empty (default) = US tickers from the SEC's list. With an exchange, an all-digit identifier is read as a ticker ("7974" + "JT" = Nintendo), not a CIK.
-
-### Output fields
-
-- `schema_version` (string): Output schema version.
-- `query` (string): The identifier as given.
-- `query_type` (string): How it was read: isin, lei, cik, ticker, figi or name.
-- `exchange_filter` (string | null): The exchange given for a ticker, else null.
-- `issuer_name` (string | null): Issuer legal name: GLEIF legal name, else SEC name, else OpenFIGI name.
-- `issuer_name_latin` (string | null): English or transliterated GLEIF name when the legal name is not in Latin script (e.g. Japanese), else null.
-- `lei` (string | null): Issuer Legal Entity Identifier (ISO 17442), e.g. HWUPKR0MPOU8FGXBT394.
-- `lei_status` (string | null): GLEIF registration status: ISSUED, LAPSED, RETIRED, ...
-- `issuer_country` (string | null): Country of the issuer's legal address (ISO 3166 alpha-2), from GLEIF.
-- `issuer_jurisdiction` (string | null): Legal jurisdiction from GLEIF, e.g. US-CA or NL.
-- `cik` (string | null): SEC Central Index Key (no leading zeros) if the issuer files with the SEC, else null.
-- `tickers` (array): Tickers with exchange: source SEC (exchange = SEC name, e.g. Nasdaq) and source OpenFIGI (exchange = Bloomberg composite code, e.g. US, GR, LN; composite_figi set), up to 10 OpenFIGI listings.
-- `isin` (string | null): The instrument ISIN: the one asked for, else the issuer's main share ISIN (equity shares on most EU venues in FIRDS).
-- `issuer_isins` (array): Up to 20 ISINs GLEIF maps to the issuer's LEI (shares, bonds, other securities).
-- `issuer_isin_count` (integer | null): Total ISINs GLEIF maps to the LEI (null if no LEI).
-- `composite_figi` (string | null): Composite (country-level) FIGI of the instrument's home or US listing, e.g. BBG000B9XRY4.
-- `share_class_figi` (string | null): Share-class FIGI (global across countries), e.g. BBG001S5N8V8.
-- `security_type` (string | null): OpenFIGI security type, e.g. Common Stock, Depositary Receipt, Corp.
-- `instrument_name` (string | null): Instrument name as most often reported to FIRDS, else OpenFIGI's name.
-- `cfi_code` (string | null): ISO 10962 CFI code from FIRDS, e.g. ESVUFR (equity, common share).
-- `currency` (string | null): Notional currency from FIRDS (ISO 4217).
-- `eu_trading_venues` (array): EU/EEA trading venues (MIC and first trading date) where FIRDS lists the instrument as currently traded, by MIC, up to 100.
-- `eu_venue_count` (integer | null): Number of current EU venues in FIRDS (null if FIRDS was not reached or no ISIN is known).
-- `eu_venues_terminated_count` (integer | null): Venues where trading has ended, per FIRDS.
-- `match_confidence` (number): 1.0 when every link is by identifier; lower when a link was made by name (0.9 exact name and jurisdiction, 0.6 ambiguous).
-- `match_note` (string): How the identifiers were linked, in words.
-- `alternatives` (array): Other candidate issuers (name, lei, isin, cik) when a name was matched.
-- `sources` (object): Source URL per value: lei, cik, isin, issuer_isins, issuer_name, tickers, figi, instrument (FIRDS query).
-- `source_url` (string | null): Main source: the GLEIF record, else SEC, FIRDS or OpenFIGI.
-- `provided_by` (string): Bosco Labs (boscolabs.dev).
-- `notices` (array): Licence and attribution notices (GLEIF CC0, OpenFIGI, ESMA free-of-charge notice).
-- `warnings` (array): Sources that failed or were rate-limited, and ambiguous matches, in plain words.
-- `retrieved_at` (string): ISO-8601 UTC time of the lookup.
-- `duration_seconds` (number): Time the lookup took.
-
-### Example input
-
-```json
-{ "identifier": "US0378331005" }
-```
 
 ## Counterparty Check API: KYB checklist from official registers
 
@@ -1713,6 +1081,658 @@ Example questions:
 
 ```json
 { "code": "8712.00.15", "market": "US" }
+```
+
+## SEC Insider Trading API (Form 4): stock transactions since 2006
+
+Docs: https://boscolabs.dev/sec-insider-trades.html
+Apify Store: https://apify.com/bosco_labs/sec-insider-trades
+MCP: https://mcp.apify.com?tools=bosco_labs/sec-insider-trades
+Price: Apify Store $0.0018 per transaction row and $0.02 per cluster signal; HTTP API $0.0002 per unit: a Form 4 transaction = 9 units ($0.0018), a cluster signal = 100 ($0.02)
+API: POST https://api.boscolabs.dev/v1/sec-insider-trades, $0.0002 per unit: a Form 4 transaction = 9 units ($0.0018), a cluster signal = 100 ($0.02) (max 5 tickers/CIKs x 183 days, 200 rows (maxResults))
+
+Insider trading data from SEC Form 4: every insider stock transaction (buy or sell) by directors, officers and 10% owners, from official EDGAR filings, 2006 to today. Filter by ticker, CIK, transaction code, role, value and date; adds cluster-buy and cluster-sell signals.
+
+Coverage: Today's filings from the EDGAR live feed, minutes after the SEC accepts them; recent quarters from the EDGAR indexes and Form 4 XML; history from 2006 from the SEC's quarterly Insider Transactions Data Sets. Non-derivative table only: options and other derivatives are not included.
+
+Example questions:
+
+- Did any Tesla insiders buy shares in the last 90 days?
+- Show insider cluster buys across the US market this month.
+- List Nvidia insider sales over $1 million filed in 2024, with links to the Form 4s.
+
+### Input fields
+
+- `lookbackDays` (integer): Used only when `dateFrom` is empty: read filings from this many days back until today, e.g. 30. Empty = 90 days when `tickers` or `ciks` are set, 7 days for the whole market. Handy for schedules.
+- `dateFrom` (string): Earliest filing date, YYYY-MM-DD, e.g. "2024-01-01". Data starts 2006-01-01. Empty = `lookbackDays` days before today (90 for tickers/CIKs, 7 for the whole market).
+- `dateTo` (string): Latest filing date, YYYY-MM-DD, e.g. "2024-12-31". Empty = today, including today's filings from the live EDGAR feed.
+- `clusterBuysOnly` (boolean): true = only open-market purchases that are part of a cluster: at least 2 different directors or officers of the same company buying, filed within `clusterWindowDays`, together worth at least $100,000. Default false. Also reads the window before the date range.
+- `clusterSellsOnly` (boolean): true = only open-market sales that are part of a cluster (same rule as cluster buys, for sales). Pre-planned 10b5-1 plan sales are left out (filings flag them since April 2023). Default false. Can be combined with `clusterBuysOnly`.
+- `includeClusterSignals` (boolean): true (default) = also output one row per cluster signal (record_type = "cluster"): the day a company's insider buying or selling first met the cluster rule, with the insiders and total value. Charged as a separate, higher-priced event. false = transaction rows only.
+- `clusterWindowDays` (integer): How many days of filings count as one cluster of insider buying or selling, e.g. 14. Default 30.
+- `transactionCodes` (array): Form 4 transaction codes to return, e.g. ["P"] for open-market purchases only. Default ["P", "S"] (open-market purchases and sales). Pass [] for all codes, including awards (A), tax withholding (F) and option exercises (M).
+- `insiderRoles` (array): Only insiders with one of these roles: director, officer, ten_percent_owner, other, e.g. ["director", "officer"]. Empty = all roles.
+- `minValueUsd` (integer): Minimum transaction value in USD (shares x price), e.g. 100000. Default 0 = no minimum. Transactions without a price count as 0.
+- `maxResults` (integer): Maximum transaction rows, newest first, e.g. 500. Default 100, up to 200,000 per run (split bigger exports by date range). The run stops reading once it has this many, and returns at most this many cluster signals.
+- `onlyNewSinceLastRun` (boolean): true = skip (and don't charge for) transactions and signals an earlier run with the same filters already delivered. For scheduled runs. Default false. Remembered in a named key-value store in your account. E.g. `true` for a daily scheduled run.
+- `tickers` (array): Optional: issuer stock tickers, e.g. ["AAPL", "TSLA"]. Leave empty to scan the whole market (the usual use: insider buying anywhere). Mapped to the company's CIK with the SEC's ticker list; history is also matched on the ticker as written in the filing.
+- `ciks` (array): Issuer SEC Central Index Keys as digits, leading zeros optional, e.g. ["320193"] for Apple. Use for delisted or renamed companies the SEC's ticker list no longer has. Empty = no CIK filter.
+
+### Output fields
+
+- `schema_version` (string): Output schema version.
+- `record_type` (string): transaction = one Form 4 transaction; cluster = one cluster-buy or cluster-sell signal.
+- `cluster_side` (string | null): Cluster rows only: buy = insiders buying together, sell = insiders selling together (10b5-1 plan sales excluded).
+- `accession_number` (string): SEC accession number of the Form 4 filing.
+- `form` (string): 4, or 4/A for an amendment.
+- `issuer_name` (string): Company whose shares were traded, as filed.
+- `issuer_cik` (string): SEC CIK of the issuer (10 digits).
+- `ticker` (string | null): Trading symbol as filed, or the listed ticker of the row's share class (BRK.B for Class B shares filed as BRK.A); null if that class has none.
+- `insider_name` (string): Reporting person (the first one in a joint filing).
+- `insider_cik` (string | null): SEC CIK of the reporting person.
+- `insider_roles` (array): director, officer, ten_percent_owner, other (combined over all joint filers).
+- `officer_title` (string | null): Officer title, e.g. Chief Executive Officer.
+- `owner_count` (integer): Number of reporting persons on the filing (joint filings > 1).
+- `transaction_date` (string | null): Date of the transaction (YYYY-MM-DD).
+- `filing_date` (string): Date the SEC received the filing (YYYY-MM-DD). For cluster rows: the day the cluster rule was first met.
+- `usable_from` (string): First weekday after filing_date: the earliest day a backtest may act on this row (Form 4s can be filed until 22:00 New York time, after the close). Trade at the first market open on or after this date.
+- `accepted_at` (string | null): EDGAR acceptance time with New York offset (live EDGAR rows only).
+- `transaction_code` (string): Form 4 code: P purchase, S sale, A award, M option exercise, F tax withholding, G gift, ...
+- `transaction_type` (string | null): Plain-English meaning of the transaction code.
+- `acquired_disposed` (string | null): A = acquired, D = disposed.
+- `shares` (number | null): Number of shares.
+- `price` (number | null): Price per share in USD (null when the filing gives none).
+- `value_usd` (number | null): shares x price.
+- `shares_owned_after` (number | null): Shares owned after the transaction.
+- `ownership` (string | null): direct or indirect (e.g. through a trust or fund).
+- `plan_10b5_1` (boolean | null): Made under a Rule 10b5-1 trading plan: true/false from the Form 4 checkbox (filings from 2023-04-01), true when a footnote says so, null when the filing predates the checkbox and no footnote mentions a plan (unknown, not 'no plan'). The box is optional for plans adopted before 2023-02-27, so false can still be such a plan.
+- `security_title` (string | null): Security, e.g. Common Stock.
+- `cluster_insiders` (integer | null): Transactions: distinct directors/officers buying this issuer in the cluster window up to this filing date (null for non-buys or when the window reaches before the data read). Clusters: insiders in the cluster.
+- `cluster_value_usd` (number | null): Total open-market purchase value of those insiders in the window.
+- `in_cluster` (boolean | null): Purchases only: part of a cluster signal.
+- `cluster_date` (string | null): Purchases in a cluster: the date of that cluster signal.
+- `first_filing_date` (string | null): Cluster rows: filing date of the first buy in the cluster.
+- `cluster_window_days` (integer | null): Cluster rows: the window used.
+- `insider_names` (array | null): Cluster rows: the buying insiders.
+- `accession_numbers` (array | null): Cluster rows: the Form 4 filings in the cluster.
+- `filing_url` (string): EDGAR filing index page.
+- `source` (string): edgar-xml (parsed Form 4 XML), dera (SEC Insider Transactions Data Sets) or derived (cluster).
+- `source_url` (string | null): The SEC page to cite: the Form 4 filing (edgar-xml rows: the filing text; dera rows: the filing index page; see `source`).
+- `provided_by` (string): Who compiled this row; cite together with source_url.
+- `retrieved_at` (string): UTC time the row was produced.
+
+### Example input
+
+```json
+{ "tickers": ["NVDA", "AAPL"], "transactionCodes": ["P", "S"], "minValueUsd": 100000,
+  "dateFrom": "2025-01-01", "maxResults": 100 }
+```
+
+## SEC EDGAR Filings API: 8-K, 10-K, 10-Q feed since 1994
+
+Docs: https://boscolabs.dev/sec-filings-feed.html
+Apify Store: https://apify.com/bosco_labs/sec-filings-feed
+MCP: https://mcp.apify.com?tools=bosco_labs/sec-filings-feed
+Price: Apify Store $0.001 per filing; HTTP API $0.001 per filing
+API: POST https://api.boscolabs.dev/v1/sec-filings-feed, $0.001 per filing (max 200 filings (maxResults))
+
+SEC EDGAR filings (8-K, 10-K, 10-Q, S-1, 13D, 13G, Form 4, any form) for any company or the whole market, latest filings live or back to 1994, from the SEC's own feeds: no scraper to maintain. Filter by ticker, CIK, form, 8-K item and date; flags earnings releases. Returns filing links, not text.
+
+Coverage: All EDGAR forms. Companies: the SEC submissions API, complete history back to 1994. Whole market: the live feed, then the EDGAR daily and quarterly indexes back to 1993. 8-K item codes exist since August 2004. Rows hold links to the filing and its main document, not the document text.
+
+Example questions:
+
+- When did Nvidia release its last four quarterly results, and was it before or after the market closed?
+- Which companies filed a 13D in the last 7 days, and who filed it?
+- Give me links to Apple's 10-K annual reports since 2015.
+
+### Input fields
+
+- `formTypes` (array): EDGAR form types, exact match, e.g. ["8-K", "10-K", "10-Q"]; also S-1, 13D, 13G, 4, DEF 14A, 20-F, 6-K and any other form. Add "10-K/A" etc. for amendments. 13D and 13G also match the SC 13D and SCHEDULE 13D names. Empty = every form.
+- `tickers` (array): Company tickers, e.g. ["AAPL", "MSFT"]. Mapped to the CIK with the SEC's own company_tickers.json. Empty (and `ciks` empty) = the whole market.
+- `ciks` (array): SEC Central Index Keys as digits, leading zeros optional, e.g. ["320193"] for Apple. Use for delisted companies, funds and filers without a ticker. Empty = no CIK filter.
+- `earningsReleasesOnly` (boolean): true = only 8-Ks with Item 2.02 (Results of Operations and Financial Condition): the dates and exact times companies released earnings. Overrides `formTypes` and `itemCodes`. Default false.
+- `itemCodes` (array): Only 8-Ks reporting at least one of these items, as strings, e.g. ["5.02"] (director/officer change), "1.01" (material agreement), "2.01" (acquisition), "1.05" (cybersecurity incident). Without `formTypes`, reads 8-K and 8-K/A. Empty = no item filter.
+- `dateFrom` (string): Earliest filing date, YYYY-MM-DD, e.g. "2020-01-01". EDGAR's index goes back to 1993. Empty = `lookbackDays` days before today (or, for tickers/CIKs without `lookbackDays`, the company's newest filings).
+- `dateTo` (string): Latest filing date, YYYY-MM-DD. Empty = today, including filings accepted minutes ago (live EDGAR feed). E.g. "2026-03-31".
+- `lookbackDays` (integer): Used only when `dateFrom` is empty: read filings from this many days back until today, e.g. 365. Empty = 7 days for the whole market; for `tickers`/`ciks`, empty = each company's newest filings (its last 1,000), so "latest 10-K of AAPL" needs no dates.
+- `maxResults` (integer): Maximum filings, newest first, e.g. 10 for a company's latest 10 filings. Default 100. The run stops once it has this many; you pay per filing returned.
+- `onlyNewSinceLastRun` (boolean): true = skip (and don't charge for) filings an earlier run with the same filters already delivered. For scheduled runs. Default false. Remembered in a named key-value store in your account. E.g. `true` for a daily scheduled run.
+
+### Output fields
+
+- `schema_version` (string): Output schema version.
+- `accession_number` (string): SEC accession number (unique per filing).
+- `form` (string): EDGAR form type as filed, e.g. 8-K, 10-K, SC 13D.
+- `company_name` (string): Company the filing is about (issuer or subject; the filer otherwise).
+- `cik` (string): SEC CIK of that company (10 digits).
+- `ticker` (string | null): Its main ticker in the SEC's current ticker list (null if none).
+- `filing_date` (string): Filing date (YYYY-MM-DD).
+- `accepted_at` (string | null): EDGAR acceptance time, New York time with offset.
+- `market_timing` (string | null): before_open, market_hours or after_close (New York regular session), closed on weekends.
+- `report_date` (string | null): Period of report (YYYY-MM-DD), e.g. the quarter end of a 10-Q or the event date of an 8-K.
+- `items` (array): 8-K item codes, e.g. ["2.02", "9.01"]. Empty for other forms.
+- `item_descriptions` (array): Names of those items, same order.
+- `parties` (array | null): All companies and people on the filing with their role (Filer, Issuer, Subject, Filed by, Reporting). Null for company searches.
+- `filing_index_url` (string): EDGAR filing index page (all documents and exhibits).
+- `primary_document_url` (string | null): The main document (HTML/iXBRL, text or XML).
+- `source` (string): submissions-api, full-index, daily-index or live-feed.
+- `source_url` (string): The SEC page or file the row was read from.
+- `provided_by` (string): Who compiled this row; cite together with source_url.
+- `retrieved_at` (string): UTC time the row was produced.
+
+### Example input
+
+```json
+{ "tickers": ["AAPL", "MSFT", "NVDA"], "formTypes": ["8-K", "10-Q", "10-K"], "dateFrom": "2020-01-01", "maxResults": 1000 }
+```
+
+## Congress Stock Trades API: US House STOCK Act since 2014
+
+Docs: https://boscolabs.dev/us-house-trades.html
+Apify Store: https://apify.com/bosco_labs/us-house-trades
+MCP: https://mcp.apify.com?tools=bosco_labs/us-house-trades
+Price: Apify Store $0.0018 per trade; HTTP API $0.0018 per PTR transaction
+API: POST https://api.boscolabs.dev/v1/us-house-trades, $0.0018 per PTR transaction (max 200 trades (maxResults))
+
+Congress stock trades: congressional stock trading disclosures by US House members (politicians' Periodic Transaction Reports under the STOCK Act), from the House Clerk since 2014 (no Senate). Each row: ticker, amount range, owner, disclosure delay. Filter by member, ticker, type, amount, date.
+
+Coverage: Periodic Transaction Reports of House members filed online, from January 2014 to the latest update of the Clerk's index. Scanned paper PTRs are skipped (their PDF links are listed in the run's SUMMARY record). The Senate and annual financial disclosure reports are not included.
+
+Example questions:
+
+- Which options did Nancy Pelosi's household trade in 2025, and how many days after the trade were they disclosed?
+- Which House members disclosed NVDA trades in the last 30 days?
+- List House trades over $1 million filed in 2024.
+
+### Input fields
+
+- `members` (array): Case-insensitive part of the member's name as listed by the Clerk, e.g. ["Pelosi"] or ["Josh Gottheimer"]. Empty = all House members.
+- `tickers` (array): Only trades whose filing names one of these tickers, e.g. ["NVDA", "MSFT", "BRK.B"]. Trades without a ticker in the filing are left out when this is set. Empty = all.
+- `transactionTypes` (array): Any of purchase, sale (full or partial), exchange, e.g. ["purchase"]. Default all three.
+- `filedFrom` (string): Earliest filing date (when the trade became public), YYYY-MM-DD, e.g. "2025-01-01". Empty = 365 days ago when `members` is set, else 30 days ago; ignored when `years` is set without dates.
+- `filedTo` (string): Latest filing date, YYYY-MM-DD, e.g. "2025-12-31". Empty = today.
+- `years` (array): Whole filing years to load, as strings, e.g. ["2024", "2025"] (one Clerk index per year; online PTRs start in 2014). Without dates, returns those whole years. Use this or `filedFrom` for history.
+- `minAmountUsd` (integer): Only trades whose reported range starts at or above this USD amount, e.g. 15001 leaves out the smallest $1,001 - $15,000 range, 1000001 keeps trades over $1 million. Empty = no minimum.
+- `maxResults` (integer): Maximum trades, newest filings first, e.g. 500. Default 100. You pay per trade returned.
+- `onlyNewSinceLastRun` (boolean): true = skip (and don't charge for) trades an earlier run with the same filters already delivered. For scheduled runs. Default false. Remembered in a named key-value store in your account. E.g. `true` for a daily scheduled run.
+
+### Output fields
+
+- `schema_version` (string): Output schema version.
+- `transaction_id` (string): doc_id + position of the transaction in the PTR, e.g. 20035553-1. Stable across runs.
+- `member_name` (string): First name, last name and suffix as listed in the Clerk's index.
+- `first_name` (string): First name as listed in the Clerk's index.
+- `last_name` (string): Last name as listed in the Clerk's index.
+- `state_district` (string | null): State and district as listed in the index, e.g. CA11.
+- `state` (string | null): Two-letter state code, the first two characters of state_district.
+- `filing_date` (string): Date the PTR was filed (YYYY-MM-DD): when the trade became public.
+- `transaction_date` (string): Trade date as reported (YYYY-MM-DD).
+- `notification_date` (string): Date the member was notified of the trade, as reported (YYYY-MM-DD).
+- `days_to_disclose` (integer): filing_date - transaction_date in days. For amendments this counts to the amendment, not the first filing.
+- `owner` (string | null): Owner code as filed: SP = spouse, JT = joint, DC = dependent child, null = the member.
+- `account` (string | null): Account the trade was in, as filed (Subholding Of), e.g. UBS IRA Account; null when not given.
+- `ticker` (string | null): Ticker as filed in parentheses in the asset text, upper-cased; null when the filing gives none.
+- `asset_description` (string): Asset text as filed (older PDFs garble upper/lower case).
+- `asset_type` (string | null): From asset_type_code: ST = stock, OP = option, EF/MF = fund, GS/CS = bond, other codes = other. Filings before ~2018 have no code: option if the description says so, else null.
+- `asset_type_code` (string | null): The Clerk's asset type code in square brackets, e.g. ST, OP, EF, GS (see fd.house.gov/reference/asset-type-codes.aspx).
+- `option_type` (string | null): call or put, from the transaction description, for options only.
+- `transaction_type` (string): P = purchase, S / S (partial) = sale, E = exchange.
+- `is_partial` (boolean): True for a partial sale (S (partial)).
+- `amount_min` (number | null): Lower bound of the reported value range in USD, e.g. 15001; the value itself when the filer reported an exact amount (e.g. 318.74).
+- `amount_max` (number | null): Upper bound of the reported value range in USD; null for 'Over $50,000,000' and 'Spouse/DC Over $1,000,000'.
+- `amount_text` (string): The value range (or exact value) as filed, e.g. $15,001 - $50,000.
+- `is_amendment` (boolean): True when the transaction's filing status is Amended: the filing date is then not when the trade first became public.
+- `doc_id` (string): The Clerk's document (filing) ID.
+- `pdf_url` (string): The PTR PDF on disclosures-clerk.house.gov.
+- `source_url` (string): Where the row was extracted from (the PTR PDF).
+- `provided_by` (string): Who compiled this row; cite together with source_url.
+- `retrieved_at` (string): UTC time the PDF was fetched and parsed.
+
+### Example input
+
+```json
+{ "members": ["Pelosi"], "years": ["2024", "2025"], "transactionTypes": ["purchase"], "maxResults": 500 }
+```
+
+## SEC 13F Holdings API: fund & ETF holdings, 13D/13G, Form 144
+
+Docs: https://boscolabs.dev/sec-ownership.html
+Apify Store: https://apify.com/bosco_labs/sec-ownership
+MCP: https://mcp.apify.com?tools=bosco_labs/sec-ownership
+Price: Apify Store $0.0018 per row, plus $0.01 per "who holds this stock" search (13F or N-PORT data set); HTTP API $0.0018 per holding, holder or filing row (one fund or company per call)
+API: POST https://api.boscolabs.dev/v1/sec-ownership, $0.0018 per holding, holder or filing row (one fund or company per call) (max 200 rows (maxResults))
+
+13F institutional holdings and who owns a stock, from official SEC filings: a fund manager's 13F positions (new, increased, decreased or closed vs last quarter), mutual fund/ETF N-PORT holdings, funds holding a ticker, 5%+ stakes (13D/13G) and Form 144 planned insider sales. One ticker or fund in.
+
+Example questions:
+
+- What did Berkshire Hathaway buy and sell last quarter?
+- Which funds hold the most Nvidia stock?
+- What are ARKK's top holdings and what did it add last quarter?
+- Which ETFs and mutual funds hold Palantir?
+- Has anyone filed an activist 13D on Peraso?
+- Which insiders filed to sell more than $1 million of stock this week?
+
+### Input fields
+
+- `mode` (string): holdings13f = Form 13F: pass `filer` for a fund manager's holdings (with changes vs the previous quarter), or `ticker`/`cusip` for the managers holding a stock. holdingsNport = Form N-PORT: pass `fund` (a mutual fund or ETF ticker) for its holdings (with changes vs its previous report), or `ticker`/`cusip` for the mutual funds and ETFs holding a stock. stakes13dg = Schedule 13D/13G filings about `ticker`, or new 13D filings market-wide. planned144 = Form 144 notices of planned insider sales for `ticker`, or market-wide. Default holdings13f.
+- `filer` (string): holdings13f only: the fund manager's name or SEC CIK, e.g. "Berkshire Hathaway" or "1067983". A name is matched with EDGAR's company search (the first match that files 13F reports); a CIK is exact. Empty = look up the holders of `ticker`/`cusip` instead.
+- `fund` (string): holdingsNport only: the fund's ticker (any share class), e.g. "VOO" or "ARKK"; its SEC series ID, e.g. "S000002839"; or its name, e.g. "Vanguard 500 Index Fund" (matched with the SEC's series and class list; the fund picked and up to 3 close alternatives are named in the status message). Letters, digits, spaces and . , & ' ( ) / + -, up to 100 characters. Empty = look up the funds holding `ticker`/`cusip` instead.
+- `ticker` (string): The company the shares are in, as a current US ticker, e.g. "AAPL". holdings13f/holdingsNport: the managers or funds holding it (or, with `filer`/`fund`, only that position). stakes13dg / planned144: filings about it. Empty = whole market (stakes13dg, planned144).
+- `issuerCik` (string): Instead of `ticker`: the company's SEC CIK as digits, e.g. "320193" for Apple. Use for delisted or renamed companies. Empty = use `ticker`.
+- `cusip` (string): holdings13f/holdingsNport only: the 9-character CUSIP of one share class, e.g. "037833100" (Apple common stock). Most precise way to ask which managers or funds hold a security. Empty = CUSIPs found in the company's recent Schedule 13D/13G filings (all its share classes).
+- `quarter` (string): holdings13f/holdingsNport only: the quarter of the holdings, as "2026Q2" or the quarter end "2026-06-30". Empty = the newest: the filer's or fund's latest report, or for holders of a stock the newest SEC data set (13F reports are due 45 days after quarter end; N-PORT reports are public 60 days after a fund's fiscal quarter end, so a fund's report can fall in any month of the quarter).
+- `stakeForms` (array): stakes13dg only: which forms, e.g. ["13D"] for new activist stakes only. Empty = all four for a ticker; 13D and 13D/A for the whole market (activist alerts).
+- `minValueUsd` (integer): Minimum value in US dollars, e.g. 1000000. planned144: the notice's aggregate market value; holdings13f/holdingsNport: the position value. Default 0 = no minimum. Not used by stakes13dg.
+- `dateFrom` (string): stakes13dg / planned144: earliest filing date, YYYY-MM-DD, e.g. "2026-10-01". Structured 13D/13G start 2024-12-18. Empty = `lookbackDays` before today.
+- `dateTo` (string): stakes13dg / planned144: latest filing date, YYYY-MM-DD, e.g. "2026-10-31". Empty = today, including today's filings from the EDGAR live feed.
+- `lookbackDays` (integer): stakes13dg / planned144, used when `dateFrom` is empty: filings from this many days back until today, e.g. 30. Empty = 365 days for a ticker's 13D/13G, 90 for a ticker's Form 144, 7 for the whole market.
+- `maxResults` (integer): Maximum rows (one charged event each), e.g. 200. Default 50: a fund's largest positions, a stock's largest holders, or the newest filings.
+
+### Output fields
+
+- `schema_version` (string): Output schema version.
+- `record_type` (string): holding = a position in one 13F filer's portfolio; holder = one 13F filer holding the asked stock (SEC Form 13F data set); fund_holding = a position in one mutual fund's or ETF's portfolio (Form N-PORT); fund_holder = one fund holding the asked stock (SEC Form N-PORT data set); stake = one Schedule 13D/13G filing; form144 = one Form 144 notice.
+- `form` (string): Form as filed: 13F-HR or 13F-HR/A; 13D, 13D/A, 13G or 13G/A (Schedule); 144 or 144/A.
+- `filer_name` (string | null): holding/holder: the 13F manager. fund_holding/fund_holder: the fund (series) name. stake: the first reporting person on the filing.
+- `filer_cik` (string | null): SEC CIK (10 digits) of the 13F manager, of the fund's registrant (trust), of the 13D/13G filer, or of the person filing the Form 144.
+- `period_of_report` (string): 13F rows: the quarter end the holdings are reported for (YYYY-MM-DD). N-PORT rows: the date the fund's holdings are reported as of (a fund's fiscal quarter end, YYYY-MM-DD).
+- `accession_number` (string): SEC accession number of the filing the row comes from.
+- `filing_date` (string): Date the SEC received the filing (YYYY-MM-DD).
+- `issuer_name` (string | null): Company whose securities are held, owned or to be sold, as written in the filing (13F names are often abbreviated).
+- `issuer_cik` (string | null): stake/form144: SEC CIK (10 digits) of the issuer.
+- `title_of_class` (string | null): 13F rows: class of the security as filed, e.g. COM, CL A, CAP STK CL C.
+- `cusip` (string | null): 13F rows: 9-character CUSIP of the security.
+- `cusips` (array): stake: the issuer CUSIP(s) on the cover page.
+- `ticker` (string | null): Ticker of this security from the SEC's ticker list: the issuer by CIK or name, the share class by CUSIP or the class in title_of_class (GOOG for Alphabet class C). Null when unknown, or when the issuer has several share classes and the class can't be told (see ticker_candidates).
+- `ticker_candidates` (array): When ticker is null because the issuer has several listed share classes: the issuer's tickers, main first (e.g. ["BRK-B", "BRK-A"]). Empty otherwise. Ticker filters match these too.
+- `put_call` (string | null): 13F rows: PUT or CALL for option positions (value = the underlying), null for shares and bonds.
+- `shares` (number | null): 13F rows: shares (or principal amount when share_type is PRN) held at quarter end, summed over the filing's lines; 0 for a closed position. stake: shares beneficially owned by the reporting person with the highest percent.
+- `share_type` (string | null): 13F and N-PORT rows: SH (shares) or PRN (principal amount); N-PORT also NC (contracts) or OU (other units).
+- `value_usd` (number | null): 13F rows: market value in US dollars at quarter end as reported (filings before 2023-01-03 reported $1,000s and are multiplied by 1,000).
+- `portfolio_pct` (number | null): holding: value as a percentage of the filing's total reported value. fund_holding/fund_holder: value as a percentage of the fund's net assets, as filed (closed positions 0).
+- `previous_period` (string | null): holding: the previous quarter end the change is measured against.
+- `previous_shares` (number | null): holding: shares at the previous quarter end (0 = not held then, null = no 13F for that quarter).
+- `previous_value_usd` (number | null): holding: value at the previous quarter end, in US dollars.
+- `shares_change` (number | null): holding: shares minus previous_shares.
+- `shares_change_pct` (number | null): holding: shares_change as a percentage of previous_shares (null when not held before).
+- `change` (string | null): holding: new, increased, decreased, unchanged or closed (sold out) vs the previous quarter; null when unknown.
+- `series_id` (string | null): N-PORT rows: the fund's SEC series ID, e.g. S000002839 (Vanguard 500 Index Fund).
+- `registrant_name` (string | null): N-PORT rows: the registered investment company (trust) the fund belongs to, e.g. VANGUARD INDEX FUNDS.
+- `fund_net_assets_usd` (number | null): N-PORT rows: the fund's net assets in US dollars at period_of_report.
+- `payoff_profile` (string | null): N-PORT rows: Long, Short or N/A as filed.
+- `isin` (string | null): fund_holding: the security's ISIN when the fund reported one, e.g. US0378331005.
+- `issuer_lei` (string | null): fund_holding: the issuer's LEI when the fund reported one.
+- `asset_category` (string | null): fund_holding: the N-PORT asset category, e.g. EC (common equity), EP (preferred), DBT (debt), STIV (short-term investment vehicle), DE/DIR/DCR (derivatives).
+- `currency` (string | null): fund_holding: the currency the security is denominated in (ISO 4217); value_usd is always in US dollars.
+- `country` (string | null): fund_holding: the investment's country (ISO 3166 alpha-2) as filed.
+- `stake_type` (string | null): stake: activist (Schedule 13D: may seek to influence control) or passive (Schedule 13G).
+- `amendment_no` (integer | null): stake: amendment number on the cover page (null for an original filing).
+- `security_class` (string | null): stake/form144: class of securities as filed, e.g. Common Stock.
+- `percent_of_class` (number | null): stake: percent of the class beneficially owned, the highest among the reporting persons (group members usually report the same aggregate).
+- `reporting_persons` (array): stake: every reporting person on the cover pages: name, cik (null if none), percent_of_class, shares, person_type (SEC codes like IA, IN, PN, CO).
+- `event_date` (string | null): stake: date of the event that required the filing (YYYY-MM-DD).
+- `seller_name` (string | null): form144: the person for whose account the securities are to be sold, as filed.
+- `relationships` (array): form144: relationship to the issuer as filed, e.g. Director, Officer, 10% Securityholder.
+- `shares_to_be_sold` (number | null): form144: number of shares (units) to be sold, summed over the notice's lines.
+- `aggregate_market_value_usd` (number | null): form144: aggregate market value of the shares to be sold, in US dollars, as filed.
+- `shares_outstanding` (number | null): form144: shares of the class outstanding, as filed.
+- `approx_sale_date` (string | null): form144: approximate date of sale (YYYY-MM-DD; the earliest if several).
+- `exchanges` (array): form144: exchange(s) where the shares are to be sold.
+- `broker_names` (array): form144: broker(s) or market maker(s) handling the sale.
+- `plan_adoption_dates` (array): form144: adoption dates of the Rule 10b5-1 trading plan, if the sale is under one (YYYY-MM-DD).
+- `notice_date` (string | null): form144: date of the notice (YYYY-MM-DD).
+- `filing_url` (string): EDGAR index page of the filing.
+- `source` (string): edgar-13f (the filing's information table), sec-13f-data-set (SEC Form 13F data set), edgar-nport (the fund's N-PORT-P XML), sec-nport-data-set (SEC Form N-PORT data set) or edgar-xml (the filing's XML).
+- `source_url` (string): The exact SEC file the row was read from.
+- `provided_by` (string): Who compiled this row; cite together with source_url.
+- `retrieved_at` (string): UTC time the row was produced.
+
+### Example input
+
+```json
+{"mode": "holdings13f", "filer": "Berkshire Hathaway"}
+```
+
+## SEC Financial Statements API: income, balance sheet, cash flow
+
+Docs: https://boscolabs.dev/sec-company-financials.html
+Apify Store: https://apify.com/bosco_labs/sec-company-financials
+MCP: https://mcp.apify.com?tools=bosco_labs/sec-company-financials
+Price: Apify Store $0.005 per company-period row; HTTP API $0.005 per company-period row
+API: POST https://api.boscolabs.dev/v1/sec-company-financials, $0.005 per company-period row (max 10 tickers/CIKs x 20 years)
+
+Company financial statements from SEC EDGAR XBRL (10-K, 10-Q, 20-F): income statement (revenue, profit, EPS), balance sheet, cash flow, free cash flow and margins per fiscal year or quarter, 2009 to date, by stock ticker or CIK. Each value cites its XBRL tag and filing. Q4 derived if not reported.
+
+Example questions:
+
+- How did Microsoft's revenue, net income and free cash flow develop over the last 8 quarters?
+- Compare Nvidia, AMD and Intel on operating margin for the last 5 fiscal years.
+- What was JPMorgan's net income in 2024, and which filing is it from?
+
+### Input fields
+
+- `tickers` (array): US tickers as listed by the SEC, e.g. ["AAPL", "MSFT"]; share classes with a dash or dot, e.g. "BRK-B". Foreign companies filing 20-F/40-F work too, e.g. "NVO". Mapped to the CIK with the SEC's company_tickers.json; an unknown ticker is skipped with suggestions in the status message. Empty = use `ciks`.
+- `ciks` (array): SEC Central Index Keys as digits, leading zeros optional, e.g. ["320193"] for Apple. Use for delisted companies and filers without a ticker. Empty = use `tickers`; at least one of the two is required.
+- `period` (string): "annual" = one row per fiscal year (FY). "quarterly" = one row per fiscal quarter, Q1-Q4, each a discrete 3-month period (Q4 and year-to-date-only cash flows are derived, see `warnings`). Companies without quarterly XBRL data (most 20-F filers) return fiscal years instead. Default "annual".
+- `years` (integer): How many of the latest fiscal years to return per company, e.g. 5 (5 rows annual, up to 20 rows quarterly; 2 with quarterly = the last 8 quarters). XBRL data starts in 2009-2011. Default 5, max 20.
+- `metrics` (array): Only these output fields, e.g. ["revenue", "net_income", "free_cash_flow", "operating_margin"]. Valid: revenue, cost_of_revenue, gross_profit, research_and_development, selling_general_and_administrative, operating_profit, profit_before_tax, net_income, net_income_attributable_to_parent, eps_basic, eps_diluted, weighted_average_shares_basic, weighted_average_shares_diluted, depreciation_amortisation, total_assets, current_assets, cash_and_equivalents, total_liabilities, current_liabilities, noncurrent_liabilities, long_term_debt, total_equity, equity_attributable_to_parent, shares_outstanding, operating_cash_flow, investing_cash_flow, financing_cash_flow, capex, dividends_paid, free_cash_flow, ebitda, gross_margin, operating_margin, net_margin, return_on_equity, equity_ratio, revenue_growth. Empty = all of them.
+- `includeSources` (boolean): true = each row has `sources` (per value: the XBRL tag and the SEC accession number it came from, plus how it was derived) and `filings` (form, filing date and URL of each filing cited). false = values only, about 3x smaller rows. Default true.
+
+### Output fields
+
+- `schema_version` (string): Output schema version.
+- `ticker` (string | null): Main ticker in the SEC's current ticker list (null if none).
+- `cik` (string): SEC CIK, 10 digits.
+- `company_name` (string): Company name as in SEC companyfacts.
+- `fiscal_year` (integer): Fiscal year as the company names it (Apple's year ending September 2025 = 2025).
+- `fiscal_period` (string): FY for a fiscal year, Q1-Q4 for a discrete 3-month fiscal quarter.
+- `period_start` (string | null): First day of the period (YYYY-MM-DD).
+- `period_end` (string): Last day of the period = balance-sheet date (YYYY-MM-DD).
+- `form` (string | null): Form of the main filing for this period: 10-K, 10-Q, 20-F, 40-F, 6-K or an /A amendment.
+- `filed` (string | null): Filing date of that filing (YYYY-MM-DD).
+- `accession_number` (string | null): SEC accession number of the filing most values come from.
+- `source_url` (string | null): EDGAR index page of that filing.
+- `provided_by` (string): Who compiled this row; cite together with source_url.
+- `currency` (string): Reporting currency of all money values (ISO 4217, e.g. USD, EUR, DKK). Values are in full units, not thousands.
+- `revenue` (number | null): Total revenue / net sales (for banks: total net revenue). In `currency`.
+- `cost_of_revenue` (number | null): Cost of revenue / cost of goods and services sold. In `currency`.
+- `gross_profit` (number | null): Gross profit; when not tagged, revenue - cost_of_revenue (sources says derived). In `currency`.
+- `research_and_development` (number | null): Research and development expense. In `currency`.
+- `selling_general_and_administrative` (number | null): Selling, general and administrative expense (null when the company reports sales/marketing and G&A separately). In `currency`.
+- `operating_profit` (number | null): Operating income (loss). Null for most banks and insurers. In `currency`.
+- `profit_before_tax` (number | null): Income from continuing operations before income taxes. In `currency`.
+- `net_income` (number | null): Net income including noncontrolling interests (ProfitLoss), else net income attributable to the parent; as in the esef-annual-reports Actor. In `currency`.
+- `net_income_attributable_to_parent` (number | null): Net income attributable to the parent's shareholders (the US 'net income' headline). In `currency`.
+- `eps_basic` (number | null): Basic earnings per share, in currency per share. Never derived (null for Q4 unless reported).
+- `eps_diluted` (number | null): Diluted earnings per share, in currency per share. Never derived.
+- `weighted_average_shares_basic` (number | null): Weighted average shares outstanding, basic. Never derived.
+- `weighted_average_shares_diluted` (number | null): Weighted average shares outstanding, diluted. Never derived.
+- `depreciation_amortisation` (number | null): Depreciation, depletion and amortization (cash flow statement). In `currency`.
+- `total_assets` (number | null): Total assets at period end. In `currency`.
+- `current_assets` (number | null): Total current assets at period end. Null for banks and insurers (unclassified balance sheet). In `currency`.
+- `cash_and_equivalents` (number | null): Cash and cash equivalents at period end (banks: cash and due from banks). In `currency`.
+- `total_liabilities` (number | null): Total liabilities; when not tagged, total_assets - total_equity (sources says derived). In `currency`.
+- `current_liabilities` (number | null): Total current liabilities. Null for banks and insurers. In `currency`.
+- `noncurrent_liabilities` (number | null): Total non-current liabilities, when tagged. In `currency`.
+- `long_term_debt` (number | null): Long-term debt, non-current portion where tagged, else total long-term debt; sources shows the tag. In `currency`.
+- `total_equity` (number | null): Total equity including noncontrolling interests, else stockholders' equity. In `currency`.
+- `equity_attributable_to_parent` (number | null): Stockholders' equity attributable to the parent. In `currency`.
+- `shares_outstanding` (number | null): Common shares outstanding at the balance-sheet date.
+- `operating_cash_flow` (number | null): Net cash from operating activities. In `currency`.
+- `investing_cash_flow` (number | null): Net cash from investing activities. In `currency`.
+- `financing_cash_flow` (number | null): Net cash from financing activities. In `currency`.
+- `capex` (number | null): Capital expenditure: payments for property, plant and equipment, as a positive number. Null for most banks. In `currency`.
+- `dividends_paid` (number | null): Dividends paid in cash, as a positive number. In `currency`.
+- `free_cash_flow` (number | null): Derived: operating_cash_flow - capex.
+- `ebitda` (number | null): Derived: operating_profit + depreciation_amortisation.
+- `gross_margin` (number | null): Derived: gross_profit / revenue (0.25 = 25%).
+- `operating_margin` (number | null): Derived: operating_profit / revenue.
+- `net_margin` (number | null): Derived: net_income / revenue.
+- `return_on_equity` (number | null): Derived: net_income / total_equity, fiscal-year rows only.
+- `equity_ratio` (number | null): Derived: total_equity / total_assets.
+- `revenue_growth` (number | null): Derived: revenue / revenue of the same fiscal period one year earlier - 1 (year over year, also for quarters).
+- `metrics_found` (integer): How many of the reported metrics (not the derived ones) have a value.
+- `sources` (object): Only with includeSources: per metric {tag: XBRL concept used, accession: filing it came from, derived: how a quarter value was computed (e.g. 'fiscal year - 9-month YTD') or the formula for gross_profit/total_liabilities fallbacks}.
+- `filings` (object): Only with includeSources: per accession number cited in sources, its form, filing date and EDGAR URL.
+- `warnings` (array): Notes on this row: quarter values derived from year-to-date figures, restated values (latest filing used), quarterly data missing.
+- `retrieved_at` (string): UTC time the row was produced.
+
+### Example input
+
+```json
+{ "tickers": ["AAPL", "MSFT"], "period": "quarterly", "years": 2, "metrics": ["revenue", "net_income", "free_cash_flow"] }
+```
+
+## SEC Company Screener API: filter all US filers by financials
+
+Docs: https://boscolabs.dev/sec-company-screen.html
+Apify Store: https://apify.com/bosco_labs/sec-company-screen
+MCP: https://mcp.apify.com?tools=bosco_labs/sec-company-screen
+Price: Apify Store $0.002 per company returned; HTTP API $0.002 per company returned
+API: POST https://api.boscolabs.dev/v1/sec-company-screen, $0.002 per company returned (max 200 companies (maxResults))
+
+Stock screener on SEC EDGAR data. US companies matching your filters for one calendar year or quarter: revenue, net income, margins, cash flow, assets and 30 more metrics from SEC XBRL frames, sorted and capped. Each value cites its XBRL tag and SEC filing. Same metrics as SEC Company Financials.
+
+Example questions:
+
+- Which US companies had revenue over $10B and net margin above 20% in fiscal 2025?
+- Top 20 US companies by operating cash flow in 2025.
+- Which companies with a ticker had an operating margin above 30% in Q3 2025?
+
+### Input fields
+
+- `period` (string, required): Calendar period in SEC frames format: "CY2025" = annual figures, "CY2025Q3" = 3-month quarter figures. Required, 2009 to the current year. Calendar-aligned: each company comes with its own fiscal period that best fits it (e.g. CY2025 holds Apple's fiscal year to Sep 2025, Microsoft's to Jun 2025, Walmart's to Jan 2026), shown in period_start/period_end. Balance-sheet metrics are taken at each company's period end.
+- `filters` (array): Conditions every company must meet, as a list of {metric, min, max} (either bound optional, both inclusive), e.g. [{"metric": "revenue", "min": 10000000000}, {"metric": "net_margin", "min": 0.2}] = revenue of at least $10B and net margin of at least 20%. Money in full USD (10000000000 = $10B), ratios as fractions (0.2 = 20%), EPS in USD per share. A company without a value for a filter metric is left out. Metrics: see sortBy. Empty = no filter (all companies with a sortBy value).
+- `sortBy` (string): Metric to rank by, e.g. "operating_cash_flow". Same names as the SEC Company Financials Actor; the last seven (free_cash_flow to equity_ratio) are derived from two reported metrics. Companies without a value for it are left out. Empty = the first filter's metric, else revenue.
+- `sortOrder` (string): "desc" = largest first (top N), "asc" = smallest first (e.g. the lowest net margin). Default "desc".
+- `maxResults` (integer): Most companies to return (and charge for), e.g. 20 for a top 20. The status message says how many matched in total. Default 50, max 1000.
+- `metrics` (array): More fields to show per company besides the sortBy and filter metrics, e.g. ["operating_cash_flow", "total_assets"]. Same names as sortBy. Each adds a few SEC requests. Empty = only the sortBy and filter metrics (plus the inputs of derived ones).
+- `tickersOnly` (boolean): true = skip companies without a ticker in the SEC's company_tickers.json (delisted companies, private issuers of public debt, subsidiaries). Default false. E.g. `true`.
+- `includeSources` (boolean): true = each row has `sources`: per value the XBRL tag, the SEC accession number and the filing URL (or the formula for derived values). false = values only, about 3x smaller rows. Default true.
+
+### Output fields
+
+- `schema_version` (string): Output schema version.
+- `ticker` (string | null): Main ticker in the SEC's current ticker list (null if the company has none, e.g. delisted or private debt issuers).
+- `cik` (string): SEC CIK, 10 digits.
+- `company_name` (string | null): Company name as in the SEC frame.
+- `period` (string): The calendar period screened, e.g. CY2025 or CY2025Q3. SEC frames are calendar-aligned: each company appears with its own fiscal period that best fits this calendar period (Apple's year to 27 Sep 2025, Microsoft's to 30 Jun 2025 and Walmart's to 31 Jan 2026 are all in CY2025). See period_start/period_end.
+- `period_start` (string | null): First day of the company's own fiscal period that SEC assigned to this calendar period (YYYY-MM-DD); null when the company reported no duration value (income, cash flow or EPS) for it.
+- `period_end` (string | null): Last day of that fiscal period (YYYY-MM-DD); balance-sheet values are as of this date (when period_start is null: the balance-sheet date nearest the calendar period's end).
+- `currency` (string): Always USD: frames are screened in USD (companies reporting in other currencies are not included). Values are in full dollars, not thousands.
+- `revenue` (number | null): Total revenue / net sales (for banks: total net revenue). In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `cost_of_revenue` (number | null): Cost of revenue / cost of goods and services sold. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `gross_profit` (number | null): Gross profit; when not tagged, revenue - cost_of_revenue (sources says derived). In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `research_and_development` (number | null): Research and development expense. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `selling_general_and_administrative` (number | null): Selling, general and administrative expense (null when the company reports sales/marketing and G&A separately). In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `operating_profit` (number | null): Operating income (loss). Null for most banks and insurers. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `profit_before_tax` (number | null): Income from continuing operations before income taxes. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `net_income` (number | null): Net income including noncontrolling interests (ProfitLoss), else net income attributable to the parent; as in the esef-annual-reports Actor. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `net_income_attributable_to_parent` (number | null): Net income attributable to the parent's shareholders (the US 'net income' headline). In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `eps_basic` (number | null): Basic earnings per share, in USD per share. Never derived (null for Q4 unless reported). Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `eps_diluted` (number | null): Diluted earnings per share, in USD per share. Never derived. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `weighted_average_shares_basic` (number | null): Weighted average shares outstanding, basic. Never derived. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `weighted_average_shares_diluted` (number | null): Weighted average shares outstanding, diluted. Never derived. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `depreciation_amortisation` (number | null): Depreciation, depletion and amortization (cash flow statement). In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `total_assets` (number | null): Total assets at period end. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `current_assets` (number | null): Total current assets at period end. Null for banks and insurers (unclassified balance sheet). In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `cash_and_equivalents` (number | null): Cash and cash equivalents at period end (banks: cash and due from banks). In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `total_liabilities` (number | null): Total liabilities; when not tagged, total_assets - total_equity (sources says derived). In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `current_liabilities` (number | null): Total current liabilities. Null for banks and insurers. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `noncurrent_liabilities` (number | null): Total non-current liabilities, when tagged. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `long_term_debt` (number | null): Long-term debt, non-current portion where tagged, else total long-term debt; sources shows the tag. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `total_equity` (number | null): Total equity including noncontrolling interests, else stockholders' equity. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `equity_attributable_to_parent` (number | null): Stockholders' equity attributable to the parent. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `shares_outstanding` (number | null): Common shares outstanding at the balance-sheet date. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `operating_cash_flow` (number | null): Net cash from operating activities. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `investing_cash_flow` (number | null): Net cash from investing activities. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `financing_cash_flow` (number | null): Net cash from financing activities. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `capex` (number | null): Capital expenditure: payments for property, plant and equipment, as a positive number. Null for most banks. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `dividends_paid` (number | null): Dividends paid in cash, as a positive number. In USD. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `free_cash_flow` (number | null): Derived: operating_cash_flow - capex. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `ebitda` (number | null): Derived: operating_profit + depreciation_amortisation. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `gross_margin` (number | null): Derived: gross_profit / revenue (0.25 = 25%). Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `operating_margin` (number | null): Derived: operating_profit / revenue (0.25 = 25%). Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `net_margin` (number | null): Derived: net_income / revenue (0.25 = 25%). Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `return_on_equity` (number | null): Derived: net_income / total_equity (0.25 = 25%). Calendar-year periods only. Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `equity_ratio` (number | null): Derived: total_equity / total_assets (0.25 = 25%). Only present when asked (sortBy, filters, metrics) or needed for a derived field.
+- `source_url` (string): EDGAR index page of the filing most of the row's values come from.
+- `sources` (object): Only with includeSources: per metric {tag: XBRL concept used, accession: SEC filing the value comes from (the latest filing that reported it, or for re-checked values the first 10-K/10-Q that did), url: its EDGAR index page}, or {derived: formula} for derived values.
+- `warnings` (array): Notes on this row: a value from a proxy statement replaced by the 10-K/10-Q figure, a value that could not be checked, or a metric left out because it was reported for a different period than the row's.
+- `retrieved_at` (string): UTC time the row was produced.
+- `provided_by` (string): Who compiled this row; cite together with source_url.
+
+### Example input
+
+```json
+{
+  "period": "CY2025",
+  "filters": [
+    { "metric": "revenue", "min": 10000000000 },
+    { "metric": "net_margin", "min": 0.2 }
+  ],
+  "sortBy": "revenue",
+  "maxResults": 50
+}
+```
+
+## EU Annual Reports API (ESEF): XBRL financial statements
+
+Docs: https://boscolabs.dev/esef-annual-reports.html
+Apify Store: https://apify.com/bosco_labs/esef-annual-reports
+MCP: https://mcp.apify.com?tools=bosco_labs/esef-annual-reports
+Price: Apify Store $0.01 per run plus $0.05 per annual report; raw XBRL fact rows, if switched on, $0.0005 each; HTTP API $0.05 per annual report
+API: POST https://api.boscolabs.dev/v1/esef-annual-reports, $0.05 per annual report (max 10 reports (maxFilings))
+
+Key financials (revenue, operating income/EBIT, net income, EPS, assets, equity, cash flows, margins, growth) from the ESEF annual reports of European listed companies in 28 countries, via filings.xbrl.org. Each value links to its XBRL fact. Filter by LEI, company name, country, fiscal year.
+
+Coverage: ESEF annual reports collected by filings.xbrl.org: 27,626 reports from 28 countries (counted 2026-11-05; largest: UA, GB, DK, SE, NO, FR, FI). Germany is not in the index. Reports appear a few days to a few weeks after publication, once filings.xbrl.org has processed them. All values are in full currency units.
+
+Example questions:
+
+- Get Heineken's latest revenue growth and operating margin from its annual report.
+- Compare net income and equity of Belgian listed companies for fiscal years ending in 2024.
+- Which XBRL fact does ASML's reported revenue come from?
+
+### Input fields
+
+- `leis` (array): Legal Entity Identifiers (20 letters/digits), e.g. ["724500Y6DUVHQD6OXN27"] for ASML: the most precise lookup, any country. Empty = no LEI filter.
+- `companyName` (string): Case-insensitive part of the registered company name, e.g. "heineken" or "lvmh"; can match several companies, so check `company_name` in the output. Empty = no name filter.
+- `countries` (array): Filing countries as ISO 3166 alpha-2 codes, e.g. ["NL", "BE", "FR"]; also SE, DK, FI, NO, IT, ES, GB and others. Empty = all 28 countries in the index (Germany is not in it).
+- `periodFrom` (string): Fiscal year ending on or after this date, YYYY-MM-DD, e.g. "2024-01-01". Empty = no lower limit.
+- `periodTo` (string): Fiscal year ending on or before this date, YYYY-MM-DD, e.g. "2024-12-31". Empty = no upper limit.
+- `maxFilings` (integer): Maximum annual reports, newest fiscal period first, e.g. 1 for a company's latest report. Default 10. One report per company per fiscal year, with the prior year nested in each row.
+- `includeRawFacts` (boolean): true = also output every tagged XBRL fact of each report as its own row (record_type = "fact"), charged per fact row. Default false (one summary row per report).
+- `onlyNewSinceLastRun` (boolean): true = skip (and don't charge for) reports an earlier run with the same filters already delivered. For scheduled runs. Default false. Remembered in a named key-value store in your account. E.g. `true` for a daily scheduled run.
+
+### Output fields
+
+- `schema_version` (string): Output schema version.
+- `record_type` (string): summary = one row per annual report; fact = one raw XBRL fact (only with includeRawFacts).
+- `lei` (string | null): Legal Entity Identifier of the filer.
+- `company_name` (string | null): Registered name (null when filings.xbrl.org has none).
+- `country` (string): Filing country (ISO 3166 alpha-2).
+- `period_end` (string): Fiscal year end (YYYY-MM-DD), taken from the report facts.
+- `fiscal_year_start` (string | null): Fiscal year start (YYYY-MM-DD).
+- `currency` (string | null): ISO 4217 currency of the monetary values.
+- `revenue` (number | null): revenue for the fiscal year; source concept: ifrs-full:Revenue or ifrs-full:RevenueFromContractsWithCustomers
+- `gross_profit` (number | null): gross_profit for the fiscal year; source concept: ifrs-full:GrossProfit
+- `operating_profit` (number | null): operating_profit for the fiscal year; source concept: ifrs-full:ProfitLossFromOperatingActivities
+- `profit_before_tax` (number | null): profit_before_tax for the fiscal year; source concept: ifrs-full:ProfitLossBeforeTax
+- `net_income` (number | null): net_income for the fiscal year; source concept: ifrs-full:ProfitLoss
+- `net_income_attributable_to_parent` (number | null): net_income_attributable_to_parent for the fiscal year; source concept: ifrs-full:ProfitLossAttributableToOwnersOfParent
+- `eps_basic` (number | null): eps_basic for the fiscal year; source concept: ifrs-full:BasicEarningsLossPerShare
+- `eps_diluted` (number | null): eps_diluted for the fiscal year; source concept: ifrs-full:DilutedEarningsLossPerShare
+- `total_assets` (number | null): total_assets for the fiscal year; source concept: ifrs-full:Assets
+- `current_assets` (number | null): current_assets for the fiscal year; source concept: ifrs-full:CurrentAssets
+- `cash_and_equivalents` (number | null): cash_and_equivalents for the fiscal year; source concept: ifrs-full:CashAndCashEquivalents
+- `total_equity` (number | null): total_equity for the fiscal year; source concept: ifrs-full:Equity
+- `equity_attributable_to_parent` (number | null): equity_attributable_to_parent for the fiscal year; source concept: ifrs-full:EquityAttributableToOwnersOfParent
+- `total_liabilities` (number | null): total_liabilities for the fiscal year; source concept: ifrs-full:Liabilities
+- `current_liabilities` (number | null): current_liabilities for the fiscal year; source concept: ifrs-full:CurrentLiabilities
+- `noncurrent_liabilities` (number | null): noncurrent_liabilities for the fiscal year; source concept: ifrs-full:NoncurrentLiabilities
+- `operating_cash_flow` (number | null): operating_cash_flow for the fiscal year; source concept: ifrs-full:CashFlowsFromUsedInOperatingActivities
+- `investing_cash_flow` (number | null): investing_cash_flow for the fiscal year; source concept: ifrs-full:CashFlowsFromUsedInInvestingActivities
+- `financing_cash_flow` (number | null): financing_cash_flow for the fiscal year; source concept: ifrs-full:CashFlowsFromUsedInFinancingActivities
+- `depreciation_amortisation` (number | null): depreciation_amortisation for the fiscal year; source concept: ifrs-full:DepreciationAndAmortisationExpense or ifrs-full:AdjustmentsForDepreciationAndAmortisationExpense or ifrs-full:DepreciationAmortisationAndImpairmentLossReversalOfImpairmentLossRecognisedInProfitOrLoss or ifrs-full:AdjustmentsForDepreciationAndAmortisationExpenseAndImpairmentLossReversalOfImpairmentLossRecognisedInProfitOrLoss
+- `employee_benefits_expense` (number | null): employee_benefits_expense for the fiscal year; source concept: ifrs-full:EmployeeBenefitsExpense
+- `dividends_paid` (number | null): dividends_paid for the fiscal year; source concept: ifrs-full:DividendsPaidClassifiedAsFinancingActivities or ifrs-full:DividendsPaid
+- `dividend_per_share` (number | null): dividend_per_share for the fiscal year; source concept: ifrs-full:DividendsRecognisedAsDistributionsToOwnersPerShare
+- `dividend_proposed_per_share` (number | null): dividend_proposed_per_share for the fiscal year; source concept: ifrs-full:DividendsProposedOrDeclaredBeforeFinancialStatementsAuthorisedForIssueButNotRecognisedAsDistributionToOwnersPerShare
+- `shares_outstanding` (number | null): shares_outstanding for the fiscal year; source concept: ifrs-full:NumberOfSharesOutstanding
+- `metrics_found` (integer): How many of the reported metrics were found.
+- `ebitda` (number | null): Derived: operating_profit + depreciation_amortisation.
+- `operating_margin` (number | null): Derived: operating_profit / revenue.
+- `net_margin` (number | null): Derived: net_income / revenue.
+- `return_on_equity` (number | null): Derived: net_income / total_equity.
+- `equity_ratio` (number | null): Derived: total_equity / total_assets.
+- `revenue_growth` (number | null): Derived: revenue / prior_year.revenue - 1.
+- `sources` (object): Per field: concept, fact_id, period, unit, decimals of the source fact, or {derived: formula}.
+- `prior_year` (object | null): Comparative fiscal year from the same report: period_end, fiscal_year_start, currency, the same metrics and derived fields, metrics_found and sources.
+- `fact_id` (string): XBRL fact id inside the report.
+- `concept` (string): XBRL concept, e.g. ifrs-full:Revenue.
+- `value` (string | null): Raw fact value as reported (canonical form).
+- `unit` (string | null): XBRL unit, e.g. iso4217:EUR.
+- `period` (string | null): XBRL period (instant or start/end).
+- `decimals` (integer | null): XBRL decimals (precision).
+- `dimensions` (object): Extra XBRL dimensions (axes/members) of the fact.
+- `filing_id` (string): filings.xbrl.org filing id.
+- `published` (string | null): Publication timestamp of the filing.
+- `viewer_url` (string | null): Inline XBRL viewer of the annual report.
+- `report_url` (string | null): The iXBRL (XHTML) annual report.
+- `source_url` (string): xBRL-JSON the row was extracted from.
+- `provided_by` (string): Who compiled this row; cite together with source_url.
+- `retrieved_at` (string): UTC time the source was fetched.
+
+### Example input
+
+```json
+{ "countries": ["NL", "BE", "FR"], "periodFrom": "2025-01-01", "maxFilings": 50 }
+```
+
+## ISIN, LEI, CIK, FIGI & Ticker Resolver API (crosswalk)
+
+Docs: https://boscolabs.dev/identifier-resolver.html
+Apify Store: https://apify.com/bosco_labs/identifier-resolver
+MCP: https://mcp.apify.com?tools=bosco_labs/identifier-resolver
+Price: Apify Store $0.002 per resolved identifier; HTTP API $0.002 per identifier resolved
+API: POST https://api.boscolabs.dev/v1/identifier-resolver, $0.002 per identifier resolved (max 1 identifier)
+
+Issuer legal name, LEI, CIK, tickers, ISINs, FIGIs, CFI code and EU trading venues for one ISIN, LEI, CIK, ticker, FIGI or company name. Check digits validated first; a source URL per value. Data from GLEIF, OpenFIGI, SEC and ESMA FIRDS.
+
+Example questions:
+
+- What is the LEI, CIK and home-market FIGI of ISIN NL0010273215, and on how many EU venues does it trade? Cite the sources.
+
+### Input fields
+
+- `identifier` (string, required): ONE identifier of a security or company: an ISIN ("US0378331005"), an LEI ("HWUPKR0MPOU8FGXBT394"), an SEC CIK ("320193"), a ticker ("AAPL", "BRK.B"; add exchange for non-US markets), a FIGI ("BBG000B9XRY4") or a company name ("Siemens AG"). The type is detected automatically; ISIN, LEI and FIGI check digits are verified before any lookup, and a bad one fails in seconds with the correct digit, at no charge. Required.
+- `idType` (string): What the identifier is. Default "auto": digits only = CIK, 20 characters = LEI, 12 characters = ISIN or FIGI (by check digit), up to 6 characters without spaces = ticker (read as a name if no US ticker matches), anything else = company name. Set it for short names; numeric tickers just need exchange ("7203" with "JT").
+- `exchange` (string): Only for a ticker outside the US: a Bloomberg exchange code ("LN" London, "GR" Germany, "NA" Amsterdam, "FP" Paris, "JT" Tokyo, "SW" Swiss) or a 4-letter MIC ("XLON", "XAMS"). Empty (default) = US tickers from the SEC's list. With an exchange, an all-digit identifier is read as a ticker ("7974" + "JT" = Nintendo), not a CIK.
+
+### Output fields
+
+- `schema_version` (string): Output schema version.
+- `query` (string): The identifier as given.
+- `query_type` (string): How it was read: isin, lei, cik, ticker, figi or name.
+- `exchange_filter` (string | null): The exchange given for a ticker, else null.
+- `issuer_name` (string | null): Issuer legal name: GLEIF legal name, else SEC name, else OpenFIGI name.
+- `issuer_name_latin` (string | null): English or transliterated GLEIF name when the legal name is not in Latin script (e.g. Japanese), else null.
+- `lei` (string | null): Issuer Legal Entity Identifier (ISO 17442), e.g. HWUPKR0MPOU8FGXBT394.
+- `lei_status` (string | null): GLEIF registration status: ISSUED, LAPSED, RETIRED, ...
+- `issuer_country` (string | null): Country of the issuer's legal address (ISO 3166 alpha-2), from GLEIF.
+- `issuer_jurisdiction` (string | null): Legal jurisdiction from GLEIF, e.g. US-CA or NL.
+- `cik` (string | null): SEC Central Index Key (no leading zeros) if the issuer files with the SEC, else null.
+- `tickers` (array): Tickers with exchange: source SEC (exchange = SEC name, e.g. Nasdaq) and source OpenFIGI (exchange = Bloomberg composite code, e.g. US, GR, LN; composite_figi set), up to 10 OpenFIGI listings.
+- `isin` (string | null): The instrument ISIN: the one asked for, else the issuer's main share ISIN (equity shares on most EU venues in FIRDS).
+- `issuer_isins` (array): Up to 20 ISINs GLEIF maps to the issuer's LEI (shares, bonds, other securities).
+- `issuer_isin_count` (integer | null): Total ISINs GLEIF maps to the LEI (null if no LEI).
+- `composite_figi` (string | null): Composite (country-level) FIGI of the instrument's home or US listing, e.g. BBG000B9XRY4.
+- `share_class_figi` (string | null): Share-class FIGI (global across countries), e.g. BBG001S5N8V8.
+- `security_type` (string | null): OpenFIGI security type, e.g. Common Stock, Depositary Receipt, Corp.
+- `instrument_name` (string | null): Instrument name as most often reported to FIRDS, else OpenFIGI's name.
+- `cfi_code` (string | null): ISO 10962 CFI code from FIRDS, e.g. ESVUFR (equity, common share).
+- `currency` (string | null): Notional currency from FIRDS (ISO 4217).
+- `eu_trading_venues` (array): EU/EEA trading venues (MIC and first trading date) where FIRDS lists the instrument as currently traded, by MIC, up to 100.
+- `eu_venue_count` (integer | null): Number of current EU venues in FIRDS (null if FIRDS was not reached or no ISIN is known).
+- `eu_venues_terminated_count` (integer | null): Venues where trading has ended, per FIRDS.
+- `match_confidence` (number): 1.0 when every link is by identifier; lower when a link was made by name (0.9 exact name and jurisdiction, 0.6 ambiguous).
+- `match_note` (string): How the identifiers were linked, in words.
+- `alternatives` (array): Other candidate issuers (name, lei, isin, cik) when a name was matched.
+- `sources` (object): Source URL per value: lei, cik, isin, issuer_isins, issuer_name, tickers, figi, instrument (FIRDS query).
+- `source_url` (string | null): Main source: the GLEIF record, else SEC, FIRDS or OpenFIGI.
+- `provided_by` (string): Bosco Labs (boscolabs.dev).
+- `notices` (array): Licence and attribution notices (GLEIF CC0, OpenFIGI, ESMA free-of-charge notice).
+- `warnings` (array): Sources that failed or were rate-limited, and ambiguous matches, in plain words.
+- `retrieved_at` (string): ISO-8601 UTC time of the lookup.
+- `duration_seconds` (number): Time the lookup took.
+
+### Example input
+
+```json
+{ "identifier": "US0378331005" }
 ```
 
 ## EU Tenders API (TED): public procurement & contract awards

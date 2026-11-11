@@ -1,17 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://boscolabs.dev/</loc><lastmod>2026-11-10</lastmod></url>
-  <url><loc>https://boscolabs.dev/api.html</loc><lastmod>2026-11-10</lastmod></url>
-  <url><loc>https://boscolabs.dev/sec-insider-trades.html</loc><lastmod>2026-11-10</lastmod></url>
-  <url><loc>https://boscolabs.dev/sec-filings-feed.html</loc><lastmod>2026-11-10</lastmod></url>
-  <url><loc>https://boscolabs.dev/us-house-trades.html</loc><lastmod>2026-11-10</lastmod></url>
-  <url><loc>https://boscolabs.dev/sec-ownership.html</loc><lastmod>2026-11-10</lastmod></url>
-  <url><loc>https://boscolabs.dev/sec-company-financials.html</loc><lastmod>2026-11-10</lastmod></url>
-  <url><loc>https://boscolabs.dev/sec-company-screen.html</loc><lastmod>2026-11-10</lastmod></url>
-  <url><loc>https://boscolabs.dev/esef-annual-reports.html</loc><lastmod>2026-11-10</lastmod></url>
-  <url><loc>https://boscolabs.dev/identifier-resolver.html</loc><lastmod>2026-11-10</lastmod></url>
-  <url><loc>https://boscolabs.dev/counterparty-check.html</loc><lastmod>2026-11-10</lastmod></url>
-  <url><loc>https://boscolabs.dev/company-check.html</loc><lastmod>2026-11-10</lastmod></url>
+  <url><loc>https://boscolabs.dev/</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://boscolabs.dev/api.html</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://boscolabs.dev/counterparty-check.html</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://boscolabs.dev/company-check.html</loc><lastmod>2026-11-11</lastmod></url>
   <url><loc>https://boscolabs.dev/vat-iban-check.html</loc><lastmod>2026-11-10</lastmod></url>
   <url><loc>https://boscolabs.dev/company-accounts.html</loc><lastmod>2026-11-10</lastmod></url>
   <url><loc>https://boscolabs.dev/uk-new-companies.html</loc><lastmod>2026-11-10</lastmod></url>
@@ -23,6 +15,14 @@
   <url><loc>https://boscolabs.dev/us-federal-rules.html</loc><lastmod>2026-11-10</lastmod></url>
   <url><loc>https://boscolabs.dev/product-recalls.html</loc><lastmod>2026-11-10</lastmod></url>
   <url><loc>https://boscolabs.dev/tariff-lookup.html</loc><lastmod>2026-11-10</lastmod></url>
+  <url><loc>https://boscolabs.dev/sec-insider-trades.html</loc><lastmod>2026-11-10</lastmod></url>
+  <url><loc>https://boscolabs.dev/sec-filings-feed.html</loc><lastmod>2026-11-10</lastmod></url>
+  <url><loc>https://boscolabs.dev/us-house-trades.html</loc><lastmod>2026-11-10</lastmod></url>
+  <url><loc>https://boscolabs.dev/sec-ownership.html</loc><lastmod>2026-11-10</lastmod></url>
+  <url><loc>https://boscolabs.dev/sec-company-financials.html</loc><lastmod>2026-11-10</lastmod></url>
+  <url><loc>https://boscolabs.dev/sec-company-screen.html</loc><lastmod>2026-11-10</lastmod></url>
+  <url><loc>https://boscolabs.dev/esef-annual-reports.html</loc><lastmod>2026-11-10</lastmod></url>
+  <url><loc>https://boscolabs.dev/identifier-resolver.html</loc><lastmod>2026-11-10</lastmod></url>
   <url><loc>https://boscolabs.dev/eu-tenders.html</loc><lastmod>2026-11-10</lastmod></url>
   <url><loc>https://boscolabs.dev/dod-contract-awards.html</loc><lastmod>2026-11-10</lastmod></url>
   <url><loc>https://boscolabs.dev/us-federal-awards.html</loc><lastmod>2026-11-10</lastmod></url>
@@ -32,11 +32,11 @@
   <url><loc>https://boscolabs.dev/dutch-address-lookup.html</loc><lastmod>2026-11-10</lastmod></url>
   <url><loc>https://boscolabs.dev/weather-forecast.html</loc><lastmod>2026-11-10</lastmod></url>
   <url><loc>https://boscolabs.dev/package-vulns.html</loc><lastmod>2026-11-10</lastmod></url>
-  <url><loc>https://boscolabs.dev/privacy.html</loc><lastmod>2026-11-07</lastmod></url>
+  <url><loc>https://boscolabs.dev/privacy.html</loc><lastmod>2026-11-11</lastmod></url>
   <url><loc>https://boscolabs.dev/terms.html</loc><lastmod>2026-11-06</lastmod></url>
-  <url><loc>https://boscolabs.dev/security.html</loc><lastmod>2026-11-10</lastmod></url>
-  <url><loc>https://boscolabs.dev/status.html</loc><lastmod>2026-11-10</lastmod></url>
-  <url><loc>https://boscolabs.dev/account.html</loc><lastmod>2026-11-10</lastmod></url>
+  <url><loc>https://boscolabs.dev/security.html</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://boscolabs.dev/status.html</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://boscolabs.dev/account.html</loc><lastmod>2026-11-11</lastmod></url>
   <url><loc>https://boscolabs.dev/benchmark.html</loc><lastmod>2026-11-09</lastmod></url>
   <url><loc>https://boscolabs.dev/q/index.html</loc><lastmod>2026-11-10</lastmod></url>
   <url><loc>https://boscolabs.dev/q/tesla-insider-buys-last-90-days.html</loc><lastmod>2026-11-10</lastmod></url>
@@ -129,15 +129,32 @@
   <url><loc>https://boscolabs.dev/q/polish-company-krs-board-insolvency.html</loc><lastmod>2026-11-09</lastmod></url>
   <url><loc>https://boscolabs.dev/q/novo-nordisk-supplier-vat-iban-check.html</loc><lastmod>2026-11-09</lastmod></url>
   <url><loc>https://boscolabs.dev/q/estonian-company-14850239-sanctions-register-check.html</loc><lastmod>2026-11-09</lastmod></url>
-  <url><loc>https://boscolabs.dev/compare/insider-trades.html</loc><lastmod>2026-11-06</lastmod></url>
-  <url><loc>https://boscolabs.dev/compare/sec-edgar.html</loc><lastmod>2026-11-06</lastmod></url>
-  <url><loc>https://boscolabs.dev/compare/company-data.html</loc><lastmod>2026-11-06</lastmod></url>
-  <url><loc>https://boscolabs.dev/compare/eu-public-tenders.html</loc><lastmod>2026-11-06</lastmod></url>
-  <url><loc>https://boscolabs.dev/compare/sanctions-lists.html</loc><lastmod>2026-11-06</lastmod></url>
+  <url><loc>https://boscolabs.dev/compare/insider-trades.html</loc><lastmod>2026-11-09</lastmod></url>
+  <url><loc>https://boscolabs.dev/compare/sec-edgar.html</loc><lastmod>2026-11-09</lastmod></url>
+  <url><loc>https://boscolabs.dev/compare/company-data.html</loc><lastmod>2026-11-09</lastmod></url>
+  <url><loc>https://boscolabs.dev/compare/eu-public-tenders.html</loc><lastmod>2026-11-09</lastmod></url>
+  <url><loc>https://boscolabs.dev/compare/sanctions-lists.html</loc><lastmod>2026-11-09</lastmod></url>
   <url><loc>https://boscolabs.dev/blog/index.html</loc><lastmod>2026-11-09</lastmod></url>
   <url><loc>https://boscolabs.dev/blog/check-if-company-is-sanctioned-api.html</loc><lastmod>2026-11-09</lastmod></url>
   <url><loc>https://boscolabs.dev/blog/companies-house-api-insolvency-check.html</loc><lastmod>2026-11-09</lastmod></url>
   <url><loc>https://boscolabs.dev/blog/counterparty-check-benchmark.html</loc><lastmod>2026-11-09</lastmod></url>
   <url><loc>https://boscolabs.dev/blog/kyb-mcp-server-ai-agents.html</loc><lastmod>2026-11-09</lastmod></url>
   <url><loc>https://boscolabs.dev/blog/vies-vat-check-api-python.html</loc><lastmod>2026-11-09</lastmod></url>
+  <url><loc>https://boscolabs.dev/registers/index.html</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://boscolabs.dev/registers/cz.html</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://boscolabs.dev/registers/ee.html</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://boscolabs.dev/registers/fi.html</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://boscolabs.dev/registers/fr.html</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://boscolabs.dev/registers/ie.html</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://boscolabs.dev/registers/lv.html</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://boscolabs.dev/registers/no.html</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://boscolabs.dev/registers/pl.html</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://boscolabs.dev/registers/gb.html</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://boscolabs.dev/registers/dk.html</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://boscolabs.dev/registers/de.html</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://boscolabs.dev/registers/nl.html</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://boscolabs.dev/registers/at.html</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://boscolabs.dev/registers/be.html</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://boscolabs.dev/registers/es.html</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://boscolabs.dev/registers/se.html</loc><lastmod>2026-11-11</lastmod></url>
 </urlset>
