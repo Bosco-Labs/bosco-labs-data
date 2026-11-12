@@ -142,7 +142,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
   -H &quot;Content-Type: application/json&quot; \
   -d &#x27;{&quot;names&quot;: [&quot;Sovcomflot&quot;, &quot;Novo Nordisk A/S&quot;]}&#x27;</code></pre>
 <h2>Call the Bosco Labs HTTP API</h2>
-<p>Bosco Labs HTTP API (beta): same input and rows, <strong>$0.01 per name or wallet address screened (an address no list could be checked against is free; so is a screen while a list could not be loaded, a daily limit applies)</strong> from prepaid credits. <a href="api.html#key">Get a key</a> with a $5.00 free trial, or send the same call without a key and <a href="api.html#x402">pay per call in USDC via x402</a> (no account).</p>
+<p>Bosco Labs HTTP API (beta): same input and rows, <strong>$0.01 per name or wallet address screened (an address no list could be checked against is free; so is a screen while a list could not be loaded, up to the daily limit; past it that screen is charged and marked incomplete)</strong> from prepaid credits. <a href="api.html#key">Get a key</a> with a $5.00 free trial, or send the same call without a key and <a href="api.html#x402">pay per call in USDC via x402</a> (no account).</p>
 <pre><code>curl https://api.boscolabs.dev/v1/sanctions-screening \
   -H &quot;Authorization: Bearer $BOSCO_API_KEY&quot; \
   -H &quot;Content-Type: application/json&quot; \
