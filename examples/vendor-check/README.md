@@ -83,8 +83,9 @@ in USDC on Base. This project does not do that itself. See
 - **`unverified` means not checked, never "safe".** A source that is not covered, not answering
   or not given (no VAT number, no IBAN) shows up as `unverified`.
 - **Coverage differs per country**, as the API states it: officers and owners are screened for
-  UK, Polish, Norwegian and French companies only; insolvency covers UK, PL, FR, DE, NL, NO, FI
-  and EE, and is `unverified` elsewhere. VAT numbers are EU only (VIES). The IBAN check is
+  UK, Polish, Norwegian and French companies only; insolvency covers UK, PL, FR, DE, NL, NO, FI,
+  EE, IE, CZ and LV, and US companies that file with the SEC (Form 8-K, Item 1.03) or are banks
+  in the FDIC's records; it is `unverified` elsewhere. VAT numbers are EU only (VIES). The IBAN check is
   structural (length, check digits, bank code, country); no bank is contacted, so it does not
   prove who holds the account. Current details: <https://boscolabs.dev/counterparty-check.html>.
 - Without a key, the free lookups find companies that have an LEI or file with the SEC; most
