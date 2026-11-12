@@ -213,8 +213,38 @@
     {
      "@type": "ListItem",
      "position": 30,
+     "url": "https://boscolabs.dev/us-energy-prices.html",
+     "name": "US Energy Prices API (EIA): gasoline, diesel, power, stocks"
+    },
+    {
+     "@type": "ListItem",
+     "position": 31,
      "url": "https://boscolabs.dev/package-vulns.html",
      "name": "Package Vulnerability Check API: CVEs, CISA KEV, safe upgrade"
+    },
+    {
+     "@type": "ListItem",
+     "position": 32,
+     "url": "https://boscolabs.dev/pdf-to-data.html",
+     "name": "PDF to JSON API: text, tables and metadata from a PDF URL"
+    },
+    {
+     "@type": "ListItem",
+     "position": 33,
+     "url": "https://boscolabs.dev/dataset-dedup.html",
+     "name": "Deduplicate & Merge Apify Datasets: remove duplicate items"
+    },
+    {
+     "@type": "ListItem",
+     "position": 34,
+     "url": "https://boscolabs.dev/dataset-change-monitor.html",
+     "name": "Change Monitor: new, changed & removed items + Slack alerts"
+    },
+    {
+     "@type": "ListItem",
+     "position": 35,
+     "url": "https://boscolabs.dev/sheets-export.html",
+     "name": "Google Sheets Export: send any Apify dataset to a spreadsheet"
     }
    ]
   }
@@ -796,8 +826,8 @@ claude mcp add --transport http bosco-labs https://api.boscolabs.dev/mcp \
 </section>
 <section class="band" id="tools">
 <h2>The full catalogue</h2>
-<p class="lead">30 tools live &middot; 29 on the HTTP API, remote MCP and x402 &middot; 30 also on the Apify Store. Company data first; filings, law, tenders, health and more below.</p>
-<ul class="chips"><li><a href="#companies">Companies</a></li><li><a href="#compliance-law">Compliance &amp; law</a></li><li><a href="#finance-sec">Finance &amp; SEC</a></li><li><a href="#government-procurement">Government &amp; procurement</a></li><li><a href="#macro-health-places">Macro, health &amp; places</a></li><li><a href="#software-security">Software security</a></li></ul>
+<p class="lead">35 tools live &middot; 29 on the HTTP API, remote MCP and x402 &middot; 35 also on the Apify Store. Company data first; filings, law, tenders, health and more below.</p>
+<ul class="chips"><li><a href="#companies">Companies</a></li><li><a href="#compliance-law">Compliance &amp; law</a></li><li><a href="#finance-sec">Finance &amp; SEC</a></li><li><a href="#government-procurement">Government &amp; procurement</a></li><li><a href="#macro-health-places">Macro, health &amp; places</a></li><li><a href="#software-security">Software security</a></li><li><a href="#data-tools">Data tools</a></li></ul>
 <p><strong>Benchmark on 25 companies, two runs.</strong> One model was asked about each company twice: with web search, and with one counterparty-check call. In the run of 2026-11-09 the result over all 25 is a tie, 20 against 19, and web search costs less per company ($0.048 against $0.069). The first run, before we fixed four bugs in the check, went to web search, 23 against 17. In the second run the call flagged all 6 sanctioned companies; web search flagged 4 of the 6 and gave no sanctions answer for the other 2. On the 12 companies that are sanctioned, insolvent, in liquidation or dissolved the call got every field right for 11 and web search for 6; in the first run it was 7 and 10. <a href="benchmark.html">The tables and where the API lost</a> &middot; <a href="blog/counterparty-check-benchmark.html">how we ran it</a>.</p>
 </section>
 <section id="companies">
@@ -852,6 +882,7 @@ claude mcp add --transport http bosco-labs https://api.boscolabs.dev/mcp \
 <li class="card"><div class="card-top"><img src="icons/drug-safety.svg" alt="" width="48" height="48"><h3><a href="drug-safety.html">Drug Safety API</a></h3></div><p>Boxed warning, top FAERS adverse reactions, US recalls and shortages plus EU authorisation for any drug name. Sourced JSON for AI agents. $0.02.</p><div class="row"><span class="price">$0.02 per dossier or $0.004 per single-section query</span><a href="https://apify.com/bosco_labs/drug-safety">Apify Store</a> &middot; <a href="drug-safety.html#where">API</a></div></li>
 <li class="card"><div class="card-top"><img src="icons/dutch-address-lookup.svg" alt="" width="48" height="48"><h3><a href="dutch-address-lookup.html">Dutch Address Lookup API</a></h3></div><p>Validate and geocode Dutch addresses against the official BAG register: postcode, BAG ids, WGS84 and RD coordinates, construction year, use and floor area.</p><div class="row"><span class="price">$0.002 per resolved address</span><a href="https://apify.com/bosco_labs/dutch-address-lookup">Apify Store</a> &middot; <a href="dutch-address-lookup.html#where">API</a></div></li>
 <li class="card"><div class="card-top"><img src="icons/weather-forecast.svg" alt="" width="48" height="48"><h3><a href="weather-forecast.html">Weather Forecast API</a></h3></div><p>Hourly and 10-day weather forecasts for any city or coordinates: temperature, rain, wind, gusts, clouds, humidity, from MET Norway, sourced.</p><div class="row"><span class="price">$0.0015 per location forecast</span><a href="https://apify.com/bosco_labs/weather-forecast">On Apify Store</a></div></li>
+<li class="card"><div class="card-top"><img src="icons/us-energy-prices.svg" alt="" width="48" height="48"><h3><a href="us-energy-prices.html">US Energy Prices API (EIA)</a></h3></div><p>Weekly US gasoline and diesel prices by state, electricity prices by state, crude and gas stocks from the EIA, by plain name. No EIA key needed.</p><div class="row"><span class="price">$0.002 per series returned</span><a href="https://apify.com/bosco_labs/us-energy-prices">On Apify Store</a></div></li>
 </ul>
 </section>
 <section id="software-security">
@@ -860,9 +891,18 @@ claude mcp add --transport http bosco-labs https://api.boscolabs.dev/mcp \
 <li class="card"><div class="card-top"><img src="icons/package-vulns.svg" alt="" width="48" height="48"><h3><a href="package-vulns.html">Package Vulnerability Check API</a></h3></div><p>Is this npm, PyPI, Maven, Go or Rust package version vulnerable or exploited? CVEs, CVSS, CISA KEV and the lowest safe upgrade, per call.</p><div class="row"><span class="price">$0.005 per answer</span><a href="https://apify.com/bosco_labs/package-vulns">Apify Store</a> &middot; <a href="package-vulns.html#where">API</a></div></li>
 </ul>
 </section>
+<section id="data-tools">
+<h2>Data tools</h2>
+<ul class="grid">
+<li class="card"><div class="card-top"><img src="icons/pdf-to-data.svg" alt="" width="48" height="48"><h3><a href="pdf-to-data.html">PDF to JSON API</a></h3></div><p>Turn public PDF links into JSON: text per page in reading order, tables as rows, title, author and dates. Never stored. $0.50 per 1,000 pages.</p><div class="row"><span class="price">$0.0005 per page with text</span><a href="https://apify.com/bosco_labs/pdf-to-data">On Apify Store</a></div></li>
+<li class="card"><div class="card-top"><img src="icons/dataset-dedup.svg" alt="" width="48" height="48"><h3><a href="dataset-dedup.html">Deduplicate &amp; Merge Apify Datasets</a></h3></div><p>Remove duplicate items from one or more Apify datasets by any fields or the whole item, keep first or last. Streams millions of items, constant memory.</p><div class="row"><span class="price">$0.00015 per unique item written (duplicates are free)</span><a href="https://apify.com/bosco_labs/dataset-dedup">On Apify Store</a></div></li>
+<li class="card"><div class="card-top"><img src="icons/dataset-change-monitor.svg" alt="" width="48" height="48"><h3><a href="dataset-change-monitor.html">Change Monitor</a></h3></div><p>Compare each scraper run with the previous one and get only new, changed and removed items, matched by your key fields. Slack, email or webhook alerts.</p><div class="row"><span class="price">$0.001 per change reported</span><a href="https://apify.com/bosco_labs/dataset-change-monitor">On Apify Store</a></div></li>
+<li class="card"><div class="card-top"><img src="icons/sheets-export.svg" alt="" width="48" height="48"><h3><a href="sheets-export.html">Google Sheets Export</a></h3></div><p>Export any Apify dataset to Google Sheets: replace a tab or append rows, nested fields as columns, header kept, rate limits retried. Works on schedules.</p><div class="row"><span class="price">$0.00015 per row exported</span><a href="https://apify.com/bosco_labs/sheets-export">On Apify Store</a></div></li>
+</ul>
+</section>
 <section id="where" class="prose">
 <h2>Where to get the data</h2>
-<p>Every tool is on the Bosco Labs API (key with prepaid credits, remote MCP, or x402 without an account); 30 are also on the Apify Store, billed to your Apify account. Same input and same rows everywhere.</p>
+<p>Every tool is on the Bosco Labs API (key with prepaid credits, remote MCP, or x402 without an account); 35 are also on the Apify Store, billed to your Apify account. Same input and same rows everywhere.</p>
 <div class="table"><table><thead><tr><th>Tool</th><th>Apify</th><th>Bosco Labs API</th></tr></thead><tbody>
 <tr><td><a href="counterparty-check.html#where">Counterparty Check API</a></td><td><a href="https://apify.com/bosco_labs/counterparty-check">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
 <tr><td><a href="company-check.html#where">Company Check API</a></td><td><a href="https://apify.com/bosco_labs/company-check">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
@@ -893,7 +933,12 @@ claude mcp add --transport http bosco-labs https://api.boscolabs.dev/mcp \
 <tr><td><a href="drug-safety.html#where">Drug Safety API</a></td><td><a href="https://apify.com/bosco_labs/drug-safety">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
 <tr><td><a href="dutch-address-lookup.html#where">Dutch Address Lookup API</a></td><td><a href="https://apify.com/bosco_labs/dutch-address-lookup">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
 <tr><td><a href="weather-forecast.html#where">Weather Forecast API</a></td><td><a href="https://apify.com/bosco_labs/weather-forecast">Apify Store</a></td><td></td></tr>
+<tr><td><a href="us-energy-prices.html#where">US Energy Prices API (EIA)</a></td><td><a href="https://apify.com/bosco_labs/us-energy-prices">Apify Store</a></td><td></td></tr>
 <tr><td><a href="package-vulns.html#where">Package Vulnerability Check API</a></td><td><a href="https://apify.com/bosco_labs/package-vulns">Apify Store</a></td><td><a href="api.html">HTTP API</a>, MCP, x402</td></tr>
+<tr><td><a href="pdf-to-data.html#where">PDF to JSON API</a></td><td><a href="https://apify.com/bosco_labs/pdf-to-data">Apify Store</a></td><td></td></tr>
+<tr><td><a href="dataset-dedup.html#where">Deduplicate &amp; Merge Apify Datasets</a></td><td><a href="https://apify.com/bosco_labs/dataset-dedup">Apify Store</a></td><td></td></tr>
+<tr><td><a href="dataset-change-monitor.html#where">Change Monitor</a></td><td><a href="https://apify.com/bosco_labs/dataset-change-monitor">Apify Store</a></td><td></td></tr>
+<tr><td><a href="sheets-export.html#where">Google Sheets Export</a></td><td><a href="https://apify.com/bosco_labs/sheets-export">Apify Store</a></td><td></td></tr>
 </tbody></table></div>
 </section>
 <section id="questions" class="prose">

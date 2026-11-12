@@ -31,7 +31,12 @@
   <url><loc>https://boscolabs.dev/drug-safety.html</loc><lastmod>2026-11-10</lastmod></url>
   <url><loc>https://boscolabs.dev/dutch-address-lookup.html</loc><lastmod>2026-11-10</lastmod></url>
   <url><loc>https://boscolabs.dev/weather-forecast.html</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://boscolabs.dev/us-energy-prices.html</loc><lastmod>2026-11-10</lastmod></url>
   <url><loc>https://boscolabs.dev/package-vulns.html</loc><lastmod>2026-11-10</lastmod></url>
+  <url><loc>https://boscolabs.dev/pdf-to-data.html</loc><lastmod>2026-11-10</lastmod></url>
+  <url><loc>https://boscolabs.dev/dataset-dedup.html</loc><lastmod>2026-11-10</lastmod></url>
+  <url><loc>https://boscolabs.dev/dataset-change-monitor.html</loc><lastmod>2026-11-10</lastmod></url>
+  <url><loc>https://boscolabs.dev/sheets-export.html</loc><lastmod>2026-11-11</lastmod></url>
   <url><loc>https://boscolabs.dev/privacy.html</loc><lastmod>2026-11-11</lastmod></url>
   <url><loc>https://boscolabs.dev/terms.html</loc><lastmod>2026-11-06</lastmod></url>
   <url><loc>https://boscolabs.dev/security.html</loc><lastmod>2026-11-12</lastmod></url>
@@ -129,11 +134,11 @@
   <url><loc>https://boscolabs.dev/q/polish-company-krs-board-insolvency.html</loc><lastmod>2026-11-09</lastmod></url>
   <url><loc>https://boscolabs.dev/q/novo-nordisk-supplier-vat-iban-check.html</loc><lastmod>2026-11-09</lastmod></url>
   <url><loc>https://boscolabs.dev/q/estonian-company-14850239-sanctions-register-check.html</loc><lastmod>2026-11-09</lastmod></url>
-  <url><loc>https://boscolabs.dev/compare/insider-trades.html</loc><lastmod>2026-11-09</lastmod></url>
-  <url><loc>https://boscolabs.dev/compare/sec-edgar.html</loc><lastmod>2026-11-09</lastmod></url>
-  <url><loc>https://boscolabs.dev/compare/company-data.html</loc><lastmod>2026-11-09</lastmod></url>
-  <url><loc>https://boscolabs.dev/compare/eu-public-tenders.html</loc><lastmod>2026-11-09</lastmod></url>
-  <url><loc>https://boscolabs.dev/compare/sanctions-lists.html</loc><lastmod>2026-11-09</lastmod></url>
+  <url><loc>https://boscolabs.dev/compare/insider-trades.html</loc><lastmod>2026-11-06</lastmod></url>
+  <url><loc>https://boscolabs.dev/compare/sec-edgar.html</loc><lastmod>2026-11-06</lastmod></url>
+  <url><loc>https://boscolabs.dev/compare/company-data.html</loc><lastmod>2026-11-06</lastmod></url>
+  <url><loc>https://boscolabs.dev/compare/eu-public-tenders.html</loc><lastmod>2026-11-06</lastmod></url>
+  <url><loc>https://boscolabs.dev/compare/sanctions-lists.html</loc><lastmod>2026-11-06</lastmod></url>
   <url><loc>https://boscolabs.dev/blog/index.html</loc><lastmod>2026-11-11</lastmod></url>
   <url><loc>https://boscolabs.dev/blog/check-if-company-is-sanctioned-api.html</loc><lastmod>2026-11-11</lastmod></url>
   <url><loc>https://boscolabs.dev/blog/companies-house-api-insolvency-check.html</loc><lastmod>2026-11-09</lastmod></url>

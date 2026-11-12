@@ -1,6 +1,6 @@
 # Bosco Labs data APIs
 
-> Bosco Labs publishes data tools for AI agents and analysts (HTTP API, remote MCP, x402 and Apify Actors) that return clean, typed JSON from official sources. The lead use is checking a company against the official registers in one call (national registers of the UK, France, Poland, Norway, Finland, Estonia, Ireland, the Czech Republic and Latvia; other countries from the LEI record): register status, insolvency, filed accounts, VAT number, IBAN and official sanctions lists, each check with its source link (counterparty-check, company-check, company-accounts, vat-iban-check, sanctions-screening). Also: SEC filings, insider trades, 13F holdings and XBRL financials, US House STOCK Act trades, European ESEF annual reports, EU, UK and Dutch law and case law, EU tenders, US federal and Pentagon contract awards, ECB rates and euro inflation, clinical trials, drug safety, recalls, tariffs, package vulnerabilities and Dutch addresses. 30 tools are live: all 29 HTTP API tools are plain HTTPS endpoints and remote MCP tools that an agent can call with a key (prepaid credits) or without an account, paying per call in USDC via x402 (https://api.boscolabs.dev/v1/<tool>, see API below); 30 of them are also Apify Actors on the Apify Store (pay per event). Data rows carry a source link.
+> Bosco Labs publishes data tools for AI agents and analysts (HTTP API, remote MCP, x402 and Apify Actors) that return clean, typed JSON from official sources. The lead use is checking a company against the official registers in one call (national registers of the UK, France, Poland, Norway, Finland, Estonia, Ireland, the Czech Republic and Latvia; other countries from the LEI record): register status, insolvency, filed accounts, VAT number, IBAN and official sanctions lists, each check with its source link (counterparty-check, company-check, company-accounts, vat-iban-check, sanctions-screening). Also: SEC filings, insider trades, 13F holdings and XBRL financials, US House STOCK Act trades, European ESEF annual reports, EU, UK and Dutch law and case law, EU tenders, US federal and Pentagon contract awards, ECB rates and euro inflation, clinical trials, drug safety, recalls, tariffs, package vulnerabilities and Dutch addresses. 35 tools are live: all 29 HTTP API tools are plain HTTPS endpoints and remote MCP tools that an agent can call with a key (prepaid credits) or without an account, paying per call in USDC via x402 (https://api.boscolabs.dev/v1/<tool>, see API below); 35 of them are also Apify Actors on the Apify Store (pay per event). Data rows carry a source link.
 
 Apify Store profile: https://apify.com/bosco_labs
 Contact: support@boscolabs.dev
@@ -56,10 +56,18 @@ Contact: support@boscolabs.dev
 - [Drug Safety API: FDA adverse events, label, recalls, EMA status](https://boscolabs.dev/drug-safety.html): Drug safety dossier for one drug name as one sourced JSON row: FDA adverse events (top FAERS reaction counts), boxed warning, indications, US recalls and shortages (openFDA), EU authorisation, EPAR and EU shortages (EMA). Dossier (default) $0.02 = 5 queries; one section $0.004. Not medical advice. Price: Apify Store $0.02 per dossier or $0.004 per single-section query; HTTP API $0.004 per sub-query; a full dossier = 5 units ($0.02); partial answers are free. ([Apify Store](https://apify.com/bosco_labs/drug-safety))
 - [Dutch Address Lookup API: BAG postcode, geocode & building data](https://boscolabs.dev/dutch-address-lookup.html): Validates and geocodes Dutch addresses against the official BAG register (via PDOK): postcode, BAG ids, WGS84 + RD coordinates, construction year, use, floor area and building status. Free text, postcode + house number (or range) or BAG ids; up to 100 per run. Unmatched inputs are free. Price: Apify Store $0.002 per resolved address; HTTP API $0.002 per address resolved (unresolved inputs are free). ([Apify Store](https://apify.com/bosco_labs/dutch-address-lookup))
 - [Weather Forecast API: hourly + daily by city or lat/lon](https://boscolabs.dev/weather-forecast.html): Weather forecast for up to 50 places or coordinates, up to 10 days: hourly temperature, rain, wind, gusts, clouds and humidity plus a daily summary in local time. Source MET Norway (CC BY 4.0), cached per its terms. Unknown places are free. Price: Apify Store $0.0015 per location forecast. ([Apify Store](https://apify.com/bosco_labs/weather-forecast))
+- [US Energy Prices API (EIA): gasoline, diesel, power, stocks](https://boscolabs.dev/us-energy-prices.html): Latest value, change and history of official US energy data from the EIA: weekly gasoline and diesel prices by state, monthly electricity prices by state and sector, crude, fuel and gas stocks, oil output, refinery use. Ask by plain name (gasoline_retail:CA). A source link per series. Price: Apify Store $0.002 per series returned. ([Apify Store](https://apify.com/bosco_labs/us-energy-prices))
 
 ## Software security
 
 - [Package Vulnerability Check API: CVEs, CISA KEV, safe upgrade](https://boscolabs.dev/package-vulns.html): Known vulnerabilities in a package version (npm, PyPI, Maven, Go, crates.io, NuGet, RubyGems, Packagist) or one CVE/GHSA id: severity, CVSS, fixed versions, CISA KEV exploited status and the lowest safe upgrade; for a CVE also the affected packages. From OSV.dev and CISA, a source link per advisory. Price: Apify Store $0.005 per answer; HTTP API $0.005 per package version or CVE answered. ([Apify Store](https://apify.com/bosco_labs/package-vulns))
+
+## Data tools
+
+- [PDF to JSON API: text, tables and metadata from a PDF URL](https://boscolabs.dev/pdf-to-data.html): PDF text, tables and metadata as clean JSON from 1-20 public PDF URLs or a base64 file: per-page markdown text in reading order, tables as rows with a header guess, title, author and dates. Processed in memory, never stored. Pay per page with text; scanned pages are flagged and free. Price: Apify Store $0.0005 per page with text. ([Apify Store](https://apify.com/bosco_labs/pdf-to-data))
+- [Deduplicate & Merge Apify Datasets: remove duplicate items](https://boscolabs.dev/dataset-dedup.html): Deduplicate and merge one or more Apify datasets (or a pasted JSON array): removes duplicate items by any fields (dot paths allowed) or by the whole item, keeping the first or last occurrence; streams millions of items with constant memory. Price: Apify Store $0.00015 per unique item written (duplicates are free). ([Apify Store](https://apify.com/bosco_labs/dataset-dedup))
+- [Change Monitor: new, changed & removed items + Slack alerts](https://boscolabs.dev/dataset-change-monitor.html): Run any scraper on a schedule and get only what changed: new, changed and removed items compared with the previous run, matched by your key fields (e.g. url). Optional Slack, Discord, Telegram, email or webhook alert per run. Add it as an integration to your scraper. Price: Apify Store $0.001 per change reported. ([Apify Store](https://apify.com/bosco_labs/dataset-change-monitor))
+- [Google Sheets Export: send any Apify dataset to a spreadsheet](https://boscolabs.dev/sheets-export.html): Export any Apify dataset to Google Sheets: replace a tab or append rows, with nested fields as columns and your header kept; writes with your own Google service account key and retries Google rate limits. Price: Apify Store $0.00015 per row exported. ([Apify Store](https://apify.com/bosco_labs/sheets-export))
 
 ## Questions and comparisons
 
@@ -2273,6 +2281,60 @@ Example questions:
 { "locations": ["Rotterdam", "Paris, FR", "Portland, Oregon", "52.3676,4.9041"], "hours": 48 }
 ```
 
+## US Energy Prices API (EIA): gasoline, diesel, power, stocks
+
+Docs: https://boscolabs.dev/us-energy-prices.html
+Apify Store: https://apify.com/bosco_labs/us-energy-prices
+MCP: https://mcp.apify.com?tools=bosco_labs/us-energy-prices
+Price: Apify Store $0.002 per series returned
+
+Latest value, change and history of official US energy data from the EIA: weekly gasoline and diesel prices by state, monthly electricity prices by state and sector, crude, fuel and gas stocks, oil output, refinery use. Ask by plain name (gasoline_retail:CA). A source link per series.
+
+Example questions:
+
+- How much did US gasoline and diesel prices change last week, and how full is natural gas storage? Cite the source.
+
+### Input fields
+
+- `series` (array): Which series to fetch, by plain name (case-insensitive), up to 20 per run, e.g. ["gasoline_retail:CA", "crude_stocks", "electricity_price:TX:RES"]. Names: gasoline_retail[:<area>] and diesel_retail[:<area>] (USD/gallon, weekly; area US (default), PADD1-PADD5, or CA, CO, FL, MA, MN, NY, OH, TX, WA; diesel US, PADD1-5, CA), electricity_price[:<state>[:<sector>]] (cents/kWh, monthly; state US (default) or a 2-letter code; sector ALL (default), RES, COM, IND, TRA), crude_stocks, spr_stocks, gasoline_stocks, distillate_stocks (thousand barrels, weekly), crude_production (thousand barrels/day, weekly), gas_storage (Bcf, weekly), refinery_utilization (%, weekly). Not offered: WTI/Brent/Henry Hub spot prices (licensed third-party data at EIA). An unknown name fails at once with suggestions and costs nothing. Empty = list the catalogue for free.
+- `last` (integer): How many of the newest observations to return per series, e.g. 12 (12 weeks of a weekly series). Empty = 12, or with dateFrom every observation in the window (up to 1000). latest_value, previous_value and change are always filled. The price is the same for any number.
+- `dateFrom` (string): First date of the window, YYYY-MM-DD, e.g. "2026-01-01". For monthly series the month holding the date counts. Empty = no lower bound (only `last` limits).
+- `dateTo` (string): Last date of the window, YYYY-MM-DD, e.g. "2026-03-15". With last = 1 you get the value on that date or the last one before it. Empty = up to the latest published value.
+- `mode` (string): "series" (default) fetches the series above. "catalogue" returns one row per supported name pattern with its EIA route, series id, frequency, unit and an example, free of charge.
+
+### Output fields
+
+- `schema_version` (string): Output schema version, "1".
+- `series` (string): The series as requested, normalised (e.g. crude_stocks, gasoline_retail:CA, electricity_price:TX:RES).
+- `title` (string | null): The series title as EIA states it (series-description), else our own title. null on error rows.
+- `description` (string): What the series is and how to read it, in plain words (written by Bosco Labs).
+- `source` (string): Publisher of the values: EIA (U.S. Energy Information Administration).
+- `route` (string): EIA API v2 route of the dataset, e.g. petroleum/pri/gnd.
+- `series_id` (string): EIA series id (e.g. WCESTUS1, EMM_EPMR_PTE_SCA_DPG) or the facets used (stateid=TX, sectorid=RES).
+- `frequency` (string): weekly or monthly.
+- `unit` (string): Unit of the values, e.g. USD per gallon, thousand barrels, billion cubic feet, US cents per kilowatt-hour.
+- `latest_date` (string | null): Date of the newest observation as EIA dates it: YYYY-MM-DD for weekly series (week ending date for stocks, the Monday of the price survey for retail prices) or YYYY-MM (monthly). null on error rows.
+- `latest_value` (number | null): Newest value, unmodified from the source.
+- `previous_date` (string | null): Date of the observation before the newest one.
+- `previous_value` (number | null): Value of that previous observation, unmodified.
+- `change` (number | null): latest_value - previous_value, computed by Bosco Labs (exact decimal difference); not an EIA figure. null if there is no previous value.
+- `observations` (array): The newest `last` observations, oldest first, each {date, value}.
+- `observation_count` (integer): Number of entries in observations.
+- `source_url` (string): Human page for this series at eia.gov (the API itself needs a key).
+- `provided_by` (string): Who compiled this row; cite together with source_url.
+- `api_url` (string | null): The EIA API v2 query used, without the API key (add your own api_key to call it). null on error rows.
+- `attribution` (string): Required source notice: EIA as source, not endorsed by EIA; `change` is computed by Bosco Labs.
+- `warnings` (array): Caveats in plain words, e.g. a window cut to the newest 1000 observations.
+- `error` (string | null): Why this series has no data (empty date window, area without data, EIA down), with a hint. Error rows are not charged.
+- `retrieved_at` (string): When the data was fetched (ISO 8601, UTC).
+- `duration_seconds` (number): How long fetching all series took.
+
+### Example input
+
+```json
+{ "series": ["gasoline_retail", "crude_stocks", "electricity_price:TX"] }
+```
+
 ## Package Vulnerability Check API: CVEs, CISA KEV, safe upgrade
 
 Docs: https://boscolabs.dev/package-vulns.html
@@ -2322,4 +2384,190 @@ Example questions:
 
 ```json
 { "ecosystem": "PyPI", "name": "requests", "version": "2.32.5" }
+```
+
+## PDF to JSON API: text, tables and metadata from a PDF URL
+
+Docs: https://boscolabs.dev/pdf-to-data.html
+Apify Store: https://apify.com/bosco_labs/pdf-to-data
+MCP: https://mcp.apify.com?tools=bosco_labs/pdf-to-data
+Price: Apify Store $0.0005 per page with text
+
+PDF text, tables and metadata as clean JSON from 1-20 public PDF URLs or a base64 file: per-page markdown text in reading order, tables as rows with a header guess, title, author and dates. Processed in memory, never stored. Pay per page with text; scanned pages are flagged and free.
+
+Example questions:
+
+- Get the wage bracket table on page 14 of https://www.irs.gov/pub/irs-pdf/p15t.pdf as rows.
+
+### Input fields
+
+- `urls` (array): 1 to 20 public http(s) links to PDF files, e.g. ["https://www.sec.gov/files/form10-k.pdf"]. Each PDF gives one output row. Files up to 50 MB; links to private or local addresses are refused. Empty = use pdfBase64 instead.
+- `pdfBase64` (string): Instead of (or besides) URLs: the PDF file itself, base64-encoded, optionally as a data: URI, e.g. "JVBERi0xLjQK...". Up to 50 MB decoded (Apify limits the whole input to a few MB, so use URLs for big files). Empty = none.
+- `pages` (string): Which pages to read, 1-based, as ranges and single pages separated by commas, e.g. "1-5,10". Applies to every PDF; pages past the end are skipped with a warning. Empty = all pages (up to maxPages).
+- `extract` (array): Any of text, tables, metadata, e.g. ["tables"]. Default (empty) = all three. Metadata alone costs one page per PDF.
+- `maxPages` (integer): Most pages read per PDF, counted from the first selected page, e.g. 10. Default 50. You pay per page with text, so this caps the cost per PDF; a warning tells you how to request the rest.
+- `outputFormat` (string): How page text is written: "markdown" marks headings with ## and writes detected tables as markdown tables; "text" gives plain paragraphs and tab-separated table rows. Default markdown. The tables field is the same in both.
+- `timeoutSecs` (integer): Most seconds spent parsing one PDF, e.g. 60. Default 120. Pages are read until 3/4 of this time (later pages get a warning and are not charged); a PDF still parsing at the limit is stopped and returns an error row, not charged. Empty = 120.
+
+### Output fields
+
+- `schema_version` (string): Output schema version.
+- `input_index` (integer): Position of this PDF in the input, 0-based: urls[input_index], or len(urls) for pdfBase64. Rows are written as each PDF finishes, so their order can differ from the input.
+- `url` (string | null): The PDF URL as given in the input; null for pdfBase64.
+- `final_url` (string | null): URL the PDF was finally downloaded from, after redirects; null for pdfBase64 or on error.
+- `file_size_bytes` (integer | null): Size of the PDF file in bytes; null when it could not be downloaded.
+- `page_count` (integer | null): Number of pages in the PDF; null on error.
+- `pages_processed` (integer): Pages read in this run (after pages, maxPages and size limits).
+- `pages_charged` (integer): Page events charged for this PDF: pages that had text (1 for a metadata-only request, 0 on error).
+- `title` (string | null): Title from the PDF's document info; null if not set or metadata not requested.
+- `author` (string | null): Author from the document info.
+- `subject` (string | null): Subject from the document info.
+- `creator` (string | null): Application that created the original document, e.g. Microsoft Word.
+- `producer` (string | null): Application that wrote the PDF.
+- `creation_date` (string | null): Creation date, ISO 8601 with the PDF's UTC offset when given, e.g. 2024-05-12T10:49:53-04:00.
+- `modification_date` (string | null): Last modification date, ISO 8601.
+- `pages` (array | null): One entry per processed page: {page (1-based), text}. text is markdown-ish (## headings, | tables |) or plain, in reading order; null for pages without a text layer. null when text was not requested.
+- `tables` (array | null): Tables detected from aligned text: {page, header (first row when it looks like a header, else null), rows (arrays of cell strings, null = empty cell), n_cols}. null when tables were not requested.
+- `warnings` (array): Things to know, e.g. scanned pages without text (OCR not supported, not charged) or pages left out by maxPages.
+- `error` (string | null): Why this PDF failed (refused URL, download error, not a PDF, password-protected, unreadable, too complex: over the parse timeout or out of memory); null on success. Failed PDFs are not charged.
+- `source_url` (string | null): Where the data came from (the input URL); null for pdfBase64.
+- `retrieved_at` (string): UTC time the PDF was processed.
+
+### Example input
+
+```json
+{ "urls": ["https://www.sec.gov/files/form10-k.pdf"], "pages": "1-5,10", "extract": ["text", "tables"] }
+```
+
+## Deduplicate & Merge Apify Datasets: remove duplicate items
+
+Docs: https://boscolabs.dev/dataset-dedup.html
+Apify Store: https://apify.com/bosco_labs/dataset-dedup
+MCP: https://mcp.apify.com?tools=bosco_labs/dataset-dedup
+Price: Apify Store $0.00015 per unique item written (duplicates are free)
+
+Deduplicate and merge one or more Apify datasets (or a pasted JSON array): removes duplicate items by any fields (dot paths allowed) or by the whole item, keeping the first or last occurrence. Streams millions of items with constant memory. Use to clean repeated scraper runs before export.
+
+Coverage: Works on the Apify datasets you pick in the input, or a pasted JSON array. For every distinct key the Actor keeps a 16-byte hash in memory, never the items: 10 million distinct keys need roughly 1-2 GB.
+
+Example questions:
+
+- Merge the results of my last three Google Maps runs and remove duplicate places by placeId.
+- Deduplicate this list of leads by email and keep only name, email and website.
+- Keep only the latest price per SKU from these two product datasets.
+
+### Input fields
+
+- `datasetIds` (array): Apify dataset IDs to merge, in this order, e.g. ["aBcD1234efGH5678i"]: a run's defaultDatasetId (Storage tab). Optional if you pass `items`.
+- `items` (array): Items to deduplicate directly, as a JSON array of objects, e.g. [{"url": "https://example.com/a"}]. Processed before the datasets. Handy for small lists and quick tests.
+- `fields` (array): Fields that form the duplicate key: items with equal values in all of them are duplicates. Dot paths work, e.g. ["url"] or ["address.city", "emails.0"]. Default [] = compare whole items. Items that have none of these fields are always kept.
+- `keep` (string): "first" (default) keeps the first occurrence of each key; "last" keeps the last one and reads the datasets twice.
+- `outputFields` (array): Top-level fields to keep in the output, e.g. ["url", "title"]. Empty = keep every field.
+
+### Output fields
+
+Items are copied unchanged from the input datasets (or reduced to outputFields).
+
+### Example input
+
+```json
+{
+  "datasetIds": ["aBcD1234efGH5678i", "jKlM9012noPQ3456r"],
+  "fields": ["url"],
+  "keep": "first",
+  "outputFields": ["url", "title", "price"]
+}
+```
+
+## Change Monitor: new, changed & removed items + Slack alerts
+
+Docs: https://boscolabs.dev/dataset-change-monitor.html
+Apify Store: https://apify.com/bosco_labs/dataset-change-monitor
+MCP: https://mcp.apify.com?tools=bosco_labs/dataset-change-monitor
+Price: Apify Store $0.001 per change reported
+
+Run any scraper on a schedule and get only what changed: new, changed and removed items compared with the previous run, matched by your key fields (e.g. url). Optional Slack, Discord, Telegram, email or webhook alert per run. Add it as an integration to your scraper.
+
+Example questions:
+
+- Compare today's run of my shop scraper with the previous one by url and tell me which prices changed.
+
+### Input fields
+
+- `datasetId` (string): Apify dataset to compare with the previous run, e.g. "aBcD1234efGH5678i": usually your scraper run's default dataset. As an integration on your scraper, set it to "{{resource.defaultDatasetId}}" (see the README). Optional if you paste items.
+- `items` (array): Items to check directly, as a JSON array of objects, e.g. [{"url": "https://jobs.example.com/1042", "salary_eur": 65000}]. Checked before the dataset. Pasted items are all reported as new on a monitor's first run (no silent baseline). Without a monitorName nothing is saved, so every run is a fresh try-out; give a monitorName and paste again with an edit to see a change.
+- `monitorName` (string): Name of the saved state: one name = one watched list, e.g. "shop-prices". Runs with the same name are compared with each other; use a different name per scraper or task. Letters, digits, - and _. Empty = "default" with a datasetId; with only pasted items, empty = a try-out that saves nothing.
+- `keyFields` (array): Fields that identify the same item in every run, e.g. ["url"] or ["placeId"]. Dot paths work: ["product.sku"]. Required unless you use whole-item comparison. Items without any key field are skipped.
+- `compareWholeItem` (boolean): For datasets without an ID field: an item is identified by all its fields (minus ignored ones), so items are only reported as new or removed, never as changed. Default false. E.g. `true`.
+- `ignoreFields` (array): Fields that change on every run and are never compared, as dot paths. Default: scrapedAt, scraped_at, crawledAt, retrieved_at, timestamp and #debug. Set [] to compare everything. E.g. ["scrapedAt", "#debug"].
+- `watchFields` (array): Only changes in these fields count, e.g. ["price", "stock", "offer.status"]. The output then also shows the old values (previous). Empty = every field except the ignored ones.
+- `report` (array): Which changes become output rows (and are charged): new, changed and/or removed items. Removed is off by default, because a scraper run that stopped early would make many items look removed. E.g. ["new", "changed"].
+- `reportOnFirstRun` (boolean): The first run of a monitor only saves the baseline and reports nothing (free). Turn on to report every item as new on that first run (charged per item). E.g. `true`.
+- `slackWebhookUrl` (string): Slack incoming webhook URL (https://hooks.slack.com/services/...). Secret input, stored encrypted. E.g. "https://hooks.slack.com/services/T000/B000/XXXX".
+- `discordWebhookUrl` (string): Discord channel webhook URL (https://discord.com/api/webhooks/...). Secret input, stored encrypted. E.g. "https://discord.com/api/webhooks/123/abc".
+- `webhookUrl` (string): Any URL that receives a JSON POST with the counts, example rows and the link (Zapier, Make, n8n, your own API). Secret input, stored encrypted. E.g. "https://hooks.zapier.com/hooks/catch/123/abc/".
+- `telegramBotToken` (string): Token of your Telegram bot from @BotFather. Needs the chat ID too. Secret input, stored encrypted. E.g. "123456:ABC-DEF1234ghIkl" (digits, colon, letters).
+- `telegramChatId` (string): Chat, group or channel ID the bot posts to, e.g. "123456789" or "@mychannel".
+- `email` (string): Address(es) for an email alert, comma-separated. Sent by the public Actor apify/send-mail, which runs in your account (a few seconds of compute). E.g. "alerts@example.com, ops@example.com".
+- `alertMaxItems` (integer): How many changes to list in the alert as examples (key values and what changed). Default 10. E.g. 5.
+- `alertWhenNoChanges` (boolean): Send the alert even when a run found no changes (a daily "all quiet"). Default false.
+
+### Output fields
+
+- `change_type` (string): new = key not seen in the previous run; changed = a compared field differs; removed = key missing from this run.
+- `key` (object | null): The item's key field values, e.g. {"url": "https://..."}. null with whole-item comparison.
+- `changed_fields` (array): changed rows: the fields that differ (top-level field names, or your watchFields paths). Empty for new and removed.
+- `previous` (object | null): changed rows: the old values of the changed fields that were kept: all watchFields, else small values (text up to 200 characters, numbers, booleans; up to 20 fields and 400 characters per item). Long text, lists and objects are left out; a field that was missing before is null. null when no old value is known, and for new and removed rows.
+- `item` (object | null): The current item, unchanged. For removed rows: the key values (the last known identity; with whole-item comparison, the removed item minus ignored fields).
+- `monitor_name` (string): The monitorName of this run.
+- `checked_at` (string): When this run started the comparison (UTC, ISO 8601).
+- `schema_version` (string): Output schema version, "1".
+
+### Example input
+
+```json
+{"datasetId": "<the run's dataset ID>", "monitorName": "shop", "keyFields": ["url"], "watchFields": ["price"]}
+```
+
+## Google Sheets Export: send any Apify dataset to a spreadsheet
+
+Docs: https://boscolabs.dev/sheets-export.html
+Apify Store: https://apify.com/bosco_labs/sheets-export
+MCP: https://mcp.apify.com?tools=bosco_labs/sheets-export
+Price: Apify Store $0.00015 per row exported
+
+Export any Apify dataset to Google Sheets: replace a tab or append rows, with nested fields as columns and your header kept. Uses a Google service account key that never expires, so scheduled runs keep working; retries Google rate limits. Use to send scraper results to a spreadsheet.
+
+Coverage: Any Apify dataset, written with your own Google service account (the sheet shared with it as Editor). Google allows 10 million cells per spreadsheet; rows are sent in batches of up to 5,000 rows or 2 MB.
+
+Example questions:
+
+- Put the results of my last Google Maps run into the 'Leads' tab of my spreadsheet, only name, phone and website.
+- Replace the 'Daily' tab with today's scraper results.
+- Append this week's new listings below the existing rows.
+
+### Input fields
+
+- `datasetId` (string): Apify dataset ID to export, e.g. "aBcD1234efGH5678i": usually the defaultDatasetId of a scraper run (Storage tab).
+- `spreadsheetId` (string): Google spreadsheet ID: the part between /d/ and /edit in the sheet URL docs.google.com/spreadsheets/d/<ID>/edit, e.g. "1AbCdEfGhIjKlMnOpQrStUvWxYz0123456789". The full sheet URL also works. Without it (or without serviceAccountJson) the run is a free preview: the first rows as they would be written, nothing exported.
+- `sheetName` (string): Name of the tab to write to, e.g. "Leads". Created if it doesn't exist. Leave empty to use the first tab (whatever it is called, e.g. "Sheet1" or "Blad1").
+- `mode` (string): "replace" (default) clears the tab's values and writes the dataset; "append" adds rows below the existing data, keeps your header and adds any new columns on the right.
+- `serviceAccountJson` (string): Full contents of a Google service account JSON key file (secret input, stored encrypted). Share the spreadsheet with that account's client_email as Editor first. See the README for the 2-minute setup. E.g. the whole file, starting with {"type": "service_account", ...}.
+- `fields` (array): Columns to export, in this order; nested fields use dots, e.g. ["name", "address.city", "phone"]. Empty = all fields.
+
+### Output fields
+
+The run writes no dataset rows. Its key-value store gets an OUTPUT record with spreadsheetUrl, sheetName, rowsWritten and columns. Nested objects become parent.child columns, arrays are written as JSON text, and values are never written as formulas.
+
+### Example input
+
+```json
+{
+  "datasetId": "aBcD1234efGH5678i",
+  "spreadsheetId": "1AbCdEfGhIjKlMnOpQrStUvWxYz0123456789",
+  "sheetName": "Leads",
+  "mode": "append",
+  "serviceAccountJson": "{ \"type\": \"service_account\", ... }",
+  "fields": ["name", "address.city", "phone", "website"]
+}
 ```

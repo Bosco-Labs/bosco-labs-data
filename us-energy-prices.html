@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>US Gasoline, Diesel and Electricity Prices API (EIA)</title>
+<meta name="description" content="Weekly US gasoline and diesel prices by state, electricity prices by state, crude and gas stocks from the EIA, by plain name. No EIA key needed.">
+<link rel="canonical" href="https://boscolabs.dev/us-energy-prices.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
+<link rel="alternate" type="application/atom+xml" href="blog/feed.xml" title="Bosco Labs blog">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bosco Labs">
+<meta property="og:title" content="US Gasoline, Diesel and Electricity Prices API (EIA)">
+<meta property="og:description" content="Weekly US gasoline and diesel prices by state, electricity prices by state, crude and gas stocks from the EIA, by plain name. No EIA key needed.">
+<meta property="og:url" content="https://boscolabs.dev/us-energy-prices.html">
+<meta property="og:image" content="https://boscolabs.dev/icons/us-energy-prices.png">
+<meta name="twitter:card" content="summary">
+<script defer src="/_vercel/insights/script.js"></script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "SoftwareApplication",
+   "name": "US Energy Prices API (EIA): gasoline, diesel, power, stocks",
+   "description": "Latest value, change and history of official US energy data from the EIA: weekly gasoline and diesel prices by state, monthly electricity prices by state and sector, crude, fuel and gas stocks, oil output, refinery use. Ask by plain name (gasoline_retail:CA). A source link per series.",
+   "url": "https://boscolabs.dev/us-energy-prices.html",
+   "image": "https://boscolabs.dev/icons/us-energy-prices.png",
+   "applicationCategory": "DeveloperApplication",
+   "operatingSystem": "Web (Apify platform)",
+   "offers": {
+    "@type": "Offer",
+    "priceCurrency": "USD",
+    "description": "$0.002 per series returned",
+    "price": "0.002",
+    "url": "https://apify.com/bosco_labs/us-energy-prices"
+   },
+   "provider": {
+    "@type": "Organization",
+    "name": "Bosco Labs",
+    "url": "https://boscolabs.dev/"
+   },
+   "installUrl": "https://apify.com/bosco_labs/us-energy-prices"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Tools",
+     "item": "https://boscolabs.dev/#tools"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Macro, health & places",
+     "item": "https://boscolabs.dev/#macro-health-places"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "US Energy Prices API (EIA): gasoline, diesel, power, stocks",
+     "item": "https://boscolabs.dev/us-energy-prices.html"
+    }
+   ]
+  }
+ ]
+}
+</script>
+<style>:root{color-scheme:light dark;--head:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--body:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;--ink:#1D2721;--muted:#545F58;--bg:#F5F3EA;--surface:#EAE8DC;--line:#D6D3C3;--accent:#2E5A47;--accent-fg:#F5F3EA;--accent2:#8DA889;--accent2-text:#4A6646;--success:#36694A;--warn:#8E5D1C;--danger:#9B2C2C}
+@media (prefers-color-scheme:dark){:root{--ink:#E5E8DE;--muted:#A3ADA4;--bg:#121914;--surface:#1B241E;--line:#2B372F;--accent:#9EC7B1;--accent-fg:#121914;--accent2:#B5C9A4;--accent2-text:#B5C9A4;--success:#93C7A0;--warn:#DDB070;--danger:#F0A29A}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--body)}h1,h2,h3,.brand{font-family:var(--head)}
+a{color:var(--accent);text-underline-offset:2px}.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+.site{border-bottom:1px solid var(--line)}.site .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;padding-top:12px;padding-bottom:12px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-weight:650;letter-spacing:-.01em}.brand img{width:30px;height:30px}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.skip{position:absolute;left:8px;top:-60px;z-index:9;background:var(--accent);color:var(--accent-fg);padding:10px 14px;border-radius:0 0 10px 10px;font-weight:650}.skip:focus{top:0}
+main,footer{overflow-wrap:break-word}.prose p,.prose li,.lead{max-width:75ch}h1.top{margin-top:40px}h1.sub{margin-top:18px}
+nav{display:flex;flex-wrap:wrap;gap:0 18px;font-size:.95rem}nav a{color:var(--muted);text-decoration:none}nav a:hover{color:var(--ink)}
+h1{font-size:clamp(1.65rem,4vw,2.4rem);line-height:1.2;letter-spacing:-.02em;margin:0 0 12px}
+h2{font-size:1.3rem;line-height:1.3;letter-spacing:-.01em;margin:44px 0 12px}h3{font-size:1.02rem;margin:20px 0 6px}
+.hero{padding:52px 0 8px;max-width:780px}.lead{font-size:1.13rem;color:var(--muted)}.muted{color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}.chips a{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:.9rem;color:var(--ink);text-decoration:none}.chips a:hover{border-color:var(--accent)}
+.grid{list-style:none;padding:0;margin:0;display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.card-top{display:flex;gap:12px;align-items:center}.card img{width:48px;height:48px;flex:none}
+.card h3{margin:0;font-size:1rem;line-height:1.3}.card h3 a{color:var(--ink);text-decoration:none}.card h3 a:hover{text-decoration:underline}
+.card p{margin:0;font-size:.92rem;color:var(--muted)}.card .row{margin-top:auto;padding-top:6px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-size:.88rem}
+.price{font-weight:600;color:var(--ink)}.badge{display:inline-block;font-size:.78rem;font-weight:600;line-height:1.5;padding:1px 9px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.badge.live{color:var(--success)}.badge.soon{color:var(--warn)}
+.btn{display:inline-block;min-height:44px;background:var(--accent);color:var(--accent-fg);font-weight:650;padding:11px 18px;border-radius:10px;text-decoration:none}
+.btn.ghost{background:none;color:var(--accent);border:1px solid var(--line)}.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0}
+.crumbs{font-size:.9rem;color:var(--muted);margin:22px 0 0}.crumbs a{color:var(--muted)}
+.head{display:flex;gap:20px;align-items:flex-start;margin:18px 0 0}.head img{width:84px;height:84px;flex:none}
+.prose{max-width:800px}.facts{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));margin:22px 0}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:.95rem}.fact b{display:block;font-size:.75rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.qs{padding-left:20px}.qs li{margin:4px 0}.two{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}.two h3{margin-top:0}.two>div,.prose,main{min-width:0}
+code{font:.86em var(--mono)}:not(pre)>code{overflow-wrap:anywhere}
+pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px;overflow:auto;max-height:520px;font-size:.84rem;line-height:1.45;margin:0}
+.table{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{text-align:left;vertical-align:top;padding:7px 8px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-weight:600}td:first-child{white-space:nowrap}
+details{border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:10px 0}summary{cursor:pointer;font-weight:600;min-height:44px;display:list-item;padding:10px 0}
+footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font-size:.9rem;color:var(--muted)}footer a{color:var(--muted)}
+form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key label{flex-basis:100%}form.key input,form.key select{flex:1 1 240px;min-width:0;min-height:44px;font:inherit;font-size:max(1rem,16px);padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}form.key select{flex:0 1 auto}button.btn{border:0;cursor:pointer;font:inherit;font-weight:650}
+.posts{list-style:none;padding:0}.posts h2{margin:32px 0 4px}.posts p{margin:4px 0}
+.note{border-left:3px solid var(--warn);background:var(--surface);border-radius:0 10px 10px 0;padding:10px 14px;margin:14px 0;font-size:.95rem}.notice{font-size:.88rem;color:var(--muted)}
+nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-items:center;min-height:44px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+@media (max-width:560px){.head{flex-direction:column;gap:12px}.head img{width:64px;height:64px}.hero{padding-top:32px}}
+.navcta{background:var(--accent);color:var(--accent-fg)!important;font-weight:650;padding:0 14px;border-radius:9px}
+.eyebrow{font-size:.8rem;font-weight:650;letter-spacing:.07em;text-transform:uppercase;color:var(--accent2-text);margin:0 0 14px}
+.hero2{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:44px;align-items:start;padding:54px 0 12px}
+.hero2 h1{font-size:clamp(2rem,4.4vw,3.05rem);line-height:1.08;letter-spacing:-.03em;margin-bottom:18px}.hero2 .lead{font-size:1.15rem}
+.ticks{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:11px;font-size:.96rem;color:var(--muted)}.ticks li{padding-left:27px;position:relative}.ticks b{color:var(--ink)}
+.ticks li::before{content:"";position:absolute;left:2px;top:.48em;width:12px;height:7px;border-left:2.5px solid var(--success);border-bottom:2.5px solid var(--success);transform:rotate(-45deg)}
+.demo{background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:0 1px 2px rgb(0 0 0/.05),0 18px 40px -18px rgb(0 0 0/.28);overflow:hidden;min-width:0}
+.demo-top{display:flex;align-items:center;gap:9px;margin:0;padding:11px 16px;font-size:.82rem;color:var(--muted);border-bottom:1px solid var(--line)}
+.live{width:8px;height:8px;border-radius:50%;background:var(--success);flex:none}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;padding:10px 12px;border-bottom:1px solid var(--line)}
+.tabs button{flex:none;min-height:40px;font:inherit;font-size:.86rem;padding:6px 13px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--ink);cursor:pointer}
+.tabs button:hover{border-color:var(--accent)}.tabs button[aria-selected=true]{background:var(--accent);color:var(--accent-fg);border-color:var(--accent)}
+.panel{padding:14px 16px 8px}.panel+.panel{border-top:1px solid var(--line)}.demo.js .panel{height:590px;overflow:auto;border-top:0}
+.req{background:var(--bg);font-size:.8rem;margin-bottom:14px;white-space:pre-wrap;overflow-wrap:anywhere}.co{margin:0 0 10px;line-height:1.4}.co+.checks{margin-bottom:16px}
+.checks{list-style:none;margin:0;padding:0;display:grid;gap:9px;font-size:.88rem;line-height:1.45}.checks li{display:grid;grid-template-columns:88px minmax(0,1fr);gap:10px;align-items:start}.checks b{font-weight:650}
+.pill{display:inline-block;text-align:center;font-size:.7rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;line-height:1.5;padding:1px 7px;border-radius:6px;border:1px solid currentColor;background:var(--bg)}
+.pill.pass{color:var(--success)}.pill.fail{color:var(--danger)}.pill.review{color:var(--warn)}.pill.unverified{color:var(--muted)}
+.tally{font-size:.86rem;font-weight:650;margin:14px 0 4px}.panel details{background:var(--bg)}.panel details pre{max-height:320px;border:0;padding:0 0 10px;background:none}.panel .table{margin-bottom:8px}.panel td:last-child,.panel th:last-child{text-align:right;font-variant-numeric:tabular-nums}
+@keyframes arrive{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}.panel.run .req{animation:arrive .22s ease both}.panel.run .read{animation:arrive .42s .14s ease both}
+.band{margin-top:60px}.band>h2{font-size:1.55rem;margin:0 0 8px}.band>p.lead{margin:0 0 18px}
+.jobs{list-style:none;padding:0;margin:0;display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,235px),1fr))}.jobs li{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px}.jobs h3{margin:0 0 6px;font-size:1.05rem}.jobs p{margin:0 0 8px;font-size:.93rem;color:var(--muted)}.jobs a{font-size:.92rem}
+.ask{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px}.ask form.key{margin-top:0}.ask form.key input{background:var(--bg)}.ask .chips{margin:6px 0 0}.ask .chips button{min-height:40px;font:inherit;font-size:.88rem;border:1px solid var(--line);border-radius:999px;padding:4px 12px;background:var(--bg);color:var(--ink);cursor:pointer}.ask .chips button:hover{border-color:var(--accent)}
+#ask-out{margin-top:14px}#ask-out:empty{margin:0}.step{border-top:1px solid var(--line);padding:12px 0}.step p{margin:0 0 8px}.step pre{background:var(--bg)}
+.codes h3{margin:0 0 8px}.codes pre{font-size:.8rem}
+@media (max-width:900px){.hero2{grid-template-columns:1fr;gap:30px;padding-top:30px}.demo.js .panel{height:auto;max-height:560px}}
+@media (max-width:560px){.checks li{grid-template-columns:1fr;gap:4px}.pill{justify-self:start}}</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site"><div class="wrap"><a class="brand" href="/"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav aria-label="Main"><a href="/#demo">Company checks</a><a href="/#tools">All tools</a><a href="api.html">API and prices</a><a href="blog/index.html">Blog</a><a href="llms.txt">llms.txt</a><a href="account.html">Account</a><a class="navcta" href="api.html#key">Get a key</a></nav></div></header>
+<main class="wrap" id="main">
+<p class="crumbs"><a href="/#tools">Tools</a> &rsaquo; <a href="/#macro-health-places">Macro, health &amp; places</a></p>
+<article>
+<div class="head"><img src="icons/us-energy-prices.svg" alt="" width="84" height="84"><div><h1>US Energy Prices API (EIA): gasoline, diesel, power, stocks</h1><span class="badge live">On Apify Store</span></div></div>
+<div class="prose">
+<p class="lead"><strong>Ask for US energy data by plain name and get the latest value, the change and the recent history.</strong> Weekly retail gasoline and diesel prices (US, regions, 9 states), monthly electricity prices for every state and sector, and the weekly crude, gasoline, distillate and natural gas stock reports, straight from the U.S. Energy Information Administration. No EIA API key needed. Built for <strong>AI agents</strong> and for anyone who needs a quick, sourced number.</p>
+<div class="facts"><div class="fact"><b>Price</b>$0.002 per series returned</div><div class="fact"><b>Domain</b>Macro, health &amp; places</div><div class="fact"><b>Get it on</b><a href="#where">Apify Store</a></div></div>
+<p><strong>Pricing (pay per event):</strong> $0.002 per series returned ($2 per 1,000). A series with no data and the catalogue are free; an unknown name fails in a second and costs nothing. The same data is free at eia.gov with your own API key; you pay for the keyless plain-name lookup, the latest/previous/change summary and the hosted API.</p>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/us-energy-prices">Run it on Apify Store &rarr;</a></div>
+<h2 id="where">Where to get it</h2>
+<p>The same data and the same rows on every channel; pick the one your agent or code already uses.</p>
+<div class="table"><table><thead><tr><th>Channel</th><th>How</th><th>Pay</th></tr></thead><tbody>
+<tr><td>Apify Store</td><td><a href="https://apify.com/bosco_labs/us-energy-prices">apify.com/bosco_labs/us-energy-prices</a>: run it in the Apify Console, by the Apify API or from Apify's MCP server (<code>https://mcp.apify.com?tools=bosco_labs/us-energy-prices</code>)</td><td>$0.002 per series returned, billed to your Apify account</td></tr>
+</tbody></table></div>
+<h2>Questions agents ask</h2>
+<ul class="qs"><li>&ldquo;How much did US gasoline and diesel prices change last week, and how full is natural gas storage? Cite the source.&rdquo;</li></ul>
+</div>
+<h2>Example</h2>
+<div class="two"><div><h3>Input</h3><pre><code>{ &quot;series&quot;: [&quot;gasoline_retail&quot;, &quot;crude_stocks&quot;, &quot;electricity_price:TX&quot;] }</code></pre></div>
+<div><h3>Output</h3><pre><code>{
+  &quot;schema_version&quot;: &quot;1&quot;,
+  &quot;series&quot;: &quot;gasoline_retail:US&quot;,
+  &quot;title&quot;: &quot;U.S. Regular All Formulations Retail Gasoline Prices (Dollars per Gallon)&quot;,
+  &quot;description&quot;: &quot;Weekly regular gasoline retail price in United States (Mondays), all formulations, including taxes.&quot;,
+  &quot;source&quot;: &quot;EIA&quot;,
+  &quot;route&quot;: &quot;petroleum/pri/gnd&quot;,
+  &quot;series_id&quot;: &quot;EMM_EPMR_PTE_NUS_DPG&quot;,
+  &quot;frequency&quot;: &quot;weekly&quot;,
+  &quot;unit&quot;: &quot;USD per gallon&quot;,
+  &quot;latest_date&quot;: &quot;2026-11-02&quot;,
+  &quot;latest_value&quot;: 4.153,
+  &quot;previous_date&quot;: &quot;2026-10-26&quot;,
+  &quot;previous_value&quot;: 4.269,
+  &quot;change&quot;: -0.116,
+  &quot;observations&quot;: [
+    { &quot;date&quot;: &quot;2026-10-19&quot;, &quot;value&quot;: 4.284 },
+    { &quot;date&quot;: &quot;2026-10-26&quot;, &quot;value&quot;: 4.269 },
+    { &quot;date&quot;: &quot;2026-11-02&quot;, &quot;value&quot;: 4.153 }
+  ],
+  &quot;observation_count&quot;: 3,
+  &quot;source_url&quot;: &quot;https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&amp;s=EMM_EPMR_PTE_NUS_DPG&amp;f=W&quot;,
+  &quot;provided_by&quot;: &quot;Bosco Labs (boscolabs.dev)&quot;,
+  &quot;api_url&quot;: &quot;https://api.eia.gov/v2/petroleum/pri/gnd/data/?frequency=weekly&amp;data%5B0%5D=value&amp;facets%5Bseries%5D%5B%5D=EMM_EPMR_PTE_NUS_DPG&amp;sort%5B0%5D%5Bcolumn%5D=period&amp;sort%5B0%5D%5Bdirection%5D=desc&amp;length=4&quot;,
+  &quot;attribution&quot;: &quot;Source: U.S. Energy Information Administration (EIA), eia.gov open data. Values are reproduced unmodified. The `change` field is computed by Bosco Labs (latest_value - previous_value) and is not an EIA figure. Bosco Labs is not affiliated with or endorsed by EIA.&quot;,
+  &quot;warnings&quot;: [],
+  &quot;error&quot;: null,
+  &quot;retrieved_at&quot;: &quot;2026-11-08T21:53:03+00:00&quot;,
+  &quot;duration_seconds&quot;: 6.29
+}</code></pre></div></div>
+<div class="prose">
+<h2>What you get</h2>
+<div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>schema_version</code></td><td>string</td><td>Output schema version, &quot;1&quot;.</td></tr>
+<tr><td><code>series</code></td><td>string</td><td>The series as requested, normalised (e.g. crude_stocks, gasoline_retail:CA, electricity_price:TX:RES).</td></tr>
+<tr><td><code>title</code></td><td>string | null</td><td>The series title as EIA states it (series-description), else our own title. null on error rows.</td></tr>
+<tr><td><code>description</code></td><td>string</td><td>What the series is and how to read it, in plain words (written by Bosco Labs).</td></tr>
+<tr><td><code>source</code></td><td>string</td><td>Publisher of the values: EIA (U.S. Energy Information Administration).</td></tr>
+<tr><td><code>route</code></td><td>string</td><td>EIA API v2 route of the dataset, e.g. petroleum/pri/gnd.</td></tr>
+<tr><td><code>series_id</code></td><td>string</td><td>EIA series id (e.g. WCESTUS1, EMM_EPMR_PTE_SCA_DPG) or the facets used (stateid=TX, sectorid=RES).</td></tr>
+<tr><td><code>frequency</code></td><td>string</td><td>weekly or monthly.</td></tr>
+<tr><td><code>unit</code></td><td>string</td><td>Unit of the values, e.g. USD per gallon, thousand barrels, billion cubic feet, US cents per kilowatt-hour.</td></tr>
+<tr><td><code>latest_date</code></td><td>string | null</td><td>Date of the newest observation as EIA dates it: YYYY-MM-DD for weekly series (week ending date for stocks, the Monday of the price survey for retail prices) or YYYY-MM (monthly). null on error rows.</td></tr>
+<tr><td><code>latest_value</code></td><td>number | null</td><td>Newest value, unmodified from the source.</td></tr>
+<tr><td><code>previous_date</code></td><td>string | null</td><td>Date of the observation before the newest one.</td></tr>
+<tr><td><code>previous_value</code></td><td>number | null</td><td>Value of that previous observation, unmodified.</td></tr>
+<tr><td><code>change</code></td><td>number | null</td><td>latest_value - previous_value, computed by Bosco Labs (exact decimal difference); not an EIA figure. null if there is no previous value.</td></tr>
+<tr><td><code>observations</code></td><td>array</td><td>The newest <code>last</code> observations, oldest first, each {date, value}.</td></tr>
+<tr><td><code>observation_count</code></td><td>integer</td><td>Number of entries in observations.</td></tr>
+<tr><td><code>source_url</code></td><td>string</td><td>Human page for this series at eia.gov (the API itself needs a key).</td></tr>
+<tr><td><code>provided_by</code></td><td>string</td><td>Who compiled this row; cite together with source_url.</td></tr>
+<tr><td><code>api_url</code></td><td>string | null</td><td>The EIA API v2 query used, without the API key (add your own api_key to call it). null on error rows.</td></tr>
+<tr><td><code>attribution</code></td><td>string</td><td>Required source notice: EIA as source, not endorsed by EIA; <code>change</code> is computed by Bosco Labs.</td></tr>
+<tr><td><code>warnings</code></td><td>array</td><td>Caveats in plain words, e.g. a window cut to the newest 1000 observations.</td></tr>
+<tr><td><code>error</code></td><td>string | null</td><td>Why this series has no data (empty date window, area without data, EIA down), with a hint. Error rows are not charged.</td></tr>
+<tr><td><code>retrieved_at</code></td><td>string</td><td>When the data was fetched (ISO 8601, UTC).</td></tr>
+<tr><td><code>duration_seconds</code></td><td>number</td><td>How long fetching all series took.</td></tr>
+</tbody></table></div>
+
+<h2>Use with AI agents (MCP)</h2>
+<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>.</p>
+<pre><code>https://mcp.apify.com?tools=bosco_labs/us-energy-prices</code></pre>
+<p>For &ldquo;How much did US gasoline and diesel prices change last week, and how full is natural gas storage? Cite the source.&rdquo; the agent passes:</p>
+<pre><code>{ &quot;series&quot;: [&quot;gasoline_retail&quot;, &quot;diesel_retail&quot;, &quot;gas_storage&quot;], &quot;last&quot;: 2 }</code></pre>
+<p>one small JSON item per series (about 2 KB with the default 12 observations), stable <code>snake_case</code> fields, numbers as numbers, ISO dates, <code>null</code> for unknown, a source link and the API query per series. Unknown names fail at once with &quot;did you mean&quot; suggestions. 14 series take about 6 seconds.</p>
+<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~us-energy-prices/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.002 per series returned.</p>
+
+<h2>Input fields</h2>
+<div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>series</code></td><td>array</td><td>Which series to fetch, by plain name (case-insensitive), up to 20 per run, e.g. [&quot;gasoline_retail:CA&quot;, &quot;crude_stocks&quot;, &quot;electricity_price:TX:RES&quot;]. Names: gasoline_retail[:&lt;area&gt;] and diesel_retail[:&lt;area&gt;] (USD/gallon, weekly; area US (default), PADD1-PADD5, or CA, CO, FL, MA, MN, NY, OH, TX, WA; diesel US, PADD1-5, CA), electricity_price[:&lt;state&gt;[:&lt;sector&gt;]] (cents/kWh, monthly; state US (default) or a 2-letter code; sector ALL (default), RES, COM, IND, TRA), crude_stocks, spr_stocks, gasoline_stocks, distillate_stocks (thousand barrels, weekly), crude_production (thousand barrels/day, weekly), gas_storage (Bcf, weekly), refinery_utilization (%, weekly). Not offered: WTI/Brent/Henry Hub spot prices (licensed third-party data at EIA). An unknown name fails at once with suggestions and costs nothing. Empty = list the catalogue for free.</td></tr>
+<tr><td><code>last</code></td><td>integer</td><td>How many of the newest observations to return per series, e.g. 12 (12 weeks of a weekly series). Empty = 12, or with dateFrom every observation in the window (up to 1000). latest_value, previous_value and change are always filled. The price is the same for any number.</td></tr>
+<tr><td><code>dateFrom</code></td><td>string</td><td>First date of the window, YYYY-MM-DD, e.g. &quot;2026-01-01&quot;. For monthly series the month holding the date counts. Empty = no lower bound (only <code>last</code> limits).</td></tr>
+<tr><td><code>dateTo</code></td><td>string</td><td>Last date of the window, YYYY-MM-DD, e.g. &quot;2026-03-15&quot;. With last = 1 you get the value on that date or the last one before it. Empty = up to the latest published value.</td></tr>
+<tr><td><code>mode</code></td><td>string</td><td>&quot;series&quot; (default) fetches the series above. &quot;catalogue&quot; returns one row per supported name pattern with its EIA route, series id, frequency, unit and an example, free of charge.</td></tr>
+</tbody></table></div>
+<h2>Sources, licence and limits</h2>
+<p><strong>How fresh is it?</strong> Live: every call reads the EIA API. Retail gasoline and diesel prices are surveyed on Mondays and published Monday evening or Tuesday. Petroleum stocks, production and refinery use come from the Weekly Petroleum Status Report (Wednesdays), gas storage from the Weekly Natural Gas Storage Report (Thursdays). Monthly electricity prices lag about two months. Federal holidays shift the schedule.</p>
+<p><strong>Why no WTI or Brent price?</strong> See &quot;Not included&quot; above: those are licensed vendor prices.</p>
+<p><strong>Why no diesel price for Texas?</strong> EIA&#x27;s weekly diesel survey covers the US, the five PADD regions and California only; other areas come back as a free error row.</p>
+<p><strong>Do I need an EIA API key?</strong> No. We call EIA with our own key; it never appears in the output or logs.</p>
+<p><strong>Can I republish the values?</strong> EIA data is US government work in the public domain. Name EIA as the source (each row has an <code>attribution</code>), don&#x27;t present changed values as EIA&#x27;s, and don&#x27;t imply EIA endorses you. Our <code>change</code> field is marked as computed by Bosco Labs.</p>
+<p><strong>Personal data?</strong> None. National, regional and state aggregates only.</p>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/us-energy-prices">Run it on Apify Store &rarr;</a></div>
+</div>
+</article>
+</main>
+<footer><div class="wrap"><p><a href="/">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="registers/index.html">Registers</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
+<script>
+(function(){try{var q=new URLSearchParams(location.search),s=q.get("src")||q.get("utm_source"),r=document.referrer?new URL(document.referrer).hostname:"";
+if(!s&&r&&!/(^|\.)boscolabs\.dev$/.test(r))s=r;s=(s||"").toLowerCase().replace(/[^a-z0-9._-]/g,"").slice(0,40);if(!s)return;
+document.querySelectorAll("a[href]").forEach(function(a){var h=a.getAttribute("href");
+if(!/^(\/(#.*)?$|[\w./-]*\.html([?#]|$))/.test(h)||/^https?:/.test(h)||h.indexOf("src=")>=0)return;
+var p=h.split("#");a.setAttribute("href",p[0]+(p[0].indexOf("?")<0?"?":"&")+"src="+encodeURIComponent(s)+(p.length>1?"#"+p[1]:""));});
+}catch(e){}})();
+</script>
+</body>
+</html>

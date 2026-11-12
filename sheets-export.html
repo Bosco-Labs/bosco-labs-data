@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apify to Google Sheets: export datasets on a schedule</title>
+<meta name="description" content="Export any Apify dataset to Google Sheets: replace a tab or append rows, nested fields as columns, header kept, rate limits retried. Works on schedules.">
+<link rel="canonical" href="https://boscolabs.dev/sheets-export.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
+<link rel="alternate" type="application/atom+xml" href="blog/feed.xml" title="Bosco Labs blog">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bosco Labs">
+<meta property="og:title" content="Apify to Google Sheets: export datasets on a schedule">
+<meta property="og:description" content="Export any Apify dataset to Google Sheets: replace a tab or append rows, nested fields as columns, header kept, rate limits retried. Works on schedules.">
+<meta property="og:url" content="https://boscolabs.dev/sheets-export.html">
+<meta property="og:image" content="https://boscolabs.dev/icons/sheets-export.png">
+<meta name="twitter:card" content="summary">
+<script defer src="/_vercel/insights/script.js"></script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "SoftwareApplication",
+   "name": "Google Sheets Export: send any Apify dataset to a spreadsheet",
+   "description": "Export any Apify dataset to Google Sheets: replace a tab or append rows, with nested fields as columns and your header kept. Uses a Google service account key that never expires, so scheduled runs keep working; retries Google rate limits. Use to send scraper results to a spreadsheet.",
+   "url": "https://boscolabs.dev/sheets-export.html",
+   "image": "https://boscolabs.dev/icons/sheets-export.png",
+   "applicationCategory": "DeveloperApplication",
+   "operatingSystem": "Web (Apify platform)",
+   "offers": {
+    "@type": "Offer",
+    "priceCurrency": "USD",
+    "description": "$0.00015 per row exported",
+    "price": "0.00015",
+    "url": "https://apify.com/bosco_labs/sheets-export"
+   },
+   "provider": {
+    "@type": "Organization",
+    "name": "Bosco Labs",
+    "url": "https://boscolabs.dev/"
+   },
+   "installUrl": "https://apify.com/bosco_labs/sheets-export"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Tools",
+     "item": "https://boscolabs.dev/#tools"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Data tools",
+     "item": "https://boscolabs.dev/#data-tools"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Google Sheets Export: send any Apify dataset to a spreadsheet",
+     "item": "https://boscolabs.dev/sheets-export.html"
+    }
+   ]
+  }
+ ]
+}
+</script>
+<style>:root{color-scheme:light dark;--head:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--body:Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', sans-serif;--mono:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;--ink:#1D2721;--muted:#545F58;--bg:#F5F3EA;--surface:#EAE8DC;--line:#D6D3C3;--accent:#2E5A47;--accent-fg:#F5F3EA;--accent2:#8DA889;--accent2-text:#4A6646;--success:#36694A;--warn:#8E5D1C;--danger:#9B2C2C}
+@media (prefers-color-scheme:dark){:root{--ink:#E5E8DE;--muted:#A3ADA4;--bg:#121914;--surface:#1B241E;--line:#2B372F;--accent:#9EC7B1;--accent-fg:#121914;--accent2:#B5C9A4;--accent2-text:#B5C9A4;--success:#93C7A0;--warn:#DDB070;--danger:#F0A29A}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 var(--body)}h1,h2,h3,.brand{font-family:var(--head)}
+a{color:var(--accent);text-underline-offset:2px}.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+.site{border-bottom:1px solid var(--line)}.site .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;padding-top:12px;padding-bottom:12px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-weight:650;letter-spacing:-.01em}.brand img{width:30px;height:30px}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.skip{position:absolute;left:8px;top:-60px;z-index:9;background:var(--accent);color:var(--accent-fg);padding:10px 14px;border-radius:0 0 10px 10px;font-weight:650}.skip:focus{top:0}
+main,footer{overflow-wrap:break-word}.prose p,.prose li,.lead{max-width:75ch}h1.top{margin-top:40px}h1.sub{margin-top:18px}
+nav{display:flex;flex-wrap:wrap;gap:0 18px;font-size:.95rem}nav a{color:var(--muted);text-decoration:none}nav a:hover{color:var(--ink)}
+h1{font-size:clamp(1.65rem,4vw,2.4rem);line-height:1.2;letter-spacing:-.02em;margin:0 0 12px}
+h2{font-size:1.3rem;line-height:1.3;letter-spacing:-.01em;margin:44px 0 12px}h3{font-size:1.02rem;margin:20px 0 6px}
+.hero{padding:52px 0 8px;max-width:780px}.lead{font-size:1.13rem;color:var(--muted)}.muted{color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}.chips a{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:.9rem;color:var(--ink);text-decoration:none}.chips a:hover{border-color:var(--accent)}
+.grid{list-style:none;padding:0;margin:0;display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.card-top{display:flex;gap:12px;align-items:center}.card img{width:48px;height:48px;flex:none}
+.card h3{margin:0;font-size:1rem;line-height:1.3}.card h3 a{color:var(--ink);text-decoration:none}.card h3 a:hover{text-decoration:underline}
+.card p{margin:0;font-size:.92rem;color:var(--muted)}.card .row{margin-top:auto;padding-top:6px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-size:.88rem}
+.price{font-weight:600;color:var(--ink)}.badge{display:inline-block;font-size:.78rem;font-weight:600;line-height:1.5;padding:1px 9px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.badge.live{color:var(--success)}.badge.soon{color:var(--warn)}
+.btn{display:inline-block;min-height:44px;background:var(--accent);color:var(--accent-fg);font-weight:650;padding:11px 18px;border-radius:10px;text-decoration:none}
+.btn.ghost{background:none;color:var(--accent);border:1px solid var(--line)}.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0}
+.crumbs{font-size:.9rem;color:var(--muted);margin:22px 0 0}.crumbs a{color:var(--muted)}
+.head{display:flex;gap:20px;align-items:flex-start;margin:18px 0 0}.head img{width:84px;height:84px;flex:none}
+.prose{max-width:800px}.facts{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));margin:22px 0}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:.95rem}.fact b{display:block;font-size:.75rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.qs{padding-left:20px}.qs li{margin:4px 0}.two{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}.two h3{margin-top:0}.two>div,.prose,main{min-width:0}
+code{font:.86em var(--mono)}:not(pre)>code{overflow-wrap:anywhere}
+pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px;overflow:auto;max-height:520px;font-size:.84rem;line-height:1.45;margin:0}
+.table{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{text-align:left;vertical-align:top;padding:7px 8px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-weight:600}td:first-child{white-space:nowrap}
+details{border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:10px 0}summary{cursor:pointer;font-weight:600;min-height:44px;display:list-item;padding:10px 0}
+footer{border-top:1px solid var(--line);margin-top:56px;padding:20px 0 32px;font-size:.9rem;color:var(--muted)}footer a{color:var(--muted)}
+form.key{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}form.key label{flex-basis:100%}form.key input,form.key select{flex:1 1 240px;min-width:0;min-height:44px;font:inherit;font-size:max(1rem,16px);padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}form.key select{flex:0 1 auto}button.btn{border:0;cursor:pointer;font:inherit;font-weight:650}
+.posts{list-style:none;padding:0}.posts h2{margin:32px 0 4px}.posts p{margin:4px 0}
+.note{border-left:3px solid var(--warn);background:var(--surface);border-radius:0 10px 10px 0;padding:10px 14px;margin:14px 0;font-size:.95rem}.notice{font-size:.88rem;color:var(--muted)}
+nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-items:center;min-height:44px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+@media (max-width:560px){.head{flex-direction:column;gap:12px}.head img{width:64px;height:64px}.hero{padding-top:32px}}
+.navcta{background:var(--accent);color:var(--accent-fg)!important;font-weight:650;padding:0 14px;border-radius:9px}
+.eyebrow{font-size:.8rem;font-weight:650;letter-spacing:.07em;text-transform:uppercase;color:var(--accent2-text);margin:0 0 14px}
+.hero2{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:44px;align-items:start;padding:54px 0 12px}
+.hero2 h1{font-size:clamp(2rem,4.4vw,3.05rem);line-height:1.08;letter-spacing:-.03em;margin-bottom:18px}.hero2 .lead{font-size:1.15rem}
+.ticks{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:11px;font-size:.96rem;color:var(--muted)}.ticks li{padding-left:27px;position:relative}.ticks b{color:var(--ink)}
+.ticks li::before{content:"";position:absolute;left:2px;top:.48em;width:12px;height:7px;border-left:2.5px solid var(--success);border-bottom:2.5px solid var(--success);transform:rotate(-45deg)}
+.demo{background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:0 1px 2px rgb(0 0 0/.05),0 18px 40px -18px rgb(0 0 0/.28);overflow:hidden;min-width:0}
+.demo-top{display:flex;align-items:center;gap:9px;margin:0;padding:11px 16px;font-size:.82rem;color:var(--muted);border-bottom:1px solid var(--line)}
+.live{width:8px;height:8px;border-radius:50%;background:var(--success);flex:none}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;padding:10px 12px;border-bottom:1px solid var(--line)}
+.tabs button{flex:none;min-height:40px;font:inherit;font-size:.86rem;padding:6px 13px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--ink);cursor:pointer}
+.tabs button:hover{border-color:var(--accent)}.tabs button[aria-selected=true]{background:var(--accent);color:var(--accent-fg);border-color:var(--accent)}
+.panel{padding:14px 16px 8px}.panel+.panel{border-top:1px solid var(--line)}.demo.js .panel{height:590px;overflow:auto;border-top:0}
+.req{background:var(--bg);font-size:.8rem;margin-bottom:14px;white-space:pre-wrap;overflow-wrap:anywhere}.co{margin:0 0 10px;line-height:1.4}.co+.checks{margin-bottom:16px}
+.checks{list-style:none;margin:0;padding:0;display:grid;gap:9px;font-size:.88rem;line-height:1.45}.checks li{display:grid;grid-template-columns:88px minmax(0,1fr);gap:10px;align-items:start}.checks b{font-weight:650}
+.pill{display:inline-block;text-align:center;font-size:.7rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;line-height:1.5;padding:1px 7px;border-radius:6px;border:1px solid currentColor;background:var(--bg)}
+.pill.pass{color:var(--success)}.pill.fail{color:var(--danger)}.pill.review{color:var(--warn)}.pill.unverified{color:var(--muted)}
+.tally{font-size:.86rem;font-weight:650;margin:14px 0 4px}.panel details{background:var(--bg)}.panel details pre{max-height:320px;border:0;padding:0 0 10px;background:none}.panel .table{margin-bottom:8px}.panel td:last-child,.panel th:last-child{text-align:right;font-variant-numeric:tabular-nums}
+@keyframes arrive{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}.panel.run .req{animation:arrive .22s ease both}.panel.run .read{animation:arrive .42s .14s ease both}
+.band{margin-top:60px}.band>h2{font-size:1.55rem;margin:0 0 8px}.band>p.lead{margin:0 0 18px}
+.jobs{list-style:none;padding:0;margin:0;display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,235px),1fr))}.jobs li{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px}.jobs h3{margin:0 0 6px;font-size:1.05rem}.jobs p{margin:0 0 8px;font-size:.93rem;color:var(--muted)}.jobs a{font-size:.92rem}
+.ask{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px}.ask form.key{margin-top:0}.ask form.key input{background:var(--bg)}.ask .chips{margin:6px 0 0}.ask .chips button{min-height:40px;font:inherit;font-size:.88rem;border:1px solid var(--line);border-radius:999px;padding:4px 12px;background:var(--bg);color:var(--ink);cursor:pointer}.ask .chips button:hover{border-color:var(--accent)}
+#ask-out{margin-top:14px}#ask-out:empty{margin:0}.step{border-top:1px solid var(--line);padding:12px 0}.step p{margin:0 0 8px}.step pre{background:var(--bg)}
+.codes h3{margin:0 0 8px}.codes pre{font-size:.8rem}
+@media (max-width:900px){.hero2{grid-template-columns:1fr;gap:30px;padding-top:30px}.demo.js .panel{height:auto;max-height:560px}}
+@media (max-width:560px){.checks li{grid-template-columns:1fr;gap:4px}.pill{justify-self:start}}</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site"><div class="wrap"><a class="brand" href="/"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav aria-label="Main"><a href="/#demo">Company checks</a><a href="/#tools">All tools</a><a href="api.html">API and prices</a><a href="blog/index.html">Blog</a><a href="llms.txt">llms.txt</a><a href="account.html">Account</a><a class="navcta" href="api.html#key">Get a key</a></nav></div></header>
+<main class="wrap" id="main">
+<p class="crumbs"><a href="/#tools">Tools</a> &rsaquo; <a href="/#data-tools">Data tools</a></p>
+<article>
+<div class="head"><img src="icons/sheets-export.svg" alt="" width="84" height="84"><div><h1>Google Sheets Export: send any Apify dataset to a spreadsheet</h1><span class="badge live">On Apify Store</span></div></div>
+<div class="prose">
+<p class="lead"><strong>Export any Apify dataset to Google Sheets</strong> in one run: the results of any scraper go straight into your spreadsheet, as a fresh copy (replace) or added below what&#x27;s already there (append). For anyone who reports, shares or post-processes scraped data in Sheets. Nested fields become their own columns, appends keep your header, and Google&#x27;s rate limits are retried automatically instead of failing the run.</p>
+<div class="facts"><div class="fact"><b>Price</b>$0.00015 per row exported</div><div class="fact"><b>Domain</b>Data tools</div><div class="fact"><b>Get it on</b><a href="#where">Apify Store</a></div></div>
+<p><strong>Pricing (pay per event):</strong> $0.00015 per row exported ($0.15 per 1,000 rows). No start fee; the run stops at your max charge limit.</p>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/sheets-export">Run it on Apify Store &rarr;</a></div>
+<h2 id="where">Where to get it</h2>
+<p>The same data and the same rows on every channel; pick the one your agent or code already uses.</p>
+<div class="table"><table><thead><tr><th>Channel</th><th>How</th><th>Pay</th></tr></thead><tbody>
+<tr><td>Apify Store</td><td><a href="https://apify.com/bosco_labs/sheets-export">apify.com/bosco_labs/sheets-export</a>: run it in the Apify Console, by the Apify API or from Apify's MCP server (<code>https://mcp.apify.com?tools=bosco_labs/sheets-export</code>)</td><td>$0.00015 per row exported, billed to your Apify account</td></tr>
+</tbody></table></div>
+<h2>Questions agents ask</h2>
+<ul class="qs"><li>&ldquo;Put the results of my last Google Maps run into the &#x27;Leads&#x27; tab of my spreadsheet, only name, phone and website.&rdquo;</li><li>&ldquo;Replace the &#x27;Daily&#x27; tab with today&#x27;s scraper results.&rdquo;</li><li>&ldquo;Append this week&#x27;s new listings below the existing rows.&rdquo;</li></ul>
+</div>
+<h2>Example</h2>
+<div class="two"><div><h3>Input</h3><pre><code>{
+  &quot;datasetId&quot;: &quot;aBcD1234efGH5678i&quot;,
+  &quot;spreadsheetId&quot;: &quot;1AbCdEfGhIjKlMnOpQrStUvWxYz0123456789&quot;,
+  &quot;sheetName&quot;: &quot;Leads&quot;,
+  &quot;mode&quot;: &quot;append&quot;,
+  &quot;serviceAccountJson&quot;: &quot;{ \&quot;type\&quot;: \&quot;service_account\&quot;, ... }&quot;,
+  &quot;fields&quot;: [&quot;name&quot;, &quot;address.city&quot;, &quot;phone&quot;, &quot;website&quot;]
+}</code></pre></div>
+<div><h3>Output</h3><pre><code>{&quot;spreadsheetUrl&quot;: &quot;https://docs.google.com/spreadsheets/d/1AbC...&quot;, &quot;sheetName&quot;: &quot;Leads&quot;, &quot;rowsWritten&quot;: 1250, &quot;columns&quot;: [&quot;name&quot;, &quot;address.city&quot;, &quot;phone&quot;, &quot;website&quot;]}</code></pre></div></div>
+<div class="prose">
+<h2>What you get</h2>
+<p>The run writes no dataset rows. Its key-value store gets an OUTPUT record with spreadsheetUrl, sheetName, rowsWritten and columns. Nested objects become parent.child columns, arrays are written as JSON text, and values are never written as formulas.</p>
+<h2>Coverage</h2><p>Any Apify dataset, written with your own Google service account (the sheet shared with it as Editor). Google allows 10 million cells per spreadsheet; rows are sent in batches of up to 5,000 rows or 2 MB.</p>
+<h2>Use with AI agents (MCP)</h2>
+<p>Add this URL to your MCP client (Claude, Cursor, VS Code, ...) to load the Actor as a tool through the Apify hosted MCP server. It signs you in with OAuth or accepts <code>Authorization: Bearer &lt;APIFY_TOKEN&gt;</code>.</p>
+<pre><code>https://mcp.apify.com?tools=bosco_labs/sheets-export</code></pre>
+<p>For &ldquo;Put the results of my last Google Maps run into the &#x27;Leads&#x27; tab of my spreadsheet, only name, phone and website.&rdquo; the agent passes:</p>
+<pre><code>{&quot;datasetId&quot;: &quot;&lt;dataset ID&gt;&quot;, &quot;spreadsheetId&quot;: &quot;&lt;spreadsheet ID&gt;&quot;, &quot;sheetName&quot;: &quot;Leads&quot;, &quot;mode&quot;: &quot;append&quot;, &quot;serviceAccountJson&quot;: &quot;&lt;service account JSON key&gt;&quot;, &quot;fields&quot;: [&quot;title&quot;, &quot;phone&quot;, &quot;website&quot;]}</code></pre>
+<p>the run writes no dataset rows; its <code>OUTPUT</code> record in the key-value store holds <code>spreadsheetUrl</code>, <code>sheetName</code>, <code>rowsWritten</code> and <code>columns</code>, so the agent can link the sheet. <code>serviceAccountJson</code> is required, so the key passes through the agent&#x27;s tool call: use a service account that is shared only on the sheets the agent may write to.</p>
+<p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~sheets-export/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.00015 per row exported.</p>
+
+<h2>Input fields</h2>
+<div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>datasetId</code></td><td>string</td><td>Apify dataset ID to export, e.g. &quot;aBcD1234efGH5678i&quot;: usually the defaultDatasetId of a scraper run (Storage tab).</td></tr>
+<tr><td><code>spreadsheetId</code></td><td>string</td><td>Google spreadsheet ID: the part between /d/ and /edit in the sheet URL docs.google.com/spreadsheets/d/&lt;ID&gt;/edit, e.g. &quot;1AbCdEfGhIjKlMnOpQrStUvWxYz0123456789&quot;. The full sheet URL also works. Without it (or without serviceAccountJson) the run is a free preview: the first rows as they would be written, nothing exported.</td></tr>
+<tr><td><code>sheetName</code></td><td>string</td><td>Name of the tab to write to, e.g. &quot;Leads&quot;. Created if it doesn&#x27;t exist. Leave empty to use the first tab (whatever it is called, e.g. &quot;Sheet1&quot; or &quot;Blad1&quot;).</td></tr>
+<tr><td><code>mode</code></td><td>string</td><td>&quot;replace&quot; (default) clears the tab&#x27;s values and writes the dataset; &quot;append&quot; adds rows below the existing data, keeps your header and adds any new columns on the right.</td></tr>
+<tr><td><code>serviceAccountJson</code></td><td>string</td><td>Full contents of a Google service account JSON key file (secret input, stored encrypted). Share the spreadsheet with that account&#x27;s client_email as Editor first. See the README for the 2-minute setup. E.g. the whole file, starting with {&quot;type&quot;: &quot;service_account&quot;, ...}.</td></tr>
+<tr><td><code>fields</code></td><td>array</td><td>Columns to export, in this order; nested fields use dots, e.g. [&quot;name&quot;, &quot;address.city&quot;, &quot;phone&quot;]. Empty = all fields.</td></tr>
+</tbody></table></div>
+<h2>Sources, licence and limits</h2>
+<p><strong>I get &quot;Google returned 403&quot; or &quot;404&quot;.</strong> The sheet isn&#x27;t shared with the service account, or the spreadsheet ID is wrong. The error message shows the exact email to share it with, as Editor.</p>
+<p><strong>&quot;Google Sheets API has not been used in project ... or it is disabled&quot;.</strong> Do setup step 2 in the same Google Cloud project as the key.</p>
+<p><strong>How many rows can I export?</strong> Google allows 10 million cells per spreadsheet (rows x columns, across all tabs). Rows are sent in batches of up to 5,000 rows or 2 MB.</p>
+<p><strong>What happens on rate limits?</strong> Google answers 429 when you write too fast. The Actor waits and retries (up to 5 times, after 1, 2, 4, 8 and 16 seconds), also on Google server errors.</p>
+<p><strong>Very long text?</strong> Google rejects cells over 50,000 characters, so longer values are cut at 50,000 characters instead of failing the run.</p>
+<p><strong>Does replace mode delete formatting?</strong> No, only cell values are cleared. Formatting, charts and other tabs stay.</p>
+<p><strong>Is my key safe?</strong> It&#x27;s a secret input (encrypted by Apify), it&#x27;s only used to request a Sheets access token from Google, and it&#x27;s never logged or saved. Delete the key in Google Cloud whenever you want to revoke access.</p>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/sheets-export">Run it on Apify Store &rarr;</a></div>
+</div>
+</article>
+</main>
+<footer><div class="wrap"><p><a href="/">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="registers/index.html">Registers</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
+<script>
+(function(){try{var q=new URLSearchParams(location.search),s=q.get("src")||q.get("utm_source"),r=document.referrer?new URL(document.referrer).hostname:"";
+if(!s&&r&&!/(^|\.)boscolabs\.dev$/.test(r))s=r;s=(s||"").toLowerCase().replace(/[^a-z0-9._-]/g,"").slice(0,40);if(!s)return;
+document.querySelectorAll("a[href]").forEach(function(a){var h=a.getAttribute("href");
+if(!/^(\/(#.*)?$|[\w./-]*\.html([?#]|$))/.test(h)||/^https?:/.test(h)||h.indexOf("src=")>=0)return;
+var p=h.split("#");a.setAttribute("href",p[0]+(p[0].indexOf("?")<0?"?":"&")+"src="+encodeURIComponent(s)+(p.length>1?"#"+p[1]:""));});
+}catch(e){}})();
+</script>
+</body>
+</html>
