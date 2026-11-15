@@ -33,7 +33,7 @@
  },
  "about": {
   "@type": "SoftwareApplication",
-  "name": "Counterparty Check API: KYB checklist from official registers",
+  "name": "Counterparty Check API: KYB, sanctions screening, insolvency",
   "url": "https://boscolabs.dev/counterparty-check.html"
  },
  "publisher": {
@@ -119,7 +119,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <article class="prose">
 <h1 class="sub">Before we pay them: check supplier Novo Nordisk A/S (CVR 24256790), their VAT number DK24256790 and IBAN DK5000400440116243.</h1>
 <p class="lead">Novo Nordisk A/S (CVR 24256790) checked in one call: register status, sanctions lists, VAT number DK24256790 in VIES and IBAN DK5000400440116243.</p>
-<div class="facts"><div class="fact"><b>Answered by</b><a href="/counterparty-check.html">Counterparty Check API: KYB checklist from official registers</a></div><div class="fact"><b>Price</b>$0.05 per company checked</div><div class="fact"><b>Status</b><span class="badge live">On Apify Store</span></div></div>
+<div class="facts"><div class="fact"><b>Answered by</b><a href="/counterparty-check.html">Counterparty Check API: KYB, sanctions screening, insolvency</a></div><div class="fact"><b>Price</b>$0.05 per company checked</div><div class="fact"><b>Status</b><span class="badge live">On Apify Store</span></div></div>
 <p>One call checks the register status (through GLEIF), the VAT number live in VIES (valid, and whether the registered name matches), the IBAN offline (length, layout and check digits), and the name against the OFAC, UN, UK, EU and US sanctions and screening lists. The row has a <code>summary</code> with <code>needs_attention</code> and one entry per check in <code>checks</code>, each <code>pass</code>, <code>fail</code>, <code>review</code> or <code>unverified</code> with its <code>source_url</code>. Denmark has no insolvency source we can read, so that check comes back <code>unverified</code>, which is not the same as clear.</p>
 <h2>Tool input</h2>
 <pre><code>{

@@ -24,8 +24,8 @@
  "@graph": [
   {
    "@type": "SoftwareApplication",
-   "name": "Counterparty Check API: KYB checklist from official registers",
-   "description": "KYB checklist per company: register status, LEI, insolvency, recent accounts, sanctions (OFAC, UN, UK, EU) on company and officers, VAT (VIES), IBAN; pass, fail, review or unverified, sourced. Officers: UK, PL, NO, FR only. Insolvency: UK, PL, FR, DE, NL, NO, FI, EE, IE, CZ, LV, US; else unverified.",
+   "name": "Counterparty Check API: KYB, sanctions screening, insolvency",
+   "description": "KYB supplier check by company name or number (UK, Danish CVR, NO, FR...): register status, LEI, insolvency, sanctions list screening (OFAC, UN, UK, EU) of company and officers, VAT (VIES), IBAN; pass, fail, review or unverified, sourced. Insolvency: UK, PL, FR, DE, NL, NO, FI, EE, IE, CZ, LV, US.",
    "url": "https://boscolabs.dev/counterparty-check.html",
    "image": "https://boscolabs.dev/icons/counterparty-check.png",
    "applicationCategory": "DeveloperApplication",
@@ -62,7 +62,7 @@
     {
      "@type": "ListItem",
      "position": 3,
-     "name": "Counterparty Check API: KYB checklist from official registers",
+     "name": "Counterparty Check API: KYB, sanctions screening, insolvency",
      "item": "https://boscolabs.dev/counterparty-check.html"
     }
    ]
@@ -144,7 +144,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <main class="wrap" id="main">
 <p class="crumbs"><a href="/#tools">Tools</a> &rsaquo; <a href="/#companies">Companies</a></p>
 <article>
-<div class="head"><img src="/icons/counterparty-check.svg" alt="" width="84" height="84"><div><h1>Counterparty Check API: KYB checklist from official registers</h1><span class="badge live">On Apify Store</span></div></div>
+<div class="head"><img src="/icons/counterparty-check.svg" alt="" width="84" height="84"><div><h1>Counterparty Check API: KYB, sanctions screening, insolvency</h1><span class="badge live">On Apify Store</span></div></div>
 <div class="prose">
 <p class="lead"><strong>Can I do business with this company?</strong> One call checks a supplier, customer or partner against official sources and returns a <strong>checklist</strong>: pass, fail, review or unverified per check, each with its source link and time. Built for <strong>AI agents</strong> doing KYB, vendor onboarding or &quot;may I pay this party?&quot; checks, and for people who want a fast, sourced first screen. To screen a vendor list, pass up to 10 companies in <code>companies</code>: one checklist per company, same price each.</p>
 <div class="facts"><div class="fact"><b>Price</b>$0.05 per company checked</div><div class="fact"><b>Domain</b>Companies</div><div class="fact"><b>Get it on</b><a href="#where">Apify Store, HTTP API, MCP, x402</a></div></div>
