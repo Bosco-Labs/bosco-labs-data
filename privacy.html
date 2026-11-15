@@ -108,9 +108,28 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <p class="lead">Bosco Labs runs this website and the HTTP API at <code>https://api.boscolabs.dev</code>. We collect as little as we can. Contact for anything below, including access and deletion requests: <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a>.</p>
 <h2>API calls</h2>
 <ul>
-<li><strong>What we log</strong>, one line per call: a key id, the tool, the HTTP status, the number of rows, the credits charged, the duration and any source warnings.</li>
-<li><strong>What we never log or store</strong>: request bodies and results. The names you screen with <code>sanctions-screening</code> and the companies or laws you look up are processed only to answer the call and are never stored.</li>
+<li><strong>What we log</strong>, one line per call: a key id, the tool, the HTTP status, the number of rows, the credits charged, the duration and any source warnings. For some requests that we answer with an error, such as 400, 401 or 404, the log holds more. It holds the method, the path, the User-Agent (the name the calling program sends about itself), the content type and the referring page. It also holds whether a payment header was sent and the names of the fields in the body, never their values.</li>
+<li><strong>What we never log or store</strong>: request bodies and results, except the field names named above and the questions to the free planner and the client name described below. The names you screen with <code>sanctions-screening</code> and the companies or laws you look up are processed only to answer the call and are never stored.</li>
 <li><strong>What we count</strong>, without any name or question: per day, tool and country, how often a call ended in a free refusal or in a check we could not make for that country. It tells us which registers to add next. A count is a number next to a tool and a two-letter country code, nothing else.</li>
+<li><strong>Who connects</strong>: per day, endpoint (the address called) and tool we count calls by client. The client is the kind of program, read from the User-Agent, for example curl or a browser. Or it is the first word of the User-Agent, or of the name an MCP client gives when it connects. Words such as mcp, client or desktop stay with that word, and so does the major version of an MCP client. We never keep a whole User-Agent of several words, and no IP address. If someone puts a personal name or a short key in the User-Agent or in that name, its first word would be counted.</li>
+<li><strong>Questions to the free planner</strong> (<code>POST /v1/plan</code>, the box on our home page and the MCP tool <code>plan_official_records_query</code>): we keep the text of a question for 30 days. We read these questions to learn which data to add. Before a question is stored, we cut it down:
+<ul>
+<li>Only words on a fixed list stay. The list holds ordinary English, Dutch and German words, common French words, country and city names and the names of well-known companies. Most common first names and surnames are not on it. Every other word is replaced by a mark such as &lt;word&gt;.</li>
+<li>Every number written in digits is replaced, except a number from 1900 to 2099 (a year) and a short list of terms such as 10-K.</li>
+<li>E-mail addresses (with an @) and web addresses (a name with a dot, such as example.com) are replaced.</li>
+<li>After the word password (in English, Dutch, German or French) the rest of the question is replaced.</li>
+</ul>
+This removes most names, addresses, keys and passwords. It does not remove everything. For example:
+<ul>
+<li>A name made only of listed words can stay, such as Mark White.</li>
+<li>What you write about a person in ordinary words stays.</li>
+<li>A number written in words stays.</li>
+<li>A street name without its number can stay.</li>
+<li>Ordinary words used as a password or key can stay.</li>
+</ul>
+<p>So please do not put personal details or secrets in a planner question.</p>
+<p>We keep no text at all for a question the planner recognises as a request for personal data about a private person. We also keep no text for a request that failed. The same question asked again on the same day is usually counted, not stored again.</p>
+<p>With the question we keep the time, the endpoint, the client and whether a key was sent. We also keep the tools and countries of the plan, its outcome and how often the question was asked that day. Never the key, your IP address or your e-mail address. To have a question deleted sooner, write to <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a> with the day and its wording.</p></li>
 <li>Keys are stored only as a SHA-256 hash; we cannot show a key again. If you lose it, request a new one with the same e-mail address: the new key replaces the stored hash, so the old key stops working.</li>
 <li>The credit ledger keeps, per key: the tool, the rows charged and the time, so your balance and our accounts add up.</li>
 </ul>
@@ -125,7 +144,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <h2>Processors</h2>
 <ul>
 <li><strong>Vercel</strong>: hosting of the website and the API, and request logs.</li>
-<li><strong>Supabase</strong>: the database with keys (hashed), e-mail addresses and the credit ledger (EU region, Ireland).</li>
+<li><strong>Supabase</strong>: the database with keys (hashed), e-mail addresses and the credit ledger, planner questions (cut down) and client counts (EU region, Ireland).</li>
 <li><strong>Anthropic</strong>: the AI model of the free planner. When the planner's rules are unsure about a question, the question may be sent to this model as typed, to pick out names and identifiers.</li>
 <li><strong>Stripe</strong>: payments.</li>
 <li><strong>Resend</strong>: the e-mails that deliver your key link.</li>
@@ -135,6 +154,8 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <li>API request logs: only as long as Vercel keeps runtime logs (days, not months).</li>
 <li>E-mail address, hashed key and ledger: while your key exists; ask us to delete them. Payment records: as long as bookkeeping and tax law require (seven years in the Netherlands).</li>
 <li>Sign-up IP hashes: only for the daily sign-up limit.</li>
+<li>Questions to the free planner: 30 days, then deleted by a daily job. We count whole days by UTC time, so a question asked late in the day is deleted up to a day sooner.</li>
+<li>Client counts (who connects) and the counts of calls we could not serve: no end date. A count is a number per day and tool, and per client or per country. No question and no IP address.</li>
 </ul>
 <h2>Data in the results</h2>
 <p>Some tools return personal data that official sources publish, such as the names of sanctioned persons, company officers or insiders in SEC filings. We return it unchanged, with a link to its source, for compliance, research and due-diligence purposes, and limit how much a single call returns.</p>
