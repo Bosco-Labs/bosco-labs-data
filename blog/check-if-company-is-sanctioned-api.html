@@ -2,15 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<base href="../">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>How to check if a company is sanctioned, with an API</title>
 <meta name="description" content="Screen a company name against the OFAC, UK, EU and UN sanctions lists from code, read a match properly, and know what a name check can&#x27;t catch.">
 <link rel="canonical" href="https://boscolabs.dev/blog/check-if-company-is-sanctioned-api.html">
-<link rel="icon" href="favicon.ico" sizes="any">
-<link rel="icon" href="logo.svg" type="image/svg+xml">
-<link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
-<link rel="alternate" type="application/atom+xml" href="blog/feed.xml" title="Bosco Labs blog">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/logo.svg" type="image/svg+xml">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
+<link rel="alternate" type="application/atom+xml" href="/blog/feed.xml" title="Bosco Labs blog">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Bosco Labs">
 <meta property="og:title" content="How to check if a company is sanctioned, with an API">
@@ -141,11 +140,11 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="site"><div class="wrap"><a class="brand" href="/"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
-<nav aria-label="Main"><a href="/#demo">Company checks</a><a href="/#tools">All tools</a><a href="api.html">API and prices</a><a href="blog/index.html">Blog</a><a href="llms.txt">llms.txt</a><a href="account.html">Account</a><a class="navcta" href="api.html#key">Get a key</a></nav></div></header>
+<header class="site"><div class="wrap"><a class="brand" href="/"><img src="/logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav aria-label="Main"><a href="/#demo">Company checks</a><a href="/#tools">All tools</a><a href="/api.html">API and prices</a><a href="/blog/index.html">Blog</a><a href="/llms.txt">llms.txt</a><a href="/account.html">Account</a><a class="navcta" href="/api.html#key">Get a key</a></nav></div></header>
 <main class="wrap" id="main">
 <article class="prose">
-<p class="crumbs"><a href="blog/index.html">Blog</a> &rsaquo; How to check if a company is sanctioned, with an API</p>
+<p class="crumbs"><a href="/blog/index.html">Blog</a> &rsaquo; How to check if a company is sanctioned, with an API</p>
 <h1>How to check if a company is sanctioned, with an API</h1>
 <p class="muted">Bosco Labs · <time datetime="2026-11-09">9 November 2026</time>, updated <time datetime="2026-11-11">11 November 2026</time></p>
 <p>Check the name against the official lists that apply to you, then have a person look at every hit. For most businesses trading in Europe or with the US, that means OFAC&#x27;s SDN list, the UK Sanctions List, the EU&#x27;s consolidated financial sanctions list and the UN Security Council list. All of them are free. Most of the work goes into matching names well and knowing what a &quot;no match&quot; actually covers.</p>
@@ -160,11 +159,11 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <p>So you end up with a similarity score and a threshold. Set it high and you miss spelling variants. Set it low and someone spends the afternoon clearing false positives. Whatever you pick, a hit is a candidate. Before you act on it, compare what else the listing says: country, registration number, LEI, addresses. Many listings carry identifiers, and a matching registration number settles it much faster than a matching name.</p>
 <p>The bigger gap is ownership. Under OFAC&#x27;s 50 percent rule, a company owned 50 percent or more by one or more blocked persons is itself blocked, even if it&#x27;s not on any list. The EU and UK apply their own ownership and control tests. A name screen will never find those companies. If that risk applies to you, you need ownership data, and that&#x27;s a different product.</p>
 <h2>One call from Python</h2>
-<p>If you&#x27;d rather not maintain the downloads and the matcher, our sanctions screening API checks names against all six lists we carry (OFAC SDN, OFAC non-SDN, the US Consolidated Screening List, UK, EU and UN) in one request. You can see what it would run without a key by asking the free planner:</p>
+<p>If you&#x27;d rather not maintain the downloads and the matcher, our <a href="/sanctions-screening.html">sanctions screening API</a> checks names against all six lists we carry (OFAC SDN, OFAC non-SDN, the US Consolidated Screening List, UK, EU and UN) in one request. You can see what it would run without a key by asking the free planner:</p>
 <pre><code>curl -s -X POST https://api.boscolabs.dev/v1/plan \
   -H &#x27;Content-Type: application/json&#x27; \
   -d &#x27;{&quot;question&quot;: &quot;Is Sovcomflot on any sanctions list?&quot;}&#x27;</code></pre>
-<p>That returns the exact call, its input and its maximum price. If part of the question is outside what we have, <code>not_covered</code> says which part and why. To run it, you need a key ($5 free credit, no card):</p>
+<p>That returns the exact call, its input and its maximum price. If part of the question is outside what we have, <code>not_covered</code> says which part and why. To run it, you need a key (<a href="/api.html#key">$5 free credit, no card</a>):</p>
 <pre><code>import os
 import httpx
 
@@ -190,21 +189,21 @@ for row in r.json()[&quot;rows&quot;]:
 <p>It costs $0.01 per name, match or not. Wallet addresses work too: pass them in <code>addresses</code> and they&#x27;re matched exactly against the addresses OFAC lists.</p>
 <h2>Screen the people too</h2>
 <p>Screening only the company name misses a lot. A company that isn&#x27;t listed can have a listed director or owner. To catch that, you need the officers and owners from the company register, and then you screen each of them.</p>
-<p>That&#x27;s what our counterparty-check adds. Give it a company number and it pulls the officers and people with significant control from the register, then screens the company and each person in the same call:</p>
+<p>That&#x27;s what our <a href="/counterparty-check.html">counterparty-check</a> adds. Give it a company number and it pulls the officers and people with significant control from the register, then screens the company and each person in the same call:</p>
 <pre><code>curl https://api.boscolabs.dev/v1/counterparty-check \
   -H &quot;Authorization: Bearer $BOSCO_API_KEY&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -d &#x27;{&quot;query&quot;: &quot;00445790&quot;, &quot;country&quot;: &quot;GB&quot;}&#x27;</code></pre>
 <p>Look at the <code>sanctions_entity</code> and <code>sanctions_people</code> checks in the result. People are screened where the register publishes their names: the UK, Norway and France. Poland lists officers too, but masks the names. Everywhere else <code>sanctions_people</code> comes back <code>unverified</code>, and the detail says why. Please don&#x27;t read <code>unverified</code> as clear. It costs $0.05 per company and also covers register status and insolvency.</p>
-<p>In our own benchmark against a model doing web search, the model with web search answered &quot;not sanctioned&quot; in 17 of 25 answers and wrote in the same answer that it had not checked the lists or had run no search. It was right each time. The write-up has the per-company results and the cases where we got it wrong.</p>
+<p>In our own <a href="/blog/counterparty-check-benchmark.html">benchmark against a model doing web search</a>, the model with web search answered &quot;not sanctioned&quot; in 17 of 25 answers and wrote in the same answer that it had not checked the lists or had run no search. It was right each time. The write-up has the per-company results and the cases where we got it wrong.</p>
 <h2>What a sanctions check doesn&#x27;t cover</h2>
 <p>Name screening against official lists isn&#x27;t the same as a compliance program. It doesn&#x27;t cover politically exposed persons or adverse media. It won&#x27;t find companies caught only by ownership rules. It doesn&#x27;t cover national lists from other countries. And neither a match nor a no-match is a legal determination. Every result from us carries a notice saying so, and a link to the official entry so the person reviewing it can check the source.</p>
 <p>If you need PEPs and adverse media, that&#x27;s a job for a dedicated screening vendor. If what you need is a quick, sourced answer to &quot;is this name on an official list right now&quot;, an API call is a reasonable way to get it.</p>
 <p>Bosco Labs makes the sanctions screening API and counterparty-check.</p>
-<p class="muted">Bosco Labs: official-source data for AI agents, as an HTTP API, MCP server and Apify Actors. <a href="api.html">API docs</a>.</p>
+<p class="muted">Bosco Labs: official-source data for AI agents, as an HTTP API, MCP server and Apify Actors. <a href="/api.html">API docs</a>.</p>
 </article>
 </main>
-<footer><div class="wrap"><p><a href="/">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="registers/index.html">Registers</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<footer><div class="wrap"><p><a href="/">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="/llms.txt">llms.txt</a> · <a href="/llms-full.txt">llms-full.txt</a> · <a href="/api.html">HTTP API</a> · <a href="/account.html">Account</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/security.html">Trust</a> · <a href="/status.html">Status</a> · <a href="/registers/index.html">Registers</a> · <a href="/blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
 <p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
 <script>
 (function(){try{var q=new URLSearchParams(location.search),s=q.get("src")||q.get("utm_source"),r=document.referrer?new URL(document.referrer).hostname:"";

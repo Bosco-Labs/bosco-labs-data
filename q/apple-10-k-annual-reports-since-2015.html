@@ -2,15 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<base href="../">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Apple 10-K annual reports since 2015: links</title>
 <meta name="description" content="Every Apple 10-K annual report filed since 2015, one row each with filing date, fiscal year end, accession number and links to the filing on SEC EDGAR.">
 <link rel="canonical" href="https://boscolabs.dev/q/apple-10-k-annual-reports-since-2015.html">
-<link rel="icon" href="favicon.ico" sizes="any">
-<link rel="icon" href="logo.svg" type="image/svg+xml">
-<link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
-<link rel="alternate" type="application/atom+xml" href="blog/feed.xml" title="Bosco Labs blog">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/logo.svg" type="image/svg+xml">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
+<link rel="alternate" type="application/atom+xml" href="/blog/feed.xml" title="Bosco Labs blog">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Bosco Labs">
 <meta property="og:title" content="Apple 10-K annual reports since 2015: links">
@@ -113,14 +112,14 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="site"><div class="wrap"><a class="brand" href="/"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
-<nav aria-label="Main"><a href="/#demo">Company checks</a><a href="/#tools">All tools</a><a href="api.html">API and prices</a><a href="blog/index.html">Blog</a><a href="llms.txt">llms.txt</a><a href="account.html">Account</a><a class="navcta" href="api.html#key">Get a key</a></nav></div></header>
+<header class="site"><div class="wrap"><a class="brand" href="/"><img src="/logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav aria-label="Main"><a href="/#demo">Company checks</a><a href="/#tools">All tools</a><a href="/api.html">API and prices</a><a href="/blog/index.html">Blog</a><a href="/llms.txt">llms.txt</a><a href="/account.html">Account</a><a class="navcta" href="/api.html#key">Get a key</a></nav></div></header>
 <main class="wrap" id="main">
-<p class="crumbs"><a href="/#tools">Tools</a> &rsaquo; <a href="q/index.html">Questions</a> &rsaquo; <a href="sec-filings-feed.html">SEC EDGAR Filings API</a></p>
+<p class="crumbs"><a href="/#tools">Tools</a> &rsaquo; <a href="/q/index.html">Questions</a> &rsaquo; <a href="/sec-filings-feed.html">SEC EDGAR Filings API</a></p>
 <article class="prose">
 <h1 class="sub">Give me links to Apple&#x27;s 10-K annual reports since 2015.</h1>
 <p class="lead">Every Apple 10-K annual report filed since 2015, one row each with filing date, fiscal year end, accession number and links to the filing on SEC EDGAR.</p>
-<div class="facts"><div class="fact"><b>Answered by</b><a href="sec-filings-feed.html">SEC EDGAR Filings API: 8-K, 10-K, 10-Q feed since 1994</a></div><div class="fact"><b>Price</b>$0.001 per filing</div><div class="fact"><b>Status</b><span class="badge live">On Apify Store</span></div></div>
+<div class="facts"><div class="fact"><b>Answered by</b><a href="/sec-filings-feed.html">SEC EDGAR Filings API: 8-K, 10-K, 10-Q feed since 1994</a></div><div class="fact"><b>Price</b>$0.001 per filing</div><div class="fact"><b>Status</b><span class="badge live">On Apify Store</span></div></div>
 <p>For a single company the Actor uses the SEC submissions API, which holds the complete filing history back to 1994. formTypes 10-K plus dateFrom returns one row per annual report since 2015 with filing_date, report_date (the fiscal year end), accession_number and the links filing_index_url and primary_document_url. The rows hold links, not the document text; pass a link to a PDF or HTML parser if you need the content.</p>
 <h2>Tool input</h2>
 <pre><code>{
@@ -145,7 +144,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
   -H &quot;Content-Type: application/json&quot; \
   -d &#x27;{&quot;tickers&quot;: [&quot;AAPL&quot;], &quot;formTypes&quot;: [&quot;10-K&quot;], &quot;dateFrom&quot;: &quot;2015-01-01&quot;, &quot;maxResults&quot;: 20}&#x27;</code></pre>
 <h2>Call the Bosco Labs HTTP API</h2>
-<p>Bosco Labs HTTP API (beta): same input and rows, <strong>$0.001 per filing</strong> from prepaid credits. <a href="api.html#key">Get a key</a> with a $5.00 free trial, or send the same call without a key and <a href="api.html#x402">pay per call in USDC via x402</a> (no account).</p>
+<p>Bosco Labs HTTP API (beta): same input and rows, <strong>$0.001 per filing</strong> from prepaid credits. <a href="/api.html#key">Get a key</a> with a $5.00 free trial, or send the same call without a key and <a href="/api.html#x402">pay per call in USDC via x402</a> (no account).</p>
 <pre><code>curl https://api.boscolabs.dev/v1/sec-filings-feed \
   -H &quot;Authorization: Bearer $BOSCO_API_KEY&quot; \
   -H &quot;Content-Type: application/json&quot; \
@@ -197,12 +196,12 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
     &quot;retrieved_at&quot;: &quot;2026-11-10T15:13:09+00:00&quot;
   }
 ]</code></pre>
-<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/sec-filings-feed">Run it on Apify Store &rarr;</a> <a class="btn ghost" href="api.html#key">Try the API: $5.00 free credit</a><a class="btn ghost" href="sec-filings-feed.html">All fields and limits</a></div>
-<h2>More questions for this tool</h2><ul class="qs"><li><a href="q/nvidia-earnings-release-dates.html">When did Nvidia release its last four quarterly results, and was it before or after the market closed?</a></li><li><a href="q/new-13d-filings-last-7-days.html">Which companies had a 13D activist stake filed in the last 7 days, and who filed it?</a></li></ul>
-<p><a href="q/index.html">All questions</a></p>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/sec-filings-feed">Run it on Apify Store &rarr;</a> <a class="btn ghost" href="/api.html#key">Try the API: $5.00 free credit</a><a class="btn ghost" href="/sec-filings-feed.html">All fields and limits</a></div>
+<h2>More questions for this tool</h2><ul class="qs"><li><a href="/q/nvidia-earnings-release-dates.html">When did Nvidia release its last four quarterly results, and was it before or after the market closed?</a></li><li><a href="/q/new-13d-filings-last-7-days.html">Which companies had a 13D activist stake filed in the last 7 days, and who filed it?</a></li></ul>
+<p><a href="/q/index.html">All questions</a></p>
 </article>
 </main>
-<footer><div class="wrap"><p><a href="/">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="registers/index.html">Registers</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<footer><div class="wrap"><p><a href="/">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="/llms.txt">llms.txt</a> · <a href="/llms-full.txt">llms-full.txt</a> · <a href="/api.html">HTTP API</a> · <a href="/account.html">Account</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/security.html">Trust</a> · <a href="/status.html">Status</a> · <a href="/registers/index.html">Registers</a> · <a href="/blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
 <p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
 <script>
 (function(){try{var q=new URLSearchParams(location.search),s=q.get("src")||q.get("utm_source"),r=document.referrer?new URL(document.referrer).hostname:"";

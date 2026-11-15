@@ -2,15 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<base href="../">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Nvidia, AMD, Intel operating margin over 5 years</title>
 <meta name="description" content="Operating margin of Nvidia, AMD and Intel for each of the last 5 fiscal years, computed from revenue and operating profit as filed with the SEC.">
 <link rel="canonical" href="https://boscolabs.dev/q/nvidia-amd-intel-operating-margin-5-years.html">
-<link rel="icon" href="favicon.ico" sizes="any">
-<link rel="icon" href="logo.svg" type="image/svg+xml">
-<link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
-<link rel="alternate" type="application/atom+xml" href="blog/feed.xml" title="Bosco Labs blog">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/logo.svg" type="image/svg+xml">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
+<link rel="alternate" type="application/atom+xml" href="/blog/feed.xml" title="Bosco Labs blog">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Bosco Labs">
 <meta property="og:title" content="Nvidia, AMD, Intel operating margin over 5 years">
@@ -113,14 +112,14 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="site"><div class="wrap"><a class="brand" href="/"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
-<nav aria-label="Main"><a href="/#demo">Company checks</a><a href="/#tools">All tools</a><a href="api.html">API and prices</a><a href="blog/index.html">Blog</a><a href="llms.txt">llms.txt</a><a href="account.html">Account</a><a class="navcta" href="api.html#key">Get a key</a></nav></div></header>
+<header class="site"><div class="wrap"><a class="brand" href="/"><img src="/logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav aria-label="Main"><a href="/#demo">Company checks</a><a href="/#tools">All tools</a><a href="/api.html">API and prices</a><a href="/blog/index.html">Blog</a><a href="/llms.txt">llms.txt</a><a href="/account.html">Account</a><a class="navcta" href="/api.html#key">Get a key</a></nav></div></header>
 <main class="wrap" id="main">
-<p class="crumbs"><a href="/#tools">Tools</a> &rsaquo; <a href="q/index.html">Questions</a> &rsaquo; <a href="sec-company-financials.html">SEC Financial Statements API</a></p>
+<p class="crumbs"><a href="/#tools">Tools</a> &rsaquo; <a href="/q/index.html">Questions</a> &rsaquo; <a href="/sec-company-financials.html">SEC Financial Statements API</a></p>
 <article class="prose">
 <h1 class="sub">Compare Nvidia, AMD and Intel on operating margin for the last 5 fiscal years.</h1>
 <p class="lead">Operating margin of Nvidia, AMD and Intel for each of the last 5 fiscal years, computed from revenue and operating profit as filed with the SEC.</p>
-<div class="facts"><div class="fact"><b>Answered by</b><a href="sec-company-financials.html">SEC Financial Statements API: income, balance sheet, cash flow</a></div><div class="fact"><b>Price</b>$0.005 per company-period row</div><div class="fact"><b>Status</b><span class="badge live">On Apify Store</span></div></div>
+<div class="facts"><div class="fact"><b>Answered by</b><a href="/sec-company-financials.html">SEC Financial Statements API: income, balance sheet, cash flow</a></div><div class="fact"><b>Price</b>$0.005 per company-period row</div><div class="fact"><b>Status</b><span class="badge live">On Apify Store</span></div></div>
 <p>One row per company per fiscal year (15 rows here). operating_margin is operating_profit divided by revenue, computed from the values as filed; revenue and operating_profit are included so the ratio can be checked. Fiscal years differ by company (Nvidia&#x27;s ends in late January), so compare fiscal_year and period_end rather than calendar years.</p>
 <h2>Tool input</h2>
 <pre><code>{
@@ -149,7 +148,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
   -H &quot;Content-Type: application/json&quot; \
   -d &#x27;{&quot;tickers&quot;: [&quot;NVDA&quot;, &quot;AMD&quot;, &quot;INTC&quot;], &quot;period&quot;: &quot;annual&quot;, &quot;years&quot;: 5, &quot;metrics&quot;: [&quot;revenue&quot;, &quot;operating_profit&quot;, &quot;operating_margin&quot;]}&#x27;</code></pre>
 <h2>Call the Bosco Labs HTTP API</h2>
-<p>Bosco Labs HTTP API (beta): same input and rows, <strong>$0.005 per company-period row</strong> from prepaid credits. <a href="api.html#key">Get a key</a> with a $5.00 free trial, or send the same call without a key and <a href="api.html#x402">pay per call in USDC via x402</a> (no account).</p>
+<p>Bosco Labs HTTP API (beta): same input and rows, <strong>$0.005 per company-period row</strong> from prepaid credits. <a href="/api.html#key">Get a key</a> with a $5.00 free trial, or send the same call without a key and <a href="/api.html#x402">pay per call in USDC via x402</a> (no account).</p>
 <pre><code>curl https://api.boscolabs.dev/v1/sec-company-financials \
   -H &quot;Authorization: Bearer $BOSCO_API_KEY&quot; \
   -H &quot;Content-Type: application/json&quot; \
@@ -197,12 +196,12 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
     &quot;retrieved_at&quot;: &quot;2026-11-09T07:30:05+00:00&quot;
   }
 ]</code></pre>
-<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/sec-company-financials">Run it on Apify Store &rarr;</a> <a class="btn ghost" href="api.html#key">Try the API: $5.00 free credit</a><a class="btn ghost" href="sec-company-financials.html">All fields and limits</a></div>
-<h2>More questions for this tool</h2><ul class="qs"><li><a href="q/microsoft-quarterly-revenue-net-income-fcf.html">How did Microsoft&#x27;s revenue, net income and free cash flow develop over the last 8 quarters?</a></li><li><a href="q/apple-free-cash-flow-5-years.html">What was Apple&#x27;s free cash flow in each of the last 5 fiscal years?</a></li><li><a href="q/tesla-cash-and-debt-last-4-quarters.html">How much cash and long-term debt did Tesla have over the last 4 quarters?</a></li></ul>
-<p><a href="q/index.html">All questions</a></p>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/sec-company-financials">Run it on Apify Store &rarr;</a> <a class="btn ghost" href="/api.html#key">Try the API: $5.00 free credit</a><a class="btn ghost" href="/sec-company-financials.html">All fields and limits</a></div>
+<h2>More questions for this tool</h2><ul class="qs"><li><a href="/q/microsoft-quarterly-revenue-net-income-fcf.html">How did Microsoft&#x27;s revenue, net income and free cash flow develop over the last 8 quarters?</a></li><li><a href="/q/apple-free-cash-flow-5-years.html">What was Apple&#x27;s free cash flow in each of the last 5 fiscal years?</a></li><li><a href="/q/tesla-cash-and-debt-last-4-quarters.html">How much cash and long-term debt did Tesla have over the last 4 quarters?</a></li></ul>
+<p><a href="/q/index.html">All questions</a></p>
 </article>
 </main>
-<footer><div class="wrap"><p><a href="/">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="registers/index.html">Registers</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<footer><div class="wrap"><p><a href="/">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="/llms.txt">llms.txt</a> · <a href="/llms-full.txt">llms-full.txt</a> · <a href="/api.html">HTTP API</a> · <a href="/account.html">Account</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/security.html">Trust</a> · <a href="/status.html">Status</a> · <a href="/registers/index.html">Registers</a> · <a href="/blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
 <p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
 <script>
 (function(){try{var q=new URLSearchParams(location.search),s=q.get("src")||q.get("utm_source"),r=document.referrer?new URL(document.referrer).hostname:"";

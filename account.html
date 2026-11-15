@@ -6,10 +6,10 @@
 <title>Account: Bosco Labs API balance and top-ups</title>
 <meta name="description" content="See your Bosco Labs API key&#x27;s balance, today&#x27;s spend and recent calls, buy credits, get a free key or replace a lost one.">
 <link rel="canonical" href="https://boscolabs.dev/account.html">
-<link rel="icon" href="favicon.ico" sizes="any">
-<link rel="icon" href="logo.svg" type="image/svg+xml">
-<link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
-<link rel="alternate" type="application/atom+xml" href="blog/feed.xml" title="Bosco Labs blog">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/logo.svg" type="image/svg+xml">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
+<link rel="alternate" type="application/atom+xml" href="/blog/feed.xml" title="Bosco Labs blog">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Bosco Labs">
 <meta property="og:title" content="Account: Bosco Labs API balance and top-ups">
@@ -100,8 +100,8 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="site"><div class="wrap"><a class="brand" href="/"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
-<nav aria-label="Main"><a href="/#demo">Company checks</a><a href="/#tools">All tools</a><a href="api.html">API and prices</a><a href="blog/index.html">Blog</a><a href="llms.txt">llms.txt</a><a href="account.html">Account</a><a class="navcta" href="api.html#key">Get a key</a></nav></div></header>
+<header class="site"><div class="wrap"><a class="brand" href="/"><img src="/logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav aria-label="Main"><a href="/#demo">Company checks</a><a href="/#tools">All tools</a><a href="/api.html">API and prices</a><a href="/blog/index.html">Blog</a><a href="/llms.txt">llms.txt</a><a href="/account.html">Account</a><a class="navcta" href="/api.html#key">Get a key</a></nav></div></header>
 <main class="wrap" id="main">
 <div class="prose">
 <h1 class="top">Account</h1>
@@ -117,7 +117,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <label for="acct-auto" style="display:flex;gap:10px;align-items:flex-start;font-size:.92rem"><input id="acct-auto" type="checkbox" name="auto_topup" value="1" style="flex:none;min-height:0;width:20px;height:20px;margin:2px 0 0;padding:0"> Top up automatically: when this key&#x27;s balance drops below $2, we charge this card for the same pack. At most 3 times a day. Turn it off any time on the Account page.</label>
 </form>
 <p id="acct-status" role="status" class="muted"></p>
-<p class="notice">Your key stays in this browser tab only (sessionStorage, cleared when you close the tab) and is sent only to <code>api.boscolabs.dev</code>, never in a URL. Top-ups go to Stripe Checkout; prices are in US dollars and include any VAT; <a href="terms.html">terms</a>.</p>
+<p class="notice">Your key stays in this browser tab only (sessionStorage, cleared when you close the tab) and is sent only to <code>api.boscolabs.dev</code>, never in a URL. Top-ups go to Stripe Checkout; prices are in US dollars and include any VAT; <a href="/terms.html">terms</a>.</p>
 <section id="acct-data" hidden>
 <div class="facts"><div class="fact"><b>Balance</b><span id="bal"></span> <span id="bal-credits" class="muted"></span></div><div class="fact"><b>Spent today</b><span id="today">…</span><br><meter id="cap" min="0" max="1" value="0" style="width:100%" aria-label="Spent today against the daily cap"></meter></div><div class="fact"><b>Rate limit</b><span id="rate"></span></div></div>
 <p class="muted">The daily cap ($5 by default) protects you from a runaway agent; ask <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a> to raise it.</p>
@@ -156,7 +156,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <p role="status" class="muted"></p>
 </div>
 </div>
-<p class="muted">More: <a href="api.html">API docs, prices and limits</a> · <a href="privacy.html">privacy</a>. Agents read the same data with <code>GET /v1/me</code>, <code>GET /v1/me/usage</code> and <code>GET /v1/me/auto-topup</code>.</p>
+<p class="muted">More: <a href="/api.html">API docs, prices and limits</a> · <a href="/privacy.html">privacy</a>. Agents read the same data with <code>GET /v1/me</code>, <code>GET /v1/me/usage</code> and <code>GET /v1/me/auto-topup</code>.</p>
 </div>
 <script>
 (() => {
@@ -265,7 +265,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 })();
 </script>
 </main>
-<footer><div class="wrap"><p><a href="/">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="registers/index.html">Registers</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<footer><div class="wrap"><p><a href="/">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="/llms.txt">llms.txt</a> · <a href="/llms-full.txt">llms-full.txt</a> · <a href="/api.html">HTTP API</a> · <a href="/account.html">Account</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/security.html">Trust</a> · <a href="/status.html">Status</a> · <a href="/registers/index.html">Registers</a> · <a href="/blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
 <p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
 <script>
 (function(){try{var q=new URLSearchParams(location.search),s=q.get("src")||q.get("utm_source"),r=document.referrer?new URL(document.referrer).hostname:"";

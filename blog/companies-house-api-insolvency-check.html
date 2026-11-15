@@ -2,15 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<base href="../">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Check UK company insolvency with the Companies House API</title>
 <meta name="description" content="Which Companies House API fields show liquidation or administration, why has_insolvency_history is deprecated, and what the register misses. With Python.">
 <link rel="canonical" href="https://boscolabs.dev/blog/companies-house-api-insolvency-check.html">
-<link rel="icon" href="favicon.ico" sizes="any">
-<link rel="icon" href="logo.svg" type="image/svg+xml">
-<link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
-<link rel="alternate" type="application/atom+xml" href="blog/feed.xml" title="Bosco Labs blog">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/logo.svg" type="image/svg+xml">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
+<link rel="alternate" type="application/atom+xml" href="/blog/feed.xml" title="Bosco Labs blog">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Bosco Labs">
 <meta property="og:title" content="Check UK company insolvency with the Companies House API">
@@ -141,11 +140,11 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="site"><div class="wrap"><a class="brand" href="/"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
-<nav aria-label="Main"><a href="/#demo">Company checks</a><a href="/#tools">All tools</a><a href="api.html">API and prices</a><a href="blog/index.html">Blog</a><a href="llms.txt">llms.txt</a><a href="account.html">Account</a><a class="navcta" href="api.html#key">Get a key</a></nav></div></header>
+<header class="site"><div class="wrap"><a class="brand" href="/"><img src="/logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav aria-label="Main"><a href="/#demo">Company checks</a><a href="/#tools">All tools</a><a href="/api.html">API and prices</a><a href="/blog/index.html">Blog</a><a href="/llms.txt">llms.txt</a><a href="/account.html">Account</a><a class="navcta" href="/api.html#key">Get a key</a></nav></div></header>
 <main class="wrap" id="main">
 <article class="prose">
-<p class="crumbs"><a href="blog/index.html">Blog</a> &rsaquo; Check UK company insolvency with the Companies House API</p>
+<p class="crumbs"><a href="/blog/index.html">Blog</a> &rsaquo; Check UK company insolvency with the Companies House API</p>
 <h1>Check UK company insolvency with the Companies House API</h1>
 <p class="muted">Bosco Labs · <time datetime="2026-11-09">9 November 2026</time></p>
 <p>Read <code>company_status</code> from the company profile. If it says <code>liquidation</code>, <code>administration</code>, <code>receivership</code>, <code>voluntary-arrangement</code> or <code>insolvency-proceedings</code>, the company is in a formal insolvency process. Then follow <code>links.insolvency</code> to get the cases, with their dates and the practitioners appointed. That&#x27;s everything Companies House knows.</p>
@@ -217,7 +216,7 @@ print(insolvency_check(&quot;00445790&quot;))</code></pre>
 <p>And a clean status says nothing about whether the company pays its bills. Late filing of accounts is a better early signal than status. The profile has <code>accounts.overdue</code> and <code>confirmation_statement.overdue</code>, and both are worth surfacing.</p>
 <p>The Gazette has its own search and data feeds for insolvency notices. If you build this yourself, search there by company number and name, and treat a recent winding-up petition as a stop until someone has looked at it.</p>
 <h2>Doing it in one call</h2>
-<p>If you&#x27;d rather not glue the register, The Gazette and a sanctions screen together yourself, our counterparty-check does it in one request. For a UK company it reads Companies House, our copy of The Gazette&#x27;s insolvency notices, the officers and people with significant control, and screens the company and those people against the OFAC, UK, EU and UN lists.</p>
+<p>If you&#x27;d rather not glue the register, The Gazette and a sanctions screen together yourself, our <a href="/counterparty-check.html">counterparty-check</a> does it in one request. For a UK company it reads Companies House, our copy of The Gazette&#x27;s insolvency notices, the officers and people with significant control, and screens the company and those people against the OFAC, UK, EU and UN lists.</p>
 <pre><code>import os
 import httpx
 
@@ -235,14 +234,14 @@ for check in row[&quot;checks&quot;]:
 
 print(&quot;needs attention:&quot;, row[&quot;summary&quot;][&quot;needs_attention&quot;])
 print(&quot;unverified:&quot;, row[&quot;summary&quot;][&quot;unverified_checks&quot;])</code></pre>
-<p>Each check comes back as <code>pass</code>, <code>fail</code>, <code>review</code> or <code>unverified</code>, with the source and a link. <code>unverified</code> means we couldn&#x27;t check it, never that it&#x27;s fine. It costs $0.05 per company, and a key comes with $5 of free credit.</p>
+<p>Each check comes back as <code>pass</code>, <code>fail</code>, <code>review</code> or <code>unverified</code>, with the source and a link. <code>unverified</code> means we couldn&#x27;t check it, never that it&#x27;s fine. It costs $0.05 per company, and a <a href="/api.html#key">key comes with $5 of free credit</a>.</p>
 <p>There are limits you should know about. Our Gazette copy is refreshed nightly, so a notice published this morning shows up tomorrow. A full check takes 5 to 30 seconds because it waits on several sources. And this is a screening aid, so a <code>fail</code> or <code>review</code> still needs a person to open the linked source.</p>
-<p>We also ran a small benchmark against a model using web search. Insolvency is the check where both sides still had gaps, and the write-up shows which companies and why.</p>
+<p>We also ran a small <a href="/blog/counterparty-check-benchmark.html">benchmark against a model using web search</a>. Insolvency is the check where both sides still had gaps, and the write-up shows which companies and why.</p>
 <p>Bosco Labs makes counterparty-check.</p>
-<p class="muted">Bosco Labs: official-source data for AI agents, as an HTTP API, MCP server and Apify Actors. <a href="api.html">API docs</a>.</p>
+<p class="muted">Bosco Labs: official-source data for AI agents, as an HTTP API, MCP server and Apify Actors. <a href="/api.html">API docs</a>.</p>
 </article>
 </main>
-<footer><div class="wrap"><p><a href="/">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="registers/index.html">Registers</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<footer><div class="wrap"><p><a href="/">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="/llms.txt">llms.txt</a> · <a href="/llms-full.txt">llms-full.txt</a> · <a href="/api.html">HTTP API</a> · <a href="/account.html">Account</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/security.html">Trust</a> · <a href="/status.html">Status</a> · <a href="/registers/index.html">Registers</a> · <a href="/blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
 <p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
 <script>
 (function(){try{var q=new URLSearchParams(location.search),s=q.get("src")||q.get("utm_source"),r=document.referrer?new URL(document.referrer).hostname:"";

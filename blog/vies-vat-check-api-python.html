@@ -2,15 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<base href="../">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Validate EU VAT numbers with the VIES API in Python</title>
 <meta name="description" content="The official VIES REST endpoint, a small Python function around it, the errors you&#x27;ll hit, and what a valid VAT number does and doesn&#x27;t prove.">
 <link rel="canonical" href="https://boscolabs.dev/blog/vies-vat-check-api-python.html">
-<link rel="icon" href="favicon.ico" sizes="any">
-<link rel="icon" href="logo.svg" type="image/svg+xml">
-<link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
-<link rel="alternate" type="application/atom+xml" href="blog/feed.xml" title="Bosco Labs blog">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/logo.svg" type="image/svg+xml">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
+<link rel="alternate" type="application/atom+xml" href="/blog/feed.xml" title="Bosco Labs blog">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Bosco Labs">
 <meta property="og:title" content="Validate EU VAT numbers with the VIES API in Python">
@@ -141,11 +140,11 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="site"><div class="wrap"><a class="brand" href="/"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
-<nav aria-label="Main"><a href="/#demo">Company checks</a><a href="/#tools">All tools</a><a href="api.html">API and prices</a><a href="blog/index.html">Blog</a><a href="llms.txt">llms.txt</a><a href="account.html">Account</a><a class="navcta" href="api.html#key">Get a key</a></nav></div></header>
+<header class="site"><div class="wrap"><a class="brand" href="/"><img src="/logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav aria-label="Main"><a href="/#demo">Company checks</a><a href="/#tools">All tools</a><a href="/api.html">API and prices</a><a href="/blog/index.html">Blog</a><a href="/llms.txt">llms.txt</a><a href="/account.html">Account</a><a class="navcta" href="/api.html#key">Get a key</a></nav></div></header>
 <main class="wrap" id="main">
 <article class="prose">
-<p class="crumbs"><a href="blog/index.html">Blog</a> &rsaquo; Validate EU VAT numbers with the VIES API in Python</p>
+<p class="crumbs"><a href="/blog/index.html">Blog</a> &rsaquo; Validate EU VAT numbers with the VIES API in Python</p>
 <h1>Validate EU VAT numbers with the VIES API in Python</h1>
 <p class="muted">Bosco Labs · <time datetime="2026-11-09">9 November 2026</time></p>
 <p>Send a POST to the European Commission&#x27;s VIES REST endpoint with the country code and the number. No key, no account. You get back <code>valid</code>, and for most countries the registered name and address. When a member state&#x27;s system is down you get an error, and you should treat that as &quot;unknown&quot; and try again later. Never record it as invalid.</p>
@@ -209,7 +208,7 @@ print(check_vat(&quot;IE 6388047V&quot;))</code></pre>
 <p>It doesn&#x27;t prove the company sending you the invoice is the company the number belongs to. Invoice fraud usually involves a real company&#x27;s details with someone else&#x27;s bank account. For that you need to match the VIES name against the company you expect, and you need to check the bank account separately.</p>
 <p>IBAN validation is offline arithmetic. It checks the country&#x27;s length and layout and the ISO 13616 check digits, and it can read out the bank code. It doesn&#x27;t tell you who holds the account. Verification of Payee is what ties a name to an account, and banks in the euro area have had to offer it for euro credit transfers since October 2025. If a supplier changes their bank details, call them on a number you already had.</p>
 <h2>The hosted version</h2>
-<p>Our VAT and IBAN check wraps all of this: VIES for VAT numbers, offline IBAN checks and a name match against the company you expect. Unknown answers come back as <code>unverified</code> with a reason, and they cost nothing.</p>
+<p>Our <a href="/vat-iban-check.html">VAT and IBAN check</a> wraps all of this: VIES for VAT numbers, offline IBAN checks and a name match against the company you expect. Unknown answers come back as <code>unverified</code> with a reason, and they cost nothing.</p>
 <pre><code>import os
 import httpx
 
@@ -230,13 +229,13 @@ for row in r.json()[&quot;rows&quot;]:
     print(row[&quot;check_type&quot;], row[&quot;number&quot;], row[&quot;status&quot;], row[&quot;reason&quot;])
     for c in row[&quot;checks&quot;]:
         print(&quot;   &quot;, c[&quot;check&quot;], c[&quot;status&quot;], c[&quot;detail&quot;])</code></pre>
-<p>In that example the VAT number passes and matches the name, and the IBAN is well formed but Dutch, so <code>country_match</code> fails against the expected Ireland. That&#x27;s the kind of thing you want a person to look at before paying. It costs $0.002 per definite answer, and malformed or unverified numbers are free. A key comes with $5 of free credit.</p>
-<p>If you&#x27;re onboarding a supplier, the VAT number is one check out of several. Our counterparty-check takes the company number, the VAT number and the IBAN together, then adds register status, insolvency and sanctions screening. That&#x27;s $0.05 per company. There&#x27;s a benchmark of it against web search if you want to see where it helps and where it doesn&#x27;t.</p>
+<p>In that example the VAT number passes and matches the name, and the IBAN is well formed but Dutch, so <code>country_match</code> fails against the expected Ireland. That&#x27;s the kind of thing you want a person to look at before paying. It costs $0.002 per definite answer, and malformed or unverified numbers are free. A key comes with <a href="/api.html#key">$5 of free credit</a>.</p>
+<p>If you&#x27;re onboarding a supplier, the VAT number is one check out of several. Our <a href="/counterparty-check.html">counterparty-check</a> takes the company number, the VAT number and the IBAN together, then adds register status, insolvency and sanctions screening. That&#x27;s $0.05 per company. There&#x27;s a <a href="/blog/counterparty-check-benchmark.html">benchmark of it against web search</a> if you want to see where it helps and where it doesn&#x27;t.</p>
 <p>Bosco Labs makes the VAT and IBAN check and counterparty-check.</p>
-<p class="muted">Bosco Labs: official-source data for AI agents, as an HTTP API, MCP server and Apify Actors. <a href="api.html">API docs</a>.</p>
+<p class="muted">Bosco Labs: official-source data for AI agents, as an HTTP API, MCP server and Apify Actors. <a href="/api.html">API docs</a>.</p>
 </article>
 </main>
-<footer><div class="wrap"><p><a href="/">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="registers/index.html">Registers</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<footer><div class="wrap"><p><a href="/">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="/llms.txt">llms.txt</a> · <a href="/llms-full.txt">llms-full.txt</a> · <a href="/api.html">HTTP API</a> · <a href="/account.html">Account</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/security.html">Trust</a> · <a href="/status.html">Status</a> · <a href="/registers/index.html">Registers</a> · <a href="/blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
 <p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
 <script>
 (function(){try{var q=new URLSearchParams(location.search),s=q.get("src")||q.get("utm_source"),r=document.referrer?new URL(document.referrer).hostname:"";

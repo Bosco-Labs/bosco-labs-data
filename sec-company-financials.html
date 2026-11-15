@@ -6,10 +6,10 @@
 <title>SEC EDGAR Financial Statements API: 10-K, 10-Q data</title>
 <meta name="description" content="Income statement, balance sheet and cash flow of US-listed companies from SEC XBRL, per year or quarter since 2009, by ticker or CIK, each value sourced.">
 <link rel="canonical" href="https://boscolabs.dev/sec-company-financials.html">
-<link rel="icon" href="favicon.ico" sizes="any">
-<link rel="icon" href="logo.svg" type="image/svg+xml">
-<link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
-<link rel="alternate" type="application/atom+xml" href="blog/feed.xml" title="Bosco Labs blog">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/logo.svg" type="image/svg+xml">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
+<link rel="alternate" type="application/atom+xml" href="/blog/feed.xml" title="Bosco Labs blog">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Bosco Labs">
 <meta property="og:title" content="SEC EDGAR Financial Statements API: 10-K, 10-Q data">
@@ -139,27 +139,27 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="site"><div class="wrap"><a class="brand" href="/"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
-<nav aria-label="Main"><a href="/#demo">Company checks</a><a href="/#tools">All tools</a><a href="api.html">API and prices</a><a href="blog/index.html">Blog</a><a href="llms.txt">llms.txt</a><a href="account.html">Account</a><a class="navcta" href="api.html#key">Get a key</a></nav></div></header>
+<header class="site"><div class="wrap"><a class="brand" href="/"><img src="/logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav aria-label="Main"><a href="/#demo">Company checks</a><a href="/#tools">All tools</a><a href="/api.html">API and prices</a><a href="/blog/index.html">Blog</a><a href="/llms.txt">llms.txt</a><a href="/account.html">Account</a><a class="navcta" href="/api.html#key">Get a key</a></nav></div></header>
 <main class="wrap" id="main">
 <p class="crumbs"><a href="/#tools">Tools</a> &rsaquo; <a href="/#finance-sec">Finance &amp; SEC</a></p>
 <article>
-<div class="head"><img src="icons/sec-company-financials.svg" alt="" width="84" height="84"><div><h1>SEC Financial Statements API: income, balance sheet, cash flow</h1><span class="badge live">On Apify Store</span></div></div>
+<div class="head"><img src="/icons/sec-company-financials.svg" alt="" width="84" height="84"><div><h1>SEC Financial Statements API: income, balance sheet, cash flow</h1><span class="badge live">On Apify Store</span></div></div>
 <div class="prose">
 <p class="lead">Get <strong>clean financial statements of any US-listed company from the SEC&#x27;s own XBRL data</strong>: revenue, profit, EPS, balance sheet, cash flow, free cash flow and margins, per fiscal year or per quarter, by ticker or CIK. For analysts, finance apps and AI agents that need a company&#x27;s numbers over 5-20 years without parsing filings. Every value cites <strong>the XBRL tag and the SEC filing it came from</strong>.</p>
 <div class="facts"><div class="fact"><b>Price</b>$0.005 per company-period row</div><div class="fact"><b>Domain</b>Finance &amp; SEC</div><div class="fact"><b>Get it on</b><a href="#where">Apify Store, HTTP API, MCP, x402</a></div></div>
 <p><strong>Pricing (pay per event):</strong> $0.005 per company-period row ($5 per 1,000). Five years of Apple&#x27;s annual figures cost $0.025; eight quarters $0.04. Empty or failed lookups are free, and the Actor stops at your max charge limit.</p>
-<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/sec-company-financials">Run it on Apify Store &rarr;</a> <a class="btn ghost" href="api.html#key">Try the API: $5.00 free credit</a></div>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/sec-company-financials">Run it on Apify Store &rarr;</a> <a class="btn ghost" href="/api.html#key">Try the API: $5.00 free credit</a></div>
 <h2 id="where">Where to get it</h2>
 <p>The same data and the same rows on every channel; pick the one your agent or code already uses.</p>
 <div class="table"><table><thead><tr><th>Channel</th><th>How</th><th>Pay</th></tr></thead><tbody>
 <tr><td>Apify Store</td><td><a href="https://apify.com/bosco_labs/sec-company-financials">apify.com/bosco_labs/sec-company-financials</a>: run it in the Apify Console, by the Apify API or from Apify's MCP server (<code>https://mcp.apify.com?tools=bosco_labs/sec-company-financials</code>)</td><td>$0.005 per company-period row, billed to your Apify account</td></tr>
-<tr><td>HTTP API</td><td><code>POST https://api.boscolabs.dev/v1/sec-company-financials</code> with your key (<a href="api.html#key">get a key</a>, $5.00 free trial)</td><td>$0.005 per company-period row, prepaid credits</td></tr>
-<tr><td>MCP</td><td><code>https://api.boscolabs.dev/mcp</code> (remote, same key) or <code>https://api.boscolabs.dev/mcp/free</code> (no key: find and plan) &middot; <a href="api.html#mcp">setup</a></td><td>$0.005 per company-period row, prepaid credits</td></tr>
-<tr><td>x402</td><td><code>POST https://api.boscolabs.dev/v1/sec-company-financials</code> without a key: pay per call, no account (<a href="api.html#x402">how</a>)</td><td>$0.005 per company-period row, in USDC on Base</td></tr>
+<tr><td>HTTP API</td><td><code>POST https://api.boscolabs.dev/v1/sec-company-financials</code> with your key (<a href="/api.html#key">get a key</a>, $5.00 free trial)</td><td>$0.005 per company-period row, prepaid credits</td></tr>
+<tr><td>MCP</td><td><code>https://api.boscolabs.dev/mcp</code> (remote, same key) or <code>https://api.boscolabs.dev/mcp/free</code> (no key: find and plan) &middot; <a href="/api.html#mcp">setup</a></td><td>$0.005 per company-period row, prepaid credits</td></tr>
+<tr><td>x402</td><td><code>POST https://api.boscolabs.dev/v1/sec-company-financials</code> without a key: pay per call, no account (<a href="/api.html#x402">how</a>)</td><td>$0.005 per company-period row, in USDC on Base</td></tr>
 </tbody></table></div>
 <h2>Questions agents ask</h2>
-<ul class="qs"><li><a href="q/microsoft-quarterly-revenue-net-income-fcf.html">&ldquo;How did Microsoft&#x27;s revenue, net income and free cash flow develop over the last 8 quarters?&rdquo;</a></li><li><a href="q/nvidia-amd-intel-operating-margin-5-years.html">&ldquo;Compare Nvidia, AMD and Intel on operating margin for the last 5 fiscal years.&rdquo;</a></li><li>&ldquo;What was JPMorgan&#x27;s net income in 2024, and which filing is it from?&rdquo;</li><li><a href="q/apple-free-cash-flow-5-years.html">What was Apple&#x27;s free cash flow in each of the last 5 fiscal years?</a></li><li><a href="q/tesla-cash-and-debt-last-4-quarters.html">How much cash and long-term debt did Tesla have over the last 4 quarters?</a></li></ul>
+<ul class="qs"><li><a href="/q/microsoft-quarterly-revenue-net-income-fcf.html">&ldquo;How did Microsoft&#x27;s revenue, net income and free cash flow develop over the last 8 quarters?&rdquo;</a></li><li><a href="/q/nvidia-amd-intel-operating-margin-5-years.html">&ldquo;Compare Nvidia, AMD and Intel on operating margin for the last 5 fiscal years.&rdquo;</a></li><li>&ldquo;What was JPMorgan&#x27;s net income in 2024, and which filing is it from?&rdquo;</li><li><a href="/q/apple-free-cash-flow-5-years.html">What was Apple&#x27;s free cash flow in each of the last 5 fiscal years?</a></li><li><a href="/q/tesla-cash-and-debt-last-4-quarters.html">How much cash and long-term debt did Tesla have over the last 4 quarters?</a></li></ul>
 </div>
 <h2>Example</h2>
 <div class="two"><div><h3>Input</h3><pre><code>{ &quot;tickers&quot;: [&quot;AAPL&quot;, &quot;MSFT&quot;], &quot;period&quot;: &quot;quarterly&quot;, &quot;years&quot;: 2, &quot;metrics&quot;: [&quot;revenue&quot;, &quot;net_income&quot;, &quot;free_cash_flow&quot;] }</code></pre></div>
@@ -280,7 +280,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <p>stable, typed JSON, one row per company and period, newest first. Every row has <code>schema_version</code>, a <code>source_url</code> (the EDGAR filing most values come from), and with <code>includeSources</code> the tag and accession number of each value, so the agent can cite its source. Derived quarter values and restatements are explained in <code>warnings</code>. A typical answer is 20-40 KB with sources, 2-6 KB without. An unknown ticker fails in seconds with suggestions (&quot;APPLE (did you mean AAPL?)&quot;); a company without XBRL data gets a status message saying so.</p>
 <p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~sec-company-financials/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.005 per company-period row.</p>
 <h2 id="http-api">HTTP API</h2>
-<p>Also on the Bosco Labs HTTP API (beta): same input and same rows as the Actor, <strong>$0.005 per company-period row</strong> from prepaid credits (max 10 tickers/CIKs x 20 years per call). <a href="api.html#key">Get a key</a> with a $5.00 free trial; see <a href="api.html">prices and limits</a>.</p>
+<p>Also on the Bosco Labs HTTP API (beta): same input and same rows as the Actor, <strong>$0.005 per company-period row</strong> from prepaid credits (max 10 tickers/CIKs x 20 years per call). <a href="/api.html#key">Get a key</a> with a $5.00 free trial; see <a href="/api.html">prices and limits</a>.</p>
 <pre><code>curl https://api.boscolabs.dev/v1/sec-company-financials \
   -H &quot;Authorization: Bearer $BOSCO_API_KEY&quot; \
   -H &quot;Content-Type: application/json&quot; \
@@ -303,11 +303,11 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <p><strong>Why is a field empty for some companies?</strong> Companies tag differently. Some use their own company-specific tags instead of the standard ones (Microsoft reports sales &amp; marketing and G&amp;A separately, so <code>selling_general_and_administrative</code> is <code>null</code>); those stay <code>null</code> rather than being guessed. <code>metrics_found</code> tells you how complete a row is.</p>
 <p><strong>What is not included?</strong> Market data (share prices, market cap, valuation multiples), segment and geographic breakdowns, guidance, non-GAAP figures, and anything before a company&#x27;s first XBRL filing (2009-2011).</p>
 <p><strong>Legal basis?</strong> SEC filings are US government public records. See LEGAL.md.</p>
-<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/sec-company-financials">Run it on Apify Store &rarr;</a> <a class="btn ghost" href="api.html#key">Try the API: $5.00 free credit</a></div>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/sec-company-financials">Run it on Apify Store &rarr;</a> <a class="btn ghost" href="/api.html#key">Try the API: $5.00 free credit</a></div>
 </div>
 </article>
 </main>
-<footer><div class="wrap"><p><a href="/">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="registers/index.html">Registers</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<footer><div class="wrap"><p><a href="/">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="/llms.txt">llms.txt</a> · <a href="/llms-full.txt">llms-full.txt</a> · <a href="/api.html">HTTP API</a> · <a href="/account.html">Account</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/security.html">Trust</a> · <a href="/status.html">Status</a> · <a href="/registers/index.html">Registers</a> · <a href="/blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
 <p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
 <script>
 (function(){try{var q=new URLSearchParams(location.search),s=q.get("src")||q.get("utm_source"),r=document.referrer?new URL(document.referrer).hostname:"";
