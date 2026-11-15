@@ -2,15 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<base href="../">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SEC EDGAR filings and financials on Apify compared</title>
 <meta name="description" content="Tools on the Apify Store that return SEC EDGAR filings, filing metadata or XBRL financial data. Sources, prices and Apify Store figures (2026-11-05).">
 <link rel="canonical" href="https://boscolabs.dev/compare/sec-edgar.html">
-<link rel="icon" href="favicon.ico" sizes="any">
-<link rel="icon" href="logo.svg" type="image/svg+xml">
-<link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
-<link rel="alternate" type="application/atom+xml" href="blog/feed.xml" title="Bosco Labs blog">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/logo.svg" type="image/svg+xml">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
+<link rel="alternate" type="application/atom+xml" href="/blog/feed.xml" title="Bosco Labs blog">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Bosco Labs">
 <meta property="og:title" content="SEC EDGAR filings and financials on Apify compared">
@@ -102,8 +101,8 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="site"><div class="wrap"><a class="brand" href="/"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
-<nav aria-label="Main"><a href="/#demo">Company checks</a><a href="/#tools">All tools</a><a href="api.html">API and prices</a><a href="blog/index.html">Blog</a><a href="llms.txt">llms.txt</a><a href="account.html">Account</a><a class="navcta" href="api.html#key">Get a key</a></nav></div></header>
+<header class="site"><div class="wrap"><a class="brand" href="/"><img src="/logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav aria-label="Main"><a href="/#demo">Company checks</a><a href="/#tools">All tools</a><a href="/api.html">API and prices</a><a href="/blog/index.html">Blog</a><a href="/llms.txt">llms.txt</a><a href="/account.html">Account</a><a class="navcta" href="/api.html#key">Get a key</a></nav></div></header>
 <main class="wrap" id="main">
 <p class="crumbs"><a href="/#tools">Tools</a> &rsaquo; <a href="/#questions">Comparisons</a></p>
 <div class="prose">
@@ -111,9 +110,9 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <p class="lead">Tools on the Apify Store that return SEC EDGAR filings, filing metadata or XBRL financial data. Our tools are listed with the facts we publish about them; other tools only with the figures in the public Apify Store listing (Apify Store data, 2026-11-05). We make no claims about other tools beyond those figures; check their Store pages for details and current prices.</p>
 <h2>Bosco Labs tools</h2>
 <div class="table"><table><thead><tr><th>Tool</th><th>Sources</th><th>Price</th><th>Source link</th><th>Status</th></tr></thead><tbody>
-<tr><td><a href="sec-filings-feed.html">SEC EDGAR Filings API</a></td><td>SEC EDGAR submissions API (company history to 1994), live feed, daily and quarterly indexes</td><td>$0.001 per filing</td><td><code>source_url</code> on every row</td><td><span class="badge live">On Apify Store</span></td></tr>
-<tr><td><a href="sec-company-financials.html">SEC Financial Statements API</a></td><td>SEC XBRL company facts from 10-K and 10-Q filings</td><td>$0.005 per company-period row</td><td><code>source_url</code> on every row</td><td><span class="badge live">On Apify Store</span></td></tr>
-<tr><td><a href="sec-company-screen.html">SEC Company Screener API</a></td><td>SEC XBRL frames API (one value per company per period)</td><td>$0.002 per company returned</td><td><code>source_url</code> on every row</td><td><span class="badge live">On Apify Store</span></td></tr>
+<tr><td><a href="/sec-filings-feed.html">SEC EDGAR Filings API</a></td><td>SEC EDGAR submissions API (company history to 1994), live feed, daily and quarterly indexes</td><td>$0.001 per filing</td><td><code>source_url</code> on every row</td><td><span class="badge live">On Apify Store</span></td></tr>
+<tr><td><a href="/sec-company-financials.html">SEC Financial Statements API</a></td><td>SEC XBRL company facts from 10-K and 10-Q filings</td><td>$0.005 per company-period row</td><td><code>source_url</code> on every row</td><td><span class="badge live">On Apify Store</span></td></tr>
+<tr><td><a href="/sec-company-screen.html">SEC Company Screener API</a></td><td>SEC XBRL frames API (one value per company per period)</td><td>$0.002 per company returned</td><td><code>source_url</code> on every row</td><td><span class="badge live">On Apify Store</span></td></tr>
 </tbody></table></div>
 <p class="muted">Latency target for every Bosco Labs tool: under 30 seconds for a precise question (hard limit 60 s). This is our build target, not a measured figure.</p>
 <h2>Other Actors on the Apify Store</h2>
@@ -127,10 +126,10 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <p class="muted">Apify Store data, 2026-11-05: users in the last 30 days, pricing and rating as listed on the Store that day. Empty cells: not in the data. Actors are listed by the topic of their title; inclusion says nothing about quality.</p>
 <h2>When to pick something else</h2>
 <ul><li>You need the full text of filings: our filings tool returns links to each filing and its main document, not the text.</li><li>You want Form D or other niche forms parsed into fields: our feed lists them with links, without parsing their contents.</li><li>You need non-US companies&#x27; statements: our SEC tools cover SEC filers only (for European listed companies see ESEF annual reports).</li></ul>
-<h2>Questions our tools answer</h2><ul class="qs"><li><a href="q/nvidia-earnings-release-dates.html">When did Nvidia release its last four quarterly results, and was it before or after the market closed?</a></li><li><a href="q/new-13d-filings-last-7-days.html">Which companies had a 13D activist stake filed in the last 7 days, and who filed it?</a></li><li><a href="q/apple-10-k-annual-reports-since-2015.html">Give me links to Apple&#x27;s 10-K annual reports since 2015.</a></li><li><a href="q/microsoft-quarterly-revenue-net-income-fcf.html">How did Microsoft&#x27;s revenue, net income and free cash flow develop over the last 8 quarters?</a></li><li><a href="q/nvidia-amd-intel-operating-margin-5-years.html">Compare Nvidia, AMD and Intel on operating margin for the last 5 fiscal years.</a></li><li><a href="q/us-companies-revenue-over-10b-net-margin-over-20.html">Which US companies had revenue over $10B and a net margin above 20% in fiscal 2025?</a></li><li><a href="q/top-20-us-companies-operating-cash-flow-2025.html">What were the top 20 US companies by operating cash flow in 2025?</a></li><li><a href="q/apple-free-cash-flow-5-years.html">What was Apple&#x27;s free cash flow in each of the last 5 fiscal years?</a></li><li><a href="q/tesla-cash-and-debt-last-4-quarters.html">How much cash and long-term debt did Tesla have over the last 4 quarters?</a></li></ul>
+<h2>Questions our tools answer</h2><ul class="qs"><li><a href="/q/nvidia-earnings-release-dates.html">When did Nvidia release its last four quarterly results, and was it before or after the market closed?</a></li><li><a href="/q/new-13d-filings-last-7-days.html">Which companies had a 13D activist stake filed in the last 7 days, and who filed it?</a></li><li><a href="/q/apple-10-k-annual-reports-since-2015.html">Give me links to Apple&#x27;s 10-K annual reports since 2015.</a></li><li><a href="/q/microsoft-quarterly-revenue-net-income-fcf.html">How did Microsoft&#x27;s revenue, net income and free cash flow develop over the last 8 quarters?</a></li><li><a href="/q/nvidia-amd-intel-operating-margin-5-years.html">Compare Nvidia, AMD and Intel on operating margin for the last 5 fiscal years.</a></li><li><a href="/q/us-companies-revenue-over-10b-net-margin-over-20.html">Which US companies had revenue over $10B and a net margin above 20% in fiscal 2025?</a></li><li><a href="/q/top-20-us-companies-operating-cash-flow-2025.html">What were the top 20 US companies by operating cash flow in 2025?</a></li><li><a href="/q/apple-free-cash-flow-5-years.html">What was Apple&#x27;s free cash flow in each of the last 5 fiscal years?</a></li><li><a href="/q/tesla-cash-and-debt-last-4-quarters.html">How much cash and long-term debt did Tesla have over the last 4 quarters?</a></li></ul>
 </div>
 </main>
-<footer><div class="wrap"><p><a href="/">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="registers/index.html">Registers</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<footer><div class="wrap"><p><a href="/">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="/llms.txt">llms.txt</a> · <a href="/llms-full.txt">llms-full.txt</a> · <a href="/api.html">HTTP API</a> · <a href="/account.html">Account</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/security.html">Trust</a> · <a href="/status.html">Status</a> · <a href="/registers/index.html">Registers</a> · <a href="/blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
 <p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
 <script>
 (function(){try{var q=new URLSearchParams(location.search),s=q.get("src")||q.get("utm_source"),r=document.referrer?new URL(document.referrer).hostname:"";

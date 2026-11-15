@@ -6,10 +6,10 @@
 <title>Counterparty check benchmark data: results per company</title>
 <meta name="description" content="Counterparty-check benchmark, 25 companies: one API call against web search. 20 and 19 right in the second run, 17 and 23 in the first. Per-company tables.">
 <link rel="canonical" href="https://boscolabs.dev/benchmark.html">
-<link rel="icon" href="favicon.ico" sizes="any">
-<link rel="icon" href="logo.svg" type="image/svg+xml">
-<link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
-<link rel="alternate" type="application/atom+xml" href="blog/feed.xml" title="Bosco Labs blog">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/logo.svg" type="image/svg+xml">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
+<link rel="alternate" type="application/atom+xml" href="/blog/feed.xml" title="Bosco Labs blog">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Bosco Labs">
 <meta property="og:title" content="Counterparty check benchmark data: results per company">
@@ -101,13 +101,13 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="site"><div class="wrap"><a class="brand" href="/"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
-<nav aria-label="Main"><a href="/#demo">Company checks</a><a href="/#tools">All tools</a><a href="api.html">API and prices</a><a href="blog/index.html">Blog</a><a href="llms.txt">llms.txt</a><a href="account.html">Account</a><a class="navcta" href="api.html#key">Get a key</a></nav></div></header>
+<header class="site"><div class="wrap"><a class="brand" href="/"><img src="/logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav aria-label="Main"><a href="/#demo">Company checks</a><a href="/#tools">All tools</a><a href="/api.html">API and prices</a><a href="/blog/index.html">Blog</a><a href="/llms.txt">llms.txt</a><a href="/account.html">Account</a><a class="navcta" href="/api.html#key">Get a key</a></nav></div></header>
 <main class="wrap" id="main">
 <div class="prose">
-<p class="crumbs"><a href="counterparty-check.html">Counterparty Check</a> &rsaquo; Benchmark</p>
+<p class="crumbs"><a href="/counterparty-check.html">Counterparty Check</a> &rsaquo; Benchmark</p>
 <h1>Counterparty check benchmark: one API call against web search</h1>
-<p class="lead">Is a company still on the register, is it sanctioned, is it insolvent? We asked one model about 25 companies twice: once with web search, once with the result of one <a href="counterparty-check.html">counterparty-check</a> call. Counting the companies with every scored field right, the result is a tie: 20 of 25 with the call, 19 of 25 with web search.</p>
+<p class="lead">Is a company still on the register, is it sanctioned, is it insolvent? We asked one model about 25 companies twice: once with web search, once with the result of one <a href="/counterparty-check.html">counterparty-check</a> call. Counting the companies with every scored field right, the result is a tie: 20 of 25 with the call, 19 of 25 with web search.</p>
 <p>That is the second run, of 2026-11-09. The first run, a day earlier, went to web search, 23 to 17. We then fixed four bugs in our check on these same 25 companies, so the second run is not a fresh test of it: see <a href="#lost">where the API lost</a>.</p>
 <p>In the second run the tie splits two ways. On the 12 hard cases (companies that are sanctioned, insolvent, in liquidation or dissolved) the call got 11 right and web search 6. On the other 13, large companies that are active, not sanctioned and not insolvent (the well-known companies below), web search got 13 right and the call 9. Only the second half held in both runs: in the first run web search led on the hard cases too, 10 against 7.</p>
 <h2>What one call returned that the web search answer did not</h2>
@@ -167,7 +167,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <li>The run files hold the full answers, but no URLs of the pages web search read, so a web search answer cannot be traced to its source page. The script that ran both arms is not public; the question and the scoring rule are on the dataset card.</li>
 <li>Cost is list-price tokens plus $0.01 per search for web search, and our charge plus the model's tokens for the call. Seconds include the model's answer.</li>
 </ul>
-<p>How we ran it and what the first run taught us is on the blog: <a href="blog/counterparty-check-benchmark.html">We lost our own benchmark</a>. The questions, the ground truth with source URLs and the full answers of both runs are on <a href="https://huggingface.co/datasets/BoscoLabs/counterparty-check-benchmark">Hugging Face</a>.</p>
+<p>How we ran it and what the first run taught us is on the blog: <a href="/blog/counterparty-check-benchmark.html">We lost our own benchmark</a>. The questions, the ground truth with source URLs and the full answers of both runs are on <a href="https://huggingface.co/datasets/BoscoLabs/counterparty-check-benchmark">Hugging Face</a>.</p>
 <h2>Per company</h2>
 <p class="muted">Status, sanctioned, insolvent. n/s = not scored (the ground truth could not be verified); unknown = the answer left the field open; no answer = the run ended without an answer, and its three fields count as left open.</p>
 <div class="table"><table><thead><tr><th>Company</th><th>Country</th><th>Ground truth</th><th>Web search</th><th>One call</th></tr></thead><tbody>
@@ -200,7 +200,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <p class="muted">Ground truth checked 2026-11-08. Model claude-sonnet-5-5. Total spend of the run $2.92. Questions or a company you think we scored wrong: <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a>.</p>
 </div>
 </main>
-<footer><div class="wrap"><p><a href="/">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="registers/index.html">Registers</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<footer><div class="wrap"><p><a href="/">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="/llms.txt">llms.txt</a> · <a href="/llms-full.txt">llms-full.txt</a> · <a href="/api.html">HTTP API</a> · <a href="/account.html">Account</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/security.html">Trust</a> · <a href="/status.html">Status</a> · <a href="/registers/index.html">Registers</a> · <a href="/blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
 <p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
 <script>
 (function(){try{var q=new URLSearchParams(location.search),s=q.get("src")||q.get("utm_source"),r=document.referrer?new URL(document.referrer).hostname:"";

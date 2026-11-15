@@ -6,10 +6,10 @@
 <title>Counterparty Check API: KYB checklist, sanctions, VAT, IBAN</title>
 <meta name="description" content="KYB counterparty check from official registers: company status, LEI, insolvency, sanctions on OFAC, UN, UK and EU lists, VIES VAT and IBAN, with sources.">
 <link rel="canonical" href="https://boscolabs.dev/counterparty-check.html">
-<link rel="icon" href="favicon.ico" sizes="any">
-<link rel="icon" href="logo.svg" type="image/svg+xml">
-<link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
-<link rel="alternate" type="application/atom+xml" href="blog/feed.xml" title="Bosco Labs blog">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/logo.svg" type="image/svg+xml">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
+<link rel="alternate" type="application/atom+xml" href="/blog/feed.xml" title="Bosco Labs blog">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Bosco Labs">
 <meta property="og:title" content="Counterparty Check API: KYB checklist, sanctions, VAT, IBAN">
@@ -139,28 +139,28 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="site"><div class="wrap"><a class="brand" href="/"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
-<nav aria-label="Main"><a href="/#demo">Company checks</a><a href="/#tools">All tools</a><a href="api.html">API and prices</a><a href="blog/index.html">Blog</a><a href="llms.txt">llms.txt</a><a href="account.html">Account</a><a class="navcta" href="api.html#key">Get a key</a></nav></div></header>
+<header class="site"><div class="wrap"><a class="brand" href="/"><img src="/logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav aria-label="Main"><a href="/#demo">Company checks</a><a href="/#tools">All tools</a><a href="/api.html">API and prices</a><a href="/blog/index.html">Blog</a><a href="/llms.txt">llms.txt</a><a href="/account.html">Account</a><a class="navcta" href="/api.html#key">Get a key</a></nav></div></header>
 <main class="wrap" id="main">
 <p class="crumbs"><a href="/#tools">Tools</a> &rsaquo; <a href="/#companies">Companies</a></p>
 <article>
-<div class="head"><img src="icons/counterparty-check.svg" alt="" width="84" height="84"><div><h1>Counterparty Check API: KYB checklist from official registers</h1><span class="badge live">On Apify Store</span></div></div>
+<div class="head"><img src="/icons/counterparty-check.svg" alt="" width="84" height="84"><div><h1>Counterparty Check API: KYB checklist from official registers</h1><span class="badge live">On Apify Store</span></div></div>
 <div class="prose">
 <p class="lead"><strong>Can I do business with this company?</strong> One call checks a supplier, customer or partner against official sources and returns a <strong>checklist</strong>: pass, fail, review or unverified per check, each with its source link and time. Built for <strong>AI agents</strong> doing KYB, vendor onboarding or &quot;may I pay this party?&quot; checks, and for people who want a fast, sourced first screen. To screen a vendor list, pass up to 10 companies in <code>companies</code>: one checklist per company, same price each.</p>
 <div class="facts"><div class="fact"><b>Price</b>$0.05 per company checked</div><div class="fact"><b>Domain</b>Companies</div><div class="fact"><b>Get it on</b><a href="#where">Apify Store, HTTP API, MCP, x402</a></div></div>
 <p><strong>Pricing (pay per event):</strong> $0.05 per company checked, on Apify and on the HTTP API, MCP and x402. Free: an ambiguous name (you get the candidates), a company no source knows, and a company for which a source we asked timed out, failed or asked us to slow down. In that case you still get the row, with <code>charged: false</code> and the sources in <code>failed_sources</code>; a check that rests on a failed source is <code>unverified</code>, never <code>pass</code>. That includes VIES: when it cannot verify the VAT number (the one you pass, or the one the register lists), the VAT check is <code>unverified</code> and VIES is in <code>failed_sources</code>. On the HTTP API, MCP and x402 an API key gets up to 20 such free partial answers per UTC day (x402 payers share one such allowance); after that such a company is not checked and not charged (<code>status: &quot;failed&quot;</code>, no sanctions screen result: <code>sanctions_hits: null</code>; the message says when the count resets at 00:00 UTC). The free sanctions screen of an ambiguous name or of a company no source knows counts as one of these answers too; past the limit that name is not screened (<code>sanctions_hits: null</code>). Charged answers are never limited. A check that is <code>unverified</code> because the register does not hold that data for the country, or because you gave no VAT number, is a complete answer and is charged.</p>
-<p>How it compares with a model that uses web search, on 25 companies: <a href="benchmark.html">benchmark</a>.</p>
-<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/counterparty-check">Run it on Apify Store &rarr;</a> <a class="btn ghost" href="api.html#key">Try the API: $5.00 free credit</a></div>
+<p>How it compares with a model that uses web search, on 25 companies: <a href="/benchmark.html">benchmark</a>.</p>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/counterparty-check">Run it on Apify Store &rarr;</a> <a class="btn ghost" href="/api.html#key">Try the API: $5.00 free credit</a></div>
 <h2 id="where">Where to get it</h2>
 <p>The same data and the same rows on every channel; pick the one your agent or code already uses.</p>
 <div class="table"><table><thead><tr><th>Channel</th><th>How</th><th>Pay</th></tr></thead><tbody>
 <tr><td>Apify Store</td><td><a href="https://apify.com/bosco_labs/counterparty-check">apify.com/bosco_labs/counterparty-check</a>: run it in the Apify Console, by the Apify API or from Apify's MCP server (<code>https://mcp.apify.com?tools=bosco_labs/counterparty-check</code>)</td><td>$0.05 per company checked, billed to your Apify account</td></tr>
-<tr><td>HTTP API</td><td><code>POST https://api.boscolabs.dev/v1/counterparty-check</code> with your key (<a href="api.html#key">get a key</a>, $5.00 free trial)</td><td>$0.05 per company checked; free when the name is ambiguous, or when a source we asked failed (a daily limit applies), prepaid credits</td></tr>
-<tr><td>MCP</td><td><code>https://api.boscolabs.dev/mcp</code> (remote, same key) or <code>https://api.boscolabs.dev/mcp/free</code> (no key: find and plan) &middot; <a href="api.html#mcp">setup</a></td><td>$0.05 per company checked; free when the name is ambiguous, or when a source we asked failed (a daily limit applies), prepaid credits</td></tr>
-<tr><td>x402</td><td><code>POST https://api.boscolabs.dev/v1/counterparty-check</code> without a key: pay per call, no account (<a href="api.html#x402">how</a>)</td><td>$0.05 per company checked; free when the name is ambiguous, or when a source we asked failed (a daily limit applies), in USDC on Base</td></tr>
+<tr><td>HTTP API</td><td><code>POST https://api.boscolabs.dev/v1/counterparty-check</code> with your key (<a href="/api.html#key">get a key</a>, $5.00 free trial)</td><td>$0.05 per company checked; free when the name is ambiguous, or when a source we asked failed (a daily limit applies), prepaid credits</td></tr>
+<tr><td>MCP</td><td><code>https://api.boscolabs.dev/mcp</code> (remote, same key) or <code>https://api.boscolabs.dev/mcp/free</code> (no key: find and plan) &middot; <a href="/api.html#mcp">setup</a></td><td>$0.05 per company checked; free when the name is ambiguous, or when a source we asked failed (a daily limit applies), prepaid credits</td></tr>
+<tr><td>x402</td><td><code>POST https://api.boscolabs.dev/v1/counterparty-check</code> without a key: pay per call, no account (<a href="/api.html#x402">how</a>)</td><td>$0.05 per company checked; free when the name is ambiguous, or when a source we asked failed (a daily limit applies), in USDC on Base</td></tr>
 </tbody></table></div>
 <h2>Questions agents ask</h2>
-<ul class="qs"><li><a href="q/novo-nordisk-supplier-vat-iban-check.html">&ldquo;Before we pay them: check supplier Novo Nordisk A/S (CVR 24256790), their VAT number DK24256790 and IBAN DK5000400440116243.&rdquo;</a></li><li><a href="q/estonian-company-14850239-sanctions-register-check.html">Is Estonian company 14850239 still in the register, and is it on a sanctions list?</a></li></ul>
+<ul class="qs"><li><a href="/q/novo-nordisk-supplier-vat-iban-check.html">&ldquo;Before we pay them: check supplier Novo Nordisk A/S (CVR 24256790), their VAT number DK24256790 and IBAN DK5000400440116243.&rdquo;</a></li><li><a href="/q/estonian-company-14850239-sanctions-register-check.html">Is Estonian company 14850239 still in the register, and is it on a sanctions list?</a></li></ul>
 </div>
 <h2>Example</h2>
 <div class="two"><div><h3>Input</h3><pre><code>{ &quot;query&quot;: &quot;24256790&quot;, &quot;country&quot;: &quot;DK&quot;, &quot;vatNumber&quot;: &quot;DK24256790&quot;, &quot;iban&quot;: &quot;DK5000400440116243&quot; }</code></pre></div>
@@ -347,7 +347,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <p>one row (typically 10-20 KB) with stable <code>snake_case</code> fields; read <code>summary.needs_attention</code> and <code>checks</code> first. Usually 5-30 seconds (VIES and UK officer lookups are the slow parts). <strong>Cost:</strong> $0.05 per company checked, billed to the Apify account the MCP server is signed in with.</p>
 <p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~counterparty-check/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.05 per company checked.</p>
 <h2 id="http-api">HTTP API</h2>
-<p>Also on the Bosco Labs HTTP API (beta): same input and same rows as the Actor, <strong>$0.05 per company checked; free when the name is ambiguous, or when a source we asked failed (a daily limit applies)</strong> from prepaid credits (max 10 companies (companies) per call). <a href="api.html#key">Get a key</a> with a $5.00 free trial; see <a href="api.html">prices and limits</a>.</p>
+<p>Also on the Bosco Labs HTTP API (beta): same input and same rows as the Actor, <strong>$0.05 per company checked; free when the name is ambiguous, or when a source we asked failed (a daily limit applies)</strong> from prepaid credits (max 10 companies (companies) per call). <a href="/api.html#key">Get a key</a> with a $5.00 free trial; see <a href="/api.html">prices and limits</a>.</p>
 <pre><code>curl https://api.boscolabs.dev/v1/counterparty-check \
   -H &quot;Authorization: Bearer $BOSCO_API_KEY&quot; \
   -H &quot;Content-Type: application/json&quot; \
@@ -368,11 +368,11 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <p><strong>Does the IBAN check prove who holds the account?</strong> No. It checks that the number is well formed and in the expected country; no bank is contacted.</p>
 <p><strong>How fresh is it?</strong> Registers, GLEIF, VIES and SEC EDGAR are read live. Sanctions lists: this Actor uses a copy at most 90 minutes old, the API one at most 12 hours old; each list&#x27;s own date is in the detail. When a list cannot be refreshed, a copy up to 2 days old is used with a warning; an older one is not used, and the company is then not charged. UK insolvency notices come from a nightly copy of The Gazette; when that copy cannot be read, a narrower live search stands in, the insolvency check is <code>unverified</code> and the company is not charged.</p>
 <p><strong>Personal data?</strong> Officer and owner names come from the public registers and are screened only against sanctions lists, for this check. Nothing about the people is stored. See <code>LEGAL.md</code>.</p>
-<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/counterparty-check">Run it on Apify Store &rarr;</a> <a class="btn ghost" href="api.html#key">Try the API: $5.00 free credit</a></div>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/counterparty-check">Run it on Apify Store &rarr;</a> <a class="btn ghost" href="/api.html#key">Try the API: $5.00 free credit</a></div>
 </div>
 </article>
 </main>
-<footer><div class="wrap"><p><a href="/">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="registers/index.html">Registers</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<footer><div class="wrap"><p><a href="/">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="/llms.txt">llms.txt</a> · <a href="/llms-full.txt">llms-full.txt</a> · <a href="/api.html">HTTP API</a> · <a href="/account.html">Account</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/security.html">Trust</a> · <a href="/status.html">Status</a> · <a href="/registers/index.html">Registers</a> · <a href="/blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
 <p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
 <script>
 (function(){try{var q=new URLSearchParams(location.search),s=q.get("src")||q.get("utm_source"),r=document.referrer?new URL(document.referrer).hostname:"";

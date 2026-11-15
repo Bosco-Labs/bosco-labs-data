@@ -6,10 +6,10 @@
 <title>ESEF Annual Reports API: European company financials</title>
 <meta name="description" content="Revenue, operating income, net income, EPS, equity, cash flow from ESEF annual reports of EU listed companies in 28 countries, linked to the XBRL facts.">
 <link rel="canonical" href="https://boscolabs.dev/esef-annual-reports.html">
-<link rel="icon" href="favicon.ico" sizes="any">
-<link rel="icon" href="logo.svg" type="image/svg+xml">
-<link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
-<link rel="alternate" type="application/atom+xml" href="blog/feed.xml" title="Bosco Labs blog">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/logo.svg" type="image/svg+xml">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
+<link rel="alternate" type="application/atom+xml" href="/blog/feed.xml" title="Bosco Labs blog">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Bosco Labs">
 <meta property="og:title" content="ESEF Annual Reports API: European company financials">
@@ -139,28 +139,28 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="site"><div class="wrap"><a class="brand" href="/"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
-<nav aria-label="Main"><a href="/#demo">Company checks</a><a href="/#tools">All tools</a><a href="api.html">API and prices</a><a href="blog/index.html">Blog</a><a href="llms.txt">llms.txt</a><a href="account.html">Account</a><a class="navcta" href="api.html#key">Get a key</a></nav></div></header>
+<header class="site"><div class="wrap"><a class="brand" href="/"><img src="/logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav aria-label="Main"><a href="/#demo">Company checks</a><a href="/#tools">All tools</a><a href="/api.html">API and prices</a><a href="/blog/index.html">Blog</a><a href="/llms.txt">llms.txt</a><a href="/account.html">Account</a><a class="navcta" href="/api.html#key">Get a key</a></nav></div></header>
 <main class="wrap" id="main">
 <p class="crumbs"><a href="/#tools">Tools</a> &rsaquo; <a href="/#finance-sec">Finance &amp; SEC</a></p>
 <article>
-<div class="head"><img src="icons/esef-annual-reports.svg" alt="" width="84" height="84"><div><h1>EU Annual Reports API (ESEF): XBRL financial statements</h1><span class="badge live">On Apify Store</span></div></div>
+<div class="head"><img src="/icons/esef-annual-reports.svg" alt="" width="84" height="84"><div><h1>EU Annual Reports API (ESEF): XBRL financial statements</h1><span class="badge live">On Apify Store</span></div></div>
 <div class="prose">
 <p class="lead">Get <strong>normalized key financials from the official ESEF annual reports of European listed companies</strong>, by LEI, company name, country or fiscal year: revenue, EBIT, EBITDA, net income, EPS, dividends, balance sheet and cash flows, plus margins, return on equity and revenue growth versus the prior year. Every number comes with <strong>the exact XBRL fact it was taken from</strong> and a link to the annual report viewer, so you can audit any value in one click. For equity analysts, finance apps and AI agents that need comparable numbers for European listed companies.</p>
 <div class="facts"><div class="fact"><b>Price</b>$0.01 per run plus $0.05 per annual report; raw XBRL fact rows, if switched on, $0.0005 each</div><div class="fact"><b>Domain</b>Finance &amp; SEC</div><div class="fact"><b>Get it on</b><a href="#where">Apify Store, HTTP API, MCP, x402, Local MCP server</a></div></div>
 <p><strong>Pricing (pay per event):</strong> $0.01 per run plus $0.05 per annual report ($50 per 1,000 reports). Each report includes the comparative prior year at no extra cost. Raw XBRL fact rows, if you switch them on, cost $0.0005 each. You only pay for reports delivered, the same fiscal year is never charged twice, and the Actor stops at your max charge limit.</p>
-<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/esef-annual-reports">Run it on Apify Store &rarr;</a> <a class="btn ghost" href="api.html#key">Try the API: $5.00 free credit</a></div>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/esef-annual-reports">Run it on Apify Store &rarr;</a> <a class="btn ghost" href="/api.html#key">Try the API: $5.00 free credit</a></div>
 <h2 id="where">Where to get it</h2>
 <p>The same data and the same rows on every channel; pick the one your agent or code already uses.</p>
 <div class="table"><table><thead><tr><th>Channel</th><th>How</th><th>Pay</th></tr></thead><tbody>
 <tr><td>Apify Store</td><td><a href="https://apify.com/bosco_labs/esef-annual-reports">apify.com/bosco_labs/esef-annual-reports</a>: run it in the Apify Console, by the Apify API or from Apify's MCP server (<code>https://mcp.apify.com?tools=bosco_labs/esef-annual-reports</code>)</td><td>$0.01 per run plus $0.05 per annual report; raw XBRL fact rows, if switched on, $0.0005 each, billed to your Apify account</td></tr>
-<tr><td>HTTP API</td><td><code>POST https://api.boscolabs.dev/v1/esef-annual-reports</code> with your key (<a href="api.html#key">get a key</a>, $5.00 free trial)</td><td>$0.05 per annual report, prepaid credits</td></tr>
-<tr><td>MCP</td><td><code>https://api.boscolabs.dev/mcp</code> (remote, same key) or <code>https://api.boscolabs.dev/mcp/free</code> (no key: find and plan) &middot; <a href="api.html#mcp">setup</a></td><td>$0.05 per annual report, prepaid credits</td></tr>
-<tr><td>x402</td><td><code>POST https://api.boscolabs.dev/v1/esef-annual-reports</code> without a key: pay per call, no account (<a href="api.html#x402">how</a>)</td><td>$0.05 per annual report, in USDC on Base</td></tr>
+<tr><td>HTTP API</td><td><code>POST https://api.boscolabs.dev/v1/esef-annual-reports</code> with your key (<a href="/api.html#key">get a key</a>, $5.00 free trial)</td><td>$0.05 per annual report, prepaid credits</td></tr>
+<tr><td>MCP</td><td><code>https://api.boscolabs.dev/mcp</code> (remote, same key) or <code>https://api.boscolabs.dev/mcp/free</code> (no key: find and plan) &middot; <a href="/api.html#mcp">setup</a></td><td>$0.05 per annual report, prepaid credits</td></tr>
+<tr><td>x402</td><td><code>POST https://api.boscolabs.dev/v1/esef-annual-reports</code> without a key: pay per call, no account (<a href="/api.html#x402">how</a>)</td><td>$0.05 per annual report, in USDC on Base</td></tr>
 <tr><td>Local MCP server</td><td><code>uvx bosco-labs-data-mcp</code> with your <code>APIFY_TOKEN</code> (<a href="https://pypi.org/project/bosco-labs-data-mcp/">PyPI</a>)</td><td>Apify Store price, billed to your Apify account</td></tr>
 </tbody></table></div>
 <h2>Questions agents ask</h2>
-<ul class="qs"><li>&ldquo;Get Heineken&#x27;s latest revenue growth and operating margin from its annual report.&rdquo;</li><li><a href="q/belgian-listed-companies-net-income-2024.html">&ldquo;Compare net income and equity of Belgian listed companies for fiscal years ending in 2024.&rdquo;</a></li><li>&ldquo;Which XBRL fact does ASML&#x27;s reported revenue come from?&rdquo;</li><li><a href="q/heineken-revenue-growth-operating-margin.html">What were Heineken&#x27;s latest revenue growth and operating margin, from its annual report?</a></li><li><a href="q/asml-revenue-net-profit-annual-report.html">What were ASML&#x27;s revenue and net profit in its latest annual report?</a></li></ul>
+<ul class="qs"><li>&ldquo;Get Heineken&#x27;s latest revenue growth and operating margin from its annual report.&rdquo;</li><li><a href="/q/belgian-listed-companies-net-income-2024.html">&ldquo;Compare net income and equity of Belgian listed companies for fiscal years ending in 2024.&rdquo;</a></li><li>&ldquo;Which XBRL fact does ASML&#x27;s reported revenue come from?&rdquo;</li><li><a href="/q/heineken-revenue-growth-operating-margin.html">What were Heineken&#x27;s latest revenue growth and operating margin, from its annual report?</a></li><li><a href="/q/asml-revenue-net-profit-annual-report.html">What were ASML&#x27;s revenue and net profit in its latest annual report?</a></li></ul>
 </div>
 <h2>Example</h2>
 <div class="two"><div><h3>Input</h3><pre><code>{ &quot;countries&quot;: [&quot;NL&quot;, &quot;BE&quot;, &quot;FR&quot;], &quot;periodFrom&quot;: &quot;2025-01-01&quot;, &quot;maxFilings&quot;: 50 }</code></pre></div>
@@ -275,7 +275,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <p>stable, typed JSON, one row per annual report. Every row has <code>schema_version</code> and a <code>source_url</code> pointing to the report&#x27;s xBRL-JSON on filings.xbrl.org (plus <code>viewer_url</code> and a <code>sources</code> entry per value), so the agent can cite its source. An LEI or name search covers every country; if nothing matches, the run&#x27;s status message says so.</p>
 <p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~esef-annual-reports/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.01 per run plus $0.05 per annual report; raw XBRL fact rows, if switched on, $0.0005 each.</p>
 <h2 id="http-api">HTTP API</h2>
-<p>Also on the Bosco Labs HTTP API (beta): same input and same rows as the Actor, <strong>$0.05 per annual report</strong> from prepaid credits (max 10 reports (maxFilings) per call). <a href="api.html#key">Get a key</a> with a $5.00 free trial; see <a href="api.html">prices and limits</a>.</p>
+<p>Also on the Bosco Labs HTTP API (beta): same input and same rows as the Actor, <strong>$0.05 per annual report</strong> from prepaid credits (max 10 reports (maxFilings) per call). <a href="/api.html#key">Get a key</a> with a $5.00 free trial; see <a href="/api.html">prices and limits</a>.</p>
 <pre><code>curl https://api.boscolabs.dev/v1/esef-annual-reports \
   -H &quot;Authorization: Bearer $BOSCO_API_KEY&quot; \
   -H &quot;Content-Type: application/json&quot; \
@@ -299,11 +299,11 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <p><strong>Number of employees?</strong> ESEF reports almost never tag the headcount as a number (it sits in text notes), so it isn&#x27;t included. <code>employee_benefits_expense</code> (total staff costs) is.</p>
 <p><strong>Are the numbers in thousands?</strong> No. All values are in full currency units (XBRL canonical values), per-share figures are per share, and ratios are fractions (0.25 = 25%).</p>
 <p><strong>Legal basis?</strong> These are public regulatory disclosures, and filings.xbrl.org currently places no restrictions on use. Raw fact rows can contain names from notes such as directors&#x27; remuneration; if you process those, you are responsible for your own legal basis under GDPR.</p>
-<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/esef-annual-reports">Run it on Apify Store &rarr;</a> <a class="btn ghost" href="api.html#key">Try the API: $5.00 free credit</a></div>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/esef-annual-reports">Run it on Apify Store &rarr;</a> <a class="btn ghost" href="/api.html#key">Try the API: $5.00 free credit</a></div>
 </div>
 </article>
 </main>
-<footer><div class="wrap"><p><a href="/">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="registers/index.html">Registers</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<footer><div class="wrap"><p><a href="/">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="/llms.txt">llms.txt</a> · <a href="/llms-full.txt">llms-full.txt</a> · <a href="/api.html">HTTP API</a> · <a href="/account.html">Account</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/security.html">Trust</a> · <a href="/status.html">Status</a> · <a href="/registers/index.html">Registers</a> · <a href="/blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
 <p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
 <script>
 (function(){try{var q=new URLSearchParams(location.search),s=q.get("src")||q.get("utm_source"),r=document.referrer?new URL(document.referrer).hostname:"";

@@ -6,10 +6,10 @@
 <title>EU Tenders API: TED public procurement notices</title>
 <meta name="description" content="EU public tenders and contract awards from TED as JSON: deadlines, winners, awarded values and CPV codes, EU and EEA buyers since 2016. $2 per 1,000.">
 <link rel="canonical" href="https://boscolabs.dev/eu-tenders.html">
-<link rel="icon" href="favicon.ico" sizes="any">
-<link rel="icon" href="logo.svg" type="image/svg+xml">
-<link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
-<link rel="alternate" type="application/atom+xml" href="blog/feed.xml" title="Bosco Labs blog">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/logo.svg" type="image/svg+xml">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
+<link rel="alternate" type="application/atom+xml" href="/blog/feed.xml" title="Bosco Labs blog">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Bosco Labs">
 <meta property="og:title" content="EU Tenders API: TED public procurement notices">
@@ -139,28 +139,28 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="site"><div class="wrap"><a class="brand" href="/"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
-<nav aria-label="Main"><a href="/#demo">Company checks</a><a href="/#tools">All tools</a><a href="api.html">API and prices</a><a href="blog/index.html">Blog</a><a href="llms.txt">llms.txt</a><a href="account.html">Account</a><a class="navcta" href="api.html#key">Get a key</a></nav></div></header>
+<header class="site"><div class="wrap"><a class="brand" href="/"><img src="/logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav aria-label="Main"><a href="/#demo">Company checks</a><a href="/#tools">All tools</a><a href="/api.html">API and prices</a><a href="/blog/index.html">Blog</a><a href="/llms.txt">llms.txt</a><a href="/account.html">Account</a><a class="navcta" href="/api.html#key">Get a key</a></nav></div></header>
 <main class="wrap" id="main">
 <p class="crumbs"><a href="/#tools">Tools</a> &rsaquo; <a href="/#government-procurement">Government &amp; procurement</a></p>
 <article>
-<div class="head"><img src="icons/eu-tenders.svg" alt="" width="84" height="84"><div><h1>EU Tenders API (TED): public procurement &amp; contract awards</h1><span class="badge live">On Apify Store</span></div></div>
+<div class="head"><img src="/icons/eu-tenders.svg" alt="" width="84" height="84"><div><h1>EU Tenders API (TED): public procurement &amp; contract awards</h1><span class="badge live">On Apify Store</span></div></div>
 <div class="prose">
 <p class="lead">Get <strong>European public tenders and contract awards as clean, predictable JSON</strong> from TED, filtered by keyword, buyer country, CPV code, notice type, date and value: open calls for tenders with their deadline and estimated value, award notices with the winning companies and the awarded amount, and prior information notices about planned purchases. One row per notice, the same field names for every country and notice form. For bid teams, tender-alert services, market researchers and AI agents.</p>
 <div class="facts"><div class="fact"><b>Price</b>$0.002 per notice</div><div class="fact"><b>Domain</b>Government &amp; procurement</div><div class="fact"><b>Get it on</b><a href="#where">Apify Store, HTTP API, MCP, x402, Local MCP server</a></div></div>
 <p><strong>Pricing (pay per event):</strong> $0.002 per notice ($2 per 1,000 notices), no start fee. You only pay for notices delivered, a notice is never charged twice in the same run, and the Actor stops at your max charge limit. With <code>onlyNewSinceLastRun</code>, scheduled runs only pay for notices you haven&#x27;t received yet.</p>
-<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/eu-tenders">Run it on Apify Store &rarr;</a> <a class="btn ghost" href="api.html#key">Try the API: $5.00 free credit</a></div>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/eu-tenders">Run it on Apify Store &rarr;</a> <a class="btn ghost" href="/api.html#key">Try the API: $5.00 free credit</a></div>
 <h2 id="where">Where to get it</h2>
 <p>The same data and the same rows on every channel; pick the one your agent or code already uses.</p>
 <div class="table"><table><thead><tr><th>Channel</th><th>How</th><th>Pay</th></tr></thead><tbody>
 <tr><td>Apify Store</td><td><a href="https://apify.com/bosco_labs/eu-tenders">apify.com/bosco_labs/eu-tenders</a>: run it in the Apify Console, by the Apify API or from Apify's MCP server (<code>https://mcp.apify.com?tools=bosco_labs/eu-tenders</code>)</td><td>$0.002 per notice, billed to your Apify account</td></tr>
-<tr><td>HTTP API</td><td><code>POST https://api.boscolabs.dev/v1/eu-tenders</code> with your key (<a href="api.html#key">get a key</a>, $5.00 free trial)</td><td>$0.002 per TED notice, prepaid credits</td></tr>
-<tr><td>MCP</td><td><code>https://api.boscolabs.dev/mcp</code> (remote, same key) or <code>https://api.boscolabs.dev/mcp/free</code> (no key: find and plan) &middot; <a href="api.html#mcp">setup</a></td><td>$0.002 per TED notice, prepaid credits</td></tr>
-<tr><td>x402</td><td><code>POST https://api.boscolabs.dev/v1/eu-tenders</code> without a key: pay per call, no account (<a href="api.html#x402">how</a>)</td><td>$0.002 per TED notice, in USDC on Base</td></tr>
+<tr><td>HTTP API</td><td><code>POST https://api.boscolabs.dev/v1/eu-tenders</code> with your key (<a href="/api.html#key">get a key</a>, $5.00 free trial)</td><td>$0.002 per TED notice, prepaid credits</td></tr>
+<tr><td>MCP</td><td><code>https://api.boscolabs.dev/mcp</code> (remote, same key) or <code>https://api.boscolabs.dev/mcp/free</code> (no key: find and plan) &middot; <a href="/api.html#mcp">setup</a></td><td>$0.002 per TED notice, prepaid credits</td></tr>
+<tr><td>x402</td><td><code>POST https://api.boscolabs.dev/v1/eu-tenders</code> without a key: pay per call, no account (<a href="/api.html#x402">how</a>)</td><td>$0.002 per TED notice, in USDC on Base</td></tr>
 <tr><td>Local MCP server</td><td><code>uvx bosco-labs-data-mcp</code> with your <code>APIFY_TOKEN</code> (<a href="https://pypi.org/project/bosco-labs-data-mcp/">PyPI</a>)</td><td>Apify Store price, billed to your Apify account</td></tr>
 </tbody></table></div>
 <h2>Questions agents ask</h2>
-<ul class="qs"><li>&ldquo;Find open IT tenders above 1 million euros in Germany and the Netherlands from the last two weeks and list their deadlines.&rdquo;</li><li>&ldquo;Which companies won construction contracts from Polish buyers last month, and for how much?&rdquo;</li><li><a href="q/nordic-cloud-hosting-tenders-daily.html">&ldquo;Alert me to new cloud hosting tenders in the Nordics every morning.&rdquo;</a></li><li><a href="q/open-it-tenders-germany-netherlands-over-1m.html">Find open IT tenders above 1 million euros in Germany and the Netherlands and list their deadlines.</a></li><li><a href="q/polish-construction-contract-awards.html">Which companies won construction contracts from Polish buyers since October 2026, and for how much?</a></li><li><a href="q/spain-medical-equipment-tenders.html">Which Spanish hospitals are tendering for medical equipment right now?</a></li></ul>
+<ul class="qs"><li>&ldquo;Find open IT tenders above 1 million euros in Germany and the Netherlands from the last two weeks and list their deadlines.&rdquo;</li><li>&ldquo;Which companies won construction contracts from Polish buyers last month, and for how much?&rdquo;</li><li><a href="/q/nordic-cloud-hosting-tenders-daily.html">&ldquo;Alert me to new cloud hosting tenders in the Nordics every morning.&rdquo;</a></li><li><a href="/q/open-it-tenders-germany-netherlands-over-1m.html">Find open IT tenders above 1 million euros in Germany and the Netherlands and list their deadlines.</a></li><li><a href="/q/polish-construction-contract-awards.html">Which companies won construction contracts from Polish buyers since October 2026, and for how much?</a></li><li><a href="/q/spain-medical-equipment-tenders.html">Which Spanish hospitals are tendering for medical equipment right now?</a></li></ul>
 </div>
 <h2>Example</h2>
 <div class="two"><div><h3>Input</h3><pre><code>{
@@ -236,7 +236,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <p>stable, typed JSON, one row per notice. Every row has <code>schema_version</code> and a <code>source_url</code> pointing to the official notice page on ted.europa.eu, so the agent can cite its source.</p>
 <p>Or call the Apify API: <code>POST https://api.apify.com/v2/acts/bosco_labs~eu-tenders/run-sync-get-dataset-items</code> with the input as JSON body. <strong>Cost:</strong> $0.002 per notice.</p>
 <h2 id="http-api">HTTP API</h2>
-<p>Also on the Bosco Labs HTTP API (beta): same input and same rows as the Actor, <strong>$0.002 per TED notice</strong> from prepaid credits (max 200 notices (maxResults) per call). <a href="api.html#key">Get a key</a> with a $5.00 free trial; see <a href="api.html">prices and limits</a>.</p>
+<p>Also on the Bosco Labs HTTP API (beta): same input and same rows as the Actor, <strong>$0.002 per TED notice</strong> from prepaid credits (max 200 notices (maxResults) per call). <a href="/api.html#key">Get a key</a> with a $5.00 free trial; see <a href="/api.html">prices and limits</a>.</p>
 <pre><code>curl https://api.boscolabs.dev/v1/eu-tenders \
   -H &quot;Authorization: Bearer $BOSCO_API_KEY&quot; \
   -H &quot;Content-Type: application/json&quot; \
@@ -263,11 +263,11 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <p><strong>Can I get older notices?</strong> Yes: set <code>publishedFrom</code> and <code>publishedTo</code>. The TED API covers notices from November 2016 onwards (complete from 2017; checked 2026-11-05), and there is no 15,000-notice cap per run.</p>
 <p><strong>Contact details?</strong> Not included. Rows contain no contact persons, e-mail addresses or phone numbers, even where TED publishes them; they are also removed from descriptions.</p>
 <p><strong>Legal basis?</strong> TED notices may be freely reused for commercial and non-commercial purposes (Commission Decision 2011/833/EU, see the TED legal notice). Winner names are published by law; some winners are sole traders (natural persons), so if you process the data further, you are responsible for your own legal basis under GDPR.</p>
-<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/eu-tenders">Run it on Apify Store &rarr;</a> <a class="btn ghost" href="api.html#key">Try the API: $5.00 free credit</a></div>
+<div class="actions"><a class="btn" href="https://apify.com/bosco_labs/eu-tenders">Run it on Apify Store &rarr;</a> <a class="btn ghost" href="/api.html#key">Try the API: $5.00 free credit</a></div>
 </div>
 </article>
 </main>
-<footer><div class="wrap"><p><a href="/">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="registers/index.html">Registers</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<footer><div class="wrap"><p><a href="/">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="/llms.txt">llms.txt</a> · <a href="/llms-full.txt">llms-full.txt</a> · <a href="/api.html">HTTP API</a> · <a href="/account.html">Account</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/security.html">Trust</a> · <a href="/status.html">Status</a> · <a href="/registers/index.html">Registers</a> · <a href="/blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
 <p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
 <script>
 (function(){try{var q=new URLSearchParams(location.search),s=q.get("src")||q.get("utm_source"),r=document.referrer?new URL(document.referrer).hostname:"";

@@ -2,15 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<base href="../">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>A KYB MCP server for AI agents: setup and limits</title>
 <meta name="description" content="Connect a remote MCP server that checks register status, insolvency and sanctions in one tool call, and teach your agent what &#x27;unverified&#x27; means.">
 <link rel="canonical" href="https://boscolabs.dev/blog/kyb-mcp-server-ai-agents.html">
-<link rel="icon" href="favicon.ico" sizes="any">
-<link rel="icon" href="logo.svg" type="image/svg+xml">
-<link rel="alternate" type="text/plain" href="llms.txt" title="llms.txt">
-<link rel="alternate" type="application/atom+xml" href="blog/feed.xml" title="Bosco Labs blog">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/logo.svg" type="image/svg+xml">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
+<link rel="alternate" type="application/atom+xml" href="/blog/feed.xml" title="Bosco Labs blog">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Bosco Labs">
 <meta property="og:title" content="A KYB MCP server for AI agents: setup and limits">
@@ -141,11 +140,11 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="site"><div class="wrap"><a class="brand" href="/"><img src="logo.svg" alt="" width="30" height="30">Bosco Labs</a>
-<nav aria-label="Main"><a href="/#demo">Company checks</a><a href="/#tools">All tools</a><a href="api.html">API and prices</a><a href="blog/index.html">Blog</a><a href="llms.txt">llms.txt</a><a href="account.html">Account</a><a class="navcta" href="api.html#key">Get a key</a></nav></div></header>
+<header class="site"><div class="wrap"><a class="brand" href="/"><img src="/logo.svg" alt="" width="30" height="30">Bosco Labs</a>
+<nav aria-label="Main"><a href="/#demo">Company checks</a><a href="/#tools">All tools</a><a href="/api.html">API and prices</a><a href="/blog/index.html">Blog</a><a href="/llms.txt">llms.txt</a><a href="/account.html">Account</a><a class="navcta" href="/api.html#key">Get a key</a></nav></div></header>
 <main class="wrap" id="main">
 <article class="prose">
-<p class="crumbs"><a href="blog/index.html">Blog</a> &rsaquo; A KYB MCP server for AI agents: setup and limits</p>
+<p class="crumbs"><a href="/blog/index.html">Blog</a> &rsaquo; A KYB MCP server for AI agents: setup and limits</p>
 <h1>A KYB MCP server for AI agents: setup and limits</h1>
 <p class="muted">Bosco Labs · <time datetime="2026-11-09">9 November 2026</time>, updated <time datetime="2026-11-11">11 November 2026</time></p>
 <p>Add <code>https://api.boscolabs.dev/mcp</code> to your MCP client with an API key in the <code>Authorization</code> header. Your agent gets a <code>counterparty_check</code> tool that takes a company name or number and returns a checklist from official sources. If you want to look around before getting a key, <code>https://api.boscolabs.dev/mcp/free</code> works without one and gives the agent our planner and tool descriptions, plus free LEI and SEC company lookups.</p>
@@ -167,9 +166,9 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 }</code></pre>
 <p>In claude.ai and the Claude apps, go to Settings, then Connectors, then &quot;Add custom connector&quot;, and use <code>https://api.boscolabs.dev/mcp/claude</code>. Claude opens a sign-in page once, you paste your key there, and calls are billed to that key.</p>
 <p>If you already have an Apify account, the same check runs through Apify&#x27;s hosted MCP server at <code>https://mcp.apify.com?tools=bosco_labs/counterparty-check</code>, billed to Apify.</p>
-<p>You can get a key here. It comes with $5 of free credit, which is 100 company checks.</p>
+<p>You can <a href="/api.html#key">get a key here</a>. It comes with $5 of free credit, which is 100 company checks.</p>
 <h2>What the agent sees</h2>
-<p>The main server lists three tools. <code>counterparty_check</code> is the one doing the work. <code>plan_official_records_query</code> is free and turns a question into the exact call and its maximum price, or says <code>not_covered</code> if we don&#x27;t have the data. <code>run_official_records_plan</code> runs a plan, or any of our other tools by name. If you&#x27;d rather have every tool listed separately, use <code>https://api.boscolabs.dev/mcp?tools=all</code>. The MCP section of the API page has the details.</p>
+<p>The main server lists three tools. <code>counterparty_check</code> is the one doing the work. <code>plan_official_records_query</code> is free and turns a question into the exact call and its maximum price, or says <code>not_covered</code> if we don&#x27;t have the data. <code>run_official_records_plan</code> runs a plan, or any of our other tools by name. If you&#x27;d rather have every tool listed separately, use <code>https://api.boscolabs.dev/mcp?tools=all</code>. The <a href="/api.html#mcp">MCP section of the API page</a> has the details.</p>
 <p>The input is small. <code>query</code> takes a company name or an identifier: a UK company number, a Danish CVR, a Norwegian org number, a French SIREN, a Finnish Business ID, an Estonian registry code, an LEI, a US ticker or an SEC CIK. <code>country</code> helps when a name or number is ambiguous. If the user gave a VAT number or an IBAN, the agent can pass <code>vatNumber</code> and <code>iban</code> too. For a vendor list, <code>companies</code> takes up to 10 at once.</p>
 <p>A prompt like this one is enough for the agent to fill those in:</p>
 <p>&gt; Before we pay them: check supplier Novo Nordisk A/S (CVR 24256790), their VAT number DK24256790 and IBAN DK5000400440116243.</p>
@@ -188,18 +187,18 @@ Never describe a company as clear if any check is fail, review or unverified.
 A sanctions name match is a candidate until a person compares it with the official entry.</code></pre>
 <p>With that in place, the agent&#x27;s answer for the Novo Nordisk example reads more like &quot;everything passed except insolvency and the sanctions check on officers, which weren&#x27;t verified for a Danish company&quot; than &quot;Novo Nordisk checks out&quot;.</p>
 <h2>Why a tool instead of web search</h2>
-<p>A model with web search can answer &quot;is this company active&quot; surprisingly often. In our test it mostly answered the sanctions question from memory, without opening a list. Insolvency was hard for both. We wrote up a small benchmark of counterparty-check against a model using web search on 25 companies, including the cases where our tool still answered unknown and the bugs we fixed along the way.</p>
+<p>A model with web search can answer &quot;is this company active&quot; surprisingly often. In our test it mostly answered the sanctions question from memory, without opening a list. Insolvency was hard for both. We wrote up a small <a href="/blog/counterparty-check-benchmark.html">benchmark of counterparty-check against a model using web search</a> on 25 companies, including the cases where our tool still answered unknown and the bugs we fixed along the way.</p>
 <p>The other difference is that every check carries a source link and a timestamp. When a compliance person asks why the agent said what it said, there&#x27;s something to click.</p>
 <h2>Limits</h2>
 <p>A check takes 5 to 30 seconds, because it waits on several registers and VIES. Agents usually cope fine with that, but some clients have short tool timeouts.</p>
 <p>It costs $0.05 per company checked. An ambiguous name returns a list of candidates instead, and that&#x27;s free, so the agent can ask the user which one they meant.</p>
 <p>It&#x27;s a screening aid built from official registers and lists. It doesn&#x27;t include PEP lists, adverse media or ownership chains, and it isn&#x27;t a compliance decision. Every <code>fail</code> and <code>review</code> should go to a person with the linked source open.</p>
-<p>If your agent pays its own way with a crypto wallet, the same endpoint takes x402 payments in USDC on Base with no account. The API page explains how.</p>
+<p>If your agent pays its own way with a crypto wallet, the same endpoint takes x402 payments in USDC on Base with no account. The <a href="/api.html#x402">API page</a> explains how.</p>
 <p>Bosco Labs makes counterparty-check and the MCP server.</p>
-<p class="muted">Bosco Labs: official-source data for AI agents, as an HTTP API, MCP server and Apify Actors. <a href="api.html">API docs</a>.</p>
+<p class="muted">Bosco Labs: official-source data for AI agents, as an HTTP API, MCP server and Apify Actors. <a href="/api.html">API docs</a>.</p>
 </article>
 </main>
-<footer><div class="wrap"><p><a href="/">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="llms.txt">llms.txt</a> · <a href="llms-full.txt">llms-full.txt</a> · <a href="api.html">HTTP API</a> · <a href="account.html">Account</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="security.html">Trust</a> · <a href="status.html">Status</a> · <a href="registers/index.html">Registers</a> · <a href="blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
+<footer><div class="wrap"><p><a href="/">All tools</a> · <a href="https://apify.com/bosco_labs">Bosco Labs on Apify Store</a> · <a href="/llms.txt">llms.txt</a> · <a href="/llms-full.txt">llms-full.txt</a> · <a href="/api.html">HTTP API</a> · <a href="/account.html">Account</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/security.html">Trust</a> · <a href="/status.html">Status</a> · <a href="/registers/index.html">Registers</a> · <a href="/blog/index.html">Blog</a> · <a href="mailto:support@boscolabs.dev">support@boscolabs.dev</a></p>
 <p>Data from official public sources, with a source link on every row. Not investment, legal or medical advice.</p></div></footer>
 <script>
 (function(){try{var q=new URLSearchParams(location.search),s=q.get("src")||q.get("utm_source"),r=document.referrer?new URL(document.referrer).hostname:"";
