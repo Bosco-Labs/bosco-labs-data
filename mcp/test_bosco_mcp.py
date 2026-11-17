@@ -1,6 +1,7 @@
 import asyncio
 import json
 import os
+import re
 import sys
 from pathlib import Path
 
@@ -59,19 +60,19 @@ def apify(monkeypatch):
 
 CASES = [
     (
-        "eu_annual_report_financials",
+        "get_eu_annual_reports",
         {"lei": LEI.lower(), "max_results": 1},
         "esef-annual-reports",
         {"leis": [LEI], "countries": [], "maxFilings": 1, "includeRawFacts": False},
     ),
     (
-        "eu_annual_report_financials",
+        "get_eu_annual_reports",
         {"company": "heineken", "countries": ["nl"]},
         "esef-annual-reports",
         {"companyName": "heineken", "countries": ["NL"], "maxFilings": 3, "includeRawFacts": False},
     ),
     (
-        "european_company_accounts",
+        "get_company_accounts",
         {"uk_company_numbers": ["3117531", "sc123456"], "no_org_numbers": ["923609016"]},
         "company-accounts",
         {
@@ -83,7 +84,7 @@ CASES = [
         },
     ),
     (
-        "sec_insider_trades",
+        "search_sec_insider_trades",
         {"tickers": ["aapl"], "date_from": "2026-01-01", "cluster": "buys", "max_results": 5},
         "sec-insider-trades",
         {
@@ -97,7 +98,7 @@ CASES = [
         },
     ),
     (
-        "sec_filings",
+        "search_sec_filings",
         {"ciks": ["320193"], "form_types": ["8-k"], "item_codes_8k": ["5.02"]},
         "sec-filings-feed",
         {
@@ -109,7 +110,7 @@ CASES = [
         },
     ),
     (
-        "us_house_stock_trades",
+        "search_us_house_stock_trades",
         {"members": ["Pelosi"], "years": [2024], "transaction_types": ["purchase"]},
         "us-house-trades",
         {
@@ -120,7 +121,7 @@ CASES = [
         },
     ),
     (
-        "eu_public_tenders",
+        "search_eu_tenders",
         {"keywords": " cloud ", "countries": ["de"], "cpv_codes": ["72"], "min_value_eur": 10},
         "eu-tenders",
         {
@@ -132,7 +133,7 @@ CASES = [
         },
     ),
     (
-        "dod_contract_awards",
+        "search_dod_contract_awards",
         {"tickers": ["ktos"], "date_to": "2026-06-30", "psc_codes": ["r425"]},
         "dod-contract-awards",
         {
@@ -160,25 +161,25 @@ def test_tool_runs_its_actor_with_the_user_token(apify, tool, args, actor, paylo
 @pytest.mark.parametrize(
     "tool,args",
     [
-        ("eu_annual_report_financials", {}),
-        ("eu_annual_report_financials", {"company": "asml", "lei": LEI}),
-        ("eu_annual_report_financials", {"lei": "123"}),
-        ("eu_annual_report_financials", {"company": "asml", "countries": ["Netherlands"]}),
-        ("eu_annual_report_financials", {"company": "asml", "max_results": 11}),
-        ("european_company_accounts", {}),
-        ("european_company_accounts", {"dk_cvr_numbers": ["123"]}),
-        ("sec_insider_trades", {"tickers": ["NOT A TICKER"]}),
-        ("sec_insider_trades", {"transaction_codes": ["Q"]}),
-        ("sec_insider_trades", {"date_from": "2026-02-01", "date_to": "2026-01-01"}),
-        ("sec_insider_trades", {"max_results": 101}),
-        ("sec_filings", {"item_codes_8k": ["5"]}),
-        ("sec_filings", {"date_from": "yesterday"}),
-        ("us_house_stock_trades", {"years": [2010]}),
-        ("us_house_stock_trades", {"tickers": ["AAPL"] * 26}),
-        ("eu_public_tenders", {"notice_types": ["tender"]}),
-        ("eu_public_tenders", {"cpv_codes": ["IT"]}),
-        ("dod_contract_awards", {"max_results": 51}),
-        ("dod_contract_awards", {"min_amount_usd": -1}),
+        ("get_eu_annual_reports", {}),
+        ("get_eu_annual_reports", {"company": "asml", "lei": LEI}),
+        ("get_eu_annual_reports", {"lei": "123"}),
+        ("get_eu_annual_reports", {"company": "asml", "countries": ["Netherlands"]}),
+        ("get_eu_annual_reports", {"company": "asml", "max_results": 11}),
+        ("get_company_accounts", {}),
+        ("get_company_accounts", {"dk_cvr_numbers": ["123"]}),
+        ("search_sec_insider_trades", {"tickers": ["NOT A TICKER"]}),
+        ("search_sec_insider_trades", {"transaction_codes": ["Q"]}),
+        ("search_sec_insider_trades", {"date_from": "2026-02-01", "date_to": "2026-01-01"}),
+        ("search_sec_insider_trades", {"max_results": 101}),
+        ("search_sec_filings", {"item_codes_8k": ["5"]}),
+        ("search_sec_filings", {"date_from": "yesterday"}),
+        ("search_us_house_stock_trades", {"years": [2010]}),
+        ("search_us_house_stock_trades", {"tickers": ["AAPL"] * 26}),
+        ("search_eu_tenders", {"notice_types": ["tender"]}),
+        ("search_eu_tenders", {"cpv_codes": ["IT"]}),
+        ("search_dod_contract_awards", {"max_results": 51}),
+        ("search_dod_contract_awards", {"min_amount_usd": -1}),
     ],
 )
 def test_rejects_bad_input_without_calling_apify(apify, tool, args):
@@ -190,7 +191,7 @@ def test_rejects_bad_input_without_calling_apify(apify, tool, args):
 def test_missing_token(apify, monkeypatch):
     monkeypatch.delenv("APIFY_TOKEN")
     with pytest.raises(ToolError, match="BOSCO_API_KEY.*boscolabs.dev/api.html#key"):
-        call("sec_filings", tickers=["AAPL"])
+        call("search_sec_filings", tickers=["AAPL"])
     assert apify.seen == []
 
 
@@ -216,7 +217,7 @@ def test_maps_bosco_api_errors(apify, monkeypatch, status, match):
         status, json={"error": {"code": "x", "message": "boom"}}
     )
     with pytest.raises(ToolError, match=match):
-        call("sec_filings", tickers=["AAPL"])
+        call("search_sec_filings", tickers=["AAPL"])
 
 
 @pytest.mark.parametrize(
@@ -234,7 +235,7 @@ def test_maps_apify_errors(apify, status, match):
         status, json={"error": {"type": "x", "message": "boom"}}
     )
     with pytest.raises(ToolError, match=match):
-        call("sec_filings", tickers=["AAPL"])
+        call("search_sec_filings", tickers=["AAPL"])
 
 
 def test_maps_client_timeout(apify):
@@ -243,11 +244,11 @@ def test_maps_client_timeout(apify):
 
     apify.response = timeout
     with pytest.raises(ToolError, match="timed out"):
-        call("dod_contract_awards")
+        call("search_dod_contract_awards")
 
 
 def test_trims_esef_rows(apify):
-    (rep,) = call("eu_annual_report_financials", lei=LEI)
+    (rep,) = call("get_eu_annual_reports", lei=LEI)
     assert rep["revenue"] == 32667300000 and rep["revenue_growth"] == 0.0256
     assert "sources" not in rep and "gross_profit" not in rep and "record_type" not in rep
     assert rep["prior_year"] == {"period_end": "2024-12-31", "revenue": 28262900000}
@@ -257,7 +258,7 @@ def test_trims_esef_rows(apify):
 def test_trims_long_text_unknown_fields_and_extra_rows(apify):
     row = {"notice_id": "1", "description": "x" * 1000, "raw": {"big": 1}, "ted_url": "u"}
     apify.rows = [row] * 5
-    out = call("eu_public_tenders", max_results=2)
+    out = call("search_eu_tenders", max_results=2)
     assert len(out) == 2
     assert out[0] == {"notice_id": "1", "description": "x" * 300 + "...", "ted_url": "u"}
 
@@ -266,19 +267,19 @@ def test_all_tools_registered_with_descriptions():
     tools = asyncio.run(bosco_mcp.mcp.list_tools())
     assert sorted(t.name for t in tools) == sorted(
         [
-            "eu_annual_report_financials",
-            "european_company_accounts",
-            "sec_insider_trades",
-            "sec_filings",
-            "us_house_stock_trades",
-            "eu_public_tenders",
-            "dod_contract_awards",
-            "lei_lookup",
-            "sec_company_lookup",
+            "get_eu_annual_reports",
+            "get_company_accounts",
+            "search_sec_insider_trades",
+            "search_sec_filings",
+            "search_us_house_stock_trades",
+            "search_eu_tenders",
+            "search_dod_contract_awards",
+            "get_lei_record",
+            "find_sec_company",
         ]
     )
     for t in tools:
-        free = t.name in ("lei_lookup", "sec_company_lookup")
+        free = t.name in ("get_lei_record", "find_sec_company")
         assert len(t.description) > 200, t.name
         assert (
             t.description.startswith("Free, no API token needed.") if free else "$" in t.description
@@ -286,6 +287,27 @@ def test_all_tools_registered_with_descriptions():
         assert t.annotations.read_only_hint and t.annotations.open_world_hint, t.name
         assert t.title, t.name
         assert t.input_schema["properties"]["max_results"]["maximum"] <= 100
+
+
+RENAMED_0_4_0 = {
+    "lei_lookup": "get_lei_record",
+    "sec_company_lookup": "find_sec_company",
+    "eu_annual_report_financials": "get_eu_annual_reports",
+    "european_company_accounts": "get_company_accounts",
+    "sec_insider_trades": "search_sec_insider_trades",
+    "sec_filings": "search_sec_filings",
+    "us_house_stock_trades": "search_us_house_stock_trades",
+    "eu_public_tenders": "search_eu_tenders",
+    "dod_contract_awards": "search_dod_contract_awards",
+}
+
+
+def test_tool_names_are_the_0_4_0_names_only():
+    tools = asyncio.run(bosco_mcp.mcp.list_tools())
+    assert {t.name for t in tools} == set(RENAMED_0_4_0.values())
+    texts = [bosco_mcp.mcp.instructions] + [t.description for t in tools]
+    for old in RENAMED_0_4_0:  # no text still points the model at an old name
+        assert not any(re.search(rf"\b{old}\b", s) for s in texts), old
 
 
 def test_stdio_smoke():
@@ -301,7 +323,7 @@ def test_stdio_smoke():
         async with stdio_client(params) as (r, w), ClientSession(r, w) as s:
             await s.initialize()
             tools = (await s.list_tools()).tools
-            res = await s.call_tool("sec_filings", {"tickers": ["AAPL"]})
+            res = await s.call_tool("search_sec_filings", {"tickers": ["AAPL"]})
             return tools, res
 
     tools, res = asyncio.run(run())
@@ -413,8 +435,8 @@ def web(monkeypatch):
     return State
 
 
-def test_lei_lookup_by_lei(web):
-    (row,) = call("lei_lookup", query=LEI.lower())
+def test_get_lei_record_by_lei(web):
+    (row,) = call("get_lei_record", query=LEI.lower())
     assert row == {
         "lei": LEI,
         "legal_name": "ASML Holding N.V.",
@@ -428,27 +450,27 @@ def test_lei_lookup_by_lei(web):
         "source_url": f"https://search.gleif.org/#/record/{LEI}",
         "next_steps": [{
             "why": "Audited financials if it is an EU/UK listed company",
-            "tool": "esef_annual_reports", "arguments": {"leis": [LEI]},
+            "tool": "get_eu_annual_reports", "arguments": {"leis": [LEI]},
             "remote_mcp": "https://api.boscolabs.dev/mcp",
             "http": "POST https://api.boscolabs.dev/v1/esef-annual-reports",
-            "stdio_tool": "eu_annual_report_financials", "stdio_arguments": {"lei": LEI},
+            "stdio_tool": "get_eu_annual_reports", "stdio_arguments": {"lei": LEI},
             "paid": True,
         }],  # fmt: skip
     }
     assert len(web.seen) == 1  # no parent request when no parent is reported
 
 
-def test_lei_lookup_parent_and_uk_next_step(web):
-    (row,) = call("lei_lookup", query=SUB_LEI)
+def test_get_lei_record_parent_and_uk_next_step(web):
+    (row,) = call("get_lei_record", query=SUB_LEI)
     assert row["ultimate_parent"] == {"lei": LEI, "legal_name": "ASML Holding N.V."}
     (step,) = row["next_steps"]
-    assert step["tool"] == "company_accounts" and step["arguments"] == {"companyNumbers": ["03117531"]}
-    assert step["stdio_tool"] == "european_company_accounts"
+    assert step["tool"] == "get_company_accounts" and step["arguments"] == {"companyNumbers": ["03117531"]}
+    assert step["stdio_tool"] == "get_company_accounts"
     assert step["stdio_arguments"] == {"uk_company_numbers": ["03117531"]}
 
 
-def test_lei_lookup_by_name_dedupes_and_keeps_rank_order(web):
-    rows = call("lei_lookup", query=" asml ", max_results=5)
+def test_get_lei_record_by_name_dedupes_and_keeps_rank_order(web):
+    rows = call("get_lei_record", query=" asml ", max_results=5)
     assert [r["lei"] for r in rows] == [LEI, SUB_LEI]
     assert web.seen[0].url.params["q"] == "asml"
     assert len(json.dumps(rows)) < 5000
@@ -457,10 +479,10 @@ def test_lei_lookup_by_name_dedupes_and_keeps_rank_order(web):
 @pytest.mark.parametrize(
     "tool,args,match",
     [
-        ("lei_lookup", {"query": "00000000000000000000"}, "No LEI record"),
-        ("lei_lookup", {"query": "zzz"}, "724500Y6DUVHQD6OXN27"),
-        ("sec_company_lookup", {"query": "nosuchcompany"}, "AAPL"),
-        ("sec_company_lookup", {"query": "999"}, "320193"),
+        ("get_lei_record", {"query": "00000000000000000000"}, "No LEI record"),
+        ("get_lei_record", {"query": "zzz"}, "724500Y6DUVHQD6OXN27"),
+        ("find_sec_company", {"query": "nosuchcompany"}, "AAPL"),
+        ("find_sec_company", {"query": "999"}, "320193"),
     ],
 )
 def test_free_tools_not_found_teach(web, tool, args, match):
@@ -471,10 +493,10 @@ def test_free_tools_not_found_teach(web, tool, args, match):
 @pytest.mark.parametrize(
     "tool,args",
     [
-        ("lei_lookup", {"query": "a"}),
-        ("lei_lookup", {"query": "asml", "max_results": 6}),
-        ("sec_company_lookup", {"query": ""}),
-        ("sec_company_lookup", {"query": "x" * 101}),
+        ("get_lei_record", {"query": "a"}),
+        ("get_lei_record", {"query": "asml", "max_results": 6}),
+        ("find_sec_company", {"query": ""}),
+        ("find_sec_company", {"query": "x" * 101}),
     ],
 )
 def test_free_tools_reject_bad_input(web, tool, args):
@@ -484,12 +506,12 @@ def test_free_tools_reject_bad_input(web, tool, args):
 
 
 def test_sec_lookup_by_ticker(web):
-    (row,) = call("sec_company_lookup", query="aapl")
+    (row,) = call("find_sec_company", query="aapl")
     assert row["cik"] == "320193" and row["name"] == "Apple Inc." and row["tickers"] == ["AAPL"]
     assert row["sic"] == "3571" and row["fiscal_year_end"] == "0926"
     assert row["source_url"] == "https://www.sec.gov/edgar/browse/?CIK=320193"
     steps = row["next_steps"]
-    assert [s["tool"] for s in steps] == ["sec_filings_feed", "sec_insider_trades"]
+    assert [s["tool"] for s in steps] == ["search_sec_filings", "search_sec_insider_trades"]
     assert all(s["arguments"] == {"ciks": ["320193"]} for s in steps)
     assert "filings" not in row
     tickers_req, sub_req = web.seen
@@ -498,23 +520,23 @@ def test_sec_lookup_by_ticker(web):
 
 
 def test_sec_lookup_by_name_ranks_and_caches_tickers_file(web):
-    assert [r["cik"] for r in call("sec_company_lookup", query="microsoft")] == ["789019"]
-    assert [r["cik"] for r in call("sec_company_lookup", query="hathaway")] == ["1067983"]
-    (row,) = call("sec_company_lookup", query="Alphabet", max_results=1)
+    assert [r["cik"] for r in call("find_sec_company", query="microsoft")] == ["789019"]
+    assert [r["cik"] for r in call("find_sec_company", query="hathaway")] == ["1067983"]
+    (row,) = call("find_sec_company", query="Alphabet", max_results=1)
     assert row["tickers"] == ["GOOGL", "GOOG"]
     assert len([r for r in web.seen if r.url.host == "www.sec.gov"]) == 1
 
 
 def test_sec_lookup_by_cik_skips_tickers_file(web):
-    (row,) = call("sec_company_lookup", query="0000777")
+    (row,) = call("find_sec_company", query="0000777")
     assert row["cik"] == "777" and row["name"] == "NO TICKER FILER"
     assert [r.url.host for r in web.seen] == ["data.sec.gov"]
 
 
 def test_free_tools_retry_once_then_teach(web):
     web.fail = [503]
-    assert call("lei_lookup", query=LEI)[0]["lei"] == LEI
+    assert call("get_lei_record", query=LEI)[0]["lei"] == LEI
     assert len(web.seen) == 2
     web.fail = [429, 429]
     with pytest.raises(ToolError, match="rate-limiting"):
-        call("lei_lookup", query=LEI)
+        call("get_lei_record", query=LEI)

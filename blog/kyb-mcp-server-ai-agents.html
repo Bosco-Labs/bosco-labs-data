@@ -147,7 +147,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <p class="crumbs"><a href="/blog/index.html">Blog</a> &rsaquo; A KYB MCP server for AI agents: setup and limits</p>
 <h1>A KYB MCP server for AI agents: setup and limits</h1>
 <p class="muted">Bosco Labs · <time datetime="2026-11-09">9 November 2026</time>, updated <time datetime="2026-11-11">11 November 2026</time></p>
-<p>Add <code>https://api.boscolabs.dev/mcp</code> to your MCP client with an API key in the <code>Authorization</code> header. Your agent gets a <code>counterparty_check</code> tool that takes a company name or number and returns a checklist from official sources. If you want to look around before getting a key, <code>https://api.boscolabs.dev/mcp/free</code> works without one and gives the agent our planner and tool descriptions, plus free LEI and SEC company lookups.</p>
+<p>Add <code>https://api.boscolabs.dev/mcp</code> to your MCP client with an API key in the <code>Authorization</code> header. Your agent gets a <code>check_counterparty</code> tool that takes a company name or number and returns a checklist from official sources. If you want to look around before getting a key, <code>https://api.boscolabs.dev/mcp/free</code> works without one and gives the agent our planner and tool descriptions, plus free LEI and SEC company lookups.</p>
 <p>The rest of this post covers setup in a few clients, what the agent gets back, and how to stop it from reading a missing answer as a clean one.</p>
 <h2>Setup</h2>
 <p>In Claude Code, the free server needs no key:</p>
@@ -168,7 +168,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <p>If you already have an Apify account, the same check runs through Apify&#x27;s hosted MCP server at <code>https://mcp.apify.com?tools=bosco_labs/counterparty-check</code>, billed to Apify.</p>
 <p>You can <a href="/api.html#key">get a key here</a>. It comes with $5 of free credit, which is 100 company checks.</p>
 <h2>What the agent sees</h2>
-<p>The main server lists three tools. <code>counterparty_check</code> is the one doing the work. <code>plan_official_records_query</code> is free and turns a question into the exact call and its maximum price, or says <code>not_covered</code> if we don&#x27;t have the data. <code>run_official_records_plan</code> runs a plan, or any of our other tools by name. If you&#x27;d rather have every tool listed separately, use <code>https://api.boscolabs.dev/mcp?tools=all</code>. The <a href="/api.html#mcp">MCP section of the API page</a> has the details.</p>
+<p>The main server lists three tools. <code>check_counterparty</code> is the one doing the work. <code>plan_records_query</code> is free and turns a question into the exact call and its maximum price, or says <code>not_covered</code> if we don&#x27;t have the data. <code>run_records_plan</code> runs a plan, or any of our other tools by name. If you&#x27;d rather have every tool listed separately, use <code>https://api.boscolabs.dev/mcp?tools=all</code>. The <a href="/api.html#mcp">MCP section of the API page</a> has the details.</p>
 <p>The input is small. <code>query</code> takes a company name or an identifier: a UK company number, a Danish CVR, a Norwegian org number, a French SIREN, a Finnish Business ID, an Estonian registry code, an LEI, a US ticker or an SEC CIK. <code>country</code> helps when a name or number is ambiguous. If the user gave a VAT number or an IBAN, the agent can pass <code>vatNumber</code> and <code>iban</code> too. For a vendor list, <code>companies</code> takes up to 10 at once.</p>
 <p>A prompt like this one is enough for the agent to fill those in:</p>
 <p>&gt; Before we pay them: check supplier Novo Nordisk A/S (CVR 24256790), their VAT number DK24256790 and IBAN DK5000400440116243.</p>
@@ -180,7 +180,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <h2>Teach the agent what &quot;unverified&quot; means</h2>
 <p>This is the part that matters most. A model that sees six passes and three unverified checks will often summarise it as &quot;all clear&quot;. It isn&#x27;t. Unverified means nobody checked.</p>
 <p>We put a notice in every row saying exactly that, but it helps to say it in your own system prompt too. Something like:</p>
-<pre><code>When you check a company, call counterparty_check once per company.
+<pre><code>When you check a company, call check_counterparty once per company.
 Report every check in summary.needs_attention with its source_url.
 List the checks in summary.unverified_checks by name and say they were not checked.
 Never describe a company as clear if any check is fail, review or unverified.

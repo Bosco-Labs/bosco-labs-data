@@ -3,8 +3,17 @@
   "name": "io.github.Bosco-Labs/sec-edgar-insider-trades",
   "title": "SEC EDGAR: filings, insider trades, 13F",
   "description": "SEC EDGAR filings (8-K, 10-K, 10-Q), Form 4 insider trading, 13F holdings and XBRL financials",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "websiteUrl": "https://boscolabs.dev/api.html",
+  "icons": [
+    {
+      "src": "https://boscolabs.dev/logo-512.png",
+      "mimeType": "image/png",
+      "sizes": [
+        "512x512"
+      ]
+    }
+  ],
   "repository": {
     "url": "https://github.com/Bosco-Labs/bosco-labs-data",
     "source": "github"
@@ -12,7 +21,7 @@
   "remotes": [
     {
       "type": "streamable-http",
-      "url": "https://api.boscolabs.dev/mcp?tools=sec_filings_feed,sec_insider_trades,sec_ownership,sec_company_financials,sec_company_screen,plan_official_records_query",
+      "url": "https://api.boscolabs.dev/mcp?tools=search_sec_filings,search_sec_insider_trades,get_sec_ownership,get_sec_financials,search_sec_companies_by_financials,plan_records_query",
       "headers": [
         {
           "name": "Authorization",

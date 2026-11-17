@@ -3,8 +3,17 @@
   "name": "io.github.Bosco-Labs/sanctions-screening",
   "title": "Sanctions screening: OFAC, UK, EU, UN",
   "description": "Screen names and crypto wallets against OFAC SDN, UK, EU and UN sanctions lists, with list dates",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "websiteUrl": "https://boscolabs.dev/api.html",
+  "icons": [
+    {
+      "src": "https://boscolabs.dev/logo-512.png",
+      "mimeType": "image/png",
+      "sizes": [
+        "512x512"
+      ]
+    }
+  ],
   "repository": {
     "url": "https://github.com/Bosco-Labs/bosco-labs-data",
     "source": "github"
@@ -12,7 +21,7 @@
   "remotes": [
     {
       "type": "streamable-http",
-      "url": "https://api.boscolabs.dev/mcp?tools=sanctions_screening,counterparty_check,plan_official_records_query",
+      "url": "https://api.boscolabs.dev/mcp?tools=screen_sanctions,check_counterparty,plan_records_query",
       "headers": [
         {
           "name": "Authorization",

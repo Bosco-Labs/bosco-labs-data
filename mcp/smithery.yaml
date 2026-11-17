@@ -10,7 +10,7 @@ startCommand:
           Your Bosco Labs API key, for the paid tools: every row they return is paid from your
           prepaid credits (from $0.001 to $0.05 per row, see the README). A new key has $5.00
           of free credit, no card: https://boscolabs.dev/api.html#key. The free tools
-          (lei_lookup, sec_company_lookup) work without it.
+          (get_lei_record, find_sec_company) work without it.
       apifyToken:
         type: string
         description: >-

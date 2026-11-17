@@ -3,8 +3,17 @@
   "name": "io.github.Bosco-Labs/kyb-due-diligence",
   "title": "KYB due diligence and company checks",
   "description": "KYB compliance checks: Companies House and EU registers, insolvency, sanctions, VAT, IBAN, LEI",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "websiteUrl": "https://boscolabs.dev/api.html",
+  "icons": [
+    {
+      "src": "https://boscolabs.dev/logo-512.png",
+      "mimeType": "image/png",
+      "sizes": [
+        "512x512"
+      ]
+    }
+  ],
   "repository": {
     "url": "https://github.com/Bosco-Labs/bosco-labs-data",
     "source": "github"
@@ -12,7 +21,7 @@
   "remotes": [
     {
       "type": "streamable-http",
-      "url": "https://api.boscolabs.dev/mcp?tools=counterparty_check,company_check,company_accounts,sanctions_screening,vat_iban_check,identifier_resolver,plan_official_records_query",
+      "url": "https://api.boscolabs.dev/mcp?tools=check_counterparty,get_company_profile,get_company_accounts,screen_sanctions,check_vat_iban,resolve_company_identifiers,plan_records_query",
       "headers": [
         {
           "name": "Authorization",

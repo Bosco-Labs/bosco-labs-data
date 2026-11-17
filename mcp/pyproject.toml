@@ -1,6 +1,6 @@
 [project]
 name = "bosco-labs-data-mcp"
-version = "0.3.0"
+version = "0.4.0"
 description = "MCP server: free LEI and SEC company lookups, plus SEC insider trades and filings, US House trades, DoD contracts, EU tenders and European company financials (Bosco Labs API key or Apify token)."
 readme = "README.md"
 requires-python = ">=3.10"

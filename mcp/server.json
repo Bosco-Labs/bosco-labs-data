@@ -1,9 +1,19 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.Bosco-Labs/bosco-labs-data",
-  "title": "Bosco Labs data",
-  "description": "Sanctions screening, company checks, EU tenders and law, SEC filings, insider trades",
-  "version": "0.3.0",
+  "title": "Bosco Labs: official records for AI agents",
+  "description": "Sanctions, KYB company checks, SEC EDGAR, EU law and more from official sources, each row sourced",
+  "version": "0.4.0",
+  "websiteUrl": "https://boscolabs.dev",
+  "icons": [
+    {
+      "src": "https://boscolabs.dev/logo-512.png",
+      "mimeType": "image/png",
+      "sizes": [
+        "512x512"
+      ]
+    }
+  ],
   "repository": {
     "url": "https://github.com/Bosco-Labs/bosco-labs-data",
     "source": "github",
@@ -14,7 +24,7 @@
       "registryType": "pypi",
       "registryBaseUrl": "https://pypi.org",
       "identifier": "bosco-labs-data-mcp",
-      "version": "0.3.0",
+      "version": "0.4.0",
       "runtimeHint": "uvx",
       "transport": {
         "type": "stdio"

@@ -3,8 +3,17 @@
   "name": "io.github.Bosco-Labs/eur-lex-uk-dutch-law",
   "title": "EUR-Lex, UK and Dutch law",
   "description": "EU legislation from EUR-Lex, UK and Dutch statutes and Dutch case law, article by article",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "websiteUrl": "https://boscolabs.dev/api.html",
+  "icons": [
+    {
+      "src": "https://boscolabs.dev/logo-512.png",
+      "mimeType": "image/png",
+      "sizes": [
+        "512x512"
+      ]
+    }
+  ],
   "repository": {
     "url": "https://github.com/Bosco-Labs/bosco-labs-data",
     "source": "github"
@@ -12,7 +21,7 @@
   "remotes": [
     {
       "type": "streamable-http",
-      "url": "https://api.boscolabs.dev/mcp?tools=eu_law_lookup,national_law_lookup,dutch_case_law,plan_official_records_query",
+      "url": "https://api.boscolabs.dev/mcp?tools=get_eu_law,get_uk_dutch_law,search_dutch_case_law,plan_records_query",
       "headers": [
         {
           "name": "Authorization",

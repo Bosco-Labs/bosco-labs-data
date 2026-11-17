@@ -15,12 +15,12 @@ These two tools call the open official APIs directly: no key, no cost.
 
 | Tool | Data (source) | Example question |
 |---|---|---|
-| `lei_lookup` | LEI, legal name, status, jurisdiction, registration number and ultimate parent of any legal entity (GLEIF, CC0 open data) | "What is Heineken N.V.'s LEI and is it active?" |
-| `sec_company_lookup` | CIK, official name, tickers, exchanges, SIC industry and state of incorporation of SEC-registered companies (SEC EDGAR) | "What is Alphabet's CIK and on which exchange does it trade?" |
+| `get_lei_record` | LEI, legal name, status, jurisdiction, registration number and ultimate parent of any legal entity (GLEIF, CC0 open data) | "What is Heineken N.V.'s LEI and is it active?" |
+| `find_sec_company` | CIK, official name, tickers, exchanges, SIC industry and state of incorporation of SEC-registered companies (SEC EDGAR) | "What is Alphabet's CIK and on which exchange does it trade?" |
 
 ```bash
 claude mcp add bosco-labs-data -- uvx bosco-labs-data-mcp   # no key needed for these
-# ask: "Look up the LEI of ASML" -> lei_lookup {"query": "ASML"}
+# ask: "Look up the LEI of ASML" -> get_lei_record {"query": "ASML"}
 ```
 
 Each result has a `next_steps` list: the paid call that gives the full picture (filings,
@@ -32,20 +32,38 @@ this package.
 
 | Tool | Data (source) | Price per row | Example question |
 |---|---|---|---|
-| `eu_annual_report_financials` | Audited financials of EU/UK listed companies (ESEF reports, filings.xbrl.org) | $0.05 (on Apify + $0.01 per call) | "Compare ASML's and Heineken's latest revenue and operating margin." |
-| `european_company_accounts` | Accounts of UK, Danish and Norwegian companies, incl. private (Companies House, Erhvervsstyrelsen, Brønnøysund) | $0.04 | "What were the revenue and equity of Danish company CVR 24256790 in recent years?" |
-| `sec_insider_trades` | Form 4 insider purchases and sales since 2006, cluster buys and sells (SEC EDGAR) | $0.0018 | "Have NVIDIA insiders bought or sold shares in the last month?" |
-| `sec_filings` | Any EDGAR filing since 1994: 8-K items, 10-K, 10-Q, earnings release times (SEC EDGAR) | $0.001 | "When did Apple last release earnings, and was it after the close?" |
-| `us_house_stock_trades` | STOCK Act trades of House members since 2014 (Clerk of the House) | $0.0018 | "What stocks did Nancy Pelosi trade this year?" |
-| `eu_public_tenders` | EU/EEA public tenders and contract awards (TED) | $0.002 | "Find open IT-services tenders in Germany and the Netherlands from this week." |
-| `dod_contract_awards` | DoD (or any federal agency) contract awards since FY2008, with winner tickers (USAspending.gov) | $0.005 | "Which Pentagon contracts did Kratos win this year?" |
+| `get_eu_annual_reports` | Audited financials of EU/UK listed companies (ESEF reports, filings.xbrl.org) | $0.05 (on Apify + $0.01 per call) | "Compare ASML's and Heineken's latest revenue and operating margin." |
+| `get_company_accounts` | Accounts of UK, Danish and Norwegian companies, incl. private (Companies House, Erhvervsstyrelsen, Brønnøysund) | $0.04 | "What were the revenue and equity of Danish company CVR 24256790 in recent years?" |
+| `search_sec_insider_trades` | Form 4 insider purchases and sales since 2006, cluster buys and sells (SEC EDGAR) | $0.0018 | "Have NVIDIA insiders bought or sold shares in the last month?" |
+| `search_sec_filings` | Any EDGAR filing since 1994: 8-K items, 10-K, 10-Q, earnings release times (SEC EDGAR) | $0.001 | "When did Apple last release earnings, and was it after the close?" |
+| `search_us_house_stock_trades` | STOCK Act trades of House members since 2014 (Clerk of the House) | $0.0018 | "What stocks did Nancy Pelosi trade this year?" |
+| `search_eu_tenders` | EU/EEA public tenders and contract awards (TED) | $0.002 | "Find open IT-services tenders in Germany and the Netherlands from this week." |
+| `search_dod_contract_awards` | DoD (or any federal agency) contract awards since FY2008, with winner tickers (USAspending.gov) | $0.005 | "Which Pentagon contracts did Kratos win this year?" |
 
 Every tool has a `max_results` parameter with a small default (3 to 25 rows) and a hard
-maximum, so one call costs cents. `dod_contract_awards` can take a minute or more.
+maximum, so one call costs cents. `search_dod_contract_awards` can take a minute or more.
 
 Two other Bosco Labs Apify Actors are not tools here because they work on your own Apify datasets or
 Google credentials: [Dedup & Merge Datasets](https://apify.com/Bosco_labs/dataset-dedup) and
 [Google Sheets Export](https://apify.com/Bosco_labs/sheets-export). Use them on Apify directly.
+
+## Changes in 0.4.0
+
+All tools were renamed to one verb_noun scheme, the scheme the Bosco Labs remote MCP server
+(https://api.boscolabs.dev/mcp) uses too. Inputs and outputs did not change. Scripts or configs that call a tool by its old name
+must use the new one; the old names no longer exist.
+
+| Before 0.4.0 | From 0.4.0 |
+|---|---|
+| `lei_lookup` | `get_lei_record` |
+| `sec_company_lookup` | `find_sec_company` |
+| `eu_annual_report_financials` | `get_eu_annual_reports` |
+| `european_company_accounts` | `get_company_accounts` |
+| `sec_insider_trades` | `search_sec_insider_trades` |
+| `sec_filings` | `search_sec_filings` |
+| `us_house_stock_trades` | `search_us_house_stock_trades` |
+| `eu_public_tenders` | `search_eu_tenders` |
+| `dod_contract_awards` | `search_dod_contract_awards` |
 
 ## Pricing
 

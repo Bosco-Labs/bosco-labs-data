@@ -1,6 +1,6 @@
 """Bosco Labs data: one MCP server (stdio) for official-source data.
 
-Two free tools (lei_lookup, sec_company_lookup) call open official APIs directly and need no
+Two free tools (get_lei_record, find_sec_company) call open official APIs directly and need no
 key. Every other tool is paid, per row returned: with BOSCO_API_KEY it calls the Bosco Labs
 HTTP API (prepaid credits); with APIFY_TOKEN instead it runs the same tool as a Bosco Labs
 Apify Actor, billed to the user's own Apify account (pay per event).
@@ -30,7 +30,7 @@ mcp = MCPServer(
     "bosco-labs-data",
     instructions=(
         "Official-source data (GLEIF, SEC EDGAR, US House Clerk, USAspending, EU TED, ESEF "
-        "annual reports, UK/DK/NO company registers). lei_lookup and sec_company_lookup are "
+        "annual reports, UK/DK/NO company registers). get_lei_record and find_sec_company are "
         "free and need no key: use them first to identify a company. Every other tool is paid "
         "per row returned (from the user's Bosco Labs credits, or their Apify account), so "
         "request only as many rows as the question needs. Cite the source link of each row."
@@ -204,6 +204,12 @@ LEI_RE = re.compile(r"^[A-Z0-9]{18}[0-9]{2}$")
 ACCOUNTS_PARAM = {"GB": "uk_company_numbers", "DK": "dk_cvr_numbers", "NO": "no_org_numbers"}
 ACCOUNTS_FIELD = {"GB": "companyNumbers", "DK": "cvrNumbers", "NO": "orgNumbers"}  # API input
 API = "https://api.boscolabs.dev"
+REMOTE_TOOL = {  # HTTP API slug -> tool name on the remote MCP server (API/mcp)
+    "company-accounts": "get_company_accounts",
+    "esef-annual-reports": "get_eu_annual_reports",
+    "sec-filings-feed": "search_sec_filings",
+    "sec-insider-trades": "search_sec_insider_trades",
+}
 
 
 def next_step(why: str, slug: str, arguments: dict, stdio_tool: str, stdio_args: dict) -> dict:
@@ -212,7 +218,7 @@ def next_step(why: str, slug: str, arguments: dict, stdio_tool: str, stdio_args:
     of this package (with BOSCO_API_KEY or APIFY_TOKEN), whose argument names differ."""
     return {
         "why": why,
-        "tool": slug.replace("-", "_"),
+        "tool": REMOTE_TOOL[slug],
         "arguments": arguments,
         "remote_mcp": f"{API}/mcp",
         "http": f"POST {API}/v1/{slug}",
@@ -250,13 +256,13 @@ def lei_row(rec: dict, parent: dict | None) -> dict:
     if country in ACCOUNTS_PARAM and reg:
         row["next_steps"] = [next_step(
             "Filed accounts (revenue, profit, equity)", "company-accounts",
-            {ACCOUNTS_FIELD[country]: [reg]}, "european_company_accounts",
+            {ACCOUNTS_FIELD[country]: [reg]}, "get_company_accounts",
             {ACCOUNTS_PARAM[country]: [reg]},
         )]  # fmt: skip
     else:
         row["next_steps"] = [next_step(
             "Audited financials if it is an EU/UK listed company", "esef-annual-reports",
-            {"leis": [row["lei"]]}, "eu_annual_report_financials", {"lei": row["lei"]},
+            {"leis": [row["lei"]]}, "get_eu_annual_reports", {"lei": row["lei"]},
         )]  # fmt: skip
     return row
 
@@ -273,7 +279,7 @@ async def ultimate_parent(rec: dict) -> dict | None:
 
 
 @mcp.tool(title="LEI lookup (GLEIF, free)", annotations=RO)
-async def lei_lookup(
+async def get_lei_record(
     query: Annotated[
         str,
         Field(
@@ -385,7 +391,7 @@ async def sec_ciks(q: str) -> list[int]:
 
 
 @mcp.tool(title="SEC company lookup: ticker to CIK (free)", annotations=RO)
-async def sec_company_lookup(
+async def find_sec_company(
     query: Annotated[
         str,
         Field(
@@ -431,9 +437,9 @@ async def sec_company_lookup(
             "source_url": f"https://www.sec.gov/edgar/browse/?CIK={cik}",
             "next_steps": [
                 next_step("Filings (8-K, 10-K, Form 4, ...)", "sec-filings-feed",
-                          {"ciks": [str(cik)]}, "sec_filings", {"ciks": [str(cik)]}),
+                          {"ciks": [str(cik)]}, "search_sec_filings", {"ciks": [str(cik)]}),
                 next_step("Insider buys and sells (Form 4)", "sec-insider-trades",
-                          {"ciks": [str(cik)]}, "sec_insider_trades", {"ciks": [str(cik)]}),
+                          {"ciks": [str(cik)]}, "search_sec_insider_trades", {"ciks": [str(cik)]}),
             ],  # fmt: skip
         }
         rows.append(pick(full, SEC_KEYS))
@@ -459,7 +465,7 @@ ESEF_LINKS = ["viewer_url", "report_url", "source_url"]
 
 
 @mcp.tool(title="EU annual report financials (ESEF)", annotations=RO)
-async def eu_annual_report_financials(
+async def get_eu_annual_reports(
     company: Annotated[
         str | None,
         Field(min_length=2, max_length=100, description='Part of the name, e.g. "heineken"'),
@@ -528,7 +534,7 @@ ACCOUNTS_KEYS = [
 
 
 @mcp.tool(title="UK, Danish and Norwegian company accounts", annotations=RO)
-async def european_company_accounts(
+async def get_company_accounts(
     uk_company_numbers: Annotated[
         list[Annotated[str, Field(pattern=r"^[A-Za-z0-9]{1,8}$")]] | None,
         Field(max_length=MAX_LIST, description="Companies House numbers, e.g. 03117531"),
@@ -593,7 +599,7 @@ TxCode = Literal[
 
 
 @mcp.tool(title="SEC insider trades (Form 4)", annotations=RO)
-async def sec_insider_trades(
+async def search_sec_insider_trades(
     tickers: Tickers | None = None,
     ciks: Ciks | None = None,
     transaction_codes: Annotated[
@@ -670,7 +676,7 @@ FILING_KEYS = [
 
 
 @mcp.tool(title="SEC EDGAR filings feed", annotations=RO)
-async def sec_filings(
+async def search_sec_filings(
     tickers: Tickers | None = None,
     ciks: Ciks | None = None,
     form_types: Annotated[
@@ -742,7 +748,7 @@ HOUSE_KEYS = [
 
 
 @mcp.tool(title="US House stock trades", annotations=RO)
-async def us_house_stock_trades(
+async def search_us_house_stock_trades(
     members: Annotated[
         Names | None, Field(description='Part of the member name, e.g. "Pelosi"')
     ] = None,
@@ -803,7 +809,7 @@ NoticeType = Literal[
 
 
 @mcp.tool(title="EU public tenders (TED)", annotations=RO)
-async def eu_public_tenders(
+async def search_eu_tenders(
     keywords: Annotated[
         str | None,
         Field(max_length=200, description="All words must appear, any language, e.g. cloud"),
@@ -872,7 +878,7 @@ DOD_KEYS = [
 
 
 @mcp.tool(title="Pentagon (DoD) contract awards", annotations=RO)
-async def dod_contract_awards(
+async def search_dod_contract_awards(
     recipients: Annotated[
         Names | None, Field(description='Winner or parent name contains, e.g. "kratos"')
     ] = None,
