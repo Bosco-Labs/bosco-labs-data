@@ -3,7 +3,7 @@
   "name": "io.github.Bosco-Labs/bosco-labs-data",
   "title": "Bosco Labs data",
   "description": "Sanctions screening, company checks, EU tenders and law, SEC filings, insider trades",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "repository": {
     "url": "https://github.com/Bosco-Labs/bosco-labs-data",
     "source": "github",
@@ -14,15 +14,21 @@
       "registryType": "pypi",
       "registryBaseUrl": "https://pypi.org",
       "identifier": "bosco-labs-data-mcp",
-      "version": "0.2.3",
+      "version": "0.3.0",
       "runtimeHint": "uvx",
       "transport": {
         "type": "stdio"
       },
       "environmentVariables": [
         {
+          "name": "BOSCO_API_KEY",
+          "description": "Your Bosco Labs API key for the paid tools (prepaid credits; a new key has $5.00 free credit, no card: https://boscolabs.dev/api.html#key); the free tools work without it",
+          "isRequired": false,
+          "isSecret": true
+        },
+        {
           "name": "APIFY_TOKEN",
-          "description": "Your Apify API token for the paid tools (each row returned is billed to your Apify account); the free tools work without it",
+          "description": "Alternative to BOSCO_API_KEY for Apify users: the paid tools then run as Bosco Labs Apify Actors, billed to your Apify account",
           "isRequired": false,
           "isSecret": true
         }

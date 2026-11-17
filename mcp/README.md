@@ -4,13 +4,14 @@
 
 One MCP server that gives AI agents official-source data: free company lookups (LEI, SEC),
 plus SEC insider trades and filings, US House members' stock trades, Pentagon contract awards,
-EU public tenders and the financials of European companies. The paid tools each run one of the
-[Bosco Labs Apify Actors](https://apify.com/Bosco_labs) with **your own** Apify token. Every
-tool returns a short JSON list with a source link on every row.
+EU public tenders and the financials of European companies. The paid tools call the
+[Bosco Labs API](https://boscolabs.dev/api.html) with your Bosco Labs key; a new key comes with
+**$5.00 of free credit, no card** (https://boscolabs.dev/api.html#key). Every tool returns a
+short JSON list with a source link on every row.
 
 ## Free tools (no token)
 
-These two tools call the open official APIs directly: no Apify token, no key, no cost.
+These two tools call the open official APIs directly: no key, no cost.
 
 | Tool | Data (source) | Example question |
 |---|---|---|
@@ -18,7 +19,7 @@ These two tools call the open official APIs directly: no Apify token, no key, no
 | `sec_company_lookup` | CIK, official name, tickers, exchanges, SIC industry and state of incorporation of SEC-registered companies (SEC EDGAR) | "What is Alphabet's CIK and on which exchange does it trade?" |
 
 ```bash
-claude mcp add bosco-labs-data -- uvx bosco-labs-data-mcp   # no token needed for these
+claude mcp add bosco-labs-data -- uvx bosco-labs-data-mcp   # no key needed for these
 # ask: "Look up the LEI of ASML" -> lei_lookup {"query": "ASML"}
 ```
 
@@ -31,7 +32,7 @@ this package.
 
 | Tool | Data (source) | Price per row | Example question |
 |---|---|---|---|
-| `eu_annual_report_financials` | Audited financials of EU/UK listed companies (ESEF reports, filings.xbrl.org) | $0.05 + $0.01 per call | "Compare ASML's and Heineken's latest revenue and operating margin." |
+| `eu_annual_report_financials` | Audited financials of EU/UK listed companies (ESEF reports, filings.xbrl.org) | $0.05 (on Apify + $0.01 per call) | "Compare ASML's and Heineken's latest revenue and operating margin." |
 | `european_company_accounts` | Accounts of UK, Danish and Norwegian companies, incl. private (Companies House, Erhvervsstyrelsen, Brønnøysund) | $0.04 | "What were the revenue and equity of Danish company CVR 24256790 in recent years?" |
 | `sec_insider_trades` | Form 4 insider purchases and sales since 2006, cluster buys and sells (SEC EDGAR) | $0.0018 | "Have NVIDIA insiders bought or sold shares in the last month?" |
 | `sec_filings` | Any EDGAR filing since 1994: 8-K items, 10-K, 10-Q, earnings release times (SEC EDGAR) | $0.001 | "When did Apple last release earnings, and was it after the close?" |
@@ -42,24 +43,25 @@ this package.
 Every tool has a `max_results` parameter with a small default (3 to 25 rows) and a hard
 maximum, so one call costs cents. `dod_contract_awards` can take a minute or more.
 
-Two other Bosco Labs Actors are not tools here because they work on your own Apify datasets or
+Two other Bosco Labs Apify Actors are not tools here because they work on your own Apify datasets or
 Google credentials: [Dedup & Merge Datasets](https://apify.com/Bosco_labs/dataset-dedup) and
 [Google Sheets Export](https://apify.com/Bosco_labs/sheets-export). Use them on Apify directly.
 
 ## Pricing
 
-The free tools cost nothing. For the paid tools you pay Apify per row returned, with your own
-token, at the prices above (the free Apify plan includes monthly credit). The server itself is
-free; it only calls Apify (paid tools), GLEIF and the SEC (free tools).
+The free tools cost nothing. For the paid tools you pay per row returned, at the prices above,
+from the prepaid credits of your Bosco Labs key ($5.00 free to start, no card). Already on
+Apify? Set `APIFY_TOKEN` instead of `BOSCO_API_KEY`: the same tools then run as
+[Bosco Labs Apify Actors](https://apify.com/Bosco_labs), billed to your Apify account. If both
+are set, `BOSCO_API_KEY` is used. The server itself is free; it only calls the Bosco Labs API
+(or Apify) for the paid tools, and GLEIF and the SEC for the free tools.
 
 ## Install
 
-1. For the paid tools, get an Apify API token:
-   https://console.apify.com/settings/integrations (skip this for the free tools only).
+1. For the paid tools, get a Bosco Labs key ($5.00 free credit, no card):
+   https://boscolabs.dev/api.html#key (skip this for the free tools only).
 2. Install [uv](https://docs.astral.sh/uv/).
-3. Add the server to your client (below). Once the package is on PyPI the command is
-   `uvx bosco-labs-data-mcp`. Until then, run it from this folder:
-   `uvx --from /path/to/bosco-labs-data/mcp bosco-labs-data-mcp`.
+3. Add the server to your client (below); the command is `uvx bosco-labs-data-mcp`.
 
 ### Claude Desktop
 
@@ -71,7 +73,7 @@ free; it only calls Apify (paid tools), GLEIF and the SEC (free tools).
     "bosco-labs-data": {
       "command": "uvx",
       "args": ["bosco-labs-data-mcp"],
-      "env": { "APIFY_TOKEN": "apify_api_..." }
+      "env": { "BOSCO_API_KEY": "bl_live_..." }
     }
   }
 }
@@ -85,15 +87,18 @@ above.
 ### Claude Code
 
 ```bash
-claude mcp add bosco-labs-data -e APIFY_TOKEN=apify_api_... -- uvx bosco-labs-data-mcp
+claude mcp add bosco-labs-data -e BOSCO_API_KEY=bl_live_... -- uvx bosco-labs-data-mcp
 ```
 
-Without a token, leave out the `env` block (or `-e APIFY_TOKEN=...`): the free tools work and
-the paid tools reply that a token is needed.
+Without a key, leave out the `env` block (or `-e BOSCO_API_KEY=...`): the free tools work and
+the paid tools reply where to get a key. Apify users: `APIFY_TOKEN=apify_api_...` instead
+(https://console.apify.com/settings/integrations).
 
-## Alternative: Apify's hosted MCP server
+## Alternatives: hosted MCP servers
 
-Without installing anything, you can use the same Actors through Apify's own MCP server
+Without installing anything, the same key works on the Bosco Labs remote MCP server
+`https://api.boscolabs.dev/mcp` (more tools: company registers, sanctions screening, EU law and
+more). Apify users can use the same Actors through Apify's own MCP server
 (OAuth or your token; each Actor becomes a tool with its full input):
 
 ```
@@ -105,7 +110,7 @@ This server is the lighter option: typed parameters, small defaults and compact 
 ## Development
 
 ```bash
-uv run --with pytest pytest -q    # from this folder; Apify, GLEIF and SEC are mocked, plus a stdio smoke test
+uv run --with pytest pytest -q    # from this folder; the APIs are mocked, plus a stdio smoke test
 ```
 
 Source and releases: https://github.com/Bosco-Labs/bosco-labs-data (folder `mcp/`). Releases are

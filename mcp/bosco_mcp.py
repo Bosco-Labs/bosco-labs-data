@@ -1,8 +1,9 @@
-"""Bosco Labs data: one MCP server (stdio) for the Bosco Labs Apify Actors.
+"""Bosco Labs data: one MCP server (stdio) for official-source data.
 
 Two free tools (lei_lookup, sec_company_lookup) call open official APIs directly and need no
-token. Every other tool runs one Actor with the user's own APIFY_TOKEN, so every row is billed
-to the user's Apify account (pay per event).
+key. Every other tool is paid, per row returned: with BOSCO_API_KEY it calls the Bosco Labs
+HTTP API (prepaid credits); with APIFY_TOKEN instead it runs the same tool as a Bosco Labs
+Apify Actor, billed to the user's own Apify account (pay per event).
 """
 
 import asyncio
@@ -30,9 +31,9 @@ mcp = MCPServer(
     instructions=(
         "Official-source data (GLEIF, SEC EDGAR, US House Clerk, USAspending, EU TED, ESEF "
         "annual reports, UK/DK/NO company registers). lei_lookup and sec_company_lookup are "
-        "free and need no token: use them first to identify a company. Every other tool bills "
-        "each row returned to the user's own Apify account (APIFY_TOKEN), so request only as "
-        "many rows as the question needs. Cite the source link of each row."
+        "free and need no key: use them first to identify a company. Every other tool is paid "
+        "per row returned (from the user's Bosco Labs credits, or their Apify account), so "
+        "request only as many rows as the question needs. Cite the source link of each row."
     ),
 )
 RO = ToolAnnotations(readOnlyHint=True, openWorldHint=True)
@@ -58,16 +59,23 @@ def limit(hard: int, unit: str):
     return Annotated[int, Field(ge=1, le=hard, description=f"Max {unit} to return (1-{hard}).")]
 
 
+NO_KEY = (
+    "This tool needs a key. Set BOSCO_API_KEY in the MCP server's environment: get a free "
+    "Bosco Labs key with $5.00 of credit (no card) at https://boscolabs.dev/api.html#key. "
+    "Already on Apify? Set APIFY_TOKEN instead (billed to your Apify account)."
+)
+
+
 async def run_actor(actor: str, payload: dict) -> list[dict]:
-    """Run Bosco_labs~<actor> synchronously and return its dataset items."""
+    """The rows of Bosco Labs tool <actor>: from the HTTP API with BOSCO_API_KEY, else from the
+    Apify Actor Bosco_labs~<actor> with APIFY_TOKEN. Both take the same input."""
+    payload = {k: v for k, v in payload.items() if v is not None}
+    if key := os.environ.get("BOSCO_API_KEY", "").strip():
+        return await run_api(actor, payload, key)
     token = os.environ.get("APIFY_TOKEN", "").strip()
     if not token:
-        raise ToolError(
-            "APIFY_TOKEN is not set in the MCP server's environment. Get a token at "
-            "https://console.apify.com/settings/integrations and add it to the server config."
-        )
+        raise ToolError(NO_KEY)
     url = f"{APIFY_API}/acts/{OWNER}~{actor}/run-sync-get-dataset-items"
-    payload = {k: v for k, v in payload.items() if v is not None}
     try:
         async with httpx.AsyncClient(timeout=HTTP_TIMEOUT) as client:
             r = await client.post(
@@ -100,6 +108,34 @@ async def run_actor(actor: str, payload: dict) -> list[dict]:
     if r.status_code == 408:
         raise ToolError("The Apify run timed out; narrow the query or lower max_results.")
     raise ToolError(f"Apify returned HTTP {r.status_code}: {msg}")
+
+
+async def run_api(tool: str, payload: dict, key: str) -> list[dict]:
+    """POST the input to the Bosco Labs HTTP API and return its rows."""
+    try:
+        async with httpx.AsyncClient(timeout=HTTP_TIMEOUT) as client:
+            r = await client.post(
+                f"{API}/v1/{tool}", json=payload, headers={"Authorization": f"Bearer {key}"}
+            )
+    except httpx.TimeoutException as e:
+        raise ToolError("The Bosco Labs API timed out; narrow the query or lower max_results.") from e
+    except httpx.HTTPError as e:
+        raise ToolError(f"Could not reach the Bosco Labs API: {type(e).__name__}") from e
+    try:
+        body = r.json()
+    except ValueError:
+        body = {}
+    if r.status_code < 400 and isinstance(body.get("rows"), list):
+        return body["rows"]
+    err = body.get("error") if isinstance(body.get("error"), dict) else {}
+    msg = err.get("message") or r.text[:300]
+    if r.status_code == 401:
+        raise ToolError(f"The Bosco Labs API rejected BOSCO_API_KEY (401): {msg}")
+    if r.status_code == 402:
+        raise ToolError(
+            f"Out of Bosco Labs credit (402): {msg} Top up at https://boscolabs.dev/api.html"
+        )
+    raise ToolError(f"The Bosco Labs API returned HTTP {r.status_code}: {msg}")
 
 
 def pick(row: dict, keys: list[str]) -> dict:
@@ -173,7 +209,7 @@ API = "https://api.boscolabs.dev"
 def next_step(why: str, slug: str, arguments: dict, stdio_tool: str, stdio_args: dict) -> dict:
     """The paid Bosco Labs call for the follow-up question, by every name it has: `tool` and
     `arguments` on the remote MCP server (API/mcp, key or x402) and the HTTP API, and the tool
-    of this package (with APIFY_TOKEN), whose argument names differ."""
+    of this package (with BOSCO_API_KEY or APIFY_TOKEN), whose argument names differ."""
     return {
         "why": why,
         "tool": slug.replace("-", "_"),
@@ -456,7 +492,8 @@ async def eu_annual_report_financials(
     `currency`; ratios are decimals (0.25 = 25%). A missing metric was not tagged in the
     report; never treat it as zero.
 
-    Cost to the user: $0.05 per annual report plus $0.01 per call. Takes about 10-60 s.
+    Cost to the user: $0.05 per annual report (with APIFY_TOKEN plus $0.01 per call). Takes
+    about 10-60 s.
     """
     lei = upper([lei])[0] if lei else None
     if bool(lei) == bool(company):

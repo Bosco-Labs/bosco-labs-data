@@ -53,6 +53,7 @@ def apify(monkeypatch):
     mock = httpx.MockTransport(handler)
     monkeypatch.setattr(bosco_mcp.httpx, "AsyncClient", lambda **kw: real(transport=mock, **kw))
     monkeypatch.setenv("APIFY_TOKEN", "user_token")
+    monkeypatch.delenv("BOSCO_API_KEY", raising=False)
     return State
 
 
@@ -188,9 +189,34 @@ def test_rejects_bad_input_without_calling_apify(apify, tool, args):
 
 def test_missing_token(apify, monkeypatch):
     monkeypatch.delenv("APIFY_TOKEN")
-    with pytest.raises(ToolError, match="APIFY_TOKEN"):
+    with pytest.raises(ToolError, match="BOSCO_API_KEY.*boscolabs.dev/api.html#key"):
         call("sec_filings", tickers=["AAPL"])
     assert apify.seen == []
+
+
+@pytest.mark.parametrize("tool,args,actor,payload", CASES)
+def test_tool_calls_the_bosco_api_with_the_user_key(apify, monkeypatch, tool, args, actor, payload):
+    monkeypatch.setenv("BOSCO_API_KEY", "bl_live_user")  # wins over APIFY_TOKEN
+    apify.response = lambda req: httpx.Response(200, json={"tool": actor, "rows": apify.rows})
+    out = call(tool, **args)
+    (req,) = apify.seen
+    assert str(req.url) == f"https://api.boscolabs.dev/v1/{actor}"
+    assert req.headers["Authorization"] == "Bearer bl_live_user"
+    assert json.loads(req.content) == payload
+    assert out  # the rows came back through the same trimming
+
+
+@pytest.mark.parametrize(
+    "status,match",
+    [(401, "rejected BOSCO_API_KEY"), (402, "Out of Bosco Labs credit"), (400, "HTTP 400: boom")],
+)
+def test_maps_bosco_api_errors(apify, monkeypatch, status, match):
+    monkeypatch.setenv("BOSCO_API_KEY", "bl_live_user")
+    apify.response = lambda req: httpx.Response(
+        status, json={"error": {"code": "x", "message": "boom"}}
+    )
+    with pytest.raises(ToolError, match=match):
+        call("sec_filings", tickers=["AAPL"])
 
 
 @pytest.mark.parametrize(
@@ -270,7 +296,7 @@ def test_stdio_smoke():
         params = StdioServerParameters(
             command=sys.executable,
             args=[str(HERE / "bosco_mcp.py")],
-            env={**os.environ, "APIFY_TOKEN": ""},
+            env={**os.environ, "APIFY_TOKEN": "", "BOSCO_API_KEY": ""},
         )
         async with stdio_client(params) as (r, w), ClientSession(r, w) as s:
             await s.initialize()
@@ -280,7 +306,7 @@ def test_stdio_smoke():
 
     tools, res = asyncio.run(run())
     assert len(tools) == 9  # starts without a token; paid tools then explain the missing token
-    assert res.is_error and "APIFY_TOKEN" in res.content[0].text
+    assert res.is_error and "BOSCO_API_KEY" in res.content[0].text
 
 
 # --- Free tools (GLEIF, SEC): no token, open APIs mocked ------------------------------------

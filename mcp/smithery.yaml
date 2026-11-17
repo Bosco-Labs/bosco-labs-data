@@ -4,18 +4,23 @@ startCommand:
   configSchema:
     type: object
     properties:
+      boscoApiKey:
+        type: string
+        description: >-
+          Your Bosco Labs API key, for the paid tools: every row they return is paid from your
+          prepaid credits (from $0.001 to $0.05 per row, see the README). A new key has $5.00
+          of free credit, no card: https://boscolabs.dev/api.html#key. The free tools
+          (lei_lookup, sec_company_lookup) work without it.
       apifyToken:
         type: string
         description: >-
-          Your Apify API token (https://console.apify.com/settings/integrations), for the paid
-          tools: every row they return is billed to your Apify account (from $0.001 to $0.05
-          per row, see the README). The free tools (lei_lookup, sec_company_lookup) work
-          without it.
+          Only for Apify users, instead of the key: your Apify API token. The paid tools then
+          run as Bosco Labs Apify Actors, billed to your Apify account.
   commandFunction: |-
     (config) => ({
       command: "uvx",
       args: ["bosco-labs-data-mcp"],
-      env: { APIFY_TOKEN: config.apifyToken || "" }
+      env: { BOSCO_API_KEY: config.boscoApiKey || "", APIFY_TOKEN: config.apifyToken || "" }
     })
   exampleConfig:
-    apifyToken: apify_api_xxxxxxxxxxxxxxxxxxxx
+    boscoApiKey: bl_live_xxxxxxxxxxxxxxxxxxxx
