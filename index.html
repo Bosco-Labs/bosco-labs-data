@@ -330,7 +330,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <p class="lead">Register status, insolvency, filed accounts, VAT number, IBAN and six official sanctions lists, read from the official sources. Each check comes back as pass, fail, review or unverified, with a link to the register behind it and the date of every list checked.</p>
 <div class="actions"><a class="btn" href="/api.html#key">Get a key: $5.00 free, no card</a><a class="btn ghost" href="#ask">Try it without a key</a></div>
 <ul class="ticks">
-<li><b>9 national registers read directly:</b> UK, Poland, Norway, France, Finland, Estonia, Ireland, Czech Republic, Latvia.</li>
+<li><b>12 national registers read directly:</b> UK, Poland, Norway, France, Finland, Estonia, Ireland, Czech Republic, Latvia, Lithuania, Slovakia, Sweden.</li>
 <li><b>A source on every check:</b> the link to the register and the date of every list checked.</li>
 <li><b>Pay per result:</b> $0.05 per company checked. Empty and failed calls are free, and so is a check where a source we asked timed out or failed, up to 20 such free partial answers per key a day (x402 payers share one such allowance).</li>
 <li><b>Made for agents:</b> HTTP, <a href="/api.html#mcp">remote MCP</a>, <a href="/api.html#x402">x402 without an account</a>, <a href="/llms.txt">llms.txt</a>.</li>
@@ -781,6 +781,9 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <tr><td>Ireland</td><td>Status: Companies Registration Office (CRO) open data; insolvency: CRO status (liquidation, examinership, administration)</td></tr>
 <tr><td>Czech Republic</td><td>Status: ARES; insolvency: ARES status: in liquidation, or the Insolvency Register holds the company</td></tr>
 <tr><td>Latvia</td><td>Status: Enterprise Register open data; insolvency: the register&#x27;s insolvency and liquidation open data</td></tr>
+<tr><td>Lithuania</td><td>Status: Register of Legal Entities open data (daily file); insolvency: the register&#x27;s legal status (bankruptcy, liquidation, restructuring)</td></tr>
+<tr><td>Slovakia</td><td>Status: RPO, the Register of Legal Entities (Statistical Office API, refreshed nightly); insolvency: the register&#x27;s legal status (konkurz, restructuring, liquidation, dissolution)</td></tr>
+<tr><td>Sweden</td><td>Status: Bolagsverket (by organisation number); insolvency: the register status (bankruptcy, liquidation, reorganisation, composition)</td></tr>
 </tbody></table></div>
 <p class="notice">More registers are being added. If you need a country that is not here, <a href="mailto:support@boscolabs.dev">tell us</a>: requests decide the order. The official route per country: <a href="/registers/index.html">company registers by country</a>.</p>
 </section>
