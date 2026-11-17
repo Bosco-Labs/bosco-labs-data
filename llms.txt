@@ -97,6 +97,7 @@ Contact: support@boscolabs.dev
 ## Blog
 
 - [All posts](https://boscolabs.dev/blog/index.html), Atom feed: https://boscolabs.dev/blog/feed.xml
+- [Annual report figures of EU listed companies as JSON](https://boscolabs.dev/blog/eu-annual-report-financials-esef-api.html) (2026-11-17): Revenue, profit, cash flow and balance sheet of an EU listed company, read from its ESEF annual report, with the XBRL tag behind every figure.
 - [Get SEC insider trades (Form 4) for a stock as JSON](https://boscolabs.dev/blog/sec-insider-trades-form-4-api.html) (2026-11-17): Pull the Form 4 insider buys and sells for one ticker or the whole market as JSON rows, with the 10b5-1 flag and a link to each SEC filing.
 - [How to check if a company is sanctioned, with an API](https://boscolabs.dev/blog/check-if-company-is-sanctioned-api.html) (2026-11-09): Screen a company name against the OFAC, UK, EU and UN sanctions lists from code, read a match properly, and know what a name check can't catch.
 - [Check UK company insolvency with the Companies House API](https://boscolabs.dev/blog/companies-house-api-insolvency-check.html) (2026-11-09): Which Companies House API fields show liquidation or administration, why has_insolvency_history is deprecated, and what the register misses. With Python.
