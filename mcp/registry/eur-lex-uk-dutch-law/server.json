@@ -1,9 +1,9 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.Bosco-Labs/eur-lex-uk-dutch-law",
-  "title": "EU, UK and Dutch law",
-  "description": "EU law (EUR-Lex), UK and Dutch legislation and Dutch case law, article by article, with sources",
-  "version": "1.0.1",
+  "title": "EUR-Lex, UK and Dutch law",
+  "description": "EU legislation from EUR-Lex, UK and Dutch statutes and Dutch case law, article by article",
+  "version": "1.0.2",
   "websiteUrl": "https://boscolabs.dev/api.html",
   "repository": {
     "url": "https://github.com/Bosco-Labs/bosco-labs-data",

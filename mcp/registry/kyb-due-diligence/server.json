@@ -1,9 +1,9 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.Bosco-Labs/kyb-due-diligence",
-  "title": "KYB due diligence",
-  "description": "KYB counterparty checks: company register, insolvency, sanctions, VAT, IBAN, from official sources",
-  "version": "1.0.1",
+  "title": "KYB due diligence and company checks",
+  "description": "KYB compliance checks: Companies House and EU registers, insolvency, sanctions, VAT, IBAN, LEI",
+  "version": "1.0.2",
   "websiteUrl": "https://boscolabs.dev/api.html",
   "repository": {
     "url": "https://github.com/Bosco-Labs/bosco-labs-data",

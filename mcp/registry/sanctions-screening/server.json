@@ -1,9 +1,9 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.Bosco-Labs/sanctions-screening",
-  "title": "Sanctions screening",
-  "description": "Screen names and crypto wallets against OFAC, UK, EU and UN sanctions lists, with list dates",
-  "version": "1.0.1",
+  "title": "Sanctions screening: OFAC, UK, EU, UN",
+  "description": "Screen names and crypto wallets against OFAC SDN, UK, EU and UN sanctions lists, with list dates",
+  "version": "1.0.2",
   "websiteUrl": "https://boscolabs.dev/api.html",
   "repository": {
     "url": "https://github.com/Bosco-Labs/bosco-labs-data",
