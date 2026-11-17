@@ -73,11 +73,11 @@ Contact: support@boscolabs.dev
 ## Questions and comparisons
 
 - [Questions agents ask](https://boscolabs.dev/q/index.html): 96 questions, each with the exact Actor input, an MCP prompt, the API call and an example output
-- [SEC insider trading data on Apify: tools compared](https://boscolabs.dev/compare/insider-trades.html): Insider trades tools compared with other Apify Store Actors (Store data, 2026-11-15)
-- [SEC EDGAR filings and financials on Apify compared](https://boscolabs.dev/compare/sec-edgar.html): SEC filings and financials tools compared with other Apify Store Actors (Store data, 2026-11-15)
-- [Company check and KYB data on Apify compared](https://boscolabs.dev/compare/company-data.html): Company check (KYB) tools compared with other Apify Store Actors (Store data, 2026-11-15)
-- [EU public tenders (TED) data on Apify compared](https://boscolabs.dev/compare/eu-public-tenders.html): EU tenders tools compared with other Apify Store Actors (Store data, 2026-11-15)
-- [Sanctions screening tools on Apify compared](https://boscolabs.dev/compare/sanctions-lists.html): Sanctions screening tools compared with other Apify Store Actors (Store data, 2026-11-15)
+- [SEC insider trading data on Apify: tools compared](https://boscolabs.dev/compare/insider-trades.html): Insider trades tools compared with other Apify Store Actors (Store data, 2026-11-16)
+- [SEC EDGAR filings and financials on Apify compared](https://boscolabs.dev/compare/sec-edgar.html): SEC filings and financials tools compared with other Apify Store Actors (Store data, 2026-11-16)
+- [Company check and KYB data on Apify compared](https://boscolabs.dev/compare/company-data.html): Company check (KYB) tools compared with other Apify Store Actors (Store data, 2026-11-16)
+- [EU public tenders (TED) data on Apify compared](https://boscolabs.dev/compare/eu-public-tenders.html): EU tenders tools compared with other Apify Store Actors (Store data, 2026-11-16)
+- [Sanctions screening tools on Apify compared](https://boscolabs.dev/compare/sanctions-lists.html): Sanctions screening tools compared with other Apify Store Actors (Store data, 2026-11-16)
 
 - [Did any Tesla insiders buy shares in the last 90 days?](https://boscolabs.dev/q/tesla-insider-buys-last-90-days.html) -> `sec-insider-trades` `{"tickers": ["TSLA"], "transactionCodes": ["P"], "lookbackDays": 90, "includeClusterSignals": false, "maxResults": 50}`
 - [Which US stocks had insider cluster buys in the last 30 days?](https://boscolabs.dev/q/insider-cluster-buys-last-30-days.html) -> `sec-insider-trades` `{"clusterBuysOnly": true, "lookbackDays": 30, "maxResults": 100}`
