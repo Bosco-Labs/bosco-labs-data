@@ -17,7 +17,7 @@ contract awards, ECB rates and more.
 |---|---|---|
 | HTTP API | `POST https://api.boscolabs.dev/v1/<tool>`, catalogue at [`/v1/tools`](https://api.boscolabs.dev/v1/tools), [OpenAPI](https://api.boscolabs.dev/openapi.json) | prepaid credits ([api.html](https://boscolabs.dev/api.html)) |
 | x402 | the same endpoints without a key: the `402` names the price; `upto` settles only what is delivered | USDC on Base, per call, no account |
-| Remote MCP | `https://api.boscolabs.dev/mcp` (key) | credits |
+| Remote MCP | `https://api.boscolabs.dev/mcp` (key, or OAuth sign-in that links or creates one); [try it in your browser](https://glama.ai/mcp/inspector?servers=%5B%7B%22authType%22%3A%22oauth%22%2C%22headerNames%22%3A%5B%5D%2C%22id%22%3A%22bosco-labs%22%2C%22name%22%3A%22bosco-labs%22%2C%22oauthClientId%22%3A%22%22%2C%22requestTimeout%22%3A90000%2C%22url%22%3A%22https%3A%2F%2Fapi.boscolabs.dev%2Fmcp%3Ftools%3Dall%22%2C%22useProxy%22%3Atrue%7D%5D&active=bosco-labs) in Glama's MCP Inspector | credits |
 | Free MCP | `https://api.boscolabs.dev/mcp/free`: LEI lookup and SEC ticker/name to CIK, no key | free |
 | A2A | [`/.well-known/agent-card.json`](https://api.boscolabs.dev/.well-known/agent-card.json) | credits or x402 |
 | Apify Actors | [apify.com/bosco_labs](https://apify.com/bosco_labs), also through Apify's MCP server | pay per event on Apify |
