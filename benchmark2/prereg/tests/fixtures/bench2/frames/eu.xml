@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<export xmlns="http://eu.europa.ec/fpi/fsd/export" generationDate="2026-10-23T17:05:43.888+02:00">
+  <sanctionEntity euReferenceNumber="EU.FIX.1" logicalId="1">
+    <subjectType code="person" classificationCode="P"/>
+    <nameAlias wholeName="Ivan Fixtureperson" firstName="Ivan" lastName="Fixtureperson"/>
+    <birthdate birthdate="1970-01-01"/>
+  </sanctionEntity>
+  <sanctionEntity euReferenceNumber="EU.FIX.2" logicalId="2">
+    <subjectType code="enterprise" classificationCode="E"/>
+    <nameAlias wholeName="Daugava Shadow Logistics" nameLanguage="EN"/>
+    <nameAlias wholeName="SIA Daugava Shadow Logistics" nameLanguage="LV"/>
+    <address city="Riga" street="Parauga iela 1" countryIso2Code="LV" countryDescription="LATVIA"/>
+    <identification number="40103000020" identificationTypeCode="regnumber" identificationTypeDescription="Registration Number" countryIso2Code="LV"/>
+    <identification number="AB123" identificationTypeCode="other"/>
+  </sanctionEntity>
+  <sanctionEntity euReferenceNumber="EU.FIX.3" logicalId="3">
+    <subjectType code="enterprise" classificationCode="E"/>
+    <nameAlias wholeName="Northern Fixture Bank"/>
+  </sanctionEntity>
+</export>

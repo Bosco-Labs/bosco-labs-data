@@ -1,0 +1,324 @@
+{
+ "register": [
+  {
+   "_id": 1,
+   "regcode": 40103000001,
+   "name": "SIA \"Amber paraugs\"",
+   "type": "SIA",
+   "type_text": "Sabiedrība ar ierobežotu atbildību",
+   "registered": "2012-05-07T00:00:00",
+   "terminated": null,
+   "closed": " ",
+   "address": "Rīga, Parauga iela 1",
+   "index": 1010
+  },
+  {
+   "_id": 2,
+   "regcode": 40103000002,
+   "name": "SIA \"Birch paraugs\"",
+   "type": "SIA",
+   "type_text": "Sabiedrība ar ierobežotu atbildību",
+   "registered": "2012-05-07T00:00:00",
+   "terminated": null,
+   "closed": " ",
+   "address": "Rīga, Parauga iela 1",
+   "index": 1010
+  },
+  {
+   "_id": 3,
+   "regcode": 40103000003,
+   "name": "SIA \"Cedar paraugs\"",
+   "type": "SIA",
+   "type_text": "Sabiedrība ar ierobežotu atbildību",
+   "registered": "2012-05-07T00:00:00",
+   "terminated": null,
+   "closed": " ",
+   "address": "Rīga, Parauga iela 1",
+   "index": 1010
+  },
+  {
+   "_id": 4,
+   "regcode": 40103000004,
+   "name": "SIA \"Delta paraugs\"",
+   "type": "SIA",
+   "type_text": "Sabiedrība ar ierobežotu atbildību",
+   "registered": "2012-05-07T00:00:00",
+   "terminated": null,
+   "closed": " ",
+   "address": "Rīga, Parauga iela 1",
+   "index": 1010
+  },
+  {
+   "_id": 5,
+   "regcode": 40103000005,
+   "name": "SIA \"Ember paraugs\"",
+   "type": "SIA",
+   "type_text": "Sabiedrība ar ierobežotu atbildību",
+   "registered": "2012-05-07T00:00:00",
+   "terminated": null,
+   "closed": " ",
+   "address": "Rīga, Parauga iela 1",
+   "index": 1010
+  },
+  {
+   "_id": 6,
+   "regcode": 40103000006,
+   "name": "SIA \"Likvidācija viens\"",
+   "type": "SIA",
+   "type_text": "Sabiedrība ar ierobežotu atbildību",
+   "registered": "2012-05-07T00:00:00",
+   "terminated": null,
+   "closed": " ",
+   "address": "Rīga, Parauga iela 1",
+   "index": 1010
+  },
+  {
+   "_id": 7,
+   "regcode": 40103000007,
+   "name": "SIA \"Likvidācija divi\"",
+   "type": "SIA",
+   "type_text": "Sabiedrība ar ierobežotu atbildību",
+   "registered": "2012-05-07T00:00:00",
+   "terminated": null,
+   "closed": " ",
+   "address": "Rīga, Parauga iela 1",
+   "index": 1010
+  },
+  {
+   "_id": 8,
+   "regcode": 40103000008,
+   "name": "SIA \"Maksātnespēja viens\"",
+   "type": "SIA",
+   "type_text": "Sabiedrība ar ierobežotu atbildību",
+   "registered": "2012-05-07T00:00:00",
+   "terminated": null,
+   "closed": " ",
+   "address": "Rīga, Parauga iela 1",
+   "index": 1010
+  },
+  {
+   "_id": 9,
+   "regcode": 40103000009,
+   "name": "SIA \"Maksātnespēja divi\"",
+   "type": "SIA",
+   "type_text": "Sabiedrība ar ierobežotu atbildību",
+   "registered": "2012-05-07T00:00:00",
+   "terminated": null,
+   "closed": " ",
+   "address": "Rīga, Parauga iela 1",
+   "index": 1010
+  },
+  {
+   "_id": 10,
+   "regcode": 40103000010,
+   "name": "SIA \"Aizsardzība\"",
+   "type": "SIA",
+   "type_text": "Sabiedrība ar ierobežotu atbildību",
+   "registered": "2012-05-07T00:00:00",
+   "terminated": null,
+   "closed": " ",
+   "address": "Rīga, Parauga iela 1",
+   "index": 1010
+  },
+  {
+   "_id": 11,
+   "regcode": 40103000011,
+   "name": "SIA \"Bijusī maksātnespēja\"",
+   "type": "SIA",
+   "type_text": "Sabiedrība ar ierobežotu atbildību",
+   "registered": "2012-05-07T00:00:00",
+   "terminated": null,
+   "closed": " ",
+   "address": "Rīga, Parauga iela 1",
+   "index": 1010
+  },
+  {
+   "_id": 12,
+   "regcode": 40103000012,
+   "name": "SIA \"Slēgts viens\"",
+   "type": "SIA",
+   "type_text": "Sabiedrība ar ierobežotu atbildību",
+   "registered": "2012-05-07T00:00:00",
+   "terminated": "2026-05-05T00:00:00",
+   "closed": "L",
+   "address": "Rīga, Parauga iela 1",
+   "index": 1010
+  },
+  {
+   "_id": 13,
+   "regcode": 40103000013,
+   "name": "SIA \"Slēgts divi\"",
+   "type": "SIA",
+   "type_text": "Sabiedrība ar ierobežotu atbildību",
+   "registered": "2012-05-07T00:00:00",
+   "terminated": "2026-07-07T00:00:00",
+   "closed": "L",
+   "address": "Rīga, Parauga iela 1",
+   "index": 1010
+  },
+  {
+   "_id": 14,
+   "regcode": 40103000014,
+   "name": "SIA \"Slēgts trīs\"",
+   "type": "SIA",
+   "type_text": "Sabiedrība ar ierobežotu atbildību",
+   "registered": "2012-05-07T00:00:00",
+   "terminated": "2026-08-08T00:00:00",
+   "closed": "L",
+   "address": "Rīga, Parauga iela 1",
+   "index": 1010
+  },
+  {
+   "_id": 15,
+   "regcode": 40103000015,
+   "name": "SIA \"Sen slēgts\"",
+   "type": "SIA",
+   "type_text": "Sabiedrība ar ierobežotu atbildību",
+   "registered": "2012-05-07T00:00:00",
+   "terminated": "2016-06-15T00:00:00",
+   "closed": "L",
+   "address": "Rīga, Parauga iela 1",
+   "index": 1010
+  },
+  {
+   "_id": 16,
+   "regcode": 40103000016,
+   "name": "SIA \"Reorganizēts\"",
+   "type": "SIA",
+   "type_text": "Sabiedrība ar ierobežotu atbildību",
+   "registered": "2012-05-07T00:00:00",
+   "terminated": "2026-06-06T00:00:00",
+   "closed": "R",
+   "address": "Rīga, Parauga iela 1",
+   "index": 1010
+  },
+  {
+   "_id": 17,
+   "regcode": 40103000017,
+   "name": "Jānis Paraugs IK",
+   "type": "IK",
+   "type_text": "IK",
+   "registered": "2012-05-07T00:00:00",
+   "terminated": null,
+   "closed": " ",
+   "address": "Rīga, Parauga iela 1",
+   "index": 1010
+  },
+  {
+   "_id": 18,
+   "regcode": 40103000018,
+   "name": "Akciju sabiedrība \"Parauga banka\"",
+   "type": "AS",
+   "type_text": "AS",
+   "registered": "2012-05-07T00:00:00",
+   "terminated": null,
+   "closed": " ",
+   "address": "Rīga, Parauga iela 1",
+   "index": 1010
+  },
+  {
+   "_id": 19,
+   "regcode": 40103000019,
+   "name": "SIA \"Darbība izbeigta\"",
+   "type": "SIA",
+   "type_text": "Sabiedrība ar ierobežotu atbildību",
+   "registered": "2012-05-07T00:00:00",
+   "terminated": null,
+   "closed": " ",
+   "address": "Rīga, Parauga iela 1",
+   "index": 1010
+  },
+  {
+   "_id": 20,
+   "regcode": 40103000020,
+   "name": "SIA \"Daugava Shadow Logistics\"",
+   "type": "SIA",
+   "type_text": "Sabiedrība ar ierobežotu atbildību",
+   "registered": "2012-05-07T00:00:00",
+   "terminated": null,
+   "closed": " ",
+   "address": "Rīga, Parauga iela 1",
+   "index": 1010
+  }
+ ],
+ "liquidation": [
+  {
+   "_id": 1,
+   "legal_entity_registration_number": 40103000006,
+   "liquidation_type": "LIQUIDATION",
+   "date_from": "2026-03-03T00:00:00",
+   "grounds_for_liquidation": "dalībnieku lēmums"
+  },
+  {
+   "_id": 2,
+   "legal_entity_registration_number": 40103000007,
+   "liquidation_type": "LIQUIDATION",
+   "date_from": "2026-03-03T00:00:00",
+   "grounds_for_liquidation": "dalībnieku lēmums"
+  },
+  {
+   "_id": 3,
+   "legal_entity_registration_number": 40103000019,
+   "liquidation_type": "ACTIVITY_TERMINATED",
+   "date_from": "2026-03-03T00:00:00",
+   "grounds_for_liquidation": "dalībnieku lēmums"
+  }
+ ],
+ "insolvency": [
+  {
+   "_id": 1,
+   "debtor_registration_number": 40103000008,
+   "debtor_name": "x",
+   "debtor_address": "Rīga, Parauga iela 1",
+   "proceeding_started_on": "2025-09-01T00:00:00",
+   "proceeding_ended_on": null,
+   "proceeding_form": "INSOLVENCY",
+   "proceeding_type": "NATIONAL",
+   "court_name": "Rīgas pilsētas tiesa"
+  },
+  {
+   "_id": 2,
+   "debtor_registration_number": 40103000009,
+   "debtor_name": "x",
+   "debtor_address": "Rīga, Parauga iela 1",
+   "proceeding_started_on": "2025-09-01T00:00:00",
+   "proceeding_ended_on": null,
+   "proceeding_form": "INSOLVENCY",
+   "proceeding_type": "NATIONAL",
+   "court_name": "Rīgas pilsētas tiesa"
+  },
+  {
+   "_id": 3,
+   "debtor_registration_number": 40103000010,
+   "debtor_name": "x",
+   "debtor_address": "Rīga, Parauga iela 1",
+   "proceeding_started_on": "2025-09-01T00:00:00",
+   "proceeding_ended_on": null,
+   "proceeding_form": "LEGAL_PROTECTION",
+   "proceeding_type": "NATIONAL",
+   "court_name": "Rīgas pilsētas tiesa"
+  },
+  {
+   "_id": 4,
+   "debtor_registration_number": 40103000011,
+   "debtor_name": "x",
+   "debtor_address": "Rīga, Parauga iela 1",
+   "proceeding_started_on": "2025-09-01T00:00:00",
+   "proceeding_ended_on": "2024-02-02T00:00:00",
+   "proceeding_form": "INSOLVENCY",
+   "proceeding_type": "NATIONAL",
+   "court_name": "Rīgas pilsētas tiesa"
+  },
+  {
+   "_id": 5,
+   "debtor_registration_number": 40103000013,
+   "debtor_name": "x",
+   "debtor_address": "Rīga, Parauga iela 1",
+   "proceeding_started_on": "2025-09-01T00:00:00",
+   "proceeding_ended_on": "2026-07-01T00:00:00",
+   "proceeding_form": "INSOLVENCY",
+   "proceeding_type": "NATIONAL",
+   "court_name": "Rīgas pilsētas tiesa"
+  }
+ ]
+}

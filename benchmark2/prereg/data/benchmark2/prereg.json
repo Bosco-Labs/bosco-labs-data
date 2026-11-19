@@ -1,0 +1,123 @@
+{
+  "version": 1,
+  "frozen_at": "2026-11-19T14:13:34Z",
+  "settings": {
+    "frozen_at": "2026-11-19T14:13:34Z",
+    "reference_date": "2026-11-19",
+    "round_time": "2026-11-20T15:00:00Z",
+    "round": 34127812,
+    "group_size": 30,
+    "api_commit": "3f050f589fb8c8b9a4ef323aaa6d0c0d37bb3d4b",
+    "countries": [
+      "GB",
+      "IE",
+      "LV",
+      "EE"
+    ],
+    "pilot": {
+      "measured": true,
+      "journal_sha256": "881e02639063f51f008dd6b29812d7e5468e801998c60efc61404c8dc2b6d25c",
+      "mean_usd_per_run": {
+        "web": 0.08754,
+        "api": 0.06221,
+        "memory": 0.00489
+      }
+    },
+    "projected_usd": {
+      "30": 31.05,
+      "25": 26.48,
+      "20": 21.92
+    }
+  },
+  "drand": {
+    "beacon": "quicknet",
+    "chain_hash": "52db9ba70e0cc0f6eaf7803dd07447a1f5477735fd3f661792ba94600c84e971",
+    "genesis_time": 1692803367,
+    "period": 3
+  },
+  "pilot": {
+    "measured": true,
+    "journal_sha256": "881e02639063f51f008dd6b29812d7e5468e801998c60efc61404c8dc2b6d25c",
+    "mean_usd_per_run": {
+      "web": 0.08754,
+      "api": 0.06221,
+      "memory": 0.00489
+    }
+  },
+  "projected_usd": {
+    "30": 31.05,
+    "25": 26.48,
+    "20": 21.92
+  },
+  "prices": {
+    "input": {
+      "value": 2.0,
+      "unit": "USD per million tokens",
+      "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "checked": "2026-11-19"
+    },
+    "output": {
+      "value": 10.0,
+      "unit": "USD per million tokens",
+      "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "checked": "2026-11-19"
+    },
+    "cache_read": {
+      "value": 0.1,
+      "unit": "USD per million tokens",
+      "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "checked": "2026-11-19"
+    },
+    "cache_write_multiplier": {
+      "value": 1.25,
+      "unit": "times the input price",
+      "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "checked": "2026-11-19"
+    },
+    "search": {
+      "value": 0.01,
+      "unit": "USD per web search",
+      "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "checked": "2026-11-19"
+    },
+    "note": "Checked 2026-11-19 on the pricing page: Sonnet 5.5 $2 input, $2.50 5-minute cache write (1.25x), $0.10 cache hits (0.05x input), $10 output per MTok; web search $10 per 1,000 searches; web fetch no extra cost."
+  },
+  "caps": {
+    "main_usd": 55,
+    "pilot_usd": 3,
+    "reserve_per_company_usd": 0.6
+  },
+  "config_hash": "dbf908ce16f0338176e4d888ca4f66eeacb84879b96a8851b251ffb912dc580e",
+  "manifest": {
+    "docs/benchmark2/PROTOCOL.md": "679429db28ea930c5ee9110337e77328359ccf1961899977c42ce453928e50d2",
+    "data/benchmark2/config.json": "dbf908ce16f0338176e4d888ca4f66eeacb84879b96a8851b251ffb912dc580e",
+    "data/benchmark2/truth_map.json": "c12eddaddc95de1f1c24e1eb2b5c433040d66921aaaa657a3f4034cf50d500e0",
+    "data/benchmark2/frames.json": "bc47b75b0ddbcfc583289a2fb78a916732d34543cb974a84f22c87b07e963d7f",
+    "tools/bench2_lib.py": "027ea20c89d590a04cf5f083e940304e080e32432c62b72c7742330af506478d",
+    "tools/bench2_sample.py": "c7d32fbaf38cbded3bace08ed58e157d75220e563babd02230bdaebb0d19b5a0",
+    "tools/bench2_prereg.py": "f01200db3097b7ef0ec0c0bf92b2305374fa0aaa86e9e1f6930052857e227f7b",
+    "tools/bench2_run.py": "34d6484000262620c444e7c4940c288cae5b63ff440acc42ae4ba768a595e47e",
+    "tools/bench2_analyze.py": "7c70d7c0a1c58967745453c4e241b94c5c191636d566fe33bad6455a814e9688",
+    "tests/test_bench2_analyze.py": "8bad5d84e9d7672c962563266a15ac67682a30d2bafc1fecdfe3475fdb97f413",
+    "tests/test_bench2_kit.py": "90b98edad37375c9d3f429d286d3983a5aa023986ce634654eb7e0f08a739c43",
+    "tests/test_bench2_lib.py": "d9093bb827883c5a4f6e4f745e0218cf8c3cbc73c270446dd33407b5c7bb2854",
+    "tests/test_bench2_prereg.py": "a071bf40ccd635f9882dfd2e32fa125176a6bc0c526fa3142229c2b34e533bff",
+    "tests/test_bench2_run.py": "8c693f4ee44a3b6ba241c7af69b36fc19a3a7fbdfd6acc5d4db14e714363806a",
+    "tests/test_bench2_sample.py": "2ace0a3afbe23831160bc89702ea535029d3922baae588555fc54e365e01ce67",
+    "tests/fixtures/bench2/audit.json": "5bc4280de3c12f7ea9e684f7fdf4ec41a171044954b915b30c01c46af16e21c1",
+    "tests/fixtures/bench2/frames/ee.json": "4b93ec15c3240d239614982c41d92e947c76defd87ec5d03c4238adf92f30c74",
+    "tests/fixtures/bench2/frames/eu.xml": "5f92ce4e72b1ca5e277a658459a81b300082504ccc87f9a70965634b4658d313",
+    "tests/fixtures/bench2/frames/gb.json": "02257c7c7238d14b078c9eb5b6265ac063ecd2de1bf384a68e020cb61c778fa2",
+    "tests/fixtures/bench2/frames/ie.json": "ebf0eecc9913fa3d3ac48e0a251c965d4dcfe2588833474e9da0d394667197b6",
+    "tests/fixtures/bench2/frames/lv.json": "0a355f15857f4996bf34cb55cb97a4820429f3e60c2da0f03b8d46caed38356c",
+    "tests/fixtures/bench2/frames/meta.json": "bfb131a5739e5fe38fe133f7f97e2f6cbcdf7b1ad06ae90560003c54247c5250",
+    "tests/fixtures/bench2/frames/ofac.xml": "1fe61fc34b644d8e944716e31e46f2b67128b18974664a05a0e9f03b5a1118ff",
+    "tests/fixtures/bench2/frames/sanctions.json": "237e3bbd61e30754017cc81250ddc2c0ea11ef196e58a8e4fbcb071e01ed43d6",
+    "tests/fixtures/bench2/frames/uk.xml": "392607a2d7802621dd9d0e530b80bbed9de2a4259903156ae6100502c9e62367",
+    "tests/fixtures/bench2/runs.jsonl": "b2b651ce06ca4b4687441f284fc6aa1adcfdea3895eac275a5d1e4d9cf5f8c5c",
+    "tests/fixtures/bench2/set.json": "f8f07dd64907d76cfe882d19279958705c9eca35c0a9d0552dcbebc36f507740",
+    "tests/fixtures/bench2/truth2.json": "a7a775c6cc5600bbf46914b68067a8f87abc2cd42824b8721f18068fb4fac756",
+    "prereg:settings": "4e8b4493a4ff873dd9dd55f02b4b0dbfdbcd12bbcda9dc159fc5e26a2e9b9a22"
+  },
+  "bundle_hash": "8e07275e0d1a289e69624bea86e34653f23640fb7369efa1491563a91d193c68"
+}

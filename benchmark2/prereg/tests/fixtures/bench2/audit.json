@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "seed": "f16d05ec6b29248d2c61adb1e9263f78e4f7bace1b955014a2d17872cfe4064d",
+  "rows": [
+    {
+      "id": "gb-09900001",
+      "group": "A",
+      "agrees": true,
+      "note": ""
+    },
+    {
+      "id": "ie-799001",
+      "group": "A",
+      "agrees": true,
+      "note": ""
+    },
+    {
+      "id": "lv-40103999001",
+      "group": "A",
+      "agrees": true,
+      "note": ""
+    },
+    {
+      "id": "gb-09900002",
+      "group": "B",
+      "agrees": true,
+      "note": ""
+    },
+    {
+      "id": "ie-799002",
+      "group": "B",
+      "agrees": true,
+      "note": ""
+    },
+    {
+      "id": "lv-40103999002",
+      "group": "B",
+      "agrees": true,
+      "note": ""
+    },
+    {
+      "id": "gb-09900003",
+      "group": "C",
+      "agrees": true,
+      "note": ""
+    },
+    {
+      "id": "ie-799003",
+      "group": "C",
+      "agrees": true,
+      "note": ""
+    },
+    {
+      "id": "lv-40103999003",
+      "group": "C",
+      "agrees": true,
+      "note": ""
+    },
+    {
+      "id": "gb-09900004",
+      "group": "S",
+      "agrees": true,
+      "note": ""
+    }
+  ]
+}

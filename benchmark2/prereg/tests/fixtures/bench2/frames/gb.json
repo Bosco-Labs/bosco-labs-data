@@ -1,0 +1,2509 @@
+{
+ "about": "any_day[i] is served for the i-th date asked, whatever the seed.",
+ "any_day": [
+  [
+   {
+    "company_number": "09100001",
+    "company_name": "AMBER FIXTURE ONE LTD",
+    "company_type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09100001"
+    },
+    "sic_codes": [
+     "62012"
+    ]
+   },
+   {
+    "company_number": "09100002",
+    "company_name": "AMBER FIXTURE TWO LIMITED",
+    "company_type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09100002"
+    },
+    "sic_codes": [
+     "62012"
+    ]
+   },
+   {
+    "company_number": "09100003",
+    "company_name": "AMBER FIXTURE THREE LTD",
+    "company_type": "ltd",
+    "company_status": "liquidation",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09100003"
+    },
+    "sic_codes": [
+     "62012"
+    ]
+   },
+   {
+    "company_number": "09100004",
+    "company_name": "AMBER FIXTURE FOUR LTD",
+    "company_type": "ltd",
+    "company_status": "dissolved",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09100004"
+    },
+    "sic_codes": [
+     "62012"
+    ],
+    "date_of_cessation": "2026-01-10"
+   },
+   {
+    "company_number": "09100005",
+    "company_name": "AMBER FIXTURE PUBLIC PLC",
+    "company_type": "plc",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09100005"
+    },
+    "sic_codes": [
+     "62012"
+    ]
+   },
+   {
+    "company_number": "09100006",
+    "company_name": "AMBER FIXTURE STRIKE LTD",
+    "company_type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09100006"
+    },
+    "sic_codes": [
+     "62012"
+    ]
+   },
+   {
+    "company_number": "09100007",
+    "company_name": "BALTIC SHADOW TRADING LTD",
+    "company_type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09100007"
+    },
+    "sic_codes": [
+     "62012"
+    ]
+   },
+   {
+    "company_number": "09100008",
+    "company_name": "VOLGA TRADE HOLDINGS LIMITED",
+    "company_type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09100008"
+    },
+    "sic_codes": [
+     "62012"
+    ]
+   },
+   {
+    "company_number": "09100009",
+    "company_name": "AMBER FIXTURE SOLVENT LTD",
+    "company_type": "ltd",
+    "company_status": "liquidation",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09100009"
+    },
+    "sic_codes": [
+     "62012"
+    ]
+   }
+  ],
+  [
+   {
+    "company_number": "09101001",
+    "company_name": "BIRCH FIXTURE ONE LTD",
+    "company_type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09101001"
+    },
+    "sic_codes": [
+     "62012"
+    ]
+   },
+   {
+    "company_number": "09101002",
+    "company_name": "BIRCH FIXTURE TWO LIMITED",
+    "company_type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09101002"
+    },
+    "sic_codes": [
+     "62012"
+    ]
+   },
+   {
+    "company_number": "09101003",
+    "company_name": "BIRCH FIXTURE THREE LTD",
+    "company_type": "ltd",
+    "company_status": "administration",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09101003"
+    },
+    "sic_codes": [
+     "62012"
+    ]
+   },
+   {
+    "company_number": "09101004",
+    "company_name": "BIRCH FIXTURE FOUR LTD",
+    "company_type": "ltd",
+    "company_status": "dissolved",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09101004"
+    },
+    "sic_codes": [
+     "62012"
+    ],
+    "date_of_cessation": "2026-02-10"
+   },
+   {
+    "company_number": "09101005",
+    "company_name": "BIRCH FIXTURE OLD LTD",
+    "company_type": "ltd",
+    "company_status": "dissolved",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09101005"
+    },
+    "sic_codes": [
+     "62012"
+    ],
+    "date_of_cessation": "2019-05-01"
+   },
+   {
+    "company_number": "09101006",
+    "company_name": "BIRCH FIXTURE MOVED LTD",
+    "company_type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09101006"
+    },
+    "sic_codes": [
+     "62012"
+    ],
+    "date_of_cessation": "2026-10-30"
+   },
+   {
+    "company_number": "09101007",
+    "company_name": "BIRCH FIXTURE RECEIVER LTD",
+    "company_type": "ltd",
+    "company_status": "receivership",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09101007"
+    },
+    "sic_codes": [
+     "62012"
+    ]
+   },
+   {
+    "company_number": "09101008",
+    "company_name": "BIRCH FIXTURE HISTORY LTD",
+    "company_type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09101008"
+    },
+    "sic_codes": [
+     "62012"
+    ]
+   }
+  ],
+  [
+   {
+    "company_number": "09102001",
+    "company_name": "CEDAR FIXTURE ONE LTD",
+    "company_type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09102001"
+    },
+    "sic_codes": [
+     "62012"
+    ]
+   },
+   {
+    "company_number": "09102002",
+    "company_name": "CEDAR FIXTURE TWO LIMITED",
+    "company_type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09102002"
+    },
+    "sic_codes": [
+     "62012"
+    ]
+   },
+   {
+    "company_number": "09102003",
+    "company_name": "CEDAR FIXTURE THREE LTD",
+    "company_type": "ltd",
+    "company_status": "liquidation",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09102003"
+    },
+    "sic_codes": [
+     "62012"
+    ]
+   },
+   {
+    "company_number": "09102004",
+    "company_name": "CEDAR FIXTURE FOUR LTD",
+    "company_type": "ltd",
+    "company_status": "dissolved",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09102004"
+    },
+    "sic_codes": [
+     "62012"
+    ],
+    "date_of_cessation": "2026-03-10"
+   }
+  ],
+  [
+   {
+    "company_number": "09103001",
+    "company_name": "DELTA FIXTURE ONE LTD",
+    "company_type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09103001"
+    },
+    "sic_codes": [
+     "62012"
+    ]
+   },
+   {
+    "company_number": "09103002",
+    "company_name": "DELTA FIXTURE TWO LIMITED",
+    "company_type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09103002"
+    },
+    "sic_codes": [
+     "62012"
+    ]
+   },
+   {
+    "company_number": "09103003",
+    "company_name": "DELTA FIXTURE THREE LTD",
+    "company_type": "ltd",
+    "company_status": "administration",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09103003"
+    },
+    "sic_codes": [
+     "62012"
+    ]
+   },
+   {
+    "company_number": "09103004",
+    "company_name": "DELTA FIXTURE FOUR LTD",
+    "company_type": "ltd",
+    "company_status": "dissolved",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09103004"
+    },
+    "sic_codes": [
+     "62012"
+    ],
+    "date_of_cessation": "2026-04-10"
+   }
+  ],
+  [
+   {
+    "company_number": "09104001",
+    "company_name": "EMBER FIXTURE ONE LTD",
+    "company_type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09104001"
+    },
+    "sic_codes": [
+     "62012"
+    ]
+   },
+   {
+    "company_number": "09104002",
+    "company_name": "EMBER FIXTURE TWO LIMITED",
+    "company_type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09104002"
+    },
+    "sic_codes": [
+     "62012"
+    ]
+   },
+   {
+    "company_number": "09104003",
+    "company_name": "EMBER FIXTURE THREE LTD",
+    "company_type": "ltd",
+    "company_status": "liquidation",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09104003"
+    },
+    "sic_codes": [
+     "62012"
+    ]
+   },
+   {
+    "company_number": "09104004",
+    "company_name": "EMBER FIXTURE FOUR LTD",
+    "company_type": "ltd",
+    "company_status": "dissolved",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09104004"
+    },
+    "sic_codes": [
+     "62012"
+    ],
+    "date_of_cessation": "2026-05-10"
+   }
+  ],
+  [
+   {
+    "company_number": "09105001",
+    "company_name": "FJORD FIXTURE ONE LTD",
+    "company_type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09105001"
+    },
+    "sic_codes": [
+     "62012"
+    ]
+   },
+   {
+    "company_number": "09105002",
+    "company_name": "FJORD FIXTURE TWO LIMITED",
+    "company_type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09105002"
+    },
+    "sic_codes": [
+     "62012"
+    ]
+   },
+   {
+    "company_number": "09105003",
+    "company_name": "FJORD FIXTURE THREE LTD",
+    "company_type": "ltd",
+    "company_status": "administration",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09105003"
+    },
+    "sic_codes": [
+     "62012"
+    ]
+   },
+   {
+    "company_number": "09105004",
+    "company_name": "FJORD FIXTURE FOUR LTD",
+    "company_type": "ltd",
+    "company_status": "dissolved",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09105004"
+    },
+    "sic_codes": [
+     "62012"
+    ],
+    "date_of_cessation": "2026-06-10"
+   }
+  ],
+  [
+   {
+    "company_number": "09106001",
+    "company_name": "GRANITE FIXTURE ONE LTD",
+    "company_type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09106001"
+    },
+    "sic_codes": [
+     "62012"
+    ]
+   },
+   {
+    "company_number": "09106002",
+    "company_name": "GRANITE FIXTURE TWO LIMITED",
+    "company_type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09106002"
+    },
+    "sic_codes": [
+     "62012"
+    ]
+   },
+   {
+    "company_number": "09106003",
+    "company_name": "GRANITE FIXTURE THREE LTD",
+    "company_type": "ltd",
+    "company_status": "liquidation",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09106003"
+    },
+    "sic_codes": [
+     "62012"
+    ]
+   },
+   {
+    "company_number": "09106004",
+    "company_name": "GRANITE FIXTURE FOUR LTD",
+    "company_type": "ltd",
+    "company_status": "dissolved",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09106004"
+    },
+    "sic_codes": [
+     "62012"
+    ],
+    "date_of_cessation": "2026-07-10"
+   }
+  ],
+  [
+   {
+    "company_number": "09107001",
+    "company_name": "HARBOUR FIXTURE ONE LTD",
+    "company_type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09107001"
+    },
+    "sic_codes": [
+     "62012"
+    ]
+   },
+   {
+    "company_number": "09107002",
+    "company_name": "HARBOUR FIXTURE TWO LIMITED",
+    "company_type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09107002"
+    },
+    "sic_codes": [
+     "62012"
+    ]
+   },
+   {
+    "company_number": "09107003",
+    "company_name": "HARBOUR FIXTURE THREE LTD",
+    "company_type": "ltd",
+    "company_status": "administration",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09107003"
+    },
+    "sic_codes": [
+     "62012"
+    ]
+   },
+   {
+    "company_number": "09107004",
+    "company_name": "HARBOUR FIXTURE FOUR LTD",
+    "company_type": "ltd",
+    "company_status": "dissolved",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09107004"
+    },
+    "sic_codes": [
+     "62012"
+    ],
+    "date_of_cessation": "2026-08-10"
+   }
+  ],
+  [
+   {
+    "company_number": "09108001",
+    "company_name": "IVORY FIXTURE ONE LTD",
+    "company_type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09108001"
+    },
+    "sic_codes": [
+     "62012"
+    ]
+   },
+   {
+    "company_number": "09108002",
+    "company_name": "IVORY FIXTURE TWO LIMITED",
+    "company_type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09108002"
+    },
+    "sic_codes": [
+     "62012"
+    ]
+   },
+   {
+    "company_number": "09108003",
+    "company_name": "IVORY FIXTURE THREE LTD",
+    "company_type": "ltd",
+    "company_status": "liquidation",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09108003"
+    },
+    "sic_codes": [
+     "62012"
+    ]
+   },
+   {
+    "company_number": "09108004",
+    "company_name": "IVORY FIXTURE FOUR LTD",
+    "company_type": "ltd",
+    "company_status": "dissolved",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09108004"
+    },
+    "sic_codes": [
+     "62012"
+    ],
+    "date_of_cessation": "2026-09-10"
+   }
+  ],
+  [
+   {
+    "company_number": "09109001",
+    "company_name": "JUNIPER FIXTURE ONE LTD",
+    "company_type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09109001"
+    },
+    "sic_codes": [
+     "62012"
+    ]
+   },
+   {
+    "company_number": "09109002",
+    "company_name": "JUNIPER FIXTURE TWO LIMITED",
+    "company_type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09109002"
+    },
+    "sic_codes": [
+     "62012"
+    ]
+   },
+   {
+    "company_number": "09109003",
+    "company_name": "JUNIPER FIXTURE THREE LTD",
+    "company_type": "ltd",
+    "company_status": "administration",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09109003"
+    },
+    "sic_codes": [
+     "62012"
+    ]
+   },
+   {
+    "company_number": "09109004",
+    "company_name": "JUNIPER FIXTURE FOUR LTD",
+    "company_type": "ltd",
+    "company_status": "dissolved",
+    "date_of_creation": "DAY",
+    "kind": "search-results#company",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "links": {
+     "company_profile": "/company/09109004"
+    },
+    "sic_codes": [
+     "62012"
+    ],
+    "date_of_cessation": "2026-01-10"
+   }
+  ]
+ ],
+ "companies": {
+  "09100001": {
+   "profile": {
+    "company_number": "09100001",
+    "company_name": "AMBER FIXTURE ONE LTD",
+    "type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": false,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x"
+   },
+   "insolvency": null
+  },
+  "09100002": {
+   "profile": {
+    "company_number": "09100002",
+    "company_name": "AMBER FIXTURE TWO LIMITED",
+    "type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": false,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x"
+   },
+   "insolvency": null
+  },
+  "09100003": {
+   "profile": {
+    "company_number": "09100003",
+    "company_name": "AMBER FIXTURE THREE LTD",
+    "type": "ltd",
+    "company_status": "liquidation",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": true,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x"
+   },
+   "insolvency": {
+    "etag": "x",
+    "status": [
+     "liquidation"
+    ],
+    "cases": [
+     {
+      "type": "creditors-voluntary-liquidation",
+      "number": "1",
+      "dates": [
+       {
+        "type": "wound-up-on",
+        "date": "2026-01-15"
+       }
+      ],
+      "practitioners": [
+       {
+        "name": "A Fixture Practitioner",
+        "role": "practitioner",
+        "address": {
+         "address_line_1": "1 Fixture Street",
+         "locality": "Testtown",
+         "postal_code": "TE1 1ST"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "09100004": {
+   "profile": {
+    "company_number": "09100004",
+    "company_name": "AMBER FIXTURE FOUR LTD",
+    "type": "ltd",
+    "company_status": "dissolved",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": false,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x",
+    "date_of_cessation": "2026-01-10"
+   },
+   "insolvency": null
+  },
+  "09100005": {
+   "profile": {
+    "company_number": "09100005",
+    "company_name": "AMBER FIXTURE PUBLIC PLC",
+    "type": "plc",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": false,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x"
+   },
+   "insolvency": null
+  },
+  "09100006": {
+   "profile": {
+    "company_number": "09100006",
+    "company_name": "AMBER FIXTURE STRIKE LTD",
+    "type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": false,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x",
+    "company_status_detail": "active-proposal-to-strike-off"
+   },
+   "insolvency": null
+  },
+  "09100007": {
+   "profile": {
+    "company_number": "09100007",
+    "company_name": "BALTIC SHADOW TRADING LTD",
+    "type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": false,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x"
+   },
+   "insolvency": null
+  },
+  "09100008": {
+   "profile": {
+    "company_number": "09100008",
+    "company_name": "VOLGA TRADE HOLDINGS LIMITED",
+    "type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": false,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x"
+   },
+   "insolvency": null
+  },
+  "09100009": {
+   "profile": {
+    "company_number": "09100009",
+    "company_name": "AMBER FIXTURE SOLVENT LTD",
+    "type": "ltd",
+    "company_status": "liquidation",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": true,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x"
+   },
+   "insolvency": {
+    "etag": "x",
+    "status": [
+     "liquidation"
+    ],
+    "cases": [
+     {
+      "type": "members-voluntary-liquidation",
+      "number": "1",
+      "dates": [
+       {
+        "type": "wound-up-on",
+        "date": "2026-01-15"
+       }
+      ],
+      "practitioners": [
+       {
+        "name": "A Fixture Practitioner",
+        "role": "practitioner",
+        "address": {
+         "address_line_1": "1 Fixture Street",
+         "locality": "Testtown",
+         "postal_code": "TE1 1ST"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "09101001": {
+   "profile": {
+    "company_number": "09101001",
+    "company_name": "BIRCH FIXTURE ONE LTD",
+    "type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": false,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x"
+   },
+   "insolvency": null
+  },
+  "09101002": {
+   "profile": {
+    "company_number": "09101002",
+    "company_name": "BIRCH FIXTURE TWO LIMITED",
+    "type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": false,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x"
+   },
+   "insolvency": null
+  },
+  "09101003": {
+   "profile": {
+    "company_number": "09101003",
+    "company_name": "BIRCH FIXTURE THREE LTD",
+    "type": "ltd",
+    "company_status": "administration",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": true,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x"
+   },
+   "insolvency": {
+    "etag": "x",
+    "status": [
+     "administration"
+    ],
+    "cases": [
+     {
+      "type": "in-administration",
+      "number": "1",
+      "dates": [
+       {
+        "type": "wound-up-on",
+        "date": "2026-01-15"
+       }
+      ],
+      "practitioners": [
+       {
+        "name": "A Fixture Practitioner",
+        "role": "practitioner",
+        "address": {
+         "address_line_1": "1 Fixture Street",
+         "locality": "Testtown",
+         "postal_code": "TE1 1ST"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "09101004": {
+   "profile": {
+    "company_number": "09101004",
+    "company_name": "BIRCH FIXTURE FOUR LTD",
+    "type": "ltd",
+    "company_status": "dissolved",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": true,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x",
+    "date_of_cessation": "2026-02-10"
+   },
+   "insolvency": {
+    "etag": "x",
+    "status": [
+     "dissolved"
+    ],
+    "cases": [
+     {
+      "type": "compulsory-liquidation",
+      "number": "1",
+      "dates": [
+       {
+        "type": "wound-up-on",
+        "date": "2026-01-15"
+       }
+      ],
+      "practitioners": [
+       {
+        "name": "A Fixture Practitioner",
+        "role": "practitioner",
+        "address": {
+         "address_line_1": "1 Fixture Street",
+         "locality": "Testtown",
+         "postal_code": "TE1 1ST"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "09101005": {
+   "profile": {
+    "company_number": "09101005",
+    "company_name": "BIRCH FIXTURE OLD LTD",
+    "type": "ltd",
+    "company_status": "dissolved",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": false,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x",
+    "date_of_cessation": "2019-05-01"
+   },
+   "insolvency": null
+  },
+  "09101006": {
+   "profile": {
+    "company_number": "09101006",
+    "company_name": "BIRCH FIXTURE MOVED LTD",
+    "type": "ltd",
+    "company_status": "dissolved",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": false,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x",
+    "date_of_cessation": "2026-10-30"
+   },
+   "insolvency": null
+  },
+  "09101007": {
+   "profile": {
+    "company_number": "09101007",
+    "company_name": "BIRCH FIXTURE RECEIVER LTD",
+    "type": "ltd",
+    "company_status": "receivership",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": false,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x"
+   },
+   "insolvency": null
+  },
+  "09101008": {
+   "profile": {
+    "company_number": "09101008",
+    "company_name": "BIRCH FIXTURE HISTORY LTD",
+    "type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": true,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x"
+   },
+   "insolvency": null
+  },
+  "09102001": {
+   "profile": {
+    "company_number": "09102001",
+    "company_name": "CEDAR FIXTURE ONE LTD",
+    "type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": false,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x"
+   },
+   "insolvency": null
+  },
+  "09102002": {
+   "profile": {
+    "company_number": "09102002",
+    "company_name": "CEDAR FIXTURE TWO LIMITED",
+    "type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": false,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x"
+   },
+   "insolvency": null
+  },
+  "09102003": {
+   "profile": {
+    "company_number": "09102003",
+    "company_name": "CEDAR FIXTURE THREE LTD",
+    "type": "ltd",
+    "company_status": "liquidation",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": true,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x"
+   },
+   "insolvency": {
+    "etag": "x",
+    "status": [
+     "liquidation"
+    ],
+    "cases": [
+     {
+      "type": "creditors-voluntary-liquidation",
+      "number": "1",
+      "dates": [
+       {
+        "type": "wound-up-on",
+        "date": "2026-01-15"
+       }
+      ],
+      "practitioners": [
+       {
+        "name": "A Fixture Practitioner",
+        "role": "practitioner",
+        "address": {
+         "address_line_1": "1 Fixture Street",
+         "locality": "Testtown",
+         "postal_code": "TE1 1ST"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "09102004": {
+   "profile": {
+    "company_number": "09102004",
+    "company_name": "CEDAR FIXTURE FOUR LTD",
+    "type": "ltd",
+    "company_status": "dissolved",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": false,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x",
+    "date_of_cessation": "2026-03-10"
+   },
+   "insolvency": null
+  },
+  "09103001": {
+   "profile": {
+    "company_number": "09103001",
+    "company_name": "DELTA FIXTURE ONE LTD",
+    "type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": false,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x"
+   },
+   "insolvency": null
+  },
+  "09103002": {
+   "profile": {
+    "company_number": "09103002",
+    "company_name": "DELTA FIXTURE TWO LIMITED",
+    "type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": false,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x"
+   },
+   "insolvency": null
+  },
+  "09103003": {
+   "profile": {
+    "company_number": "09103003",
+    "company_name": "DELTA FIXTURE THREE LTD",
+    "type": "ltd",
+    "company_status": "administration",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": true,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x"
+   },
+   "insolvency": {
+    "etag": "x",
+    "status": [
+     "administration"
+    ],
+    "cases": [
+     {
+      "type": "in-administration",
+      "number": "1",
+      "dates": [
+       {
+        "type": "wound-up-on",
+        "date": "2026-01-15"
+       }
+      ],
+      "practitioners": [
+       {
+        "name": "A Fixture Practitioner",
+        "role": "practitioner",
+        "address": {
+         "address_line_1": "1 Fixture Street",
+         "locality": "Testtown",
+         "postal_code": "TE1 1ST"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "09103004": {
+   "profile": {
+    "company_number": "09103004",
+    "company_name": "DELTA FIXTURE FOUR LTD",
+    "type": "ltd",
+    "company_status": "dissolved",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": true,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x",
+    "date_of_cessation": "2026-04-10"
+   },
+   "insolvency": {
+    "etag": "x",
+    "status": [
+     "dissolved"
+    ],
+    "cases": [
+     {
+      "type": "compulsory-liquidation",
+      "number": "1",
+      "dates": [
+       {
+        "type": "wound-up-on",
+        "date": "2026-01-15"
+       }
+      ],
+      "practitioners": [
+       {
+        "name": "A Fixture Practitioner",
+        "role": "practitioner",
+        "address": {
+         "address_line_1": "1 Fixture Street",
+         "locality": "Testtown",
+         "postal_code": "TE1 1ST"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "09104001": {
+   "profile": {
+    "company_number": "09104001",
+    "company_name": "EMBER FIXTURE ONE LTD",
+    "type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": false,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x"
+   },
+   "insolvency": null
+  },
+  "09104002": {
+   "profile": {
+    "company_number": "09104002",
+    "company_name": "EMBER FIXTURE TWO LIMITED",
+    "type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": false,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x"
+   },
+   "insolvency": null
+  },
+  "09104003": {
+   "profile": {
+    "company_number": "09104003",
+    "company_name": "EMBER FIXTURE THREE LTD",
+    "type": "ltd",
+    "company_status": "liquidation",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": true,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x"
+   },
+   "insolvency": {
+    "etag": "x",
+    "status": [
+     "liquidation"
+    ],
+    "cases": [
+     {
+      "type": "creditors-voluntary-liquidation",
+      "number": "1",
+      "dates": [
+       {
+        "type": "wound-up-on",
+        "date": "2026-01-15"
+       }
+      ],
+      "practitioners": [
+       {
+        "name": "A Fixture Practitioner",
+        "role": "practitioner",
+        "address": {
+         "address_line_1": "1 Fixture Street",
+         "locality": "Testtown",
+         "postal_code": "TE1 1ST"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "09104004": {
+   "profile": {
+    "company_number": "09104004",
+    "company_name": "EMBER FIXTURE FOUR LTD",
+    "type": "ltd",
+    "company_status": "dissolved",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": false,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x",
+    "date_of_cessation": "2026-05-10"
+   },
+   "insolvency": null
+  },
+  "09105001": {
+   "profile": {
+    "company_number": "09105001",
+    "company_name": "FJORD FIXTURE ONE LTD",
+    "type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": false,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x"
+   },
+   "insolvency": null
+  },
+  "09105002": {
+   "profile": {
+    "company_number": "09105002",
+    "company_name": "FJORD FIXTURE TWO LIMITED",
+    "type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": false,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x"
+   },
+   "insolvency": null
+  },
+  "09105003": {
+   "profile": {
+    "company_number": "09105003",
+    "company_name": "FJORD FIXTURE THREE LTD",
+    "type": "ltd",
+    "company_status": "administration",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": true,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x"
+   },
+   "insolvency": {
+    "etag": "x",
+    "status": [
+     "administration"
+    ],
+    "cases": [
+     {
+      "type": "in-administration",
+      "number": "1",
+      "dates": [
+       {
+        "type": "wound-up-on",
+        "date": "2026-01-15"
+       }
+      ],
+      "practitioners": [
+       {
+        "name": "A Fixture Practitioner",
+        "role": "practitioner",
+        "address": {
+         "address_line_1": "1 Fixture Street",
+         "locality": "Testtown",
+         "postal_code": "TE1 1ST"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "09105004": {
+   "profile": {
+    "company_number": "09105004",
+    "company_name": "FJORD FIXTURE FOUR LTD",
+    "type": "ltd",
+    "company_status": "dissolved",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": true,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x",
+    "date_of_cessation": "2026-06-10"
+   },
+   "insolvency": {
+    "etag": "x",
+    "status": [
+     "dissolved"
+    ],
+    "cases": [
+     {
+      "type": "compulsory-liquidation",
+      "number": "1",
+      "dates": [
+       {
+        "type": "wound-up-on",
+        "date": "2026-01-15"
+       }
+      ],
+      "practitioners": [
+       {
+        "name": "A Fixture Practitioner",
+        "role": "practitioner",
+        "address": {
+         "address_line_1": "1 Fixture Street",
+         "locality": "Testtown",
+         "postal_code": "TE1 1ST"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "09106001": {
+   "profile": {
+    "company_number": "09106001",
+    "company_name": "GRANITE FIXTURE ONE LTD",
+    "type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": false,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x"
+   },
+   "insolvency": null
+  },
+  "09106002": {
+   "profile": {
+    "company_number": "09106002",
+    "company_name": "GRANITE FIXTURE TWO LIMITED",
+    "type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": false,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x"
+   },
+   "insolvency": null
+  },
+  "09106003": {
+   "profile": {
+    "company_number": "09106003",
+    "company_name": "GRANITE FIXTURE THREE LTD",
+    "type": "ltd",
+    "company_status": "liquidation",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": true,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x"
+   },
+   "insolvency": {
+    "etag": "x",
+    "status": [
+     "liquidation"
+    ],
+    "cases": [
+     {
+      "type": "creditors-voluntary-liquidation",
+      "number": "1",
+      "dates": [
+       {
+        "type": "wound-up-on",
+        "date": "2026-01-15"
+       }
+      ],
+      "practitioners": [
+       {
+        "name": "A Fixture Practitioner",
+        "role": "practitioner",
+        "address": {
+         "address_line_1": "1 Fixture Street",
+         "locality": "Testtown",
+         "postal_code": "TE1 1ST"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "09106004": {
+   "profile": {
+    "company_number": "09106004",
+    "company_name": "GRANITE FIXTURE FOUR LTD",
+    "type": "ltd",
+    "company_status": "dissolved",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": false,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x",
+    "date_of_cessation": "2026-07-10"
+   },
+   "insolvency": null
+  },
+  "09107001": {
+   "profile": {
+    "company_number": "09107001",
+    "company_name": "HARBOUR FIXTURE ONE LTD",
+    "type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": false,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x"
+   },
+   "insolvency": null
+  },
+  "09107002": {
+   "profile": {
+    "company_number": "09107002",
+    "company_name": "HARBOUR FIXTURE TWO LIMITED",
+    "type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": false,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x"
+   },
+   "insolvency": null
+  },
+  "09107003": {
+   "profile": {
+    "company_number": "09107003",
+    "company_name": "HARBOUR FIXTURE THREE LTD",
+    "type": "ltd",
+    "company_status": "administration",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": true,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x"
+   },
+   "insolvency": {
+    "etag": "x",
+    "status": [
+     "administration"
+    ],
+    "cases": [
+     {
+      "type": "in-administration",
+      "number": "1",
+      "dates": [
+       {
+        "type": "wound-up-on",
+        "date": "2026-01-15"
+       }
+      ],
+      "practitioners": [
+       {
+        "name": "A Fixture Practitioner",
+        "role": "practitioner",
+        "address": {
+         "address_line_1": "1 Fixture Street",
+         "locality": "Testtown",
+         "postal_code": "TE1 1ST"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "09107004": {
+   "profile": {
+    "company_number": "09107004",
+    "company_name": "HARBOUR FIXTURE FOUR LTD",
+    "type": "ltd",
+    "company_status": "dissolved",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": true,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x",
+    "date_of_cessation": "2026-08-10"
+   },
+   "insolvency": {
+    "etag": "x",
+    "status": [
+     "dissolved"
+    ],
+    "cases": [
+     {
+      "type": "compulsory-liquidation",
+      "number": "1",
+      "dates": [
+       {
+        "type": "wound-up-on",
+        "date": "2026-01-15"
+       }
+      ],
+      "practitioners": [
+       {
+        "name": "A Fixture Practitioner",
+        "role": "practitioner",
+        "address": {
+         "address_line_1": "1 Fixture Street",
+         "locality": "Testtown",
+         "postal_code": "TE1 1ST"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "09108001": {
+   "profile": {
+    "company_number": "09108001",
+    "company_name": "IVORY FIXTURE ONE LTD",
+    "type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": false,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x"
+   },
+   "insolvency": null
+  },
+  "09108002": {
+   "profile": {
+    "company_number": "09108002",
+    "company_name": "IVORY FIXTURE TWO LIMITED",
+    "type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": false,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x"
+   },
+   "insolvency": null
+  },
+  "09108003": {
+   "profile": {
+    "company_number": "09108003",
+    "company_name": "IVORY FIXTURE THREE LTD",
+    "type": "ltd",
+    "company_status": "liquidation",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": true,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x"
+   },
+   "insolvency": {
+    "etag": "x",
+    "status": [
+     "liquidation"
+    ],
+    "cases": [
+     {
+      "type": "creditors-voluntary-liquidation",
+      "number": "1",
+      "dates": [
+       {
+        "type": "wound-up-on",
+        "date": "2026-01-15"
+       }
+      ],
+      "practitioners": [
+       {
+        "name": "A Fixture Practitioner",
+        "role": "practitioner",
+        "address": {
+         "address_line_1": "1 Fixture Street",
+         "locality": "Testtown",
+         "postal_code": "TE1 1ST"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "09108004": {
+   "profile": {
+    "company_number": "09108004",
+    "company_name": "IVORY FIXTURE FOUR LTD",
+    "type": "ltd",
+    "company_status": "dissolved",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": false,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x",
+    "date_of_cessation": "2026-09-10"
+   },
+   "insolvency": null
+  },
+  "09109001": {
+   "profile": {
+    "company_number": "09109001",
+    "company_name": "JUNIPER FIXTURE ONE LTD",
+    "type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": false,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x"
+   },
+   "insolvency": null
+  },
+  "09109002": {
+   "profile": {
+    "company_number": "09109002",
+    "company_name": "JUNIPER FIXTURE TWO LIMITED",
+    "type": "ltd",
+    "company_status": "active",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": false,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x"
+   },
+   "insolvency": null
+  },
+  "09109003": {
+   "profile": {
+    "company_number": "09109003",
+    "company_name": "JUNIPER FIXTURE THREE LTD",
+    "type": "ltd",
+    "company_status": "administration",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": true,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x"
+   },
+   "insolvency": {
+    "etag": "x",
+    "status": [
+     "administration"
+    ],
+    "cases": [
+     {
+      "type": "in-administration",
+      "number": "1",
+      "dates": [
+       {
+        "type": "wound-up-on",
+        "date": "2026-01-15"
+       }
+      ],
+      "practitioners": [
+       {
+        "name": "A Fixture Practitioner",
+        "role": "practitioner",
+        "address": {
+         "address_line_1": "1 Fixture Street",
+         "locality": "Testtown",
+         "postal_code": "TE1 1ST"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "09109004": {
+   "profile": {
+    "company_number": "09109004",
+    "company_name": "JUNIPER FIXTURE FOUR LTD",
+    "type": "ltd",
+    "company_status": "dissolved",
+    "date_of_creation": "DAY",
+    "jurisdiction": "england-wales",
+    "registered_office_address": {
+     "address_line_1": "1 Fixture Street",
+     "locality": "Testtown",
+     "postal_code": "TE1 1ST"
+    },
+    "has_insolvency_history": true,
+    "has_charges": false,
+    "sic_codes": [
+     "62012"
+    ],
+    "etag": "x",
+    "date_of_cessation": "2026-01-10"
+   },
+   "insolvency": {
+    "etag": "x",
+    "status": [
+     "dissolved"
+    ],
+    "cases": [
+     {
+      "type": "compulsory-liquidation",
+      "number": "1",
+      "dates": [
+       {
+        "type": "wound-up-on",
+        "date": "2026-01-15"
+       }
+      ],
+      "practitioners": [
+       {
+        "name": "A Fixture Practitioner",
+        "role": "practitioner",
+        "address": {
+         "address_line_1": "1 Fixture Street",
+         "locality": "Testtown",
+         "postal_code": "TE1 1ST"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  }
+ }
+}

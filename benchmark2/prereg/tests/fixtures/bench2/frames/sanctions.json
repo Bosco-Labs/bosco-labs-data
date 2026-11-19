@@ -1,0 +1,69 @@
+[
+ {
+  "list": "UK",
+  "id": "FIX0002",
+  "name": "VOLGA TRADE HOLDINGS LIMITED",
+  "aliases": [
+   "VOLGA TRADE",
+   "Волга Трейд"
+  ],
+  "numbers": [
+   "09100008 (UK company number)"
+  ],
+  "countries": [
+   "GB"
+  ]
+ },
+ {
+  "list": "UK",
+  "id": "FIX0003",
+  "name": "BALTIC SHADOW TRADING",
+  "aliases": [],
+  "numbers": [],
+  "countries": []
+ },
+ {
+  "list": "OFAC SDN",
+  "id": "900002",
+  "name": "DAUGAVA SHADOW LOGISTICS SIA",
+  "aliases": [
+   "DAUGAVA SHADOW"
+  ],
+  "numbers": [
+   "40103000020"
+  ],
+  "countries": [
+   "LV"
+  ]
+ },
+ {
+  "list": "OFAC SDN",
+  "id": "900003",
+  "name": "NORTHERN FIXTURE BANK",
+  "aliases": [],
+  "numbers": [],
+  "countries": []
+ },
+ {
+  "list": "EU",
+  "id": "EU.FIX.2",
+  "name": "Daugava Shadow Logistics",
+  "aliases": [
+   "SIA Daugava Shadow Logistics"
+  ],
+  "numbers": [
+   "40103000020"
+  ],
+  "countries": [
+   "LV"
+  ]
+ },
+ {
+  "list": "EU",
+  "id": "EU.FIX.3",
+  "name": "Northern Fixture Bank",
+  "aliases": [],
+  "numbers": [],
+  "countries": []
+ }
+]

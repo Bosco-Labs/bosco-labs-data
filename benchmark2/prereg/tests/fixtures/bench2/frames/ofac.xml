@@ -1,0 +1,35 @@
+<?xml version="1.0" standalone="yes"?>
+<sdnList xmlns="https://sanctionslistservice.ofac.treas.gov/api/PublicationPreview/exports/XML">
+  <publshInformation><Publish_Date>11/05/2026</Publish_Date></publshInformation>
+  <sdnEntry>
+    <uid>900001</uid>
+    <firstName>Ivan</firstName>
+    <lastName>FIXTUREPERSON</lastName>
+    <sdnType>Individual</sdnType>
+    <idList><id><uid>1</uid><idType>Passport</idType><idNumber>40103000020</idNumber></id></idList>
+  </sdnEntry>
+  <sdnEntry>
+    <uid>900002</uid>
+    <lastName>DAUGAVA SHADOW LOGISTICS SIA</lastName>
+    <sdnType>Entity</sdnType>
+    <programList><program>FIXTURE-EO1</program></programList>
+    <idList>
+      <id><uid>2</uid><idType>Registration Number</idType><idNumber>40103000020</idNumber><idCountry>Latvia</idCountry></id>
+      <id><uid>3</uid><idType>Website</idType><idNumber>12345678.example</idNumber></id>
+    </idList>
+    <akaList>
+      <aka><uid>4</uid><type>a.k.a.</type><category>strong</category><lastName>DAUGAVA SHADOW</lastName></aka>
+    </akaList>
+    <addressList><address><uid>5</uid><city>Riga</city><country>Latvia</country></address></addressList>
+  </sdnEntry>
+  <sdnEntry>
+    <uid>900003</uid>
+    <lastName>NORTHERN FIXTURE BANK</lastName>
+    <sdnType>Entity</sdnType>
+  </sdnEntry>
+  <sdnEntry>
+    <uid>900004</uid>
+    <lastName>FIXTURE TANKER</lastName>
+    <sdnType>Vessel</sdnType>
+  </sdnEntry>
+</sdnList>

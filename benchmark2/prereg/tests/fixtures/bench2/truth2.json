@@ -1,0 +1,129 @@
+{
+  "version": 1,
+  "seed": "f16d05ec6b29248d2c61adb1e9263f78e4f7bace1b955014a2d17872cfe4064d",
+  "read_at": "2026-11-16T12:00:00Z",
+  "companies": [
+    {
+      "id": "gb-09900001",
+      "truth2": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "A"
+      },
+      "changed": false,
+      "why": null
+    },
+    {
+      "id": "ie-799001",
+      "truth2": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "A"
+      },
+      "changed": false,
+      "why": null
+    },
+    {
+      "id": "lv-40103999001",
+      "truth2": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "A"
+      },
+      "changed": false,
+      "why": null
+    },
+    {
+      "id": "gb-09900002",
+      "truth2": {
+        "status": "winding_up",
+        "insolvent": true,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "B"
+      },
+      "changed": false,
+      "why": null
+    },
+    {
+      "id": "ie-799002",
+      "truth2": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "B"
+      },
+      "changed": false,
+      "why": null
+    },
+    {
+      "id": "lv-40103999002",
+      "truth2": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "B"
+      },
+      "changed": false,
+      "why": null
+    },
+    {
+      "id": "gb-09900003",
+      "truth2": {
+        "status": "dissolved",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "C"
+      },
+      "changed": false,
+      "why": null
+    },
+    {
+      "id": "ie-799003",
+      "truth2": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "C"
+      },
+      "changed": false,
+      "why": null
+    },
+    {
+      "id": "lv-40103999003",
+      "truth2": {
+        "status": "dissolved",
+        "insolvent": true,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "C"
+      },
+      "changed": false,
+      "why": null
+    },
+    {
+      "id": "gb-09900004",
+      "truth2": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": true,
+        "sanctions_lists": [
+          "UK"
+        ],
+        "group": "S"
+      },
+      "changed": false,
+      "why": null
+    }
+  ]
+}

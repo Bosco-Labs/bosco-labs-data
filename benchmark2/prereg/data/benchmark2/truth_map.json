@@ -1,0 +1,322 @@
+{
+  "version": 1,
+  "about": "Frozen before the seed exists: raw register value -> group and answer. A raw value that is not in a country's status table is skipped (status_not_mapped), never judged by hand. Keys are compared in lower case with spaces collapsed. The owner completes the tables from data/benchmark2/frames.json (probe) before the freeze; tools/bench2_prereg.py freeze refuses while a probed status is missing here.",
+  "skip_reasons": {
+    "legal_form": "legal form not allowed",
+    "status_not_mapped": "raw status (or insolvency case type) not in the mapping table",
+    "ambiguous": "ambiguous register facts: a strike-off proposal, a past insolvency case on an active company, a procedure the status field does not settle, or listing and record that disagree",
+    "sanctions_name": "its name appears on a sanctions list (a number match puts it in group S instead)",
+    "pilot": "used in the pilot"
+  },
+  "entry_format": "status entries: {group, status, insolvent} or {skip: reason}. insolvent is true, false, null (the register does not say: not scored) or \"from_cases\": true when any case type maps to true, else null when one maps to null, else false; with no case at all the entry's no_cases value applies (\"skip\" = ambiguous). requires_no_cases: any case makes the company ambiguous.",
+  "countries": {
+    "GB": {
+      "source": "Companies House: company_status and type of the company profile, case types of /insolvency",
+      "legal_forms": [
+        "ltd"
+      ],
+      "status": {
+        "active": {
+          "group": "A",
+          "status": "active",
+          "insolvent": false,
+          "requires_no_cases": true
+        },
+        "liquidation": {
+          "group": "B",
+          "status": "winding_up",
+          "insolvent": "from_cases",
+          "no_cases": "skip"
+        },
+        "administration": {
+          "group": "B",
+          "status": "winding_up",
+          "insolvent": true
+        },
+        "dissolved": {
+          "group": "C",
+          "status": "dissolved",
+          "insolvent": "from_cases",
+          "no_cases": false
+        },
+        "voluntary-arrangement": {
+          "skip": "ambiguous"
+        },
+        "receivership": {
+          "skip": "ambiguous"
+        },
+        "insolvency-proceedings": {
+          "skip": "ambiguous"
+        },
+        "converted-closed": {
+          "skip": "status_not_mapped"
+        },
+        "registered": {
+          "skip": "status_not_mapped"
+        },
+        "removed": {
+          "skip": "status_not_mapped"
+        },
+        "closed": {
+          "skip": "status_not_mapped"
+        },
+        "open": {
+          "skip": "status_not_mapped"
+        },
+        "not_found": {
+          "skip": "status_not_mapped"
+        }
+      },
+      "case_types": {
+        "compulsory-liquidation": true,
+        "creditors-voluntary-liquidation": true,
+        "in-administration": true,
+        "administration-order": true,
+        "corporate-voluntary-arrangement": true,
+        "corporate-voluntary-arrangement-moratorium": true,
+        "members-voluntary-liquidation": false
+      }
+    },
+    "IE": {
+      "source": "CRO open data 'Company Records': company_status and company_type",
+      "legal_forms": [
+        "ltd - private company limited by shares",
+        "private limited by shares"
+      ],
+      "status": {
+        "normal": {
+          "group": "A",
+          "status": "active",
+          "insolvent": false
+        },
+        "liquidation": {
+          "group": "B",
+          "status": "winding_up",
+          "insolvent": null
+        },
+        "dissolved": {
+          "group": "C",
+          "status": "dissolved",
+          "insolvent": null
+        },
+        "struck off": {
+          "group": "C",
+          "status": "dissolved",
+          "insolvent": null
+        },
+        "strike off listed": {
+          "skip": "ambiguous"
+        },
+        "liquidation stayed": {
+          "skip": "ambiguous"
+        },
+        "examinership": {
+          "skip": "ambiguous"
+        },
+        "administration": {
+          "skip": "ambiguous"
+        },
+        "administration (uk)": {
+          "skip": "ambiguous"
+        },
+        "liquidation (uk)": {
+          "skip": "ambiguous"
+        },
+        "dissolved-20 years": {
+          "skip": "status_not_mapped"
+        },
+        "dissolved by divis": {
+          "skip": "status_not_mapped"
+        },
+        "dissolved postmerger": {
+          "skip": "status_not_mapped"
+        },
+        "ceased": {
+          "skip": "status_not_mapped"
+        },
+        "ceased irl": {
+          "skip": "status_not_mapped"
+        },
+        "conv. to indprovsoc": {
+          "skip": "status_not_mapped"
+        },
+        "de-registered icav": {
+          "skip": "status_not_mapped"
+        },
+        "de-registered investment company": {
+          "skip": "status_not_mapped"
+        },
+        "not_found": {
+          "skip": "status_not_mapped"
+        },
+        "deleted as per se tr": {
+          "skip": "status_not_mapped"
+        },
+        "deleted cb conversion": {
+          "skip": "status_not_mapped"
+        },
+        "deleted cb merger": {
+          "skip": "status_not_mapped"
+        },
+        "deleted per se merge": {
+          "skip": "status_not_mapped"
+        }
+      },
+      "case_types": {}
+    },
+    "LV": {
+      "source": "Enterprise Register open data: register row (closed, terminated), current liquidation entries, insolvency proceedings. The raw status is derived: closed:<code> when removed, else insolvency:<form> for an open proceeding, else liquidation:<type>, else registered:past_insolvency when only ended proceedings exist, else registered.",
+      "legal_forms": [
+        "sia"
+      ],
+      "liquidation_end_fields": [],
+      "status": {
+        "registered": {
+          "group": "A",
+          "status": "active",
+          "insolvent": false
+        },
+        "insolvency:insolvency": {
+          "group": "B",
+          "status": "winding_up",
+          "insolvent": true
+        },
+        "liquidation:liquidation": {
+          "group": "B",
+          "status": "winding_up",
+          "insolvent": null
+        },
+        "closed:l": {
+          "group": "C",
+          "status": "dissolved",
+          "insolvent": "from_cases",
+          "no_cases": null
+        },
+        "insolvency:legal_protection": {
+          "skip": "ambiguous"
+        },
+        "registered:past_insolvency": {
+          "skip": "ambiguous"
+        },
+        "liquidation:activity_terminated": {
+          "skip": "status_not_mapped"
+        },
+        "liquidation:activity_terminated_by_court": {
+          "skip": "status_not_mapped"
+        },
+        "closed:r": {
+          "skip": "status_not_mapped"
+        },
+        "closed:?": {
+          "skip": "status_not_mapped"
+        },
+        "not_found": {
+          "skip": "status_not_mapped"
+        },
+        "insolvency:out_of_court_legal_protection": {
+          "skip": "ambiguous"
+        },
+        "liquidation:non_reregistration": {
+          "skip": "status_not_mapped"
+        },
+        "liquidation:reform_of_associations": {
+          "skip": "status_not_mapped"
+        },
+        "liquidation:reform_of_political_parties": {
+          "skip": "status_not_mapped"
+        }
+      },
+      "case_types": {
+        "insolvency": true,
+        "legal_protection": null
+      }
+    },
+    "EE": {
+      "source": "e-Business Register basic-data file: ettevotja_staatus and ettevotja_oiguslik_vorm. Deleted companies (K) are not in the open data, so there is no group C.",
+      "legal_forms": [
+        "osaühing"
+      ],
+      "status": {
+        "r": {
+          "group": "A",
+          "status": "active",
+          "insolvent": false
+        },
+        "l": {
+          "group": "B",
+          "status": "winding_up",
+          "insolvent": null
+        },
+        "n": {
+          "group": "B",
+          "status": "winding_up",
+          "insolvent": true
+        },
+        "k": {
+          "skip": "status_not_mapped"
+        },
+        "not_found": {
+          "skip": "status_not_mapped"
+        }
+      },
+      "case_types": {}
+    }
+  },
+  "name_tokens": [
+    "ltd",
+    "limited",
+    "plc",
+    "llp",
+    "llc",
+    "lp",
+    "inc",
+    "incorporated",
+    "corp",
+    "corporation",
+    "company",
+    "co",
+    "the",
+    "and",
+    "private limited company",
+    "public limited company",
+    "designated activity company",
+    "dac",
+    "company limited by guarantee",
+    "clg",
+    "unlimited company",
+    "uc",
+    "ulc",
+    "teoranta",
+    "teo",
+    "sia",
+    "as",
+    "sabiedrība ar ierobežotu atbildību",
+    "akciju sabiedrība",
+    "ou",
+    "oü",
+    "osaühing",
+    "aktsiaselts",
+    "limited liability company",
+    "joint stock company",
+    "public joint stock company",
+    "open joint stock company",
+    "closed joint stock company",
+    "jsc",
+    "pjsc",
+    "ojsc",
+    "cjsc",
+    "ooo",
+    "oao",
+    "zao",
+    "pao",
+    "ao",
+    "gmbh",
+    "ag",
+    "bv",
+    "nv",
+    "sa",
+    "sarl",
+    "srl",
+    "spa"
+  ]
+}

@@ -1,0 +1,272 @@
+{
+  "version": 1,
+  "about": "Frozen settings of benchmark 2. Every value here is part of the pre-registration: tools/bench2_prereg.py hashes this file. See docs/benchmark2/PROTOCOL.md.",
+  "model": "claude-sonnet-5-5",
+  "effort": "medium",
+  "max_tokens": 16000,
+  "model_notes": "No thinking, sampling or fallbacks parameter is sent. Leaving out fallbacks is deliberate: a fallback would put one arm on another model.",
+  "web_tools": [
+    {
+      "type": "web_search_20260209",
+      "name": "web_search",
+      "max_uses": 6,
+      "blocked_domains": [
+        "boscolabs.dev",
+        "huggingface.co",
+        "github.com"
+      ]
+    },
+    {
+      "type": "web_fetch_20260209",
+      "name": "web_fetch",
+      "max_uses": 6,
+      "max_content_tokens": 10000,
+      "blocked_domains": [
+        "boscolabs.dev",
+        "huggingface.co",
+        "github.com"
+      ]
+    }
+  ],
+  "system_common": "You are checking a company before a business pays it for the first time. {arm_sentence} Answer the three questions about the company as it is today. If your sources do not establish a field, answer unknown or null; do not guess. Today is {today}.",
+  "arm_sentence": {
+    "web": "You have web search and web fetch, and nothing else.",
+    "api": "You have the result of one call to counterparty-check, a data tool that reads official registers and sanctions lists; it is printed below the question, and you have nothing else.",
+    "memory": "You have no tools and no documents, only what you already know."
+  },
+  "question_template": "Company: {legal_name}\nCountry: {country_name} ({country})\nRegistration number: {number}\nOfficial register: {register}\nPublic pages of the register for this number:\n{register_links}\nPublic pages of the three sanctions lists:\n{sanctions_links}\n\nAs of today:\n1. status: {status}.\n2. insolvent: {insolvent}.\n3. sanctioned: {sanctioned}. Name the lists in sanctions_lists.\n\n{answer_format}",
+  "answer_format": "End your answer with one JSON object on its own line: {\"status\": \"active|winding_up|dissolved|unknown\", \"insolvent\": true|false|null, \"sanctioned\": true|false|null, \"sanctions_lists\": [\"UK\"|\"OFAC SDN\"|\"EU\", ...]}",
+  "api_result_label": "Tool result (counterparty-check, HTTP {http_status}):",
+  "client_tool_error": "No such tool here. Use web_search or web_fetch, or give your final answer.",
+  "fields": {
+    "status": "active = registered and not being wound up; winding_up = still on the register but in liquidation, administration or bankruptcy (solvent or not); dissolved = removed from the register (struck off, deleted, dissolved)",
+    "sanctioned": "the company itself is listed on the UK Sanctions List, the OFAC SDN List or the EU consolidated financial sanctions list",
+    "insolvent": "formal insolvency proceedings were opened (bankruptcy, compulsory or creditors' liquidation, administration), now or before dissolution; a members' (solvent) voluntary liquidation or a strike-off is not insolvency"
+  },
+  "countries": {
+    "GB": {
+      "name": "United Kingdom",
+      "groups": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    "IE": {
+      "name": "Ireland",
+      "groups": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    "LV": {
+      "name": "Latvia",
+      "groups": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    "EE": {
+      "name": "Estonia",
+      "groups": [
+        "A",
+        "B"
+      ],
+      "needs": "ee_licence_confirmed"
+    }
+  },
+  "ee_licence_confirmed": {
+    "checked": "2026-11-19",
+    "note": "Estonia is drawn only when this holds the date on which the owner read the licence dialog on avaandmed.ariregister.rik.ee and confirmed CC BY 4.0 (actors/company-check/LEGAL.md). Empty = Estonia is left out.",
+    "source": "https://avaandmed.ariregister.rik.ee/en (footer 'License information' -> https://creativecommons.org/licenses/by/4.0/legalcode; terms at /en/terms-service allow reuse, GDPR applies to personal data)"
+  },
+  "official_sources": {
+    "GB": {
+      "register": "Companies House",
+      "urls": [
+        "https://find-and-update.company-information.service.gov.uk/company/{n}",
+        "https://find-and-update.company-information.service.gov.uk/company/{n}/insolvency"
+      ]
+    },
+    "IE": {
+      "register": "Companies Registration Office (CRO)",
+      "urls": [
+        "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&filters=%7B%22company_num%22%3A{n}%7D"
+      ]
+    },
+    "LV": {
+      "register": "Enterprise Register of Latvia (Uzņēmumu reģistrs)",
+      "urls": [
+        "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A{n}%7D",
+        "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A{n}%7D",
+        "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A{n}%7D"
+      ]
+    },
+    "EE": {
+      "register": "e-Business Register (RIK)",
+      "urls": [
+        "https://ariregister.rik.ee/eng/company/{n}"
+      ]
+    }
+  },
+  "sanctions_sources": [
+    {
+      "list": "UK",
+      "name": "UK Sanctions List",
+      "url": "https://www.gov.uk/government/publications/the-uk-sanctions-list"
+    },
+    {
+      "list": "OFAC SDN",
+      "name": "OFAC SDN List",
+      "url": "https://sanctionssearch.ofac.treas.gov/"
+    },
+    {
+      "list": "EU",
+      "name": "EU consolidated financial sanctions list",
+      "url": "https://www.sanctionsmap.eu/"
+    }
+  ],
+  "retry": {
+    "attempts": 3,
+    "backoff_seconds": [
+      5,
+      30
+    ],
+    "tool_error_codes": [
+      "unavailable",
+      "too_many_requests"
+    ],
+    "tool_error_note": "A web_search or web_fetch result with one of these error codes (the search service was busy or down) makes the attempt invalid, and it is retried like a network error. Every other tool error code is kept as part of the web arm's result; the analysis's named check 'without runs that had a tool error' leaves those runs out."
+  },
+  "continuations": 10,
+  "workers": 3,
+  "timeouts": {
+    "model_seconds": 300,
+    "api_seconds": 90,
+    "api_429_max_wait_seconds": 120
+  },
+  "caps": {
+    "main_usd": 55,
+    "pilot_usd": 3,
+    "reserve_per_company_usd": 0.6
+  },
+  "group_sizes": [
+    30,
+    25,
+    20
+  ],
+  "group_s_max": 12,
+  "projected_max_usd": 50,
+  "estimates_usd_per_run": {
+    "web": 0.15,
+    "api": 0.07,
+    "memory": 0.01,
+    "note": "Protocol section 9; replaced by the pilot's means at the freeze."
+  },
+  "windows": {
+    "freeze_to_round_min_hours": 24,
+    "draw_within_hours_of_round": 48,
+    "replicate1_within_hours_of_draw": 24,
+    "replicate_gap_min_hours": 20,
+    "replicate_gap_max_hours": 72,
+    "dissolved_within_months": 24
+  },
+  "uk_frame": {
+    "from": "2000-01-01",
+    "to": "2025-10-31",
+    "min_dates": 8,
+    "max_dates": 60,
+    "pool_factor": 5,
+    "page_size": 5000,
+    "interval_seconds": 0.7,
+    "probe_dates": [
+      "2010-03-15",
+      "2019-09-16"
+    ],
+    "probe_company": "09375920"
+  },
+  "audit": {
+    "rows_per_group": 4,
+    "max_disagreements": 3
+  },
+  "exclusions": {
+    "max_share_after_runs": 0.1,
+    "note": "Companies excluded after the runs (register facts changed between the two reads, or the hand check disagreed), as a share of the drawn A, B and C companies. Above this share the verdict is 'no difference shown' whatever the intervals say, and the report says why. The named check 'all drawn companies, no exclusions' is always printed."
+  },
+  "runner_up_keys_per_cell": 200,
+  "bootstrap": {
+    "resamples": 10000,
+    "level": 0.95,
+    "se_multiplier": 2.0
+  },
+  "prices": {
+    "input": {
+      "value": 2.0,
+      "unit": "USD per million tokens",
+      "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "checked": "2026-11-19"
+    },
+    "output": {
+      "value": 10.0,
+      "unit": "USD per million tokens",
+      "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "checked": "2026-11-19"
+    },
+    "cache_read": {
+      "value": 0.1,
+      "unit": "USD per million tokens",
+      "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "checked": "2026-11-19"
+    },
+    "cache_write_multiplier": {
+      "value": 1.25,
+      "unit": "times the input price",
+      "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "checked": "2026-11-19"
+    },
+    "search": {
+      "value": 0.01,
+      "unit": "USD per web search",
+      "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "checked": "2026-11-19"
+    },
+    "note": "Checked 2026-11-19 on the pricing page: Sonnet 5.5 $2 input, $2.50 5-minute cache write (1.25x), $0.10 cache hits (0.05x input), $10 output per MTok; web search $10 per 1,000 searches; web fetch no extra cost."
+  },
+  "rule_arm": {
+    "register_checks": [
+      "register_status",
+      "insolvency"
+    ],
+    "sanctions_checks": [
+      "sanctions_entity"
+    ],
+    "pass": "clear",
+    "fail": "flag",
+    "other": "none",
+    "note": "A fixed table, no model: register is flagged when either register check fails, clear when both pass, else no verdict; review, unverified and a missing check are no verdict."
+  },
+  "verdict_sentences": {
+    "product_ahead": "On these companies the model reading counterparty-check reached the right decision more often than the model with web search.",
+    "web_ahead": "On these companies the model with web search reached the right decision more often than the model reading counterparty-check.",
+    "no_difference": "This study shows no difference between the model with web search and the model reading counterparty-check; it cannot separate gaps smaller than about {n} points."
+  },
+  "drand": {
+    "beacon": "quicknet",
+    "chain_hash": "52db9ba70e0cc0f6eaf7803dd07447a1f5477735fd3f661792ba94600c84e971",
+    "genesis_time": 1692803367,
+    "period": 3,
+    "info_url": "{base}/{chain_hash}/info",
+    "round_url": "{base}/{chain_hash}/public/{round}",
+    "bases": [
+      "https://api.drand.sh",
+      "https://api2.drand.sh",
+      "https://api3.drand.sh",
+      "https://drand.cloudflare.com"
+    ],
+    "note": "Chain hash, genesis and period were written from memory; probe reads /info and freeze refuses when they differ. The bases are mirrors of one beacon, not a second source of randomness."
+  },
+  "pilot_seed_text": "bosco-labs-bench2-pilot-v1",
+  "api_default_base": "https://api.boscolabs.dev"
+}

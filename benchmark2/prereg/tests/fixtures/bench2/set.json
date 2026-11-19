@@ -1,0 +1,262 @@
+{
+  "version": 1,
+  "seed": "f16d05ec6b29248d2c61adb1e9263f78e4f7bace1b955014a2d17872cfe4064d",
+  "about": "Invented companies for the offline tests.",
+  "bundle_hash": "fixture",
+  "freeze_commit": null,
+  "drand": {
+    "round": 1,
+    "randomness": "e6483bb50859dee6393a5a90dc5ff4df9d38d6722c9cd5543020f4d0e24634f7",
+    "fetched_at": "2026-11-15T08:00:00Z"
+  },
+  "drawn_at": "2026-11-15T08:00:00Z",
+  "reference_date": "2026-11-11",
+  "window": {
+    "from": "2024-11-11",
+    "to": "2026-11-11"
+  },
+  "companies": [
+    {
+      "id": "gb-09900001",
+      "country": "GB",
+      "group": "A",
+      "number": "09900001",
+      "legal_name": "FIXTURE ALPHA LTD",
+      "legal_form": "ltd",
+      "key": "6350dd85c36def9731c599f733e4179b440d5835e1855817654d1948b28b5e3d",
+      "raw_status": "active",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://register.example/gb-09900001",
+          "fetched_at": "2026-11-15T08:00:00Z",
+          "sha256": "083785953f516831e01bc64ec3bef2047d3d6d15be007469a10c073d4e2596bc",
+          "what": "fixture"
+        }
+      ]
+    },
+    {
+      "id": "ie-799001",
+      "country": "IE",
+      "group": "A",
+      "number": "799001",
+      "legal_name": "FIXTURE BRAVO LIMITED",
+      "legal_form": "ltd",
+      "key": "aa79d639efa549841df689248dfd28534e26be8cef4c1aa647677988c5a51f7f",
+      "raw_status": "active",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://register.example/ie-799001",
+          "fetched_at": "2026-11-15T08:00:00Z",
+          "sha256": "a27c61b5d92c5b787f425bc694ded5e2475d1b436ed3216486e8e2aa047f83c2",
+          "what": "fixture"
+        }
+      ]
+    },
+    {
+      "id": "lv-40103999001",
+      "country": "LV",
+      "group": "A",
+      "number": "40103999001",
+      "legal_name": "SIA \"Fixture Charlie\"",
+      "legal_form": "ltd",
+      "key": "17fd8bf34ab806fffd6b91a3389c0f127689032e67893c10920af8ae5a817855",
+      "raw_status": "active",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://register.example/lv-40103999001",
+          "fetched_at": "2026-11-15T08:00:00Z",
+          "sha256": "6b129a622be6672d671f070f4929ee1629181734d3e6fe7ba04b7821b2775c1c",
+          "what": "fixture"
+        }
+      ]
+    },
+    {
+      "id": "gb-09900002",
+      "country": "GB",
+      "group": "B",
+      "number": "09900002",
+      "legal_name": "FIXTURE DELTA LTD",
+      "legal_form": "ltd",
+      "key": "b5d45ddf8936cdefc0e5615b1405f2a14443458af2daaef4624fb63cf7120abf",
+      "raw_status": "winding_up",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": true,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://register.example/gb-09900002",
+          "fetched_at": "2026-11-15T08:00:00Z",
+          "sha256": "438ebf6031b51b05afc2a3ee47e5c05a64dde09702ae2e980b729cee76174b09",
+          "what": "fixture"
+        }
+      ]
+    },
+    {
+      "id": "ie-799002",
+      "country": "IE",
+      "group": "B",
+      "number": "799002",
+      "legal_name": "FIXTURE ECHO LIMITED",
+      "legal_form": "ltd",
+      "key": "8cb354e10251bafa6d22d069ec1040f9382bc3150ccbfafb53d5c4e742d98cf9",
+      "raw_status": "winding_up",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://register.example/ie-799002",
+          "fetched_at": "2026-11-15T08:00:00Z",
+          "sha256": "18c9eee784f7cdb420745c5ea176a4b3e103929b11ca00255a38c286c972c428",
+          "what": "fixture"
+        }
+      ]
+    },
+    {
+      "id": "lv-40103999002",
+      "country": "LV",
+      "group": "B",
+      "number": "40103999002",
+      "legal_name": "SIA \"Fixture Foxtrot\"",
+      "legal_form": "ltd",
+      "key": "ef84af723b26c633c5266997da5693e443b05a37740d51e58064926bf22da8a4",
+      "raw_status": "winding_up",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://register.example/lv-40103999002",
+          "fetched_at": "2026-11-15T08:00:00Z",
+          "sha256": "422f9d55956ce5d6851602dd43b2ba12244915a6c2f2d5fdc6e475cad48a4f57",
+          "what": "fixture"
+        }
+      ]
+    },
+    {
+      "id": "gb-09900003",
+      "country": "GB",
+      "group": "C",
+      "number": "09900003",
+      "legal_name": "FIXTURE GOLF LTD",
+      "legal_form": "ltd",
+      "key": "69713705a80718353fac5282d9b0e9dcd18d2b997faaaaf482fee0ce67d3d2a1",
+      "raw_status": "dissolved",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://register.example/gb-09900003",
+          "fetched_at": "2026-11-15T08:00:00Z",
+          "sha256": "bc584918e8ca1576f13598b24ae3449755a0d6db704d60649664a0b55c56c8a9",
+          "what": "fixture"
+        }
+      ]
+    },
+    {
+      "id": "ie-799003",
+      "country": "IE",
+      "group": "C",
+      "number": "799003",
+      "legal_name": "FIXTURE HOTEL LIMITED",
+      "legal_form": "ltd",
+      "key": "20506b8b007fe2255b553fd1945beec48eb1f9b714d511f974047cde2e12c173",
+      "raw_status": "dissolved",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://register.example/ie-799003",
+          "fetched_at": "2026-11-15T08:00:00Z",
+          "sha256": "870c5c536964075faa5b880cd98fe0be38728b06ed743da8784403f4c787a1b5",
+          "what": "fixture"
+        }
+      ]
+    },
+    {
+      "id": "lv-40103999003",
+      "country": "LV",
+      "group": "C",
+      "number": "40103999003",
+      "legal_name": "SIA \"Fixture India\"",
+      "legal_form": "ltd",
+      "key": "e3fb2448b74adc9d41e93870456a2b36760b8c96e710868224564f754bffab11",
+      "raw_status": "dissolved",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": true,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://register.example/lv-40103999003",
+          "fetched_at": "2026-11-15T08:00:00Z",
+          "sha256": "351b6acfeeb0d802fe12f8a006a30d6e281208214e7613d98452ce2367d02fc5",
+          "what": "fixture"
+        }
+      ]
+    },
+    {
+      "id": "gb-09900004",
+      "country": "GB",
+      "group": "S",
+      "number": "09900004",
+      "legal_name": "FIXTURE SIERRA LTD",
+      "legal_form": "ltd",
+      "key": "7bb7547d8663f98b6a9e2a3fca16f55ac4c2f953f7f727754c66be85154688e1",
+      "raw_status": "active",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": true,
+        "sanctions_lists": [
+          "UK"
+        ]
+      },
+      "evidence": [
+        {
+          "url": "https://register.example/gb-09900004",
+          "fetched_at": "2026-11-15T08:00:00Z",
+          "sha256": "70c4e2760b47875f4c8caed4740d19279c02f89eb2bcc7dbef437290d10ccc3d",
+          "what": "fixture"
+        }
+      ]
+    }
+  ]
+}
