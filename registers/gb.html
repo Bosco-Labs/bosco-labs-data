@@ -156,6 +156,19 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <tr><td>IBAN</td><td>ISO 13616 check digits; no bank is contacted</td></tr>
 </tbody></table></div>
 <p>$0.05 per company checked, empty and failed calls are free, and so is a company for which a source we asked failed (you still get the partial answer; on the API within a daily limit).</p>
+<h2>A real check: Tesco PLC, 18 November 2026</h2>
+<p>We sent <code>{&quot;query&quot;: &quot;00445790&quot;, &quot;country&quot;: &quot;GB&quot;, &quot;vatNumber&quot;: &quot;GB220430231&quot;}</code> to <code>/v1/counterparty-check</code>. The answer took 4.5 seconds and cost $0.05.</p>
+<div class="table"><table><thead><tr><th>Check</th><th>Result</th><th>What came back</th><th>Source</th></tr></thead><tbody>
+<tr><td>Register status</td><td>pass</td><td>active, plc, incorporated 1947-11-27</td><td><a href="https://find-and-update.company-information.service.gov.uk/company/00445790">Companies House</a></td></tr>
+<tr><td>LEI status</td><td>pass</td><td>2138002P5RNKC5W2JZ46, ISSUED</td><td><a href="https://search.gleif.org/#/record/2138002P5RNKC5W2JZ46">GLEIF</a></td></tr>
+<tr><td>Insolvency</td><td>pass</td><td>no Companies House case; no Gazette notice since 2020-01-01</td><td><a href="https://www.thegazette.co.uk/insolvency/notice?text=%22TESCO+PLC%22">The Gazette</a></td></tr>
+<tr><td>Recent accounts</td><td>pass</td><td>year ending 2026-02-28: revenue GBP 73.7 bn, net income GBP 1.79 bn</td><td><a href="https://filings.xbrl.org/2138002P5RNKC5W2JZ46/2026-02-28/ESEF/GB/0/2138002P5RNKC5W2JZ46-2026-02-28/reports/2138002P5RNKC5W2JZ46-2026-02-28-T01.xhtml">ESEF report</a></td></tr>
+<tr><td>Company on sanctions lists</td><td>pass</td><td>no match on OFAC SDN and Consolidated, UK, UN, EU (with Official Journal acts to 2026-11-16) and US export lists</td><td>the list files, with their dates, are in the answer</td></tr>
+<tr><td>People on sanctions lists</td><td>pass</td><td>12 directors and officers from Companies House, no match</td><td><a href="https://find-and-update.company-information.service.gov.uk/company/00445790/officers">officers</a></td></tr>
+<tr><td>VAT number</td><td>unverified</td><td>UK VAT numbers left VIES in 2021, so we cannot check them; use HMRC</td><td>none</td></tr>
+</tbody></table></div>
+<p>&quot;Unverified&quot; means we did not check it, never that it is fine. The answer also names each sanctions list version it used and says that the EU&#x27;s own file lags the Official Journal.</p>
+<p>What this check does not cover for UK companies: VAT numbers (HMRC, not VIES), Gazette notices before 2020, and PEP or adverse-media lists.</p>
 <h2>Sources</h2>
 <ul><li><a href="https://developer.company-information.service.gov.uk/">Companies House developer hub</a></li><li><a href="https://developer.company-information.service.gov.uk/developer-guidelines">Companies House rate limits</a></li><li><a href="https://download.companieshouse.gov.uk/en_accountsdata.html">Companies House accounts data product</a></li><li><a href="https://www.thegazette.co.uk">The Gazette</a></li><li><a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open Government Licence v3.0</a></li></ul>
 <div class="actions"><a class="btn" href="/api.html#key">Get a key: $5.00 free, no card</a><a class="btn ghost" href="/#ask">Try the planner without a key</a></div>

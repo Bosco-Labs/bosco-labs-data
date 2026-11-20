@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Wallet Sanctions Screening: crypto addresses vs OFAC</title>
-<meta name="description" content="Screen a crypto wallet address, such as an x402 payer, against the crypto addresses OFAC publishes. Exact match, source link, 1 cent per address.">
+<meta name="description" content="Screen crypto wallets, such as an x402 payer, against the addresses OFAC publishes. Exact match, source link. $0.002 per address, then $0.0005 after 10.">
 <link rel="canonical" href="https://boscolabs.dev/wallet-screening.html">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/logo.svg" type="image/svg+xml">
@@ -13,7 +13,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Bosco Labs">
 <meta property="og:title" content="Wallet Sanctions Screening: crypto addresses vs OFAC">
-<meta property="og:description" content="Screen a crypto wallet address, such as an x402 payer, against the crypto addresses OFAC publishes. Exact match, source link, 1 cent per address.">
+<meta property="og:description" content="Screen crypto wallets, such as an x402 payer, against the addresses OFAC publishes. Exact match, source link. $0.002 per address, then $0.0005 after 10.">
 <meta property="og:url" content="https://boscolabs.dev/wallet-screening.html">
 <meta property="og:image" content="https://boscolabs.dev/icons/sanctions-screening.png">
 <meta name="twitter:card" content="summary">
@@ -23,7 +23,7 @@
  "@context": "https://schema.org",
  "@type": "WebAPI",
  "name": "Wallet Sanctions Screening",
- "description": "Screen a crypto wallet address, such as an x402 payer, against the crypto addresses OFAC publishes. Exact match, source link, 1 cent per address.",
+ "description": "Screen crypto wallets, such as an x402 payer, against the addresses OFAC publishes. Exact match, source link. $0.002 per address, then $0.0005 after 10.",
  "url": "https://boscolabs.dev/wallet-screening.html",
  "provider": {
   "@type": "Organization",
@@ -108,8 +108,8 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <article>
 <div class="head"><img src="/icons/sanctions-screening.svg" alt="" width="84" height="84"><div><h1>Wallet Sanctions Screening</h1><span class="badge live">On the HTTP API</span></div></div>
 <div class="prose">
-<p class="lead">Screen a crypto wallet address, such as an x402 payer, against the crypto addresses OFAC publishes. Exact match, source link, 1 cent per address.</p>
-<div class="facts"><div class="fact"><b>Price</b>$0.01 per address</div><div class="fact"><b>Max per call</b>50 addresses</div><div class="fact"><b>Pay</b>API key or x402 (USDC)</div></div>
+<p class="lead">Screen crypto wallets, such as an x402 payer, against the addresses OFAC publishes. Exact match, source link. $0.002 per address, then $0.0005 after 10.</p>
+<div class="facts"><div class="fact"><b>Price</b>$0.002 per address (first 10), then $0.0005</div><div class="fact"><b>Max per call</b>1,000 addresses</div><div class="fact"><b>Pay</b>API key or x402 (USDC)</div></div>
 <p>Made for sellers who want to check the wallet that pays them before they serve the request. It is the wallet-address part of <a href="/sanctions-screening.html">Sanctions Screening</a>, as its own endpoint: the same lists, the same matching and the same rows, with the date of every list checked.</p>
 <h2>What it checks</h2>
 <ul>
@@ -118,7 +118,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <li>It does not trace funds, cluster wallets or score risk. An address that is not listed is not a statement that it is clean.</li>
 </ul>
 <h2 id="http-api">HTTP API</h2>
-<p><strong>$0.01 per wallet address screened (same rules as the addresses of sanctions-screening: an address no list could be checked against is free; so is a screen while a list could not be loaded, up to the daily limit; past it that screen is charged and marked incomplete)</strong> from prepaid credits (max 50 addresses per call). <a href="/api.html#key">Get a key</a> with a $5.00 free trial, or send the same call without a key and <a href="/api.html#x402">pay per call in USDC via x402</a>.</p>
+<p><strong>$0.002 per wallet address screened for the first 10 per call, then $0.0005 each (100 addresses $0.065, 1,000 addresses $0.515). Same rules as the addresses of sanctions-screening: an address no list could be checked against is free and does not count toward the first 10; so is a screen while a list could not be loaded, up to the daily limit; past it that screen is charged and marked incomplete</strong> from prepaid credits (max 1,000 addresses per call). <a href="/api.html#key">Get a key</a> with a $5.00 free trial, or send the same call without a key and <a href="/api.html#x402">pay per call in USDC via x402</a>.</p>
 <pre><code>curl https://api.boscolabs.dev/v1/wallet-screening \
   -H &quot;Authorization: Bearer $BOSCO_API_KEY&quot; \
   -H &quot;Content-Type: application/json&quot; \
@@ -160,7 +160,7 @@ nav a,footer a,.chips a,.crumbs a,.brand,h3>a,.fact>a{display:inline-flex;align-
 <div class="prose">
 <h2>Input fields</h2>
 <div class="table"><table><thead><tr><th>Field</th><th>Type</th><th>Meaning</th></tr></thead><tbody>
-<tr><td><code>addresses</code></td><td>array (required)</td><td>Wallet addresses to screen, up to 50, one result row and one charge each.</td></tr>
+<tr><td><code>addresses</code></td><td>array (required)</td><td>Wallet addresses to screen, up to 1,000, one result row each.</td></tr>
 <tr><td><code>lists</code></td><td>array</td><td>Lists to check (default all); only ofac_sdn and ofac_consolidated publish addresses.</td></tr>
 </tbody></table></div>
 <p>Names, countries and fuzzy matching are on <a href="/sanctions-screening.html">Sanctions Screening</a>.</p>
