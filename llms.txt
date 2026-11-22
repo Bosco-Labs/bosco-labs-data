@@ -98,6 +98,7 @@ Contact: support@boscolabs.dev
 ## Blog
 
 - [All posts](https://boscolabs.dev/blog/index.html), Atom feed: https://boscolabs.dev/blog/feed.xml
+- [Web search vs one API call on companies nobody has heard of](https://boscolabs.dev/blog/benchmark2-results.html) (2026-11-22): A pre-registered test of web search against one company-check API call on companies nobody has heard of. Rules, seed and every answer are public.
 - [Find open EU public tenders for your sector as JSON](https://boscolabs.dev/blog/eu-public-tenders-ted-api.html) (2026-11-19): Search TED, the EU's procurement journal, by country, CPV code and value, and get each new call for tenders as a JSON row with its deadline and buyer.
 - [Annual report figures of EU listed companies as JSON](https://boscolabs.dev/blog/eu-annual-report-financials-esef-api.html) (2026-11-17): Revenue, profit, cash flow and balance sheet of an EU listed company, read from its ESEF annual report, with the XBRL tag behind every figure.
 - [Get SEC insider trades (Form 4) for a stock as JSON](https://boscolabs.dev/blog/sec-insider-trades-form-4-api.html) (2026-11-17): Pull the Form 4 insider buys and sells for one ticker or the whole market as JSON rows, with the 10b5-1 flag and a link to each SEC filing.

@@ -1,8 +1,9 @@
 # Benchmark 2: replicate journals
 
-Each replicate writes every model call to a journal (`runs.jsonl`). Its hash is published as
-soon as the replicate ends, so the journal cannot change before the results come out; the
-journals are published with the results.
+Each replicate writes every model call to a journal (`runs.jsonl`). Its line count and hash are
+published as soon as the replicate ends, so the journal cannot change before the results come out.
+The full journal holds the model's text and is not published; `../results/runs_public.jsonl` has
+the same attempt lines without it, so the counts can be checked but the journal hash cannot.
 
 | Replicate | Finished (UTC) | Attempt lines | Journal SHA-256 |
 |---|---|---|---|

@@ -4,8 +4,9 @@
 <link href="https://boscolabs.dev/blog/feed.xml" rel="self"/>
 <link href="https://boscolabs.dev/blog/index.html"/>
 <id>https://boscolabs.dev/blog/index.html</id>
-<updated>2026-11-19T00:00:00Z</updated>
+<updated>2026-11-22T00:00:00Z</updated>
 <author><name>Bosco Labs</name></author>
+<entry><title>Web search vs one API call on companies nobody has heard of</title><link href="https://boscolabs.dev/blog/benchmark2-results.html"/><id>https://boscolabs.dev/blog/benchmark2-results.html</id><published>2026-11-22T00:00:00Z</published><updated>2026-11-22T00:00:00Z</updated><summary>A pre-registered test of web search against one company-check API call on companies nobody has heard of. Rules, seed and every answer are public.</summary></entry>
 <entry><title>Find open EU public tenders for your sector as JSON</title><link href="https://boscolabs.dev/blog/eu-public-tenders-ted-api.html"/><id>https://boscolabs.dev/blog/eu-public-tenders-ted-api.html</id><published>2026-11-19T00:00:00Z</published><updated>2026-11-19T00:00:00Z</updated><summary>Search TED, the EU&#x27;s procurement journal, by country, CPV code and value, and get each new call for tenders as a JSON row with its deadline and buyer.</summary></entry>
 <entry><title>Annual report figures of EU listed companies as JSON</title><link href="https://boscolabs.dev/blog/eu-annual-report-financials-esef-api.html"/><id>https://boscolabs.dev/blog/eu-annual-report-financials-esef-api.html</id><published>2026-11-17T00:00:00Z</published><updated>2026-11-17T00:00:00Z</updated><summary>Revenue, profit, cash flow and balance sheet of an EU listed company, read from its ESEF annual report, with the XBRL tag behind every figure.</summary></entry>
 <entry><title>Get SEC insider trades (Form 4) for a stock as JSON</title><link href="https://boscolabs.dev/blog/sec-insider-trades-form-4-api.html"/><id>https://boscolabs.dev/blog/sec-insider-trades-form-4-api.html</id><published>2026-11-17T00:00:00Z</published><updated>2026-11-17T00:00:00Z</updated><summary>Pull the Form 4 insider buys and sells for one ticker or the whole market as JSON rows, with the 10b5-1 flag and a link to each SEC filing.</summary></entry>

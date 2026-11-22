@@ -1,0 +1,2816 @@
+{
+  "version": 1,
+  "seed": "81d6e2e8f5fc793775c4618975bae90fadb0290c7e39b7c105682789a8bc7546",
+  "model": "claude-sonnet-5-5",
+  "companies": {
+    "drawn": 102,
+    "analysed": 102,
+    "per_group": {
+      "A": 30,
+      "B": 30,
+      "C": 30,
+      "S": 12
+    }
+  },
+  "excluded": {},
+  "excluded_after_runs": {
+    "abc": 0,
+    "abc_drawn": 90,
+    "limit_share": 0.1,
+    "over_limit": false
+  },
+  "truth2_flag_mismatch": [],
+  "unfinished_runs": [],
+  "sanctions_name_skips": {},
+  "second_truth_read": true,
+  "hand_check": true,
+  "always_clear_baseline": 33.333333333333336,
+  "headline": {
+    "web": 72.77777777777779,
+    "api": 100.0,
+    "diff": 27.222222222222225,
+    "n": {
+      "A": 30,
+      "B": 30,
+      "C": 30
+    },
+    "se_interval": [
+      19.2551764305732,
+      35.18926801387125
+    ],
+    "standard_error": 3.9835228958245126,
+    "bootstrap_interval": [
+      19.444444444444446,
+      35.0
+    ],
+    "group_means": {
+      "web": {
+        "A": 0.7166666666666667,
+        "B": 0.7833333333333333,
+        "C": 0.6833333333333333
+      },
+      "api": {
+        "A": 1.0,
+        "B": 1.0,
+        "C": 1.0
+      }
+    }
+  },
+  "replicates": {
+    "1": {
+      "web": 67.77777777777777,
+      "api": 100.0,
+      "diff": 32.22222222222222,
+      "n": {
+        "A": 30,
+        "B": 30,
+        "C": 30
+      },
+      "se_interval": [
+        22.29271332847481,
+        42.15173111596963
+      ],
+      "standard_error": 4.964754446873705
+    },
+    "2": {
+      "web": 77.77777777777779,
+      "api": 100.0,
+      "diff": 22.222222222222225,
+      "n": {
+        "A": 30,
+        "B": 30,
+        "C": 30
+      },
+      "se_interval": [
+        13.333333333333336,
+        31.111111111111114
+      ],
+      "standard_error": 4.444444444444445
+    }
+  },
+  "verdict": {
+    "name": "product_ahead",
+    "why": [],
+    "resolution_points": 8,
+    "sentence": "On these companies the model reading counterparty-check reached the right decision more often than the model with web search."
+  },
+  "controls": {
+    "memory": {
+      "headline": 1.1111111111111112,
+      "group_means": {
+        "A": 0.03333333333333333,
+        "B": 0.0,
+        "C": 0.0
+      },
+      "n": {
+        "A": 30,
+        "B": 30,
+        "C": 30
+      }
+    },
+    "rule": {
+      "headline": 100.0,
+      "group_means": {
+        "A": 1.0,
+        "B": 1.0,
+        "C": 1.0
+      },
+      "n": {
+        "A": 30,
+        "B": 30,
+        "C": 30
+      }
+    }
+  },
+  "checks": {
+    "first_replicate_only": {
+      "web": 67.77777777777777,
+      "api": 100.0,
+      "diff": 32.22222222222222,
+      "n": {
+        "A": 30,
+        "B": 30,
+        "C": 30
+      },
+      "se_interval": [
+        22.29271332847481,
+        42.15173111596963
+      ],
+      "standard_error": 4.964754446873705
+    },
+    "without_failed_runs": {
+      "web": 72.77777777777779,
+      "api": 100.0,
+      "diff": 27.222222222222225,
+      "n": {
+        "A": 30,
+        "B": 30,
+        "C": 30
+      },
+      "se_interval": [
+        19.2551764305732,
+        35.18926801387125
+      ],
+      "standard_error": 3.9835228958245126
+    },
+    "without_runs_that_had_a_tool_error": {
+      "web": 97.91666666666667,
+      "api": 100.0,
+      "diff": 2.0833333333333335,
+      "n": {
+        "A": 8,
+        "B": 13,
+        "C": 10
+      },
+      "se_interval": [
+        -2.0833333333333335,
+        6.25
+      ],
+      "standard_error": 2.0833333333333335
+    },
+    "uk_and_latvia_only": {
+      "web": 88.54166666666667,
+      "api": 100.0,
+      "diff": 11.458333333333334,
+      "n": {
+        "A": 16,
+        "B": 15,
+        "C": 20
+      },
+      "se_interval": [
+        5.492136960050092,
+        17.424529706616575
+      ],
+      "standard_error": 2.983098186641621
+    },
+    "group_a_without_sanctions": {
+      "web": 77.77777777777779,
+      "api": 100.0,
+      "diff": 22.222222222222218,
+      "n": {
+        "A": 30,
+        "B": 30,
+        "C": 30
+      },
+      "se_interval": [
+        14.540827074358482,
+        29.903617370085954
+      ],
+      "standard_error": 3.8406975739318674
+    },
+    "all_drawn_companies_no_exclusions": {
+      "web": 72.77777777777779,
+      "api": 100.0,
+      "diff": 27.222222222222225,
+      "n": {
+        "A": 30,
+        "B": 30,
+        "C": 30
+      },
+      "se_interval": [
+        19.2551764305732,
+        35.18926801387125
+      ],
+      "standard_error": 3.9835228958245126
+    }
+  },
+  "outcomes": {
+    "web": {
+      "A": {
+        "cleared": 43,
+        "flagged": 0,
+        "no_verdict": 17,
+        "failed_run": 0
+      },
+      "B": {
+        "cleared": 2,
+        "flagged": 47,
+        "no_verdict": 11,
+        "failed_run": 0
+      },
+      "C": {
+        "cleared": 4,
+        "flagged": 41,
+        "no_verdict": 15,
+        "failed_run": 0
+      },
+      "S": {
+        "cleared": 8,
+        "flagged": 7,
+        "no_verdict": 9,
+        "failed_run": 0
+      }
+    },
+    "api": {
+      "A": {
+        "cleared": 60,
+        "flagged": 0,
+        "no_verdict": 0,
+        "failed_run": 0
+      },
+      "B": {
+        "cleared": 0,
+        "flagged": 60,
+        "no_verdict": 0,
+        "failed_run": 0
+      },
+      "C": {
+        "cleared": 0,
+        "flagged": 60,
+        "no_verdict": 0,
+        "failed_run": 0
+      },
+      "S": {
+        "cleared": 0,
+        "flagged": 24,
+        "no_verdict": 0,
+        "failed_run": 0
+      }
+    },
+    "memory": {
+      "A": {
+        "cleared": 1,
+        "flagged": 0,
+        "no_verdict": 29,
+        "failed_run": 0
+      },
+      "B": {
+        "cleared": 0,
+        "flagged": 0,
+        "no_verdict": 30,
+        "failed_run": 0
+      },
+      "C": {
+        "cleared": 0,
+        "flagged": 0,
+        "no_verdict": 30,
+        "failed_run": 0
+      },
+      "S": {
+        "cleared": 2,
+        "flagged": 1,
+        "no_verdict": 9,
+        "failed_run": 0
+      }
+    },
+    "rule": {
+      "A": {
+        "cleared": 60,
+        "flagged": 0,
+        "no_verdict": 0,
+        "failed_run": 0
+      },
+      "B": {
+        "cleared": 0,
+        "flagged": 60,
+        "no_verdict": 0,
+        "failed_run": 0
+      },
+      "C": {
+        "cleared": 0,
+        "flagged": 60,
+        "no_verdict": 0,
+        "failed_run": 0
+      },
+      "S": {
+        "cleared": 0,
+        "flagged": 22,
+        "no_verdict": 2,
+        "failed_run": 0
+      }
+    }
+  },
+  "false_all_clear": {
+    "web": {
+      "k": 6,
+      "n": 120,
+      "pct": 5.0,
+      "low": 2.311404930447424,
+      "high": 10.480419464586236
+    },
+    "api": {
+      "k": 0,
+      "n": 120,
+      "pct": 0.0,
+      "low": 0.0,
+      "high": 3.102027105592952
+    },
+    "memory": {
+      "k": 0,
+      "n": 60,
+      "pct": 0.0,
+      "low": 0.0,
+      "high": 6.0173930477932895
+    },
+    "rule": {
+      "k": 0,
+      "n": 120,
+      "pct": 0.0,
+      "low": 0.0,
+      "high": 3.102027105592952
+    }
+  },
+  "flips": {
+    "web": {
+      "k": 21,
+      "n": 90,
+      "pct": 23.333333333333332,
+      "low": 15.798078393937457,
+      "high": 33.051898588552184
+    },
+    "api": {
+      "k": 0,
+      "n": 90,
+      "pct": 0.0,
+      "low": 0.0,
+      "high": 4.0937068421680785
+    },
+    "rule": {
+      "k": 0,
+      "n": 90,
+      "pct": 0.0,
+      "low": 0.0,
+      "high": 4.0937068421680785
+    }
+  },
+  "exact": {
+    "web": {
+      "all_three": {
+        "k": 95,
+        "n": 180
+      },
+      "insolvent": {
+        "k": 93,
+        "n": 104
+      },
+      "sanctioned": {
+        "k": 100,
+        "n": 180
+      },
+      "status": {
+        "k": 140,
+        "n": 180
+      }
+    },
+    "api": {
+      "all_three": {
+        "k": 177,
+        "n": 180
+      },
+      "insolvent": {
+        "k": 101,
+        "n": 104
+      },
+      "sanctioned": {
+        "k": 180,
+        "n": 180
+      },
+      "status": {
+        "k": 180,
+        "n": 180
+      }
+    },
+    "memory": {
+      "all_three": {
+        "k": 1,
+        "n": 90
+      },
+      "insolvent": {
+        "k": 1,
+        "n": 52
+      },
+      "sanctioned": {
+        "k": 9,
+        "n": 90
+      },
+      "status": {
+        "k": 1,
+        "n": 90
+      }
+    }
+  },
+  "group_s": {
+    "web": {
+      "caught": 7,
+      "missed": 8,
+      "no_verdict": 9,
+      "failed_run": 0
+    },
+    "api": {
+      "caught": 24,
+      "missed": 0,
+      "no_verdict": 0,
+      "failed_run": 0
+    },
+    "memory": {
+      "caught": 1,
+      "missed": 2,
+      "no_verdict": 9,
+      "failed_run": 0
+    },
+    "rule": {
+      "caught": 22,
+      "missed": 0,
+      "no_verdict": 2,
+      "failed_run": 0
+    }
+  },
+  "false_sanction_flags": {
+    "web": {
+      "k": 0,
+      "n": 180
+    },
+    "api": {
+      "k": 0,
+      "n": 180
+    },
+    "memory": {
+      "k": 0,
+      "n": 90
+    },
+    "rule": {
+      "k": 0,
+      "n": 180
+    }
+  },
+  "per_country": {
+    "web": {
+      "EE": {
+        "k": 25,
+        "n": 28
+      },
+      "GB": {
+        "k": 47,
+        "n": 52
+      },
+      "IE": {
+        "k": 15,
+        "n": 50
+      },
+      "LV": {
+        "k": 44,
+        "n": 50
+      }
+    },
+    "api": {
+      "EE": {
+        "k": 28,
+        "n": 28
+      },
+      "GB": {
+        "k": 52,
+        "n": 52
+      },
+      "IE": {
+        "k": 50,
+        "n": 50
+      },
+      "LV": {
+        "k": 50,
+        "n": 50
+      }
+    },
+    "memory": {
+      "EE": {
+        "k": 0,
+        "n": 14
+      },
+      "GB": {
+        "k": 1,
+        "n": 26
+      },
+      "IE": {
+        "k": 0,
+        "n": 25
+      },
+      "LV": {
+        "k": 0,
+        "n": 25
+      }
+    },
+    "rule": {
+      "EE": {
+        "k": 28,
+        "n": 28
+      },
+      "GB": {
+        "k": 52,
+        "n": 52
+      },
+      "IE": {
+        "k": 50,
+        "n": 50
+      },
+      "LV": {
+        "k": 50,
+        "n": 50
+      }
+    }
+  },
+  "failed_runs": {
+    "web": {
+      "runs_without_an_answer": 0,
+      "retries": 5,
+      "invalid_reasons": {
+        "tool_error_web_fetch_too_many_requests": 5
+      },
+      "tool_errors": {
+        "web_fetch: invalid_tool_input": 221,
+        "web_fetch: max_uses_exceeded": 4,
+        "web_fetch: url_not_accessible": 65,
+        "web_search: invalid_tool_input": 133,
+        "web_fetch: url_not_allowed": 46,
+        "web_fetch: too_many_requests": 5,
+        "web_search: max_uses_exceeded": 1,
+        "web_fetch: url_not_in_prior_context": 3
+      }
+    },
+    "api": {
+      "runs_without_an_answer": 0,
+      "retries": 0,
+      "invalid_reasons": {},
+      "tool_errors": {}
+    },
+    "memory": {
+      "runs_without_an_answer": 0,
+      "retries": 0,
+      "invalid_reasons": {},
+      "tool_errors": {}
+    }
+  },
+  "cost": {
+    "web": {
+      "runs": 204,
+      "attempts": 209,
+      "usd": 11.349,
+      "usd_api_fee": 0.0,
+      "usd_per_run": 0.0556,
+      "aborted_api_calls": 0,
+      "tokens": {
+        "cache_creation_input_tokens": 2221471,
+        "cache_read_input_tokens": 7956779,
+        "input_tokens": 2638,
+        "output_tokens": 236434,
+        "web_fetches": 685,
+        "web_searches": 263
+      },
+      "median_seconds": 18.0,
+      "searches": 263,
+      "fetches": 685
+    },
+    "api": {
+      "runs": 204,
+      "attempts": 204,
+      "usd": 13.4425,
+      "usd_api_fee": 10.2,
+      "usd_per_run": 0.0659,
+      "aborted_api_calls": 0,
+      "tokens": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 1197132,
+        "output_tokens": 84827,
+        "web_fetches": 0,
+        "web_searches": 0
+      },
+      "median_seconds": 5.0,
+      "searches": 0,
+      "fetches": 0
+    },
+    "memory": {
+      "runs": 102,
+      "attempts": 102,
+      "usd": 0.475,
+      "usd_api_fee": 0.0,
+      "usd_per_run": 0.0047,
+      "aborted_api_calls": 0,
+      "tokens": {
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "input_tokens": 72435,
+        "output_tokens": 33017,
+        "web_fetches": 0,
+        "web_searches": 0
+      },
+      "median_seconds": 3.3,
+      "searches": 0,
+      "fetches": 0
+    }
+  },
+  "per_company": [
+    {
+      "id": "ee-10607192",
+      "group": "A",
+      "country": "EE",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "cleared",
+        "web r2": "cleared",
+        "api r1": "cleared",
+        "api r2": "cleared",
+        "memory r1": "no_verdict",
+        "rule r1": "cleared",
+        "rule r2": "cleared"
+      }
+    },
+    {
+      "id": "ee-10637336",
+      "group": "A",
+      "country": "EE",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "no_verdict",
+        "web r2": "cleared",
+        "api r1": "cleared",
+        "api r2": "cleared",
+        "memory r1": "no_verdict",
+        "rule r1": "cleared",
+        "rule r2": "cleared"
+      }
+    },
+    {
+      "id": "ee-11200274",
+      "group": "A",
+      "country": "EE",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "cleared",
+        "web r2": "cleared",
+        "api r1": "cleared",
+        "api r2": "cleared",
+        "memory r1": "no_verdict",
+        "rule r1": "cleared",
+        "rule r2": "cleared"
+      }
+    },
+    {
+      "id": "ee-12126769",
+      "group": "B",
+      "country": "EE",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": true,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "caught",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "ee-12179866",
+      "group": "B",
+      "country": "EE",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "caught",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "ee-12922526",
+      "group": "B",
+      "country": "EE",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "caught",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "ee-14815786",
+      "group": "A",
+      "country": "EE",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "cleared",
+        "web r2": "cleared",
+        "api r1": "cleared",
+        "api r2": "cleared",
+        "memory r1": "no_verdict",
+        "rule r1": "cleared",
+        "rule r2": "cleared"
+      }
+    },
+    {
+      "id": "ee-16319577",
+      "group": "B",
+      "country": "EE",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "caught",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "ee-16500012",
+      "group": "A",
+      "country": "EE",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "cleared",
+        "web r2": "cleared",
+        "api r1": "cleared",
+        "api r2": "cleared",
+        "memory r1": "no_verdict",
+        "rule r1": "cleared",
+        "rule r2": "cleared"
+      }
+    },
+    {
+      "id": "ee-16585190",
+      "group": "B",
+      "country": "EE",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "caught",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "ee-16614425",
+      "group": "B",
+      "country": "EE",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "caught",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "ee-17190507",
+      "group": "B",
+      "country": "EE",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "caught",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "ee-17474630",
+      "group": "A",
+      "country": "EE",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "no_verdict",
+        "web r2": "cleared",
+        "api r1": "cleared",
+        "api r2": "cleared",
+        "memory r1": "no_verdict",
+        "rule r1": "cleared",
+        "rule r2": "cleared"
+      }
+    },
+    {
+      "id": "ee-17482813",
+      "group": "A",
+      "country": "EE",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "no_verdict",
+        "web r2": "cleared",
+        "api r1": "cleared",
+        "api r2": "cleared",
+        "memory r1": "no_verdict",
+        "rule r1": "cleared",
+        "rule r2": "cleared"
+      }
+    },
+    {
+      "id": "gb-04659822",
+      "group": "A",
+      "country": "GB",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "cleared",
+        "web r2": "cleared",
+        "api r1": "cleared",
+        "api r2": "cleared",
+        "memory r1": "no_verdict",
+        "rule r1": "cleared",
+        "rule r2": "cleared"
+      }
+    },
+    {
+      "id": "gb-04660597",
+      "group": "B",
+      "country": "GB",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": true,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "caught",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "gb-04661158",
+      "group": "B",
+      "country": "GB",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": true,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "caught",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "gb-04661382",
+      "group": "B",
+      "country": "GB",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "caught",
+        "web r2": "no_verdict",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "gb-04953500",
+      "group": "B",
+      "country": "GB",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": true,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "caught",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "gb-05543042",
+      "group": "A",
+      "country": "GB",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "cleared",
+        "web r2": "cleared",
+        "api r1": "cleared",
+        "api r2": "cleared",
+        "memory r1": "cleared",
+        "rule r1": "cleared",
+        "rule r2": "cleared"
+      }
+    },
+    {
+      "id": "gb-05543635",
+      "group": "B",
+      "country": "GB",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": true,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "caught",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "gb-05543797",
+      "group": "B",
+      "country": "GB",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": true,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "caught",
+        "web r2": "no_verdict",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "gb-05742647",
+      "group": "S",
+      "country": "GB",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": true,
+        "sanctioned": true,
+        "sanctions_lists": [
+          "UK"
+        ]
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "no_verdict",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "no_verdict",
+        "rule r2": "no_verdict"
+      }
+    },
+    {
+      "id": "gb-06601634",
+      "group": "S",
+      "country": "GB",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": true,
+        "sanctions_lists": [
+          "OFAC SDN"
+        ]
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "caught",
+        "web r2": "false_all_clear",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "gb-06850415",
+      "group": "S",
+      "country": "GB",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": false,
+        "sanctioned": true,
+        "sanctions_lists": [
+          "OFAC SDN"
+        ]
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "false_all_clear",
+        "web r2": "false_all_clear",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "gb-07784342",
+      "group": "S",
+      "country": "GB",
+      "truth": {
+        "status": null,
+        "insolvent": null,
+        "sanctioned": true,
+        "sanctions_lists": [
+          "EU",
+          "UK"
+        ]
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "no_verdict",
+        "web r2": "no_verdict",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "false_all_clear",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "gb-08203930",
+      "group": "A",
+      "country": "GB",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "cleared",
+        "web r2": "cleared",
+        "api r1": "cleared",
+        "api r2": "cleared",
+        "memory r1": "no_verdict",
+        "rule r1": "cleared",
+        "rule r2": "cleared"
+      }
+    },
+    {
+      "id": "gb-08204145",
+      "group": "B",
+      "country": "GB",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": true,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "caught",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "gb-08204570",
+      "group": "A",
+      "country": "GB",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "cleared",
+        "web r2": "no_verdict",
+        "api r1": "cleared",
+        "api r2": "cleared",
+        "memory r1": "no_verdict",
+        "rule r1": "cleared",
+        "rule r2": "cleared"
+      }
+    },
+    {
+      "id": "gb-08204583",
+      "group": "B",
+      "country": "GB",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "no_verdict",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "gb-08204810",
+      "group": "A",
+      "country": "GB",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "cleared",
+        "web r2": "cleared",
+        "api r1": "cleared",
+        "api r2": "cleared",
+        "memory r1": "no_verdict",
+        "rule r1": "cleared",
+        "rule r2": "cleared"
+      }
+    },
+    {
+      "id": "gb-08205205",
+      "group": "C",
+      "country": "GB",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "caught",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "gb-08205271",
+      "group": "A",
+      "country": "GB",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "cleared",
+        "web r2": "cleared",
+        "api r1": "cleared",
+        "api r2": "cleared",
+        "memory r1": "no_verdict",
+        "rule r1": "cleared",
+        "rule r2": "cleared"
+      }
+    },
+    {
+      "id": "gb-08220547",
+      "group": "S",
+      "country": "GB",
+      "truth": {
+        "status": null,
+        "insolvent": null,
+        "sanctioned": true,
+        "sanctions_lists": [
+          "OFAC SDN"
+        ]
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "no_verdict",
+        "web r2": "false_all_clear",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "gb-11032231",
+      "group": "S",
+      "country": "GB",
+      "truth": {
+        "status": null,
+        "insolvent": null,
+        "sanctioned": true,
+        "sanctions_lists": [
+          "OFAC SDN"
+        ]
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "false_all_clear",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "gb-12122640",
+      "group": "S",
+      "country": "GB",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": true,
+        "sanctions_lists": [
+          "OFAC SDN"
+        ]
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "no_verdict",
+        "web r2": "false_all_clear",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "false_all_clear",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "gb-12146985",
+      "group": "S",
+      "country": "GB",
+      "truth": {
+        "status": null,
+        "insolvent": null,
+        "sanctioned": true,
+        "sanctions_lists": [
+          "OFAC SDN"
+        ]
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "caught",
+        "web r2": "no_verdict",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "gb-13885242",
+      "group": "S",
+      "country": "GB",
+      "truth": {
+        "status": null,
+        "insolvent": null,
+        "sanctioned": true,
+        "sanctions_lists": [
+          "OFAC SDN"
+        ]
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "caught",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "caught",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "gb-14575184",
+      "group": "S",
+      "country": "GB",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": true,
+        "sanctions_lists": [
+          "OFAC SDN"
+        ]
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "caught",
+        "web r2": "no_verdict",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "gb-15154831",
+      "group": "C",
+      "country": "GB",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "caught",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "gb-15154964",
+      "group": "C",
+      "country": "GB",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "caught",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "gb-15155250",
+      "group": "C",
+      "country": "GB",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "caught",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "gb-15155306",
+      "group": "C",
+      "country": "GB",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "caught",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "gb-15155432",
+      "group": "C",
+      "country": "GB",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "caught",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "gb-15155649",
+      "group": "A",
+      "country": "GB",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "cleared",
+        "web r2": "cleared",
+        "api r1": "cleared",
+        "api r2": "cleared",
+        "memory r1": "no_verdict",
+        "rule r1": "cleared",
+        "rule r2": "cleared"
+      }
+    },
+    {
+      "id": "gb-15155897",
+      "group": "A",
+      "country": "GB",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "no_verdict",
+        "web r2": "cleared",
+        "api r1": "cleared",
+        "api r2": "cleared",
+        "memory r1": "no_verdict",
+        "rule r1": "cleared",
+        "rule r2": "cleared"
+      }
+    },
+    {
+      "id": "gb-15156194",
+      "group": "C",
+      "country": "GB",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "caught",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "gb-15156247",
+      "group": "C",
+      "country": "GB",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "caught",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "gb-15157300",
+      "group": "C",
+      "country": "GB",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "caught",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "gb-16187338",
+      "group": "S",
+      "country": "GB",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": false,
+        "sanctioned": true,
+        "sanctions_lists": [
+          "OFAC SDN"
+        ]
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "no_verdict",
+        "web r2": "no_verdict",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "gb-SC783525",
+      "group": "C",
+      "country": "GB",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "caught",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "ie-180480",
+      "group": "C",
+      "country": "IE",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "no_verdict",
+        "web r2": "no_verdict",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "ie-194320",
+      "group": "B",
+      "country": "IE",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "no_verdict",
+        "web r2": "no_verdict",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "ie-23737",
+      "group": "B",
+      "country": "IE",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "caught",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "ie-239427",
+      "group": "A",
+      "country": "IE",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "no_verdict",
+        "web r2": "no_verdict",
+        "api r1": "cleared",
+        "api r2": "cleared",
+        "memory r1": "no_verdict",
+        "rule r1": "cleared",
+        "rule r2": "cleared"
+      }
+    },
+    {
+      "id": "ie-267069",
+      "group": "C",
+      "country": "IE",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "false_all_clear",
+        "web r2": "no_verdict",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "ie-287076",
+      "group": "C",
+      "country": "IE",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "no_verdict",
+        "web r2": "no_verdict",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "ie-432639",
+      "group": "C",
+      "country": "IE",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "no_verdict",
+        "web r2": "no_verdict",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "ie-485469",
+      "group": "C",
+      "country": "IE",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "no_verdict",
+        "web r2": "no_verdict",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "ie-502301",
+      "group": "B",
+      "country": "IE",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "no_verdict",
+        "web r2": "no_verdict",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "ie-522912",
+      "group": "B",
+      "country": "IE",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "caught",
+        "web r2": "no_verdict",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "ie-539411",
+      "group": "C",
+      "country": "IE",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "caught",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "ie-547488",
+      "group": "C",
+      "country": "IE",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "no_verdict",
+        "web r2": "no_verdict",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "ie-557917",
+      "group": "B",
+      "country": "IE",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "no_verdict",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "ie-604946",
+      "group": "A",
+      "country": "IE",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "cleared",
+        "web r2": "no_verdict",
+        "api r1": "cleared",
+        "api r2": "cleared",
+        "memory r1": "no_verdict",
+        "rule r1": "cleared",
+        "rule r2": "cleared"
+      }
+    },
+    {
+      "id": "ie-612754",
+      "group": "A",
+      "country": "IE",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "no_verdict",
+        "web r2": "cleared",
+        "api r1": "cleared",
+        "api r2": "cleared",
+        "memory r1": "no_verdict",
+        "rule r1": "cleared",
+        "rule r2": "cleared"
+      }
+    },
+    {
+      "id": "ie-625396",
+      "group": "A",
+      "country": "IE",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "no_verdict",
+        "web r2": "no_verdict",
+        "api r1": "cleared",
+        "api r2": "cleared",
+        "memory r1": "no_verdict",
+        "rule r1": "cleared",
+        "rule r2": "cleared"
+      }
+    },
+    {
+      "id": "ie-644763",
+      "group": "C",
+      "country": "IE",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "false_all_clear",
+        "web r2": "false_all_clear",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "ie-653830",
+      "group": "C",
+      "country": "IE",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "no_verdict",
+        "web r2": "false_all_clear",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "ie-659654",
+      "group": "B",
+      "country": "IE",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "caught",
+        "web r2": "no_verdict",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "ie-661545",
+      "group": "S",
+      "country": "IE",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": true,
+        "sanctions_lists": [
+          "OFAC SDN"
+        ]
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "false_all_clear",
+        "web r2": "false_all_clear",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "ie-666964",
+      "group": "B",
+      "country": "IE",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "caught",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "ie-671756",
+      "group": "A",
+      "country": "IE",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "no_verdict",
+        "web r2": "cleared",
+        "api r1": "cleared",
+        "api r2": "cleared",
+        "memory r1": "no_verdict",
+        "rule r1": "cleared",
+        "rule r2": "cleared"
+      }
+    },
+    {
+      "id": "ie-708943",
+      "group": "B",
+      "country": "IE",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "caught",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "ie-727769",
+      "group": "C",
+      "country": "IE",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "no_verdict",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "ie-728836",
+      "group": "A",
+      "country": "IE",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "no_verdict",
+        "web r2": "no_verdict",
+        "api r1": "cleared",
+        "api r2": "cleared",
+        "memory r1": "no_verdict",
+        "rule r1": "cleared",
+        "rule r2": "cleared"
+      }
+    },
+    {
+      "id": "ie-748723",
+      "group": "A",
+      "country": "IE",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "no_verdict",
+        "web r2": "no_verdict",
+        "api r1": "cleared",
+        "api r2": "cleared",
+        "memory r1": "no_verdict",
+        "rule r1": "cleared",
+        "rule r2": "cleared"
+      }
+    },
+    {
+      "id": "lv-40003984050",
+      "group": "B",
+      "country": "LV",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "caught",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "lv-40103326477",
+      "group": "C",
+      "country": "LV",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": true,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "caught",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "lv-40103387645",
+      "group": "B",
+      "country": "LV",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "false_all_clear",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "lv-40103410180",
+      "group": "B",
+      "country": "LV",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "false_all_clear",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "lv-40103495681",
+      "group": "A",
+      "country": "LV",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "cleared",
+        "web r2": "cleared",
+        "api r1": "cleared",
+        "api r2": "cleared",
+        "memory r1": "no_verdict",
+        "rule r1": "cleared",
+        "rule r2": "cleared"
+      }
+    },
+    {
+      "id": "lv-40103852949",
+      "group": "B",
+      "country": "LV",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "caught",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "lv-40203031749",
+      "group": "C",
+      "country": "LV",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "caught",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "lv-40203058739",
+      "group": "B",
+      "country": "LV",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": true,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "caught",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "lv-40203101321",
+      "group": "A",
+      "country": "LV",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "cleared",
+        "web r2": "cleared",
+        "api r1": "cleared",
+        "api r2": "cleared",
+        "memory r1": "no_verdict",
+        "rule r1": "cleared",
+        "rule r2": "cleared"
+      }
+    },
+    {
+      "id": "lv-40203200721",
+      "group": "A",
+      "country": "LV",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "cleared",
+        "web r2": "cleared",
+        "api r1": "cleared",
+        "api r2": "cleared",
+        "memory r1": "no_verdict",
+        "rule r1": "cleared",
+        "rule r2": "cleared"
+      }
+    },
+    {
+      "id": "lv-40203227800",
+      "group": "C",
+      "country": "LV",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "caught",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "lv-40203248338",
+      "group": "C",
+      "country": "LV",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "caught",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "lv-40203248696",
+      "group": "A",
+      "country": "LV",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "cleared",
+        "web r2": "cleared",
+        "api r1": "cleared",
+        "api r2": "cleared",
+        "memory r1": "no_verdict",
+        "rule r1": "cleared",
+        "rule r2": "cleared"
+      }
+    },
+    {
+      "id": "lv-40203299048",
+      "group": "B",
+      "country": "LV",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": true,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "caught",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "lv-40203300116",
+      "group": "C",
+      "country": "LV",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "caught",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "lv-40203343897",
+      "group": "C",
+      "country": "LV",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "caught",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "lv-40203387586",
+      "group": "C",
+      "country": "LV",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "caught",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "lv-40203418068",
+      "group": "A",
+      "country": "LV",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "cleared",
+        "web r2": "cleared",
+        "api r1": "cleared",
+        "api r2": "cleared",
+        "memory r1": "no_verdict",
+        "rule r1": "cleared",
+        "rule r2": "cleared"
+      }
+    },
+    {
+      "id": "lv-40203520218",
+      "group": "A",
+      "country": "LV",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "cleared",
+        "web r2": "cleared",
+        "api r1": "cleared",
+        "api r2": "cleared",
+        "memory r1": "no_verdict",
+        "rule r1": "cleared",
+        "rule r2": "cleared"
+      }
+    },
+    {
+      "id": "lv-40203533354",
+      "group": "C",
+      "country": "LV",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "no_verdict",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "lv-40203558095",
+      "group": "C",
+      "country": "LV",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "caught",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "lv-41203027988",
+      "group": "C",
+      "country": "LV",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "no_verdict",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    },
+    {
+      "id": "lv-42103108035",
+      "group": "A",
+      "country": "LV",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "cleared",
+        "web r2": "cleared",
+        "api r1": "cleared",
+        "api r2": "cleared",
+        "memory r1": "no_verdict",
+        "rule r1": "cleared",
+        "rule r2": "cleared"
+      }
+    },
+    {
+      "id": "lv-45403031910",
+      "group": "A",
+      "country": "LV",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "no_verdict",
+        "web r2": "cleared",
+        "api r1": "cleared",
+        "api r2": "cleared",
+        "memory r1": "no_verdict",
+        "rule r1": "cleared",
+        "rule r2": "cleared"
+      }
+    },
+    {
+      "id": "lv-50003914591",
+      "group": "B",
+      "country": "LV",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "excluded": null,
+      "runs": {
+        "web r1": "no_verdict",
+        "web r2": "caught",
+        "api r1": "caught",
+        "api r2": "caught",
+        "memory r1": "no_verdict",
+        "rule r1": "caught",
+        "rule r2": "caught"
+      }
+    }
+  ],
+  "provenance": "checked against prereg.json",
+  "file_sha256": {
+    "journal": "3c08bd2c7ddb94786b7d2611460845cd3ca8dd4491d3311970bcf4660061dc3a",
+    "set": "b38d0175742210c29509ac71e837c94b4a9ed54c77d517091f2d0db20a95fb3f",
+    "truth2": "ec0beb8c07c6f721c2e7ca9a2b56145ac3986d91ba94f67b5141babf3cc90afc",
+    "audit": "d237314162f5bc189a7500d7d1a4b6db8b3f8af31790f13841637df7c2d328a0"
+  }
+}

@@ -1,0 +1,2666 @@
+{
+  "version": 1,
+  "seed": "81d6e2e8f5fc793775c4618975bae90fadb0290c7e39b7c105682789a8bc7546",
+  "read_at": "2026-11-22T22:18:39Z",
+  "companies": [
+    {
+      "id": "ee-10607192",
+      "raw_status": "r",
+      "truth2": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "A"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://ariregister.rik.ee/eng/company/10607192",
+          "fetched_at": "2026-11-22T22:17:19Z",
+          "sha256": "c1bca8c08856e875e0b74d15d1b4a78be5190e276491c362620b02bedbadffd9",
+          "what": "autocomplete"
+        }
+      ]
+    },
+    {
+      "id": "ee-10637336",
+      "raw_status": "r",
+      "truth2": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "A"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://ariregister.rik.ee/eng/company/10637336",
+          "fetched_at": "2026-11-22T22:17:19Z",
+          "sha256": "8c3eddf0c9e893620d0c048969db3773d5ad5a92b32d0e10c2ba1425ee53d850",
+          "what": "autocomplete"
+        }
+      ]
+    },
+    {
+      "id": "ee-11200274",
+      "raw_status": "r",
+      "truth2": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "A"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://ariregister.rik.ee/eng/company/11200274",
+          "fetched_at": "2026-11-22T22:17:20Z",
+          "sha256": "113017ab1d3a2af17036fda17b2ebd5ca8523893c6e2a43db2607caa7586652c",
+          "what": "autocomplete"
+        }
+      ]
+    },
+    {
+      "id": "ee-12126769",
+      "raw_status": "n",
+      "truth2": {
+        "status": "winding_up",
+        "insolvent": true,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "B"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://ariregister.rik.ee/eng/company/12126769",
+          "fetched_at": "2026-11-22T22:17:20Z",
+          "sha256": "08c63c66a6386090c3b01c64ccd74a9e90ef6bd8a65fc7ffef9a37d13b0fa7a9",
+          "what": "autocomplete"
+        }
+      ]
+    },
+    {
+      "id": "ee-12179866",
+      "raw_status": "l",
+      "truth2": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "B"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://ariregister.rik.ee/eng/company/12179866",
+          "fetched_at": "2026-11-22T22:17:20Z",
+          "sha256": "0aa282453b62368719d9e5674cf424351722ebeda4860ed2c88ae90d27393260",
+          "what": "autocomplete"
+        }
+      ]
+    },
+    {
+      "id": "ee-12922526",
+      "raw_status": "l",
+      "truth2": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "B"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://ariregister.rik.ee/eng/company/12922526",
+          "fetched_at": "2026-11-22T22:17:20Z",
+          "sha256": "e7a1650fba28b0afadee8a06df7a6cd79bd763c430951c48c4b626e3b608b604",
+          "what": "autocomplete"
+        }
+      ]
+    },
+    {
+      "id": "ee-14815786",
+      "raw_status": "r",
+      "truth2": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "A"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://ariregister.rik.ee/eng/company/14815786",
+          "fetched_at": "2026-11-22T22:17:20Z",
+          "sha256": "97c90fad6a01ecf8a2d78d6f27006941d681431fa5868f40a954deb23afe2b30",
+          "what": "autocomplete"
+        }
+      ]
+    },
+    {
+      "id": "ee-16319577",
+      "raw_status": "l",
+      "truth2": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "B"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://ariregister.rik.ee/eng/company/16319577",
+          "fetched_at": "2026-11-22T22:17:20Z",
+          "sha256": "4d33c932a1093127ba15fb69fa529889e4b60dfa40d45d1893b617c32dfc76db",
+          "what": "autocomplete"
+        }
+      ]
+    },
+    {
+      "id": "ee-16500012",
+      "raw_status": "r",
+      "truth2": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "A"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://ariregister.rik.ee/eng/company/16500012",
+          "fetched_at": "2026-11-22T22:17:20Z",
+          "sha256": "5c78db5a3ba007c6bb3e3acd298f9f5d3d8c231810e472c71cbf9e5bfba56046",
+          "what": "autocomplete"
+        }
+      ]
+    },
+    {
+      "id": "ee-16585190",
+      "raw_status": "l",
+      "truth2": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "B"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://ariregister.rik.ee/eng/company/16585190",
+          "fetched_at": "2026-11-22T22:17:20Z",
+          "sha256": "a288ceddec72c33e07396b33112cb4e029969451a8775ae30b64c2815e763133",
+          "what": "autocomplete"
+        }
+      ]
+    },
+    {
+      "id": "ee-16614425",
+      "raw_status": "l",
+      "truth2": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "B"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://ariregister.rik.ee/eng/company/16614425",
+          "fetched_at": "2026-11-22T22:17:20Z",
+          "sha256": "42128bcce2a2755bd5bda8debf4f49bfeb5a73c9519c08fbcbebae4617a37ef8",
+          "what": "autocomplete"
+        }
+      ]
+    },
+    {
+      "id": "ee-17190507",
+      "raw_status": "l",
+      "truth2": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "B"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://ariregister.rik.ee/eng/company/17190507",
+          "fetched_at": "2026-11-22T22:17:20Z",
+          "sha256": "863a4ec78b7177b91a748cffed7f39734020c444500e576b812f857e42d5d956",
+          "what": "autocomplete"
+        }
+      ]
+    },
+    {
+      "id": "ee-17474630",
+      "raw_status": "r",
+      "truth2": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "A"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://ariregister.rik.ee/eng/company/17474630",
+          "fetched_at": "2026-11-22T22:17:20Z",
+          "sha256": "3ebe1e94f47b652044c782dff7200fe002d3c4ddf86f44ed7fdc8bac0e6ffd48",
+          "what": "autocomplete"
+        }
+      ]
+    },
+    {
+      "id": "ee-17482813",
+      "raw_status": "r",
+      "truth2": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "A"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://ariregister.rik.ee/eng/company/17482813",
+          "fetched_at": "2026-11-22T22:17:21Z",
+          "sha256": "af18c5e462fbc35c75b335f5ebaa1362d18dafa09911b7acacc1db71c6ad4769",
+          "what": "autocomplete"
+        }
+      ]
+    },
+    {
+      "id": "gb-04659822",
+      "raw_status": "active",
+      "truth2": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "A"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/04659822",
+          "fetched_at": "2026-11-22T22:17:21Z",
+          "sha256": "417851376b5b9179b7268c90d16ad5aacb32c123eea89bee699f46c53eec3733",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/04659822/insolvency",
+          "fetched_at": "2026-11-22T22:17:21Z",
+          "sha256": "e459ea9aad37362bfe4257c42635f2af8d3f406b0b4ad5979bde0e6367587810",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-04660597",
+      "raw_status": "liquidation",
+      "truth2": {
+        "status": "winding_up",
+        "insolvent": true,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "B"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/04660597",
+          "fetched_at": "2026-11-22T22:17:22Z",
+          "sha256": "9ad869be412233fdba6598e05c4079dc449b53079c30a4b1c36e7ed9fec56488",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/04660597/insolvency",
+          "fetched_at": "2026-11-22T22:17:23Z",
+          "sha256": "74c70c72ef7ae42f04d762bfcccb19a890276439903b5a8352b452035a8ac72c",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-04661158",
+      "raw_status": "liquidation",
+      "truth2": {
+        "status": "winding_up",
+        "insolvent": true,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "B"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/04661158",
+          "fetched_at": "2026-11-22T22:17:23Z",
+          "sha256": "658db3f00c06a8ded53b0714d0e63c6ce143a795179e41270a5b3a3e7355dde5",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/04661158/insolvency",
+          "fetched_at": "2026-11-22T22:17:24Z",
+          "sha256": "43f3d106b0191d4acb4d021c87e2c5d87e2adbb9f49787c23c7c1d4ec789fd24",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-04661382",
+      "raw_status": "liquidation",
+      "truth2": {
+        "status": "winding_up",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "B"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/04661382",
+          "fetched_at": "2026-11-22T22:17:25Z",
+          "sha256": "ad985d8fc15b9f8f8bb398ecd535b807109029a268d813f781202edc7cb6ff43",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/04661382/insolvency",
+          "fetched_at": "2026-11-22T22:17:26Z",
+          "sha256": "49ff1309814104d7c47b2d1ebf72692f817d81b919690462b1687b9561253526",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-04953500",
+      "raw_status": "administration",
+      "truth2": {
+        "status": "winding_up",
+        "insolvent": true,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "B"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/04953500",
+          "fetched_at": "2026-11-22T22:17:26Z",
+          "sha256": "6ac522b08db3b67c049f2ce68f5ace8d4bca74e2675186aa24fcee3a5c76b426",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/04953500/insolvency",
+          "fetched_at": "2026-11-22T22:17:27Z",
+          "sha256": "f9115a2c42d18e4c986d5266973e7eb86acba5c78700bd5c2937bdd6ae2c3553",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-05543042",
+      "raw_status": "active",
+      "truth2": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "A"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/05543042",
+          "fetched_at": "2026-11-22T22:17:28Z",
+          "sha256": "62e58441975f747bf4b8e1f2fe5773ffddaa605ffa280262beb6a578b51a86be",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/05543042/insolvency",
+          "fetched_at": "2026-11-22T22:17:28Z",
+          "sha256": "a347804dd2b0a11f20c57eae75a94e66ffa348355ec14fbd3695b888965e1fea",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-05543635",
+      "raw_status": "liquidation",
+      "truth2": {
+        "status": "winding_up",
+        "insolvent": true,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "B"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/05543635",
+          "fetched_at": "2026-11-22T22:17:29Z",
+          "sha256": "115e9666dcfd542db7ad2dddf6c77a6015e8a608599456313301a604fd1e48b1",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/05543635/insolvency",
+          "fetched_at": "2026-11-22T22:17:30Z",
+          "sha256": "e5e58973d04f63e2b334278411ccad8646951bfa4b8e529f0b0848df513ecede",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-05543797",
+      "raw_status": "liquidation",
+      "truth2": {
+        "status": "winding_up",
+        "insolvent": true,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "B"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/05543797",
+          "fetched_at": "2026-11-22T22:17:30Z",
+          "sha256": "e8347c05da350265d76cea6cc0642b6c6ae4b831cbbf6a5de9441ddfaeaba9db",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/05543797/insolvency",
+          "fetched_at": "2026-11-22T22:17:31Z",
+          "sha256": "3d8f8e9cda251fbb931b060b7b323f13638bf695df8cd80832ec50331aa7db67",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-05742647",
+      "raw_status": "administration",
+      "truth2": {
+        "status": "winding_up",
+        "insolvent": true,
+        "sanctioned": true,
+        "sanctions_lists": [],
+        "group": "S"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/05742647",
+          "fetched_at": "2026-11-22T22:17:32Z",
+          "sha256": "19a80431cc4fbc36e8f199981b41498e7369793358af6a830678acaea6ea2c01",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/05742647/insolvency",
+          "fetched_at": "2026-11-22T22:17:33Z",
+          "sha256": "21820c772b6b17eac5756babdea150b6ca59acda194df75f684696b22730c45d",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-06601634",
+      "raw_status": "active",
+      "truth2": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": true,
+        "sanctions_lists": [],
+        "group": "S"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/06601634",
+          "fetched_at": "2026-11-22T22:17:33Z",
+          "sha256": "0225515590eb45334802e57d0eba5c6e532c2c063517fd92ad056e7877b856f1",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/06601634/insolvency",
+          "fetched_at": "2026-11-22T22:17:34Z",
+          "sha256": "4ff226a7e1a3f11212075bd8e3364d3991962355b4f969b7af7f5cc68403a782",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-06850415",
+      "raw_status": "dissolved",
+      "truth2": {
+        "status": "dissolved",
+        "insolvent": false,
+        "sanctioned": true,
+        "sanctions_lists": [],
+        "group": "S"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/06850415",
+          "fetched_at": "2026-11-22T22:17:35Z",
+          "sha256": "b5aa4097d4975e68144af8ab040037575eb61c1f1a38c16ad45e77c56a1f4f3f",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/06850415/insolvency",
+          "fetched_at": "2026-11-22T22:17:35Z",
+          "sha256": "841010d00adf6334aeac4e062090e29eff5a35892bea084242dfd890020be3c6",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-07784342",
+      "raw_status": "active",
+      "truth2": {
+        "status": null,
+        "insolvent": null,
+        "sanctioned": true,
+        "group": "S"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/07784342",
+          "fetched_at": "2026-11-22T22:17:36Z",
+          "sha256": "2a11f8f5557aa2aaf609d353a6b18ada0f42e828f41ddeaa4757dee719003046",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/07784342/insolvency",
+          "fetched_at": "2026-11-22T22:17:37Z",
+          "sha256": "41235d7380d7aebc5d3183526cdea5397a0b294aa42c451cac09098b5d43d3a9",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-08203930",
+      "raw_status": "active",
+      "truth2": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "A"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/08203930",
+          "fetched_at": "2026-11-22T22:17:37Z",
+          "sha256": "4941bea93746a58efa4af06655e63acba081a396a7acc6c66a0d62f9ece6060e",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/08203930/insolvency",
+          "fetched_at": "2026-11-22T22:17:38Z",
+          "sha256": "c338e69988fbdb8d308d47087daaa9ef8e44c043e24eefa5e629100f92c3c451",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-08204145",
+      "raw_status": "liquidation",
+      "truth2": {
+        "status": "winding_up",
+        "insolvent": true,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "B"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/08204145",
+          "fetched_at": "2026-11-22T22:17:39Z",
+          "sha256": "1d073b29d56631b56b6fc64b91ef48734b859447bd0ca5bb05ec9aac14a7edd4",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/08204145/insolvency",
+          "fetched_at": "2026-11-22T22:17:40Z",
+          "sha256": "930f9f7b91b799e0b49501cb9665fdc2318e3abc79341a68a4d101583dab48ba",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-08204570",
+      "raw_status": "active",
+      "truth2": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "A"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/08204570",
+          "fetched_at": "2026-11-22T22:17:40Z",
+          "sha256": "dc89f89bced74e21b28e55453f04456a4f45e79691854901af69a9d6b908b553",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/08204570/insolvency",
+          "fetched_at": "2026-11-22T22:17:41Z",
+          "sha256": "273a2ae2dc56e31e7dd0345960539c7d3575cd76ca9ad2d59366a0b36c60256a",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-08204583",
+      "raw_status": "liquidation",
+      "truth2": {
+        "status": "winding_up",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "B"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/08204583",
+          "fetched_at": "2026-11-22T22:17:42Z",
+          "sha256": "56cbf87d58760e9ebf904db8db72d5386ad5576374be8c1af86241614272442f",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/08204583/insolvency",
+          "fetched_at": "2026-11-22T22:17:42Z",
+          "sha256": "0d9bfbcebc104263a46ca2a3431b6893006764f0e9ef897ea776423246bc2a57",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-08204810",
+      "raw_status": "active",
+      "truth2": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "A"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/08204810",
+          "fetched_at": "2026-11-22T22:17:43Z",
+          "sha256": "d41206d73c55adc57d829dd6885f09fd095040dd74da9bdcd92a166f4fde6c95",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/08204810/insolvency",
+          "fetched_at": "2026-11-22T22:17:44Z",
+          "sha256": "87a0211aa0669880c9d2d156546bc688e788df02f73035feffd671b9466a354d",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-08205205",
+      "raw_status": "dissolved",
+      "truth2": {
+        "status": "dissolved",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "C"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/08205205",
+          "fetched_at": "2026-11-22T22:17:45Z",
+          "sha256": "a5e7b19fd084d9723040eebb760083a0b3fb487ed9be183d1b06f13eeca67ebf",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/08205205/insolvency",
+          "fetched_at": "2026-11-22T22:17:45Z",
+          "sha256": "64f2ec97879effbebfee766194c70bbd6675ef7daa11f9158c01fb3a8ac02a56",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-08205271",
+      "raw_status": "active",
+      "truth2": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "A"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/08205271",
+          "fetched_at": "2026-11-22T22:17:46Z",
+          "sha256": "d5e6ddb38e577eaba1f628e2d02cb7ab7039923382041a90eef5af46d9326187",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/08205271/insolvency",
+          "fetched_at": "2026-11-22T22:17:47Z",
+          "sha256": "52ca12587b5179c48ce1644e5e849201a8f2ec459fb118557282de1146802611",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-08220547",
+      "raw_status": "dissolved",
+      "truth2": {
+        "status": null,
+        "insolvent": null,
+        "sanctioned": true,
+        "group": "S"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/08220547",
+          "fetched_at": "2026-11-22T22:17:47Z",
+          "sha256": "b5023d8ef1a853dfafafea71694ae4292d2ef53ba27f0c785fe4fc57878a8f65",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/08220547/insolvency",
+          "fetched_at": "2026-11-22T22:17:48Z",
+          "sha256": "5bea249808829fc776af683bdd0ff435f710c5886656c50c436571d024336e02",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-11032231",
+      "raw_status": "dissolved",
+      "truth2": {
+        "status": null,
+        "insolvent": null,
+        "sanctioned": true,
+        "group": "S"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/11032231",
+          "fetched_at": "2026-11-22T22:17:49Z",
+          "sha256": "72d64f734df775a4fcc1fffe3b0e7efbbee49cb6da23791797e2d4ad8163128c",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/11032231/insolvency",
+          "fetched_at": "2026-11-22T22:17:49Z",
+          "sha256": "d0be3edd2c5dde9f9a18236dcdf06b5da7504c1c7db903461a0d71e955da4e35",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-12122640",
+      "raw_status": "active",
+      "truth2": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": true,
+        "sanctions_lists": [],
+        "group": "S"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/12122640",
+          "fetched_at": "2026-11-22T22:17:50Z",
+          "sha256": "8a31578445dbf7066f7924c7bccae64c4440788d340411c245ac2d8fb76e4b51",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/12122640/insolvency",
+          "fetched_at": "2026-11-22T22:17:51Z",
+          "sha256": "3e01697c04b5345955abdd2bd6f58d36cba6c08d1790fc02f5b5e8b9a71c4069",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-12146985",
+      "raw_status": "dissolved",
+      "truth2": {
+        "status": null,
+        "insolvent": null,
+        "sanctioned": true,
+        "group": "S"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/12146985",
+          "fetched_at": "2026-11-22T22:17:52Z",
+          "sha256": "1b1edc52f79c8557c6a064b12b2fb41334b8e9f4415923141f46568532a0d49b",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/12146985/insolvency",
+          "fetched_at": "2026-11-22T22:17:52Z",
+          "sha256": "2d69bfb7172abe754598045bbcc5dc0c3dcc1726ad616638f515ce026b46be8c",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-13885242",
+      "raw_status": "dissolved",
+      "truth2": {
+        "status": null,
+        "insolvent": null,
+        "sanctioned": true,
+        "group": "S"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/13885242",
+          "fetched_at": "2026-11-22T22:17:53Z",
+          "sha256": "bdaf7003a2b2c405642a0f36193efcb84aa2feca97dfd34e0199683e7d0d66fb",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/13885242/insolvency",
+          "fetched_at": "2026-11-22T22:17:54Z",
+          "sha256": "e1d71893685c483d2390e22a419a89120f6b86f9974c30dbb5b5460a4fd772ad",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-14575184",
+      "raw_status": "active",
+      "truth2": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": true,
+        "sanctions_lists": [],
+        "group": "S"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/14575184",
+          "fetched_at": "2026-11-22T22:17:54Z",
+          "sha256": "4712010ad9e17678bc0ee9bc8052ef870084679849b24d12e20a2422284145b0",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/14575184/insolvency",
+          "fetched_at": "2026-11-22T22:17:55Z",
+          "sha256": "596ec99c9324c1c3d08b1739ccc2fd9d02dc7b328d33326f9b973ade22ab5878",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-15154831",
+      "raw_status": "dissolved",
+      "truth2": {
+        "status": "dissolved",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "C"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/15154831",
+          "fetched_at": "2026-11-22T22:17:56Z",
+          "sha256": "f90f4aedce75bf574825324cfc668b0edccc0532955eeadf36c574bd25a8fb50",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/15154831/insolvency",
+          "fetched_at": "2026-11-22T22:17:56Z",
+          "sha256": "a8efba6a76127787a9b1bbac29374ec3e23e0e08200beaf53b9d516394fb4572",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-15154964",
+      "raw_status": "dissolved",
+      "truth2": {
+        "status": "dissolved",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "C"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/15154964",
+          "fetched_at": "2026-11-22T22:17:57Z",
+          "sha256": "9b6027387523951c6a5eb992e4b166f17d1393e4542342e4feb2a5ce535542f0",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/15154964/insolvency",
+          "fetched_at": "2026-11-22T22:17:58Z",
+          "sha256": "2c4ed112c3710f5398571491f896168500f0ffafca063e455dbac7d5b2bdb339",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-15155250",
+      "raw_status": "dissolved",
+      "truth2": {
+        "status": "dissolved",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "C"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/15155250",
+          "fetched_at": "2026-11-22T22:17:59Z",
+          "sha256": "15d335e237b665cd7c0bbc54cf96729caf18ff9286599fc68d4a3a1a0ba12681",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/15155250/insolvency",
+          "fetched_at": "2026-11-22T22:17:59Z",
+          "sha256": "16e1eecb1fd128c626fc0b02a55031bdd779d28f43d9b2e70fce94f82790f276",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-15155306",
+      "raw_status": "dissolved",
+      "truth2": {
+        "status": "dissolved",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "C"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/15155306",
+          "fetched_at": "2026-11-22T22:18:00Z",
+          "sha256": "87502643f7115fd8418d359b427951ffd609e4cc9eed8bc4797ef65f62265c23",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/15155306/insolvency",
+          "fetched_at": "2026-11-22T22:18:01Z",
+          "sha256": "24da5da575f63080de47ae7fcc25e26f4a5a7a8941aecadc113a99f631661baf",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-15155432",
+      "raw_status": "dissolved",
+      "truth2": {
+        "status": "dissolved",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "C"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/15155432",
+          "fetched_at": "2026-11-22T22:18:01Z",
+          "sha256": "6bf455a15ec13c1b04b78fd08ea3775795aeee3501b2acda59404c7a5b35f6f3",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/15155432/insolvency",
+          "fetched_at": "2026-11-22T22:18:02Z",
+          "sha256": "251812457e4dcc9ef41708153d61e3843d1a15652be24406191d6a0ca7a70887",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-15155649",
+      "raw_status": "active",
+      "truth2": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "A"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/15155649",
+          "fetched_at": "2026-11-22T22:18:03Z",
+          "sha256": "2762371751897388598d2ee6f2462bd183e57bf3ca3a6980f4beed4db348538f",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/15155649/insolvency",
+          "fetched_at": "2026-11-22T22:18:04Z",
+          "sha256": "d41c440257652eb33656359b472db076d16f0c1dc5f9353befb7c0d7e236efba",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-15155897",
+      "raw_status": "active",
+      "truth2": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "A"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/15155897",
+          "fetched_at": "2026-11-22T22:18:04Z",
+          "sha256": "c85d20ff101db5ebfb5921ce5a2c9aa3a283c015e8c5fdf34caaef127e27a3d3",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/15155897/insolvency",
+          "fetched_at": "2026-11-22T22:18:05Z",
+          "sha256": "453ddf0d33d743fbe58fc698e04bb6f9a39fbdd3021e6607981a156a46a0ddfa",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-15156194",
+      "raw_status": "dissolved",
+      "truth2": {
+        "status": "dissolved",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "C"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/15156194",
+          "fetched_at": "2026-11-22T22:18:06Z",
+          "sha256": "95890e11d77b5fffe2ca8d085ce1c5e1f04561ef174590c3afe3684ed4b405e8",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/15156194/insolvency",
+          "fetched_at": "2026-11-22T22:18:06Z",
+          "sha256": "92049cdb7ff47ab4537710e60af496ae100ca12b9d64bf1e673559fe7b4fe675",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-15156247",
+      "raw_status": "dissolved",
+      "truth2": {
+        "status": "dissolved",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "C"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/15156247",
+          "fetched_at": "2026-11-22T22:18:07Z",
+          "sha256": "685becb824ce12e2127e749134613f51c8da292c89f67055f92d1c2b03b50de8",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/15156247/insolvency",
+          "fetched_at": "2026-11-22T22:18:08Z",
+          "sha256": "3c5d508bc342b5d362c5a3ba37b607f400686691338b09504992acee0c57530c",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-15157300",
+      "raw_status": "dissolved",
+      "truth2": {
+        "status": "dissolved",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "C"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/15157300",
+          "fetched_at": "2026-11-22T22:18:08Z",
+          "sha256": "3489450e2d5886b69ce322bf8c4fc9da2b149d839e41db8d4e5cb28ff9d3147d",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/15157300/insolvency",
+          "fetched_at": "2026-11-22T22:18:09Z",
+          "sha256": "6ba8b753619a48bf2ccc06a3d3a6b7c4e21ff10a4046bc6eebafd6c74320b933",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-16187338",
+      "raw_status": "dissolved",
+      "truth2": {
+        "status": "dissolved",
+        "insolvent": false,
+        "sanctioned": true,
+        "sanctions_lists": [],
+        "group": "S"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/16187338",
+          "fetched_at": "2026-11-22T22:18:10Z",
+          "sha256": "f8b46c78133cab13445fdab0094569b4e2fe62cd83eb41db9142bd4789f9da38",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/16187338/insolvency",
+          "fetched_at": "2026-11-22T22:18:10Z",
+          "sha256": "66af63be5d9b5cae927fbfe0866d7729ddd5d2eec4ee39d2fc5cdb1e7d16a393",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-SC783525",
+      "raw_status": "dissolved",
+      "truth2": {
+        "status": "dissolved",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "C"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/SC783525",
+          "fetched_at": "2026-11-22T22:18:11Z",
+          "sha256": "397e976e9e0466eb6d0947a606588eac52a7a4bb809004262db49551346b0181",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/SC783525/insolvency",
+          "fetched_at": "2026-11-22T22:18:12Z",
+          "sha256": "c88618bcaf8adff302398ede977ff32144283b25e33145bfa555a8b9650364a6",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "ie-180480",
+      "raw_status": "dissolved",
+      "truth2": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "C"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+180480%7D",
+          "fetched_at": "2026-11-22T22:18:12Z",
+          "sha256": "502d3f51787ac527003f20fb499aeef1387cab03e23342a7eacb8a386462e541",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-194320",
+      "raw_status": "liquidation",
+      "truth2": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "B"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+194320%7D",
+          "fetched_at": "2026-11-22T22:18:12Z",
+          "sha256": "0782c00e15b6624ee6018590f1ddb28bbd25f64a04584b55ac51f337c06eea82",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-23737",
+      "raw_status": "liquidation",
+      "truth2": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "B"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+23737%7D",
+          "fetched_at": "2026-11-22T22:18:12Z",
+          "sha256": "8e6feae8be9c2e180c2f5f1e51251387cc9653699fcdf798bc5c6b15c0c61aa0",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-239427",
+      "raw_status": "normal",
+      "truth2": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "A"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+239427%7D",
+          "fetched_at": "2026-11-22T22:18:12Z",
+          "sha256": "2fe7007cc2c2f5f2e800179e887aa846c7606f6b8bdb271288a4d498d1f219e8",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-267069",
+      "raw_status": "dissolved",
+      "truth2": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "C"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+267069%7D",
+          "fetched_at": "2026-11-22T22:18:12Z",
+          "sha256": "c5d71129489e0ff272170b35bc4a8dce5c3f717345522ff53d121258a6cc2133",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-287076",
+      "raw_status": "dissolved",
+      "truth2": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "C"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+287076%7D",
+          "fetched_at": "2026-11-22T22:18:12Z",
+          "sha256": "b6f4d1a4d6d8453fb793a635c1b95cf420a20c391f25750ce04a574a36c142fa",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-432639",
+      "raw_status": "dissolved",
+      "truth2": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "C"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+432639%7D",
+          "fetched_at": "2026-11-22T22:18:12Z",
+          "sha256": "e69c2d3ee4706ffdda1037a72dbfb6a0398247f0dd6d0670005a3eccf484f277",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-485469",
+      "raw_status": "dissolved",
+      "truth2": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "C"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+485469%7D",
+          "fetched_at": "2026-11-22T22:18:12Z",
+          "sha256": "2e51eca700866f6bd45c6a28a3cd8e0be7e6db425400978365ba05dba094587e",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-502301",
+      "raw_status": "liquidation",
+      "truth2": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "B"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+502301%7D",
+          "fetched_at": "2026-11-22T22:18:12Z",
+          "sha256": "996319345aa15bf7ba093d74a47e71e256e3fd73dfc1260339728a1c918f9c0a",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-522912",
+      "raw_status": "liquidation",
+      "truth2": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "B"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+522912%7D",
+          "fetched_at": "2026-11-22T22:18:12Z",
+          "sha256": "c71c9c75e6bbc73d875ec2c795239162ea07c9fa5515286c0e1111a06a9bf80a",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-539411",
+      "raw_status": "dissolved",
+      "truth2": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "C"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+539411%7D",
+          "fetched_at": "2026-11-22T22:18:12Z",
+          "sha256": "2e446b6c8315ba16464e578cf97b04e63963a1cd8a4c9afd229e1b2886f17b76",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-547488",
+      "raw_status": "dissolved",
+      "truth2": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "C"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+547488%7D",
+          "fetched_at": "2026-11-22T22:18:13Z",
+          "sha256": "1312bb0a88873bc843e380d65c0dbffa178e7ea8cf8268ea6710502175947e01",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-557917",
+      "raw_status": "liquidation",
+      "truth2": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "B"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+557917%7D",
+          "fetched_at": "2026-11-22T22:18:13Z",
+          "sha256": "eef39126f9c05ea86e63004c8f0102d47348582efb66161d69a30f777247b7d3",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-604946",
+      "raw_status": "normal",
+      "truth2": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "A"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+604946%7D",
+          "fetched_at": "2026-11-22T22:18:13Z",
+          "sha256": "fdfe49c698e028c23fe96a7263eda5242181fd01793abd4ad1e9ff740fec131e",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-612754",
+      "raw_status": "normal",
+      "truth2": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "A"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+612754%7D",
+          "fetched_at": "2026-11-22T22:18:13Z",
+          "sha256": "759ae1a1bf1b4d9445f9d01013811f1bddc4dab188f833b1815f19856ef667e6",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-625396",
+      "raw_status": "normal",
+      "truth2": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "A"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+625396%7D",
+          "fetched_at": "2026-11-22T22:18:13Z",
+          "sha256": "0b1e0ff2eb3f64a0d5ff6a4f6b50940484d1ad15adf5488fd5b94b7f6cefa6f3",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-644763",
+      "raw_status": "dissolved",
+      "truth2": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "C"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+644763%7D",
+          "fetched_at": "2026-11-22T22:18:13Z",
+          "sha256": "92bea8091863b7ef077c535cea21603e85c37a80f4bb8ee7f650da2705852036",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-653830",
+      "raw_status": "dissolved",
+      "truth2": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "C"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+653830%7D",
+          "fetched_at": "2026-11-22T22:18:13Z",
+          "sha256": "4a0eca3d73e372d4b70bf6a72bbef331ec181d63f53de419eaccdf13a580ec7b",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-659654",
+      "raw_status": "liquidation",
+      "truth2": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "B"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+659654%7D",
+          "fetched_at": "2026-11-22T22:18:13Z",
+          "sha256": "dc62210f92fbd6036b30bd8fc4435d51aae26df61477ef38aa6c6867fa5a5cfb",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-661545",
+      "raw_status": "normal",
+      "truth2": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": true,
+        "sanctions_lists": [],
+        "group": "S"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+661545%7D",
+          "fetched_at": "2026-11-22T22:18:13Z",
+          "sha256": "bb27f05de49df27123053a14a9a1f45b4e92369510d4fb7c0f60f4423b64edde",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-666964",
+      "raw_status": "liquidation",
+      "truth2": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "B"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+666964%7D",
+          "fetched_at": "2026-11-22T22:18:13Z",
+          "sha256": "19b39311a17cefb14ba13ae62fda930fc8da17fd541734594d1a2029f263798d",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-671756",
+      "raw_status": "normal",
+      "truth2": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "A"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+671756%7D",
+          "fetched_at": "2026-11-22T22:18:13Z",
+          "sha256": "67110c4d6df8a2064505002dde4584bb2c38d4f73928b8328a4d216322aca086",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-708943",
+      "raw_status": "liquidation",
+      "truth2": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "B"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+708943%7D",
+          "fetched_at": "2026-11-22T22:18:13Z",
+          "sha256": "e0c141a00b608b0a6ef502349c2229c9e22557b8ea627e964e1e757c14508517",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-727769",
+      "raw_status": "dissolved",
+      "truth2": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "C"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+727769%7D",
+          "fetched_at": "2026-11-22T22:18:13Z",
+          "sha256": "99b20897c35c4023dc37e024defe60144a374dd42ea218ae629594627c215bc9",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-728836",
+      "raw_status": "normal",
+      "truth2": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "A"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+728836%7D",
+          "fetched_at": "2026-11-22T22:18:13Z",
+          "sha256": "89cdb5ae3edeaeae2a703e69c67e05910bdf3de4d2845a075d308366dab072f9",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-748723",
+      "raw_status": "normal",
+      "truth2": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "A"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+748723%7D",
+          "fetched_at": "2026-11-22T22:18:13Z",
+          "sha256": "9627bb122b6fb863bfd56484c48138ed7c35271354d09f675f222825f61ba634",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "lv-40003984050",
+      "raw_status": "liquidation:liquidation",
+      "truth2": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "B"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+40003984050%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-22T22:18:14Z",
+          "sha256": "194cd9bae8bafe9209f2287fd7d5c20a6e9390350ef38b735f0b1662d333439d",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+40003984050%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-22T22:18:14Z",
+          "sha256": "02ab9224f189d65518ff288d129456e5233150ad80277935056c565b9c0dd94a",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+40003984050%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-22T22:18:15Z",
+          "sha256": "f774ec8feaf9db700eaabf071f93c9a87e4274d865385b9d5ca8dc4a3dbb9458",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-40103326477",
+      "raw_status": "closed:l",
+      "truth2": {
+        "status": "dissolved",
+        "insolvent": true,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "C"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+40103326477%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-22T22:18:15Z",
+          "sha256": "ada2685438a48127fe202a04023a6cb02db20b6ae9a2dbb4a666044748dbd1cd",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+40103326477%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-22T22:18:15Z",
+          "sha256": "ab7fd754e7baf8775253c13c3e69c1c130da443b71368dbab8e8b9211a07544c",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+40103326477%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-22T22:18:16Z",
+          "sha256": "e79b2902ced69cad38200a87b3d03ffd064a0ceec6b439c951380e503ee20e79",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-40103387645",
+      "raw_status": "liquidation:liquidation",
+      "truth2": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "B"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+40103387645%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-22T22:18:16Z",
+          "sha256": "52f1f6e6dc5efccc4656a37536170fde4824763d01abab30d97f48684d836841",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+40103387645%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-22T22:18:17Z",
+          "sha256": "f2b02f177329122f441980c29415db43a4ea4d3376bbb1657679c612792201cd",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+40103387645%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-22T22:18:17Z",
+          "sha256": "67cc3358b896cc1cd3ae5a54528d12c59428d8619abb529891055c46320be8e5",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-40103410180",
+      "raw_status": "liquidation:liquidation",
+      "truth2": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "B"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+40103410180%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-22T22:18:17Z",
+          "sha256": "4553e22412de899a987b9f76b3efd09df7b366cc481d65fee9b280d816324c98",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+40103410180%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-22T22:18:17Z",
+          "sha256": "5e84be7f680fd84bd39265b6d7a9850019bb7f20267ad121bd7bef527172b30d",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+40103410180%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-22T22:18:18Z",
+          "sha256": "0d546060d5b8b0e0905b700ec508dd7eeaa7d162c773986a0a2c87d6d5cb03a6",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-40103495681",
+      "raw_status": "registered",
+      "truth2": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "A"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+40103495681%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-22T22:18:18Z",
+          "sha256": "d039aa585d3716045410a5e307458c83dc3785e60ae2868b77d20edd724e02e9",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+40103495681%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-22T22:18:19Z",
+          "sha256": "930cb2600a8bd862cec85311213d824746a17cf1975e1087e9d00f25a3063fcc",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+40103495681%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-22T22:18:19Z",
+          "sha256": "198d235ed0a90f9ce93cf5c9a691db5e5d6b4b785a2e2520301c107845607912",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-40103852949",
+      "raw_status": "liquidation:liquidation",
+      "truth2": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "B"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+40103852949%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-22T22:18:19Z",
+          "sha256": "7b71c44b925532eb30e9663e963208d52b044662a43ea30d566e46cdca588d01",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+40103852949%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-22T22:18:20Z",
+          "sha256": "22402e9aefb20f2137d184b32bce0314ca1eb930ae066eb5b8e38ab0a2ac82b6",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+40103852949%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-22T22:18:20Z",
+          "sha256": "820e5bd3afee1d74dbdf2839eab7f88427bda61aabc094eb20d8efcc6965f035",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-40203031749",
+      "raw_status": "closed:l",
+      "truth2": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "C"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+40203031749%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-22T22:18:20Z",
+          "sha256": "710ab39d2edd2365f1863d2ad2a1c6d43925be8a9b4cc47401136ece50f0b41e",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+40203031749%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-22T22:18:21Z",
+          "sha256": "c2da029bca82e2c100202783b8522d31892c1aa18531b8acf03aa766fade1bc4",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+40203031749%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-22T22:18:21Z",
+          "sha256": "f828fd377eabb56ea35a2ca8679475b1176bea663d63108b5188dfb78640faf3",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-40203058739",
+      "raw_status": "insolvency:insolvency",
+      "truth2": {
+        "status": "winding_up",
+        "insolvent": true,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "B"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+40203058739%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-22T22:18:21Z",
+          "sha256": "4e9cdade12268a4af53998cbfcf2c8609b81cdd0a21e60cd92bba7dbd345caa0",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+40203058739%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-22T22:18:22Z",
+          "sha256": "ec94ded9aceaddcd3769f1f47e281c1331528a405016dce721b78867202ce884",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+40203058739%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-22T22:18:22Z",
+          "sha256": "d2f0c08782497ad9efae46443025c0c4424b78a680d1e20ce9993c4d5597f3c5",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-40203101321",
+      "raw_status": "registered",
+      "truth2": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "A"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+40203101321%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-22T22:18:22Z",
+          "sha256": "e6fb655e38fc13cbd2f21b3d39d5dcce041804732882a7116616ce81692c8bad",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+40203101321%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-22T22:18:23Z",
+          "sha256": "5f3572316f794d9dcd61976c0c659800cec5c8a0a71b1f5340852d29dee2ba8e",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+40203101321%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-22T22:18:23Z",
+          "sha256": "9eee2d43888b3895f2bae512e8091ca43380542b745d779346daab43a947bdcb",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-40203200721",
+      "raw_status": "registered",
+      "truth2": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "A"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+40203200721%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-22T22:18:23Z",
+          "sha256": "6f9055b14051935109a553f973a14535034e3aad0b2c32d7ea7c27eeaa81d300",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+40203200721%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-22T22:18:24Z",
+          "sha256": "0e5d1b65d1af473af544cb941f99fba35d0baf3e51b4addaa308e266a64349ba",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+40203200721%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-22T22:18:24Z",
+          "sha256": "01ce23032bfea313e342ecc66cfae1bb18a2d766ffcbf6e096896b69eca00e96",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-40203227800",
+      "raw_status": "closed:l",
+      "truth2": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "C"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+40203227800%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-22T22:18:24Z",
+          "sha256": "7b3cd9498a9068a893bd32a01f574d1c9240eb322898af63b06d3f1e9dd2c701",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+40203227800%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-22T22:18:25Z",
+          "sha256": "266198ddcc9799d125af9ad92631a7160b43f649f9da7486598c23de5048cb5a",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+40203227800%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-22T22:18:25Z",
+          "sha256": "7d36c48fa293614c412b066bb35e228fd06bd38fce670edf23eeae64c8968124",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-40203248338",
+      "raw_status": "closed:l",
+      "truth2": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "C"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+40203248338%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-22T22:18:26Z",
+          "sha256": "5107795d6e54422053b89a218a1d1e6d93311ea3ebd8b6577241afbd41e9cb8d",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+40203248338%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-22T22:18:26Z",
+          "sha256": "91f84366698a310a740cbc5160ff59d8a57200af84023076e7ca4ee63761cd38",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+40203248338%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-22T22:18:26Z",
+          "sha256": "38035c1499cb6699a0b2f383eaaec96069d3256e6f8a83660e70408c2e28672d",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-40203248696",
+      "raw_status": "registered",
+      "truth2": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "A"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+40203248696%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-22T22:18:27Z",
+          "sha256": "d4487fc6127039e35c041083aed974605ca8962cc2aea114e8cd789dc8954314",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+40203248696%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-22T22:18:27Z",
+          "sha256": "7920a48ff77b585ef87859e7c1f3422f96df127eeba76605e40179645337705f",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+40203248696%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-22T22:18:27Z",
+          "sha256": "484102212fa6d5d7e8ef96bc74d0aba8f7be62b018497609a88d5c9a4fe679db",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-40203299048",
+      "raw_status": "insolvency:insolvency",
+      "truth2": {
+        "status": "winding_up",
+        "insolvent": true,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "B"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+40203299048%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-22T22:18:28Z",
+          "sha256": "cca4e51c51634fe83b079db11b82eeda763cacc1730a7b5d48556e029ba5f464",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+40203299048%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-22T22:18:28Z",
+          "sha256": "d1fb1984bbbd1ff9af3349c4f7b9c4d1054966ac42bf427da43184e6ea78ca19",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+40203299048%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-22T22:18:28Z",
+          "sha256": "a477cd8dd7903b2b2793c858b828b76055964e8c15ca89aed9ce1eba0bf39c0e",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-40203300116",
+      "raw_status": "closed:l",
+      "truth2": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "C"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+40203300116%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-22T22:18:29Z",
+          "sha256": "12169a1383e9f6bf221a9ff9a46f480ea497ab0bc994835ce48c4f9e5ae5e4e2",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+40203300116%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-22T22:18:29Z",
+          "sha256": "42b078d399e0bef1107608032caaf6ff7d38f9f57d8b8e745956db64cabe8e4b",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+40203300116%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-22T22:18:29Z",
+          "sha256": "95f42ed96a65ae99e59ab92eb14176f86d811ee634fdd5e7f77a697ceb729a1d",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-40203343897",
+      "raw_status": "closed:l",
+      "truth2": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "C"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+40203343897%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-22T22:18:30Z",
+          "sha256": "79c2e9bca9cef324d3e46887d90bf2fb97b8d7e142808a5517353af0643b7e4f",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+40203343897%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-22T22:18:30Z",
+          "sha256": "5863694ff8255b37a193a9b69b421c3f55a1f7f7d247e192006a6e94b6627922",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+40203343897%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-22T22:18:30Z",
+          "sha256": "f5f0bd15a4055df492d6ecd38e0dc1c90ed3720305c3335e4463d3d69858d407",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-40203387586",
+      "raw_status": "closed:l",
+      "truth2": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "C"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+40203387586%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-22T22:18:30Z",
+          "sha256": "a1083f0c0e7943c12622ade177484ff56af6318f50817ece79864b1474c0ce23",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+40203387586%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-22T22:18:31Z",
+          "sha256": "eb6eae7ad4ea6228c817b7c02466c817def9463e958fc88b1addbf53e2778714",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+40203387586%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-22T22:18:31Z",
+          "sha256": "6db26f22ae7ce621c2e1131f20d1342d2e777c138ba9ada857e9ed2501c59295",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-40203418068",
+      "raw_status": "registered",
+      "truth2": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "A"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+40203418068%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-22T22:18:31Z",
+          "sha256": "9b67dc68e065179c064766904a06135c12377b0faeef32c4d22b6f5ae5100c5b",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+40203418068%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-22T22:18:32Z",
+          "sha256": "e06057e51a75674f53b3f8fca84beb44cc999c306cefe6ad594c38dfa2c6a3d2",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+40203418068%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-22T22:18:32Z",
+          "sha256": "9b06ff1d3ec9c4f6f7b367760b9d57759c3a9dc2be9a4c5fa7d9ed14e23aee9a",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-40203520218",
+      "raw_status": "registered",
+      "truth2": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "A"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+40203520218%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-22T22:18:32Z",
+          "sha256": "4981e10b4d57b085e49f86d69699770865e9ef24982b3da159dceb9609d80284",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+40203520218%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-22T22:18:33Z",
+          "sha256": "b4c4e2520158c46c825978f824ce1a7e957f30ec3abf2f11b9407b9060a84665",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+40203520218%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-22T22:18:33Z",
+          "sha256": "4d0d0c7735979162f30e81b8968a003ec2947f0d4fb985fdd2f16d32b29e2503",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-40203533354",
+      "raw_status": "closed:l",
+      "truth2": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "C"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+40203533354%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-22T22:18:33Z",
+          "sha256": "36f97f1a7321a533401aecec27349496f29ee2f464f6d30a5eb528ac51f8cdf5",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+40203533354%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-22T22:18:34Z",
+          "sha256": "b48ad5155a49866660a969a049fbd382b45c09cee562cb4e04e730719b00ad6a",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+40203533354%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-22T22:18:34Z",
+          "sha256": "a624d4b42f6db02e25225345b6d1e7abffb4db0f1bf505bc574e3ca7a228e5a8",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-40203558095",
+      "raw_status": "closed:l",
+      "truth2": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "C"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+40203558095%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-22T22:18:34Z",
+          "sha256": "2760873cff8170822e947b3dfe4cc1678fd1cd1de0ba950a6bb71e828b3b0501",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+40203558095%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-22T22:18:35Z",
+          "sha256": "f5850b0370deb2423193b0ce2750f175d73c3f7b0e487eadf5d386b58d028b33",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+40203558095%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-22T22:18:35Z",
+          "sha256": "18ece1640f283db655a32ded4ec5e5cbe40b549243163e231b4eddd255dda50d",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-41203027988",
+      "raw_status": "closed:l",
+      "truth2": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "C"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+41203027988%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-22T22:18:36Z",
+          "sha256": "80fb54f725793a0e707fe147ac4d2a26858bfb07ca8fbcca4583c2e622198b0e",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+41203027988%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-22T22:18:36Z",
+          "sha256": "6be73347dc48402d57805b832169d89c5e079d10a6a5764af3abab4fd77e7d80",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+41203027988%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-22T22:18:36Z",
+          "sha256": "54e84307db347b6a0934c72f400e00ee831d3683219f9c2760456b90b1335caa",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-42103108035",
+      "raw_status": "registered",
+      "truth2": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "A"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+42103108035%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-22T22:18:36Z",
+          "sha256": "82a886663fe25d69415f6cf10b971079d4f652dab2dff55f73cf1c89f3257f82",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+42103108035%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-22T22:18:37Z",
+          "sha256": "233d9b98ce665614cbca527b761b05c2a60aa7381180e04ef0dcaf60d2a85a86",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+42103108035%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-22T22:18:37Z",
+          "sha256": "a5a8ea3706ac5495c5245b1ced6ed0b1ab03b4366b575a94f6d2b7c6d7d307b9",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-45403031910",
+      "raw_status": "registered",
+      "truth2": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "A"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+45403031910%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-22T22:18:38Z",
+          "sha256": "93d056b00dbbfd0e200c80030d4fde90d22228af08d0c8ef9374489f5833400b",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+45403031910%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-22T22:18:38Z",
+          "sha256": "0385743a35c1ec49764cc4dcde0478c8dd21445520066fd99c8ecfb226826b0f",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+45403031910%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-22T22:18:38Z",
+          "sha256": "55fb95320396b5f7bfe5fe71c55e85c80660a72b2a2c32d1954fcbeaa60beb55",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-50003914591",
+      "raw_status": "liquidation:liquidation",
+      "truth2": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": [],
+        "group": "B"
+      },
+      "changed": false,
+      "why": null,
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+50003914591%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-22T22:18:38Z",
+          "sha256": "3dc676d2913550bf9420dd13bc8da7b282c49b478a85d3309c9860029773a15c",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+50003914591%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-22T22:18:39Z",
+          "sha256": "2bdd4032d7c855c1f112454a4ae5e3087b86bd5a373fb03fd7aa2ec962338a69",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+50003914591%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-22T22:18:39Z",
+          "sha256": "3df2838e2e07086064362c7d28646fc9c7a747c0a4d52737eed46d2670bd83b9",
+          "what": "insolvency proceedings"
+        }
+      ]
+    }
+  ]
+}

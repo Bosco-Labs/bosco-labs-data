@@ -1,0 +1,481 @@
+{
+  "version": 1,
+  "seed": "81d6e2e8f5fc793775c4618975bae90fadb0290c7e39b7c105682789a8bc7546",
+  "instructions": "Open official_url (and also_open) for each row. Set agrees to true when the page shows the same status, insolvency and legal name as truth, else false with a note. Do not edit truth. Rows with agrees false are excluded and listed; more than 3 among the A, B and C rows aborts the study.",
+  "rows": [
+    {
+      "id": "lv-42103108035",
+      "group": "A",
+      "country": "LV",
+      "number": "42103108035",
+      "legal_name": "SIA \"Montmaster Pluss\"",
+      "official_url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+42103108035%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+      "also_open": [
+        "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+42103108035%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+        "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+42103108035%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on"
+      ],
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "agrees": true,
+      "note": ""
+    },
+    {
+      "id": "ee-17474630",
+      "group": "A",
+      "country": "EE",
+      "number": "17474630",
+      "legal_name": "Roma Eterna Tours OÜ",
+      "official_url": "https://ariregister.rik.ee/eng/company/17474630",
+      "also_open": [],
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "agrees": true,
+      "note": ""
+    },
+    {
+      "id": "lv-40203248696",
+      "group": "A",
+      "country": "LV",
+      "number": "40203248696",
+      "legal_name": "SIA \"Zemvalda land management holdings 6\"",
+      "official_url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+40203248696%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+      "also_open": [
+        "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+40203248696%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+        "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+40203248696%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on"
+      ],
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "agrees": true,
+      "note": ""
+    },
+    {
+      "id": "ie-604946",
+      "group": "A",
+      "country": "IE",
+      "number": "604946",
+      "legal_name": "KASTERWELL LIMITED",
+      "official_url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+604946%7D",
+      "also_open": [],
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "agrees": true,
+      "note": ""
+    },
+    {
+      "id": "gb-04661158",
+      "group": "B",
+      "country": "GB",
+      "number": "04661158",
+      "legal_name": "GRAHAM JONES ASSOCIATES LIMITED",
+      "official_url": "https://find-and-update.company-information.service.gov.uk/company/04661158",
+      "also_open": [
+        "https://find-and-update.company-information.service.gov.uk/company/04661158/insolvency"
+      ],
+      "truth": {
+        "status": "winding_up",
+        "insolvent": true,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "agrees": true,
+      "note": ""
+    },
+    {
+      "id": "ie-502301",
+      "group": "B",
+      "country": "IE",
+      "number": "502301",
+      "legal_name": "KILCORAN HEALTH AND LEISURE CENTRE LIMITED",
+      "official_url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+502301%7D",
+      "also_open": [],
+      "truth": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "agrees": true,
+      "note": ""
+    },
+    {
+      "id": "lv-40103852949",
+      "group": "B",
+      "country": "LV",
+      "number": "40103852949",
+      "legal_name": "ROG invest SIA",
+      "official_url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+40103852949%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+      "also_open": [
+        "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+40103852949%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+        "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+40103852949%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on"
+      ],
+      "truth": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "agrees": true,
+      "note": ""
+    },
+    {
+      "id": "ie-522912",
+      "group": "B",
+      "country": "IE",
+      "number": "522912",
+      "legal_name": "GTLK 5 737 LIMITED",
+      "official_url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+522912%7D",
+      "also_open": [],
+      "truth": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "agrees": true,
+      "note": ""
+    },
+    {
+      "id": "lv-40103326477",
+      "group": "C",
+      "country": "LV",
+      "number": "40103326477",
+      "legal_name": "Sabiedrība ar ierobežotu atbildību \"ZI TRANS JAGUAR\"",
+      "official_url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+40103326477%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+      "also_open": [
+        "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+40103326477%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+        "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+40103326477%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on"
+      ],
+      "truth": {
+        "status": "dissolved",
+        "insolvent": true,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "agrees": true,
+      "note": ""
+    },
+    {
+      "id": "ie-180480",
+      "group": "C",
+      "country": "IE",
+      "number": "180480",
+      "legal_name": "MURPHY'S BAR (HIGH ST.) LIMITED",
+      "official_url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+180480%7D",
+      "also_open": [],
+      "truth": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "agrees": true,
+      "note": ""
+    },
+    {
+      "id": "lv-40203031749",
+      "group": "C",
+      "country": "LV",
+      "number": "40203031749",
+      "legal_name": "SIA \"NJ Group\"",
+      "official_url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+40203031749%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+      "also_open": [
+        "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+40203031749%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+        "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+40203031749%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on"
+      ],
+      "truth": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "agrees": true,
+      "note": ""
+    },
+    {
+      "id": "gb-15155306",
+      "group": "C",
+      "country": "GB",
+      "number": "15155306",
+      "legal_name": "BRYCOAST LTD",
+      "official_url": "https://find-and-update.company-information.service.gov.uk/company/15155306",
+      "also_open": [
+        "https://find-and-update.company-information.service.gov.uk/company/15155306/insolvency"
+      ],
+      "truth": {
+        "status": "dissolved",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "agrees": true,
+      "note": ""
+    },
+    {
+      "id": "gb-05742647",
+      "group": "S",
+      "country": "GB",
+      "number": "05742647",
+      "legal_name": "CURZON SQUARE LIMITED",
+      "official_url": "https://find-and-update.company-information.service.gov.uk/company/05742647",
+      "also_open": [
+        "https://find-and-update.company-information.service.gov.uk/company/05742647/insolvency"
+      ],
+      "truth": {
+        "status": "winding_up",
+        "insolvent": true,
+        "sanctioned": true,
+        "sanctions_lists": [
+          "UK"
+        ]
+      },
+      "agrees": true,
+      "note": ""
+    },
+    {
+      "id": "gb-06601634",
+      "group": "S",
+      "country": "GB",
+      "number": "06601634",
+      "legal_name": "GOOD RUN LIMITED",
+      "official_url": "https://find-and-update.company-information.service.gov.uk/company/06601634",
+      "also_open": [
+        "https://find-and-update.company-information.service.gov.uk/company/06601634/insolvency"
+      ],
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": true,
+        "sanctions_lists": [
+          "OFAC SDN"
+        ]
+      },
+      "agrees": true,
+      "note": ""
+    },
+    {
+      "id": "gb-06850415",
+      "group": "S",
+      "country": "GB",
+      "number": "06850415",
+      "legal_name": "AAKHIRAH LIMITED",
+      "official_url": "https://find-and-update.company-information.service.gov.uk/company/06850415",
+      "also_open": [
+        "https://find-and-update.company-information.service.gov.uk/company/06850415/insolvency"
+      ],
+      "truth": {
+        "status": "dissolved",
+        "insolvent": false,
+        "sanctioned": true,
+        "sanctions_lists": [
+          "OFAC SDN"
+        ]
+      },
+      "agrees": true,
+      "note": ""
+    },
+    {
+      "id": "gb-07784342",
+      "group": "S",
+      "country": "GB",
+      "number": "07784342",
+      "legal_name": "EVRAZ PLC",
+      "official_url": "https://find-and-update.company-information.service.gov.uk/company/07784342",
+      "also_open": [
+        "https://find-and-update.company-information.service.gov.uk/company/07784342/insolvency"
+      ],
+      "truth": {
+        "status": null,
+        "insolvent": null,
+        "sanctioned": true,
+        "sanctions_lists": [
+          "EU",
+          "UK"
+        ]
+      },
+      "agrees": true,
+      "note": ""
+    },
+    {
+      "id": "gb-08220547",
+      "group": "S",
+      "country": "GB",
+      "number": "08220547",
+      "legal_name": "SMILE PROPERTY & TRAVEL LTD",
+      "official_url": "https://find-and-update.company-information.service.gov.uk/company/08220547",
+      "also_open": [
+        "https://find-and-update.company-information.service.gov.uk/company/08220547/insolvency"
+      ],
+      "truth": {
+        "status": null,
+        "insolvent": null,
+        "sanctioned": true,
+        "sanctions_lists": [
+          "OFAC SDN"
+        ]
+      },
+      "agrees": true,
+      "note": ""
+    },
+    {
+      "id": "gb-11032231",
+      "group": "S",
+      "country": "GB",
+      "number": "11032231",
+      "legal_name": "ALWAYS SMOOTH LIMITED",
+      "official_url": "https://find-and-update.company-information.service.gov.uk/company/11032231",
+      "also_open": [
+        "https://find-and-update.company-information.service.gov.uk/company/11032231/insolvency"
+      ],
+      "truth": {
+        "status": null,
+        "insolvent": null,
+        "sanctioned": true,
+        "sanctions_lists": [
+          "OFAC SDN"
+        ]
+      },
+      "agrees": true,
+      "note": ""
+    },
+    {
+      "id": "gb-12122640",
+      "group": "S",
+      "country": "GB",
+      "number": "12122640",
+      "legal_name": "TERRA COTTA WARRIORS ISLE OF DOGS LTD",
+      "official_url": "https://find-and-update.company-information.service.gov.uk/company/12122640",
+      "also_open": [
+        "https://find-and-update.company-information.service.gov.uk/company/12122640/insolvency"
+      ],
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": true,
+        "sanctions_lists": [
+          "OFAC SDN"
+        ]
+      },
+      "agrees": true,
+      "note": ""
+    },
+    {
+      "id": "gb-12146985",
+      "group": "S",
+      "country": "GB",
+      "number": "12146985",
+      "legal_name": "NABAH LTD",
+      "official_url": "https://find-and-update.company-information.service.gov.uk/company/12146985",
+      "also_open": [
+        "https://find-and-update.company-information.service.gov.uk/company/12146985/insolvency"
+      ],
+      "truth": {
+        "status": null,
+        "insolvent": null,
+        "sanctioned": true,
+        "sanctions_lists": [
+          "OFAC SDN"
+        ]
+      },
+      "agrees": true,
+      "note": ""
+    },
+    {
+      "id": "gb-13885242",
+      "group": "S",
+      "country": "GB",
+      "number": "13885242",
+      "legal_name": "SAMIDOUN PALESTINIAN PRISONER SOLIDARITY NETWORK",
+      "official_url": "https://find-and-update.company-information.service.gov.uk/company/13885242",
+      "also_open": [
+        "https://find-and-update.company-information.service.gov.uk/company/13885242/insolvency"
+      ],
+      "truth": {
+        "status": null,
+        "insolvent": null,
+        "sanctioned": true,
+        "sanctions_lists": [
+          "OFAC SDN"
+        ]
+      },
+      "agrees": true,
+      "note": ""
+    },
+    {
+      "id": "gb-14575184",
+      "group": "S",
+      "country": "GB",
+      "number": "14575184",
+      "legal_name": "EAST LINK LONDON LTD",
+      "official_url": "https://find-and-update.company-information.service.gov.uk/company/14575184",
+      "also_open": [
+        "https://find-and-update.company-information.service.gov.uk/company/14575184/insolvency"
+      ],
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": true,
+        "sanctions_lists": [
+          "OFAC SDN"
+        ]
+      },
+      "agrees": true,
+      "note": ""
+    },
+    {
+      "id": "gb-16187338",
+      "group": "S",
+      "country": "GB",
+      "number": "16187338",
+      "legal_name": "HALO NETWORK TECHNOLOGY LTD",
+      "official_url": "https://find-and-update.company-information.service.gov.uk/company/16187338",
+      "also_open": [
+        "https://find-and-update.company-information.service.gov.uk/company/16187338/insolvency"
+      ],
+      "truth": {
+        "status": "dissolved",
+        "insolvent": false,
+        "sanctioned": true,
+        "sanctions_lists": [
+          "OFAC SDN"
+        ]
+      },
+      "agrees": true,
+      "note": ""
+    },
+    {
+      "id": "ie-661545",
+      "group": "S",
+      "country": "IE",
+      "number": "661545",
+      "legal_name": "THALESTRIS LIMITED",
+      "official_url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+661545%7D",
+      "also_open": [],
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": true,
+        "sanctions_lists": [
+          "OFAC SDN"
+        ]
+      },
+      "agrees": true,
+      "note": ""
+    }
+  ]
+}

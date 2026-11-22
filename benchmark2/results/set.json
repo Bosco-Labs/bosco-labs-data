@@ -1,0 +1,3544 @@
+{
+  "version": 1,
+  "seed": "81d6e2e8f5fc793775c4618975bae90fadb0290c7e39b7c105682789a8bc7546",
+  "bundle_hash": "8e07275e0d1a289e69624bea86e34653f23640fb7369efa1491563a91d193c68",
+  "drand": {
+    "round": 34127812,
+    "randomness": "88b20cfd0ee53611b6878b6f511acef29bf418442533685b5a49fc1591f03e2b",
+    "signature": "80a3243a4ef3e2bc57017a42cc5d51a5f67ccf62d970bc927c518f56186a655bf0abae4b1a0c8f43d5452c98f7921c77",
+    "url": "https://api.drand.sh/52db9ba70e0cc0f6eaf7803dd07447a1f5477735fd3f661792ba94600c84e971/public/34127812",
+    "fetched_at": "2026-11-20T15:02:43Z"
+  },
+  "freeze_commit": "d421359ef50eeb3d199c3d6a33c02b05865493ff",
+  "drawn_at": "2026-11-20T15:02:35Z",
+  "reference_date": "2026-11-19",
+  "window": {
+    "from": "2024-11-19",
+    "to": "2026-11-19"
+  },
+  "quotas": {
+    "EE/A": 7,
+    "EE/B": 7,
+    "GB/A": 8,
+    "GB/B": 8,
+    "GB/C": 10,
+    "IE/A": 7,
+    "IE/B": 8,
+    "IE/C": 10,
+    "LV/A": 8,
+    "LV/B": 7,
+    "LV/C": 10
+  },
+  "frames": [
+    {
+      "source": "sanctions UK",
+      "url": "https://sanctionslist.fcdo.gov.uk/docs/UK-Sanctions-List.xml",
+      "sha256": "6b558b1981c232efaff3c52e87da32369849163c7948c56646b8f3bdf7befabf",
+      "bytes": 22198502,
+      "rows": 1685,
+      "fetched_at": "2026-11-20T15:02:45Z",
+      "file": "0001-sanctions-uk.json.gz"
+    },
+    {
+      "source": "sanctions OFAC SDN",
+      "url": "https://wc2h-sls-prod-public-published.s3.us-gov-west-1.amazonaws.com/Published/1e34e447-4535-4a63-a335-d0b231b3dd9c/2026-11-18/bfc05b20-14db-441b-a94a-2487143802ae/SDN.XML?X-Amz-Expires=3600&X-Amz-Security-Token=FwoDYXdzEG0aDC7OxylqGvk520brESLsBPfMB6Evc0OL44KVKAxSl9eZjszovVwNRSOfwqwEF0jPR%2Bocs162uDKkl74E88MfVL0yFq%2FbsLL%2BFo0pJip1f6nPRHtCpeG7GGWI0qM9rUIUme5wRpA6yJAroI%2FaENSMn7yOG%2B%2BAzooQm9XdyKOka8LPNY1NDBsik%2FHQxgIumnPpvSM2wMjIwytsUkuC5jmuwZ8YxLdSkGUb2whEkbXWiTyGclq0QkhnQEhAnB8cfo1V2fjj0Dw%2FKzI9bfu4WRRpCt4PVjgikXHG%2FhfSjZEmhVrGGUrEU5GIq4u3r7exyZ98ZQlQKnZPUQD44h4TONUit1keX%2BK%2F7VAimdcv%2BHHcmQrnBGHz%2BO8s6v0VRP2JeJqEVFf80GjQz4YiFZ001e%2FTATewhjwHSM4gMRwaHWjrOTDvVdMLB6%2F0Ks8cj1gnrLpz5o0tDfsXDKJRRAwDSAf4p35m%2Fz10qSsosoQxT21s%2FR9qk3Ctlmel3G65kvuYHvI8a7jeXec%2Bx2umRATzG8W%2BcbsGQhKPupIEI7naXeCrqACoHLLzgPWictlwAC2L8argCtK3j7RAwk4z4l2PGPQlUg4TpQarYOeji2acaNH8dyS28kAzr1u5qJ%2BMVy1hxgx0I5E6jhm5D6hTf5PGIgpb9lWSZX9L4BKnP%2BeIdM2DkvWBGoGzs6Rh%2BWW%2Fv4J%2FibWAXuBQaeYy1gL0nJCgCSmEIkrjc2F%2FGQWsIAGMtSJlMZaMFLdqrzTwm68WigqbJeJD4W2d%2BfirwPe1amQhQJKqD%2FSFBoFpKx2M%2BLCDqJA8CPXX7YpObShIu3Hcyw3GKLPf9f7Q2bLjy2GAAxdoKPasgdgGMkHM7%2BJrb1InP3o%2BWM1ANNZBZ%2BKYTuWzySJQB5oq0IqWzoGNfOnKU5eCktKz%2BC6GpoVwRLebbrhQQxqA8VVCsq910A%3D%3D&response-content-disposition=attachment%3B%20filename%3D%22sdn.xml%22&response-content-type=text%2Fxml&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIASARBLFPLJYXLAY56%2F20261120%2Fus-gov-west-1%2Fs3%2Faws4_request&X-Amz-Date=20261120T150246Z&X-Amz-SignedHeaders=host&X-Amz-Signature=162739001a343db4f6f1f67b4669d71aa114d0c220fc28dffa8691d5aa45f541",
+      "sha256": "95e53034408fc95df8bca939354b75611a849fca6d0ea142002da456abbc5802",
+      "bytes": 29607157,
+      "rows": 10122,
+      "fetched_at": "2026-11-20T15:03:00Z",
+      "file": "0002-sanctions-ofac-sdn.json.gz"
+    },
+    {
+      "source": "sanctions EU",
+      "url": "https://webgate.ec.europa.eu/fsd/fsf/public/files/xmlFullSanctionsList_1_1/content?token=dG9rZW4tMjAxNw",
+      "sha256": "636800c3e494b2ef8934f51f5e23c914a6208a383ac850e674b1b35a7d49d34f",
+      "bytes": 25899600,
+      "rows": 1779,
+      "fetched_at": "2026-11-20T15:03:05Z",
+      "file": "0003-sanctions-eu.json.gz"
+    },
+    {
+      "source": "GB 2000-09-27",
+      "url": "https://api.company-information.service.gov.uk/advanced-search/companies?incorporated_from=2000-09-27&incorporated_to=2000-09-28&company_type=ltd&size=5000&start_index=0",
+      "sha256": "7b8a2fb8c7bc590787b5728c5eb54b425f3356ce40fc15184799631b7ff9128e",
+      "bytes": 261010,
+      "rows": 280,
+      "fetched_at": "2026-11-20T15:03:41Z",
+      "file": "0004-gb-2000-09-27.json.gz"
+    },
+    {
+      "source": "GB 2005-08-23",
+      "url": "https://api.company-information.service.gov.uk/advanced-search/companies?incorporated_from=2005-08-23&incorporated_to=2005-08-24&company_type=ltd&size=5000&start_index=0",
+      "sha256": "934d1c75274a156cc333cedeaeea0f5d155c30a7c433c20cc167de4b6dc62b67",
+      "bytes": 629548,
+      "rows": 692,
+      "fetched_at": "2026-11-20T15:03:42Z",
+      "file": "0005-gb-2005-08-23.json.gz"
+    },
+    {
+      "source": "GB 2011-01-27",
+      "url": "https://api.company-information.service.gov.uk/advanced-search/companies?incorporated_from=2011-01-27&incorporated_to=2011-01-28&company_type=ltd&size=5000&start_index=0",
+      "sha256": "594018092b3d3beb915aa80a7ebc023f2927e268466b92f769c2fb742a617e31",
+      "bytes": 1281317,
+      "rows": 1871,
+      "fetched_at": "2026-11-20T15:03:43Z",
+      "file": "0006-gb-2011-01-27.json.gz"
+    },
+    {
+      "source": "GB 2023-09-22",
+      "url": "https://api.company-information.service.gov.uk/advanced-search/companies?incorporated_from=2023-09-22&incorporated_to=2023-09-23&company_type=ltd&size=5000&start_index=0",
+      "sha256": "6e8e4dd921340a989bd3a3e5e03f2c3ee7fb685ecda879e4ec175d675ef8f356",
+      "bytes": 2150647,
+      "rows": 2510,
+      "fetched_at": "2026-11-20T15:03:44Z",
+      "file": "0007-gb-2023-09-22.json.gz"
+    },
+    {
+      "source": "GB 2023-09-22",
+      "url": "https://api.company-information.service.gov.uk/advanced-search/companies?incorporated_from=2023-09-22&incorporated_to=2023-09-23&company_type=ltd&size=5000&start_index=5000",
+      "sha256": "de21d06aa086523d9be75140c6d87d6733a1eccd0636abb3e2afa1e6843e770a",
+      "bytes": 351422,
+      "rows": 398,
+      "fetched_at": "2026-11-20T15:03:45Z",
+      "file": "0008-gb-2023-09-22.json.gz"
+    },
+    {
+      "source": "GB 2003-11-05",
+      "url": "https://api.company-information.service.gov.uk/advanced-search/companies?incorporated_from=2003-11-05&incorporated_to=2003-11-06&company_type=ltd&size=5000&start_index=0",
+      "sha256": "d1fac25ef728ab51ac20f6a5fcabbd598ea5702c15fe71799c26f7471dffc046",
+      "bytes": 572871,
+      "rows": 575,
+      "fetched_at": "2026-11-20T15:03:45Z",
+      "file": "0009-gb-2003-11-05.json.gz"
+    },
+    {
+      "source": "GB 2003-02-10",
+      "url": "https://api.company-information.service.gov.uk/advanced-search/companies?incorporated_from=2003-02-10&incorporated_to=2003-02-11&company_type=ltd&size=5000&start_index=0",
+      "sha256": "2350417fa5f68bd55869b66bdeaf7a8481bb5cea3e667fbfb7a1da3fc797cb88",
+      "bytes": 840470,
+      "rows": 943,
+      "fetched_at": "2026-11-20T15:03:46Z",
+      "file": "0010-gb-2003-02-10.json.gz"
+    },
+    {
+      "source": "GB 2012-09-06",
+      "url": "https://api.company-information.service.gov.uk/advanced-search/companies?incorporated_from=2012-09-06&incorporated_to=2012-09-07&company_type=ltd&size=5000&start_index=0",
+      "sha256": "5b9b6d48f533db33d5e356b488e8c6ac1192fe51fe4e9c7a56e23b9594cd0017",
+      "bytes": 1629048,
+      "rows": 1828,
+      "fetched_at": "2026-11-20T15:03:47Z",
+      "file": "0011-gb-2012-09-06.json.gz"
+    },
+    {
+      "source": "GB 2017-03-25",
+      "url": "https://api.company-information.service.gov.uk/advanced-search/companies?incorporated_from=2017-03-25&incorporated_to=2017-03-26&company_type=ltd&size=5000&start_index=0",
+      "sha256": "0b3eb575257c1dcef31ac7bd698f03b72d682df7ef9f99b396fbbfa1ae247bef",
+      "bytes": 123817,
+      "rows": 280,
+      "fetched_at": "2026-11-20T15:03:47Z",
+      "file": "0012-gb-2017-03-25.json.gz"
+    },
+    {
+      "source": "IE",
+      "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&limit=32000&offset=0&sort=_id",
+      "sha256": "cc0a20c0d362b53fa4aa225962e579552afaeaaa62c5845100a72b5c8f82efc9",
+      "bytes": 7881056,
+      "rows": 32000,
+      "fetched_at": "2026-11-20T15:03:48Z",
+      "file": "0013-ie.json.gz"
+    },
+    {
+      "source": "IE",
+      "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&limit=32000&offset=32000&sort=_id",
+      "sha256": "48a2d019061180b2c4d735a7a493e75b6a99debb8d7613c111e8b0dafa7bfa97",
+      "bytes": 8172552,
+      "rows": 32000,
+      "fetched_at": "2026-11-20T15:03:51Z",
+      "file": "0014-ie.json.gz"
+    },
+    {
+      "source": "IE",
+      "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&limit=32000&offset=64000&sort=_id",
+      "sha256": "1df3b0d94823cca388af20989cb200119f6b4144f169487eed94bfb1a226efe2",
+      "bytes": 8221330,
+      "rows": 32000,
+      "fetched_at": "2026-11-20T15:03:54Z",
+      "file": "0015-ie.json.gz"
+    },
+    {
+      "source": "IE",
+      "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&limit=32000&offset=96000&sort=_id",
+      "sha256": "f3d16d59f3bd342614b3980f1938dfe4ac4e6c64c5a668239c9ead4392ee20a4",
+      "bytes": 8458804,
+      "rows": 32000,
+      "fetched_at": "2026-11-20T15:03:56Z",
+      "file": "0016-ie.json.gz"
+    },
+    {
+      "source": "IE",
+      "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&limit=32000&offset=128000&sort=_id",
+      "sha256": "9e72c3cb2dd90a4ea45ffa7f47a840c3290bb34947767a5ff0f8fee398d2599e",
+      "bytes": 8580596,
+      "rows": 32000,
+      "fetched_at": "2026-11-20T15:03:59Z",
+      "file": "0017-ie.json.gz"
+    },
+    {
+      "source": "IE",
+      "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&limit=32000&offset=160000&sort=_id",
+      "sha256": "662fcffba3b67b14a8f4dd4b2b46af60507be2531c877cba513ffe3d9a56bf29",
+      "bytes": 8578147,
+      "rows": 32000,
+      "fetched_at": "2026-11-20T15:04:02Z",
+      "file": "0018-ie.json.gz"
+    },
+    {
+      "source": "IE",
+      "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&limit=32000&offset=192000&sort=_id",
+      "sha256": "5e8df419b478bb17b5072985faf626dc9a10bc616d562b1a1792cc38661c934a",
+      "bytes": 8599067,
+      "rows": 32000,
+      "fetched_at": "2026-11-20T15:04:05Z",
+      "file": "0019-ie.json.gz"
+    },
+    {
+      "source": "IE",
+      "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&limit=32000&offset=224000&sort=_id",
+      "sha256": "fc681a3a0ecb5a0b2bf321a8534817424b12c78205596236c7c0a65065293764",
+      "bytes": 8676377,
+      "rows": 32000,
+      "fetched_at": "2026-11-20T15:04:08Z",
+      "file": "0020-ie.json.gz"
+    },
+    {
+      "source": "IE",
+      "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&limit=32000&offset=256000&sort=_id",
+      "sha256": "60d6aa006865d17379a6d721011237668ff154495eae60958758eee4a707de0f",
+      "bytes": 8692173,
+      "rows": 32000,
+      "fetched_at": "2026-11-20T15:04:11Z",
+      "file": "0021-ie.json.gz"
+    },
+    {
+      "source": "IE",
+      "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&limit=32000&offset=288000&sort=_id",
+      "sha256": "0295a8f6403d749f64251b9676be09a03a54374ae8f466f16a7e9c55b448550f",
+      "bytes": 8664656,
+      "rows": 32000,
+      "fetched_at": "2026-11-20T15:04:14Z",
+      "file": "0022-ie.json.gz"
+    },
+    {
+      "source": "IE",
+      "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&limit=32000&offset=320000&sort=_id",
+      "sha256": "cbd5671c23e4c3d0a9cc49433cff8cbaf4a0b7418e1ee5210c5d49418d2aa306",
+      "bytes": 8676897,
+      "rows": 32000,
+      "fetched_at": "2026-11-20T15:04:17Z",
+      "file": "0023-ie.json.gz"
+    },
+    {
+      "source": "IE",
+      "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&limit=32000&offset=352000&sort=_id",
+      "sha256": "db08ac97ae8b9e8e2114234790f856a8ca95153ae5e0395951447b59d764736f",
+      "bytes": 8673294,
+      "rows": 32000,
+      "fetched_at": "2026-11-20T15:04:21Z",
+      "file": "0024-ie.json.gz"
+    },
+    {
+      "source": "IE",
+      "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&limit=32000&offset=384000&sort=_id",
+      "sha256": "01d4065b7e4efd3b4da75c0c1dff28cba148649a343a28dd5f95874d18f62da3",
+      "bytes": 8673574,
+      "rows": 32000,
+      "fetched_at": "2026-11-20T15:04:24Z",
+      "file": "0025-ie.json.gz"
+    },
+    {
+      "source": "IE",
+      "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&limit=32000&offset=416000&sort=_id",
+      "sha256": "834b4776f6a6f0f323228c7d6697352027209f9e3873239e7f91a584e357d7c9",
+      "bytes": 8674820,
+      "rows": 32000,
+      "fetched_at": "2026-11-20T15:04:27Z",
+      "file": "0026-ie.json.gz"
+    },
+    {
+      "source": "IE",
+      "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&limit=32000&offset=448000&sort=_id",
+      "sha256": "be5acfd1ad1a50af45ea8b5f04d3bba562a9135edaf06e009203beded2b2323f",
+      "bytes": 8630899,
+      "rows": 32000,
+      "fetched_at": "2026-11-20T15:04:31Z",
+      "file": "0027-ie.json.gz"
+    },
+    {
+      "source": "IE",
+      "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&limit=32000&offset=480000&sort=_id",
+      "sha256": "87f8c04ebf777c23c13f909c5ae110ceeada89d7103c7a20720c771048b59ac8",
+      "bytes": 8564307,
+      "rows": 32000,
+      "fetched_at": "2026-11-20T15:04:34Z",
+      "file": "0028-ie.json.gz"
+    },
+    {
+      "source": "IE",
+      "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&limit=32000&offset=512000&sort=_id",
+      "sha256": "75df3c07c3d145c93e4a8e44b85efc6d014406d0ee337d4a130bcf8ab796203c",
+      "bytes": 8500013,
+      "rows": 32000,
+      "fetched_at": "2026-11-20T15:04:38Z",
+      "file": "0029-ie.json.gz"
+    },
+    {
+      "source": "IE",
+      "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&limit=32000&offset=544000&sort=_id",
+      "sha256": "193582e0fe662a33cb0db25c58c1f5d720635caaf438dd69b38fcf742e9ba120",
+      "bytes": 8468239,
+      "rows": 32000,
+      "fetched_at": "2026-11-20T15:04:43Z",
+      "file": "0030-ie.json.gz"
+    },
+    {
+      "source": "IE",
+      "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&limit=32000&offset=576000&sort=_id",
+      "sha256": "f6351af75d2b561bb000d26ecfc2b110b743a6ae8c78536104aeab35738fff90",
+      "bytes": 8429479,
+      "rows": 32000,
+      "fetched_at": "2026-11-20T15:04:48Z",
+      "file": "0031-ie.json.gz"
+    },
+    {
+      "source": "IE",
+      "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&limit=32000&offset=608000&sort=_id",
+      "sha256": "10efa0e51a6abe86751f01a2e8ee603b1c14ed9095370632baf976254b47046d",
+      "bytes": 8353905,
+      "rows": 32000,
+      "fetched_at": "2026-11-20T15:04:52Z",
+      "file": "0032-ie.json.gz"
+    },
+    {
+      "source": "IE",
+      "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&limit=32000&offset=640000&sort=_id",
+      "sha256": "e85cb4b8163fa47382749b604218a3a9d69f2cd6695ac6019a649cc146a17dc4",
+      "bytes": 8291860,
+      "rows": 32000,
+      "fetched_at": "2026-11-20T15:04:56Z",
+      "file": "0033-ie.json.gz"
+    },
+    {
+      "source": "IE",
+      "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&limit=32000&offset=672000&sort=_id",
+      "sha256": "45206ed57222c658563270c101adc26014a88c7caa3408b734521bc4829f1f03",
+      "bytes": 8190535,
+      "rows": 32000,
+      "fetched_at": "2026-11-20T15:04:59Z",
+      "file": "0034-ie.json.gz"
+    },
+    {
+      "source": "IE",
+      "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&limit=32000&offset=704000&sort=_id",
+      "sha256": "0d261705f4d2c64e7ece4b7f36508f1f1c21568320ef2f45d5dfe4e491e8a9e3",
+      "bytes": 8068603,
+      "rows": 32000,
+      "fetched_at": "2026-11-20T15:05:02Z",
+      "file": "0035-ie.json.gz"
+    },
+    {
+      "source": "IE",
+      "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&limit=32000&offset=736000&sort=_id",
+      "sha256": "447538d0dc6ede8799407a3f5457f0eb8090c12aeaf8439432ac7d92fc130e39",
+      "bytes": 7980572,
+      "rows": 32000,
+      "fetched_at": "2026-11-20T15:05:05Z",
+      "file": "0036-ie.json.gz"
+    },
+    {
+      "source": "IE",
+      "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&limit=32000&offset=768000&sort=_id",
+      "sha256": "0046fc6f939eab509e6fb54b4d8cc36dd1f25e6c6c73480c78c98fabdfd496f6",
+      "bytes": 7931205,
+      "rows": 32000,
+      "fetched_at": "2026-11-20T15:05:09Z",
+      "file": "0037-ie.json.gz"
+    },
+    {
+      "source": "IE",
+      "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&limit=32000&offset=800000&sort=_id",
+      "sha256": "9e89b80129d0d25b903a25c976872de4ea7a94fd59996020b5632060ad033c47",
+      "bytes": 7296825,
+      "rows": 29416,
+      "fetched_at": "2026-11-20T15:05:12Z",
+      "file": "0038-ie.json.gz"
+    },
+    {
+      "source": "LV lv_liquidation",
+      "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from&limit=32000&offset=0&sort=_id",
+      "sha256": "8b5aef0ff1b30e803876d05b59839ed6917a70efb30e97e60f400d42f71bc47c",
+      "bytes": 1129178,
+      "rows": 9652,
+      "fetched_at": "2026-11-20T15:05:14Z",
+      "file": "0039-lv-lv_liquidation.json.gz"
+    },
+    {
+      "source": "LV lv_insolvency",
+      "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on&limit=32000&offset=0&sort=_id",
+      "sha256": "1d05d6617a3fdb5b74c6b22edc8a1e03f2b2448c681bacacb3d73fd51b73f98f",
+      "bytes": 3497177,
+      "rows": 18073,
+      "fetched_at": "2026-11-20T15:05:15Z",
+      "file": "0040-lv-lv_insolvency.json.gz"
+    },
+    {
+      "source": "LV register",
+      "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed&limit=32000&offset=0&sort=_id",
+      "sha256": "f85a2ffc7057def354e2183791b1c940b17e743e873c5b6372ae2a2cacaa02c5",
+      "bytes": 5199998,
+      "rows": 32000,
+      "fetched_at": "2026-11-20T15:05:17Z",
+      "file": "0041-lv-register.json.gz"
+    },
+    {
+      "source": "LV register",
+      "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed&limit=32000&offset=32000&sort=_id",
+      "sha256": "98f5e0a15271e2ad5f0ae07d3eee841cca67930de1768284aba5d9054a2cd8b6",
+      "bytes": 5536819,
+      "rows": 32000,
+      "fetched_at": "2026-11-20T15:05:20Z",
+      "file": "0042-lv-register.json.gz"
+    },
+    {
+      "source": "LV register",
+      "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed&limit=32000&offset=64000&sort=_id",
+      "sha256": "0fa2a5fcc50e1eb754606f7fbc4a6c6d833d4474e6ef65366a42a1ab2fc00c70",
+      "bytes": 5736083,
+      "rows": 32000,
+      "fetched_at": "2026-11-20T15:05:23Z",
+      "file": "0043-lv-register.json.gz"
+    },
+    {
+      "source": "LV register",
+      "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed&limit=32000&offset=96000&sort=_id",
+      "sha256": "ef768c6f1d1b3baafbf3ecf8d1b25c7c81bdd247c648d4fe17b77d7fc76c1d7f",
+      "bytes": 5389121,
+      "rows": 32000,
+      "fetched_at": "2026-11-20T15:05:25Z",
+      "file": "0044-lv-register.json.gz"
+    },
+    {
+      "source": "LV register",
+      "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed&limit=32000&offset=128000&sort=_id",
+      "sha256": "7ff3d0c1314a9ea58d5ea54b3345ecfb7800b2100e3e1c49c2439d2ab5c6026d",
+      "bytes": 5045567,
+      "rows": 32000,
+      "fetched_at": "2026-11-20T15:05:28Z",
+      "file": "0045-lv-register.json.gz"
+    },
+    {
+      "source": "LV register",
+      "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed&limit=32000&offset=160000&sort=_id",
+      "sha256": "6338cb9d6fb0cf3fa47e8ddc1e8a94b177bb88c152c843eaa943bc995137b191",
+      "bytes": 5215221,
+      "rows": 32000,
+      "fetched_at": "2026-11-20T15:05:31Z",
+      "file": "0046-lv-register.json.gz"
+    },
+    {
+      "source": "LV register",
+      "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed&limit=32000&offset=192000&sort=_id",
+      "sha256": "063c5817d67b6d5ce11b91c453d586b748fcf0f762f032156268fc6314f3fcba",
+      "bytes": 5191743,
+      "rows": 32000,
+      "fetched_at": "2026-11-20T15:05:33Z",
+      "file": "0047-lv-register.json.gz"
+    },
+    {
+      "source": "LV register",
+      "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed&limit=32000&offset=224000&sort=_id",
+      "sha256": "29989a4858910dca3c86ef660e153c662fc8cdc5388c45ad8c21737156d5c0d7",
+      "bytes": 5176748,
+      "rows": 32000,
+      "fetched_at": "2026-11-20T15:05:36Z",
+      "file": "0048-lv-register.json.gz"
+    },
+    {
+      "source": "LV register",
+      "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed&limit=32000&offset=256000&sort=_id",
+      "sha256": "a68437d9321f012c468f2f52d3568c82fcfeb9be60672262cd07c1b388af34d8",
+      "bytes": 5283693,
+      "rows": 32000,
+      "fetched_at": "2026-11-20T15:05:39Z",
+      "file": "0049-lv-register.json.gz"
+    },
+    {
+      "source": "LV register",
+      "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed&limit=32000&offset=288000&sort=_id",
+      "sha256": "5364f4e94b306c8c91a43de5b7e4764115683f54af14a8734e1ed51d6ec52dbd",
+      "bytes": 5221949,
+      "rows": 32000,
+      "fetched_at": "2026-11-20T15:05:42Z",
+      "file": "0050-lv-register.json.gz"
+    },
+    {
+      "source": "LV register",
+      "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed&limit=32000&offset=320000&sort=_id",
+      "sha256": "c725c82f83ea0b249467375a90a640721efd15796b7c1311a4fc3cee5aa0d495",
+      "bytes": 5139168,
+      "rows": 32000,
+      "fetched_at": "2026-11-20T15:05:44Z",
+      "file": "0051-lv-register.json.gz"
+    },
+    {
+      "source": "LV register",
+      "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed&limit=32000&offset=352000&sort=_id",
+      "sha256": "e003558ef1b99fbbc77b1bdc81baa090e7c32b959d9b2a2057b79c549dd04516",
+      "bytes": 4996517,
+      "rows": 32000,
+      "fetched_at": "2026-11-20T15:05:47Z",
+      "file": "0052-lv-register.json.gz"
+    },
+    {
+      "source": "LV register",
+      "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed&limit=32000&offset=384000&sort=_id",
+      "sha256": "ad0d9e885010f260a0c7f7cfb51e9e810fc9789d1b8b8f6d60607aef1a0a1b01",
+      "bytes": 5196457,
+      "rows": 32000,
+      "fetched_at": "2026-11-20T15:05:50Z",
+      "file": "0053-lv-register.json.gz"
+    },
+    {
+      "source": "LV register",
+      "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed&limit=32000&offset=416000&sort=_id",
+      "sha256": "2c72a0e3ec467601cf4a4e0a22af9f4dc0583357503f85cd4495b1c49e25a90b",
+      "bytes": 4774146,
+      "rows": 32000,
+      "fetched_at": "2026-11-20T15:05:53Z",
+      "file": "0054-lv-register.json.gz"
+    },
+    {
+      "source": "LV register",
+      "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed&limit=32000&offset=448000&sort=_id",
+      "sha256": "159d1cb4912ee4987cca2ac76f51a9e2b69f7e1fcf08c9579febad7d1dfe0b57",
+      "bytes": 4614267,
+      "rows": 32000,
+      "fetched_at": "2026-11-20T15:05:55Z",
+      "file": "0055-lv-register.json.gz"
+    },
+    {
+      "source": "LV register",
+      "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed&limit=32000&offset=480000&sort=_id",
+      "sha256": "c596d3e4c28bb5244fe7f3b838e03dc48e41ded28d52815521cf3a7e0ec4359f",
+      "bytes": 1506680,
+      "rows": 10539,
+      "fetched_at": "2026-11-20T15:05:58Z",
+      "file": "0056-lv-register.json.gz"
+    },
+    {
+      "source": "EE",
+      "url": "https://avaandmed.ariregister.rik.ee/sites/default/files/avaandmed/ettevotja_rekvisiidid__lihtandmed.csv.zip",
+      "sha256": "be9d9d68e49f9aeffc4170d5e9c349c9202531a79d5b2566fc02188f13e39056",
+      "bytes": 18707391,
+      "rows": 381727,
+      "fetched_at": "2026-11-20T15:06:08Z",
+      "file": "0057-ee.json.gz"
+    }
+  ],
+  "companies": [
+    {
+      "id": "ee-10607192",
+      "country": "EE",
+      "group": "A",
+      "number": "10607192",
+      "legal_name": "Silmand Auto OÜ",
+      "legal_form": "osaühing",
+      "key": "00016a283690b12e6a72bc033d2665a63e9a389be786302ee8b931307fd0e649",
+      "raw_status": "r",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://ariregister.rik.ee/eng/company/10607192",
+          "fetched_at": "2026-11-20T15:06:25Z",
+          "sha256": "c1bca8c08856e875e0b74d15d1b4a78be5190e276491c362620b02bedbadffd9",
+          "what": "autocomplete"
+        }
+      ]
+    },
+    {
+      "id": "ee-10637336",
+      "country": "EE",
+      "group": "A",
+      "number": "10637336",
+      "legal_name": "Osaühing Ärma Talu JL",
+      "legal_form": "osaühing",
+      "key": "00014de25f481059246a3cbe4d3e9c25380a22b975a87002f5689e3b94bdb60c",
+      "raw_status": "r",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://ariregister.rik.ee/eng/company/10637336",
+          "fetched_at": "2026-11-20T15:06:25Z",
+          "sha256": "8c3eddf0c9e893620d0c048969db3773d5ad5a92b32d0e10c2ba1425ee53d850",
+          "what": "autocomplete"
+        }
+      ]
+    },
+    {
+      "id": "ee-11200274",
+      "country": "EE",
+      "group": "A",
+      "number": "11200274",
+      "legal_name": "Osaühing VESKANSYS",
+      "legal_form": "osaühing",
+      "key": "0000b08c058694a96b20cba3127e3cfc40f77a842dcdef0aec8f6c2eb09f77e9",
+      "raw_status": "r",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://ariregister.rik.ee/eng/company/11200274",
+          "fetched_at": "2026-11-20T15:06:25Z",
+          "sha256": "113017ab1d3a2af17036fda17b2ebd5ca8523893c6e2a43db2607caa7586652c",
+          "what": "autocomplete"
+        }
+      ]
+    },
+    {
+      "id": "ee-12126769",
+      "country": "EE",
+      "group": "B",
+      "number": "12126769",
+      "legal_name": "Montez OÜ",
+      "legal_form": "osaühing",
+      "key": "001e528d428ebcf8fb1f944a5e43a4247a937f3ee83124f31cd2d34b0547775d",
+      "raw_status": "n",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": true,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://ariregister.rik.ee/eng/company/12126769",
+          "fetched_at": "2026-11-20T15:06:25Z",
+          "sha256": "08c63c66a6386090c3b01c64ccd74a9e90ef6bd8a65fc7ffef9a37d13b0fa7a9",
+          "what": "autocomplete"
+        }
+      ]
+    },
+    {
+      "id": "ee-12179866",
+      "country": "EE",
+      "group": "B",
+      "number": "12179866",
+      "legal_name": "SEALAND OÜ",
+      "legal_form": "osaühing",
+      "key": "0005d35f76b48ae16ecce9ac3e5295486e8c73636496260323083c0753e764f0",
+      "raw_status": "l",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://ariregister.rik.ee/eng/company/12179866",
+          "fetched_at": "2026-11-20T15:06:25Z",
+          "sha256": "0aa282453b62368719d9e5674cf424351722ebeda4860ed2c88ae90d27393260",
+          "what": "autocomplete"
+        }
+      ]
+    },
+    {
+      "id": "ee-12922526",
+      "country": "EE",
+      "group": "B",
+      "number": "12922526",
+      "legal_name": "Kuldani OÜ",
+      "legal_form": "osaühing",
+      "key": "00213c060d72d25c8d41bc4cb17babde30b861b5aaae5dcbe19e808a3ad9d5ec",
+      "raw_status": "l",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://ariregister.rik.ee/eng/company/12922526",
+          "fetched_at": "2026-11-20T15:06:25Z",
+          "sha256": "e7a1650fba28b0afadee8a06df7a6cd79bd763c430951c48c4b626e3b608b604",
+          "what": "autocomplete"
+        }
+      ]
+    },
+    {
+      "id": "ee-14815786",
+      "country": "EE",
+      "group": "A",
+      "number": "14815786",
+      "legal_name": "Kaarmar Raamatupidamisteenused OÜ",
+      "legal_form": "osaühing",
+      "key": "000067b7ac7f7ecdc400401b83f7852dcf82a924b7b205fa16d9eb64cd0a01d5",
+      "raw_status": "r",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://ariregister.rik.ee/eng/company/14815786",
+          "fetched_at": "2026-11-20T15:06:24Z",
+          "sha256": "97c90fad6a01ecf8a2d78d6f27006941d681431fa5868f40a954deb23afe2b30",
+          "what": "autocomplete"
+        }
+      ]
+    },
+    {
+      "id": "ee-16319577",
+      "country": "EE",
+      "group": "B",
+      "number": "16319577",
+      "legal_name": "Susan.one Ventures OÜ",
+      "legal_form": "osaühing",
+      "key": "0003a8f089f60898773c20dc7df458d2505764298a46d836ac364e74688a6084",
+      "raw_status": "l",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://ariregister.rik.ee/eng/company/16319577",
+          "fetched_at": "2026-11-20T15:06:25Z",
+          "sha256": "4d33c932a1093127ba15fb69fa529889e4b60dfa40d45d1893b617c32dfc76db",
+          "what": "autocomplete"
+        }
+      ]
+    },
+    {
+      "id": "ee-16500012",
+      "country": "EE",
+      "group": "A",
+      "number": "16500012",
+      "legal_name": "Estover SPT OÜ",
+      "legal_form": "osaühing",
+      "key": "00007003e0ba5f8e1d3a1d20927d8358c4baa1b3ab411470b60fb27c7cfe8831",
+      "raw_status": "r",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://ariregister.rik.ee/eng/company/16500012",
+          "fetched_at": "2026-11-20T15:06:24Z",
+          "sha256": "5c78db5a3ba007c6bb3e3acd298f9f5d3d8c231810e472c71cbf9e5bfba56046",
+          "what": "autocomplete"
+        }
+      ]
+    },
+    {
+      "id": "ee-16585190",
+      "country": "EE",
+      "group": "B",
+      "number": "16585190",
+      "legal_name": "BALTIC TRANSPORTE OÜ",
+      "legal_form": "osaühing",
+      "key": "003a85e34a41524c5ab2ce8bcebcbd7d85231a702d3b6cd47eace5b6868a7b1b",
+      "raw_status": "l",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://ariregister.rik.ee/eng/company/16585190",
+          "fetched_at": "2026-11-20T15:06:26Z",
+          "sha256": "a288ceddec72c33e07396b33112cb4e029969451a8775ae30b64c2815e763133",
+          "what": "autocomplete"
+        }
+      ]
+    },
+    {
+      "id": "ee-16614425",
+      "country": "EE",
+      "group": "B",
+      "number": "16614425",
+      "legal_name": "EXOLOGISTICS OÜ",
+      "legal_form": "osaühing",
+      "key": "002694b3b3ff7f2cd776bd0b6cac5c9ed2f924bb614863db68cc59f11fad8ec7",
+      "raw_status": "l",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://ariregister.rik.ee/eng/company/16614425",
+          "fetched_at": "2026-11-20T15:06:26Z",
+          "sha256": "42128bcce2a2755bd5bda8debf4f49bfeb5a73c9519c08fbcbebae4617a37ef8",
+          "what": "autocomplete"
+        }
+      ]
+    },
+    {
+      "id": "ee-17190507",
+      "country": "EE",
+      "group": "B",
+      "number": "17190507",
+      "legal_name": "Estoniak OÜ",
+      "legal_form": "osaühing",
+      "key": "00511751b7775bfd0aa96b1ad7884e18c8b19568ad8f2f3becb74114c6aa617d",
+      "raw_status": "l",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://ariregister.rik.ee/eng/company/17190507",
+          "fetched_at": "2026-11-20T15:06:26Z",
+          "sha256": "863a4ec78b7177b91a748cffed7f39734020c444500e576b812f857e42d5d956",
+          "what": "autocomplete"
+        }
+      ]
+    },
+    {
+      "id": "ee-17474630",
+      "country": "EE",
+      "group": "A",
+      "number": "17474630",
+      "legal_name": "Roma Eterna Tours OÜ",
+      "legal_form": "osaühing",
+      "key": "00016630b0fa74521ede16f337e0137878e2fb2ecd8ad8bb2ca5ba486d41c64b",
+      "raw_status": "r",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://ariregister.rik.ee/eng/company/17474630",
+          "fetched_at": "2026-11-20T15:06:25Z",
+          "sha256": "3ebe1e94f47b652044c782dff7200fe002d3c4ddf86f44ed7fdc8bac0e6ffd48",
+          "what": "autocomplete"
+        }
+      ]
+    },
+    {
+      "id": "ee-17482813",
+      "country": "EE",
+      "group": "A",
+      "number": "17482813",
+      "legal_name": "OÜ Ühinenud Projektiehitus",
+      "legal_form": "osaühing",
+      "key": "000034342bf9ed6a6339712176fc5d94fc2112f2982e33de2f1f292d2ba4f515",
+      "raw_status": "r",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://ariregister.rik.ee/eng/company/17482813",
+          "fetched_at": "2026-11-20T15:06:24Z",
+          "sha256": "af18c5e462fbc35c75b335f5ebaa1362d18dafa09911b7acacc1db71c6ad4769",
+          "what": "autocomplete"
+        }
+      ]
+    },
+    {
+      "id": "gb-04659822",
+      "country": "GB",
+      "group": "A",
+      "number": "04659822",
+      "legal_name": "P.R. THOMAS AGRICULTURE LIMITED",
+      "legal_form": "ltd",
+      "key": "00cec8ad202cdc2c42fb114e968f91c4fe6a051c761d8390486355e0b247abb8",
+      "raw_status": "active",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/04659822",
+          "fetched_at": "2026-11-20T15:06:36Z",
+          "sha256": "417851376b5b9179b7268c90d16ad5aacb32c123eea89bee699f46c53eec3733",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/04659822/insolvency",
+          "fetched_at": "2026-11-20T15:06:36Z",
+          "sha256": "b113bf253eb23529914fe0f73032c90da935c922f2dec94f74eb43c4ba12b4ae",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-04660597",
+      "country": "GB",
+      "group": "B",
+      "number": "04660597",
+      "legal_name": "OCTAVIAN SECURITY LIMITED",
+      "legal_form": "ltd",
+      "key": "1e89bcfb1e159196e5546fcb3774c167d4177e2bf8c45d1103a2e1dabd5f24c6",
+      "raw_status": "liquidation",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": true,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/04660597",
+          "fetched_at": "2026-11-20T15:06:47Z",
+          "sha256": "9ad869be412233fdba6598e05c4079dc449b53079c30a4b1c36e7ed9fec56488",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/04660597/insolvency",
+          "fetched_at": "2026-11-20T15:06:48Z",
+          "sha256": "74c70c72ef7ae42f04d762bfcccb19a890276439903b5a8352b452035a8ac72c",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-04661158",
+      "country": "GB",
+      "group": "B",
+      "number": "04661158",
+      "legal_name": "GRAHAM JONES ASSOCIATES LIMITED",
+      "legal_form": "ltd",
+      "key": "0b48774df47809b36f74d59cc20a39a3a79bfbdbec6d8d9b3ba3f04f3c9f799e",
+      "raw_status": "liquidation",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": true,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/04661158",
+          "fetched_at": "2026-11-20T15:06:41Z",
+          "sha256": "658db3f00c06a8ded53b0714d0e63c6ce143a795179e41270a5b3a3e7355dde5",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/04661158/insolvency",
+          "fetched_at": "2026-11-20T15:06:42Z",
+          "sha256": "43f3d106b0191d4acb4d021c87e2c5d87e2adbb9f49787c23c7c1d4ec789fd24",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-04661382",
+      "country": "GB",
+      "group": "B",
+      "number": "04661382",
+      "legal_name": "IDEAL SAFETY & LEISURE LIMITED",
+      "legal_form": "ltd",
+      "key": "08630848878425f0d81d17fa7fb21d747c18988493bf21d494ec252086429a3c",
+      "raw_status": "liquidation",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/04661382",
+          "fetched_at": "2026-11-20T15:06:40Z",
+          "sha256": "ad985d8fc15b9f8f8bb398ecd535b807109029a268d813f781202edc7cb6ff43",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/04661382/insolvency",
+          "fetched_at": "2026-11-20T15:06:41Z",
+          "sha256": "49ff1309814104d7c47b2d1ebf72692f817d81b919690462b1687b9561253526",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-04953500",
+      "country": "GB",
+      "group": "B",
+      "number": "04953500",
+      "legal_name": "ABSOLUTE POST LIMITED",
+      "legal_form": "ltd",
+      "key": "020095af1a53b2844372430e5308d6801ee5013647d7409a9ef365a6151df6bc",
+      "raw_status": "administration",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": true,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/04953500",
+          "fetched_at": "2026-11-20T15:06:37Z",
+          "sha256": "6ac522b08db3b67c049f2ce68f5ace8d4bca74e2675186aa24fcee3a5c76b426",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/04953500/insolvency",
+          "fetched_at": "2026-11-20T15:06:38Z",
+          "sha256": "f9115a2c42d18e4c986d5266973e7eb86acba5c78700bd5c2937bdd6ae2c3553",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-05543042",
+      "country": "GB",
+      "group": "A",
+      "number": "05543042",
+      "legal_name": "OCEAN COURT (SALCOMBE) MANAGEMENT COMPANY LIMITED",
+      "legal_form": "ltd",
+      "key": "00666b17d552271d9eb85b05f408286ea01420c19d0067b91b1c0416f60a36cb",
+      "raw_status": "active",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/05543042",
+          "fetched_at": "2026-11-20T15:06:27Z",
+          "sha256": "62e58441975f747bf4b8e1f2fe5773ffddaa605ffa280262beb6a578b51a86be",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/05543042/insolvency",
+          "fetched_at": "2026-11-20T15:06:28Z",
+          "sha256": "9ce668f33b7175be4eab851e3ce6b1077c60538c83ddbf607887c5d2dc002749",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-05543635",
+      "country": "GB",
+      "group": "B",
+      "number": "05543635",
+      "legal_name": "STRAND ENGINEERING & CONSULTING LIMITED",
+      "legal_form": "ltd",
+      "key": "04d9c603622d2cb948fc45e4e223ab20181cd51980746e3820ce33af189d2d22",
+      "raw_status": "liquidation",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": true,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/05543635",
+          "fetched_at": "2026-11-20T15:06:38Z",
+          "sha256": "115e9666dcfd542db7ad2dddf6c77a6015e8a608599456313301a604fd1e48b1",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/05543635/insolvency",
+          "fetched_at": "2026-11-20T15:06:39Z",
+          "sha256": "e5e58973d04f63e2b334278411ccad8646951bfa4b8e529f0b0848df513ecede",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-05543797",
+      "country": "GB",
+      "group": "B",
+      "number": "05543797",
+      "legal_name": "LEOTERRA LIMITED",
+      "legal_form": "ltd",
+      "key": "1e88fd1abb66512cee7eafa63ef5dd045791f66b36a55aa67f19e1a399b51bb9",
+      "raw_status": "liquidation",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": true,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/05543797",
+          "fetched_at": "2026-11-20T15:06:45Z",
+          "sha256": "e8347c05da350265d76cea6cc0642b6c6ae4b831cbbf6a5de9441ddfaeaba9db",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/05543797/insolvency",
+          "fetched_at": "2026-11-20T15:06:46Z",
+          "sha256": "3d8f8e9cda251fbb931b060b7b323f13638bf695df8cd80832ec50331aa7db67",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-05742647",
+      "country": "GB",
+      "group": "S",
+      "number": "05742647",
+      "legal_name": "CURZON SQUARE LIMITED",
+      "legal_form": "ltd",
+      "key": "05e942aa9e8469ce8b5a5337ff7e9a9409da399b771afd680f2384fe90ed19f4",
+      "raw_status": "administration",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": true,
+        "sanctioned": true,
+        "sanctions_lists": [
+          "UK"
+        ]
+      },
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/05742647",
+          "fetched_at": "2026-11-20T15:10:20Z",
+          "sha256": "19a80431cc4fbc36e8f199981b41498e7369793358af6a830678acaea6ea2c01",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/05742647/insolvency",
+          "fetched_at": "2026-11-20T15:10:21Z",
+          "sha256": "21820c772b6b17eac5756babdea150b6ca59acda194df75f684696b22730c45d",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-06601634",
+      "country": "GB",
+      "group": "S",
+      "number": "06601634",
+      "legal_name": "GOOD RUN LIMITED",
+      "legal_form": "ltd",
+      "key": "121c427f371c80042e59a98cd241e93cc07e6eac10f0c14267363c1fe46e5028",
+      "raw_status": "active",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": true,
+        "sanctions_lists": [
+          "OFAC SDN"
+        ]
+      },
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/06601634",
+          "fetched_at": "2026-11-20T15:10:28Z",
+          "sha256": "0225515590eb45334802e57d0eba5c6e532c2c063517fd92ad056e7877b856f1",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/06601634/insolvency",
+          "fetched_at": "2026-11-20T15:10:29Z",
+          "sha256": "392220122ab5f0566aab074b3f0834af942c3e0e0625455141602f7d73daeee4",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-06850415",
+      "country": "GB",
+      "group": "S",
+      "number": "06850415",
+      "legal_name": "AAKHIRAH LIMITED",
+      "legal_form": "private-limited-guarant-nsc",
+      "key": "09a4bdc4fec8fb7893e31cbadb54ee4b385d0c65528cecec2fbcdf77d1d870f6",
+      "raw_status": "dissolved",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": false,
+        "sanctioned": true,
+        "sanctions_lists": [
+          "OFAC SDN"
+        ]
+      },
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/06850415",
+          "fetched_at": "2026-11-20T15:10:21Z",
+          "sha256": "b5aa4097d4975e68144af8ab040037575eb61c1f1a38c16ad45e77c56a1f4f3f",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/06850415/insolvency",
+          "fetched_at": "2026-11-20T15:10:22Z",
+          "sha256": "e49a70db839e558c1f748f08e85fb2635549febfcd332835ecea86ba8ad3134e",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-07784342",
+      "country": "GB",
+      "group": "S",
+      "number": "07784342",
+      "legal_name": "EVRAZ PLC",
+      "legal_form": "plc",
+      "key": "0ace4d64f78b87932553f47c943ffbef2a332e649219aa354c8564f7567c480f",
+      "raw_status": "active",
+      "truth": {
+        "status": null,
+        "insolvent": null,
+        "sanctioned": true,
+        "sanctions_lists": [
+          "EU",
+          "UK"
+        ]
+      },
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/07784342",
+          "fetched_at": "2026-11-20T15:10:23Z",
+          "sha256": "2a11f8f5557aa2aaf609d353a6b18ada0f42e828f41ddeaa4757dee719003046",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/07784342/insolvency",
+          "fetched_at": "2026-11-20T15:10:23Z",
+          "sha256": "207010c77c05a1eee3dee2010d87665035ca31ab959535ec89a0e7fd3afcc5b5",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-08203930",
+      "country": "GB",
+      "group": "A",
+      "number": "08203930",
+      "legal_name": "2CT CONSULTANTS LIMITED",
+      "legal_form": "ltd",
+      "key": "009ef23372ae3866208cabd0133cc8b3d3c8fbbd22d8f7e090b189294d04260c",
+      "raw_status": "active",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/08203930",
+          "fetched_at": "2026-11-20T15:06:29Z",
+          "sha256": "4941bea93746a58efa4af06655e63acba081a396a7acc6c66a0d62f9ece6060e",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/08203930/insolvency",
+          "fetched_at": "2026-11-20T15:06:29Z",
+          "sha256": "1216373848ed85960b4181b0b5c883b5e6cb6f0accbbf934df519417df4b4628",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-08204145",
+      "country": "GB",
+      "group": "B",
+      "number": "08204145",
+      "legal_name": "QUICKGRASS LIMITED",
+      "legal_form": "ltd",
+      "key": "0c3122aee9f5c254105d928570659ecfb6aa53b934171d7563778c7d3264a154",
+      "raw_status": "liquidation",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": true,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/08204145",
+          "fetched_at": "2026-11-20T15:06:43Z",
+          "sha256": "1d073b29d56631b56b6fc64b91ef48734b859447bd0ca5bb05ec9aac14a7edd4",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/08204145/insolvency",
+          "fetched_at": "2026-11-20T15:06:43Z",
+          "sha256": "930f9f7b91b799e0b49501cb9665fdc2318e3abc79341a68a4d101583dab48ba",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-08204570",
+      "country": "GB",
+      "group": "A",
+      "number": "08204570",
+      "legal_name": "JAKH LTD",
+      "legal_form": "ltd",
+      "key": "00a408109a8e31380b9f6d9337c35fd28bed37315c99e17b948626566de330f8",
+      "raw_status": "active",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/08204570",
+          "fetched_at": "2026-11-20T15:06:30Z",
+          "sha256": "dc89f89bced74e21b28e55453f04456a4f45e79691854901af69a9d6b908b553",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/08204570/insolvency",
+          "fetched_at": "2026-11-20T15:06:31Z",
+          "sha256": "0f06d2a854a9f21c3b56d725823b4e87ba804ba269e52daa9e1afbe2316866e0",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-08204583",
+      "country": "GB",
+      "group": "B",
+      "number": "08204583",
+      "legal_name": "HOMECARE PHARMACY SERVICES LIMITED",
+      "legal_form": "ltd",
+      "key": "1ac995e991f01a41e4a0094c5810fb013d017ff8a7e6972e68c4f59ff77f5a6f",
+      "raw_status": "liquidation",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/08204583",
+          "fetched_at": "2026-11-20T15:06:44Z",
+          "sha256": "56cbf87d58760e9ebf904db8db72d5386ad5576374be8c1af86241614272442f",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/08204583/insolvency",
+          "fetched_at": "2026-11-20T15:06:45Z",
+          "sha256": "0d9bfbcebc104263a46ca2a3431b6893006764f0e9ef897ea776423246bc2a57",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-08204810",
+      "country": "GB",
+      "group": "A",
+      "number": "08204810",
+      "legal_name": "CREATIVE DRIVEWAYS OF LANCASHIRE LIMITED",
+      "legal_form": "ltd",
+      "key": "00adaee7441a386e7260936120a000c910fc718bfb9d3cac0189a0ead506f7d2",
+      "raw_status": "active",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/08204810",
+          "fetched_at": "2026-11-20T15:06:31Z",
+          "sha256": "d41206d73c55adc57d829dd6885f09fd095040dd74da9bdcd92a166f4fde6c95",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/08204810/insolvency",
+          "fetched_at": "2026-11-20T15:06:32Z",
+          "sha256": "0dc23bbaa401e1c9122343fff3a25c1e7a1a87d930cff7848e2bf7086fcb35e5",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-08205205",
+      "country": "GB",
+      "group": "C",
+      "number": "08205205",
+      "legal_name": "EURO MEDICAL SUPPLIES LIMITED",
+      "legal_form": "ltd",
+      "key": "0188b3d5956597062ac5a4cb19043a19693871236e9646d05b137dbb778ea810",
+      "raw_status": "dissolved",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/08205205",
+          "fetched_at": "2026-11-20T15:07:01Z",
+          "sha256": "a5e7b19fd084d9723040eebb760083a0b3fb487ed9be183d1b06f13eeca67ebf",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/08205205/insolvency",
+          "fetched_at": "2026-11-20T15:07:02Z",
+          "sha256": "0d14364066536217ff07445fa9d6f70fa4b0d044fd4067172fce5decc79d15c3",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-08205271",
+      "country": "GB",
+      "group": "A",
+      "number": "08205271",
+      "legal_name": "BASE PARKING LTD",
+      "legal_form": "ltd",
+      "key": "00c8157008151c2d24592da4e02872d9cf5114d01e3c38873805210d09ded430",
+      "raw_status": "active",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/08205271",
+          "fetched_at": "2026-11-20T15:06:34Z",
+          "sha256": "d5e6ddb38e577eaba1f628e2d02cb7ab7039923382041a90eef5af46d9326187",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/08205271/insolvency",
+          "fetched_at": "2026-11-20T15:06:35Z",
+          "sha256": "a21d6c5bf590c9362a1346dc51f4f02b4badd14f4fe420227c8ba331280b3bfc",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-08220547",
+      "country": "GB",
+      "group": "S",
+      "number": "08220547",
+      "legal_name": "SMILE PROPERTY & TRAVEL LTD",
+      "legal_form": "ltd",
+      "key": "140d15d449ad287f67e7200305a8fdeb9a39c68ce203e5103c782dc2e5897ac5",
+      "raw_status": "dissolved",
+      "truth": {
+        "status": null,
+        "insolvent": null,
+        "sanctioned": true,
+        "sanctions_lists": [
+          "OFAC SDN"
+        ]
+      },
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/08220547",
+          "fetched_at": "2026-11-20T15:10:30Z",
+          "sha256": "b5023d8ef1a853dfafafea71694ae4292d2ef53ba27f0c785fe4fc57878a8f65",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/08220547/insolvency",
+          "fetched_at": "2026-11-20T15:10:30Z",
+          "sha256": "42ef4ae249bfda7d33c5d254ebcd087c9d681c3941bb54cf3e646cf22bf2bf12",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-11032231",
+      "country": "GB",
+      "group": "S",
+      "number": "11032231",
+      "legal_name": "ALWAYS SMOOTH LIMITED",
+      "legal_form": "ltd",
+      "key": "00c0c5f733e146f9e996efaa789a6ea6bbfd5745eb9b7f8f7ab5b57b8d353d87",
+      "raw_status": "dissolved",
+      "truth": {
+        "status": null,
+        "insolvent": null,
+        "sanctioned": true,
+        "sanctions_lists": [
+          "OFAC SDN"
+        ]
+      },
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/11032231",
+          "fetched_at": "2026-11-20T15:10:17Z",
+          "sha256": "72d64f734df775a4fcc1fffe3b0e7efbbee49cb6da23791797e2d4ad8163128c",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/11032231/insolvency",
+          "fetched_at": "2026-11-20T15:10:18Z",
+          "sha256": "4116b32d5f03b89ef780baab5bd69209bda76832d5a4c4d6e0c611157e9d3f40",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-12122640",
+      "country": "GB",
+      "group": "S",
+      "number": "12122640",
+      "legal_name": "TERRA COTTA WARRIORS ISLE OF DOGS LTD",
+      "legal_form": "ltd",
+      "key": "0e61f1b2557bad9d721315f5ad890604b3efe1a8dc85a5c0e2b36d832d97a2f8",
+      "raw_status": "active",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": true,
+        "sanctions_lists": [
+          "OFAC SDN"
+        ]
+      },
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/12122640",
+          "fetched_at": "2026-11-20T15:10:25Z",
+          "sha256": "8a31578445dbf7066f7924c7bccae64c4440788d340411c245ac2d8fb76e4b51",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/12122640/insolvency",
+          "fetched_at": "2026-11-20T15:10:26Z",
+          "sha256": "cc701fefe2d2835689c562d6a2b588e10a6e5e7a6f2189690cdde030488c9515",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-12146985",
+      "country": "GB",
+      "group": "S",
+      "number": "12146985",
+      "legal_name": "NABAH LTD",
+      "legal_form": "ltd",
+      "key": "027b67feccbcf75133d84c25cc722acd988f413d0b495dc53cb7a29c8c87a19f",
+      "raw_status": "dissolved",
+      "truth": {
+        "status": null,
+        "insolvent": null,
+        "sanctioned": true,
+        "sanctions_lists": [
+          "OFAC SDN"
+        ]
+      },
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/12146985",
+          "fetched_at": "2026-11-20T15:10:18Z",
+          "sha256": "1b1edc52f79c8557c6a064b12b2fb41334b8e9f4415923141f46568532a0d49b",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/12146985/insolvency",
+          "fetched_at": "2026-11-20T15:10:19Z",
+          "sha256": "962ef9802abef36b30fdc8cc4849d3f03b54c32f5c4714d0f570f2f9f716bb5c",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-13885242",
+      "country": "GB",
+      "group": "S",
+      "number": "13885242",
+      "legal_name": "SAMIDOUN PALESTINIAN PRISONER SOLIDARITY NETWORK",
+      "legal_form": "private-limited-guarant-nsc-limited-exemption",
+      "key": "16b705829311f93b724eafc493b0c6a77a7aacd46a4db74add1c40f5afab9e16",
+      "raw_status": "dissolved",
+      "truth": {
+        "status": null,
+        "insolvent": null,
+        "sanctioned": true,
+        "sanctions_lists": [
+          "OFAC SDN"
+        ]
+      },
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/13885242",
+          "fetched_at": "2026-11-20T15:10:31Z",
+          "sha256": "bdaf7003a2b2c405642a0f36193efcb84aa2feca97dfd34e0199683e7d0d66fb",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/13885242/insolvency",
+          "fetched_at": "2026-11-20T15:10:32Z",
+          "sha256": "b1dce2537749441748079085b886f379d6b401a435d3543747760b5778b857fa",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-14575184",
+      "country": "GB",
+      "group": "S",
+      "number": "14575184",
+      "legal_name": "EAST LINK LONDON LTD",
+      "legal_form": "ltd",
+      "key": "0fab6220128ccc57fa3ce9ebd7737dc5e2258b921644b0672eafc6f509b514c6",
+      "raw_status": "active",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": true,
+        "sanctions_lists": [
+          "OFAC SDN"
+        ]
+      },
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/14575184",
+          "fetched_at": "2026-11-20T15:10:27Z",
+          "sha256": "4712010ad9e17678bc0ee9bc8052ef870084679849b24d12e20a2422284145b0",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/14575184/insolvency",
+          "fetched_at": "2026-11-20T15:10:28Z",
+          "sha256": "73366fd1c27770ff47fed8d4b424c9bfcddde4b863a5e9938423f479565ffcee",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-15154831",
+      "country": "GB",
+      "group": "C",
+      "number": "15154831",
+      "legal_name": "BOBELLON LTD",
+      "legal_form": "ltd",
+      "key": "01603e81d776a4376de6489479a1f05f66d8ac69be2e6e36b841bf29b2cbcd9e",
+      "raw_status": "dissolved",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/15154831",
+          "fetched_at": "2026-11-20T15:06:57Z",
+          "sha256": "f90f4aedce75bf574825324cfc668b0edccc0532955eeadf36c574bd25a8fb50",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/15154831/insolvency",
+          "fetched_at": "2026-11-20T15:06:57Z",
+          "sha256": "84ed7a8b61074e330b9f11cae58b830bd289459886921c285c993492b1a27bd2",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-15154964",
+      "country": "GB",
+      "group": "C",
+      "number": "15154964",
+      "legal_name": "KIS ESTATES LTD",
+      "legal_form": "ltd",
+      "key": "016c3fed51ace20f4e05343b7ed925d62ba0c35dca119763a2712d10428b12f6",
+      "raw_status": "dissolved",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/15154964",
+          "fetched_at": "2026-11-20T15:06:58Z",
+          "sha256": "9b6027387523951c6a5eb992e4b166f17d1393e4542342e4feb2a5ce535542f0",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/15154964/insolvency",
+          "fetched_at": "2026-11-20T15:06:59Z",
+          "sha256": "c2b3c837ba2e9b505043aff448ab50c477d4108779f70eb2a2acd7c2aa03f149",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-15155250",
+      "country": "GB",
+      "group": "C",
+      "number": "15155250",
+      "legal_name": "THE WALLS OF THE HOUSE LIMITED",
+      "legal_form": "ltd",
+      "key": "0181e75675984cfc2db138d55de20e9c27f34606c88102cdf61c839c0c0b472c",
+      "raw_status": "dissolved",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/15155250",
+          "fetched_at": "2026-11-20T15:07:00Z",
+          "sha256": "15d335e237b665cd7c0bbc54cf96729caf18ff9286599fc68d4a3a1a0ba12681",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/15155250/insolvency",
+          "fetched_at": "2026-11-20T15:07:00Z",
+          "sha256": "69fecfae3df21652dc87bf94d8332e4be619fc7ccff8eba0e37366bc497b9621",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-15155306",
+      "country": "GB",
+      "group": "C",
+      "number": "15155306",
+      "legal_name": "BRYCOAST LTD",
+      "legal_form": "ltd",
+      "key": "0055ada62aacfe9564b832ab888439aaeaa99bab25d05b04b7b5fb9ec793f91b",
+      "raw_status": "dissolved",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/15155306",
+          "fetched_at": "2026-11-20T15:06:48Z",
+          "sha256": "87502643f7115fd8418d359b427951ffd609e4cc9eed8bc4797ef65f62265c23",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/15155306/insolvency",
+          "fetched_at": "2026-11-20T15:06:49Z",
+          "sha256": "1a422a97c96920c929e39dbc0d646ffb140b5206ad24a6709951a70178593e3b",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-15155432",
+      "country": "GB",
+      "group": "C",
+      "number": "15155432",
+      "legal_name": "MT CATERING LONDON LTD",
+      "legal_form": "ltd",
+      "key": "009e451751d5db04c9a5068a996279110ed6bf2d5f3d0aacb01a2efe1cef9931",
+      "raw_status": "dissolved",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/15155432",
+          "fetched_at": "2026-11-20T15:06:50Z",
+          "sha256": "6bf455a15ec13c1b04b78fd08ea3775795aeee3501b2acda59404c7a5b35f6f3",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/15155432/insolvency",
+          "fetched_at": "2026-11-20T15:06:50Z",
+          "sha256": "4d8d079fa1f5b6dc07bb577617f88a775266e655a2303184f4024de1eb8279b9",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-15155649",
+      "country": "GB",
+      "group": "A",
+      "number": "15155649",
+      "legal_name": "MION MUSIC LTD",
+      "legal_form": "ltd",
+      "key": "00bf948cd5a899334e08e859e3032f00d65702d5b2053114f796160c44abc769",
+      "raw_status": "active",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/15155649",
+          "fetched_at": "2026-11-20T15:06:33Z",
+          "sha256": "2762371751897388598d2ee6f2462bd183e57bf3ca3a6980f4beed4db348538f",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/15155649/insolvency",
+          "fetched_at": "2026-11-20T15:06:33Z",
+          "sha256": "1684ce9ee7741080ec5ede718878f6b2e60b55884f67b9dfdab9580632924285",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-15155897",
+      "country": "GB",
+      "group": "A",
+      "number": "15155897",
+      "legal_name": "EMPOWERED CONSULTANCY LTD",
+      "legal_form": "ltd",
+      "key": "003d266a005f5255975efe8739f145c959cc37272fea79b96cb56368b68c67cd",
+      "raw_status": "active",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/15155897",
+          "fetched_at": "2026-11-20T15:06:26Z",
+          "sha256": "c85d20ff101db5ebfb5921ce5a2c9aa3a283c015e8c5fdf34caaef127e27a3d3",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/15155897/insolvency",
+          "fetched_at": "2026-11-20T15:06:26Z",
+          "sha256": "ef5fce2a1519a1649b7174051e26ba837657a751ae8cce843826b710349665db",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-15156194",
+      "country": "GB",
+      "group": "C",
+      "number": "15156194",
+      "legal_name": "LAMI PROFESSIONAL SERVICES LTD",
+      "legal_form": "ltd",
+      "key": "00be89d839ac6c4527f9cf0fa9a11957f1e87cbe8976da8c1a68ef4d85ada5d3",
+      "raw_status": "dissolved",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/15156194",
+          "fetched_at": "2026-11-20T15:06:51Z",
+          "sha256": "95890e11d77b5fffe2ca8d085ce1c5e1f04561ef174590c3afe3684ed4b405e8",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/15156194/insolvency",
+          "fetched_at": "2026-11-20T15:06:52Z",
+          "sha256": "07029d21f3339826cdddd33f48a28b6c1d4b76a03bf190c1d6791b27c1a20623",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-15156247",
+      "country": "GB",
+      "group": "C",
+      "number": "15156247",
+      "legal_name": "USA SEO EXPERTS LIMITED",
+      "legal_form": "ltd",
+      "key": "014d716ad86880ecc307d89e9556aadf276887c141416adab50bd7bf2648afd3",
+      "raw_status": "dissolved",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/15156247",
+          "fetched_at": "2026-11-20T15:06:55Z",
+          "sha256": "685becb824ce12e2127e749134613f51c8da292c89f67055f92d1c2b03b50de8",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/15156247/insolvency",
+          "fetched_at": "2026-11-20T15:06:56Z",
+          "sha256": "4cdcd18afae0e64d538510d66452668bd5299a1e252cb531de60247574596c97",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-15157300",
+      "country": "GB",
+      "group": "C",
+      "number": "15157300",
+      "legal_name": "GW WEST CC LTD",
+      "legal_form": "ltd",
+      "key": "014b6739fd93436ea08b4c1a293a643c42fe0bc87171ef742e48ff2fcf4ebcb8",
+      "raw_status": "dissolved",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/15157300",
+          "fetched_at": "2026-11-20T15:06:54Z",
+          "sha256": "3489450e2d5886b69ce322bf8c4fc9da2b149d839e41db8d4e5cb28ff9d3147d",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/15157300/insolvency",
+          "fetched_at": "2026-11-20T15:06:55Z",
+          "sha256": "f8d508c5dafb5ebf11ff96ced32c31f35c6be45c988780912aaa7a6e75e27cec",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-16187338",
+      "country": "GB",
+      "group": "S",
+      "number": "16187338",
+      "legal_name": "HALO NETWORK TECHNOLOGY LTD",
+      "legal_form": "ltd",
+      "key": "0de32e8ac5ee26dcda2187fbe19f775b76a8579e57ed006c175d2712eee131d7",
+      "raw_status": "dissolved",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": false,
+        "sanctioned": true,
+        "sanctions_lists": [
+          "OFAC SDN"
+        ]
+      },
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/16187338",
+          "fetched_at": "2026-11-20T15:10:24Z",
+          "sha256": "f8b46c78133cab13445fdab0094569b4e2fe62cd83eb41db9142bd4789f9da38",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/16187338/insolvency",
+          "fetched_at": "2026-11-20T15:10:25Z",
+          "sha256": "a2a1e79abc3bb8b0378fcd5b446e4b55003fd085e723b81466152faba6c51fb6",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "gb-SC783525",
+      "country": "GB",
+      "group": "C",
+      "number": "SC783525",
+      "legal_name": "TAJ MAHAL ISLAY LIMITED",
+      "legal_form": "ltd",
+      "key": "00f26a98376e88bd0ea8a7231fe2b93208ecf780795704b947579210c3c50e6e",
+      "raw_status": "dissolved",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/SC783525",
+          "fetched_at": "2026-11-20T15:06:52Z",
+          "sha256": "397e976e9e0466eb6d0947a606588eac52a7a4bb809004262db49551346b0181",
+          "what": "profile"
+        },
+        {
+          "url": "https://find-and-update.company-information.service.gov.uk/company/SC783525/insolvency",
+          "fetched_at": "2026-11-20T15:06:53Z",
+          "sha256": "4c1d051302518667e4ed50c6f0c25cb7e7dba41dd268e1742e9a60d000190a7a",
+          "what": "insolvency"
+        }
+      ]
+    },
+    {
+      "id": "ie-180480",
+      "country": "IE",
+      "group": "C",
+      "number": "180480",
+      "legal_name": "MURPHY'S BAR (HIGH ST.) LIMITED",
+      "legal_form": "ltd - private company limited by shares",
+      "key": "00199550d65abfd493dd3f4b519233123fe0c4aa653d60c1985633feac27f979",
+      "raw_status": "dissolved",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+180480%7D",
+          "fetched_at": "2026-11-20T15:07:03Z",
+          "sha256": "502d3f51787ac527003f20fb499aeef1387cab03e23342a7eacb8a386462e541",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-194320",
+      "country": "IE",
+      "group": "B",
+      "number": "194320",
+      "legal_name": "EUROPEAN CELLULOSE MARKETING LIMITED",
+      "legal_form": "ltd - private company limited by shares",
+      "key": "0006b1e49b835bb24d5dc746847d71d4b3947310487789dd1a6231f82bf8bb32",
+      "raw_status": "liquidation",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+194320%7D",
+          "fetched_at": "2026-11-20T15:07:02Z",
+          "sha256": "0782c00e15b6624ee6018590f1ddb28bbd25f64a04584b55ac51f337c06eea82",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-23737",
+      "country": "IE",
+      "group": "B",
+      "number": "23737",
+      "legal_name": "O'REGAN-PRECAST LIMITED",
+      "legal_form": "ltd - private company limited by shares",
+      "key": "0006405230c4a94ae714a367040ca75d24561a549fa6aacd75b574c60843b349",
+      "raw_status": "liquidation",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+23737%7D",
+          "fetched_at": "2026-11-20T15:07:02Z",
+          "sha256": "8e6feae8be9c2e180c2f5f1e51251387cc9653699fcdf798bc5c6b15c0c61aa0",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-239427",
+      "country": "IE",
+      "group": "A",
+      "number": "239427",
+      "legal_name": "PEACHMAN LIMITED",
+      "legal_form": "ltd - private company limited by shares",
+      "key": "00016c7e314e777ab5a53f6f73f3c131ee1beea8d9914f1850f328f5cd09f1cb",
+      "raw_status": "normal",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+239427%7D",
+          "fetched_at": "2026-11-20T15:07:02Z",
+          "sha256": "2fe7007cc2c2f5f2e800179e887aa846c7606f6b8bdb271288a4d498d1f219e8",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-267069",
+      "country": "IE",
+      "group": "C",
+      "number": "267069",
+      "legal_name": "BETA CONSTRUCTION COMPANY LIMITED",
+      "legal_form": "ltd - private company limited by shares",
+      "key": "001c5d6f1d68a0cae5a1156dc234b2187755371d304be639c8ebe3c6f4295125",
+      "raw_status": "dissolved",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+267069%7D",
+          "fetched_at": "2026-11-20T15:07:03Z",
+          "sha256": "c5d71129489e0ff272170b35bc4a8dce5c3f717345522ff53d121258a6cc2133",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-287076",
+      "country": "IE",
+      "group": "C",
+      "number": "287076",
+      "legal_name": "BAILIEBORO SPRING WATER LIMITED",
+      "legal_form": "ltd - private company limited by shares",
+      "key": "0018c60164cf1f69dd9c3a0fa1730aa3c82147b2c441810942df5c313686dac0",
+      "raw_status": "dissolved",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+287076%7D",
+          "fetched_at": "2026-11-20T15:07:03Z",
+          "sha256": "b6f4d1a4d6d8453fb793a635c1b95cf420a20c391f25750ce04a574a36c142fa",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-432639",
+      "country": "IE",
+      "group": "C",
+      "number": "432639",
+      "legal_name": "MOODY FASHIONS LIMITED",
+      "legal_form": "ltd - private company limited by shares",
+      "key": "0018e7da04c92202bb1c8afadf2120b636ad523adaa9813dab19db858aabf6a6",
+      "raw_status": "dissolved",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+432639%7D",
+          "fetched_at": "2026-11-20T15:07:03Z",
+          "sha256": "e69c2d3ee4706ffdda1037a72dbfb6a0398247f0dd6d0670005a3eccf484f277",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-485469",
+      "country": "IE",
+      "group": "C",
+      "number": "485469",
+      "legal_name": "DENIS LUCEY HYDROPOWER LIMITED",
+      "legal_form": "ltd - private company limited by shares",
+      "key": "00070804402180d76d29afa89761b29b41e2197aedb3ab7088d6b405a81d3f27",
+      "raw_status": "dissolved",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+485469%7D",
+          "fetched_at": "2026-11-20T15:07:03Z",
+          "sha256": "2e51eca700866f6bd45c6a28a3cd8e0be7e6db425400978365ba05dba094587e",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-502301",
+      "country": "IE",
+      "group": "B",
+      "number": "502301",
+      "legal_name": "KILCORAN HEALTH AND LEISURE CENTRE LIMITED",
+      "legal_form": "ltd - private company limited by shares",
+      "key": "0020608ddda10a500ee4fdb5f39baed46b452fa728322179b7447bf1b23d78b7",
+      "raw_status": "liquidation",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+502301%7D",
+          "fetched_at": "2026-11-20T15:07:02Z",
+          "sha256": "996319345aa15bf7ba093d74a47e71e256e3fd73dfc1260339728a1c918f9c0a",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-522912",
+      "country": "IE",
+      "group": "B",
+      "number": "522912",
+      "legal_name": "GTLK 5 737 LIMITED",
+      "legal_form": "ltd - private company limited by shares",
+      "key": "000c960aa96ab215f2073682c6cb7f37d4261053fae22fcb81cab34106872f43",
+      "raw_status": "liquidation",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+522912%7D",
+          "fetched_at": "2026-11-20T15:07:02Z",
+          "sha256": "c71c9c75e6bbc73d875ec2c795239162ea07c9fa5515286c0e1111a06a9bf80a",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-539411",
+      "country": "IE",
+      "group": "C",
+      "number": "539411",
+      "legal_name": "GUIRY AUCTIONEERS LIMITED",
+      "legal_form": "ltd - private company limited by shares",
+      "key": "001d17c1766f20a22915d605aaea7a6042972cf5da294883249c90e05888474d",
+      "raw_status": "dissolved",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+539411%7D",
+          "fetched_at": "2026-11-20T15:07:03Z",
+          "sha256": "2e446b6c8315ba16464e578cf97b04e63963a1cd8a4c9afd229e1b2886f17b76",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-547488",
+      "country": "IE",
+      "group": "C",
+      "number": "547488",
+      "legal_name": "M & A MAINTENANCE LIMITED",
+      "legal_form": "ltd - private company limited by shares",
+      "key": "00071e504cc97f2ecd4a91d6de6ae374b9903ed346364d3ee498ce69d70532a5",
+      "raw_status": "dissolved",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+547488%7D",
+          "fetched_at": "2026-11-20T15:07:03Z",
+          "sha256": "1312bb0a88873bc843e380d65c0dbffa178e7ea8cf8268ea6710502175947e01",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-557917",
+      "country": "IE",
+      "group": "B",
+      "number": "557917",
+      "legal_name": "QUINN P&M CONSULTANTS LIMITED",
+      "legal_form": "ltd - private company limited by shares",
+      "key": "0001b6f6953ba827ea2d9c7158306721821bad8ebf9da92dd0bb5c6f91540004",
+      "raw_status": "liquidation",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+557917%7D",
+          "fetched_at": "2026-11-20T15:07:02Z",
+          "sha256": "eef39126f9c05ea86e63004c8f0102d47348582efb66161d69a30f777247b7d3",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-604946",
+      "country": "IE",
+      "group": "A",
+      "number": "604946",
+      "legal_name": "KASTERWELL LIMITED",
+      "legal_form": "ltd - private company limited by shares",
+      "key": "000155c34131bc51356ece02822479f6baa4a7a03378e5b7642003c0052ba9e5",
+      "raw_status": "normal",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+604946%7D",
+          "fetched_at": "2026-11-20T15:07:02Z",
+          "sha256": "fdfe49c698e028c23fe96a7263eda5242181fd01793abd4ad1e9ff740fec131e",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-612754",
+      "country": "IE",
+      "group": "A",
+      "number": "612754",
+      "legal_name": "DENSE AIR IRELAND LIMITED",
+      "legal_form": "ltd - private company limited by shares",
+      "key": "00015f0247496ac2f8b97aca35f4a898cc411f84f9455029cf58d0bc749f6544",
+      "raw_status": "normal",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+612754%7D",
+          "fetched_at": "2026-11-20T15:07:02Z",
+          "sha256": "759ae1a1bf1b4d9445f9d01013811f1bddc4dab188f833b1815f19856ef667e6",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-625396",
+      "country": "IE",
+      "group": "A",
+      "number": "625396",
+      "legal_name": "ALWARD LIMITED",
+      "legal_form": "ltd - private company limited by shares",
+      "key": "00018f3635ed37d2bcab45b36bd8f5852a8e132ee2a9f9f4c61dd5d621769dd9",
+      "raw_status": "normal",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+625396%7D",
+          "fetched_at": "2026-11-20T15:07:02Z",
+          "sha256": "0b1e0ff2eb3f64a0d5ff6a4f6b50940484d1ad15adf5488fd5b94b7f6cefa6f3",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-644763",
+      "country": "IE",
+      "group": "C",
+      "number": "644763",
+      "legal_name": "CREATIVE ECOM LIMITED",
+      "legal_form": "ltd - private company limited by shares",
+      "key": "000b2a8cea39f742943c07c79a1c369301eb6f1e39a135a47f7701de1a4b7f06",
+      "raw_status": "dissolved",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+644763%7D",
+          "fetched_at": "2026-11-20T15:07:03Z",
+          "sha256": "92bea8091863b7ef077c535cea21603e85c37a80f4bb8ee7f650da2705852036",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-653830",
+      "country": "IE",
+      "group": "C",
+      "number": "653830",
+      "legal_name": "LEODS LOCATION AND DEAL INTERNATIONAL LIMITED",
+      "legal_form": "ltd - private company limited by shares",
+      "key": "001ad2575c760255d082e9cd4302d25215d1a82c570d760a66c486e31f359474",
+      "raw_status": "dissolved",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+653830%7D",
+          "fetched_at": "2026-11-20T15:07:03Z",
+          "sha256": "4a0eca3d73e372d4b70bf6a72bbef331ec181d63f53de419eaccdf13a580ec7b",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-659654",
+      "country": "IE",
+      "group": "B",
+      "number": "659654",
+      "legal_name": "DUNGEEHA SOLAR LIMITED",
+      "legal_form": "ltd - private company limited by shares",
+      "key": "00050c363dde836a17ab73c87bcc10ba0683b0e9c679dcf41d459a9d9f786e8e",
+      "raw_status": "liquidation",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+659654%7D",
+          "fetched_at": "2026-11-20T15:07:02Z",
+          "sha256": "dc62210f92fbd6036b30bd8fc4435d51aae26df61477ef38aa6c6867fa5a5cfb",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-661545",
+      "country": "IE",
+      "group": "S",
+      "number": "661545",
+      "legal_name": "THALESTRIS LIMITED",
+      "legal_form": "ltd - private company limited by shares",
+      "key": "0341486bcd96c3e2f6b1acd471320d02ba70e3efdb0940664050045c630a9351",
+      "raw_status": "normal",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": true,
+        "sanctions_lists": [
+          "OFAC SDN"
+        ]
+      },
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+661545%7D",
+          "fetched_at": "2026-11-20T15:10:19Z",
+          "sha256": "bb27f05de49df27123053a14a9a1f45b4e92369510d4fb7c0f60f4423b64edde",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-666964",
+      "country": "IE",
+      "group": "B",
+      "number": "666964",
+      "legal_name": "LAVANDA RESTAURANT & TAKEAWAY LIMITED",
+      "legal_form": "ltd - private company limited by shares",
+      "key": "0016c96d04596e081c3c3fcce89df01ec281efb35db3fa5241bd656dd29529fb",
+      "raw_status": "liquidation",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+666964%7D",
+          "fetched_at": "2026-11-20T15:07:02Z",
+          "sha256": "19b39311a17cefb14ba13ae62fda930fc8da17fd541734594d1a2029f263798d",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-671756",
+      "country": "IE",
+      "group": "A",
+      "number": "671756",
+      "legal_name": "SOLUDATA LIMITED",
+      "legal_form": "ltd - private company limited by shares",
+      "key": "0000a862a21931edaabfa2c3c6ad61337eeb1638ebb152618b3f49d2863ca41b",
+      "raw_status": "normal",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+671756%7D",
+          "fetched_at": "2026-11-20T15:07:02Z",
+          "sha256": "67110c4d6df8a2064505002dde4584bb2c38d4f73928b8328a4d216322aca086",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-708943",
+      "country": "IE",
+      "group": "B",
+      "number": "708943",
+      "legal_name": "MIANALDA CONSULTING LIMITED",
+      "legal_form": "ltd - private company limited by shares",
+      "key": "000451094a00404012a007cde5c5a85e3541d4f9e701c9d1f8ce9f6026d551e2",
+      "raw_status": "liquidation",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+708943%7D",
+          "fetched_at": "2026-11-20T15:07:02Z",
+          "sha256": "e0c141a00b608b0a6ef502349c2229c9e22557b8ea627e964e1e757c14508517",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-727769",
+      "country": "IE",
+      "group": "C",
+      "number": "727769",
+      "legal_name": "VLAD & MANNY ENDEAVOURS LIMITED",
+      "legal_form": "ltd - private company limited by shares",
+      "key": "001333ff0625b2c804774feed0d8638ba69eed6673681ddae0cb3096279d1774",
+      "raw_status": "dissolved",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+727769%7D",
+          "fetched_at": "2026-11-20T15:07:03Z",
+          "sha256": "99b20897c35c4023dc37e024defe60144a374dd42ea218ae629594627c215bc9",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-728836",
+      "country": "IE",
+      "group": "A",
+      "number": "728836",
+      "legal_name": "OWENRIFF INVESTMENTS LIMITED",
+      "legal_form": "ltd - private company limited by shares",
+      "key": "0000910e5e2a3fa341e99fb1ef5fafcd1dad23d7ca088073116112df4b5c486c",
+      "raw_status": "normal",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+728836%7D",
+          "fetched_at": "2026-11-20T15:07:02Z",
+          "sha256": "89cdb5ae3edeaeae2a703e69c67e05910bdf3de4d2845a075d308366dab072f9",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "ie-748723",
+      "country": "IE",
+      "group": "A",
+      "number": "748723",
+      "legal_name": "TULIP PROFESSIONAL TALENT LIMITED",
+      "legal_form": "ltd - private company limited by shares",
+      "key": "0000a63944a19d4c9f50f9afcbe7e159e9c6a886668c0b878944244c5b82eee2",
+      "raw_status": "normal",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://opendata.cro.ie/api/3/action/datastore_search?resource_id=3fef41bc-b8f4-4b10-8434-ce51c29b1bba&fields=company_num%2Ccompany_name%2Ccompany_type%2Ccompany_status%2Ccompany_reg_date%2Ccomp_dissolved_date%2Ccompany_status_date&filters=%7B%22company_num%22%3A+748723%7D",
+          "fetched_at": "2026-11-20T15:07:02Z",
+          "sha256": "9627bb122b6fb863bfd56484c48138ed7c35271354d09f675f222825f61ba634",
+          "what": "register"
+        }
+      ]
+    },
+    {
+      "id": "lv-40003984050",
+      "country": "LV",
+      "group": "B",
+      "number": "40003984050",
+      "legal_name": "Sabiedrība ar ierobežotu atbildību \"C Solutions\"",
+      "legal_form": "sia",
+      "key": "00494217f1987c5139957e7c57f704718864f310874707e755291df8f1a1d137",
+      "raw_status": "liquidation:liquidation",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+40003984050%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-20T15:07:17Z",
+          "sha256": "194cd9bae8bafe9209f2287fd7d5c20a6e9390350ef38b735f0b1662d333439d",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+40003984050%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-20T15:07:17Z",
+          "sha256": "02ab9224f189d65518ff288d129456e5233150ad80277935056c565b9c0dd94a",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+40003984050%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-20T15:07:18Z",
+          "sha256": "f774ec8feaf9db700eaabf071f93c9a87e4274d865385b9d5ca8dc4a3dbb9458",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-40103326477",
+      "country": "LV",
+      "group": "C",
+      "number": "40103326477",
+      "legal_name": "Sabiedrība ar ierobežotu atbildību \"ZI TRANS JAGUAR\"",
+      "legal_form": "sia",
+      "key": "00121630a7f621e7acb531fdbf887b48b75046ca04a22972ba8e300a7b7d81a4",
+      "raw_status": "closed:l",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": true,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+40103326477%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-20T15:07:22Z",
+          "sha256": "ada2685438a48127fe202a04023a6cb02db20b6ae9a2dbb4a666044748dbd1cd",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+40103326477%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-20T15:07:22Z",
+          "sha256": "ab7fd754e7baf8775253c13c3e69c1c130da443b71368dbab8e8b9211a07544c",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+40103326477%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-20T15:07:22Z",
+          "sha256": "e79b2902ced69cad38200a87b3d03ffd064a0ceec6b439c951380e503ee20e79",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-40103387645",
+      "country": "LV",
+      "group": "B",
+      "number": "40103387645",
+      "legal_name": "Sabiedrība ar ierobežotu atbildību \"CONSULTING PLUS\"",
+      "legal_form": "sia",
+      "key": "001058f3345473f1f0965eeb999b2fe961cc38b54cc00beef76c5b76f81890e8",
+      "raw_status": "liquidation:liquidation",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+40103387645%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-20T15:07:13Z",
+          "sha256": "52f1f6e6dc5efccc4656a37536170fde4824763d01abab30d97f48684d836841",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+40103387645%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-20T15:07:14Z",
+          "sha256": "f2b02f177329122f441980c29415db43a4ea4d3376bbb1657679c612792201cd",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+40103387645%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-20T15:07:14Z",
+          "sha256": "67cc3358b896cc1cd3ae5a54528d12c59428d8619abb529891055c46320be8e5",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-40103410180",
+      "country": "LV",
+      "group": "B",
+      "number": "40103410180",
+      "legal_name": "Sabiedrība ar ierobežotu atbildību \"Defense\"",
+      "legal_form": "sia",
+      "key": "000f90cfee487b5df5ec413e19b0ddcd05a7a7e0c80ffcfe4e02edcf6d326afd",
+      "raw_status": "liquidation:liquidation",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+40103410180%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-20T15:07:12Z",
+          "sha256": "4553e22412de899a987b9f76b3efd09df7b366cc481d65fee9b280d816324c98",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+40103410180%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-20T15:07:13Z",
+          "sha256": "5e84be7f680fd84bd39265b6d7a9850019bb7f20267ad121bd7bef527172b30d",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+40103410180%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-20T15:07:13Z",
+          "sha256": "0d546060d5b8b0e0905b700ec508dd7eeaa7d162c773986a0a2c87d6d5cb03a6",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-40103495681",
+      "country": "LV",
+      "group": "A",
+      "number": "40103495681",
+      "legal_name": "PExp SIA",
+      "legal_form": "sia",
+      "key": "0001b7bd4e845a0352cc20aa590538372b24d0819497cf8f4888cc089ba36ed4",
+      "raw_status": "registered",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+40103495681%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-20T15:07:07Z",
+          "sha256": "d039aa585d3716045410a5e307458c83dc3785e60ae2868b77d20edd724e02e9",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+40103495681%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-20T15:07:07Z",
+          "sha256": "930cb2600a8bd862cec85311213d824746a17cf1975e1087e9d00f25a3063fcc",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+40103495681%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-20T15:07:07Z",
+          "sha256": "198d235ed0a90f9ce93cf5c9a691db5e5d6b4b785a2e2520301c107845607912",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-40103852949",
+      "country": "LV",
+      "group": "B",
+      "number": "40103852949",
+      "legal_name": "ROG invest SIA",
+      "legal_form": "sia",
+      "key": "001412178554a2208a09d702ddddeb1c7ae29e95ef65786f7734b4dd3b88f07d",
+      "raw_status": "liquidation:liquidation",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+40103852949%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-20T15:07:14Z",
+          "sha256": "7b71c44b925532eb30e9663e963208d52b044662a43ea30d566e46cdca588d01",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+40103852949%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-20T15:07:15Z",
+          "sha256": "22402e9aefb20f2137d184b32bce0314ca1eb930ae066eb5b8e38ab0a2ac82b6",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+40103852949%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-20T15:07:15Z",
+          "sha256": "820e5bd3afee1d74dbdf2839eab7f88427bda61aabc094eb20d8efcc6965f035",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-40203031749",
+      "country": "LV",
+      "group": "C",
+      "number": "40203031749",
+      "legal_name": "SIA \"NJ Group\"",
+      "legal_form": "sia",
+      "key": "00126f5bb7a51f284ee23eef8fa937c91f7e423b20c881744e8346c89edfacc4",
+      "raw_status": "closed:l",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+40203031749%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-20T15:07:22Z",
+          "sha256": "710ab39d2edd2365f1863d2ad2a1c6d43925be8a9b4cc47401136ece50f0b41e",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+40203031749%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-20T15:07:23Z",
+          "sha256": "c2da029bca82e2c100202783b8522d31892c1aa18531b8acf03aa766fade1bc4",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+40203031749%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-20T15:07:23Z",
+          "sha256": "f828fd377eabb56ea35a2ca8679475b1176bea663d63108b5188dfb78640faf3",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-40203058739",
+      "country": "LV",
+      "group": "B",
+      "number": "40203058739",
+      "legal_name": "SIA \"SHS Group\"",
+      "legal_form": "sia",
+      "key": "00044894976a0dfbab62655fd3f5e40dd7827c6b398c04e25bc5d31a6ceccb41",
+      "raw_status": "insolvency:insolvency",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": true,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+40203058739%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-20T15:07:11Z",
+          "sha256": "4e9cdade12268a4af53998cbfcf2c8609b81cdd0a21e60cd92bba7dbd345caa0",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+40203058739%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-20T15:07:12Z",
+          "sha256": "ec94ded9aceaddcd3769f1f47e281c1331528a405016dce721b78867202ce884",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+40203058739%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-20T15:07:12Z",
+          "sha256": "d2f0c08782497ad9efae46443025c0c4424b78a680d1e20ce9993c4d5597f3c5",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-40203101321",
+      "country": "LV",
+      "group": "A",
+      "number": "40203101321",
+      "legal_name": "Sabiedrība ar ierobežotu atbildību \"Akria\"",
+      "legal_form": "sia",
+      "key": "0003d580f41868ec8d63452586e3c75a6453f438464f87e9fc364578f390055b",
+      "raw_status": "registered",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+40203101321%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-20T15:07:08Z",
+          "sha256": "e6fb655e38fc13cbd2f21b3d39d5dcce041804732882a7116616ce81692c8bad",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+40203101321%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-20T15:07:09Z",
+          "sha256": "5f3572316f794d9dcd61976c0c659800cec5c8a0a71b1f5340852d29dee2ba8e",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+40203101321%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-20T15:07:09Z",
+          "sha256": "9eee2d43888b3895f2bae512e8091ca43380542b745d779346daab43a947bdcb",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-40203200721",
+      "country": "LV",
+      "group": "A",
+      "number": "40203200721",
+      "legal_name": "SIA \"Vencom\"",
+      "legal_form": "sia",
+      "key": "0004d0ed8923f4e30b6b4cdbc05ea11f1bd1b933aafa9113071712f1ef64cd58",
+      "raw_status": "registered",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+40203200721%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-20T15:07:10Z",
+          "sha256": "6f9055b14051935109a553f973a14535034e3aad0b2c32d7ea7c27eeaa81d300",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+40203200721%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-20T15:07:11Z",
+          "sha256": "0e5d1b65d1af473af544cb941f99fba35d0baf3e51b4addaa308e266a64349ba",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+40203200721%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-20T15:07:11Z",
+          "sha256": "01ce23032bfea313e342ecc66cfae1bb18a2d766ffcbf6e096896b69eca00e96",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-40203227800",
+      "country": "LV",
+      "group": "C",
+      "number": "40203227800",
+      "legal_name": "SIA \"Exivo\"",
+      "legal_form": "sia",
+      "key": "0013d8692119ac805fac8d6b5a278df7b115733da0316a90f777289c291ef121",
+      "raw_status": "closed:l",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+40203227800%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-20T15:07:23Z",
+          "sha256": "7b3cd9498a9068a893bd32a01f574d1c9240eb322898af63b06d3f1e9dd2c701",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+40203227800%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-20T15:07:24Z",
+          "sha256": "266198ddcc9799d125af9ad92631a7160b43f649f9da7486598c23de5048cb5a",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+40203227800%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-20T15:07:24Z",
+          "sha256": "7d36c48fa293614c412b066bb35e228fd06bd38fce670edf23eeae64c8968124",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-40203248338",
+      "country": "LV",
+      "group": "C",
+      "number": "40203248338",
+      "legal_name": "SIA \"Media & Records\"",
+      "legal_form": "sia",
+      "key": "001201280989ea1f1088833e23287f1aa2a80fb56555418cd5320d2fb1840f1d",
+      "raw_status": "closed:l",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+40203248338%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-20T15:07:21Z",
+          "sha256": "5107795d6e54422053b89a218a1d1e6d93311ea3ebd8b6577241afbd41e9cb8d",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+40203248338%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-20T15:07:21Z",
+          "sha256": "91f84366698a310a740cbc5160ff59d8a57200af84023076e7ca4ee63761cd38",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+40203248338%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-20T15:07:21Z",
+          "sha256": "38035c1499cb6699a0b2f383eaaec96069d3256e6f8a83660e70408c2e28672d",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-40203248696",
+      "country": "LV",
+      "group": "A",
+      "number": "40203248696",
+      "legal_name": "SIA \"Zemvalda land management holdings 6\"",
+      "legal_form": "sia",
+      "key": "0000fd621730600f0b1fc7eb9fcd8df5aaee3dfa30a14d93e5cc4d00fbe93b14",
+      "raw_status": "registered",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+40203248696%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-20T15:07:05Z",
+          "sha256": "d4487fc6127039e35c041083aed974605ca8962cc2aea114e8cd789dc8954314",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+40203248696%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-20T15:07:05Z",
+          "sha256": "7920a48ff77b585ef87859e7c1f3422f96df127eeba76605e40179645337705f",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+40203248696%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-20T15:07:05Z",
+          "sha256": "484102212fa6d5d7e8ef96bc74d0aba8f7be62b018497609a88d5c9a4fe679db",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-40203299048",
+      "country": "LV",
+      "group": "B",
+      "number": "40203299048",
+      "legal_name": "Sabiedrība ar ierobežotu atbildību \"Kvebex\"",
+      "legal_form": "sia",
+      "key": "003df6bff10b0df57ecb0053f7cf3dcc47223923127454d06bf3dd7c30f8472d",
+      "raw_status": "insolvency:insolvency",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": true,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+40203299048%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-20T15:07:15Z",
+          "sha256": "cca4e51c51634fe83b079db11b82eeda763cacc1730a7b5d48556e029ba5f464",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+40203299048%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-20T15:07:15Z",
+          "sha256": "d1fb1984bbbd1ff9af3349c4f7b9c4d1054966ac42bf427da43184e6ea78ca19",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+40203299048%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-20T15:07:16Z",
+          "sha256": "a477cd8dd7903b2b2793c858b828b76055964e8c15ca89aed9ce1eba0bf39c0e",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-40203300116",
+      "country": "LV",
+      "group": "C",
+      "number": "40203300116",
+      "legal_name": "SIA MP GROUP",
+      "legal_form": "sia",
+      "key": "000937923102f65c21d814190818a2efb63a4fd6f538bc15f8c627716cb35710",
+      "raw_status": "closed:l",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+40203300116%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-20T15:07:19Z",
+          "sha256": "12169a1383e9f6bf221a9ff9a46f480ea497ab0bc994835ce48c4f9e5ae5e4e2",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+40203300116%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-20T15:07:19Z",
+          "sha256": "42b078d399e0bef1107608032caaf6ff7d38f9f57d8b8e745956db64cabe8e4b",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+40203300116%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-20T15:07:19Z",
+          "sha256": "95f42ed96a65ae99e59ab92eb14176f86d811ee634fdd5e7f77a697ceb729a1d",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-40203343897",
+      "country": "LV",
+      "group": "C",
+      "number": "40203343897",
+      "legal_name": "SIA \"Nordic Summer\"",
+      "legal_form": "sia",
+      "key": "002c706d63e054d8558bb96f843065d2eb260fe45c4398e62f572891b7a18ca5",
+      "raw_status": "closed:l",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+40203343897%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-20T15:07:26Z",
+          "sha256": "79c2e9bca9cef324d3e46887d90bf2fb97b8d7e142808a5517353af0643b7e4f",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+40203343897%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-20T15:07:26Z",
+          "sha256": "5863694ff8255b37a193a9b69b421c3f55a1f7f7d247e192006a6e94b6627922",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+40203343897%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-20T15:07:27Z",
+          "sha256": "f5f0bd15a4055df492d6ecd38e0dc1c90ed3720305c3335e4463d3d69858d407",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-40203387586",
+      "country": "LV",
+      "group": "C",
+      "number": "40203387586",
+      "legal_name": "Sabiedrība ar ierobežotu atbildību \"Profesionāls Tīrīšanas Serviss\"",
+      "legal_form": "sia",
+      "key": "00260b10adaa81e1de1ac24a1740bcc8cfd2677c1013c6ccf897c21a8b5f71bc",
+      "raw_status": "closed:l",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+40203387586%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-20T15:07:25Z",
+          "sha256": "a1083f0c0e7943c12622ade177484ff56af6318f50817ece79864b1474c0ce23",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+40203387586%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-20T15:07:25Z",
+          "sha256": "eb6eae7ad4ea6228c817b7c02466c817def9463e958fc88b1addbf53e2778714",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+40203387586%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-20T15:07:26Z",
+          "sha256": "6db26f22ae7ce621c2e1131f20d1342d2e777c138ba9ada857e9ed2501c59295",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-40203418068",
+      "country": "LV",
+      "group": "A",
+      "number": "40203418068",
+      "legal_name": "Sabiedrība ar ierobežotu atbildību \"NIKOTRANS 1\"",
+      "legal_form": "sia",
+      "key": "000188938b406d302b4ac66c5a1b790fcf4ec2bba5d2a69205f3050a65285843",
+      "raw_status": "registered",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+40203418068%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-20T15:07:06Z",
+          "sha256": "9b67dc68e065179c064766904a06135c12377b0faeef32c4d22b6f5ae5100c5b",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+40203418068%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-20T15:07:06Z",
+          "sha256": "e06057e51a75674f53b3f8fca84beb44cc999c306cefe6ad594c38dfa2c6a3d2",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+40203418068%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-20T15:07:06Z",
+          "sha256": "9b06ff1d3ec9c4f6f7b367760b9d57759c3a9dc2be9a4c5fa7d9ed14e23aee9a",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-40203520218",
+      "country": "LV",
+      "group": "A",
+      "number": "40203520218",
+      "legal_name": "SIA \"Pasaka 1\"",
+      "legal_form": "sia",
+      "key": "00044ae3540d07db0d7304889421cb18dc70b09c551b5490a269cd7f0435c5cd",
+      "raw_status": "registered",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+40203520218%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-20T15:07:09Z",
+          "sha256": "4981e10b4d57b085e49f86d69699770865e9ef24982b3da159dceb9609d80284",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+40203520218%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-20T15:07:10Z",
+          "sha256": "b4c4e2520158c46c825978f824ce1a7e957f30ec3abf2f11b9407b9060a84665",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+40203520218%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-20T15:07:10Z",
+          "sha256": "4d0d0c7735979162f30e81b8968a003ec2947f0d4fb985fdd2f16d32b29e2503",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-40203533354",
+      "country": "LV",
+      "group": "C",
+      "number": "40203533354",
+      "legal_name": "SIA Zenith Prosperity Solution",
+      "legal_form": "sia",
+      "key": "000c48c3ba4cf76be5cb0199628a3b5b9ce08ae6668a8279e2287a23c5793bf8",
+      "raw_status": "closed:l",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+40203533354%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-20T15:07:20Z",
+          "sha256": "36f97f1a7321a533401aecec27349496f29ee2f464f6d30a5eb528ac51f8cdf5",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+40203533354%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-20T15:07:20Z",
+          "sha256": "b48ad5155a49866660a969a049fbd382b45c09cee562cb4e04e730719b00ad6a",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+40203533354%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-20T15:07:20Z",
+          "sha256": "a624d4b42f6db02e25225345b6d1e7abffb4db0f1bf505bc574e3ca7a228e5a8",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-40203558095",
+      "country": "LV",
+      "group": "C",
+      "number": "40203558095",
+      "legal_name": "SIA Fox Logic",
+      "legal_form": "sia",
+      "key": "0000d7b8649943a22d222c4d0de7b9a1ba9f81c7a60442b9982c5dd055106e3b",
+      "raw_status": "closed:l",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+40203558095%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-20T15:07:18Z",
+          "sha256": "2760873cff8170822e947b3dfe4cc1678fd1cd1de0ba950a6bb71e828b3b0501",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+40203558095%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-20T15:07:18Z",
+          "sha256": "f5850b0370deb2423193b0ce2750f175d73c3f7b0e487eadf5d386b58d028b33",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+40203558095%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-20T15:07:18Z",
+          "sha256": "18ece1640f283db655a32ded4ec5e5cbe40b549243163e231b4eddd255dda50d",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-41203027988",
+      "country": "LV",
+      "group": "C",
+      "number": "41203027988",
+      "legal_name": "Sabiedrība ar ierobežotu atbildību \"AD Ventspils\"",
+      "legal_form": "sia",
+      "key": "0018c037c136cbca023eb29e4922d40d6b94ff6ab429071e41443668aa0806d5",
+      "raw_status": "closed:l",
+      "truth": {
+        "status": "dissolved",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+41203027988%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-20T15:07:24Z",
+          "sha256": "80fb54f725793a0e707fe147ac4d2a26858bfb07ca8fbcca4583c2e622198b0e",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+41203027988%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-20T15:07:25Z",
+          "sha256": "6be73347dc48402d57805b832169d89c5e079d10a6a5764af3abab4fd77e7d80",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+41203027988%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-20T15:07:25Z",
+          "sha256": "54e84307db347b6a0934c72f400e00ee831d3683219f9c2760456b90b1335caa",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-42103108035",
+      "country": "LV",
+      "group": "A",
+      "number": "42103108035",
+      "legal_name": "SIA \"Montmaster Pluss\"",
+      "legal_form": "sia",
+      "key": "0000e374c802ad64fced5568dba6e8fb86bf259a22b0b94cccd3b487829440c4",
+      "raw_status": "registered",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+42103108035%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-20T15:07:04Z",
+          "sha256": "82a886663fe25d69415f6cf10b971079d4f652dab2dff55f73cf1c89f3257f82",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+42103108035%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-20T15:07:04Z",
+          "sha256": "233d9b98ce665614cbca527b761b05c2a60aa7381180e04ef0dcaf60d2a85a86",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+42103108035%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-20T15:07:04Z",
+          "sha256": "a5a8ea3706ac5495c5245b1ced6ed0b1ab03b4366b575a94f6d2b7c6d7d307b9",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-45403031910",
+      "country": "LV",
+      "group": "A",
+      "number": "45403031910",
+      "legal_name": "SIA Energo Serviss",
+      "legal_form": "sia",
+      "key": "00021840f689cc76cd2c62d6c2e67dca40210de52da761aa751b8f80df5ea8e2",
+      "raw_status": "registered",
+      "truth": {
+        "status": "active",
+        "insolvent": false,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+45403031910%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-20T15:07:08Z",
+          "sha256": "93d056b00dbbfd0e200c80030d4fde90d22228af08d0c8ef9374489f5833400b",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+45403031910%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-20T15:07:08Z",
+          "sha256": "0385743a35c1ec49764cc4dcde0478c8dd21445520066fd99c8ecfb226826b0f",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+45403031910%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-20T15:07:08Z",
+          "sha256": "55fb95320396b5f7bfe5fe71c55e85c80660a72b2a2c32d1954fcbeaa60beb55",
+          "what": "insolvency proceedings"
+        }
+      ]
+    },
+    {
+      "id": "lv-50003914591",
+      "country": "LV",
+      "group": "B",
+      "number": "50003914591",
+      "legal_name": "Sabiedrība ar ierobežotu atbildību \"NISERVIS\"",
+      "legal_form": "sia",
+      "key": "004111656cf84ee4703f8cc9a4cb4f95083b0dcb61b69533d876b4884e8cc963",
+      "raw_status": "liquidation:liquidation",
+      "truth": {
+        "status": "winding_up",
+        "insolvent": null,
+        "sanctioned": false,
+        "sanctions_lists": []
+      },
+      "evidence": [
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=25e80bf3-f107-4ab4-89ef-251b5b9374e9&filters=%7B%22regcode%22%3A+50003914591%7D&fields=regcode%2Cname%2Ctype%2Cregistered%2Cterminated%2Cclosed",
+          "fetched_at": "2026-11-20T15:07:16Z",
+          "sha256": "3dc676d2913550bf9420dd13bc8da7b282c49b478a85d3309c9860029773a15c",
+          "what": "register"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=59e7ec49-f1c6-4410-8ee6-e7737ac5eaee&filters=%7B%22legal_entity_registration_number%22%3A+50003914591%7D&fields=legal_entity_registration_number%2Cliquidation_type%2Cdate_from",
+          "fetched_at": "2026-11-20T15:07:16Z",
+          "sha256": "2bdd4032d7c855c1f112454a4ae5e3087b86bd5a373fb03fd7aa2ec962338a69",
+          "what": "liquidation"
+        },
+        {
+          "url": "https://data.gov.lv/dati/api/3/action/datastore_search?resource_id=8065ad80-1a4d-4afb-b1d1-d93b9a62b1cc&filters=%7B%22debtor_registration_number%22%3A+50003914591%7D&fields=debtor_registration_number%2Cproceeding_form%2Cproceeding_type%2Cproceeding_started_on%2Cproceeding_ended_on",
+          "fetched_at": "2026-11-20T15:07:17Z",
+          "sha256": "3df2838e2e07086064362c7d28646fc9c7a747c0a4d52737eed46d2670bd83b9",
+          "what": "insolvency proceedings"
+        }
+      ]
+    }
+  ]
+}
