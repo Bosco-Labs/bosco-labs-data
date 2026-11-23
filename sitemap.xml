@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://boscolabs.dev/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://boscolabs.dev/</loc><lastmod>2026-11-23</lastmod></url>
   <url><loc>https://boscolabs.dev/api.html</loc><lastmod>2026-11-20</lastmod></url>
   <url><loc>https://boscolabs.dev/counterparty-check.html</loc><lastmod>2026-11-19</lastmod></url>
-  <url><loc>https://boscolabs.dev/company-check.html</loc><lastmod>2026-11-18</lastmod></url>
+  <url><loc>https://boscolabs.dev/company-check.html</loc><lastmod>2026-11-23</lastmod></url>
   <url><loc>https://boscolabs.dev/vat-iban-check.html</loc><lastmod>2026-11-15</lastmod></url>
   <url><loc>https://boscolabs.dev/company-accounts.html</loc><lastmod>2026-11-17</lastmod></url>
   <url><loc>https://boscolabs.dev/uk-new-companies.html</loc><lastmod>2026-11-15</lastmod></url>
@@ -140,7 +140,8 @@
   <url><loc>https://boscolabs.dev/compare/company-data.html</loc><lastmod>2026-11-17</lastmod></url>
   <url><loc>https://boscolabs.dev/compare/eu-public-tenders.html</loc><lastmod>2026-11-17</lastmod></url>
   <url><loc>https://boscolabs.dev/compare/sanctions-lists.html</loc><lastmod>2026-11-17</lastmod></url>
-  <url><loc>https://boscolabs.dev/blog/index.html</loc><lastmod>2026-11-22</lastmod></url>
+  <url><loc>https://boscolabs.dev/blog/index.html</loc><lastmod>2026-11-23</lastmod></url>
+  <url><loc>https://boscolabs.dev/blog/uk-legislation-section-text-api.html</loc><lastmod>2026-11-23</lastmod></url>
   <url><loc>https://boscolabs.dev/blog/benchmark2-results.html</loc><lastmod>2026-11-22</lastmod></url>
   <url><loc>https://boscolabs.dev/blog/eu-public-tenders-ted-api.html</loc><lastmod>2026-11-19</lastmod></url>
   <url><loc>https://boscolabs.dev/blog/eu-annual-report-financials-esef-api.html</loc><lastmod>2026-11-17</lastmod></url>
